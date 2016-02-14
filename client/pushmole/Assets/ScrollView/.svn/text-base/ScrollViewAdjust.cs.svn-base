@@ -1,0 +1,162 @@
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI ;
+
+
+//自动调整Scrollview的触碰区域
+
+
+public class ScrollViewAdjust : MonoBehaviour 
+{
+	private 	GridLayoutGroup 						gridLayout ;	
+	protected RectTransform 							scrollviewRect ;	//parent rect 
+	protected RectTransform 							layoutRect ;	 // child rect 
+	protected Vector2 										gridRealSize ;
+
+	public static void Adjust(ScrollRect rect )
+	{
+		ScrollViewAdjust com = rect.GetComponent<ScrollViewAdjust>() ;
+		if(com != null)
+		{
+			GameObject.Destroy(com) ;
+			com  = null ;
+		}
+
+		if(rect.GetComponentInChildren<GridLayoutGroup>()!=null)
+		{
+			com = rect.gameObject.AddComponent<ScrollViewAdjust>() ;
+		}
+		else if(rect.GetComponentInChildren<VerticalLayoutGroup>()!=null)
+		{
+			com = rect.gameObject.AddComponent<ScrollViewVerticalAdjust>() ; 
+		}
+		else if(rect.GetComponentInChildren<HorizontalLayoutGroup>()!=null)
+		{
+			com = rect.gameObject.AddComponent<ScrollViewHarizonAdjust>() ; 
+		}
+		else
+		{
+			Debug.LogWarning("Cannot Auto adjust scrollview without layout !!! ") ; 
+		}
+	}
+
+	void Start()
+	{
+		scrollviewRect = GetComponent<RectTransform>() ; 
+		InitLayoutInfo() ;
+		adjust() ;
+	}
+
+	protected virtual void InitLayoutInfo()
+	{
+		gridLayout = GetComponentInChildren<GridLayoutGroup>() ;	
+		layoutRect = gridLayout.GetComponent<RectTransform>() ; 
+
+		if(gridLayout == null)
+		{
+			Debug.LogWarning ("Cannot Adjust ScrollView Without Grid Component ") ; 
+		}
+	}
+
+	protected virtual void adjust()
+	{
+		UpdateSize(GetRealSize()) ; 
+		UpdatePosition() ;	
+	}
+
+	protected virtual Vector2 GetRealSize()
+	{
+		int rowCount = 0 ;
+		int columnCount = 0 ;
+		
+		switch(gridLayout.constraint)
+		{
+		case GridLayoutGroup.Constraint.FixedColumnCount :
+			columnCount = gridLayout.constraintCount ;
+			break ;
+			
+		case GridLayoutGroup.Constraint.FixedRowCount:
+			rowCount = gridLayout.constraintCount ;
+			break ;
+			
+		default:
+			break ;
+		}
+		
+		if(rowCount == 0 && columnCount ==0)
+		{
+			Debug.LogWarning("Can not Adjust !!") ;
+			return default(Vector2) ;
+		}
+		
+		//TODO：这里之前出现Rect调整不正确的情况。原因是使用了：
+		//int itemCount = gridLayout.transform.chilidCount；transform.chilidCount会包括隐藏掉的物体。
+		int itemCount = GetChildCount(gridLayout.transform) ;	
+		
+		if(rowCount == 0)
+		{
+			rowCount = itemCount / columnCount ;
+			if(itemCount%columnCount != 0)
+				rowCount ++ ;
+		}
+		else
+		{
+			columnCount = itemCount / rowCount ;
+			if(itemCount%rowCount != 0)
+				columnCount ++ ;
+		}
+		
+		float width = columnCount * gridLayout.cellSize.x + (columnCount - 1) * gridLayout.spacing.x + gridLayout.padding.left ;	
+		float height = rowCount * gridLayout.cellSize.y + (rowCount -1 ) * gridLayout.spacing.y +  gridLayout.padding.top + gridLayout.padding.bottom ;	
+		return new Vector2(width,height) ; 
+	}
+
+	protected void UpdateSize(Vector2 newSize )
+	{
+		Rect parentRect = scrollviewRect.rect ;
+
+		Debug.Log (newSize + " " +parentRect) ;	
+
+		if(newSize.x<parentRect.width)
+		{
+			newSize.x = parentRect.width ;
+		}
+		if(newSize.y < parentRect.height)
+		{
+			newSize.y = parentRect.height ;
+		}
+
+		layoutRect.sizeDelta = newSize ;	
+	}
+
+	protected void UpdatePosition()
+	{
+		Vector2 scrollviewSize = scrollviewRect.sizeDelta ;
+		Vector2 gridSize = layoutRect.sizeDelta ;		
+		Vector3 targetPos = layoutRect.transform.localPosition ;
+
+		if(gridSize.x > scrollviewSize.x)
+		{
+			targetPos.x = (gridSize.x - scrollviewSize.x)*0.5f;
+		}
+		if(gridSize.y > scrollviewSize.y)
+		{
+			targetPos.y = -(gridSize.y - scrollviewSize.y)*0.5f;
+		}
+
+		layoutRect.transform.localPosition = targetPos ;			
+	}
+
+	protected int GetChildCount(Transform parent)
+	{
+		int childcount = 0 ;
+		foreach(Transform ts in parent )
+		{
+			if(ts.gameObject.activeInHierarchy)
+			{
+				childcount++ ;
+			}
+		}
+		return childcount ;
+	}
+}
