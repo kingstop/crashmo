@@ -377,7 +377,7 @@ public class crash_manager
     camera_dir _camera_dir = camera_dir.front;
     want_move_dir _want_camera_dir = want_move_dir.no;
     int _move_count = 0;
-
+    public MapData data;
     public void init()
     {
         _camera_dir = camera_dir.front;
@@ -852,6 +852,8 @@ public class crash_manager
 
     public void create_map()
     {
+       // _crash_groups = new int[global_instance.Instance._crash_mole_grid_manager.get_max_width(), global_instance.Instance._crash_mole_grid_manager.get_max_height()];
+
         for (int x = 0; x < (int)_max_x; x++)
         {
 
@@ -859,6 +861,7 @@ public class crash_manager
             {
                 for (int y = 0; y < (int)_max_y; y++)
                 {
+
                     if (_crash_objs[x, z, y]._crash_obj != null)
                     {
                         crash_base_obj entry = _crash_objs[x, z, y]._crash_obj;
@@ -871,7 +874,9 @@ public class crash_manager
                                     crash_obj crash_obj_temp = (crash_obj)entry;                                  
                                     crash_obj_temp._grid = obj_temp.GetComponent<crashmolegrid>();
                                     crash_obj_temp._grid.set_group(_crash_objs[x, z, y]._crash_obj._crash_mole._color_group);
-                                    
+    
+
+
                                 }
                                 break;
                             case crash_obj_type.flag:
@@ -879,8 +884,7 @@ public class crash_manager
                                     GameObject obj_temp = Object.Instantiate<GameObject>(_source_flag_mole_obj);
                                     _Game_objs.Add(obj_temp);
                                     crash_obj_flag crash_temp = (crash_obj_flag)entry;
-                                    crash_temp._flag = obj_temp.GetComponent<crash_flag>();
-
+                                    crash_temp._flag = obj_temp.GetComponent<crash_flag>();                                
                                 }
                                 break;
                         }

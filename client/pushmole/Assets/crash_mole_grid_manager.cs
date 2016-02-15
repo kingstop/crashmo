@@ -3,6 +3,47 @@ using System.Collections;
 using System.Collections.Generic;
 
 
+public enum MapInitType
+{
+    InitMapData_type,
+    MsgInitMapData_Type,
+    GameInitMapData_Type
+}
+public class MapData
+{
+    public int width_;
+    public int height_;
+    public ulong create_time_;
+    public int[,] groups_;
+    public string map_name_;
+    public string create_name_;
+    public int number_;
+    public int section_;
+    public ulong map_index_;
+
+    public void set_info(message.CrashMapData Data)
+    {
+        create_name_ = Data.CreaterName;
+        create_time_ = Data.create_time;
+        number_ = Data.number;
+        section_ = Data.Section;
+        height_ = Data.Data.height;
+        width_ = Data.Data.width;
+        map_index_ = Data.Data.map_index;
+        groups_ = new int[width_, height_];
+        for(int y = 0; y < Data.Data.map_data.Count; y ++)
+        {
+           message.int32array list_int32 =  Data.Data.map_data[y];
+            for(int x = 0; x < list_int32.data.Count; x ++)
+            {
+                groups_[x, y] = list_int32.data[x];
+            }            
+        }       
+    }
+}
+
+
+
 public class crash_mole_grid_manager : MonoBehaviour {
     GameObject _source_crash_mole_obj;
     GameObject _source_flag_mole_obj;
@@ -48,12 +89,16 @@ public class crash_mole_grid_manager : MonoBehaviour {
     }
     public void update_game_type(game_type type, message.CrashMapData mapinfo)
     {
-        _current_type = type;
-        switch (_current_type)
+        
+        switch (type)
         {
             case game_type.edit:
                 {
                     global_instance.Instance._crash_manager.clear();
+                    if(_current_type == game_type.game)
+                    {
+
+                    }
                     if(mapinfo == null)
                     {
                         create_edit_crash_mole_grid();
@@ -80,6 +125,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
                 }
                 break;
         }
+        _current_type = type;
     }
     public void clear_edit_crash_mole_grid()
     {
