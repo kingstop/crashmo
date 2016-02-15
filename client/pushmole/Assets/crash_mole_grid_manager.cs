@@ -173,7 +173,9 @@ public class crash_mole_grid_manager : MonoBehaviour {
 		message.CrashmoMapBaseData map_data = new message.CrashmoMapBaseData ();
 		map_data.width = _max_width;
 		map_data.height = _max_height;
-		for (int j = 0; j < _max_height; j ++) 
+        
+
+        for (int j = 0; j < _max_height; j ++) 
 		{
 			message.int32array tem_array = new message.int32array();
 			for(int i = 0; i < _max_width; i ++)
@@ -183,7 +185,10 @@ public class crash_mole_grid_manager : MonoBehaviour {
 			}
 			map_data.map_data.Add(tem_array);
 		}
+        crash_map.create_time = (ulong)System.DateTime.Now.Subtract(System.DateTime.Parse("1970-1-1")).TotalSeconds + 4 * 60 * 60;
         crash_map.Data = map_data;
+        crash_map.CreaterName = "unkonw";
+        crash_map.MapName = "unknow";
 
         return crash_map;
 

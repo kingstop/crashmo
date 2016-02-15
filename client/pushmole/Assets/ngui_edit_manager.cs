@@ -169,6 +169,7 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void on_login_btn_click()
     {
+       // Debug.LogError("on_login_btn_click");
         string account = _account.text;
         string password = _account.text;
         CrashmoClientInit msg = new CrashmoClientInit();

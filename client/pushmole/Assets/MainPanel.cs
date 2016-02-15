@@ -11,9 +11,10 @@ public enum page_type
     page_type_rank,
     page_type_official,
 }
-public class MainPanel : MonoBehaviour {
+public class MainPanel : MonoBehaviour
+{
 
-	// Use this for initialization
+    // Use this for initialization
     public ChooseItemEntry[] _choose_Item_entry;
     public Button[] _unselected;
     public Button[] _selected;
@@ -22,13 +23,13 @@ public class MainPanel : MonoBehaviour {
     private List<ChooseItemEntry> _items = new List<ChooseItemEntry>();
     private page_type current_page = page_type.page_type_self_complete;
     private GameObject _source_item;
-   
+
     void selectTile(int index)
     {
-        int titile_count  = _unselected.Length;
-        for(int i  = 0; i < titile_count; i ++)
+        int titile_count = _unselected.Length;
+        for (int i = 0; i < titile_count; i++)
         {
-            if(i == index)
+            if (i == index)
             {
                 _unselected[i].gameObject.SetActive(false);
                 _selected[i].gameObject.SetActive(true);
@@ -58,7 +59,7 @@ public class MainPanel : MonoBehaviour {
     }
     void ClearItems()
     {
-        foreach(ChooseItemEntry entry in _items)
+        foreach (ChooseItemEntry entry in _items)
         {
             entry.transform.parent = null;
             Destroy(entry.gameObject);
@@ -67,9 +68,9 @@ public class MainPanel : MonoBehaviour {
     }
 
     void EnterSelfComplete()
-    {        
-        CrashPlayerInfo Info = global_instance.Instance._player.GetInfo();           
-        foreach(CrashMapData entry in Info.CompleteMap)
+    {
+        CrashPlayerInfo Info = global_instance.Instance._player.GetInfo();
+        foreach (CrashMapData entry in Info.CompleteMap)
         {
             addSelfItem(entry);
         }
@@ -101,16 +102,17 @@ public class MainPanel : MonoBehaviour {
         temp.transform.parent = _items_container.transform;
         _items.Add(temp);
     }
-    
+
     void Awake()
     {
         _source_item = Resources.Load<GameObject>("prefab/Button_item");
     }
     void EnterPage(page_type page)
     {
+        selectTile((int)page);
         ClearItems();
         CrashPlayerInfo info = global_instance.Instance._player.GetInfo();
-        switch(page)
+        switch (page)
         {
             case page_type.page_type_self_complete:
                 {
@@ -131,15 +133,27 @@ public class MainPanel : MonoBehaviour {
     }
 
 
-	void Start () {
-        selectTile(0);
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void Start()
+    {
+        
+
+    }
+
+    void OnEnable()
+    {
+        EnterPage(page_type.page_type_self_incomplete);
+    }
+
+    void OnDisable()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void ItemButtonClick(Button btn)
     {
@@ -151,18 +165,19 @@ public class MainPanel : MonoBehaviour {
     {
         int count = _unselected.Length;
         int click_buttion_index = -1;
-        for (int i = 0; i < count; i ++ )
+        for (int i = 0; i < count; i++)
         {
-            if(_unselected[i] == btn)
+            if (_unselected[i] == btn)
             {
                 click_buttion_index = i;
                 break;
             }
         }
 
-        if(click_buttion_index != -1)
+        if (click_buttion_index != -1)
         {
-            selectTile(click_buttion_index);
+            EnterPage((page_type)click_buttion_index);
+            
         }
     }
 }
