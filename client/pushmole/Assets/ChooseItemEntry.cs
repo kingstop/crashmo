@@ -15,6 +15,22 @@ public class ChooseItemEntry : MonoBehaviour {
 	void Update () {
 	
 	}
+    public void unselect()
+    {
+        Image temp = GetComponent<Image>();
+        temp.color = new Color(255, 255, 255);
+    }
+     
+    public void select()
+    {
+        Image temp = GetComponent<Image>();
+        temp.color = new Color(74, 161, 184);
+    }
+
+    public void OnButtonClick()
+    {
+        global_instance.Instance._ngui_edit_manager._main_panle.ItemButtonClick(this);
+    }
     public Text _txt_1;
     public Text _txt_2;
     public Text _txt_3;

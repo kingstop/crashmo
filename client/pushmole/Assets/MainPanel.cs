@@ -23,7 +23,7 @@ public class MainPanel : MonoBehaviour
     private List<ChooseItemEntry> _items = new List<ChooseItemEntry>();
     private page_type current_page = page_type.page_type_self_complete;
     private GameObject _source_item;
-
+    private ulong _current_map_index;
     void selectTile(int index)
     {
         int titile_count = _unselected.Length;
@@ -54,7 +54,33 @@ public class MainPanel : MonoBehaviour
 
     public void EditClick()
     {
-        global_instance.Instance._ngui_edit_manager.update_game_type(game_type.edit);
+        CrashMapData MapData = null;
+       if (_current_map_index != 0)
+        {
+
+            foreach (CrashMapData entry in global_instance.Instance._player.GetInfo().CompleteMap)
+            {
+                if(entry.Data.map_index == _current_map_index)
+                {
+                    MapData = entry;
+                    break;
+                }
+            }
+            if(MapData == null)
+            {
+                foreach (CrashMapData entry in global_instance.Instance._player.GetInfo().IncompleteMap)
+                {
+                    if (entry.Data.map_index == _current_map_index)
+                    {
+                        MapData = entry;
+                        break;
+                    }
+                }
+            }
+            
+        }
+       
+        global_instance.Instance._ngui_edit_manager.update_game_type(game_type.edit, MapData);
         this.gameObject.SetActive(false);
     }
     void ClearItems()
@@ -109,6 +135,7 @@ public class MainPanel : MonoBehaviour
     }
     void EnterPage(page_type page)
     {
+        _current_map_index = 0;
         selectTile((int)page);
         ClearItems();
         CrashPlayerInfo info = global_instance.Instance._player.GetInfo();
@@ -155,9 +182,20 @@ public class MainPanel : MonoBehaviour
 
     }
 
-    public void ItemButtonClick(Button btn)
+    public void ItemButtonClick(ChooseItemEntry entry)
     {
-
+        foreach(ChooseItemEntry temp in _items)
+        {
+            if(temp == entry)
+            {
+                temp.select();
+                _current_map_index = temp._map_index;
+            }
+            else
+            {
+                temp.unselect();
+            }
+        }
 
     }
 

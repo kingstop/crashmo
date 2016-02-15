@@ -46,7 +46,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
         _source_flag_mole_obj = Resources.Load<GameObject>("prefab/flag");
         global_instance.Instance._crash_mole_grid_manager = this;
     }
-    public void update_game_type(game_type type)
+    public void update_game_type(game_type type, message.CrashMapData mapinfo)
     {
         _current_type = type;
         switch (_current_type)
@@ -54,7 +54,15 @@ public class crash_mole_grid_manager : MonoBehaviour {
             case game_type.edit:
                 {
                     global_instance.Instance._crash_manager.clear();
-                    create_edit_crash_mole_grid();
+                    if(mapinfo == null)
+                    {
+                        create_edit_crash_mole_grid();
+                    }
+                    else
+                    {
+                        create_edit_crash_mole_grid(mapinfo);
+                    }
+                    
 
                 }
                 break;
@@ -95,8 +103,14 @@ public class crash_mole_grid_manager : MonoBehaviour {
         _objlist.Clear();
     }
 
-	public void create_edit_crash_mole_grid(message.CrashmoMapBaseData mapinfo)
+	public void create_edit_crash_mole_grid(message.CrashMapData info)
 	{
+        if(info == null)
+        {
+            return;
+        }
+
+        message.CrashmoMapBaseData mapinfo = info.Data;
 		if (mapinfo != null)
 		{
 			_max_width = mapinfo.width;
@@ -108,20 +122,14 @@ public class crash_mole_grid_manager : MonoBehaviour {
 				return;
 			}
 		}
-		Vector3 new_position = new Vector3((float)7.7, (float)4.7, (float)-10.6);
-		Camera.main.transform.position = new_position;
+        create_edit_crash_mole_grid();
 
-		List<message.int32array> mapdata = mapinfo.map_data;
+
+        List<message.int32array> mapdata = mapinfo.map_data;
 		for (int i = 0; i < _max_width; i++)
 		{
 			for (int j = 0; j < _max_height; j++)
-			{
-				
-				GameObject obj_temp = Instantiate<GameObject>(_source_crash_mole_obj);
-				_objlist.Add(obj_temp);
-				
-				obj_temp.name = i.ToString() + "-" + j.ToString();
-				_crashmolegrids[i, j] = obj_temp.GetComponent<crashmolegrid>();
+			{				
 				float x = (float)i;
 				float y = (float)j;
 				int group = 11;
@@ -129,13 +137,11 @@ public class crash_mole_grid_manager : MonoBehaviour {
 				{
 					message.int32array entry  = mapdata[j];
 					group = entry.data[i];
-				}
-				_crashmolegrids[i ,j].set_position(x, y);
-				_crashmolegrids[i ,j].set_group(group);
-				if(group == 11)
+				}								
+				if(group != 11)
 				{
-					_crashmolegrids[i ,j].set_color(1, 1, 1, 1);
-				}
+                    _crashmolegrids[i, j].set_group(group);
+                }
 			}
 		}
 	}
@@ -186,9 +192,11 @@ public class crash_mole_grid_manager : MonoBehaviour {
 			map_data.map_data.Add(tem_array);
 		}
         crash_map.create_time = (ulong)System.DateTime.Now.Subtract(System.DateTime.Parse("1970-1-1")).TotalSeconds + 4 * 60 * 60;
+        map_data.map_index = crash_map.create_time;
         crash_map.Data = map_data;
         crash_map.CreaterName = "unkonw";
         crash_map.MapName = "unknow";
+        
 
         return crash_map;
 

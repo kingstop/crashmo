@@ -392,7 +392,7 @@ public class ngui_edit_manager : MonoBehaviour {
         }
     }
 
-    public void update_game_type(game_type type)
+    public void update_game_type(game_type type, message.CrashMapData mapinfo = null)
     {
         _edit_obj_btns.SetActive(false);
         _game_obj_btns.SetActive(false);
@@ -435,7 +435,7 @@ public class ngui_edit_manager : MonoBehaviour {
         }
         if (global_instance.Instance._crash_mole_grid_manager != null)
         {
-            global_instance.Instance._crash_mole_grid_manager.update_game_type(type);
+            global_instance.Instance._crash_mole_grid_manager.update_game_type(type,mapinfo);
         }
         
     }
