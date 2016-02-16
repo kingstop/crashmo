@@ -127,9 +127,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
                     else
                     {
                         create_edit_crash_mole_grid(mapinfo);
-                    }
-                    
-
+                    }                    
                 }
                 break;
             case game_type.game:
