@@ -77,8 +77,6 @@ public class crashmolegrid : MonoBehaviour
         {
             global_instance.Instance._ngui_edit_manager.set_flag_grid(this);
         }        
-        
-        //material.SetTexture()
     }
     public void set_color(float r, float g, float b, float a)
     {
@@ -147,11 +145,7 @@ public class crashmolegrid : MonoBehaviour
             {
                 RaycastHit hitt = new RaycastHit();
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
                 Physics.Raycast(ray, out hitt, 100);
-
-                Debug.DrawLine(Camera.main.transform.position, ray.direction, Color.green);
-
                 if (null != hitt.transform)
                 {
                     crashmolegrid grid_temp = hitt.transform.gameObject.GetComponent<crashmolegrid>();
@@ -161,7 +155,6 @@ public class crashmolegrid : MonoBehaviour
                         {
                             grid_temp.set_group(global_instance.Instance._current_group);
                             global_instance.Instance._crash_manager.add_color(global_instance.Instance._current_group, global_instance.Instance._current_color);
-                          //  print("name[" + hitt.transform.gameObject.name + "] group[" + global_instance.Instance._current_group.ToString() + "]");
                         }
                     }
                 }

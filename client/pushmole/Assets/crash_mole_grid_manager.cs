@@ -20,6 +20,32 @@ public class MapData
     public int number_;
     public int section_;
     public ulong map_index_;
+    public message.CrashMapData get_info()
+    {
+        message.CrashMapData Data = new message.CrashMapData();
+        Data.CreaterName = create_name_;
+        Data.create_time = create_time_;
+        Data.number = number_;
+        Data.Section = section_;
+        Data.Data.height = height_;
+        Data.Data.width = width_;
+        Data.Data.map_index = map_index_;
+        if(groups_ != null)
+        {
+            for(int y = 0; y < height_; y ++)
+            {
+                message.int32array int32temp = new message.int32array();
+                for (int x = 0; x < width_; x ++)
+                {
+                    int item_entry = groups_[x, y];
+                    int32temp.data.Add(item_entry);
+                }
+                Data.Data.map_data.Add(int32temp);
+            }
+        }
+        return Data;
+    }
+
 
     public void set_info(message.CrashMapData Data)
     {
@@ -88,17 +114,12 @@ public class crash_mole_grid_manager : MonoBehaviour {
         global_instance.Instance._crash_mole_grid_manager = this;
     }
     public void update_game_type(game_type type, message.CrashMapData mapinfo)
-    {
-        
+    {        
         switch (type)
         {
             case game_type.edit:
                 {
                     global_instance.Instance._crash_manager.clear();
-                    if(_current_type == game_type.game)
-                    {
-
-                    }
                     if(mapinfo == null)
                     {
                         create_edit_crash_mole_grid();
@@ -112,9 +133,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
                 }
                 break;
             case game_type.game:
-                {
-                   
-                    create_map();
+                {                                       
                     clear_edit_crash_mole_grid();
                     global_instance.Instance._crash_manager.create_map();
                 }
@@ -264,9 +283,8 @@ public class crash_mole_grid_manager : MonoBehaviour {
             {
                 RaycastHit hitt = new RaycastHit();
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                Physics.Raycast(ray, out hitt, 100);
-                Debug.DrawLine(Camera.main.transform.position, ray.direction, Color.green);
+                //Physics.Raycast(ray, out hitt, 100);
+                //Debug.DrawLine(Camera.main.transform.position, ray.direction, Color.green);
             }
         }
         else
@@ -286,57 +304,14 @@ public class crash_mole_grid_manager : MonoBehaviour {
         _mouse_down = true;
 
     }
-
-    void seek_create_mole(int temp_x, int temp_y, crash_mole mole, bool dir_up = false)
-    {
-        if(temp_x >= 0 && temp_x < _max_width && temp_y >= 0 && temp_y < _max_height)
-        {
-            crash_mole mole_entry = null;
-            int group = 11;
-
-            group = _crashmolegrids[temp_x, temp_y]._group;
-            if (group != 11)
-            {
-                mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(temp_x, 9, temp_y + 20)._crash_mole;
-                if (mole_entry == null)
-                {
-                    if (group == 10)
-                    {
-                        if (dir_up == true)
-                        {
-                            crash_base_obj obj = global_instance.Instance._crash_manager.create_flag_obj(temp_x, temp_y + 20);
-                            mole.add_crash_obj(obj);
-                            create_mole(temp_x, temp_y, mole);
-                        }
-                    }
-                    else if (group == mole._color_group || dir_up == true && group == 10)
-                    {
-                        crash_obj obj = global_instance.Instance._crash_manager.create_crash_obj(temp_x, temp_y + 20);
-                        mole.add_crash_obj(obj);
-                        create_mole(temp_x, temp_y, mole);
-                    }
-                }
-
-            }
-        
-        }
-    }
-
-    public void create_mole(int x, int y, crash_mole mole)
-    {
-        seek_create_mole(x - 1, y, mole);
-        seek_create_mole(x + 1, y, mole);
-        seek_create_mole(x, y - 1, mole);
-        seek_create_mole(x, y + 1, mole, true);
-    }
-
+    /*
+   
     public void create_map( )
     {
         for (int i = 0; i < _max_width; i++)
         {
             for (int j = 0; j < _max_height; j++)
             {
-
                 int group = _crashmolegrids[i, j]._group;
                 if (group != 11)
                 {
@@ -359,12 +334,10 @@ public class crash_mole_grid_manager : MonoBehaviour {
                         global_instance.Instance._crash_manager.add_crash_mole(mole_entry);
                         create_mole(i, j, mole_entry);
                     }
-                }
-
-            
-
+                }            
             }
         }
     }
+    */
 	
 }

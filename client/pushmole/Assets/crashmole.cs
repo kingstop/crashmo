@@ -373,11 +373,12 @@ public class crash_manager
     public bool _cash_click = false;
     public bool _freezen_creature = false;
     public List<crash_mole> _lock_mole = new List<crash_mole>();
+    public MapData _map_data = null;
     public crash_obj_creature _obj_creature = null;
     camera_dir _camera_dir = camera_dir.front;
     want_move_dir _want_camera_dir = want_move_dir.no;
     int _move_count = 0;
-    public MapData data;
+    //public MapData data;
     public void init()
     {
         _camera_dir = camera_dir.front;
@@ -458,8 +459,6 @@ public class crash_manager
             Vector3 current_camera_roation = new Vector3();
             int need_count = 20;
             _move_count += 1;
-            
-            
             current_camera_pos.x = current_pos.x + ((target_pos.x - current_pos.x) / need_count * _move_count);
             current_camera_pos.y = current_pos.y + ((target_pos.y - current_pos.y) / need_count * _move_count);
             current_camera_pos.z = current_pos.z + ((target_pos.z - current_pos.z) / need_count * _move_count);
@@ -645,14 +644,11 @@ public class crash_manager
         Vector3 vc = _creature.get_position();
         dir_move dir = _creature.get_dir();
         crash_pos pos = new crash_pos();
-
         pos._x = transform_to_map(vc.x);
         pos._y = transform_to_map(vc.y);
         pos._z = transform_to_map(vc.z);
-
         if(_cash_click)
         {
-
             crash_pos pos_target = new crash_pos();
             pos_target.clone(pos);
             pos_target.move(dir);
@@ -850,9 +846,84 @@ public class crash_manager
 
     }
 
+
+    void seek_create_mole(int temp_x, int temp_y, crash_mole mole, bool dir_up = false)
+    {
+        if (temp_x >= 0 && temp_x < _map_data.width_ && temp_y >= 0 && temp_y < _map_data.height_)
+        {
+            crash_mole mole_entry = null;
+            int group = 11;
+            group = _map_data.groups_[temp_x, temp_y];
+            if (group != 11)
+            {
+                mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(temp_x, 9, temp_y + 20)._crash_mole;
+                if (mole_entry == null)
+                {
+                    if (group == 10)
+                    {
+                        if (dir_up == true)
+                        {
+                            crash_base_obj obj = global_instance.Instance._crash_manager.create_flag_obj(temp_x, temp_y + 20);
+                            mole.add_crash_obj(obj);
+                            create_mole(temp_x, temp_y, mole);
+                        }
+                    }
+                    else if (group == mole._color_group || dir_up == true && group == 10)
+                    {
+                        crash_obj obj = global_instance.Instance._crash_manager.create_crash_obj(temp_x, temp_y + 20);
+                        mole.add_crash_obj(obj);
+                        create_mole(temp_x, temp_y, mole);
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    public void create_mole(int x, int y, crash_mole mole)
+    {
+        seek_create_mole(x - 1, y, mole);
+        seek_create_mole(x + 1, y, mole);
+        seek_create_mole(x, y - 1, mole);
+        seek_create_mole(x, y + 1, mole, true);
+    }
+
+
     public void create_map()
     {
-       // _crash_groups = new int[global_instance.Instance._crash_mole_grid_manager.get_max_width(), global_instance.Instance._crash_mole_grid_manager.get_max_height()];
+        if(_map_data != null)
+        {
+            for (int i = 0; i < _map_data.width_; i++)
+            {
+                for (int j = 0; j < _map_data.height_; j++)
+                {
+                    int group = _map_data.groups_[i, j];
+                    if (group != 11)
+                    {
+                        crash_mole mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(i, 9, j + 20)._crash_mole;
+                        if (mole_entry == null)
+                        {
+                            crash_base_obj obj = null;
+                            if (group != 10)
+                            {
+                                obj = global_instance.Instance._crash_manager.create_crash_obj(i, j + 20);
+                            }
+                            else
+                            {
+                                obj = global_instance.Instance._crash_manager.create_flag_obj(i, j + 20);
+                            }
+
+                            mole_entry = global_instance.Instance._crash_manager.create_crash_mole();
+                            mole_entry.add_crash_obj(obj);
+                            mole_entry._color_group = group;
+                            global_instance.Instance._crash_manager.add_crash_mole(mole_entry);
+                            create_mole(i, j, mole_entry);
+                        }
+                    }
+                }
+            }
+        }
 
         for (int x = 0; x < (int)_max_x; x++)
         {
@@ -861,7 +932,6 @@ public class crash_manager
             {
                 for (int y = 0; y < (int)_max_y; y++)
                 {
-
                     if (_crash_objs[x, z, y]._crash_obj != null)
                     {
                         crash_base_obj entry = _crash_objs[x, z, y]._crash_obj;
@@ -873,10 +943,7 @@ public class crash_manager
                                     _Game_objs.Add(obj_temp);
                                     crash_obj crash_obj_temp = (crash_obj)entry;                                  
                                     crash_obj_temp._grid = obj_temp.GetComponent<crashmolegrid>();
-                                    crash_obj_temp._grid.set_group(_crash_objs[x, z, y]._crash_obj._crash_mole._color_group);
-    
-
-
+                                    crash_obj_temp._grid.set_group(_crash_objs[x, z, y]._crash_obj._crash_mole._color_group);    
                                 }
                                 break;
                             case crash_obj_type.flag:
