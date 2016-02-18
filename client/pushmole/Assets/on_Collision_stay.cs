@@ -112,7 +112,7 @@ public class on_Collision_stay : MonoBehaviour
             }
 
             Vector3 vc = new Vector3();
-            vc = transform.rotation.ToEulerAngles();
+            vc = transform.rotation.eulerAngles;
             vc.y = y_r;
             Quaternion a_temp = transform.rotation;
             a_temp.SetEulerAngles(vc);

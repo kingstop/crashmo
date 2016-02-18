@@ -373,7 +373,7 @@ public class crash_manager
     public bool _cash_click = false;
     public bool _freezen_creature = false;
     public List<crash_mole> _lock_mole = new List<crash_mole>();
-    public MapData _map_data = null;
+   // private MapData _map_data = null;
     public crash_obj_creature _obj_creature = null;
     camera_dir _camera_dir = camera_dir.front;
     want_move_dir _want_camera_dir = want_move_dir.no;
@@ -399,8 +399,9 @@ public class crash_manager
                 }
             }
         }
-
     }
+
+
     public void move_camera_left()
     {
         if(_want_camera_dir == want_move_dir.no)
@@ -849,11 +850,17 @@ public class crash_manager
 
     void seek_create_mole(int temp_x, int temp_y, crash_mole mole, bool dir_up = false)
     {
-        if (temp_x >= 0 && temp_x < _map_data.width_ && temp_y >= 0 && temp_y < _map_data.height_)
+        MapData map_data = global_instance.Instance.GetMapData();
+        if(map_data == null)
+        {
+            return;
+        }
+
+        if (temp_x >= 0 && temp_x < map_data.width_ && temp_y >= 0 && temp_y < map_data.height_)
         {
             crash_mole mole_entry = null;
             int group = 11;
-            group = _map_data.groups_[temp_x, temp_y];
+            group = map_data.groups_[temp_x, temp_y];
             if (group != 11)
             {
                 mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(temp_x, 9, temp_y + 20)._crash_mole;
@@ -892,13 +899,14 @@ public class crash_manager
 
     public void create_map()
     {
-        if(_map_data != null)
+        MapData map_data = global_instance.Instance.GetMapData();
+        if(map_data != null)
         {
-            for (int i = 0; i < _map_data.width_; i++)
+            for (int i = 0; i < map_data.width_; i++)
             {
-                for (int j = 0; j < _map_data.height_; j++)
+                for (int j = 0; j < map_data.height_; j++)
                 {
-                    int group = _map_data.groups_[i, j];
+                    int group = map_data.groups_[i, j];
                     if (group != 11)
                     {
                         crash_mole mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(i, 9, j + 20)._crash_mole;

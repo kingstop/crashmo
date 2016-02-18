@@ -44,6 +44,12 @@ public class MainPanel : MonoBehaviour
 
     public void PlayClick()
     {
+        message.CrashMapData MapDataTemp = GetCurrentSelectMapData();
+
+        MapData temp = new MapData();
+        temp.set_info(MapDataTemp);
+        //global_instance.Instance._crash_manager
+        global_instance.Instance.SetMapData(temp);
         global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
     }
     public void CreateClick()
@@ -52,21 +58,21 @@ public class MainPanel : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void EditClick()
+    message.CrashMapData GetCurrentSelectMapData()
     {
         CrashMapData MapData = null;
-       if (_current_map_index != 0)
+        if (_current_map_index != 0)
         {
 
             foreach (CrashMapData entry in global_instance.Instance._player.GetInfo().CompleteMap)
             {
-                if(entry.Data.map_index == _current_map_index)
+                if (entry.Data.map_index == _current_map_index)
                 {
                     MapData = entry;
                     break;
                 }
             }
-            if(MapData == null)
+            if (MapData == null)
             {
                 foreach (CrashMapData entry in global_instance.Instance._player.GetInfo().IncompleteMap)
                 {
@@ -77,10 +83,19 @@ public class MainPanel : MonoBehaviour
                     }
                 }
             }
-            
+
         }
-       
-        global_instance.Instance._ngui_edit_manager.update_game_type(game_type.edit, MapData);
+        return MapData;
+    }
+    public void EditClick()
+    {
+        message.CrashMapData MapDataTemp = GetCurrentSelectMapData();
+        MapData temp = new MapData();
+
+        temp.set_info(MapDataTemp);
+        global_instance.Instance.SetMapData(temp);
+
+        global_instance.Instance._ngui_edit_manager.update_game_type(game_type.edit);
         this.gameObject.SetActive(false);
     }
     void ClearItems()

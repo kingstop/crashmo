@@ -23,7 +23,31 @@ public class global_instance
              } 
              return instance; 
           } 
-      } 
+      }
+    
+    public void SetMapData(MapData temp)
+    {
+        _map_data = temp;
+    }
+
+    public void ClearMapData()
+    {
+        _map_data = null;
+    }
+
+    public void SetMapData(message.CrashMapData temp)
+    {
+        if(_map_data == null)
+        {
+            _map_data = new MapData();
+        }
+        _map_data.set_info(temp);
+    }
+
+    public MapData GetMapData()
+    {
+        return _map_data;
+    }
 
     public Color _current_color;
     public int _current_group;
@@ -34,6 +58,7 @@ public class global_instance
     public client_session _client_session;
     public CrashPlayer _player;
 
+    private MapData _map_data = null;
 
 }
 
