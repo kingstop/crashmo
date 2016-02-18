@@ -131,6 +131,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
                 break;
             case game_type.create:
                 {
+                    global_instance.Instance.ClearMapData();
                     clear_edit_crash_mole_grid();
                 }
                 break;
@@ -141,13 +142,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
     {
         if(_crashmolegrids != null)
         {
-            for (int i = 0; i < _max_width; i++)
-            {
-                for (int j = 0; j < _max_height; j++)
-                {
-                    _crashmolegrids[i, j] = null;
-                }
-            }
+            _crashmolegrids = null;
         }
 
         int length = _objlist.Count;
