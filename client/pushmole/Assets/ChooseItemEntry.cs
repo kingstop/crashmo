@@ -36,10 +36,11 @@ public class ChooseItemEntry : MonoBehaviour {
     {
         int c = 0;
 
-        Material material_temp = _image.material;
+        Material material_temp = new Material(_image.material);
         if(material_temp != null)
         {
             material_temp.mainTexture = t;
+            _image.material = material_temp;
             
         }
         else

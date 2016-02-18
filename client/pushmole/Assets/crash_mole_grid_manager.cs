@@ -24,7 +24,7 @@ public class MapData
     public Texture2D CreateTexture()
     {
         Texture2D tex = null;
-        int grid = 400;
+        int grid = 10;
         if(groups_ != null)
         {
             tex = new Texture2D(width_ * grid, height_ * grid);            
@@ -39,13 +39,15 @@ public class MapData
                     {
                         for (int temp_y = begin_y; temp_y < begin_y + grid; temp_y++)
                         {
-                            tex.SetPixel(temp_x, temp_y, Color.red/* global_instance.Instance._ngui_edit_manager.get_color_by_group(1)*/);
+                            Color co = global_instance.Instance._ngui_edit_manager.get_color_by_group(group);
+                            tex.SetPixel(temp_x, temp_y, co);
                         }
                     }                  
                 }
             }
 
         }
+        tex.Apply();
         return tex;       
     }
 
