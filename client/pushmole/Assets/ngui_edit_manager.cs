@@ -195,7 +195,8 @@ public class ngui_edit_manager : MonoBehaviour {
 
 	public void on_save_btn_click ()
 	{
-		message.CrashMapData mapdata = global_instance.Instance._crash_mole_grid_manager.save_crash_mole_grid ();
+        MapData temp_data = global_instance.Instance._crash_mole_grid_manager.save_crash_mole_grid();
+        message.CrashMapData mapdata = temp_data.get_info();
         message.CrashPlayerInfo msginfo = global_instance.Instance._player.GetInfo();
        
         msginfo.IncompleteMap.Add(mapdata);

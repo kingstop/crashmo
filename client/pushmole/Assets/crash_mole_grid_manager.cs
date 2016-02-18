@@ -20,6 +20,35 @@ public class MapData
     public int number_;
     public int section_;
     public ulong map_index_;
+    
+    public Texture2D CreateTexture()
+    {
+        Texture2D tex = null;
+        int grid = 400;
+        if(groups_ != null)
+        {
+            tex = new Texture2D(width_ * grid, height_ * grid);            
+            for (int j = 0; j < height_; j++)
+            {                
+                for (int i = 0; i < width_; i++)
+                {
+                    int group =groups_[i, j];
+                    int begin_x = i * grid;
+                    int begin_y = j * grid;
+                    for (int temp_x = begin_x; temp_x < begin_x + grid; temp_x++)
+                    {
+                        for (int temp_y = begin_y; temp_y < begin_y + grid; temp_y++)
+                        {
+                            tex.SetPixel(temp_x, temp_y, Color.red/* global_instance.Instance._ngui_edit_manager.get_color_by_group(1)*/);
+                        }
+                    }                  
+                }
+            }
+
+        }
+        return tex;       
+    }
+
     public message.CrashMapData get_info()
     {
         message.CrashMapData Data = new message.CrashMapData();
@@ -27,6 +56,7 @@ public class MapData
         Data.create_time = create_time_;
         Data.number = number_;
         Data.Section = section_;
+        Data.Data = new message.CrashmoMapBaseData();
         Data.Data.height = height_;
         Data.Data.width = width_;
         Data.Data.map_index = map_index_;
@@ -73,6 +103,7 @@ public class MapData
 public class crash_mole_grid_manager : MonoBehaviour {
     GameObject _source_crash_mole_obj;
     GameObject _source_flag_mole_obj;
+    GameObject _source_map_mole_obj;
     crashmolegrid[,] _crashmolegrids;
     ArrayList _objlist = new ArrayList();
     crashmolegrid _flag_grid;
@@ -111,6 +142,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
     {
         _source_crash_mole_obj = Resources.Load<GameObject>("prefab/mole_object");
         _source_flag_mole_obj = Resources.Load<GameObject>("prefab/flag");
+        _source_map_mole_obj = Resources.Load<GameObject>("prefab/map");
         global_instance.Instance._crash_mole_grid_manager = this;
     }
     public void update_game_type(game_type type)
@@ -154,48 +186,6 @@ public class crash_mole_grid_manager : MonoBehaviour {
         _objlist.Clear();
     }
 
-	//public void create_edit_crash_mole_grid(message.CrashMapData info)
-	//{
- //       if(info == null)
- //       {
- //           return;
- //       }
-
- //       message.CrashmoMapBaseData mapinfo = info.Data;
-	//	if (mapinfo != null)
-	//	{
-	//		_max_width = mapinfo.width;
-	//		_max_height = mapinfo.height;
-	//		int date_height = mapinfo.map_data.Count;
-	//		if(_max_height != date_height)
-	//		{
-	//			Debug.LogError("map_max_height != date_height");
-	//			return;
-	//		}
-	//	}
- //       create_edit_crash_mole_grid();
-
-
- //       List<message.int32array> mapdata = mapinfo.map_data;
-	//	for (int i = 0; i < _max_width; i++)
-	//	{
-	//		for (int j = 0; j < _max_height; j++)
-	//		{				
-	//			float x = (float)i;
-	//			float y = (float)j;
-	//			int group = 11;
-	//			if(mapinfo != null)
-	//			{
-	//				message.int32array entry  = mapdata[j];
-	//				group = entry.data[i];
-	//			}								
-	//			if(group != 11)
-	//			{
- //                   _crashmolegrids[i, j].set_group(group);
- //               }
-	//		}
-	//	}
-	//}
 
     public void create_edit_crash_mole_grid()
     {
@@ -238,38 +228,40 @@ public class crash_mole_grid_manager : MonoBehaviour {
 		}
 	}
 
-	public message.CrashMapData save_crash_mole_grid()
+	public MapData save_crash_mole_grid()
 	{
-		message.CrashMapData crash_map = new message.CrashMapData();
-		crash_map.CreaterName = "";
-		message.CrashmoMapBaseData map_data = new message.CrashmoMapBaseData ();
-		map_data.width = _max_width;
-		map_data.height = _max_height;
-        
+        MapData data = new MapData();
+        data.create_name_ = "";
+        data.width_ = _max_width;        
+		data.height_ = _max_height;
 
-        for (int j = 0; j < _max_height; j ++) 
+        GameObject map_target = GameObject.Instantiate<GameObject>(_source_map_mole_obj);
+
+
+        //((Texture2D)sprender.material.mainTexture).SetPixel();
+        data.groups_ = new int[data.width_, data.height_];
+        for (int j = 0; j < data.height_; j ++) 
 		{
 			message.int32array tem_array = new message.int32array();
-			for(int i = 0; i < _max_width; i ++)
+			for(int i = 0; i < data.width_; i ++)
 			{
 				int group = _crashmolegrids[i, j].get_group();
-				tem_array.data.Add(group);
-			}
-			map_data.map_data.Add(tem_array);
+
+                data.groups_[i, j] = group;
+            }			
 		}
-        crash_map.create_time = (ulong)System.DateTime.Now.Subtract(System.DateTime.Parse("1970-1-1")).TotalSeconds + 4 * 60 * 60;
-        map_data.map_index = crash_map.create_time;
-        crash_map.Data = map_data;
-        crash_map.CreaterName = "UNKNOW";
-        crash_map.MapName = "UNKNOW";
+        data.create_time_= (ulong)System.DateTime.Now.Subtract(System.DateTime.Parse("1970-1-1")).TotalSeconds + 4 * 60 * 60;
+        data.map_index_ = data.create_time_;
+        data.create_name_ = "UNKNOW";
+        data.map_name_ = "UNKNOW";
         if (global_instance.Instance.GetMapData() != null)
         {
-            crash_map.CreaterName = global_instance.Instance.GetMapData().create_name_;
-            crash_map.MapName = global_instance.Instance.GetMapData().map_name_;
+            data.create_name_ = global_instance.Instance.GetMapData().create_name_;
+            data.map_name_ = global_instance.Instance.GetMapData().map_name_;
         }
 
 
-        return crash_map;
+        return data;
 
 	}
 
@@ -285,13 +277,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
     {
         if (get_game_type() == game_type.edit)
         {
-            if(_mouse_down)
-            {
-                RaycastHit hitt = new RaycastHit();
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                //Physics.Raycast(ray, out hitt, 100);
-                //Debug.DrawLine(Camera.main.transform.position, ray.direction, Color.green);
-            }
+
         }
         else
         {
@@ -310,40 +296,6 @@ public class crash_mole_grid_manager : MonoBehaviour {
         _mouse_down = true;
 
     }
-    /*
-   
-    public void create_map( )
-    {
-        for (int i = 0; i < _max_width; i++)
-        {
-            for (int j = 0; j < _max_height; j++)
-            {
-                int group = _crashmolegrids[i, j]._group;
-                if (group != 11)
-                {
-                    crash_mole mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(i, 9, j + 20)._crash_mole;
-                    if (mole_entry == null)
-                    {
-                        crash_base_obj obj = null;
-                        if (group != 10)
-                        {
-                            obj = global_instance.Instance._crash_manager.create_crash_obj(i, j + 20);
-                        }
-                        else
-                        {
-                            obj = global_instance.Instance._crash_manager.create_flag_obj(i, j + 20);
-                        }
 
-                        mole_entry = global_instance.Instance._crash_manager.create_crash_mole();
-                        mole_entry.add_crash_obj(obj);
-                        mole_entry._color_group = group;
-                        global_instance.Instance._crash_manager.add_crash_mole(mole_entry);
-                        create_mole(i, j, mole_entry);
-                    }
-                }            
-            }
-        }
-    }
-    */
 	
 }

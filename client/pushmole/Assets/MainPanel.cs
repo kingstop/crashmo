@@ -141,6 +141,9 @@ public class MainPanel : MonoBehaviour
         temp._txt_3.text = time.ToString();
         temp._map_index = entry.Data.map_index;
         temp.transform.parent = _items_container.transform;
+        MapData temp_ = new MapData();
+        temp_.set_info(entry);
+        temp.SetTexture(temp_.CreateTexture());
         _items.Add(temp);
     }
 

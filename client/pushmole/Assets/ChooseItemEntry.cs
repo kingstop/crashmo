@@ -31,6 +31,22 @@ public class ChooseItemEntry : MonoBehaviour {
     {
         global_instance.Instance._ngui_edit_manager._main_panle.ItemButtonClick(this);
     }
+
+    public void SetTexture(Texture t)
+    {
+        int c = 0;
+
+        Material material_temp = _image.material;
+        if(material_temp != null)
+        {
+            material_temp.mainTexture = t;
+            
+        }
+        else
+        {
+            c++;
+        }
+    }
     public Text _txt_1;
     public Text _txt_2;
     public Text _txt_3;
