@@ -89,8 +89,6 @@ public class crash_base_obj
         _pos._y = 0;
         _pos._z = 0;
         _last_pos = _pos;
-
-
     }
     public crash_base_obj(int x, int y, int z)
     {
@@ -172,7 +170,6 @@ public class crash_obj_creature : crash_base_obj
 }
 public class crash_obj : crash_base_obj
 {
-
     public crash_obj() : base()
     {
         _type = crash_obj_type.normal;
@@ -372,13 +369,11 @@ public class crash_manager
     public GameObject _creaatuee_obj = null;
     public bool _cash_click = false;
     public bool _freezen_creature = false;
-    public List<crash_mole> _lock_mole = new List<crash_mole>();
-   // private MapData _map_data = null;
+    public List<crash_mole> _lock_mole = new List<crash_mole>();  
     public crash_obj_creature _obj_creature = null;
     camera_dir _camera_dir = camera_dir.front;
     want_move_dir _want_camera_dir = want_move_dir.no;
     int _move_count = 0;
-    //public MapData data;
     public void init()
     {
         _camera_dir = camera_dir.front;
@@ -477,14 +472,10 @@ public class crash_manager
                     temp_f = 90;
                 }
                 current_camera_roation.y = current_rotation.y + ((temp_f) / need_count * _move_count);
-            }
-            
-            
+            }                        
             current_camera_roation.z = current_rotation.z + ((target_rotetion.z - current_rotation.z) / need_count * _move_count);
             Camera.main.transform.position = current_camera_pos;
             Camera.main.transform.eulerAngles = current_camera_roation;
-            //_move_count = need_count;
-            
             if(_move_count == need_count)
             {
                 _want_camera_dir = want_move_dir.no;
@@ -743,9 +734,7 @@ public class crash_manager
                 }
             }
         }
-
-        _grid_distance = (float)1;
-        
+        _grid_distance = (float)1;        
         _need_play_animation = false;
         _move_animation_distance = (float)0.1;
         int length = _Game_objs.Count;
@@ -967,8 +956,7 @@ public class crash_manager
                         float z_temp = z * _grid_distance;
                         float y_temp = y * _grid_distance;
                         entry.set_position(x_temp, y_temp, z_temp);
-                    }
-                    
+                    }                    
                 }
             }
         }
@@ -984,9 +972,9 @@ public class crash_manager
             GameObject obj_creature = Object.Instantiate<GameObject>(obj_temp);
             _creature = obj_creature.GetComponent<creature>();            
             _creature.set_creature_type(creature_type.creature_2);
-            float position_x = transform_to_position(9);
-            float position_y = transform_to_position(0);
-            float position_z = transform_to_position(7);                     
+            //float position_x = transform_to_position(9);
+            //float position_y = transform_to_position(0);
+            //float position_z = transform_to_position(7);                     
         }
         _camera_dir = camera_dir.front;
         _want_camera_dir = want_move_dir.no;

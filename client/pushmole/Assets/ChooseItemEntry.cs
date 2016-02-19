@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 
 public class ChooseItemEntry : MonoBehaviour {
 
@@ -29,23 +26,16 @@ public class ChooseItemEntry : MonoBehaviour {
 
     public void OnButtonClick()
     {
-        global_instance.Instance._ngui_edit_manager._main_panle.ItemButtonClick(this);
+        global_instance.Instance._ngui_edit_manager._main_panel.ItemButtonClick(this);
     }
 
     public void SetTexture(Texture t)
     {
-        int c = 0;
-
         Material material_temp = new Material(_image.material);
         if(material_temp != null)
         {
             material_temp.mainTexture = t;
-            _image.material = material_temp;
-            
-        }
-        else
-        {
-            c++;
+            _image.material = material_temp;            
         }
     }
     public Text _txt_1;

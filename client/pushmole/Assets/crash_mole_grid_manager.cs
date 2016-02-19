@@ -205,11 +205,9 @@ public class crash_mole_grid_manager : MonoBehaviour {
 		for (int i = 0; i < _max_width; i++)
 		{
 			for (int j = 0; j < _max_height; j++)
-			{
-				
+			{				
 				GameObject obj_temp = Instantiate<GameObject>(_source_crash_mole_obj);
-				_objlist.Add(obj_temp);
-				
+				_objlist.Add(obj_temp);				
 				obj_temp.name = i.ToString() + "-" + j.ToString();
 				_crashmolegrids[i, j] = obj_temp.GetComponent<crashmolegrid>();
 				float x = (float)i;
@@ -236,10 +234,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
         data.create_name_ = "";
         data.width_ = _max_width;        
 		data.height_ = _max_height;
-
         GameObject map_target = GameObject.Instantiate<GameObject>(_source_map_mole_obj);
-
-
         //((Texture2D)sprender.material.mainTexture).SetPixel();
         data.groups_ = new int[data.width_, data.height_];
         for (int j = 0; j < data.height_; j ++) 
@@ -248,7 +243,6 @@ public class crash_mole_grid_manager : MonoBehaviour {
 			for(int i = 0; i < data.width_; i ++)
 			{
 				int group = _crashmolegrids[i, j].get_group();
-
                 data.groups_[i, j] = group;
             }			
 		}
@@ -262,16 +256,11 @@ public class crash_mole_grid_manager : MonoBehaviour {
             data.map_name_ = global_instance.Instance.GetMapData().map_name_;
         }
 
-
         return data;
-
 	}
 
 	// Use this for initialization
-	void Start () {
-        
-      //  create_edit_crash_mole_grid();
-
+	void Start () {        
         _mouse_down = false;
 	}
 

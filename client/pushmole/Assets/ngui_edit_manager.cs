@@ -33,13 +33,13 @@ public class ngui_edit_manager : MonoBehaviour {
     public GameObject _edit_scrollbar;
     public Text _text_width;
     public Text _text_height;
-
     public GameObject _edit_scrollbar_width;
     public GameObject _edit_scrollbar_height;
     public GameObject _static_edit_width;
     public GameObject _static_edit_height;
     public crashmolegrid _flag_grid;
-    public MainPanel _main_panle;
+    public MainPanel _main_panel;
+    public SaveMapPanel _SaveMapPanel;
     public GameObject _login_obj;
     public GameObject _edit_obj_btns;
     public GameObject _edit_obj_draw_btns;
@@ -75,8 +75,8 @@ public class ngui_edit_manager : MonoBehaviour {
     }
     public void show_main_panel()
     {
-       // _login_obj.SetActive(false);
-        _main_panle.gameObject.SetActive(true);
+        // _login_obj.SetActive(false);
+        _main_panel.gameObject.SetActive(true);
     }
 
     public void set_login_btns_active(bool b)
@@ -195,14 +195,9 @@ public class ngui_edit_manager : MonoBehaviour {
 
 	public void on_save_btn_click ()
 	{
-        MapData temp_data = global_instance.Instance._crash_mole_grid_manager.save_crash_mole_grid();
-        message.CrashMapData mapdata = temp_data.get_info();
-        message.CrashPlayerInfo msginfo = global_instance.Instance._player.GetInfo();
-       
-        msginfo.IncompleteMap.Add(mapdata);
-        global_instance.Instance._player.SetInfo(msginfo);
+
         set_edit_btns_active(false);
-        show_main_panel();
+        //show_main_panel();
 
 	}
 
