@@ -1,0 +1,70 @@
+package message;
+
+message ToyStatData
+{
+	required string toy_guid = 1;
+	required string name = 2;
+	required int32 level = 3;
+	required int32 exp = 4;
+	required int32 id = 5;
+}
+
+message ToyStateProperty
+{
+	required ToyStatData toy_state = 1;
+	required int32 hp = 2;
+	required int32 atk = 3;
+	required int32 def = 4;
+	required int32 mspd = 5;
+	required int32 spirit = 6;	
+	required int32 aspd = 7;
+}
+
+message NoneCharacterData
+{
+	required bytes instances_status = 1;
+	repeated ToyStatData toys = 2;
+	repeated int32 pass_instances = 3;
+	required string guid = 4;
+}
+
+message NoneCharacterDataServer
+{
+	required NoneCharacterData data = 1;
+	required uint64 account = 2;
+}
+
+message int32array
+{
+	repeated int32 data = 1;
+}
+
+message CrashmoMapBaseData
+{
+	required int32 width = 1;
+	required int32 height = 2;
+	repeated int32array map_data = 3;
+	required uint64 map_index = 5;
+}
+
+message CrashMapData
+{
+	required CrashmoMapBaseData Data = 1;
+	required string MapName = 2;
+	required string CreaterName = 3;
+	required int32 Section = 4;
+	required int32 number = 5;
+	required uint64 create_time = 6;
+}
+
+message CrashPlayerInfo
+{
+	required uint64 account = 1;
+	required int32 pass_point = 2;
+	required int32 pass_section = 4;
+	required string name = 5;
+	repeated CrashMapData IncompleteMap = 6;
+	repeated CrashMapData CompleteMap = 7;
+}
+
+

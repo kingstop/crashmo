@@ -1,0 +1,21 @@
+package message;
+import "common.proto";
+message ApplyCharacterDataReq
+{
+	required uint64 account = 1;
+}
+message NeedCreateCharacter
+{
+	required uint64 account = 1;
+}
+
+
+message CharacterDataACK
+{
+	required CrashPlayerInfo data = 1;
+}
+
+message ReqSaveCharacterData
+{
+	required CrashPlayerInfo data = 1;
+}

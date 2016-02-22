@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8BD46820-1C81-441A-9133-5378CF1BC37E}</ProjectGuid>
+    <RootNamespace>common</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\bin\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)..\temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)-d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)..\bin\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)..\temp\$(ProjectName)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>../../../../../../external/boost/boost_1_60_0/;../../../../../../external/protobuf/protobuf-3.0.0/src/;../../../../../../external/mysql/mysql-5.7.10-win32/include/;../../../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;../../../../../../external/log4cplus/log4cplus-1.2.0/include/;../../../../../../external/mysql++/mysql++-3.1.0/lib/;../common/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WIN32_WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalOptions>-Zm132 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\contrib\include\log4cxx;..\contrib\include\json_include;..\contrib\include\mysql++;..\contrib\include\mysql\include;..\contrib\include\protoc;$(BOOST_INCLUDE);..\..\..\..\..\..\..\code\boost\boost_1_58_0;..\..\..\..\..\..\..\code\mysql++-3.0.3\lib;C:\Program Files (x86)\MySQL\MySQL Server 5.6\include;..\..\..\..\..\..\..\code\protobuf\protobuf\src;..\..\..\..\..\..\..\code\log4cplus\include;..\..\..\..\..\..\..\code\mysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WIN32_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>-Zm132 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="asiodef.h" />
+    <ClInclude Include="call_back.h" />
+    <ClInclude Include="common_header.h" />
+    <ClInclude Include="common_helper.h" />
+    <ClInclude Include="common_template.h" />
+    <ClInclude Include="common_type.h" />
+    <ClInclude Include="crypt.h" />
+    <ClInclude Include="database.h" />
+    <ClInclude Include="event_call_back.h" />
+    <ClInclude Include="event_manager.h" />
+    <ClInclude Include="event_table_object.h" />
+    <ClInclude Include="exception.h" />
+    <ClInclude Include="json_help.h" />
+    <ClInclude Include="md5.h" />
+    <ClInclude Include="memory.h" />
+    <ClInclude Include="message\common.pb.h" />
+    <ClInclude Include="message\crashmo.pb.h" />
+    <ClInclude Include="message\gs2client.pb.h" />
+    <ClInclude Include="message\login.pb.h" />
+    <ClInclude Include="message\msgs2c.pb.h" />
+    <ClInclude Include="message\msgs2s.pb.h" />
+    <ClInclude Include="message\msg_game_db.pb.h" />
+    <ClInclude Include="message\msg_gate_game.pb.h" />
+    <ClInclude Include="message\msg_gate_login.pb.h" />
+    <ClInclude Include="message\server_define.h" />
+    <ClInclude Include="message_interface.h" />
+    <ClInclude Include="windump.h" />
+    <ClInclude Include="mt_buffer.h" />
+    <ClInclude Include="my_log.h" />
+    <ClInclude Include="net_type.h" />
+    <ClInclude Include="object_pool.h" />
+    <ClInclude Include="packet_interface.h" />
+    <ClInclude Include="protoc_common.h" />
+    <ClInclude Include="run_object.h" />
+    <ClInclude Include="server_frame.h" />
+    <ClInclude Include="task_thread_pool.h" />
+    <ClInclude Include="tcpclient.h" />
+    <ClInclude Include="tcpserver.h" />
+    <ClInclude Include="tcpsession.h" />
+    <ClInclude Include="thread_buffer.h" />
+    <ClInclude Include="utilities.h" />
+    <ClInclude Include="version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="call_back.cpp" />
+    <ClCompile Include="crypt.cpp" />
+    <ClCompile Include="database.cpp" />
+    <ClCompile Include="event_table_object.cpp" />
+    <ClCompile Include="exception.cpp" />
+    <ClCompile Include="io_service_pool.cpp" />
+    <ClCompile Include="json_help.cpp" />
+    <ClCompile Include="md5.cpp" />
+    <ClCompile Include="message\common.pb.cc" />
+    <ClCompile Include="message\crashmo.pb.cc" />
+    <ClCompile Include="message\gs2client.pb.cc" />
+    <ClCompile Include="message\login.pb.cc" />
+    <ClCompile Include="message\msgs2c.pb.cc" />
+    <ClCompile Include="message\msgs2s.pb.cc" />
+    <ClCompile Include="message\msg_game_db.pb.cc" />
+    <ClCompile Include="message\msg_gate_game.pb.cc" />
+    <ClCompile Include="message\msg_gate_login.pb.cc" />
+    <ClCompile Include="message_interface.cpp" />
+    <ClCompile Include="windump.cpp" />
+    <ClCompile Include="my_log.cpp" />
+    <ClCompile Include="server_frame.cpp" />
+    <ClCompile Include="task_thread_pool.cpp" />
+    <ClCompile Include="tcpclient.cpp" />
+    <ClCompile Include="tcpserver.cpp" />
+    <ClCompile Include="tcpsession.cpp" />
+    <ClCompile Include="thread_buffer.cpp" />
+    <ClCompile Include="utilities.cpp" />
+    <ClCompile Include="version.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

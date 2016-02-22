@@ -1,0 +1,7 @@
+#CMAKE_MINIMUM_REQUIRED(VERSION 2.8)  
+#×îµÍ°æ±¾ºÅ  
+ 
+ADD_SUBDIRECTORY(dbserver)  
+ADD_SUBDIRECTORY(gameserver) 
+ADD_SUBDIRECTORY(gate) 
+ADD_SUBDIRECTORY(login) 

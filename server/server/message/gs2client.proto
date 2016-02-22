@@ -1,0 +1,47 @@
+package message;
+import "common.proto";
+
+
+
+message NoneCharacter2Client
+{
+	required bytes instances_status = 1;
+	repeated ToyStateProperty toys = 2;
+	repeated int32 pass_instances = 3;
+}
+
+
+message NotifyClientInit
+{
+	required NoneCharacter2Client data = 1;
+}
+
+message UpdateInstanceStatusReq
+{
+	required bytes instance_status = 1;
+}
+
+message UpdateInstanceStatusACK
+{
+
+}
+
+message AddToyReq
+{
+	required int32 toy_id = 1;
+}
+
+message AddToyACK
+{
+	required int32 toy_id = 1;
+}
+
+message InstancePassReq
+{
+	required int32 instance_id = 1;
+}
+
+message InstancePassACK
+{
+	required int32 instance_id = 1;
+}

@@ -1,0 +1,24 @@
+package message;
+import "common.proto";
+
+
+
+message SaveOfficeMapData
+{
+	required CrashMapData map = 1;
+}
+
+message SaveIncompleteMap
+{
+	required CrashMapData map = 1;
+}
+
+message SaveCompleteMap
+{
+	required CrashMapData map = 1;
+}
+
+message CrashmoClientInit
+{
+	required CrashPlayerInfo info = 1;
+}
