@@ -93,6 +93,7 @@
     <ClCompile Include="gate_session.cpp" />
     <ClCompile Include="gate_tcp_server.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OfficilMapManager.cpp" />
     <ClCompile Include="server.cpp" />
     <ClCompile Include="session.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -108,6 +109,7 @@
     <ClInclude Include="gate_session.h" />
     <ClInclude Include="gate_tcp_server.h" />
     <ClInclude Include="LocationVector.h" />
+    <ClInclude Include="OfficilMapManager.h" />
     <ClInclude Include="server.h" />
     <ClInclude Include="session.h" />
     <ClInclude Include="stdafx.h" />

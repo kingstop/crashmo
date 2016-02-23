@@ -49,4 +49,14 @@ message MsgSaveMapACK
 	required ServerError error = 3[default = ServerError_NO];
 }
 
+message MsgOfficilMapReq
+{
+	required int32 page = 1;
+}
+
+message MsgOfficilMapACK
+{
+	required int32 page = 1;
+	repeated CrashMapData maps = 2;
+}
 
