@@ -71,8 +71,7 @@ u32 AccountManager::makeTransId(std::string& str)
 }
 
 void AccountManager::CreateNewAccount(const void* data, bool sucess)
-{
-	
+{	
 	const CheckAcct* pkData = static_cast<const CheckAcct*>(data);
 	if (!pkData)
 	{ 
@@ -150,7 +149,8 @@ void AccountManager::checkAccountCall(const void* data, bool sucess)
 					msg.set_result(message::enumLoginResult_Fail);
 					pksession->sendPBMessage(&msg);
                     pksession->setState(UserLoginSession::_wait_close_);
-				}else
+				}
+				else
 				{
 					//Mylog::log_player( LOG_INFO, "add Account[%d] Login info to gate.!", p->nId);
 				}
