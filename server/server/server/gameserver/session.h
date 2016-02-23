@@ -27,9 +27,9 @@ public:
 	void parsePBMessage(google::protobuf::Message* p);
 	void createInfo();
 	void createInfo(message::CharacterDataACK* msg);
-	void parseUpdateInstanceStatusReq(google::protobuf::Message* p);
-	void parseAddToyReq(google::protobuf::Message* p);
-	void parseInstancePassReq(google::protobuf::Message* p);
+
+	void parseSaveMap(google::protobuf::Message* p);
+	void parseDelMap(google::protobuf::Message* p);
 	//Player* getPlayer(){return m_pkOwer;}
 protected:
 	tran_id_type m_tranid;

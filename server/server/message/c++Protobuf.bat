@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 set tool=.\
-set common_path=..\common\message\
+set common_path=..\server\common\message\
 set pbfile_path=.\
 for /f %%i in ('dir /a-d /b *.proto') do ( 
 echo %%i

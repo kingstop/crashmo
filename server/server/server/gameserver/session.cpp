@@ -27,9 +27,7 @@ void Session::prasePBDefault(google::protobuf::Message* p)
 //这里负责注册消息
 void Session::registerPBCall()
 {
-	registerCBFun(PROTOCO_NAME(message::UpdateInstanceStatusReq), &Session::parseUpdateInstanceStatusReq);
-	registerCBFun(PROTOCO_NAME(message::InstancePassReq), &Session::parseInstancePassReq);
-	registerCBFun(PROTOCO_NAME(message::AddToyReq), &Session::parseAddToyReq);
+	registerCBFun(PROTOCO_NAME(message::MsgSaveMapReq), &Session::parseSaveMap);
 }
 
 void Session::parsePBMessage(google::protobuf::Message* p)
@@ -123,21 +121,26 @@ void Session::sendPBMessage(google::protobuf::Message* p)
 }
 
 
-void Session::parseUpdateInstanceStatusReq(google::protobuf::Message* p)
+
+void Session::parseSaveMap(google::protobuf::Message* p)
 {
-	message::UpdateInstanceStatusReq* msg = (message::UpdateInstanceStatusReq*) p;
+	if (_player != NULL)
+	{
+		message::MsgSaveMapReq* msg = (message::MsgSaveMapReq*)p;
+		if (msg->save_type() != message::OfficeMap)
+		{
+
+		}
+	}
 }
 
-
-void Session::parseInstancePassReq(google::protobuf::Message* p)
+void Session::parseDelMap(google::protobuf::Message* p)
 {
-	message::InstancePassReq* msg = (message::InstancePassReq*) p;
-
-}
-
-void Session::parseAddToyReq(google::protobuf::Message* p)
-{
-	message::AddToyReq* msg = (message::AddToyReq*)p;
+	if (_player != NULL)
+	{
+		message::MsgDelMapReq* msg = (message::MsgDelMapReq*)p;
+		_player->DelMap(msg);
+	}
 }
 
 void Session::createInfo()

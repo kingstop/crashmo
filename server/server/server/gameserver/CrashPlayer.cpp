@@ -54,3 +54,119 @@ void CrashPlayer::StopSave()
 		gEventMgr.removeEvents(this, EVENT_SAVE_PLAYER_DATA_);
 	}
 }
+
+bool CrashPlayer::havemapname(const char* mapname)
+{
+	int size_ar = _info.incompletemap_size();
+	std::string map_name;
+	for (int i = 0; i < size_ar; i++)
+	{
+		map_name = _info.incompletemap(i).mapname();
+		if (map_name == mapname)
+		{
+			return true;
+		}
+	}
+
+	size_ar = _info.completemap_size();
+	for (int i = 0; i < size_ar; i++)
+	{
+		map_name = _info.completemap(i).mapname();
+		if (map_name == mapname)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+void CrashPlayer::sendPBMessage(google::protobuf::Message* p)
+{
+	if (_session)
+	{
+		_session->sendPBMessage(p);
+	}
+}
+
+void CrashPlayer::DelMap(message::MsgDelMapReq* msg)
+{
+	message::MsgDelMapACK msgACK;
+	int size_ar = _info.incompletemap_size();
+	const char* mapname = msg->map_name().c_str();
+	msgACK.set_map_name(mapname);
+	std::string map_name;
+	bool del = false;
+	::google::protobuf::RepeatedPtrField< ::message::CrashMapData >* temp_list = _info.mutable_completemap();
+	::google::protobuf::RepeatedPtrField< ::message::CrashMapData >::iterator it = temp_list->begin();
+	message::MapType temp_type = message::CompleteMap;
+	for (it = temp_list->begin(); it != temp_list->end(); ++ it)
+	{
+		if (it->mapname() == mapname)
+		{
+			temp_type = message::CompleteMap;
+			temp_list->erase(it);
+			del = true;
+			break;
+		}
+	}
+
+	if (del == false)
+	{
+		temp_list = _info.mutable_incompletemap();
+		for (it = temp_list->begin(); it != temp_list->end(); ++it)
+		{
+			if (it->mapname() == mapname)
+			{
+				temp_type = message::ImcompleteMap;
+				temp_list->erase(it);
+				del = true;
+				break;
+			}
+		}
+	}
+	msgACK.set_map_type(temp_type);
+	if (del == false)
+	{
+		msgACK.set_error(message::ServerError_NotFoundMapNameWhenDel);
+	}
+	sendPBMessage(&msgACK);
+}
+
+void CrashPlayer::SaveMap(message::MsgSaveMapReq* msg)
+{
+	message::MsgSaveMapACK msgACK;
+	msgACK.set_map_name(msg->map().mapname());
+	msgACK.set_save_type(msg->save_type());
+
+	if (havemapname(msg->map().mapname().c_str()) == false)
+	{
+		message::CrashMapData* temp = NULL;
+		switch (msg->save_type())
+		{
+		case  message::ImcompleteMap:
+			temp = _info.add_incompletemap();
+			break;
+		case  message::CompleteMap:
+			temp = _info.add_completemap();
+			break;
+		default:
+			break;
+		}
+		if (temp != NULL)
+		{
+			temp->CopyFrom(msg->map());
+		}
+		else
+		{
+			msgACK.set_error(message::ServerError_Unknow);
+		}
+	}
+	else
+	{
+		msgACK.set_error(message::ServerError_HaveSameName);
+	}
+	sendPBMessage(&msgACK);	
+}
+

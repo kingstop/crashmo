@@ -1,24 +1,52 @@
 package message;
 import "common.proto";
 
-
-
-message SaveOfficeMapData
+enum ServerError
 {
-	required CrashMapData map = 1;
-}
-
-message SaveIncompleteMap
-{
-	required CrashMapData map = 1;
-}
-
-message SaveCompleteMap
-{
-	required CrashMapData map = 1;
+	ServerError_NO = 0;
+	ServerError_Unknow = 1;
+	ServerError_HaveSameName = 2;
+	ServerError_NotFoundMapNameWhenDel = 3;
+	
 }
 
 message CrashmoClientInit
 {
 	required CrashPlayerInfo info = 1;
 }
+
+
+enum MapType
+{
+	OfficeMap = 1;
+	ImcompleteMap = 2;
+	CompleteMap = 3;
+}
+
+message MsgSaveMapReq
+{
+	required CrashMapData map = 1;
+	required MapType save_type = 2 [default = OfficeMap];
+}
+
+message MsgDelMapReq
+{
+	required string map_name = 1;
+}
+
+message MsgDelMapACK
+{
+	required string map_name = 1;
+	required MapType map_type = 2 [default = OfficeMap];
+	required ServerError error = 3 [default = ServerError_NO];
+	
+}
+
+message MsgSaveMapACK
+{
+	required string map_name = 1;
+	required MapType save_type = 2 [default = OfficeMap];
+	required ServerError error = 3[default = ServerError_NO];
+}
+
+
