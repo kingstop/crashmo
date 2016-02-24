@@ -63,6 +63,7 @@ public class SaveMapPanel : MonoBehaviour {
     public void onCancelClick()
     {
         setActive(false);
+		global_instance.Instance._ngui_edit_manager.set_edit_type_btns_active (true);
         global_instance.Instance._ngui_edit_manager.set_edit_btns_active(true);
     }
 

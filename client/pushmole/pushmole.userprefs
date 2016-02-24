@@ -1,13 +1,30 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../pushmole/Assets/mole_net/proto-net/BufferExtension.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MainPanel.cs">
     <Files>
-      <File FileName="../../../pushmole/Assets/game_type_click.cs" Line="1" Column="1" />
-      <File FileName="../../../pushmole/Assets/mole_net/proto-net/BufferExtension.cs" Line="1" Column="1" />
+      <File FileName="Assets/ChooseItemEntry.cs" Line="29" Column="48" />
+      <File FileName="Assets/MainPanel.cs" Line="138" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="mole_net" expanded="True">
+              <Node name="proto-net" expanded="True" />
+            </Node>
+            <Node name="MainPanel.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/apple/Desktop/work/crashmo/client/pushmole/Assets/crashmolegrid.cs" line="119" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

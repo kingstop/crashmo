@@ -6,6 +6,8 @@ public class ChooseItemEntry : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
+		Image temp = GetComponent<Image>();
+		temp.color = new Color(255, 255, 255);
 	}
 	
 	// Update is called once per frame
@@ -15,13 +17,15 @@ public class ChooseItemEntry : MonoBehaviour {
     public void unselect()
     {
         Image temp = GetComponent<Image>();
-        temp.color = new Color(255, 255, 255);
+		//_back_ground.color = new Color(255, 255, 255);
     }
      
     public void select()
     {
-        Image temp = GetComponent<Image>();
-        temp.color = new Color(74, 161, 184);
+
+
+       // Image temp = GetComponent<Image>();
+		//_back_ground.color = new Color(74, 161, 184);
     }
 
     public void OnButtonClick()

@@ -44,8 +44,8 @@ public class ngui_edit_manager : MonoBehaviour {
     public GameObject _edit_obj_btns;
     public GameObject _edit_obj_draw_btns;
     public GameObject _edit_obj_create_btns;
-
     public GameObject _game_obj_btns;
+	public GameObject _edit_type_obj_btns;
 
     public Text _account;
     public Text _password;
@@ -193,12 +193,25 @@ public class ngui_edit_manager : MonoBehaviour {
         update_game_type(game_type.create);
     }
 
+	public void set_save_map_panel_active(bool active)
+	{
+		_SaveMapPanel.gameObject.SetActive (active);
+	}
+
 	public void on_save_btn_click ()
 	{
 
         set_edit_btns_active(false);
-        //show_main_panel();
+		set_edit_type_btns_active (false);
+		set_save_map_panel_active (true);
+		
+        
 
+	}
+
+	public void set_edit_type_btns_active(bool active)
+	{
+		_edit_type_obj_btns.gameObject.SetActive (active);
 	}
 
     public void on_create_empty_map_click()
@@ -295,7 +308,8 @@ public class ngui_edit_manager : MonoBehaviour {
     }
     void show_edit_btn()
     {
-        set_edit_btns_state(true);       
+        set_edit_btns_state(true); 
+		message_on_button_click (_Buttons_simple [0]);			
     }
 	
 	// Update is called once per frame
@@ -360,6 +374,11 @@ public class ngui_edit_manager : MonoBehaviour {
         _Buttons_sliced_game_type[(int)game_type.edit].gameObject.SetActive(false);
         _Buttons_simple_game_type[(int)game_type.game].gameObject.SetActive(false);
         _Buttons_sliced_game_type[(int)game_type.game].gameObject.SetActive(false);
+		if (type != game_type.create) 
+		{
+			set_edit_type_btns_active(true);
+		}
+
         switch(type)
         {
             case game_type.create:

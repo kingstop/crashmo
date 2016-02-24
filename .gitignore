@@ -239,3 +239,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+*.csproj
+
+client/pushmole/pushmole.CSharp.csproj
+
+client/pushmole/Assembly-CSharp-firstpass.csproj

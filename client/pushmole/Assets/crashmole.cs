@@ -746,6 +746,9 @@ public class crash_manager
         _crash_moles_list.Clear();
         _move_mole_list.Clear();
         _Game_objs.Clear();
+		_obj_creature = null;
+		_freezen_creature = false;
+		_lock_mole.Clear ();
         if(_creature != null)
         {
             _creature.gameObject.SetActive(false);
