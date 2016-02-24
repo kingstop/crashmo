@@ -11,57 +11,6 @@
 // Note: requires additional types generated from: common.proto
 namespace message
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SaveOfficeMapData")]
-  public partial class SaveOfficeMapData : global::ProtoBuf.IExtensible
-  {
-    public SaveOfficeMapData() {}
-    
-    private message.CrashMapData _map;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public message.CrashMapData map
-    {
-      get { return _map; }
-      set { _map = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SaveIncompleteMap")]
-  public partial class SaveIncompleteMap : global::ProtoBuf.IExtensible
-  {
-    public SaveIncompleteMap() {}
-    
-    private message.CrashMapData _map;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public message.CrashMapData map
-    {
-      get { return _map; }
-      set { _map = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SaveCompleteMap")]
-  public partial class SaveCompleteMap : global::ProtoBuf.IExtensible
-  {
-    public SaveCompleteMap() {}
-    
-    private message.CrashMapData _map;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public message.CrashMapData map
-    {
-      get { return _map; }
-      set { _map = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CrashmoClientInit")]
   public partial class CrashmoClientInit : global::ProtoBuf.IExtensible
   {
@@ -78,5 +27,180 @@ namespace message
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgSaveMapReq")]
+  public partial class MsgSaveMapReq : global::ProtoBuf.IExtensible
+  {
+    public MsgSaveMapReq() {}
+    
+    private message.CrashMapData _map;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public message.CrashMapData map
+    {
+      get { return _map; }
+      set { _map = value; }
+    }
+    private message.MapType _save_type;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"save_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public message.MapType save_type
+    {
+      get { return _save_type; }
+      set { _save_type = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgDelMapReq")]
+  public partial class MsgDelMapReq : global::ProtoBuf.IExtensible
+  {
+    public MsgDelMapReq() {}
+    
+    private string _map_name;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string map_name
+    {
+      get { return _map_name; }
+      set { _map_name = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgDelMapACK")]
+  public partial class MsgDelMapACK : global::ProtoBuf.IExtensible
+  {
+    public MsgDelMapACK() {}
+    
+    private string _map_name;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string map_name
+    {
+      get { return _map_name; }
+      set { _map_name = value; }
+    }
+    private message.MapType _map_type;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"map_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public message.MapType map_type
+    {
+      get { return _map_type; }
+      set { _map_type = value; }
+    }
+    private message.ServerError _error;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public message.ServerError error
+    {
+      get { return _error; }
+      set { _error = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgSaveMapACK")]
+  public partial class MsgSaveMapACK : global::ProtoBuf.IExtensible
+  {
+    public MsgSaveMapACK() {}
+    
+    private string _map_name;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string map_name
+    {
+      get { return _map_name; }
+      set { _map_name = value; }
+    }
+    private message.MapType _save_type;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"save_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public message.MapType save_type
+    {
+      get { return _save_type; }
+      set { _save_type = value; }
+    }
+    private message.ServerError _error;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public message.ServerError error
+    {
+      get { return _error; }
+      set { _error = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgOfficilMapReq")]
+  public partial class MsgOfficilMapReq : global::ProtoBuf.IExtensible
+  {
+    public MsgOfficilMapReq() {}
+    
+    private int _page;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"page", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int page
+    {
+      get { return _page; }
+      set { _page = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgOfficilMapACK")]
+  public partial class MsgOfficilMapACK : global::ProtoBuf.IExtensible
+  {
+    public MsgOfficilMapACK() {}
+    
+    private int _page;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"page", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int page
+    {
+      get { return _page; }
+      set { _page = value; }
+    }
+    private readonly global::System.Collections.Generic.List<message.CrashMapData> _maps = new global::System.Collections.Generic.List<message.CrashMapData>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"maps", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.CrashMapData> maps
+    {
+      get { return _maps; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ServerError")]
+    public enum ServerError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ServerError_NO", Value=0)]
+      ServerError_NO = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ServerError_Unknow", Value=1)]
+      ServerError_Unknow = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ServerError_HaveSameName", Value=2)]
+      ServerError_HaveSameName = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ServerError_NotFoundMapNameWhenDel", Value=3)]
+      ServerError_NotFoundMapNameWhenDel = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"MapType")]
+    public enum MapType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OfficeMap", Value=1)]
+      OfficeMap = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ImcompleteMap", Value=2)]
+      ImcompleteMap = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CompleteMap", Value=3)]
+      CompleteMap = 3
+    }
   
 }
