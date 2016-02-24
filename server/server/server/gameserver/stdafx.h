@@ -30,7 +30,6 @@
 #include "database.h"
 #include "CrashPlayerManager.h"
 #include "GameConfig.h"
-#include "OfficilMapManager.h"
 std::string Utf8ToGBK(const char* strUtf8);
 std::string GBKToUtf8(const char* strGBK);
 
@@ -57,7 +56,6 @@ struct FuGameFather
 	Database		sCenterDB;
 	Database		sWorldDB;
 	CrashPlayerManager sPlayerManager;
-	OfficilMapManager sOfficilMapManager;
 	//NoneCharacterManager sNoneCharacterManager;
 };
 
@@ -71,8 +69,7 @@ extern FuGameFather* gFuGameFather;
 #define gDBCharDatabase		gFuGameFather->sCharacterDB
 #define gCenterDataBase		gFuGameFather->sCenterDB
 #define gWorldDatabase		gFuGameFather->sWorldDB
-#define gPlayerManager		gFuGameFather->sPlayerManager
-#define gOfficilMapManager  gFuGameFather->sOfficilMapManager
+#define  gPlayerManager		gFuGameFather->sPlayerManager
 //#define gCharacterManager   gFuGameFather->sNoneCharacterManager
 //#define gGameConfig			gFuGameFather->sGameConfig
 enum

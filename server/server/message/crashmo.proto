@@ -60,7 +60,3 @@ message MsgOfficilMapACK
 	repeated CrashMapData maps = 2;
 }
 
-message MsgAddOfficilMapACK
-{
-	required CrashMapData map = 1;
-}

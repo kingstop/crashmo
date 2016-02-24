@@ -7,7 +7,7 @@ public:
 	virtual ~OfficilMapManager();
 public:
 	void getOfficilMap(CrashPlayer* p, int page);
-	void addOfficilMap(CrashPlayer* p, message::CrashMapData* msg);
+
 
 protected:
 	OFFICILMAPLIST _officilmap;
