@@ -28,6 +28,8 @@ void Session::prasePBDefault(google::protobuf::Message* p)
 void Session::registerPBCall()
 {
 	registerCBFun(PROTOCO_NAME(message::MsgSaveMapReq), &Session::parseSaveMap);
+	registerCBFun(PROTOCO_NAME(message::MsgDelMapReq), &Session::parseDelMap);
+	registerCBFun(PROTOCO_NAME(message::MsgOfficilMapReq), &Session::parseOfficilMapReq);
 }
 
 void Session::parsePBMessage(google::protobuf::Message* p)
@@ -129,8 +131,21 @@ void Session::parseSaveMap(google::protobuf::Message* p)
 		message::MsgSaveMapReq* msg = (message::MsgSaveMapReq*)p;
 		if (msg->save_type() != message::OfficeMap)
 		{
-
+			_player->SaveMap(msg);
 		}
+		else
+		{
+			gOfficilMapManager.addOfficilMap(_player, msg->mutable_map());
+		}
+	}
+}
+
+void Session::parseOfficilMapReq(google::protobuf::Message* p)
+{
+	if (_player != NULL)
+	{
+		message::MsgOfficilMapReq* msg = (message::MsgOfficilMapReq*)p;
+		gOfficilMapManager.getOfficilMap(_player, msg->page());
 	}
 }
 

@@ -30,6 +30,7 @@ public:
 
 	void parseSaveMap(google::protobuf::Message* p);
 	void parseDelMap(google::protobuf::Message* p);
+	void parseOfficilMapReq(google::protobuf::Message* p);
 	//Player* getPlayer(){return m_pkOwer;}
 protected:
 	tran_id_type m_tranid;
