@@ -11,35 +11,45 @@ public enum page_type
     page_type_rank,
     page_type_official,
 }
+
+public enum offcil_page_type
+{
+	offcil_page_type_section,
+	offcil_page_type_number
+}
 public class MainPanel : MonoBehaviour
 {
 
     // Use this for initialization
     public ChooseItemEntry[] _choose_Item_entry;
-    public Button[] _unselected;
-    public Button[] _selected;
+	public GameObject _play_obj_button;
+	public GameObject _create_obj_button;
+	public GameObject _edit_obj_button;
+	public GameObject _Back_obj_button;
+	public Button[] _title_button;
     public int _page_count;
     public GameObject _items_container;
     private List<ChooseItemEntry> _items = new List<ChooseItemEntry>();
     private page_type current_page = page_type.page_type_self_complete;
     private GameObject _source_item;
     private ulong _current_map_index;
+	private page_type _current_page;
     void selectTile(int index)
     {
-        int titile_count = _unselected.Length;
+		int titile_count = _title_button.Length;
         for (int i = 0; i < titile_count; i++)
         {
+			MainPanelTitleButtonItem temp = _title_button[i].GetComponent<MainPanelTitleButtonItem>();
             if (i == index)
             {
-                _unselected[i].gameObject.SetActive(false);
-                _selected[i].gameObject.SetActive(true);
+				temp.Select();
             }
             else
             {
-                _unselected[i].gameObject.SetActive(true);
-                _selected[i].gameObject.SetActive(false);
+				temp.Unselect();
             }
         }
+		_current_page = (page_type)index;
     }
 
     public void PlayClick()
@@ -158,24 +168,36 @@ public class MainPanel : MonoBehaviour
         selectTile((int)page);
         ClearItems();
         CrashPlayerInfo info = global_instance.Instance._player.GetInfo();
-        switch (page)
-        {
-            case page_type.page_type_self_complete:
-                {
-                    EnterSelfComplete();
-                }
-                break;
-            case page_type.page_type_self_incomplete:
-                {
-                    EnterSelfIncomplete();
-                }
-                break;
-            case page_type.page_type_rank:
-                {
+        switch (page) {
+		case page_type.page_type_self_complete:
+			{
+				EnterSelfComplete ();
+			}
+			break;
+		case page_type.page_type_self_incomplete:
+			{
+				EnterSelfIncomplete ();
+			}
+			break;
+		case page_type.page_type_rank:
+			{
 
-                }
-                break;
-        }
+			}
+			break;
+		case page_type.page_type_official:
+			{
+			Dictionary<int, string> officil_section_names = global_instance.Instance._player.get_officil_section_names();
+				foreach(KeyValuePair<int, string> key_temp in officil_section_names)
+				{
+					ChooseItemEntry temp = CreateItemEntry();
+					temp._txt_1.text = key_temp.Key.ToString();
+					temp._txt_2.text = key_temp.Value;
+					temp.transform.parent = _items_container.transform;						
+					_items.Add(temp);
+				}
+			}
+			break;
+		}
     }
 
 
@@ -203,28 +225,31 @@ public class MainPanel : MonoBehaviour
 
     public void ItemButtonClick(ChooseItemEntry entry)
     {
-        foreach(ChooseItemEntry temp in _items)
-        {
-            if(temp == entry)
-            {
-                temp.select();
-                _current_map_index = temp._map_index;
-            }
-            else
-            {
-                temp.unselect();
-            }
-        }
+		if (_current_page != page_type.page_type_official) 
+		{
+			foreach(ChooseItemEntry temp in _items)
+			{
+				if(temp == entry)
+				{
+					temp.select();
+					_current_map_index = temp._map_index;
+				}
+				else
+				{
+					temp.unselect();
+				}
+			}
+		}
 
     }
 
     public void TitleButtionClick(Button btn)
     {
-        int count = _unselected.Length;
+        int count = _title_button.Length;
         int click_buttion_index = -1;
         for (int i = 0; i < count; i++)
         {
-            if (_unselected[i] == btn)
+			if (_title_button[i] == btn)
             {
                 click_buttion_index = i;
                 break;

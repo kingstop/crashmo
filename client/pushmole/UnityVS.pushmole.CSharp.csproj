@@ -84,6 +84,7 @@
     <Compile Include="Assets\ChooseItemEntry.cs" />
     <Compile Include="Assets\CrashPlayer.cs" />
     <Compile Include="Assets\MainPanel.cs" />
+    <Compile Include="Assets\MainPanelTitleButtonItem.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />

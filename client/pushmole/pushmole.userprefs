@@ -1,18 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MainPanel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CrashPlayer.cs">
     <Files>
-      <File FileName="Assets/ChooseItemEntry.cs" Line="29" Column="48" />
-      <File FileName="Assets/MainPanel.cs" Line="138" Column="1" />
+      <File FileName="Assets/MainPanel.cs" Line="18" Column="25" />
+      <File FileName="Assets/ChooseItemEntry.cs" Line="8" Column="3" />
+      <File FileName="Assets/CrashPlayer.cs" Line="88" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="mole_net" expanded="True">
-              <Node name="proto-net" expanded="True" />
-            </Node>
-            <Node name="MainPanel.cs" selected="True" />
+            <Node name="CrashPlayer.cs" selected="True" />
           </Node>
         </State>
       </Pad>

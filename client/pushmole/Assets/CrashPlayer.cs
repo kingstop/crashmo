@@ -84,6 +84,13 @@ public class CrashPlayer
         }
         return temp;
     }
+
+	public Dictionary<int, string>  get_officil_section_names()
+	{
+		return _officil_section_names;
+	}
+
     protected Dictionary<int, Dictionary<int, CrashMapData>> _officil_map = new Dictionary<int, Dictionary<int, CrashMapData>>();
+	protected Dictionary<int, string> _officil_section_names = new Dictionary<int, string>();
     protected  CrashPlayerInfo _info;
 }
