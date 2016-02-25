@@ -333,9 +333,31 @@ public class ngui_edit_manager : MonoBehaviour {
                 break;
         }
         global_instance.Instance._net_client.update();
-       
-	
 	}
+
+    void UpdateKeyboard()
+    {
+        if(Input.GetKey(KeyCode.UpArrow))
+        {
+
+        }
+        else if(Input.GetKey(KeyCode.DownArrow))
+        {
+
+        }
+        else if(Input.GetKey(KeyCode.LeftArrow))
+        {
+
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+
+        }
+
+
+
+
+    }
 
     public int get_scrollbar_value(GameObject obj, int min, int max)
     {
