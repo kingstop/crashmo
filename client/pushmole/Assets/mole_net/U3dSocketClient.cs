@@ -25,14 +25,12 @@ public class u3dclient
     private String _gate_ip;
     private int _gate_port;
     private UInt64 _user_account;
-
     public u3dclient()
     {
         register_function();
         socket_client = new SocketClient(1048576, 1048576, 131072, null, new MessageHandler(MessageClient), 
             new CloseHandler(CloseClient), new ErrorHandler(ErrorClient), new ConnectHandler(on_connect));
     }
-
       public static u3dclient Instance 
      { 
           get  
@@ -115,16 +113,11 @@ public class u3dclient
     public void send(global::ProtoBuf.IExtensible base_msg)
     {
         String name = base_msg.ToString();
-        //String name = string_temp[1];
-        
         System.IO.MemoryStream mem = new System.IO.MemoryStream();
-
         ProtoBuf.Serializer.Serialize<global::ProtoBuf.IExtensible>(mem, base_msg);
-
         UInt32 length = (UInt32)mem.Length;
         byte[] bytes = new byte[length];
         Array.Copy(mem.GetBuffer(), bytes, length);
-
         UInt32 pb_flag = 0;
         UInt16 mask = 0;
         UInt32 crc32 = 0;
@@ -135,7 +128,7 @@ public class u3dclient
         byte[] sendbuff = new byte[max_length];
 
 
-         UInt32 write_length = sizeof(UInt16);
+        UInt32 write_length = sizeof(UInt16);
         UInt32 write_pos = 0;
        
        
@@ -224,11 +217,9 @@ public class u3dclient
         RegisterAccountFaildACK msg = ProtoBuf.Serializer.Deserialize<RegisterAccountFaildACK>(stream);
         return true;
     }
-
     private bool login_respone(System.IO.MemoryStream stream, SocketClient socketclient)
     {
         message.LoginResponse msg = ProtoBuf.Serializer.Deserialize<message.LoginResponse>(stream);
-        //Debug.Log("LoginResponse gate_ip[" + msg.gate_ip + "] gate_port[" + msg.gate_port.ToString() + "] chartype[" +msg.chartype.ToString()+ "] user_account[" +msg.user_account.ToString()+ "]");
         if (msg.result == enumLoginResult.enumLoginResult_Success)
         {
             socket_client.Disconnect();

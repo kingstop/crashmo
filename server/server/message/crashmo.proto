@@ -46,7 +46,8 @@ message MsgSaveMapACK
 {
 	required string map_name = 1;
 	required MapType save_type = 2 [default = OfficeMap];
-	required ServerError error = 3[default = ServerError_NO];
+	required CrashMapData map = 3;
+	required ServerError error = 4 [default = ServerError_NO];
 }
 
 message MsgOfficilMapReq

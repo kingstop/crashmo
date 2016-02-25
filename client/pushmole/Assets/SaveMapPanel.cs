@@ -3,7 +3,7 @@ using UnityEngine.UI;
 //using System.Collections;
 
 public class SaveMapPanel : MonoBehaviour {
-
+    public Button[] _btns;
     // Use this for initialization
     public Text _map_name;
     public Text _txt_msg;
@@ -16,6 +16,18 @@ public class SaveMapPanel : MonoBehaviour {
 	
 	}
 
+    void ButtonEnable(bool b)
+    {
+        foreach(Button entry in _btns)
+        {
+            entry.enabled = b;
+        }
+    }
+
+    void OnEnable()
+    {
+        ButtonEnable(true);
+    }
 
     public void onOKClick()
     {
@@ -52,12 +64,19 @@ public class SaveMapPanel : MonoBehaviour {
         }
         else
         {
-            global_instance.Instance._crash_mole_grid_manager.clear_edit_crash_mole_grid();
-            msginfo.IncompleteMap.Add(mapdata);
-            global_instance.Instance._player.SetInfo(msginfo);
-            setActive(false);
-            global_instance.Instance._ngui_edit_manager.show_main_panel();            
+            message.MsgSaveMapReq msg = new message.MsgSaveMapReq();
+            msg.map = mapdata;
+            msg.save_type = message.MapType.CompleteMap;
+            global_instance.Instance._client_session.send(msg);
+            ButtonEnable(false);
         }
+    }
+
+
+    public void SaveMapOk()
+    {
+        setActive(false);
+        global_instance.Instance._ngui_edit_manager.show_main_panel();
     }
 
     public void onCancelClick()

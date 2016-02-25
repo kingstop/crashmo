@@ -20,6 +20,9 @@ public class client_session
     {
         _MessageFun.Add("RegisterAccountFaildACK", RegisterFailed);
         _MessageFun.Add("CrashmoClientInit", CrashmoClientInit);
+        _MessageFun.Add("MsgSaveMapACK", SaveMap);
+        _MessageFun.Add("MsgDelMapACK", DelMap);
+        _MessageFun.Add("MsgOfficilMapACK", OfficilMapSave);
     }
 
     ~client_session()
@@ -34,6 +37,59 @@ public class client_session
         global_instance.Instance._ngui_edit_manager.show_main_panel();
         return true;
     }
+
+
+
+    private bool SaveMap(System.IO.MemoryStream stream)
+    {
+        MsgSaveMapACK msg = ProtoBuf.Serializer.Deserialize<MsgSaveMapACK>(stream);
+        if(msg.error == ServerError.ServerError_NO)
+        {
+            CrashPlayerInfo player_info = global_instance.Instance._player.GetInfo();
+            switch(msg.save_type)
+            {
+                case MapType.CompleteMap:
+                    {
+                        player_info.CompleteMap.Add(msg.map);
+                    }
+                    break;
+                case MapType.ImcompleteMap:
+                    {
+                        player_info.IncompleteMap.Add(msg.map);
+                    }
+                    break;
+                case MapType.OfficeMap:
+                    {
+                        global_instance.Instance._player.add_map(msg.map);
+                    }
+                    break;
+            }
+            global_instance.Instance._player.SetInfo(player_info);
+            global_instance.Instance._ngui_edit_manager._SaveMapPanel.SaveMapOk();
+        }
+        
+        return true;
+    }
+
+    private bool DelMap(System.IO.MemoryStream stream)
+    {
+        MsgDelMapACK msg = ProtoBuf.Serializer.Deserialize<MsgDelMapACK>(stream);
+        
+        return true;
+    }
+
+    private bool OfficilMapSave(System.IO.MemoryStream stream)
+    {
+        MsgOfficilMapACK msg = ProtoBuf.Serializer.Deserialize<MsgOfficilMapACK>(stream);
+        foreach(CrashMapData map in msg.maps)
+        {
+            global_instance.Instance._player.add_map(map);
+        }
+        
+        return true;
+    }
+
+
 
     public void addmsg(string name, System.IO.MemoryStream stream)
     {
@@ -51,6 +107,11 @@ public class client_session
         RegisterAccountFaildACK msg = ProtoBuf.Serializer.Deserialize<RegisterAccountFaildACK>(stream);
 
         return true;
+    }
+
+    public void send(global::ProtoBuf.IExtensible base_msg)
+    {
+        global_instance.Instance._net_client.send(base_msg);
     }
     public void update()
     {

@@ -119,8 +119,15 @@ namespace message
       get { return _save_type; }
       set { _save_type = value; }
     }
+    private message.CrashMapData _map;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public message.CrashMapData map
+    {
+      get { return _map; }
+      set { _map = value; }
+    }
     private message.ServerError _error;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public message.ServerError error
     {
       get { return _error; }
