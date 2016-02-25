@@ -144,6 +144,7 @@ public class MainPanel : MonoBehaviour
         MapData temp_ = new MapData();
         temp_.set_info(entry);
         temp.SetTexture(temp_.CreateTexture());
+        temp.gameObject.SetActive(true);
         _items.Add(temp);
     }
 

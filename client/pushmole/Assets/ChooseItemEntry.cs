@@ -5,10 +5,11 @@ public class ChooseItemEntry : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
-		Image temp = GetComponent<Image>();
-		temp.color = new Color(255, 255, 255);
-	}
+
+        selectstate(false);
+        //Image temp = GetComponent<Image>();
+        //temp.color = new Color(255, 255, 255);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -16,16 +17,19 @@ public class ChooseItemEntry : MonoBehaviour {
 	}
     public void unselect()
     {
-        Image temp = GetComponent<Image>();
-		//_back_ground.color = new Color(255, 255, 255);
+
+        selectstate(false);
+        //GetComponent<Button>(). 
+        //Image temp = GetComponent<Image>();
+        //_back_ground.color = new Color(255, 255, 255);
     }
      
     public void select()
     {
-
+        selectstate(true);
 
        // Image temp = GetComponent<Image>();
-		//_back_ground.color = new Color(74, 161, 184);
+       //_back_ground.color = new Color(74, 161, 184);
     }
 
     public void OnButtonClick()
@@ -42,9 +46,16 @@ public class ChooseItemEntry : MonoBehaviour {
             _image.material = material_temp;            
         }
     }
+    private void selectstate(bool b)
+    {
+        _select_image.gameObject.SetActive(b);
+        _unselect_image.gameObject.SetActive(!b);
+    }
     public Text _txt_1;
     public Text _txt_2;
     public Text _txt_3;
     public Image _image;
+    public Image _select_image;
+    public Image _unselect_image;
     public ulong _map_index;
 }
