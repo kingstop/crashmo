@@ -974,10 +974,7 @@ public class crash_manager
             GameObject obj_temp = Resources.Load<GameObject>("prefab/creature");
             GameObject obj_creature = Object.Instantiate<GameObject>(obj_temp);
             _creature = obj_creature.GetComponent<creature>();            
-            _creature.set_creature_type(creature_type.creature_2);
-            //float position_x = transform_to_position(9);
-            //float position_y = transform_to_position(0);
-            //float position_z = transform_to_position(7);                     
+            _creature.set_creature_type(creature_type.creature_2);              
         }
         _camera_dir = camera_dir.front;
         _want_camera_dir = want_move_dir.no;

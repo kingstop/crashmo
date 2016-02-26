@@ -44,6 +44,7 @@ public class MainPanel : MonoBehaviour
     private ulong _current_map_index;
     private page_type _current_page;
     private offcil_page_type _officil_page_type;
+    private int _section_number;
     void selectTile(int index)
     {
         int titile_count = _title_button.Length;
@@ -64,13 +65,24 @@ public class MainPanel : MonoBehaviour
 
     public void PlayClick()
     {
-        message.CrashMapData MapDataTemp = GetCurrentSelectMapData();
-
-        MapData temp = new MapData();
-        temp.set_info(MapDataTemp);
-        //global_instance.Instance._crash_manager
-        global_instance.Instance.SetMapData(temp);
-        global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
+        message.CrashMapData MapDataTemp = null;
+        if (_current_page == page_type.page_type_official)
+        {
+            MapDataTemp = global_instance.Instance._player.getOfficilMap(_section_number, (int)_current_map_index);
+        }
+        else
+        {
+            MapDataTemp = GetCurrentSelectMapData();
+        }
+        
+        if(MapDataTemp != null)
+        {
+            MapData temp = new MapData();
+            temp.set_info(MapDataTemp);
+            //global_instance.Instance._crash_manager
+            global_instance.Instance.SetMapData(temp);
+            global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
+        }
     }
     public void CreateClick()
     {
@@ -149,7 +161,7 @@ public class MainPanel : MonoBehaviour
         CrashPlayerInfo Info = global_instance.Instance._player.GetInfo();
         foreach (CrashMapData entry in Info.CompleteMap)
         {
-            addSelfItem(entry);
+            addItem(entry);
         }
     }
 
@@ -159,7 +171,7 @@ public class MainPanel : MonoBehaviour
         CrashPlayerInfo Info = global_instance.Instance._player.GetInfo();
         foreach (CrashMapData entry in Info.IncompleteMap)
         {
-            addSelfItem(entry);
+            addItem(entry);
         }
     }
 
@@ -169,7 +181,7 @@ public class MainPanel : MonoBehaviour
         ChooseItemEntry entry = obj_temp.GetComponent<ChooseItemEntry>();
         return entry;
     }
-    void addSelfItem(CrashMapData entry)
+    void addItem(CrashMapData entry, bool self = true)
     {
         ChooseItemEntry temp = CreateItemEntry();
         temp._txt_1.text = entry.MapName;
@@ -177,12 +189,23 @@ public class MainPanel : MonoBehaviour
         System.DateTime time = new System.DateTime(1970, 1, 1).ToLocalTime().AddSeconds(entry.create_time);
         temp._txt_3.text = time.ToString();
         temp._map_index = entry.Data.map_index;
-        temp.transform.parent = _items_container.transform;
         MapData temp_ = new MapData();
         temp_.set_info(entry);
         temp.SetTexture(temp_.CreateTexture());
         temp.gameObject.SetActive(true);
-        _items.Add(temp);
+        if (self)
+        {
+            temp.transform.parent = _items_container.transform;
+            _items.Add(temp);
+        }
+        else
+        {
+            temp._map_index = (ulong)entry.number;
+            temp.transform.parent = _officil_items_container.transform;
+            _officil_items.Add(temp);
+        }
+
+
     }
 
     void Awake()
@@ -276,7 +299,7 @@ public class MainPanel : MonoBehaviour
     {
         if(_current_page == page_type.page_type_official && _officil_page_type == offcil_page_type.offcil_page_type_number)
         {
-            foreach (ChooseItemEntry temp in _items)
+            foreach (ChooseItemEntry temp in _officil_items)
             {
                 if (temp == entry)
                 {
@@ -312,11 +335,23 @@ public class MainPanel : MonoBehaviour
             if (_officil_page_type == offcil_page_type.offcil_page_type_section)
             {
                 EnterToContainer(containers_type_panel.containers_type_panel_officil);
+                List<CrashMapData> list_maps = global_instance.Instance._player.getPageMaps((int)_current_map_index);
                 _play_obj_button.SetActive(true);
                 _create_obj_button.SetActive(false);
                 _edit_obj_button.SetActive(false);
                 _Back_obj_button.SetActive(true);
-}
+                foreach (ChooseItemEntry entry_temp in _officil_items)
+                {
+                    entry_temp.transform.parent = null;
+                    Destroy(entry_temp.gameObject);
+                }               
+                _officil_items.Clear();
+                foreach(CrashMapData entry_map in list_maps)
+                {
+                    addItem(entry_map, false);
+                }
+                _current_map_index = 0;
+            }
         }
     }
 
