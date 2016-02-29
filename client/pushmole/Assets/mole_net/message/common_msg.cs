@@ -164,6 +164,13 @@ namespace message
       get { return _CompleteMap; }
     }
   
+    private bool _isadmin;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"isadmin", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool isadmin
+    {
+      get { return _isadmin; }
+      set { _isadmin = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

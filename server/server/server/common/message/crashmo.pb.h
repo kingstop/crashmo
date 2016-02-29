@@ -578,10 +578,19 @@ class MsgSaveMapACK : public ::google::protobuf::Message {
   ::message::MapType save_type() const;
   void set_save_type(::message::MapType value);
 
-  // required .message.ServerError error = 3 [default = ServerError_NO];
+  // required .message.CrashMapData map = 3;
+  bool has_map() const;
+  void clear_map();
+  static const int kMapFieldNumber = 3;
+  const ::message::CrashMapData& map() const;
+  ::message::CrashMapData* mutable_map();
+  ::message::CrashMapData* release_map();
+  void set_allocated_map(::message::CrashMapData* map);
+
+  // required .message.ServerError error = 4 [default = ServerError_NO];
   bool has_error() const;
   void clear_error();
-  static const int kErrorFieldNumber = 3;
+  static const int kErrorFieldNumber = 4;
   ::message::ServerError error() const;
   void set_error(::message::ServerError value);
 
@@ -591,6 +600,8 @@ class MsgSaveMapACK : public ::google::protobuf::Message {
   inline void clear_has_map_name();
   inline void set_has_save_type();
   inline void clear_has_save_type();
+  inline void set_has_map();
+  inline void clear_has_map();
   inline void set_has_error();
   inline void clear_has_error();
 
@@ -601,6 +612,7 @@ class MsgSaveMapACK : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::internal::ArenaStringPtr map_name_;
+  ::message::CrashMapData* map_;
   int save_type_;
   int error_;
   friend void  protobuf_AddDesc_crashmo_2eproto();
@@ -1170,15 +1182,58 @@ inline void MsgSaveMapACK::set_save_type(::message::MapType value) {
   // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.save_type)
 }
 
-// required .message.ServerError error = 3 [default = ServerError_NO];
-inline bool MsgSaveMapACK::has_error() const {
+// required .message.CrashMapData map = 3;
+inline bool MsgSaveMapACK::has_map() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void MsgSaveMapACK::set_has_error() {
+inline void MsgSaveMapACK::set_has_map() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void MsgSaveMapACK::clear_has_error() {
+inline void MsgSaveMapACK::clear_has_map() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void MsgSaveMapACK::clear_map() {
+  if (map_ != NULL) map_->::message::CrashMapData::Clear();
+  clear_has_map();
+}
+inline const ::message::CrashMapData& MsgSaveMapACK::map() const {
+  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.map)
+  return map_ != NULL ? *map_ : *default_instance_->map_;
+}
+inline ::message::CrashMapData* MsgSaveMapACK::mutable_map() {
+  set_has_map();
+  if (map_ == NULL) {
+    map_ = new ::message::CrashMapData;
+  }
+  // @@protoc_insertion_point(field_mutable:message.MsgSaveMapACK.map)
+  return map_;
+}
+inline ::message::CrashMapData* MsgSaveMapACK::release_map() {
+  clear_has_map();
+  ::message::CrashMapData* temp = map_;
+  map_ = NULL;
+  return temp;
+}
+inline void MsgSaveMapACK::set_allocated_map(::message::CrashMapData* map) {
+  delete map_;
+  map_ = map;
+  if (map) {
+    set_has_map();
+  } else {
+    clear_has_map();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.MsgSaveMapACK.map)
+}
+
+// required .message.ServerError error = 4 [default = ServerError_NO];
+inline bool MsgSaveMapACK::has_error() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void MsgSaveMapACK::set_has_error() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void MsgSaveMapACK::clear_has_error() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgSaveMapACK::clear_error() {
   error_ = 0;

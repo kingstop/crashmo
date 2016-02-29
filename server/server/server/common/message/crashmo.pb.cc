@@ -117,9 +117,10 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapACK, _internal_metadata_),
       -1);
   MsgSaveMapACK_descriptor_ = file->message_type(4);
-  static const int MsgSaveMapACK_offsets_[3] = {
+  static const int MsgSaveMapACK_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, map_name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, save_type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, map_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, error_),
   };
   MsgSaveMapACK_reflection_ =
@@ -230,18 +231,18 @@ void protobuf_AddDesc_crashmo_2eproto() {
     "sgDelMapACK\022\020\n\010map_name\030\001 \002(\t\022-\n\010map_typ"
     "e\030\002 \002(\0162\020.message.MapType:\tOfficeMap\0223\n\005"
     "error\030\003 \002(\0162\024.message.ServerError:\016Serve"
-    "rError_NO\"\206\001\n\rMsgSaveMapACK\022\020\n\010map_name\030"
+    "rError_NO\"\252\001\n\rMsgSaveMapACK\022\020\n\010map_name\030"
     "\001 \002(\t\022.\n\tsave_type\030\002 \002(\0162\020.message.MapTy"
-    "pe:\tOfficeMap\0223\n\005error\030\003 \002(\0162\024.message.S"
-    "erverError:\016ServerError_NO\" \n\020MsgOfficil"
-    "MapReq\022\014\n\004page\030\001 \002(\005\"E\n\020MsgOfficilMapACK"
-    "\022\014\n\004page\030\001 \002(\005\022#\n\004maps\030\002 \003(\0132\025.message.C"
-    "rashMapData*\177\n\013ServerError\022\022\n\016ServerErro"
-    "r_NO\020\000\022\026\n\022ServerError_Unknow\020\001\022\034\n\030Server"
-    "Error_HaveSameName\020\002\022&\n\"ServerError_NotF"
-    "oundMapNameWhenDel\020\003*<\n\007MapType\022\r\n\tOffic"
-    "eMap\020\001\022\021\n\rImcompleteMap\020\002\022\017\n\013CompleteMap"
-    "\020\003", 802);
+    "pe:\tOfficeMap\022\"\n\003map\030\003 \002(\0132\025.message.Cra"
+    "shMapData\0223\n\005error\030\004 \002(\0162\024.message.Serve"
+    "rError:\016ServerError_NO\" \n\020MsgOfficilMapR"
+    "eq\022\014\n\004page\030\001 \002(\005\"E\n\020MsgOfficilMapACK\022\014\n\004"
+    "page\030\001 \002(\005\022#\n\004maps\030\002 \003(\0132\025.message.Crash"
+    "MapData*\177\n\013ServerError\022\022\n\016ServerError_NO"
+    "\020\000\022\026\n\022ServerError_Unknow\020\001\022\034\n\030ServerErro"
+    "r_HaveSameName\020\002\022&\n\"ServerError_NotFound"
+    "MapNameWhenDel\020\003*<\n\007MapType\022\r\n\tOfficeMap"
+    "\020\001\022\021\n\rImcompleteMap\020\002\022\017\n\013CompleteMap\020\003", 838);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "crashmo.proto", &protobuf_RegisterTypes);
   CrashmoClientInit::default_instance_ = new CrashmoClientInit();
@@ -1754,6 +1755,7 @@ void MsgDelMapACK::InternalSwap(MsgDelMapACK* other) {
 #ifndef _MSC_VER
 const int MsgSaveMapACK::kMapNameFieldNumber;
 const int MsgSaveMapACK::kSaveTypeFieldNumber;
+const int MsgSaveMapACK::kMapFieldNumber;
 const int MsgSaveMapACK::kErrorFieldNumber;
 #endif  // !_MSC_VER
 
@@ -1764,6 +1766,7 @@ MsgSaveMapACK::MsgSaveMapACK()
 }
 
 void MsgSaveMapACK::InitAsDefaultInstance() {
+  map_ = const_cast< ::message::CrashMapData*>(&::message::CrashMapData::default_instance());
 }
 
 MsgSaveMapACK::MsgSaveMapACK(const MsgSaveMapACK& from)
@@ -1779,6 +1782,7 @@ void MsgSaveMapACK::SharedCtor() {
   _cached_size_ = 0;
   map_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   save_type_ = 1;
+  map_ = NULL;
   error_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -1791,6 +1795,7 @@ MsgSaveMapACK::~MsgSaveMapACK() {
 void MsgSaveMapACK::SharedDtor() {
   map_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
+    delete map_;
   }
 }
 
@@ -1820,11 +1825,14 @@ MsgSaveMapACK* MsgSaveMapACK::New(::google::protobuf::Arena* arena) const {
 }
 
 void MsgSaveMapACK::Clear() {
-  if (_has_bits_[0 / 32] & 7) {
+  if (_has_bits_[0 / 32] & 15) {
     if (has_map_name()) {
       map_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
     save_type_ = 1;
+    if (has_map()) {
+      if (map_ != NULL) map_->::message::CrashMapData::Clear();
+    }
     error_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1875,13 +1883,26 @@ bool MsgSaveMapACK::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(24)) goto parse_error;
+        if (input->ExpectTag(26)) goto parse_map;
         break;
       }
 
-      // required .message.ServerError error = 3 [default = ServerError_NO];
+      // required .message.CrashMapData map = 3;
       case 3: {
-        if (tag == 24) {
+        if (tag == 26) {
+         parse_map:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_map()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_error;
+        break;
+      }
+
+      // required .message.ServerError error = 4 [default = ServerError_NO];
+      case 4: {
+        if (tag == 32) {
          parse_error:
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -1890,7 +1911,7 @@ bool MsgSaveMapACK::MergePartialFromCodedStream(
           if (::message::ServerError_IsValid(value)) {
             set_error(static_cast< ::message::ServerError >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(3, value);
+            mutable_unknown_fields()->AddVarint(4, value);
           }
         } else {
           goto handle_unusual;
@@ -1940,10 +1961,16 @@ void MsgSaveMapACK::SerializeWithCachedSizes(
       2, this->save_type(), output);
   }
 
-  // required .message.ServerError error = 3 [default = ServerError_NO];
+  // required .message.CrashMapData map = 3;
+  if (has_map()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *this->map_, output);
+  }
+
+  // required .message.ServerError error = 4 [default = ServerError_NO];
   if (has_error()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      3, this->error(), output);
+      4, this->error(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1973,10 +2000,17 @@ void MsgSaveMapACK::SerializeWithCachedSizes(
       2, this->save_type(), target);
   }
 
-  // required .message.ServerError error = 3 [default = ServerError_NO];
+  // required .message.CrashMapData map = 3;
+  if (has_map()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, *this->map_, target);
+  }
+
+  // required .message.ServerError error = 4 [default = ServerError_NO];
   if (has_error()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      3, this->error(), target);
+      4, this->error(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2003,8 +2037,15 @@ int MsgSaveMapACK::RequiredFieldsByteSizeFallback() const {
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->save_type());
   }
 
+  if (has_map()) {
+    // required .message.CrashMapData map = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->map_);
+  }
+
   if (has_error()) {
-    // required .message.ServerError error = 3 [default = ServerError_NO];
+    // required .message.ServerError error = 4 [default = ServerError_NO];
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->error());
   }
@@ -2014,7 +2055,7 @@ int MsgSaveMapACK::RequiredFieldsByteSizeFallback() const {
 int MsgSaveMapACK::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
     // required string map_name = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -2024,7 +2065,12 @@ int MsgSaveMapACK::ByteSize() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->save_type());
 
-    // required .message.ServerError error = 3 [default = ServerError_NO];
+    // required .message.CrashMapData map = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->map_);
+
+    // required .message.ServerError error = 4 [default = ServerError_NO];
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->error());
 
@@ -2064,6 +2110,9 @@ void MsgSaveMapACK::MergeFrom(const MsgSaveMapACK& from) {
     if (from.has_save_type()) {
       set_save_type(from.save_type());
     }
+    if (from.has_map()) {
+      mutable_map()->::message::CrashMapData::MergeFrom(from.map());
+    }
     if (from.has_error()) {
       set_error(from.error());
     }
@@ -2086,8 +2135,11 @@ void MsgSaveMapACK::CopyFrom(const MsgSaveMapACK& from) {
 }
 
 bool MsgSaveMapACK::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
 
+  if (has_map()) {
+    if (!this->map_->IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -2098,6 +2150,7 @@ void MsgSaveMapACK::Swap(MsgSaveMapACK* other) {
 void MsgSaveMapACK::InternalSwap(MsgSaveMapACK* other) {
   map_name_.Swap(&other->map_name_);
   std::swap(save_type_, other->save_type_);
+  std::swap(map_, other->map_);
   std::swap(error_, other->error_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -2193,15 +2246,58 @@ void MsgSaveMapACK::InternalSwap(MsgSaveMapACK* other) {
   // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.save_type)
 }
 
-// required .message.ServerError error = 3 [default = ServerError_NO];
- bool MsgSaveMapACK::has_error() const {
+// required .message.CrashMapData map = 3;
+ bool MsgSaveMapACK::has_map() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
- void MsgSaveMapACK::set_has_error() {
+ void MsgSaveMapACK::set_has_map() {
   _has_bits_[0] |= 0x00000004u;
 }
- void MsgSaveMapACK::clear_has_error() {
+ void MsgSaveMapACK::clear_has_map() {
   _has_bits_[0] &= ~0x00000004u;
+}
+ void MsgSaveMapACK::clear_map() {
+  if (map_ != NULL) map_->::message::CrashMapData::Clear();
+  clear_has_map();
+}
+ const ::message::CrashMapData& MsgSaveMapACK::map() const {
+  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.map)
+  return map_ != NULL ? *map_ : *default_instance_->map_;
+}
+ ::message::CrashMapData* MsgSaveMapACK::mutable_map() {
+  set_has_map();
+  if (map_ == NULL) {
+    map_ = new ::message::CrashMapData;
+  }
+  // @@protoc_insertion_point(field_mutable:message.MsgSaveMapACK.map)
+  return map_;
+}
+ ::message::CrashMapData* MsgSaveMapACK::release_map() {
+  clear_has_map();
+  ::message::CrashMapData* temp = map_;
+  map_ = NULL;
+  return temp;
+}
+ void MsgSaveMapACK::set_allocated_map(::message::CrashMapData* map) {
+  delete map_;
+  map_ = map;
+  if (map) {
+    set_has_map();
+  } else {
+    clear_has_map();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.MsgSaveMapACK.map)
+}
+
+// required .message.ServerError error = 4 [default = ServerError_NO];
+ bool MsgSaveMapACK::has_error() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+ void MsgSaveMapACK::set_has_error() {
+  _has_bits_[0] |= 0x00000008u;
+}
+ void MsgSaveMapACK::clear_has_error() {
+  _has_bits_[0] &= ~0x00000008u;
 }
  void MsgSaveMapACK::clear_error() {
   error_ = 0;

@@ -96,13 +96,14 @@ void protobuf_AssignDesc_common_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, _internal_metadata_),
       -1);
   CrashPlayerInfo_descriptor_ = file->message_type(3);
-  static const int CrashPlayerInfo_offsets_[6] = {
+  static const int CrashPlayerInfo_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, account_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, pass_point_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, pass_section_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, incompletemap_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, completemap_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, isadmin_),
   };
   CrashPlayerInfo_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -164,12 +165,12 @@ void protobuf_AddDesc_common_2eproto() {
     "(\004\"\225\001\n\014CrashMapData\022)\n\004Data\030\001 \002(\0132\033.mess"
     "age.CrashmoMapBaseData\022\017\n\007MapName\030\002 \002(\t\022"
     "\023\n\013CreaterName\030\003 \002(\t\022\017\n\007Section\030\004 \002(\005\022\016\n"
-    "\006number\030\005 \002(\005\022\023\n\013create_time\030\006 \002(\004\"\264\001\n\017C"
+    "\006number\030\005 \002(\005\022\023\n\013create_time\030\006 \002(\004\"\305\001\n\017C"
     "rashPlayerInfo\022\017\n\007account\030\001 \002(\004\022\022\n\npass_"
     "point\030\002 \002(\005\022\024\n\014pass_section\030\004 \002(\005\022\014\n\004nam"
     "e\030\005 \002(\t\022,\n\rIncompleteMap\030\006 \003(\0132\025.message"
     ".CrashMapData\022*\n\013CompleteMap\030\007 \003(\0132\025.mes"
-    "sage.CrashMapData", 497);
+    "sage.CrashMapData\022\017\n\007isadmin\030\010 \002(\010", 514);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   int32array::default_instance_ = new int32array();
@@ -1717,6 +1718,7 @@ const int CrashPlayerInfo::kPassSectionFieldNumber;
 const int CrashPlayerInfo::kNameFieldNumber;
 const int CrashPlayerInfo::kIncompleteMapFieldNumber;
 const int CrashPlayerInfo::kCompleteMapFieldNumber;
+const int CrashPlayerInfo::kIsadminFieldNumber;
 #endif  // !_MSC_VER
 
 CrashPlayerInfo::CrashPlayerInfo()
@@ -1743,6 +1745,7 @@ void CrashPlayerInfo::SharedCtor() {
   pass_point_ = 0;
   pass_section_ = 0;
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  isadmin_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1791,11 +1794,12 @@ void CrashPlayerInfo::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  if (_has_bits_[0 / 32] & 15) {
+  if (_has_bits_[0 / 32] & 79) {
     ZR_(account_, pass_section_);
     if (has_name()) {
       name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
+    isadmin_ = false;
   }
 
 #undef ZR_HELPER_
@@ -1904,6 +1908,21 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
           goto handle_unusual;
         }
         if (input->ExpectTag(58)) goto parse_CompleteMap;
+        if (input->ExpectTag(64)) goto parse_isadmin;
+        break;
+      }
+
+      // required bool isadmin = 8;
+      case 8: {
+        if (tag == 64) {
+         parse_isadmin:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &isadmin_)));
+          set_has_isadmin();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1970,6 +1989,11 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
       7, this->completemap(i), output);
   }
 
+  // required bool isadmin = 8;
+  if (has_isadmin()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->isadmin(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -2020,6 +2044,11 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
         7, this->completemap(i), target);
   }
 
+  // required bool isadmin = 8;
+  if (has_isadmin()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->isadmin(), target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -2059,12 +2088,17 @@ int CrashPlayerInfo::RequiredFieldsByteSizeFallback() const {
         this->name());
   }
 
+  if (has_isadmin()) {
+    // required bool isadmin = 8;
+    total_size += 1 + 1;
+  }
+
   return total_size;
 }
 int CrashPlayerInfo::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000004f) ^ 0x0000004f) == 0) {  // All required fields are present.
     // required uint64 account = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
@@ -2084,6 +2118,9 @@ int CrashPlayerInfo::ByteSize() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->name());
+
+    // required bool isadmin = 8;
+    total_size += 1 + 1;
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -2145,6 +2182,9 @@ void CrashPlayerInfo::MergeFrom(const CrashPlayerInfo& from) {
       set_has_name();
       name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
     }
+    if (from.has_isadmin()) {
+      set_isadmin(from.isadmin());
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -2164,7 +2204,7 @@ void CrashPlayerInfo::CopyFrom(const CrashPlayerInfo& from) {
 }
 
 bool CrashPlayerInfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+  if ((_has_bits_[0] & 0x0000004f) != 0x0000004f) return false;
 
   if (!::google::protobuf::internal::AllAreInitialized(this->incompletemap())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->completemap())) return false;
@@ -2182,6 +2222,7 @@ void CrashPlayerInfo::InternalSwap(CrashPlayerInfo* other) {
   name_.Swap(&other->name_);
   incompletemap_.UnsafeArenaSwap(&other->incompletemap_);
   completemap_.UnsafeArenaSwap(&other->completemap_);
+  std::swap(isadmin_, other->isadmin_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -2381,6 +2422,30 @@ CrashPlayerInfo::completemap() const {
 CrashPlayerInfo::mutable_completemap() {
   // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.CompleteMap)
   return &completemap_;
+}
+
+// required bool isadmin = 8;
+ bool CrashPlayerInfo::has_isadmin() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+ void CrashPlayerInfo::set_has_isadmin() {
+  _has_bits_[0] |= 0x00000040u;
+}
+ void CrashPlayerInfo::clear_has_isadmin() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+ void CrashPlayerInfo::clear_isadmin() {
+  isadmin_ = false;
+  clear_has_isadmin();
+}
+ bool CrashPlayerInfo::isadmin() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.isadmin)
+  return isadmin_;
+}
+ void CrashPlayerInfo::set_isadmin(bool value) {
+  set_has_isadmin();
+  isadmin_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.isadmin)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -535,6 +535,13 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
       mutable_completemap();
 
+  // required bool isadmin = 8;
+  bool has_isadmin() const;
+  void clear_isadmin();
+  static const int kIsadminFieldNumber = 8;
+  bool isadmin() const;
+  void set_isadmin(bool value);
+
   // @@protoc_insertion_point(class_scope:message.CrashPlayerInfo)
  private:
   inline void set_has_account();
@@ -545,6 +552,8 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   inline void clear_has_pass_section();
   inline void set_has_name();
   inline void clear_has_name();
+  inline void set_has_isadmin();
+  inline void clear_has_isadmin();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -558,6 +567,7 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > incompletemap_;
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > completemap_;
+  bool isadmin_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
   friend void protobuf_ShutdownFile_common_2eproto();
@@ -1121,6 +1131,30 @@ inline ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
 CrashPlayerInfo::mutable_completemap() {
   // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.CompleteMap)
   return &completemap_;
+}
+
+// required bool isadmin = 8;
+inline bool CrashPlayerInfo::has_isadmin() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void CrashPlayerInfo::set_has_isadmin() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void CrashPlayerInfo::clear_has_isadmin() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void CrashPlayerInfo::clear_isadmin() {
+  isadmin_ = false;
+  clear_has_isadmin();
+}
+inline bool CrashPlayerInfo::isadmin() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.isadmin)
+  return isadmin_;
+}
+inline void CrashPlayerInfo::set_isadmin(bool value) {
+  set_has_isadmin();
+  isadmin_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.isadmin)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

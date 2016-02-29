@@ -90,6 +90,11 @@ public class CrashPlayer
 		return _officil_section_names;
 	}
 
+    public bool isadmin()
+    {
+        return _info.isadmin;
+    }
+
     protected Dictionary<int, Dictionary<int, CrashMapData>> _officil_map = new Dictionary<int, Dictionary<int, CrashMapData>>();
 	protected Dictionary<int, string> _officil_section_names = new Dictionary<int, string>();
     protected  CrashPlayerInfo _info;
