@@ -12,7 +12,7 @@ bool init()
 	message::protobuf_AssignDesc_msgs2s_2eproto();
 	message::protobuf_AssignDesc_msgs2c_2eproto();
 	message::protobuf_AssignDesc_msg_5fgate_5fgame_2eproto();
-	message::protobuf_AssignDesc_gs2client_2eproto();
+	//message::protobuf_AssignDesc_gs2client_2eproto();
 	message::protobuf_AssignDesc_crashmo_2eproto();
 	
 	Mylog::log_init(LOG4CXX_LOG_CONFIG);

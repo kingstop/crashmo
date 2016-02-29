@@ -62,20 +62,6 @@ Session::Session(tran_id_type t, account_type a, u16 gate)
 		_player->SetSession(this);
 
 	}
-//	_character = gCharacterManager.getNoneCharacter(m_account);
-	//if (_character == NULL)
-	//{
-	//	message::ApplyCharacterDataReq msg;
-	//	msg.set_account(m_account);
-	//	gGSDBClient.sendPBMessage(&msg, m_tranid);
-	//}
-	//else
-	//{
-	//	_character->set_session(this);
-	//	message::NoneCharacter2Client msg_info = _character->createInfoForClient();
-	//	sendPBMessage(&msg_info);
-	//	_character->startSave();
-	//}
 }
 
 Session::~Session()

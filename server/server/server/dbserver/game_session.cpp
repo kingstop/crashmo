@@ -50,7 +50,7 @@ void GameSession::parseReqSaveCharacterData(google::protobuf::Message* p, pb_fla
 
 void GameSession::parseNoneCharacterDataServerReq(google::protobuf::Message* p, pb_flag_type flag)
 {
-	message::NoneCharacterDataServer* msg = (message::NoneCharacterDataServer*) p;
+//	message::NoneCharacterDataServer* msg = (message::NoneCharacterDataServer*) p;
 	//gDBQuestMgr.saveCharacterInfo(msg);
 	
 
@@ -62,7 +62,7 @@ void GameSession::initPBModule()
 	ProtocMsgBase<GameSession>::registerSDFun(&GameSession::send_message, &GameSession::parseGameMsg);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::MsgServerRegister), &GameSession::parseGameRegister);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ApplyCharacterDataReq), &GameSession::parseApplyCharacterDataReq);
-	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::NoneCharacterDataServer), &GameSession::parseNoneCharacterDataServerReq);
+	//ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::NoneCharacterDataServer), &GameSession::parseNoneCharacterDataServerReq);
 }
 
 void GameSession::proc_message( const message_t& msg )

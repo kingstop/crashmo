@@ -21,7 +21,7 @@
 #include "message/msgs2c.pb.h"
 #include "message/common.pb.h"
 #include "message/login.pb.h"
-#include "message/gs2client.pb.h"
+//#include "message/gs2client.pb.h"
 //#include "message/mail.pb.h"
 #include "server.h"
 #include "game_manager.h"

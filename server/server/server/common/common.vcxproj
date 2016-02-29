@@ -98,7 +98,6 @@
     <ClInclude Include="memory.h" />
     <ClInclude Include="message\common.pb.h" />
     <ClInclude Include="message\crashmo.pb.h" />
-    <ClInclude Include="message\gs2client.pb.h" />
     <ClInclude Include="message\login.pb.h" />
     <ClInclude Include="message\msgs2c.pb.h" />
     <ClInclude Include="message\msgs2s.pb.h" />
@@ -136,7 +135,6 @@
     <ClCompile Include="md5.cpp" />
     <ClCompile Include="message\common.pb.cc" />
     <ClCompile Include="message\crashmo.pb.cc" />
-    <ClCompile Include="message\gs2client.pb.cc" />
     <ClCompile Include="message\login.pb.cc" />
     <ClCompile Include="message\msgs2c.pb.cc" />
     <ClCompile Include="message\msgs2s.pb.cc" />

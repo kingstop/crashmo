@@ -21,7 +21,7 @@
 #include "message/msgs2s.pb.h"
 #include "message/msg_gate_game.pb.h"
 #include "message/msg_game_db.pb.h"
-#include "message/gs2client.pb.h"
+//#include "message/gs2client.pb.h"
 #include "message/crashmo.pb.h"
 #include "server.h"
 #include "gate_manager.h"

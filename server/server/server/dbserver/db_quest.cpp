@@ -23,24 +23,24 @@ enum
 	_SAVE_FARM_THREAD_,
 };
 
-struct TSQueryInfo
-{
-	TSQueryInfo(account_type acc, u16 gid, tran_id_type trid)
-	{
-		account_ = acc;
-		gsid_ = gid;
-		tranid_ = trid;
-	}
-	account_type account_;
-	u16 gsid_;
-	u8 result_;
-	tran_id_type tranid_;
-	message::NoneCharacterDataServer Data;
-};
+//struct TSQueryInfo
+//{
+//	TSQueryInfo(account_type acc, u16 gid, tran_id_type trid)
+//	{
+//		account_ = acc;
+//		gsid_ = gid;
+//		tranid_ = trid;
+//	}
+//	account_type account_;
+//	u16 gsid_;
+//	u8 result_;
+//	tran_id_type tranid_;
+//	message::NoneCharacterDataServer Data;
+//};
 
 void DBQuestManager::queryInfo(account_type a, tran_id_type t, u16 gs)
 {
-	gDBCharDatabase.addBatchTask(this, &DBQuestManager::dbDoQueryCharacter, &DBQuestManager::dbCallQueryCharacter, new TSQueryInfo(a, gs, t), "create char info"/*, _CREATE_PLAYER_*/);
+	//gDBCharDatabase.addBatchTask(this, &DBQuestManager::dbDoQueryCharacter, &DBQuestManager::dbCallQueryCharacter, new TSQueryInfo(a, gs, t), "create char info"/*, _CREATE_PLAYER_*/);
 }
 
 std::string get_time(time_t cur_time)
@@ -151,61 +151,61 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 
 void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 {
-	TSQueryInfo* pkParm = static_cast<TSQueryInfo*>(const_cast<void*>(d));
-	DBQuery& query = *p;
-	DBQParms parms;
-	char sql[256];
-	sprintf(sql, "select * from `character` where `account` = %u", pkParm->account_);
-	query << sql;
-	query.parse();
-	SDBResult sResult = query.store(parms);
-	if (sResult.size() != 0)
-	{
-		DBRow row = sResult[0];
-		pkParm->Data.set_account(pkParm->account_);
-		message::CharacterDataACK msg;
-		message::CrashPlayerInfo* info = msg.mutable_data();
-		info->set_account(row["account"]);
-		info->set_name(row["name"].c_str());
-		info->set_pass_point(row["pass_point"]);
-		info->set_pass_section(row["pass_section"]);
-		sprintf(sql, "select * from player_map where account = %u", pkParm->account_);
-		query.clear();
-		query << sql;
-		sResult.clear();
-		sResult = query.store(parms);
-		if (sResult.size() != 0)
-		{
-			int count_size = sResult.size();
-			message::CrashMapData* map_data = NULL;
-			for (int i = 0; i < count_size; i ++)
-			{
-				DBRow row_map = sResult[i];
-				bool is_complete = (bool)row_map["is_complete"];
-				if (is_complete)
-				{
-					map_data = info->add_completemap();					
-				}
-				else
-				{
-					map_data = info->add_incompletemap();
-				}
-				map_data->set_mapname(row_map["map_name"].c_str());
-				map_data->set_number(0);
-				map_data->set_section(0);
-				message::CrashmoMapBaseData * baseinfo = map_data->mutable_data();
-				std::string data_temp = row_map["map_data"].c_str();
-				baseinfo->ParseFromString(data_temp);
-			}
-		}
-		gDBGameManager.sendMessage(&msg, pkParm->tranid_, pkParm->gsid_);	
-	}
-	else
-	{
-		message::NeedCreateCharacter msg;
-		msg.set_account(pkParm->account_);
-		gDBGameManager.sendMessage(&msg, pkParm->tranid_, pkParm->gsid_);	
-	}
+	//TSQueryInfo* pkParm = static_cast<TSQueryInfo*>(const_cast<void*>(d));
+	//DBQuery& query = *p;
+	//DBQParms parms;
+	//char sql[256];
+	//sprintf(sql, "select * from `character` where `account` = %u", pkParm->account_);
+	//query << sql;
+	//query.parse();
+	//SDBResult sResult = query.store(parms);
+	//if (sResult.size() != 0)
+	//{
+	//	DBRow row = sResult[0];
+	//	pkParm->Data.set_account(pkParm->account_);
+	//	message::CharacterDataACK msg;
+	//	message::CrashPlayerInfo* info = msg.mutable_data();
+	//	info->set_account(row["account"]);
+	//	info->set_name(row["name"].c_str());
+	//	info->set_pass_point(row["pass_point"]);
+	//	info->set_pass_section(row["pass_section"]);
+	//	sprintf(sql, "select * from player_map where account = %u", pkParm->account_);
+	//	query.clear();
+	//	query << sql;
+	//	sResult.clear();
+	//	sResult = query.store(parms);
+	//	if (sResult.size() != 0)
+	//	{
+	//		int count_size = sResult.size();
+	//		message::CrashMapData* map_data = NULL;
+	//		for (int i = 0; i < count_size; i ++)
+	//		{
+	//			DBRow row_map = sResult[i];
+	//			bool is_complete = (bool)row_map["is_complete"];
+	//			if (is_complete)
+	//			{
+	//				map_data = info->add_completemap();					
+	//			}
+	//			else
+	//			{
+	//				map_data = info->add_incompletemap();
+	//			}
+	//			map_data->set_mapname(row_map["map_name"].c_str());
+	//			map_data->set_number(0);
+	//			map_data->set_section(0);
+	//			message::CrashmoMapBaseData * baseinfo = map_data->mutable_data();
+	//			std::string data_temp = row_map["map_data"].c_str();
+	//			baseinfo->ParseFromString(data_temp);
+	//		}
+	//	}
+	//	gDBGameManager.sendMessage(&msg, pkParm->tranid_, pkParm->gsid_);	
+	//}
+	//else
+	//{
+	//	message::NeedCreateCharacter msg;
+	//	msg.set_account(pkParm->account_);
+	//	gDBGameManager.sendMessage(&msg, pkParm->tranid_, pkParm->gsid_);	
+	//}
 
 
 }
