@@ -223,6 +223,7 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\SaveMapPanel.cs" />
+    <Compile Include="Assets\SaveMapTitleButton.cs" />
     <Compile Include="Assets\ScrollView\ScrollViewAdjust.cs" />
     <Compile Include="Assets\ScrollView\ScrollViewHarizonAdjust.cs" />
     <Compile Include="Assets\ScrollView\ScrollViewVerticalAdjust.cs" />
