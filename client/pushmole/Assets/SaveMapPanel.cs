@@ -11,6 +11,8 @@ public class SaveMapPanel : MonoBehaviour {
     public Button[] _btns;
     public SaveMapTitleButton[] _title_btns;
     public GameObject _admin_obj;
+    public GameObject _input_section_obj;
+    public GameObject _input_number_obj;
     // Use this for initialization
     public Text _map_name;
     public Text _section_text;
@@ -40,6 +42,22 @@ public class SaveMapPanel : MonoBehaviour {
             }
         }
 
+        switch (type)
+        {
+            case SaveMapTitleType.Admin:
+                {
+
+                    _input_section_obj.SetActive(true);
+                    _input_number_obj.SetActive(true);
+                }
+                break;
+            case SaveMapTitleType.Customer:
+                {
+                    _input_section_obj.SetActive(true);
+                    _input_number_obj.SetActive(true);
+                }
+                break;
+        }
     }
 
     public void OnTitleButtonClick(GameObject click)
@@ -71,7 +89,6 @@ public class SaveMapPanel : MonoBehaviour {
         {
             _admin_obj.SetActive(true);
             UpdateTitleType(_enMapType);
-
         }
         else
         {
@@ -85,7 +102,6 @@ public class SaveMapPanel : MonoBehaviour {
         MapData temp_data = global_instance.Instance._crash_mole_grid_manager.save_crash_mole_grid();
         message.CrashMapData mapdata = temp_data.get_info();
         message.CrashPlayerInfo msginfo = global_instance.Instance._player.GetInfo();
-
         bool have_map_name = false;
         foreach(message.CrashMapData entry in msginfo.CompleteMap)
         {           

@@ -145,9 +145,9 @@ void Session::createInfo(message::CharacterDataACK* msg)
 	message::CrashmoClientInit msg_to_client;
 	message::CrashPlayerInfo* info = msg_to_client.mutable_info();
 	info->CopyFrom(_player->GetInfo());
+	info->set_isadmin(true);
 	sendPBMessage(&msg_to_client);
 	_player->StartSave();
-
 }
 
 

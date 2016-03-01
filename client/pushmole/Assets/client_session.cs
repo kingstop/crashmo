@@ -34,6 +34,7 @@ public class client_session
     {
         CrashmoClientInit msg = ProtoBuf.Serializer.Deserialize<CrashmoClientInit>(stream);
         global_instance.Instance._player.SetInfo(msg.info);
+        global_instance.Instance._ngui_edit_manager._login_obj.SetActive(false);
         global_instance.Instance._ngui_edit_manager.show_main_panel();
         return true;
     }
@@ -109,6 +110,24 @@ public class client_session
         return true;
     }
 
+    public void register_account(string acc, string pwd)
+    {
+        global_instance.Instance._net_client.connect();
+        RegisterAccountRequest req = new RegisterAccountRequest();
+        req.name = acc;
+        req.pwd = pwd;
+        send(req);
+    }
+
+
+    public void login(string acc, string pwd)
+    {
+        global_instance.Instance._net_client.connect();
+        LoginRequest req = new LoginRequest();
+        req.name = acc;
+        req.pwd = pwd;
+        send(req);
+    }
     public void send(global::ProtoBuf.IExtensible base_msg)
     {
         global_instance.Instance._net_client.send(base_msg);

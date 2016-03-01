@@ -175,12 +175,9 @@ public class u3dclient
         //String name = System.BitConverter.ToString(bytes, (int)ptr, (int)pb_name_type_length);
 
         String name = System.Text.Encoding.UTF8.GetString(bytes, (int)ptr, (int)pb_name_type_length);
-        ptr += pb_name_type_length;
-        
-
+        ptr += pb_name_type_length;        
         String[] temp_arry = name.Split('.');
         name = temp_arry[1];
-
         Debug.Log("function call [" + name + "]");
         System.IO.MemoryStream stream = new System.IO.MemoryStream(bytes, (int)ptr, (int)(max_length - ptr));
         if(_MessageFun.ContainsKey(name))
@@ -190,28 +187,23 @@ public class u3dclient
         }
         else
         {
-            global_instance.Instance._client_session.addmsg(name, stream);
-            
+            global_instance.Instance._client_session.addmsg(name, stream);            
         }
-
-
-        
-        
     }
 
     private void register_function()
     {
         _MessageFun.Add("LoginResponse", login_respone);
-		_MessageFun.Add ("CrashmoClientInit", CrashmoClientInit);
+		//_MessageFun.Add ("CrashmoClientInit", CrashmoClientInit);
     }
 
-    private bool CrashmoClientInit(System.IO.MemoryStream stream, SocketClient socketclient)
-    {
-        CrashmoClientInit msg = ProtoBuf.Serializer.Deserialize<CrashmoClientInit>(stream);
-        global_instance.Instance._player.SetInfo(msg.info);
-        global_instance.Instance._ngui_edit_manager.show_main_panel();
-        return true;
-    }
+    //private bool CrashmoClientInit(System.IO.MemoryStream stream, SocketClient socketclient)
+    //{
+    //    CrashmoClientInit msg = ProtoBuf.Serializer.Deserialize<CrashmoClientInit>(stream);
+    //    global_instance.Instance._player.SetInfo(msg.info);
+    //    global_instance.Instance._ngui_edit_manager.show_main_panel();
+    //    return true;
+    //}
     private bool register_failed(System.IO.MemoryStream stream, SocketClient socketclient)
     {
         RegisterAccountFaildACK msg = ProtoBuf.Serializer.Deserialize<RegisterAccountFaildACK>(stream);

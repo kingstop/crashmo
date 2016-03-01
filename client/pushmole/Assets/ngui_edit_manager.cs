@@ -172,11 +172,14 @@ public class ngui_edit_manager : MonoBehaviour {
        // Debug.LogError("on_login_btn_click");
         string account = _account.text;
         string password = _account.text;
+        global_instance.Instance._client_session.login(account, password);
+        /*
         CrashmoClientInit msg = new CrashmoClientInit();
         CrashPlayerInfo playerinfo = new CrashPlayerInfo();
         global_instance.Instance._player.SetInfo(playerinfo);
         set_login_btns_active(false);
         global_instance.Instance._ngui_edit_manager.show_main_panel();
+        */
         //
         
     }
@@ -309,7 +312,7 @@ public class ngui_edit_manager : MonoBehaviour {
     void show_edit_btn()
     {
         set_edit_btns_state(true); 
-		message_on_button_click (_Buttons_simple [0]);			
+		message_on_button_click (_Buttons_simple[0]);			
     }
 	
 	// Update is called once per frame

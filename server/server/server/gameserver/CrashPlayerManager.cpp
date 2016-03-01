@@ -55,6 +55,7 @@ CrashPlayer* CrashPlayerManager::CreatePlayer(account_type acc, Session* session
 		info.set_pass_point(0);
 		info.set_pass_section(0);
 		info.set_account(acc);
+		info.set_isadmin(true);
 		player = new CrashPlayer(session);
 		player->SetInfo(info);
 	}
