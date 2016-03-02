@@ -38,6 +38,7 @@ void protobuf_AddDesc_crashmo_2eproto();
 void protobuf_AssignDesc_crashmo_2eproto();
 void protobuf_ShutdownFile_crashmo_2eproto();
 
+class MsgIntStringProto;
 class CrashmoClientInit;
 class MsgSaveMapReq;
 class MsgDelMapReq;
@@ -45,6 +46,10 @@ class MsgDelMapACK;
 class MsgSaveMapACK;
 class MsgOfficilMapReq;
 class MsgOfficilMapACK;
+class MsgModifySectionNameReq;
+class MsgModifySectionNameACK;
+class MsgSectionNameReq;
+class MsgSectionNameACK;
 
 enum ServerError {
   ServerError_NO = 0,
@@ -88,6 +93,113 @@ inline bool MapType_Parse(
     MapType_descriptor(), name, value);
 }
 // ===================================================================
+
+class MsgIntStringProto : public ::google::protobuf::Message {
+ public:
+  MsgIntStringProto();
+  virtual ~MsgIntStringProto();
+
+  MsgIntStringProto(const MsgIntStringProto& from);
+
+  inline MsgIntStringProto& operator=(const MsgIntStringProto& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgIntStringProto& default_instance();
+
+  void Swap(MsgIntStringProto* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgIntStringProto* New() const { return New(NULL); }
+
+  MsgIntStringProto* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgIntStringProto& from);
+  void MergeFrom(const MsgIntStringProto& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgIntStringProto* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 intger_temp = 1;
+  bool has_intger_temp() const;
+  void clear_intger_temp();
+  static const int kIntgerTempFieldNumber = 1;
+  ::google::protobuf::int32 intger_temp() const;
+  void set_intger_temp(::google::protobuf::int32 value);
+
+  // required string string_temp = 2;
+  bool has_string_temp() const;
+  void clear_string_temp();
+  static const int kStringTempFieldNumber = 2;
+  const ::std::string& string_temp() const;
+  void set_string_temp(const ::std::string& value);
+  void set_string_temp(const char* value);
+  void set_string_temp(const char* value, size_t size);
+  ::std::string* mutable_string_temp();
+  ::std::string* release_string_temp();
+  void set_allocated_string_temp(::std::string* string_temp);
+
+  // @@protoc_insertion_point(class_scope:message.MsgIntStringProto)
+ private:
+  inline void set_has_intger_temp();
+  inline void clear_has_intger_temp();
+  inline void set_has_string_temp();
+  inline void clear_has_string_temp();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr string_temp_;
+  ::google::protobuf::int32 intger_temp_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgIntStringProto* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class CrashmoClientInit : public ::google::protobuf::Message {
  public:
@@ -162,6 +274,18 @@ class CrashmoClientInit : public ::google::protobuf::Message {
   ::message::CrashPlayerInfo* release_info();
   void set_allocated_info(::message::CrashPlayerInfo* info);
 
+  // repeated .message.MsgIntStringProto sections_names = 2;
+  int sections_names_size() const;
+  void clear_sections_names();
+  static const int kSectionsNamesFieldNumber = 2;
+  const ::message::MsgIntStringProto& sections_names(int index) const;
+  ::message::MsgIntStringProto* mutable_sections_names(int index);
+  ::message::MsgIntStringProto* add_sections_names();
+  const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
+      sections_names() const;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
+      mutable_sections_names();
+
   // @@protoc_insertion_point(class_scope:message.CrashmoClientInit)
  private:
   inline void set_has_info();
@@ -171,6 +295,7 @@ class CrashmoClientInit : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::message::CrashPlayerInfo* info_;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto > sections_names_;
   friend void  protobuf_AddDesc_crashmo_2eproto();
   friend void protobuf_AssignDesc_crashmo_2eproto();
   friend void protobuf_ShutdownFile_crashmo_2eproto();
@@ -813,12 +938,478 @@ class MsgOfficilMapACK : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static MsgOfficilMapACK* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class MsgModifySectionNameReq : public ::google::protobuf::Message {
+ public:
+  MsgModifySectionNameReq();
+  virtual ~MsgModifySectionNameReq();
+
+  MsgModifySectionNameReq(const MsgModifySectionNameReq& from);
+
+  inline MsgModifySectionNameReq& operator=(const MsgModifySectionNameReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgModifySectionNameReq& default_instance();
+
+  void Swap(MsgModifySectionNameReq* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgModifySectionNameReq* New() const { return New(NULL); }
+
+  MsgModifySectionNameReq* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgModifySectionNameReq& from);
+  void MergeFrom(const MsgModifySectionNameReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgModifySectionNameReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 section = 1;
+  bool has_section() const;
+  void clear_section();
+  static const int kSectionFieldNumber = 1;
+  ::google::protobuf::int32 section() const;
+  void set_section(::google::protobuf::int32 value);
+
+  // required string section_name = 2;
+  bool has_section_name() const;
+  void clear_section_name();
+  static const int kSectionNameFieldNumber = 2;
+  const ::std::string& section_name() const;
+  void set_section_name(const ::std::string& value);
+  void set_section_name(const char* value);
+  void set_section_name(const char* value, size_t size);
+  ::std::string* mutable_section_name();
+  ::std::string* release_section_name();
+  void set_allocated_section_name(::std::string* section_name);
+
+  // @@protoc_insertion_point(class_scope:message.MsgModifySectionNameReq)
+ private:
+  inline void set_has_section();
+  inline void clear_has_section();
+  inline void set_has_section_name();
+  inline void clear_has_section_name();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr section_name_;
+  ::google::protobuf::int32 section_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgModifySectionNameReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgModifySectionNameACK : public ::google::protobuf::Message {
+ public:
+  MsgModifySectionNameACK();
+  virtual ~MsgModifySectionNameACK();
+
+  MsgModifySectionNameACK(const MsgModifySectionNameACK& from);
+
+  inline MsgModifySectionNameACK& operator=(const MsgModifySectionNameACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgModifySectionNameACK& default_instance();
+
+  void Swap(MsgModifySectionNameACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgModifySectionNameACK* New() const { return New(NULL); }
+
+  MsgModifySectionNameACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgModifySectionNameACK& from);
+  void MergeFrom(const MsgModifySectionNameACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgModifySectionNameACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 section = 1;
+  bool has_section() const;
+  void clear_section();
+  static const int kSectionFieldNumber = 1;
+  ::google::protobuf::int32 section() const;
+  void set_section(::google::protobuf::int32 value);
+
+  // required string section_name = 2;
+  bool has_section_name() const;
+  void clear_section_name();
+  static const int kSectionNameFieldNumber = 2;
+  const ::std::string& section_name() const;
+  void set_section_name(const ::std::string& value);
+  void set_section_name(const char* value);
+  void set_section_name(const char* value, size_t size);
+  ::std::string* mutable_section_name();
+  ::std::string* release_section_name();
+  void set_allocated_section_name(::std::string* section_name);
+
+  // @@protoc_insertion_point(class_scope:message.MsgModifySectionNameACK)
+ private:
+  inline void set_has_section();
+  inline void clear_has_section();
+  inline void set_has_section_name();
+  inline void clear_has_section_name();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr section_name_;
+  ::google::protobuf::int32 section_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgModifySectionNameACK* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgSectionNameReq : public ::google::protobuf::Message {
+ public:
+  MsgSectionNameReq();
+  virtual ~MsgSectionNameReq();
+
+  MsgSectionNameReq(const MsgSectionNameReq& from);
+
+  inline MsgSectionNameReq& operator=(const MsgSectionNameReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgSectionNameReq& default_instance();
+
+  void Swap(MsgSectionNameReq* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgSectionNameReq* New() const { return New(NULL); }
+
+  MsgSectionNameReq* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgSectionNameReq& from);
+  void MergeFrom(const MsgSectionNameReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgSectionNameReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:message.MsgSectionNameReq)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgSectionNameReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgSectionNameACK : public ::google::protobuf::Message {
+ public:
+  MsgSectionNameACK();
+  virtual ~MsgSectionNameACK();
+
+  MsgSectionNameACK(const MsgSectionNameACK& from);
+
+  inline MsgSectionNameACK& operator=(const MsgSectionNameACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgSectionNameACK& default_instance();
+
+  void Swap(MsgSectionNameACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgSectionNameACK* New() const { return New(NULL); }
+
+  MsgSectionNameACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgSectionNameACK& from);
+  void MergeFrom(const MsgSectionNameACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgSectionNameACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .message.MsgIntStringProto sections = 1;
+  int sections_size() const;
+  void clear_sections();
+  static const int kSectionsFieldNumber = 1;
+  const ::message::MsgIntStringProto& sections(int index) const;
+  ::message::MsgIntStringProto* mutable_sections(int index);
+  ::message::MsgIntStringProto* add_sections();
+  const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
+      sections() const;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
+      mutable_sections();
+
+  // @@protoc_insertion_point(class_scope:message.MsgSectionNameACK)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto > sections_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgSectionNameACK* default_instance_;
+};
 // ===================================================================
 
 
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgIntStringProto
+
+// required int32 intger_temp = 1;
+inline bool MsgIntStringProto::has_intger_temp() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgIntStringProto::set_has_intger_temp() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgIntStringProto::clear_has_intger_temp() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgIntStringProto::clear_intger_temp() {
+  intger_temp_ = 0;
+  clear_has_intger_temp();
+}
+inline ::google::protobuf::int32 MsgIntStringProto::intger_temp() const {
+  // @@protoc_insertion_point(field_get:message.MsgIntStringProto.intger_temp)
+  return intger_temp_;
+}
+inline void MsgIntStringProto::set_intger_temp(::google::protobuf::int32 value) {
+  set_has_intger_temp();
+  intger_temp_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgIntStringProto.intger_temp)
+}
+
+// required string string_temp = 2;
+inline bool MsgIntStringProto::has_string_temp() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgIntStringProto::set_has_string_temp() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgIntStringProto::clear_has_string_temp() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgIntStringProto::clear_string_temp() {
+  string_temp_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_string_temp();
+}
+inline const ::std::string& MsgIntStringProto::string_temp() const {
+  // @@protoc_insertion_point(field_get:message.MsgIntStringProto.string_temp)
+  return string_temp_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgIntStringProto::set_string_temp(const ::std::string& value) {
+  set_has_string_temp();
+  string_temp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.MsgIntStringProto.string_temp)
+}
+inline void MsgIntStringProto::set_string_temp(const char* value) {
+  set_has_string_temp();
+  string_temp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.MsgIntStringProto.string_temp)
+}
+inline void MsgIntStringProto::set_string_temp(const char* value, size_t size) {
+  set_has_string_temp();
+  string_temp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.MsgIntStringProto.string_temp)
+}
+inline ::std::string* MsgIntStringProto::mutable_string_temp() {
+  set_has_string_temp();
+  // @@protoc_insertion_point(field_mutable:message.MsgIntStringProto.string_temp)
+  return string_temp_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MsgIntStringProto::release_string_temp() {
+  clear_has_string_temp();
+  return string_temp_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgIntStringProto::set_allocated_string_temp(::std::string* string_temp) {
+  if (string_temp != NULL) {
+    set_has_string_temp();
+  } else {
+    clear_has_string_temp();
+  }
+  string_temp_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), string_temp);
+  // @@protoc_insertion_point(field_set_allocated:message.MsgIntStringProto.string_temp)
+}
+
+// -------------------------------------------------------------------
+
 // CrashmoClientInit
 
 // required .message.CrashPlayerInfo info = 1;
@@ -862,6 +1453,36 @@ inline void CrashmoClientInit::set_allocated_info(::message::CrashPlayerInfo* in
     clear_has_info();
   }
   // @@protoc_insertion_point(field_set_allocated:message.CrashmoClientInit.info)
+}
+
+// repeated .message.MsgIntStringProto sections_names = 2;
+inline int CrashmoClientInit::sections_names_size() const {
+  return sections_names_.size();
+}
+inline void CrashmoClientInit::clear_sections_names() {
+  sections_names_.Clear();
+}
+inline const ::message::MsgIntStringProto& CrashmoClientInit::sections_names(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.sections_names)
+  return sections_names_.Get(index);
+}
+inline ::message::MsgIntStringProto* CrashmoClientInit::mutable_sections_names(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashmoClientInit.sections_names)
+  return sections_names_.Mutable(index);
+}
+inline ::message::MsgIntStringProto* CrashmoClientInit::add_sections_names() {
+  // @@protoc_insertion_point(field_add:message.CrashmoClientInit.sections_names)
+  return sections_names_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
+CrashmoClientInit::sections_names() const {
+  // @@protoc_insertion_point(field_list:message.CrashmoClientInit.sections_names)
+  return sections_names_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
+CrashmoClientInit::mutable_sections_names() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashmoClientInit.sections_names)
+  return &sections_names_;
 }
 
 // -------------------------------------------------------------------
@@ -1334,6 +1955,206 @@ inline ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
 MsgOfficilMapACK::mutable_maps() {
   // @@protoc_insertion_point(field_mutable_list:message.MsgOfficilMapACK.maps)
   return &maps_;
+}
+
+// -------------------------------------------------------------------
+
+// MsgModifySectionNameReq
+
+// required int32 section = 1;
+inline bool MsgModifySectionNameReq::has_section() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgModifySectionNameReq::set_has_section() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgModifySectionNameReq::clear_has_section() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgModifySectionNameReq::clear_section() {
+  section_ = 0;
+  clear_has_section();
+}
+inline ::google::protobuf::int32 MsgModifySectionNameReq::section() const {
+  // @@protoc_insertion_point(field_get:message.MsgModifySectionNameReq.section)
+  return section_;
+}
+inline void MsgModifySectionNameReq::set_section(::google::protobuf::int32 value) {
+  set_has_section();
+  section_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgModifySectionNameReq.section)
+}
+
+// required string section_name = 2;
+inline bool MsgModifySectionNameReq::has_section_name() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgModifySectionNameReq::set_has_section_name() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgModifySectionNameReq::clear_has_section_name() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgModifySectionNameReq::clear_section_name() {
+  section_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_section_name();
+}
+inline const ::std::string& MsgModifySectionNameReq::section_name() const {
+  // @@protoc_insertion_point(field_get:message.MsgModifySectionNameReq.section_name)
+  return section_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgModifySectionNameReq::set_section_name(const ::std::string& value) {
+  set_has_section_name();
+  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.MsgModifySectionNameReq.section_name)
+}
+inline void MsgModifySectionNameReq::set_section_name(const char* value) {
+  set_has_section_name();
+  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.MsgModifySectionNameReq.section_name)
+}
+inline void MsgModifySectionNameReq::set_section_name(const char* value, size_t size) {
+  set_has_section_name();
+  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.MsgModifySectionNameReq.section_name)
+}
+inline ::std::string* MsgModifySectionNameReq::mutable_section_name() {
+  set_has_section_name();
+  // @@protoc_insertion_point(field_mutable:message.MsgModifySectionNameReq.section_name)
+  return section_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MsgModifySectionNameReq::release_section_name() {
+  clear_has_section_name();
+  return section_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgModifySectionNameReq::set_allocated_section_name(::std::string* section_name) {
+  if (section_name != NULL) {
+    set_has_section_name();
+  } else {
+    clear_has_section_name();
+  }
+  section_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), section_name);
+  // @@protoc_insertion_point(field_set_allocated:message.MsgModifySectionNameReq.section_name)
+}
+
+// -------------------------------------------------------------------
+
+// MsgModifySectionNameACK
+
+// required int32 section = 1;
+inline bool MsgModifySectionNameACK::has_section() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgModifySectionNameACK::set_has_section() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgModifySectionNameACK::clear_has_section() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgModifySectionNameACK::clear_section() {
+  section_ = 0;
+  clear_has_section();
+}
+inline ::google::protobuf::int32 MsgModifySectionNameACK::section() const {
+  // @@protoc_insertion_point(field_get:message.MsgModifySectionNameACK.section)
+  return section_;
+}
+inline void MsgModifySectionNameACK::set_section(::google::protobuf::int32 value) {
+  set_has_section();
+  section_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgModifySectionNameACK.section)
+}
+
+// required string section_name = 2;
+inline bool MsgModifySectionNameACK::has_section_name() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgModifySectionNameACK::set_has_section_name() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgModifySectionNameACK::clear_has_section_name() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgModifySectionNameACK::clear_section_name() {
+  section_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_section_name();
+}
+inline const ::std::string& MsgModifySectionNameACK::section_name() const {
+  // @@protoc_insertion_point(field_get:message.MsgModifySectionNameACK.section_name)
+  return section_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgModifySectionNameACK::set_section_name(const ::std::string& value) {
+  set_has_section_name();
+  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.MsgModifySectionNameACK.section_name)
+}
+inline void MsgModifySectionNameACK::set_section_name(const char* value) {
+  set_has_section_name();
+  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.MsgModifySectionNameACK.section_name)
+}
+inline void MsgModifySectionNameACK::set_section_name(const char* value, size_t size) {
+  set_has_section_name();
+  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.MsgModifySectionNameACK.section_name)
+}
+inline ::std::string* MsgModifySectionNameACK::mutable_section_name() {
+  set_has_section_name();
+  // @@protoc_insertion_point(field_mutable:message.MsgModifySectionNameACK.section_name)
+  return section_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MsgModifySectionNameACK::release_section_name() {
+  clear_has_section_name();
+  return section_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgModifySectionNameACK::set_allocated_section_name(::std::string* section_name) {
+  if (section_name != NULL) {
+    set_has_section_name();
+  } else {
+    clear_has_section_name();
+  }
+  section_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), section_name);
+  // @@protoc_insertion_point(field_set_allocated:message.MsgModifySectionNameACK.section_name)
+}
+
+// -------------------------------------------------------------------
+
+// MsgSectionNameReq
+
+// -------------------------------------------------------------------
+
+// MsgSectionNameACK
+
+// repeated .message.MsgIntStringProto sections = 1;
+inline int MsgSectionNameACK::sections_size() const {
+  return sections_.size();
+}
+inline void MsgSectionNameACK::clear_sections() {
+  sections_.Clear();
+}
+inline const ::message::MsgIntStringProto& MsgSectionNameACK::sections(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgSectionNameACK.sections)
+  return sections_.Get(index);
+}
+inline ::message::MsgIntStringProto* MsgSectionNameACK::mutable_sections(int index) {
+  // @@protoc_insertion_point(field_mutable:message.MsgSectionNameACK.sections)
+  return sections_.Mutable(index);
+}
+inline ::message::MsgIntStringProto* MsgSectionNameACK::add_sections() {
+  // @@protoc_insertion_point(field_add:message.MsgSectionNameACK.sections)
+  return sections_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
+MsgSectionNameACK::sections() const {
+  // @@protoc_insertion_point(field_list:message.MsgSectionNameACK.sections)
+  return sections_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
+MsgSectionNameACK::mutable_sections() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgSectionNameACK.sections)
+  return &sections_;
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

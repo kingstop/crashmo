@@ -32,6 +32,7 @@ public class MainPanel : MonoBehaviour
     public GameObject _create_obj_button;
     public GameObject _edit_obj_button;
     public GameObject _Back_obj_button;
+    public GameObject _edit_section_obj_button;
     public Button[] _title_button;
     public int _page_count;
     public GameObject _items_container;
@@ -78,7 +79,6 @@ public class MainPanel : MonoBehaviour
         {
             MapData temp = new MapData();
             temp.set_info(MapDataTemp);
-            //global_instance.Instance._crash_manager
             global_instance.Instance.SetMapData(temp);
             global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
         }
@@ -135,6 +135,13 @@ public class MainPanel : MonoBehaviour
         _create_obj_button.SetActive(false);
         _edit_obj_button.SetActive(false);
         _Back_obj_button.SetActive(false);
+        _edit_section_obj_button.SetActive(false);
+    }
+
+    public void EditSectionClick()
+    {
+        global_instance.Instance._ngui_edit_manager._sectionEditPanel.setActive(true);
+        this.gameObject.SetActive(false);       
     }
 
     void ClearItems()
@@ -155,7 +162,6 @@ public class MainPanel : MonoBehaviour
     }
     void EnterSelfComplete()
     {
-
         SelfButtonChange(true);
         CrashPlayerInfo Info = global_instance.Instance._player.GetInfo();
         foreach (CrashMapData entry in Info.CompleteMap)
@@ -229,8 +235,6 @@ public class MainPanel : MonoBehaviour
         }
         CrashPlayerInfo info = global_instance.Instance._player.GetInfo();
         ClearItems();
-
-
         switch (page)
         {
             case page_type.page_type_self_complete:
@@ -253,6 +257,7 @@ public class MainPanel : MonoBehaviour
                     _officil_page_type = offcil_page_type.offcil_page_type_section;
                     SelfButtonChange(false);
                     _Back_obj_button.SetActive(false);
+                    _edit_section_obj_button.SetActive(true);
                     Dictionary<int, string> officil_section_names = global_instance.Instance._player.get_officil_section_names();
                     foreach (KeyValuePair<int, string> key_temp in officil_section_names)
                     {
@@ -338,6 +343,7 @@ public class MainPanel : MonoBehaviour
                 _play_obj_button.SetActive(true);
                 _create_obj_button.SetActive(false);
                 _edit_obj_button.SetActive(false);
+                _edit_section_obj_button.SetActive(false);
                 _Back_obj_button.SetActive(true);
                 foreach (ChooseItemEntry entry_temp in _officil_items)
                 {
@@ -374,6 +380,7 @@ public class MainPanel : MonoBehaviour
             _create_obj_button.SetActive(true);
             _edit_obj_button.SetActive(true);
             _Back_obj_button.SetActive(false);
+            _edit_section_obj_button.SetActive(false);
         }
     }
     public void TitleButtionClick(Button btn)

@@ -10,9 +10,16 @@ enum ServerError
 	
 }
 
+message MsgIntStringProto
+{
+	required int32 intger_temp = 1;
+	required string string_temp = 2;
+}
+
 message CrashmoClientInit
 {
 	required CrashPlayerInfo info = 1;
+	repeated MsgIntStringProto sections_names = 2;
 }
 
 
@@ -61,3 +68,26 @@ message MsgOfficilMapACK
 	repeated CrashMapData maps = 2;
 }
 
+message MsgModifySectionNameReq
+{
+	required int32 section = 1;
+	required string section_name = 2;
+}
+
+message MsgModifySectionNameACK
+{
+	required int32 section = 1;
+	required string section_name = 2;
+}
+
+
+
+message MsgSectionNameReq
+{
+
+}
+
+message MsgSectionNameACK
+{
+	repeated MsgIntStringProto sections = 1;
+}

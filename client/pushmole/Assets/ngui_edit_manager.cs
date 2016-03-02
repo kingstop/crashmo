@@ -40,6 +40,7 @@ public class ngui_edit_manager : MonoBehaviour {
     public crashmolegrid _flag_grid;
     public MainPanel _main_panel;
     public SaveMapPanel _SaveMapPanel;
+    public SectionEditPanel _sectionEditPanel;
     public GameObject _login_obj;
     public GameObject _edit_obj_btns;
     public GameObject _edit_obj_draw_btns;
@@ -169,19 +170,9 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void on_login_btn_click()
     {
-       // Debug.LogError("on_login_btn_click");
         string account = _account.text;
         string password = _account.text;
         global_instance.Instance._client_session.login(account, password);
-        /*
-        CrashmoClientInit msg = new CrashmoClientInit();
-        CrashPlayerInfo playerinfo = new CrashPlayerInfo();
-        global_instance.Instance._player.SetInfo(playerinfo);
-        set_login_btns_active(false);
-        global_instance.Instance._ngui_edit_manager.show_main_panel();
-        */
-        //
-        
     }
 
     public void on_register_btn_click()
@@ -370,8 +361,7 @@ public class ngui_edit_manager : MonoBehaviour {
         float max_ = (float)max;
         float temp_distance = (max - min) * value;
         float target_ = temp_distance + min;
-        int target = max - (int)target_ + min;
-        
+        int target = max - (int)target_ + min;        
         return target;
     }
     public void on_scrollbar_width_change(GameObject obj)

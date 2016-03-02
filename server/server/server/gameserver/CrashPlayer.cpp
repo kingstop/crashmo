@@ -158,6 +158,8 @@ void CrashPlayer::SaveMap(message::MsgSaveMapReq* msg)
 		if (temp != NULL)
 		{
 			temp->CopyFrom(msg->map());
+			message::CrashMapData* temp_map = msgACK.mutable_map();
+			temp_map->CopyFrom(msg->map());
 		}
 		else
 		{

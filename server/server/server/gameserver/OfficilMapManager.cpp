@@ -29,6 +29,16 @@ void OfficilMapManager::getOfficilMap(CrashPlayer* p, int page)
 	p->sendPBMessage(&msg);
 }
 
+
+void OfficilMapManager::modifySectionName(int section, const char* name, CrashPlayer* player)
+{
+	message::MsgModifySectionNameACK msg;
+	std::string name_temp;
+	name_temp = name;
+	_sections_names[section] = name_temp;
+	player->sendPBMessage(&msg);
+}
+
 void OfficilMapManager::saveMapOfficilMap(const message::CrashMapData* map_data, CrashPlayer* p)
 {
 	OFFICILMAPLIST::iterator it = _officilmap.find(map_data->section());
@@ -48,4 +58,9 @@ void OfficilMapManager::saveMapOfficilMap(const message::CrashMapData* map_data,
 	message::CrashMapData* map_temp = msgACK.mutable_map();
 	map_temp->CopyFrom(entry);
 	p->sendPBMessage(&msgACK);
+}
+
+const SECTIONSNAMES& OfficilMapManager::getSectionNames()
+{
+	return _sections_names;
 }

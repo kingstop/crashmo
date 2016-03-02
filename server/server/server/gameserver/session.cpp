@@ -29,6 +29,9 @@ void Session::registerPBCall()
 {
 	registerCBFun(PROTOCO_NAME(message::MsgSaveMapReq), &Session::parseSaveMap);
 	registerCBFun(PROTOCO_NAME(message::MsgDelMapReq), &Session::parseDelMap);
+	registerCBFun(PROTOCO_NAME(message::MsgModifySectionNameReq), &Session::parseModifySectionName);
+	registerCBFun(PROTOCO_NAME(message::MsgSectionNameReq), &Session::parseGetSectionNameReq);
+
 }
 
 void Session::parsePBMessage(google::protobuf::Message* p)
@@ -108,6 +111,33 @@ void Session::sendPBMessage(google::protobuf::Message* p)
 }
 
 
+void Session::parseGetSectionNameReq(google::protobuf::Message* p)
+{
+	if (_player != NULL)
+	{
+		message::MsgSectionNameACK msg;
+		SECTIONSNAMES sections = gOfficilMapManager.getSectionNames();
+		SECTIONSNAMES::iterator it = sections.begin();
+		for (; it != sections.end(); ++ it)
+		{
+			message::MsgIntStringProto* proto = msg.add_sections();
+			proto->set_intger_temp(it->first);
+			proto->set_string_temp(it->second.c_str());
+		}
+		sendPBMessage(&msg);
+
+	}
+}
+
+void Session::parseModifySectionName(google::protobuf::Message* p)
+{
+	if (_player != NULL)
+	{
+		message::MsgModifySectionNameReq* msg = (message::MsgModifySectionNameReq*)p;
+		gOfficilMapManager.modifySectionName(msg->section(), msg->section_name().c_str(), _player);
+	}
+	
+}
 
 void Session::parseSaveMap(google::protobuf::Message* p)
 {
