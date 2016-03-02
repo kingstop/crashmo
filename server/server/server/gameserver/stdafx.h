@@ -29,6 +29,7 @@
 #include "db_client.h"
 #include "database.h"
 #include "CrashPlayerManager.h"
+#include "OfficilMapManager.h"
 #include "GameConfig.h"
 std::string Utf8ToGBK(const char* strUtf8);
 std::string GBKToUtf8(const char* strGBK);
@@ -42,7 +43,7 @@ enum EventTypes
 };
 struct FuGameFather
 {
-	FuGameFather():sSystemTime(time(NULL))
+	FuGameFather():sSystemTime(time(0))
 	{
 	}
 	time_t          sSystemTime;
@@ -56,6 +57,7 @@ struct FuGameFather
 	Database		sCenterDB;
 	Database		sWorldDB;
 	CrashPlayerManager sPlayerManager;
+	OfficilMapManager sOfficilMapManager;
 	//NoneCharacterManager sNoneCharacterManager;
 };
 
@@ -69,7 +71,8 @@ extern FuGameFather* gFuGameFather;
 #define gDBCharDatabase		gFuGameFather->sCharacterDB
 #define gCenterDataBase		gFuGameFather->sCenterDB
 #define gWorldDatabase		gFuGameFather->sWorldDB
-#define  gPlayerManager		gFuGameFather->sPlayerManager
+#define gPlayerManager		gFuGameFather->sPlayerManager
+#define gOfficilMapManager  gFuGameFather->sOfficilMapManager
 //#define gCharacterManager   gFuGameFather->sNoneCharacterManager
 //#define gGameConfig			gFuGameFather->sGameConfig
 enum

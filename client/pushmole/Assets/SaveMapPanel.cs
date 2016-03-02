@@ -46,15 +46,14 @@ public class SaveMapPanel : MonoBehaviour {
         {
             case SaveMapTitleType.Admin:
                 {
-
                     _input_section_obj.SetActive(true);
                     _input_number_obj.SetActive(true);
                 }
                 break;
             case SaveMapTitleType.Customer:
                 {
-                    _input_section_obj.SetActive(true);
-                    _input_number_obj.SetActive(true);
+                    _input_section_obj.SetActive(false);
+                    _input_number_obj.SetActive(false);
                 }
                 break;
         }
@@ -85,7 +84,7 @@ public class SaveMapPanel : MonoBehaviour {
 
     void OnEnable()
     {
-        if(global_instance.Instance._player.isadmin() == true)
+        if(global_instance.Instance._player.isadmin() == true)        
         {
             _admin_obj.SetActive(true);
             UpdateTitleType(_enMapType);
@@ -149,6 +148,7 @@ public class SaveMapPanel : MonoBehaviour {
             }
 
             msg.map = mapdata;
+            msg.map.MapName = getMapName();
             global_instance.Instance._client_session.send(msg);
             ButtonEnable(false);
         }

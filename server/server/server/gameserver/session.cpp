@@ -28,6 +28,7 @@ void Session::prasePBDefault(google::protobuf::Message* p)
 void Session::registerPBCall()
 {
 	registerCBFun(PROTOCO_NAME(message::MsgSaveMapReq), &Session::parseSaveMap);
+	registerCBFun(PROTOCO_NAME(message::MsgDelMapReq), &Session::parseDelMap);
 }
 
 void Session::parsePBMessage(google::protobuf::Message* p)
@@ -113,9 +114,13 @@ void Session::parseSaveMap(google::protobuf::Message* p)
 	if (_player != NULL)
 	{
 		message::MsgSaveMapReq* msg = (message::MsgSaveMapReq*)p;
-		if (msg->save_type() != message::OfficeMap)
+		if (msg->save_type() == message::OfficeMap)
 		{
-
+			gOfficilMapManager.saveMapOfficilMap(msg->mutable_map(), _player);
+		}
+		else
+		{
+			_player->SaveMap(msg);
 		}
 	}
 }

@@ -139,6 +139,7 @@ void CrashPlayer::SaveMap(message::MsgSaveMapReq* msg)
 	message::MsgSaveMapACK msgACK;
 	msgACK.set_map_name(msg->map().mapname());
 	msgACK.set_save_type(msg->save_type());
+	msgACK.set_error(message::ServerError_NO);
 
 	if (havemapname(msg->map().mapname().c_str()) == false)
 	{
