@@ -9,6 +9,16 @@ message NeedCreateCharacter
 	required uint64 account = 1;
 }
 
+message gs2dbDelOfficileReq
+{
+	required int32 section = 1;
+	required int32 number = 2;
+}
+
+message gs2dbSaveOfficileMapReq
+{
+	required CrashMapData data = 1;
+}
 
 message CharacterDataACK
 {
@@ -19,3 +29,4 @@ message ReqSaveCharacterData
 {
 	required CrashPlayerInfo data = 1;
 }
+

@@ -26,6 +26,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* NeedCreateCharacter_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   NeedCreateCharacter_reflection_ = NULL;
+const ::google::protobuf::Descriptor* gs2dbDelOfficileReq_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  gs2dbDelOfficileReq_reflection_ = NULL;
+const ::google::protobuf::Descriptor* gs2dbSaveOfficileMapReq_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  gs2dbSaveOfficileMapReq_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CharacterDataACK_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CharacterDataACK_reflection_ = NULL;
@@ -72,7 +78,38 @@ void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto() {
       sizeof(NeedCreateCharacter),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NeedCreateCharacter, _internal_metadata_),
       -1);
-  CharacterDataACK_descriptor_ = file->message_type(2);
+  gs2dbDelOfficileReq_descriptor_ = file->message_type(2);
+  static const int gs2dbDelOfficileReq_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(gs2dbDelOfficileReq, section_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(gs2dbDelOfficileReq, number_),
+  };
+  gs2dbDelOfficileReq_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      gs2dbDelOfficileReq_descriptor_,
+      gs2dbDelOfficileReq::default_instance_,
+      gs2dbDelOfficileReq_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(gs2dbDelOfficileReq, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(gs2dbDelOfficileReq),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(gs2dbDelOfficileReq, _internal_metadata_),
+      -1);
+  gs2dbSaveOfficileMapReq_descriptor_ = file->message_type(3);
+  static const int gs2dbSaveOfficileMapReq_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(gs2dbSaveOfficileMapReq, data_),
+  };
+  gs2dbSaveOfficileMapReq_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      gs2dbSaveOfficileMapReq_descriptor_,
+      gs2dbSaveOfficileMapReq::default_instance_,
+      gs2dbSaveOfficileMapReq_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(gs2dbSaveOfficileMapReq, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(gs2dbSaveOfficileMapReq),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(gs2dbSaveOfficileMapReq, _internal_metadata_),
+      -1);
+  CharacterDataACK_descriptor_ = file->message_type(4);
   static const int CharacterDataACK_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CharacterDataACK, data_),
   };
@@ -87,7 +124,7 @@ void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto() {
       sizeof(CharacterDataACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CharacterDataACK, _internal_metadata_),
       -1);
-  ReqSaveCharacterData_descriptor_ = file->message_type(3);
+  ReqSaveCharacterData_descriptor_ = file->message_type(5);
   static const int ReqSaveCharacterData_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveCharacterData, data_),
   };
@@ -119,6 +156,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       NeedCreateCharacter_descriptor_, &NeedCreateCharacter::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      gs2dbDelOfficileReq_descriptor_, &gs2dbDelOfficileReq::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      gs2dbSaveOfficileMapReq_descriptor_, &gs2dbSaveOfficileMapReq::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CharacterDataACK_descriptor_, &CharacterDataACK::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       ReqSaveCharacterData_descriptor_, &ReqSaveCharacterData::default_instance());
@@ -131,6 +172,10 @@ void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto() {
   delete ApplyCharacterDataReq_reflection_;
   delete NeedCreateCharacter::default_instance_;
   delete NeedCreateCharacter_reflection_;
+  delete gs2dbDelOfficileReq::default_instance_;
+  delete gs2dbDelOfficileReq_reflection_;
+  delete gs2dbSaveOfficileMapReq::default_instance_;
+  delete gs2dbSaveOfficileMapReq_reflection_;
   delete CharacterDataACK::default_instance_;
   delete CharacterDataACK_reflection_;
   delete ReqSaveCharacterData::default_instance_;
@@ -148,18 +193,25 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
     "\n\021msg_game_db.proto\022\007message\032\014common.pro"
     "to\"(\n\025ApplyCharacterDataReq\022\017\n\007account\030\001"
     " \002(\004\"&\n\023NeedCreateCharacter\022\017\n\007account\030\001"
-    " \002(\004\":\n\020CharacterDataACK\022&\n\004data\030\001 \002(\0132\030"
+    " \002(\004\"6\n\023gs2dbDelOfficileReq\022\017\n\007section\030\001"
+    " \002(\005\022\016\n\006number\030\002 \002(\005\">\n\027gs2dbSaveOfficil"
+    "eMapReq\022#\n\004data\030\001 \002(\0132\025.message.CrashMap"
+    "Data\":\n\020CharacterDataACK\022&\n\004data\030\001 \002(\0132\030"
     ".message.CrashPlayerInfo\">\n\024ReqSaveChara"
     "cterData\022&\n\004data\030\001 \002(\0132\030.message.CrashPl"
-    "ayerInfo", 248);
+    "ayerInfo", 368);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg_game_db.proto", &protobuf_RegisterTypes);
   ApplyCharacterDataReq::default_instance_ = new ApplyCharacterDataReq();
   NeedCreateCharacter::default_instance_ = new NeedCreateCharacter();
+  gs2dbDelOfficileReq::default_instance_ = new gs2dbDelOfficileReq();
+  gs2dbSaveOfficileMapReq::default_instance_ = new gs2dbSaveOfficileMapReq();
   CharacterDataACK::default_instance_ = new CharacterDataACK();
   ReqSaveCharacterData::default_instance_ = new ReqSaveCharacterData();
   ApplyCharacterDataReq::default_instance_->InitAsDefaultInstance();
   NeedCreateCharacter::default_instance_->InitAsDefaultInstance();
+  gs2dbDelOfficileReq::default_instance_->InitAsDefaultInstance();
+  gs2dbSaveOfficileMapReq::default_instance_->InitAsDefaultInstance();
   CharacterDataACK::default_instance_->InitAsDefaultInstance();
   ReqSaveCharacterData::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto);
@@ -696,6 +748,645 @@ void NeedCreateCharacter::InternalSwap(NeedCreateCharacter* other) {
   set_has_account();
   account_ = value;
   // @@protoc_insertion_point(field_set:message.NeedCreateCharacter.account)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int gs2dbDelOfficileReq::kSectionFieldNumber;
+const int gs2dbDelOfficileReq::kNumberFieldNumber;
+#endif  // !_MSC_VER
+
+gs2dbDelOfficileReq::gs2dbDelOfficileReq()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.gs2dbDelOfficileReq)
+}
+
+void gs2dbDelOfficileReq::InitAsDefaultInstance() {
+}
+
+gs2dbDelOfficileReq::gs2dbDelOfficileReq(const gs2dbDelOfficileReq& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.gs2dbDelOfficileReq)
+}
+
+void gs2dbDelOfficileReq::SharedCtor() {
+  _cached_size_ = 0;
+  section_ = 0;
+  number_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+gs2dbDelOfficileReq::~gs2dbDelOfficileReq() {
+  // @@protoc_insertion_point(destructor:message.gs2dbDelOfficileReq)
+  SharedDtor();
+}
+
+void gs2dbDelOfficileReq::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void gs2dbDelOfficileReq::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* gs2dbDelOfficileReq::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return gs2dbDelOfficileReq_descriptor_;
+}
+
+const gs2dbDelOfficileReq& gs2dbDelOfficileReq::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  return *default_instance_;
+}
+
+gs2dbDelOfficileReq* gs2dbDelOfficileReq::default_instance_ = NULL;
+
+gs2dbDelOfficileReq* gs2dbDelOfficileReq::New(::google::protobuf::Arena* arena) const {
+  gs2dbDelOfficileReq* n = new gs2dbDelOfficileReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void gs2dbDelOfficileReq::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<gs2dbDelOfficileReq*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(section_, number_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool gs2dbDelOfficileReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.gs2dbDelOfficileReq)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 section = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &section_)));
+          set_has_section();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_number;
+        break;
+      }
+
+      // required int32 number = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_number:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &number_)));
+          set_has_number();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.gs2dbDelOfficileReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.gs2dbDelOfficileReq)
+  return false;
+#undef DO_
+}
+
+void gs2dbDelOfficileReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.gs2dbDelOfficileReq)
+  // required int32 section = 1;
+  if (has_section()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->section(), output);
+  }
+
+  // required int32 number = 2;
+  if (has_number()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->number(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.gs2dbDelOfficileReq)
+}
+
+::google::protobuf::uint8* gs2dbDelOfficileReq::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.gs2dbDelOfficileReq)
+  // required int32 section = 1;
+  if (has_section()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->section(), target);
+  }
+
+  // required int32 number = 2;
+  if (has_number()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->number(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.gs2dbDelOfficileReq)
+  return target;
+}
+
+int gs2dbDelOfficileReq::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_section()) {
+    // required int32 section = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->section());
+  }
+
+  if (has_number()) {
+    // required int32 number = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->number());
+  }
+
+  return total_size;
+}
+int gs2dbDelOfficileReq::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required int32 section = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->section());
+
+    // required int32 number = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->number());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void gs2dbDelOfficileReq::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const gs2dbDelOfficileReq* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const gs2dbDelOfficileReq*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void gs2dbDelOfficileReq::MergeFrom(const gs2dbDelOfficileReq& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_section()) {
+      set_section(from.section());
+    }
+    if (from.has_number()) {
+      set_number(from.number());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void gs2dbDelOfficileReq::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void gs2dbDelOfficileReq::CopyFrom(const gs2dbDelOfficileReq& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool gs2dbDelOfficileReq::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void gs2dbDelOfficileReq::Swap(gs2dbDelOfficileReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void gs2dbDelOfficileReq::InternalSwap(gs2dbDelOfficileReq* other) {
+  std::swap(section_, other->section_);
+  std::swap(number_, other->number_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata gs2dbDelOfficileReq::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = gs2dbDelOfficileReq_descriptor_;
+  metadata.reflection = gs2dbDelOfficileReq_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// gs2dbDelOfficileReq
+
+// required int32 section = 1;
+ bool gs2dbDelOfficileReq::has_section() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void gs2dbDelOfficileReq::set_has_section() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void gs2dbDelOfficileReq::clear_has_section() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void gs2dbDelOfficileReq::clear_section() {
+  section_ = 0;
+  clear_has_section();
+}
+ ::google::protobuf::int32 gs2dbDelOfficileReq::section() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbDelOfficileReq.section)
+  return section_;
+}
+ void gs2dbDelOfficileReq::set_section(::google::protobuf::int32 value) {
+  set_has_section();
+  section_ = value;
+  // @@protoc_insertion_point(field_set:message.gs2dbDelOfficileReq.section)
+}
+
+// required int32 number = 2;
+ bool gs2dbDelOfficileReq::has_number() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void gs2dbDelOfficileReq::set_has_number() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void gs2dbDelOfficileReq::clear_has_number() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void gs2dbDelOfficileReq::clear_number() {
+  number_ = 0;
+  clear_has_number();
+}
+ ::google::protobuf::int32 gs2dbDelOfficileReq::number() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbDelOfficileReq.number)
+  return number_;
+}
+ void gs2dbDelOfficileReq::set_number(::google::protobuf::int32 value) {
+  set_has_number();
+  number_ = value;
+  // @@protoc_insertion_point(field_set:message.gs2dbDelOfficileReq.number)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int gs2dbSaveOfficileMapReq::kDataFieldNumber;
+#endif  // !_MSC_VER
+
+gs2dbSaveOfficileMapReq::gs2dbSaveOfficileMapReq()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.gs2dbSaveOfficileMapReq)
+}
+
+void gs2dbSaveOfficileMapReq::InitAsDefaultInstance() {
+  data_ = const_cast< ::message::CrashMapData*>(&::message::CrashMapData::default_instance());
+}
+
+gs2dbSaveOfficileMapReq::gs2dbSaveOfficileMapReq(const gs2dbSaveOfficileMapReq& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.gs2dbSaveOfficileMapReq)
+}
+
+void gs2dbSaveOfficileMapReq::SharedCtor() {
+  _cached_size_ = 0;
+  data_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+gs2dbSaveOfficileMapReq::~gs2dbSaveOfficileMapReq() {
+  // @@protoc_insertion_point(destructor:message.gs2dbSaveOfficileMapReq)
+  SharedDtor();
+}
+
+void gs2dbSaveOfficileMapReq::SharedDtor() {
+  if (this != default_instance_) {
+    delete data_;
+  }
+}
+
+void gs2dbSaveOfficileMapReq::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* gs2dbSaveOfficileMapReq::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return gs2dbSaveOfficileMapReq_descriptor_;
+}
+
+const gs2dbSaveOfficileMapReq& gs2dbSaveOfficileMapReq::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  return *default_instance_;
+}
+
+gs2dbSaveOfficileMapReq* gs2dbSaveOfficileMapReq::default_instance_ = NULL;
+
+gs2dbSaveOfficileMapReq* gs2dbSaveOfficileMapReq::New(::google::protobuf::Arena* arena) const {
+  gs2dbSaveOfficileMapReq* n = new gs2dbSaveOfficileMapReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void gs2dbSaveOfficileMapReq::Clear() {
+  if (has_data()) {
+    if (data_ != NULL) data_->::message::CrashMapData::Clear();
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool gs2dbSaveOfficileMapReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.gs2dbSaveOfficileMapReq)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .message.CrashMapData data = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_data()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.gs2dbSaveOfficileMapReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.gs2dbSaveOfficileMapReq)
+  return false;
+#undef DO_
+}
+
+void gs2dbSaveOfficileMapReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.gs2dbSaveOfficileMapReq)
+  // required .message.CrashMapData data = 1;
+  if (has_data()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->data_, output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.gs2dbSaveOfficileMapReq)
+}
+
+::google::protobuf::uint8* gs2dbSaveOfficileMapReq::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.gs2dbSaveOfficileMapReq)
+  // required .message.CrashMapData data = 1;
+  if (has_data()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, *this->data_, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.gs2dbSaveOfficileMapReq)
+  return target;
+}
+
+int gs2dbSaveOfficileMapReq::ByteSize() const {
+  int total_size = 0;
+
+  // required .message.CrashMapData data = 1;
+  if (has_data()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->data_);
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void gs2dbSaveOfficileMapReq::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const gs2dbSaveOfficileMapReq* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const gs2dbSaveOfficileMapReq*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void gs2dbSaveOfficileMapReq::MergeFrom(const gs2dbSaveOfficileMapReq& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_data()) {
+      mutable_data()->::message::CrashMapData::MergeFrom(from.data());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void gs2dbSaveOfficileMapReq::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void gs2dbSaveOfficileMapReq::CopyFrom(const gs2dbSaveOfficileMapReq& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool gs2dbSaveOfficileMapReq::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  if (has_data()) {
+    if (!this->data_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void gs2dbSaveOfficileMapReq::Swap(gs2dbSaveOfficileMapReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void gs2dbSaveOfficileMapReq::InternalSwap(gs2dbSaveOfficileMapReq* other) {
+  std::swap(data_, other->data_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata gs2dbSaveOfficileMapReq::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = gs2dbSaveOfficileMapReq_descriptor_;
+  metadata.reflection = gs2dbSaveOfficileMapReq_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// gs2dbSaveOfficileMapReq
+
+// required .message.CrashMapData data = 1;
+ bool gs2dbSaveOfficileMapReq::has_data() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void gs2dbSaveOfficileMapReq::set_has_data() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void gs2dbSaveOfficileMapReq::clear_has_data() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void gs2dbSaveOfficileMapReq::clear_data() {
+  if (data_ != NULL) data_->::message::CrashMapData::Clear();
+  clear_has_data();
+}
+ const ::message::CrashMapData& gs2dbSaveOfficileMapReq::data() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbSaveOfficileMapReq.data)
+  return data_ != NULL ? *data_ : *default_instance_->data_;
+}
+ ::message::CrashMapData* gs2dbSaveOfficileMapReq::mutable_data() {
+  set_has_data();
+  if (data_ == NULL) {
+    data_ = new ::message::CrashMapData;
+  }
+  // @@protoc_insertion_point(field_mutable:message.gs2dbSaveOfficileMapReq.data)
+  return data_;
+}
+ ::message::CrashMapData* gs2dbSaveOfficileMapReq::release_data() {
+  clear_has_data();
+  ::message::CrashMapData* temp = data_;
+  data_ = NULL;
+  return temp;
+}
+ void gs2dbSaveOfficileMapReq::set_allocated_data(::message::CrashMapData* data) {
+  delete data_;
+  data_ = data;
+  if (data) {
+    set_has_data();
+  } else {
+    clear_has_data();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.gs2dbSaveOfficileMapReq.data)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

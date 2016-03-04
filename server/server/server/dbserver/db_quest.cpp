@@ -12,15 +12,8 @@
 enum
 {
     _QUERY_SAVE_PLAYER_ = _NORMAL_THREAD + 1,
-    _CREATE_PLAYER_,
-	_RELATION_THREAD_,
-	_MAIL_THREAD_,
-	_UNLOCK_AREAS_THREAD_,
-	_FARM_CONSTRUCSTIONS_THREAD_,
-	_FARM_CREATE_THREAD_,
-	_FARM_RESOURCE_THREAD_,
-	_FARM_CONSTRUCTION_RESOURCE_THREAD_,
-	_SAVE_FARM_THREAD_,
+	_DELETE_OFFICIL_MAP_,
+	_SAVE_OFFICIL_MAP_
 };
 
 struct TSQueryInfo
@@ -63,17 +56,56 @@ std::string get_time(time_t cur_time)
 }
 
 
+//void DBQuestManager::saveOfficilMap(message::MsgSaveOfficilMapReq* msg, tran_id_type t)
+//{
+//
+//}
+//void DBQuestManager::officilMapReq(message::MsgOfficilMapReq* msg, tran_id_type t)
+//{
+//
+//}
+
+void DBQuestManager::delOfficilMap(int section, int number)
+{
+	char sql[512];
+	sprintf(sql, "delete from offical_map where map_section=%d and map_section=%d", section, number);
+	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, 0, NULL, _DELETE_OFFICIL_MAP_);
+
+}
+
+void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
+{
+	char sql[4096];
+	message::CrashMapData* map_temp = msg->mutable_data();
+	std::string str_sql;
+	sprintf(sql, "delete from offical_map where map_section=%d and map_section=%d;", map_temp->section(), map_temp->number());	
+	std::string temp_sql_replace;
+	temp_sql_replace += sql;
+	temp_sql_replace += "replace into player_map(`map_index`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`, `section`, `number`) values";
+
+	std::string create_time = get_time(map_temp->create_time());
+	sprintf(sql, "(%llu, %lu, '%s', '%s', '%s', '%s', %d )", map_temp->data().map_index(), 0, map_temp->creatername().c_str(),
+		map_temp->mapname().c_str(), map_temp->data().SerializeAsString().c_str(), create_time.c_str(), 1, map_temp->section(), map_temp->number());
+	temp_sql_replace += sql;
+	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, temp_sql_replace.c_str(), 0, NULL, _SAVE_OFFICIL_MAP_);
+
+}
+
 void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 {
 	message::CrashPlayerInfo* playerInfo = msg->mutable_data();
 	account_type acc_temp = playerInfo->account();
-	char sql[512];
+	char sql[4096];
 	DBQParms parms;
 	sprintf(sql, "replace into character(`account`, `pass_point`, `pass_section`, `name`) values (%u, %d, %d, '%s')",
 		acc_temp, playerInfo->pass_point(), playerInfo->pass_section(), playerInfo->name());
 	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, &parms, NULL, _QUERY_SAVE_PLAYER_);
 	int temp_size = playerInfo->completemap_size();
-	std::string temp_sql_replace = "replace into player_map(`map_index`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`) values";
+	
+	std::string temp_sql_replace;
+	sprintf(sql, "delete from player_map where `account`=%lu;", acc_temp);
+	temp_sql_replace += sql;
+	temp_sql_replace += "replace into player_map(`map_index`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`) values";
 	int count = 0;
 	for (int i = 0; i < temp_size; i ++, count ++)
 	{
@@ -106,48 +138,6 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 
 }
 
-//void DBQuestManager::saveCharacterInfo(message::NoneCharacterDataServer* msg)
-//{
-//	account_type account_temp = msg->account();
-//	const message::NoneCharacterData Data = msg->data();
-//	int size_temp = Data.pass_instances_size();
-//	std::string instance_pass;
-//	char sz_temp[512];
-//	for (int i = 0 ;i < size_temp; i ++)
-//	{
-//		if (i != 0)
-//		{
-//			instance_pass += ",";
-//		}
-//		int instance_id = Data.pass_instances(i);
-//		sprintf(sz_temp, "%d", instance_id);
-//		instance_pass += sz_temp;
-//	}
-//	DBQParms parms;
-//	char sql[512];
-//	sprintf(sql, "replace into none_character(`account_id`, `character_guid`, `game_state`, `instance_state`) values (%u, '%s', '%s', '%s');", 
-//		account_temp, Data.guid().c_str(), instance_pass.c_str(), Data.instances_status().c_str());
-//	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, &parms, NULL, _QUERY_SAVE_PLAYER_);
-//	
-//	int toy_size = Data.toys_size();
-//	if (toy_size != 0)
-//	{
-//		std::string sql_item = "replace into none_item(`toy_guid`, `character_guid`, `name`, `exp`, `level`) values ";
-//		for (int i = 0; i < toy_size; i ++)
-//		{
-//			if (i != 0) 
-//			{
-//				sql_item += ",";
-//			}
-//			message::ToyStatData toy_data = Data.toys(i);
-//			sprintf(sz_temp, "('%s', '%s', '%s', %d, %d)", toy_data.toy_guid().c_str(), Data.guid().c_str(), toy_data.name().c_str(), toy_data.exp(), toy_data.level());	
-//			sql_item += sz_temp;
-//		}
-//		gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql_item.c_str(), &parms, NULL, _QUERY_SAVE_PLAYER_);
-//	}
-//
-//	
-//}
 
 void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 {

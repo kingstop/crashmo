@@ -133,7 +133,7 @@ bool DBServer::initDataFromDatabase(DBQuery* p, const void* data)
 	{
 		Mylog::log_server(LOG_ERROR, "start character db service failed!");
 	}    
-
+	
 	parms.clear();
 	query.reset();
 	parms << _FU_WORLD_DATABASE_;
@@ -144,6 +144,14 @@ bool DBServer::initDataFromDatabase(DBQuery* p, const void* data)
 		Mylog::log_server( LOG_ERROR, "load world db config failed !");
 		return false;
 	}
+
+
+	if (gWorldDatabase.initDatabase(m_world_db_conf) == false)
+	{
+		Mylog::log_server(LOG_ERROR, "init world db failed !");
+		return false;
+	}
+
 
 	if (!Database::addBlockTask(db_world_config, this, &DBServer::initDataFromWorldDB, NULL))
 	{

@@ -17,32 +17,17 @@
 #include "message/server_define.h"
 #include "message/msgs2s.pb.h"
 #include "message/crashmo.pb.h"
-//#include "message/msg_game_db.pb.h"
 #include "message/msgs2c.pb.h"
 #include "message/common.pb.h"
 #include "message/login.pb.h"
-//#include "message/gs2client.pb.h"
-//#include "message/mail.pb.h"
 #include "server.h"
 #include "game_manager.h"
 #include "game_tcp_server.h"
 #include "db_quest.h"
-//
-//#include "player_cache.h"
-//
-//#include "player_mail.h"
-//
-//#include "player_relation.h"
-//
-//#include "mole_farm_cache.h"
-//
-//#include "mapstorage.h"
-
-
 
 struct FuDBFather
 {
-	FuDBFather():sSystemTime(time(NULL))
+	FuDBFather():sSystemTime(time(0))
 	{
 	}
 	time_t          sSystemTime;
@@ -51,6 +36,7 @@ struct FuDBFather
 	GameManager     sGameManager;
 	GameTCPServer   sGameTcpServer;
 	Database        sCharacterDB;
+	Database		sWorldDB;
 	DBQuestManager	sDBQuestMgr;
 };
 
@@ -62,5 +48,6 @@ extern FuDBFather* gFuDBFather;
 #define gDBGameManager		gFuDBFather->sGameManager 
 #define gDBCharDatabase		gFuDBFather->sCharacterDB
 #define gDBQuestMgr			gFuDBFather->sDBQuestMgr
+#define gWorldDatabase		gFuDBFather->sWorldDB
 #endif
 

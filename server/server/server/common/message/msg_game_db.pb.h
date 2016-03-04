@@ -39,6 +39,8 @@ void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
 
 class ApplyCharacterDataReq;
 class NeedCreateCharacter;
+class gs2dbDelOfficileReq;
+class gs2dbSaveOfficileMapReq;
 class CharacterDataACK;
 class ReqSaveCharacterData;
 
@@ -219,6 +221,199 @@ class NeedCreateCharacter : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static NeedCreateCharacter* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class gs2dbDelOfficileReq : public ::google::protobuf::Message {
+ public:
+  gs2dbDelOfficileReq();
+  virtual ~gs2dbDelOfficileReq();
+
+  gs2dbDelOfficileReq(const gs2dbDelOfficileReq& from);
+
+  inline gs2dbDelOfficileReq& operator=(const gs2dbDelOfficileReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const gs2dbDelOfficileReq& default_instance();
+
+  void Swap(gs2dbDelOfficileReq* other);
+
+  // implements Message ----------------------------------------------
+
+  inline gs2dbDelOfficileReq* New() const { return New(NULL); }
+
+  gs2dbDelOfficileReq* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const gs2dbDelOfficileReq& from);
+  void MergeFrom(const gs2dbDelOfficileReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(gs2dbDelOfficileReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 section = 1;
+  bool has_section() const;
+  void clear_section();
+  static const int kSectionFieldNumber = 1;
+  ::google::protobuf::int32 section() const;
+  void set_section(::google::protobuf::int32 value);
+
+  // required int32 number = 2;
+  bool has_number() const;
+  void clear_number();
+  static const int kNumberFieldNumber = 2;
+  ::google::protobuf::int32 number() const;
+  void set_number(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:message.gs2dbDelOfficileReq)
+ private:
+  inline void set_has_section();
+  inline void clear_has_section();
+  inline void set_has_number();
+  inline void clear_has_number();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 section_;
+  ::google::protobuf::int32 number_;
+  friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
+
+  void InitAsDefaultInstance();
+  static gs2dbDelOfficileReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class gs2dbSaveOfficileMapReq : public ::google::protobuf::Message {
+ public:
+  gs2dbSaveOfficileMapReq();
+  virtual ~gs2dbSaveOfficileMapReq();
+
+  gs2dbSaveOfficileMapReq(const gs2dbSaveOfficileMapReq& from);
+
+  inline gs2dbSaveOfficileMapReq& operator=(const gs2dbSaveOfficileMapReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const gs2dbSaveOfficileMapReq& default_instance();
+
+  void Swap(gs2dbSaveOfficileMapReq* other);
+
+  // implements Message ----------------------------------------------
+
+  inline gs2dbSaveOfficileMapReq* New() const { return New(NULL); }
+
+  gs2dbSaveOfficileMapReq* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const gs2dbSaveOfficileMapReq& from);
+  void MergeFrom(const gs2dbSaveOfficileMapReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(gs2dbSaveOfficileMapReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .message.CrashMapData data = 1;
+  bool has_data() const;
+  void clear_data();
+  static const int kDataFieldNumber = 1;
+  const ::message::CrashMapData& data() const;
+  ::message::CrashMapData* mutable_data();
+  ::message::CrashMapData* release_data();
+  void set_allocated_data(::message::CrashMapData* data);
+
+  // @@protoc_insertion_point(class_scope:message.gs2dbSaveOfficileMapReq)
+ private:
+  inline void set_has_data();
+  inline void clear_has_data();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::message::CrashMapData* data_;
+  friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
+
+  void InitAsDefaultInstance();
+  static gs2dbSaveOfficileMapReq* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -460,6 +655,105 @@ inline void NeedCreateCharacter::set_account(::google::protobuf::uint64 value) {
   set_has_account();
   account_ = value;
   // @@protoc_insertion_point(field_set:message.NeedCreateCharacter.account)
+}
+
+// -------------------------------------------------------------------
+
+// gs2dbDelOfficileReq
+
+// required int32 section = 1;
+inline bool gs2dbDelOfficileReq::has_section() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void gs2dbDelOfficileReq::set_has_section() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void gs2dbDelOfficileReq::clear_has_section() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void gs2dbDelOfficileReq::clear_section() {
+  section_ = 0;
+  clear_has_section();
+}
+inline ::google::protobuf::int32 gs2dbDelOfficileReq::section() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbDelOfficileReq.section)
+  return section_;
+}
+inline void gs2dbDelOfficileReq::set_section(::google::protobuf::int32 value) {
+  set_has_section();
+  section_ = value;
+  // @@protoc_insertion_point(field_set:message.gs2dbDelOfficileReq.section)
+}
+
+// required int32 number = 2;
+inline bool gs2dbDelOfficileReq::has_number() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void gs2dbDelOfficileReq::set_has_number() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void gs2dbDelOfficileReq::clear_has_number() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void gs2dbDelOfficileReq::clear_number() {
+  number_ = 0;
+  clear_has_number();
+}
+inline ::google::protobuf::int32 gs2dbDelOfficileReq::number() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbDelOfficileReq.number)
+  return number_;
+}
+inline void gs2dbDelOfficileReq::set_number(::google::protobuf::int32 value) {
+  set_has_number();
+  number_ = value;
+  // @@protoc_insertion_point(field_set:message.gs2dbDelOfficileReq.number)
+}
+
+// -------------------------------------------------------------------
+
+// gs2dbSaveOfficileMapReq
+
+// required .message.CrashMapData data = 1;
+inline bool gs2dbSaveOfficileMapReq::has_data() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void gs2dbSaveOfficileMapReq::set_has_data() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void gs2dbSaveOfficileMapReq::clear_has_data() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void gs2dbSaveOfficileMapReq::clear_data() {
+  if (data_ != NULL) data_->::message::CrashMapData::Clear();
+  clear_has_data();
+}
+inline const ::message::CrashMapData& gs2dbSaveOfficileMapReq::data() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbSaveOfficileMapReq.data)
+  return data_ != NULL ? *data_ : *default_instance_->data_;
+}
+inline ::message::CrashMapData* gs2dbSaveOfficileMapReq::mutable_data() {
+  set_has_data();
+  if (data_ == NULL) {
+    data_ = new ::message::CrashMapData;
+  }
+  // @@protoc_insertion_point(field_mutable:message.gs2dbSaveOfficileMapReq.data)
+  return data_;
+}
+inline ::message::CrashMapData* gs2dbSaveOfficileMapReq::release_data() {
+  clear_has_data();
+  ::message::CrashMapData* temp = data_;
+  data_ = NULL;
+  return temp;
+}
+inline void gs2dbSaveOfficileMapReq::set_allocated_data(::message::CrashMapData* data) {
+  delete data_;
+  data_ = data;
+  if (data) {
+    set_has_data();
+  } else {
+    clear_has_data();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.gs2dbSaveOfficileMapReq.data)
 }
 
 // -------------------------------------------------------------------

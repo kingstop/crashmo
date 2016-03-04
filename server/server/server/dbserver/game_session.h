@@ -11,6 +11,8 @@ public:
 	void parseGameMsg(google::protobuf::Message* p, pb_flag_type flag);
 	void parseApplyCharacterDataReq(google::protobuf::Message* p, pb_flag_type flag);
 	void parseReqSaveCharacterData(google::protobuf::Message* p, pb_flag_type flag);
+	void parseSaveOfficilMapReq(google::protobuf::Message* p, pb_flag_type flag);
+	//void parse
 	void parseNoneCharacterDataServerReq(google::protobuf::Message* p, pb_flag_type flag);
 	u16  getGameId() const{return m_game_id;}
 public:
