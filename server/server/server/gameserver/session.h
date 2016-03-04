@@ -32,6 +32,8 @@ public:
 	void parseDelMap(google::protobuf::Message* p);
 	void parseModifySectionName(google::protobuf::Message* p);
 	void parseGetSectionNameReq(google::protobuf::Message* p);
+protected:
+	void CreateCrashMoClientInit();
 	//Player* getPlayer(){return m_pkOwer;}
 protected:
 	tran_id_type m_tranid;

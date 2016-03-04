@@ -62,6 +62,55 @@ public class CrashPlayer
         }
     }
 
+    public void delMap(MapType type, string name)
+    {
+        switch(type)
+        {
+            case MapType.CompleteMap:
+                {
+                    foreach(CrashMapData entry in _info.CompleteMap)
+                    {
+                        if(entry.MapName == name)
+                        {
+                            _info.CompleteMap.Remove(entry);
+                            break;
+                        }
+                    }
+
+                }
+                break;
+            case MapType.ImcompleteMap:
+                {
+                    foreach(CrashMapData entry in _info.IncompleteMap)
+                    {
+                        if (entry.MapName == name)
+                        {
+                            _info.CompleteMap.Remove(entry);
+                            break;
+                        }
+                    }
+                }
+                break;
+            case MapType.OfficeMap:
+                {
+                    foreach(KeyValuePair<int, Dictionary<int, CrashMapData>> list_entry in _officil_map)
+                    {
+                        foreach(KeyValuePair<int, CrashMapData> key_entry in list_entry.Value)
+                        {
+                            if(key_entry.Value.MapName == name)
+                            {
+                                list_entry.Value.Remove(key_entry.Key);
+                                break;
+                            }
+
+                        } 
+                    }
+                }
+                break;
+        }
+
+    }
+
     public List<CrashMapData> getPageMaps(int page)
     {
         List<CrashMapData> temp = new List<CrashMapData>();
@@ -89,6 +138,11 @@ public class CrashPlayer
 	{
 		return _officil_section_names;
 	}
+
+    public void addSectionName(int section, string section_name)
+    {
+        _officil_section_names[section] = section_name;
+    }
 
     public bool isadmin()
     {

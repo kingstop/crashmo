@@ -42,27 +42,32 @@ void GameSession::parseApplyCharacterDataReq(google::protobuf::Message* p, pb_fl
 }
 
 
+void GameSession::parseSaveOfficilMapReq(google::protobuf::Message* p, pb_flag_type flag)
+{
+	message::gs2dbSaveOfficileMapReq* msg = (message::gs2dbSaveOfficileMapReq*)p;
+	gDBQuestMgr.saveOfficilMap(msg);
+}
+
+
 void GameSession::parseReqSaveCharacterData(google::protobuf::Message* p, pb_flag_type flag)
 {
 	message::ReqSaveCharacterData* msg  = (message::ReqSaveCharacterData*) p;
 	gDBQuestMgr.saveCharacterInfo(msg);
 }
 
-void GameSession::parseNoneCharacterDataServerReq(google::protobuf::Message* p, pb_flag_type flag)
+void GameSession::parseDelOfficilMapReq(google::protobuf::Message* p, pb_flag_type flag)
 {
-//	message::NoneCharacterDataServer* msg = (message::NoneCharacterDataServer*) p;
-	//gDBQuestMgr.saveCharacterInfo(msg);
-	
-
+	message::gs2dbDelOfficileReq* msg = (message::gs2dbDelOfficileReq*)p;
+	gDBQuestMgr.delOfficilMap(msg->section(), msg->number());
 }
-
 
 void GameSession::initPBModule()
 {
 	ProtocMsgBase<GameSession>::registerSDFun(&GameSession::send_message, &GameSession::parseGameMsg);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::MsgServerRegister), &GameSession::parseGameRegister);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ApplyCharacterDataReq), &GameSession::parseApplyCharacterDataReq);
-	//ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::NoneCharacterDataServer), &GameSession::parseNoneCharacterDataServerReq);
+	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::gs2dbSaveOfficileMapReq), &GameSession::parseSaveOfficilMapReq);
+	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::gs2dbDelOfficileReq), &GameSession::parseDelOfficilMapReq);
 }
 
 void GameSession::proc_message( const message_t& msg )

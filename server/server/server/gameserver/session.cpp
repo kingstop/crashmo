@@ -164,24 +164,35 @@ void Session::parseDelMap(google::protobuf::Message* p)
 	}
 }
 
-void Session::createInfo()
+
+void Session::CreateCrashMoClientInit()
 {
-	_player = gPlayerManager.CreatePlayer(m_account, this);
 	message::CrashmoClientInit msg;
+	const SECTIONSNAMES sessionNames = gOfficilMapManager.getSectionNames();
+	SECTIONSNAMES::const_iterator it = sessionNames.begin();
+	for (; it != sessionNames.end(); ++it)
+	{
+		message::MsgIntStringProto* pair_temp = msg.add_sections_names();
+		pair_temp->set_intger_temp(it->first);
+		pair_temp->set_string_temp(it->second.c_str());
+	}
+
 	message::CrashPlayerInfo* info = msg.mutable_info();
 	info->CopyFrom(_player->GetInfo());
 	sendPBMessage(&msg);
+}
+
+void Session::createInfo()
+{
+	_player = gPlayerManager.CreatePlayer(m_account, this);
+	CreateCrashMoClientInit();
 	_player->StartSave();
 }
 
 void Session::createInfo(message::CharacterDataACK* msg)
 {
 	_player = gPlayerManager.CreatePlayer(m_account, this, msg);
-	message::CrashmoClientInit msg_to_client;
-	message::CrashPlayerInfo* info = msg_to_client.mutable_info();
-	info->CopyFrom(_player->GetInfo());
-	info->set_isadmin(true);
-	sendPBMessage(&msg_to_client);
+	CreateCrashMoClientInit();
 	_player->StartSave();
 }
 

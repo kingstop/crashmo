@@ -22,18 +22,30 @@ public class client_session
         _MessageFun.Add("CrashmoClientInit", CrashmoClientInit);
         _MessageFun.Add("MsgSaveMapACK", SaveMap);
         _MessageFun.Add("MsgDelMapACK", DelMap);
-        _MessageFun.Add("MsgOfficilMapACK", OfficilMapSave);
+        _MessageFun.Add("MsgSaveMapACK", SaveMap);
     }
 
     ~client_session()
     {
 
     }
-    
+
+    private bool parseMsgModifySectionNameACK(System.IO.MemoryStream stream)
+    {
+        MsgModifySectionNameACK msg = ProtoBuf.Serializer.Deserialize<MsgModifySectionNameACK>(stream);
+        global_instance.Instance._player.addSectionName(msg.section, msg.section_name);
+        return true;
+    }
+
+
     public bool CrashmoClientInit(System.IO.MemoryStream stream)
     {
         CrashmoClientInit msg = ProtoBuf.Serializer.Deserialize<CrashmoClientInit>(stream);
         global_instance.Instance._player.SetInfo(msg.info);
+        foreach(message.MsgIntStringProto key_pair in msg.sections_names)
+        {
+            global_instance.Instance._player.addSectionName(key_pair.intger_temp, key_pair.string_temp);
+        }
         global_instance.Instance._ngui_edit_manager._login_obj.SetActive(false);
         global_instance.Instance._ngui_edit_manager.show_main_panel();
         return true;
@@ -75,18 +87,7 @@ public class client_session
     private bool DelMap(System.IO.MemoryStream stream)
     {
         MsgDelMapACK msg = ProtoBuf.Serializer.Deserialize<MsgDelMapACK>(stream);
-        
-        return true;
-    }
-
-    private bool OfficilMapSave(System.IO.MemoryStream stream)
-    {
-        MsgOfficilMapACK msg = ProtoBuf.Serializer.Deserialize<MsgOfficilMapACK>(stream);
-        foreach(CrashMapData map in msg.maps)
-        {
-            global_instance.Instance._player.add_map(map);
-        }
-        
+        global_instance.Instance._player.delMap(msg.map_type, msg.map_name);           
         return true;
     }
 
