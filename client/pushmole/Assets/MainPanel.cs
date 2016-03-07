@@ -220,6 +220,7 @@ public class MainPanel : MonoBehaviour
     void Awake()
     {
         _source_item = Resources.Load<GameObject>("prefab/Button_item");
+        _current_page = page_type.page_type_official;
         EnterPage(page_type.page_type_self_complete);
     }
 
