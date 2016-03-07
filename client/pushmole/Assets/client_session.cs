@@ -22,21 +22,13 @@ public class client_session
         _MessageFun.Add("CrashmoClientInit", CrashmoClientInit);
         _MessageFun.Add("MsgSaveMapACK", SaveMap);
         _MessageFun.Add("MsgDelMapACK", DelMap);
-        _MessageFun.Add("MsgSaveMapACK", SaveMap);
+        _MessageFun.Add("MsgModifySectionNameACK", ModifySectionName);     
     }
 
     ~client_session()
     {
 
     }
-
-    private bool parseMsgModifySectionNameACK(System.IO.MemoryStream stream)
-    {
-        MsgModifySectionNameACK msg = ProtoBuf.Serializer.Deserialize<MsgModifySectionNameACK>(stream);
-        global_instance.Instance._player.addSectionName(msg.section, msg.section_name);
-        return true;
-    }
-
 
     public bool CrashmoClientInit(System.IO.MemoryStream stream)
     {
@@ -51,6 +43,15 @@ public class client_session
         return true;
     }
 
+	
+    public bool ModifySectionName(System.IO.MemoryStream stream)
+    {
+        MsgModifySectionNameACK msg = ProtoBuf.Serializer.Deserialize<MsgModifySectionNameACK>(stream);
+        global_instance.Instance._player.addSectionName(msg.section, msg.section_name);
+        global_instance.Instance._ngui_edit_manager._main_panel.refrashCurrentPage(global_instance.Instance._ngui_edit_manager._main_panel._current_page);
+        global_instance.Instance._ngui_edit_manager.show_main_panel();
+        return true;
+    }
 
 
     private bool SaveMap(System.IO.MemoryStream stream)

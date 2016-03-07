@@ -39,12 +39,16 @@ public class MainPanel : MonoBehaviour
     public GameObject _officil_items_container;
     private List<ChooseItemEntry> _items = new List<ChooseItemEntry>();
     private List<ChooseItemEntry> _officil_items = new List<ChooseItemEntry>();
-    private page_type current_page = page_type.page_type_self_complete;
+    //private page_type current_page = page_type.page_type_self_complete;
     private GameObject _source_item;
     private ulong _current_map_index;
-    private page_type _current_page;
+    public page_type _current_page;
     private offcil_page_type _officil_page_type;
     private int _section_number;
+    MainPanel()
+    {
+        _current_page = page_type.page_type_official;
+    }
     void selectTile(int index)
     {
         int titile_count = _title_button.Length;
@@ -216,24 +220,13 @@ public class MainPanel : MonoBehaviour
     void Awake()
     {
         _source_item = Resources.Load<GameObject>("prefab/Button_item");
+        EnterPage(page_type.page_type_self_complete);
     }
-    void EnterPage(page_type page)
+
+    public void refrashCurrentPage(page_type page)
     {
         _current_map_index = 0;
-        if (_current_page == page)
-        {
-            return;
-        }
 
-        if (_current_page == page_type.page_type_official)
-        {
-            EnterToContainer(containers_type_panel.containers_type_panel_officil);
-        }
-        else if (page != page_type.page_type_official)
-        {
-            EnterToContainer(containers_type_panel.containers_type_panel_main);
-        }
-        CrashPlayerInfo info = global_instance.Instance._player.GetInfo();
         ClearItems();
         switch (page)
         {
@@ -271,7 +264,28 @@ public class MainPanel : MonoBehaviour
                 }
                 break;
         }
+    }
+    void EnterPage(page_type page)
+    {
+        
+        if (_current_page == page)
+        {
+            return;
+        }
+
+        if (_current_page == page_type.page_type_official)
+        {
+            EnterToContainer(containers_type_panel.containers_type_panel_officil);
+        }
+        else if (page != page_type.page_type_official)
+        {
+            EnterToContainer(containers_type_panel.containers_type_panel_main);
+        }
+        CrashPlayerInfo info = global_instance.Instance._player.GetInfo();
         selectTile((int)page);
+        refrashCurrentPage(page);
+
+
     }
 
 
@@ -283,7 +297,7 @@ public class MainPanel : MonoBehaviour
 
     void OnEnable()
     {
-        EnterPage(page_type.page_type_self_incomplete);
+        
     }
 
     void OnDisable()

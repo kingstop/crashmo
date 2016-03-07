@@ -1238,7 +1238,6 @@ public class crash_manager
                         if (mole_entry == (crash_mole)_move_mole_list[i])
                         {
                             have_mole = true;
-
                         }
                     }
                     if (have_mole == true)
@@ -1266,10 +1265,8 @@ public class crash_manager
             {
                 _move_mole_list.Clear();
                 return false;
-            }
-            
+            }            
         }
-
         return true;
     }
 

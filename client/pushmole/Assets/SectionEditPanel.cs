@@ -20,7 +20,8 @@ public class SectionEditPanel : MonoBehaviour {
         message.MsgModifySectionNameReq msg = new message.MsgModifySectionNameReq();
         msg.section = int.Parse(_section.text);
         msg.section_name = _section_name.text;
-        global_instance.Instance._client_session.send(msg);       
+        global_instance.Instance._client_session.send(msg);
+        setActive(false);
     }
 
     public void onCancelClick()

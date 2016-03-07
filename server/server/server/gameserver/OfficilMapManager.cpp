@@ -33,6 +33,8 @@ void OfficilMapManager::getOfficilMap(CrashPlayer* p, int page)
 void OfficilMapManager::modifySectionName(int section, const char* name, CrashPlayer* player)
 {
 	message::MsgModifySectionNameACK msg;
+	msg.set_section(section);
+	msg.set_section_name(name);
 	std::string name_temp;
 	name_temp = name;
 	_sections_names[section] = name_temp;
