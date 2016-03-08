@@ -69,6 +69,7 @@ public class MainPanel : MonoBehaviour
 
     public void PlayClick()
     {
+        global_instance.Instance._global_game_type = global_game_type.global_game_type_game;
         message.CrashMapData MapDataTemp = null;
         if (_current_page == page_type.page_type_official)
         {
@@ -84,11 +85,13 @@ public class MainPanel : MonoBehaviour
             MapData temp = new MapData();
             temp.set_info(MapDataTemp);
             global_instance.Instance.SetMapData(temp);
+            global_instance.Instance._ngui_edit_manager._main_panel.gameObject.SetActive(false);
             global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
         }
     }
     public void CreateClick()
     {
+        global_instance.Instance._global_game_type = global_game_type.global_game_type_edit;
         global_instance.Instance._ngui_edit_manager.update_game_type(game_type.create);
         this.gameObject.SetActive(false);
     }
@@ -128,6 +131,7 @@ public class MainPanel : MonoBehaviour
         MapData temp = new MapData();
         temp.set_info(MapDataTemp);
         global_instance.Instance.SetMapData(temp);
+        global_instance.Instance._global_game_type = global_game_type.global_game_type_edit;
         global_instance.Instance._ngui_edit_manager.update_game_type(game_type.edit);
         this.gameObject.SetActive(false);
     }
@@ -136,11 +140,6 @@ public class MainPanel : MonoBehaviour
     {
         EnterToContainer(containers_type_panel.containers_type_panel_officil);
         refrashCurrentPage(_current_page);
-        //_play_obj_button.SetActive(true);
-        //_create_obj_button.SetActive(false);
-        //_edit_obj_button.SetActive(false);
-        //_Back_obj_button.SetActive(false);
-        //_edit_section_obj_button.SetActive(false);
     }
 
     public void EditSectionClick()
@@ -206,21 +205,20 @@ public class MainPanel : MonoBehaviour
         temp._txt_2.text = entry.CreaterName;
         System.DateTime time = new System.DateTime(1970, 1, 1).ToLocalTime().AddSeconds(entry.create_time);
         temp._txt_3.text = time.ToString();
-        temp._map_index = entry.Data.map_index;
+        
         MapData temp_ = new MapData();
         temp_.set_info(entry);
         temp.SetTexture(temp_.CreateTexture());
         temp.gameObject.SetActive(true);
+        temp.transform.parent = _items_container.transform;
+        _items.Add(temp);
         if (self)
         {
-            temp.transform.parent = _items_container.transform;
-            _items.Add(temp);
+            temp._map_index = entry.Data.map_index;
         }
         else
         {
             temp._map_index = (ulong)entry.number;
-            temp.transform.parent = _officil_items_container.transform;
-            _officil_items.Add(temp);
         }
 
 
@@ -322,38 +320,35 @@ public class MainPanel : MonoBehaviour
 
     public void ItemButtonClick(ChooseItemEntry entry)
     {
-        if(_current_page == page_type.page_type_official && _officil_page_type == offcil_page_type.offcil_page_type_number)
+        List<ChooseItemEntry> temp_list = null;
+        bool b_set_section = false;
+        if(_current_page == page_type.page_type_official && _officil_page_type == offcil_page_type.offcil_page_type_section)
         {
-            foreach (ChooseItemEntry temp in _officil_items)
-            {
-                if (temp == entry)
-                {
-                    temp.select();
-                    _current_map_index = temp._map_index;
-                }
-                else
-                {
-                    temp.unselect();
-                }
-            }
-
+            b_set_section = true;
+            temp_list = _officil_items;
         }
         else
         {
-            foreach (ChooseItemEntry temp in _items)
-            {
-                if (temp == entry)
-                {
-                    temp.select();
-                    _current_map_index = temp._map_index;
-                }
-                else
-                {
-                    temp.unselect();
-                }
-            }
+            temp_list = _items;
         }
 
+        foreach (ChooseItemEntry temp in temp_list)
+        {
+            if (temp == entry)
+            {
+                temp.select();
+                _current_map_index = temp._map_index;
+                if (b_set_section)
+                {
+                    _section_number = (int)_current_map_index;
+                }
+
+            }
+            else
+            {
+                temp.unselect();
+            }
+        }
 
         if (_current_page == page_type.page_type_official)
         {

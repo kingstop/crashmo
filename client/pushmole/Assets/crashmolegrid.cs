@@ -139,7 +139,7 @@ public class crashmolegrid : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
-        if(_mouse_down)
+        if(_mouse_down&& global_instance.Instance._can_set_group == true)
         {
             if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.edit)
             {

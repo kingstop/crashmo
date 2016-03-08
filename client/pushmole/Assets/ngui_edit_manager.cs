@@ -383,42 +383,48 @@ public class ngui_edit_manager : MonoBehaviour {
         show_create_btns();
     }
 
-    public void gamestate_btn(game_type type)
+    public void HideStateButton()
     {
         _Buttons_simple_game_type[(int)game_type.edit].gameObject.SetActive(false);
         _Buttons_sliced_game_type[(int)game_type.edit].gameObject.SetActive(false);
         _Buttons_simple_game_type[(int)game_type.game].gameObject.SetActive(false);
         _Buttons_sliced_game_type[(int)game_type.game].gameObject.SetActive(false);
-		if (type != game_type.create) 
+    }
+    public void gamestate_btn(game_type type)
+    {
+        HideStateButton();
+        if (type != game_type.create) 
 		{
 			set_edit_type_btns_active(true);
 		}
 
-        switch(type)
+        if(global_instance.Instance._global_game_type == global_game_type.global_game_type_edit)
         {
-            case game_type.create:
-                {
-                }
-                break;
-            case game_type.edit:
-                {
-                    _Buttons_simple_game_type[(int)game_type.edit].gameObject.SetActive(true);
-                    _Buttons_sliced_game_type[(int)game_type.edit].gameObject.SetActive(false);
+            switch (type)
+            {
+                case game_type.create:
+                    {
 
-                    _Buttons_simple_game_type[(int)game_type.game].gameObject.SetActive(false);
-                    _Buttons_sliced_game_type[(int)game_type.game].gameObject.SetActive(true);
-                   
-                }
-                break;
-            case game_type.game:
-                {
-                    _Buttons_simple_game_type[(int)game_type.edit].gameObject.SetActive(false);
-                    _Buttons_sliced_game_type[(int)game_type.edit].gameObject.SetActive(true);
+                    }
+                    break;
+                case game_type.edit:
+                    {
+                        _Buttons_simple_game_type[(int)game_type.edit].gameObject.SetActive(true);
+                        _Buttons_sliced_game_type[(int)game_type.edit].gameObject.SetActive(false);
+                        _Buttons_simple_game_type[(int)game_type.game].gameObject.SetActive(false);
+                        _Buttons_sliced_game_type[(int)game_type.game].gameObject.SetActive(true);
 
-                    _Buttons_simple_game_type[(int)game_type.game].gameObject.SetActive(true);
-                    _Buttons_sliced_game_type[(int)game_type.game].gameObject.SetActive(false);
-                }
-                break;
+                    }
+                    break;
+                case game_type.game:
+                    {
+                        _Buttons_simple_game_type[(int)game_type.edit].gameObject.SetActive(false);
+                        _Buttons_sliced_game_type[(int)game_type.edit].gameObject.SetActive(true);
+                        _Buttons_simple_game_type[(int)game_type.game].gameObject.SetActive(true);
+                        _Buttons_sliced_game_type[(int)game_type.game].gameObject.SetActive(false);
+                    }
+                    break;
+            }
         }
     }
 

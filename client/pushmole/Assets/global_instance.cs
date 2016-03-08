@@ -1,9 +1,16 @@
 ﻿using UnityEngine;
 
+public enum global_game_type
+{
+    global_game_type_edit,
+    global_game_type_game
+}
 
 public class global_instance
 {
      private static global_instance instance;
+
+
      private global_instance() {
          _crash_manager = new crash_manager();
          _player = new CrashPlayer();
@@ -53,8 +60,11 @@ public class global_instance
     public u3dclient _net_client;
     public client_session _client_session;
     public CrashPlayer _player;
-
+    public bool _can_set_group = true;
     private MapData _map_data = null;
+
+    public global_game_type _global_game_type = global_game_type.global_game_type_game;
+
 
 }
 

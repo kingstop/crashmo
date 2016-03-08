@@ -93,7 +93,15 @@ public class SaveMapPanel : MonoBehaviour {
         {
             _admin_obj.SetActive(false);
         }
+
         ButtonEnable(true);
+        global_instance.Instance._can_set_group = false;
+    }
+    
+
+    void OnDisable()
+    {
+        global_instance.Instance._can_set_group = true;
     }
 
     public void onOKClick()
