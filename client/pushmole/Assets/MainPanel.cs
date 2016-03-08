@@ -142,6 +142,7 @@ public class MainPanel : MonoBehaviour
         refrashCurrentPage(_current_page);
     }
 
+
     public void EditSectionClick()
     {
         global_instance.Instance._ngui_edit_manager._sectionEditPanel.setActive(true);

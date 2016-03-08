@@ -353,6 +353,14 @@ public class ngui_edit_manager : MonoBehaviour {
 
     }
 
+    public void BackToMainPanel()
+    {
+        _edit_obj_btns.SetActive(false);
+        _edit_obj_create_btns.SetActive(false);
+        _edit_obj_draw_btns.SetActive(false);
+        _main_panel.gameObject.SetActive(true);
+    }
+
     public int get_scrollbar_value(GameObject obj, int min, int max)
     {
         Scrollbar bar_temp = obj.GetComponent<Scrollbar>();
