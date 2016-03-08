@@ -10,8 +10,7 @@ public class game_btn_down : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        
+                
 	
 	}
 
@@ -24,5 +23,4 @@ public class game_btn_down : MonoBehaviour {
     {
 
     }
-
 }

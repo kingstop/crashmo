@@ -134,12 +134,13 @@ public class MainPanel : MonoBehaviour
 
     public void BackClick()
     {
-        EnterToContainer(containers_type_panel.containers_type_panel_main);
-        _play_obj_button.SetActive(true);
-        _create_obj_button.SetActive(false);
-        _edit_obj_button.SetActive(false);
-        _Back_obj_button.SetActive(false);
-        _edit_section_obj_button.SetActive(false);
+        EnterToContainer(containers_type_panel.containers_type_panel_officil);
+        refrashCurrentPage(_current_page);
+        //_play_obj_button.SetActive(true);
+        //_create_obj_button.SetActive(false);
+        //_edit_obj_button.SetActive(false);
+        //_Back_obj_button.SetActive(false);
+        //_edit_section_obj_button.SetActive(false);
     }
 
     public void EditSectionClick()
@@ -156,6 +157,14 @@ public class MainPanel : MonoBehaviour
             Destroy(entry.gameObject);
         }
         _items.Clear();
+
+        foreach(ChooseItemEntry entry in _officil_items)
+        {
+            entry.transform.parent = null;
+            Destroy(entry.gameObject);
+            
+        }
+        _officil_items.Clear();
     }
 
     void SelfButtonChange(bool b)
@@ -227,7 +236,6 @@ public class MainPanel : MonoBehaviour
     public void refrashCurrentPage(page_type page)
     {
         _current_map_index = 0;
-
         ClearItems();
         switch (page)
         {
@@ -259,8 +267,9 @@ public class MainPanel : MonoBehaviour
                         temp._txt_1.text = key_temp.Key.ToString();
                         temp._txt_2.text = key_temp.Value;
                         temp._map_index = (ulong)key_temp.Key;
-                        temp.transform.parent = _items_container.transform;
-                        _items.Add(temp);
+                        temp.transform.parent = _officil_items_container.transform;
+                        temp.gameObject.SetActive(true);
+                        _officil_items.Add(temp);
                     }
                 }
                 break;
@@ -268,25 +277,22 @@ public class MainPanel : MonoBehaviour
     }
     void EnterPage(page_type page)
     {
-        
+
         if (_current_page == page)
         {
             return;
         }
-
-        if (_current_page == page_type.page_type_official)
+        if (page == page_type.page_type_official && _current_page != page_type.page_type_official)
         {
             EnterToContainer(containers_type_panel.containers_type_panel_officil);
         }
-        else if (page != page_type.page_type_official)
+        else if (page != page_type.page_type_official && _current_page == page_type.page_type_official)
         {
             EnterToContainer(containers_type_panel.containers_type_panel_main);
         }
         CrashPlayerInfo info = global_instance.Instance._player.GetInfo();
         selectTile((int)page);
         refrashCurrentPage(page);
-
-
     }
 
 
@@ -353,7 +359,8 @@ public class MainPanel : MonoBehaviour
         {
             if (_officil_page_type == offcil_page_type.offcil_page_type_section)
             {
-                EnterToContainer(containers_type_panel.containers_type_panel_officil);
+                EnterToContainer(containers_type_panel.containers_type_panel_main);
+                _officil_page_type = offcil_page_type.offcil_page_type_number;
                 List<CrashMapData> list_maps = global_instance.Instance._player.getPageMaps((int)_current_map_index);
                 _play_obj_button.SetActive(true);
                 _create_obj_button.SetActive(false);
@@ -391,11 +398,21 @@ public class MainPanel : MonoBehaviour
         }
         if(panel_type == containers_type_panel.containers_type_panel_main)
         {
-            _play_obj_button.SetActive(true);
-            _create_obj_button.SetActive(true);
-            _edit_obj_button.SetActive(true);
-            _Back_obj_button.SetActive(false);
-            _edit_section_obj_button.SetActive(false);
+            if(_current_page == page_type.page_type_official)
+            {
+                SelfButtonChange(false);
+                _Back_obj_button.SetActive(false);
+                _play_obj_button.SetActive(false);
+                _edit_section_obj_button.SetActive(true);
+            }
+            else
+            {
+                _play_obj_button.SetActive(true);
+                _create_obj_button.SetActive(true);
+                _edit_obj_button.SetActive(true);
+                _Back_obj_button.SetActive(false);
+                _edit_section_obj_button.SetActive(false);
+            }
         }
     }
     public void TitleButtionClick(Button btn)
