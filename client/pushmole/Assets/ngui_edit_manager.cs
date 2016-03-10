@@ -355,10 +355,24 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void BackToMainPanel()
     {
+        HideAlluis();
+        ClearGameObj();
+        _main_panel.gameObject.SetActive(true);
+    }
+
+    public void HideAlluis()
+    {
         _edit_obj_btns.SetActive(false);
         _edit_obj_create_btns.SetActive(false);
         _edit_obj_draw_btns.SetActive(false);
-        _main_panel.gameObject.SetActive(true);
+        _game_obj_btns.SetActive(false);
+        _edit_type_obj_btns.SetActive(false); 
+    }
+
+    public void ClearGameObj()
+    {
+        global_instance.Instance._crash_mole_grid_manager.clear_edit_crash_mole_grid();
+        global_instance.Instance._crash_manager.clear();
     }
 
     public int get_scrollbar_value(GameObject obj, int min, int max)

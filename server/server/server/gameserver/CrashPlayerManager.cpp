@@ -36,7 +36,7 @@ CrashPlayer* CrashPlayerManager::CreatePlayer(account_type acc, Session* session
 	if (player == NULL)
 	{
 		message::CrashPlayerInfo info_temp;
-		info_temp.CopyFrom(*info);
+		info_temp.CopyFrom(info->data());
 		player = new CrashPlayer(session);
 		player->SetInfo(info_temp);
 	}

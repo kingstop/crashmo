@@ -68,6 +68,7 @@ void GameSession::initPBModule()
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ApplyCharacterDataReq), &GameSession::parseApplyCharacterDataReq);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::gs2dbSaveOfficileMapReq), &GameSession::parseSaveOfficilMapReq);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::gs2dbDelOfficileReq), &GameSession::parseDelOfficilMapReq);
+	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ReqSaveCharacterData), &GameSession::parseReqSaveCharacterData);
 }
 
 void GameSession::proc_message( const message_t& msg )

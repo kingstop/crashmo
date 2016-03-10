@@ -143,8 +143,7 @@ void db_thread::work()
 
 			Mylog::log_database( LOG_ERROR, "mysql connect disconnect..!");
             return ;
-		}
-			
+		}			
 		try
 		{
 			switch ( _task->store)

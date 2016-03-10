@@ -166,6 +166,7 @@ public class SaveMapPanel : MonoBehaviour {
     public void SaveMapOk()
     {
         setActive(false);
+        global_instance.Instance._ngui_edit_manager.ClearGameObj();
         global_instance.Instance._ngui_edit_manager.show_main_panel();
     }
 

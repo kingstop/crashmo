@@ -1,8 +1,11 @@
+string
+string
 #include "stdafx.h"
 #include "db_quest.h"
 #include "game_session.h"
 #include "message/msg_game_db.pb.h"
 #include <stdio.h>
+#include "base64_encode.h"
 #ifdef _WIN32_WINDOWS
 #include <objbase.h>  
 #else
@@ -53,6 +56,7 @@ std::string get_time(time_t cur_time)
 	char sz_time[256];
 	sprintf(sz_time, "%d-%d-%d %d:%d:%d",cur->tm_year + 1900, cur->tm_mon + 1, cur->tm_mday + 1, cur->tm_hour, cur->tm_min, cur->tm_sec);
 	return std::string(sz_time);
+	
 }
 
 
@@ -82,10 +86,13 @@ void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
 	std::string temp_sql_replace;
 	temp_sql_replace += sql;
 	temp_sql_replace += "replace into player_map(`map_index`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`, `section`, `number`) values";
+	std::string temp_data;
+	temp_data = map_temp->data().SerializeAsString();
 
 	std::string create_time = get_time(map_temp->create_time());
 	sprintf(sql, "(%llu, %lu, '%s', '%s', '%s', '%s', %d )", map_temp->data().map_index(), 0, map_temp->creatername().c_str(),
-		map_temp->mapname().c_str(), map_temp->data().SerializeAsString().c_str(), create_time.c_str(), 1, map_temp->section(), map_temp->number());
+		map_temp->mapname().c_str(), base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size()), 
+		create_time.c_str(), 1, map_temp->section(), map_temp->number());
 	temp_sql_replace += sql;
 	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, temp_sql_replace.c_str(), 0, NULL, _SAVE_OFFICIL_MAP_);
 
@@ -97,16 +104,23 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 	account_type acc_temp = playerInfo->account();
 	char sql[4096];
 	DBQParms parms;
-	sprintf(sql, "replace into character(`account`, `pass_point`, `pass_section`, `name`) values (%u, %d, %d, '%s')",
-		acc_temp, playerInfo->pass_point(), playerInfo->pass_section(), playerInfo->name());
+	sprintf(sql, "replace into `character`(`account`, `pass_point`, `pass_section`, `name`, `isadmin`) values (%u,%d,%d,'%s',%d)",
+		acc_temp, playerInfo->pass_point(), playerInfo->pass_section(), playerInfo->name().c_str(), (int)playerInfo->isadmin());
 	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, &parms, NULL, _QUERY_SAVE_PLAYER_);
 	int temp_size = playerInfo->completemap_size();
 	
+	bool need_save = false;
+	if (temp_size > 0)
+	{
+		need_save = true;
+	}
+
 	std::string temp_sql_replace;
 	sprintf(sql, "delete from player_map where `account`=%lu;", acc_temp);
 	temp_sql_replace += sql;
-	temp_sql_replace += "replace into player_map(`map_index`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`) values";
+	temp_sql_replace += "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`) values";
 	int count = 0;
+	std::string temp_data;
 	for (int i = 0; i < temp_size; i ++, count ++)
 	{
 		if (count != 0)
@@ -115,12 +129,20 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		}
 		const message::CrashMapData Data = playerInfo->completemap(i);
 		std::string create_time = get_time(Data.create_time());
+		temp_data = Data.data().SerializeAsString();
+
 		sprintf(sql, "(%llu, %lu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
-			Data.mapname().c_str(), Data.data().SerializeAsString().c_str(), create_time.c_str(), 1);
+			Data.mapname().c_str(), base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size()), 
+			create_time.c_str(), 1);
 		temp_sql_replace += sql;
 	}
 
 	temp_size = playerInfo->incompletemap_size();
+	if (temp_size > 0)
+	{
+		need_save = true;
+	}
+
 	for (int i = 0; i < temp_size; i ++, count ++)
 	{
 		if (count != 0)
@@ -129,11 +151,17 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		}
 		const message::CrashMapData Data = playerInfo->incompletemap(i);
 		std::string create_time = get_time(Data.create_time());
+		temp_data = Data.data().SerializeAsString();
+
 		sprintf(sql, "(%llu, %lu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
-			Data.mapname().c_str(), Data.data().SerializeAsString().c_str(), create_time.c_str(), 0);		
+			Data.mapname().c_str(), base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size()), create_time.c_str(), 0);
 		temp_sql_replace += sql;
 	}
-	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, temp_sql_replace.c_str(), &parms, NULL, _QUERY_SAVE_PLAYER_);
+	if (need_save)
+	{
+		gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, temp_sql_replace.c_str(), &parms, NULL, _QUERY_SAVE_PLAYER_);
+	}
+	
 
 
 }
@@ -168,8 +196,9 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 			info->set_isadmin(true);
 		}
 
-		sprintf(sql, "select * from player_map where account = %u", pkParm->account_);
-		query.clear();
+		sprintf(sql, "select *,UNIX_TIMESTAMP(`create_time`) from player_map where account = %u", pkParm->account_);
+		query.reset();
+		//query.clear();
 		query << sql;
 		sResult.clear();
 		sResult = query.store(parms);
@@ -192,9 +221,13 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 				map_data->set_mapname(row_map["map_name"].c_str());
 				map_data->set_number(0);
 				map_data->set_section(0);
+				map_data->set_creatername(row_map["creater_name"].c_str());
+				
+				map_data->set_create_time(row_map["UNIX_TIMESTAMP(`create_time`)"]);
 				message::CrashmoMapBaseData * baseinfo = map_data->mutable_data();
 				std::string data_temp = row_map["map_data"].c_str();
-				baseinfo->ParseFromString(data_temp);
+				baseinfo->ParseFromString(base64_decode(data_temp));
+				baseinfo->set_map_index(row_map["index_map"]);
 			}
 		}
 		gDBGameManager.sendMessage(&msg, pkParm->tranid_, pkParm->gsid_);

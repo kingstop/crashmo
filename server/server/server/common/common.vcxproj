@@ -82,6 +82,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="asiodef.h" />
+    <ClInclude Include="base64_encode.h" />
     <ClInclude Include="call_back.h" />
     <ClInclude Include="common_header.h" />
     <ClInclude Include="common_helper.h" />
@@ -125,6 +126,7 @@
     <ClInclude Include="version.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="base64_encode.cpp" />
     <ClCompile Include="call_back.cpp" />
     <ClCompile Include="crypt.cpp" />
     <ClCompile Include="database.cpp" />
