@@ -1,5 +1,6 @@
 string
 string
+string
 #include "stdafx.h"
 #include "db_quest.h"
 #include "game_session.h"
@@ -130,9 +131,10 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		const message::CrashMapData Data = playerInfo->completemap(i);
 		std::string create_time = get_time(Data.create_time());
 		temp_data = Data.data().SerializeAsString();
+		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
 
 		sprintf(sql, "(%llu, %lu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
-			Data.mapname().c_str(), base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size()), 
+			Data.mapname().c_str(), temp_data.c_str(),
 			create_time.c_str(), 1);
 		temp_sql_replace += sql;
 	}
@@ -152,9 +154,9 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		const message::CrashMapData Data = playerInfo->incompletemap(i);
 		std::string create_time = get_time(Data.create_time());
 		temp_data = Data.data().SerializeAsString();
-
+		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
 		sprintf(sql, "(%llu, %lu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
-			Data.mapname().c_str(), base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size()), create_time.c_str(), 0);
+			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0);
 		temp_sql_replace += sql;
 	}
 	if (need_save)
