@@ -7,10 +7,13 @@ public:
 	OfficilMapManager();
 	virtual ~OfficilMapManager();
 public:
+	void init(DBQuery* p);
 	void getOfficilMap(CrashPlayer* p, int page);
 	void saveMapOfficilMap(const message::CrashMapData* map_data, CrashPlayer* p);
 	void modifySectionName(int section, const char* name, CrashPlayer* player);
 	const SECTIONSNAMES& getSectionNames();
+protected:
+	void saveOfficilMap();
 
 
 protected:

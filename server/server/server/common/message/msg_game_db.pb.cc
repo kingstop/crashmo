@@ -38,6 +38,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* ReqSaveCharacterData_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ReqSaveCharacterData_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ReqSaveOfficilMap_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ReqSaveOfficilMap_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ReqSaveOfficilSectionNames_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ReqSaveOfficilSectionNames_reflection_ = NULL;
 
 }  // namespace
 
@@ -139,6 +145,36 @@ void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto() {
       sizeof(ReqSaveCharacterData),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveCharacterData, _internal_metadata_),
       -1);
+  ReqSaveOfficilMap_descriptor_ = file->message_type(6);
+  static const int ReqSaveOfficilMap_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveOfficilMap, sql_),
+  };
+  ReqSaveOfficilMap_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ReqSaveOfficilMap_descriptor_,
+      ReqSaveOfficilMap::default_instance_,
+      ReqSaveOfficilMap_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveOfficilMap, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(ReqSaveOfficilMap),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveOfficilMap, _internal_metadata_),
+      -1);
+  ReqSaveOfficilSectionNames_descriptor_ = file->message_type(7);
+  static const int ReqSaveOfficilSectionNames_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveOfficilSectionNames, sql_),
+  };
+  ReqSaveOfficilSectionNames_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ReqSaveOfficilSectionNames_descriptor_,
+      ReqSaveOfficilSectionNames::default_instance_,
+      ReqSaveOfficilSectionNames_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveOfficilSectionNames, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(ReqSaveOfficilSectionNames),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveOfficilSectionNames, _internal_metadata_),
+      -1);
 }
 
 namespace {
@@ -163,6 +199,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
       CharacterDataACK_descriptor_, &CharacterDataACK::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       ReqSaveCharacterData_descriptor_, &ReqSaveCharacterData::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ReqSaveOfficilMap_descriptor_, &ReqSaveOfficilMap::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ReqSaveOfficilSectionNames_descriptor_, &ReqSaveOfficilSectionNames::default_instance());
 }
 
 }  // namespace
@@ -180,6 +220,10 @@ void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto() {
   delete CharacterDataACK_reflection_;
   delete ReqSaveCharacterData::default_instance_;
   delete ReqSaveCharacterData_reflection_;
+  delete ReqSaveOfficilMap::default_instance_;
+  delete ReqSaveOfficilMap_reflection_;
+  delete ReqSaveOfficilSectionNames::default_instance_;
+  delete ReqSaveOfficilSectionNames_reflection_;
 }
 
 void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
@@ -199,7 +243,9 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
     "Data\":\n\020CharacterDataACK\022&\n\004data\030\001 \002(\0132\030"
     ".message.CrashPlayerInfo\">\n\024ReqSaveChara"
     "cterData\022&\n\004data\030\001 \002(\0132\030.message.CrashPl"
-    "ayerInfo", 368);
+    "ayerInfo\" \n\021ReqSaveOfficilMap\022\013\n\003sql\030\001 \002"
+    "(\t\")\n\032ReqSaveOfficilSectionNames\022\013\n\003sql\030"
+    "\001 \002(\t", 445);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg_game_db.proto", &protobuf_RegisterTypes);
   ApplyCharacterDataReq::default_instance_ = new ApplyCharacterDataReq();
@@ -208,12 +254,16 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
   gs2dbSaveOfficileMapReq::default_instance_ = new gs2dbSaveOfficileMapReq();
   CharacterDataACK::default_instance_ = new CharacterDataACK();
   ReqSaveCharacterData::default_instance_ = new ReqSaveCharacterData();
+  ReqSaveOfficilMap::default_instance_ = new ReqSaveOfficilMap();
+  ReqSaveOfficilSectionNames::default_instance_ = new ReqSaveOfficilSectionNames();
   ApplyCharacterDataReq::default_instance_->InitAsDefaultInstance();
   NeedCreateCharacter::default_instance_->InitAsDefaultInstance();
   gs2dbDelOfficileReq::default_instance_->InitAsDefaultInstance();
   gs2dbSaveOfficileMapReq::default_instance_->InitAsDefaultInstance();
   CharacterDataACK::default_instance_->InitAsDefaultInstance();
   ReqSaveCharacterData::default_instance_->InitAsDefaultInstance();
+  ReqSaveOfficilMap::default_instance_->InitAsDefaultInstance();
+  ReqSaveOfficilSectionNames::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto);
 }
 
@@ -1959,6 +2009,618 @@ void ReqSaveCharacterData::InternalSwap(ReqSaveCharacterData* other) {
     clear_has_data();
   }
   // @@protoc_insertion_point(field_set_allocated:message.ReqSaveCharacterData.data)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ReqSaveOfficilMap::kSqlFieldNumber;
+#endif  // !_MSC_VER
+
+ReqSaveOfficilMap::ReqSaveOfficilMap()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.ReqSaveOfficilMap)
+}
+
+void ReqSaveOfficilMap::InitAsDefaultInstance() {
+}
+
+ReqSaveOfficilMap::ReqSaveOfficilMap(const ReqSaveOfficilMap& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.ReqSaveOfficilMap)
+}
+
+void ReqSaveOfficilMap::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  sql_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ReqSaveOfficilMap::~ReqSaveOfficilMap() {
+  // @@protoc_insertion_point(destructor:message.ReqSaveOfficilMap)
+  SharedDtor();
+}
+
+void ReqSaveOfficilMap::SharedDtor() {
+  sql_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void ReqSaveOfficilMap::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ReqSaveOfficilMap::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ReqSaveOfficilMap_descriptor_;
+}
+
+const ReqSaveOfficilMap& ReqSaveOfficilMap::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  return *default_instance_;
+}
+
+ReqSaveOfficilMap* ReqSaveOfficilMap::default_instance_ = NULL;
+
+ReqSaveOfficilMap* ReqSaveOfficilMap::New(::google::protobuf::Arena* arena) const {
+  ReqSaveOfficilMap* n = new ReqSaveOfficilMap;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ReqSaveOfficilMap::Clear() {
+  if (has_sql()) {
+    sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool ReqSaveOfficilMap::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.ReqSaveOfficilMap)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string sql = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_sql()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->sql().data(), this->sql().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.ReqSaveOfficilMap.sql");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.ReqSaveOfficilMap)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.ReqSaveOfficilMap)
+  return false;
+#undef DO_
+}
+
+void ReqSaveOfficilMap::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.ReqSaveOfficilMap)
+  // required string sql = 1;
+  if (has_sql()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sql().data(), this->sql().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.ReqSaveOfficilMap.sql");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->sql(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.ReqSaveOfficilMap)
+}
+
+::google::protobuf::uint8* ReqSaveOfficilMap::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.ReqSaveOfficilMap)
+  // required string sql = 1;
+  if (has_sql()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sql().data(), this->sql().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.ReqSaveOfficilMap.sql");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->sql(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.ReqSaveOfficilMap)
+  return target;
+}
+
+int ReqSaveOfficilMap::ByteSize() const {
+  int total_size = 0;
+
+  // required string sql = 1;
+  if (has_sql()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->sql());
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ReqSaveOfficilMap::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const ReqSaveOfficilMap* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ReqSaveOfficilMap*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ReqSaveOfficilMap::MergeFrom(const ReqSaveOfficilMap& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_sql()) {
+      set_has_sql();
+      sql_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.sql_);
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void ReqSaveOfficilMap::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ReqSaveOfficilMap::CopyFrom(const ReqSaveOfficilMap& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ReqSaveOfficilMap::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void ReqSaveOfficilMap::Swap(ReqSaveOfficilMap* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ReqSaveOfficilMap::InternalSwap(ReqSaveOfficilMap* other) {
+  sql_.Swap(&other->sql_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ReqSaveOfficilMap::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ReqSaveOfficilMap_descriptor_;
+  metadata.reflection = ReqSaveOfficilMap_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ReqSaveOfficilMap
+
+// required string sql = 1;
+ bool ReqSaveOfficilMap::has_sql() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void ReqSaveOfficilMap::set_has_sql() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void ReqSaveOfficilMap::clear_has_sql() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void ReqSaveOfficilMap::clear_sql() {
+  sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_sql();
+}
+ const ::std::string& ReqSaveOfficilMap::sql() const {
+  // @@protoc_insertion_point(field_get:message.ReqSaveOfficilMap.sql)
+  return sql_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqSaveOfficilMap::set_sql(const ::std::string& value) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.ReqSaveOfficilMap.sql)
+}
+ void ReqSaveOfficilMap::set_sql(const char* value) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.ReqSaveOfficilMap.sql)
+}
+ void ReqSaveOfficilMap::set_sql(const char* value, size_t size) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.ReqSaveOfficilMap.sql)
+}
+ ::std::string* ReqSaveOfficilMap::mutable_sql() {
+  set_has_sql();
+  // @@protoc_insertion_point(field_mutable:message.ReqSaveOfficilMap.sql)
+  return sql_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* ReqSaveOfficilMap::release_sql() {
+  clear_has_sql();
+  return sql_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqSaveOfficilMap::set_allocated_sql(::std::string* sql) {
+  if (sql != NULL) {
+    set_has_sql();
+  } else {
+    clear_has_sql();
+  }
+  sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
+  // @@protoc_insertion_point(field_set_allocated:message.ReqSaveOfficilMap.sql)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ReqSaveOfficilSectionNames::kSqlFieldNumber;
+#endif  // !_MSC_VER
+
+ReqSaveOfficilSectionNames::ReqSaveOfficilSectionNames()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.ReqSaveOfficilSectionNames)
+}
+
+void ReqSaveOfficilSectionNames::InitAsDefaultInstance() {
+}
+
+ReqSaveOfficilSectionNames::ReqSaveOfficilSectionNames(const ReqSaveOfficilSectionNames& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.ReqSaveOfficilSectionNames)
+}
+
+void ReqSaveOfficilSectionNames::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  sql_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ReqSaveOfficilSectionNames::~ReqSaveOfficilSectionNames() {
+  // @@protoc_insertion_point(destructor:message.ReqSaveOfficilSectionNames)
+  SharedDtor();
+}
+
+void ReqSaveOfficilSectionNames::SharedDtor() {
+  sql_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void ReqSaveOfficilSectionNames::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ReqSaveOfficilSectionNames::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ReqSaveOfficilSectionNames_descriptor_;
+}
+
+const ReqSaveOfficilSectionNames& ReqSaveOfficilSectionNames::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  return *default_instance_;
+}
+
+ReqSaveOfficilSectionNames* ReqSaveOfficilSectionNames::default_instance_ = NULL;
+
+ReqSaveOfficilSectionNames* ReqSaveOfficilSectionNames::New(::google::protobuf::Arena* arena) const {
+  ReqSaveOfficilSectionNames* n = new ReqSaveOfficilSectionNames;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ReqSaveOfficilSectionNames::Clear() {
+  if (has_sql()) {
+    sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool ReqSaveOfficilSectionNames::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.ReqSaveOfficilSectionNames)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string sql = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_sql()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->sql().data(), this->sql().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.ReqSaveOfficilSectionNames.sql");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.ReqSaveOfficilSectionNames)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.ReqSaveOfficilSectionNames)
+  return false;
+#undef DO_
+}
+
+void ReqSaveOfficilSectionNames::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.ReqSaveOfficilSectionNames)
+  // required string sql = 1;
+  if (has_sql()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sql().data(), this->sql().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.ReqSaveOfficilSectionNames.sql");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->sql(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.ReqSaveOfficilSectionNames)
+}
+
+::google::protobuf::uint8* ReqSaveOfficilSectionNames::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.ReqSaveOfficilSectionNames)
+  // required string sql = 1;
+  if (has_sql()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sql().data(), this->sql().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.ReqSaveOfficilSectionNames.sql");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->sql(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.ReqSaveOfficilSectionNames)
+  return target;
+}
+
+int ReqSaveOfficilSectionNames::ByteSize() const {
+  int total_size = 0;
+
+  // required string sql = 1;
+  if (has_sql()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->sql());
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ReqSaveOfficilSectionNames::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const ReqSaveOfficilSectionNames* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ReqSaveOfficilSectionNames*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ReqSaveOfficilSectionNames::MergeFrom(const ReqSaveOfficilSectionNames& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_sql()) {
+      set_has_sql();
+      sql_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.sql_);
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void ReqSaveOfficilSectionNames::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ReqSaveOfficilSectionNames::CopyFrom(const ReqSaveOfficilSectionNames& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ReqSaveOfficilSectionNames::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void ReqSaveOfficilSectionNames::Swap(ReqSaveOfficilSectionNames* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ReqSaveOfficilSectionNames::InternalSwap(ReqSaveOfficilSectionNames* other) {
+  sql_.Swap(&other->sql_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ReqSaveOfficilSectionNames::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ReqSaveOfficilSectionNames_descriptor_;
+  metadata.reflection = ReqSaveOfficilSectionNames_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ReqSaveOfficilSectionNames
+
+// required string sql = 1;
+ bool ReqSaveOfficilSectionNames::has_sql() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void ReqSaveOfficilSectionNames::set_has_sql() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void ReqSaveOfficilSectionNames::clear_has_sql() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void ReqSaveOfficilSectionNames::clear_sql() {
+  sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_sql();
+}
+ const ::std::string& ReqSaveOfficilSectionNames::sql() const {
+  // @@protoc_insertion_point(field_get:message.ReqSaveOfficilSectionNames.sql)
+  return sql_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqSaveOfficilSectionNames::set_sql(const ::std::string& value) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.ReqSaveOfficilSectionNames.sql)
+}
+ void ReqSaveOfficilSectionNames::set_sql(const char* value) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.ReqSaveOfficilSectionNames.sql)
+}
+ void ReqSaveOfficilSectionNames::set_sql(const char* value, size_t size) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.ReqSaveOfficilSectionNames.sql)
+}
+ ::std::string* ReqSaveOfficilSectionNames::mutable_sql() {
+  set_has_sql();
+  // @@protoc_insertion_point(field_mutable:message.ReqSaveOfficilSectionNames.sql)
+  return sql_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* ReqSaveOfficilSectionNames::release_sql() {
+  clear_has_sql();
+  return sql_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqSaveOfficilSectionNames::set_allocated_sql(::std::string* sql) {
+  if (sql != NULL) {
+    set_has_sql();
+  } else {
+    clear_has_sql();
+  }
+  sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
+  // @@protoc_insertion_point(field_set_allocated:message.ReqSaveOfficilSectionNames.sql)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

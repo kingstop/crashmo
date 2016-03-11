@@ -227,6 +227,7 @@ bool is_dayofweek( unsigned int t, unsigned char dow );
 bool in_duration( unsigned int t, unsigned char hstart, unsigned char hend );
 bool is_valid_string( const std::string& str );
 char* get_and_create_static_buffer( std::size_t size );
+std::string get_time(time_t cur_time);
 struct memory_leak_monitor
 {
 	virtual ~memory_leak_monitor() {}

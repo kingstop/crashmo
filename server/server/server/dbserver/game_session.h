@@ -12,7 +12,9 @@ public:
 	void parseApplyCharacterDataReq(google::protobuf::Message* p, pb_flag_type flag);
 	void parseReqSaveCharacterData(google::protobuf::Message* p, pb_flag_type flag);
 	void parseSaveOfficilMapReq(google::protobuf::Message* p, pb_flag_type flag);
-	void parseDelOfficilMapReq(google::protobuf::Message* p, pb_flag_type flag);	
+	void parseDelOfficilMapReq(google::protobuf::Message* p, pb_flag_type flag);
+	void parseSaveOfficilMapsReq(google::protobuf::Message* p, pb_flag_type flag);
+	void parseSaveSectionNamesReq(google::protobuf::Message* p, pb_flag_type flag);
 	u16  getGameId() const{return m_game_id;}
 public:
 	virtual void proc_message( const message_t& msg );

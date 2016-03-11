@@ -58,66 +58,37 @@ bool init()
 }
 
 void run()
-
 {
-
 	gGameServer.run();
-
-
-
 }
 
 
 
 void shutdown()
-
 {
-
 	gGameServer.shutDown();
-
 	delete gFuGameFather;
-
 	gFuGameFather = NULL;
-
 	net_global::free_net_service();
-
 }
 
 
 
 int main()
-
 {
-
 #ifdef WIN32
-
 	MiniDumper dump("game",Version::toString().c_str(),"game server error");
-
 #endif
 
 	if (init())
-
 	{
-
 		run();
-
 		shutdown();
-
 	}
-
 	else
-
 	{
-
 		printf("init server failed \n" );
-
 	}
-
-
-
 	return safe_return(1);
-
-
-
 }
 

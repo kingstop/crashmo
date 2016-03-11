@@ -8,6 +8,7 @@ public:
 	void queryInfo(account_type a, tran_id_type t, u16 gs);
 	void saveCharacterInfo(message::ReqSaveCharacterData* msg);
 	void saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg);
+	void saveOfficilObjs(const char* szsql);
 	//void saveOfficilMap(message::MsgSaveOfficilMapReq* msg, tran_id_type t);
 	//void officilMapReq(message::MsgOfficilMapReq* msg, tran_id_type t);
 	void delOfficilMap(int section, int number);

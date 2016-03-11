@@ -71,6 +71,19 @@ void GameSession::initPBModule()
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ReqSaveCharacterData), &GameSession::parseReqSaveCharacterData);
 }
 
+
+void GameSession::parseSaveOfficilMapsReq(google::protobuf::Message* p, pb_flag_type flag)
+{
+	message::ReqSaveOfficilMap* msg = (message::ReqSaveOfficilMap*) p;
+
+}
+
+void GameSession::parseSaveSectionNamesReq(google::protobuf::Message* p, pb_flag_type flag)
+{
+	message::ReqSaveOfficilSectionNames* msg = (message::ReqSaveOfficilSectionNames*)p;
+
+}
+
 void GameSession::proc_message( const message_t& msg )
 {
 	parsePBMessage(msg.data, msg.len);
