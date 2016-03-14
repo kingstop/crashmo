@@ -42,10 +42,26 @@ std::string newGUID()
 	return stc_string;  
 } 
 
-void signal_handle(int)
+void signal_handle(int i)
 {
-	printf("catch signal\n");
-	return;
+	switch (i)
+	{
+	case CTRL_C_EVENT:
+		printf("CTRL_C_EVENT \n");
+		break;	
+	case CTRL_CLOSE_EVENT:
+		printf("CTRL_CLOSE_EVENT \n");
+		break;
+	case CTRL_BREAK_EVENT:
+		printf("CTRL_BREAK_EVENT \n");
+		break;
+	case CTRL_LOGOFF_EVENT:
+		printf("CTRL_LOGOFF_EVENT \n");
+		break;
+	case CTRL_SHUTDOWN_EVENT:
+		printf("CTRL_SHUTDOWN_EVENT \n");
+		break;
+	}
 }
 
 void save_pid()
