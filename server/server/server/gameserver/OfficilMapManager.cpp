@@ -55,7 +55,6 @@ void OfficilMapManager::init(DBQuery* p)
 			DBRow row = sResult[i];
 			_sections_names[row["section_id"]] = row["section_name"];
 		}
-
 	}
 
 	if (gEventMgr.hasEvent(this, EVENT_SAVE_OFFICIL_DATA_) == false)
@@ -143,6 +142,7 @@ void OfficilMapManager::saveOfficilMap()
 	{
 		message::ReqSaveOfficilMap msg;
 		msg.set_sql(sql_excute.c_str());
+		Mylog::log_debug(0, sql_excute.c_str());
 		gGSDBClient.sendPBMessage(&msg, 0);
 		current_count = 0;
 		sql_excute.clear();

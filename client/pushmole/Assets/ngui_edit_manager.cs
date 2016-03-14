@@ -322,6 +322,7 @@ public class ngui_edit_manager : MonoBehaviour {
                 break;
             case game_type.game:
                 {
+                    UpdateKeyboard();
                     global_instance.Instance._crash_manager.update();
                 }
                 break;
@@ -331,28 +332,58 @@ public class ngui_edit_manager : MonoBehaviour {
 
     void UpdateKeyboard()
     {
-        if(Input.GetKey(KeyCode.UpArrow))
+        if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game)
         {
+            int length = _dir_btn_down.Length;
+            for (int i = 0; i < length; i++)
+            {
+                _dir_btn_down[i] = false;
+            }
 
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                _dir_btn_down[(int)dir_move.back] = true;
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                _dir_btn_down[(int)dir_move.front] = true;
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                _dir_btn_down[(int)dir_move.left] = true;
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                _dir_btn_down[(int)dir_move.right] = true;
+            }
+            global_instance.Instance._crash_manager.update_dir_btn();
+            bool jump_down = false;
+            if (Input.GetKey(KeyCode.Space))
+            {
+                jump_down = true;
+            }
+
+            if (_jump_click == true && jump_down == false)
+            {
+                _jump_click = false;
+            }
+            else if (_jump_click == false && jump_down == true)
+            {
+                _jump_click = true;
+                global_instance.Instance._crash_manager.creature_jump();
+            }
+
+            int b_ret = 0;
+            if(Input.GetKey(KeyCode.H))
+            {
+                b_ret = 1;
+            }
+            global_instance.Instance._crash_manager.catch_click(b_ret);
         }
-        else if(Input.GetKey(KeyCode.DownArrow))
-        {
-
-        }
-        else if(Input.GetKey(KeyCode.LeftArrow))
-        {
-
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-
-        }
-
-
-
-
     }
 
+    private bool _jump_click = false;
+    private bool _catch_click = false;
     public void BackToMainPanel()
     {
         HideAlluis();

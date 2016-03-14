@@ -65,7 +65,6 @@ public class u3dclient
            Byte[] bytes = new Byte[iNumberOfBytes];
            Array.Copy(socket.MsgBuffer, bytes, iNumberOfBytes);
            callFunction(bytes, pSocket);
-           //Console.WriteLine("Message=<{1}> Received ", m_Count++);
        }
        catch (Exception pException)
        {
@@ -172,8 +171,6 @@ public class u3dclient
         {
             return;
         }
-        //String name = System.BitConverter.ToString(bytes, (int)ptr, (int)pb_name_type_length);
-
         String name = System.Text.Encoding.UTF8.GetString(bytes, (int)ptr, (int)pb_name_type_length);
         ptr += pb_name_type_length;        
         String[] temp_arry = name.Split('.');
@@ -194,16 +191,8 @@ public class u3dclient
     private void register_function()
     {
         _MessageFun.Add("LoginResponse", login_respone);
-		//_MessageFun.Add ("CrashmoClientInit", CrashmoClientInit);
     }
 
-    //private bool CrashmoClientInit(System.IO.MemoryStream stream, SocketClient socketclient)
-    //{
-    //    CrashmoClientInit msg = ProtoBuf.Serializer.Deserialize<CrashmoClientInit>(stream);
-    //    global_instance.Instance._player.SetInfo(msg.info);
-    //    global_instance.Instance._ngui_edit_manager.show_main_panel();
-    //    return true;
-    //}
     private bool register_failed(System.IO.MemoryStream stream, SocketClient socketclient)
     {
         RegisterAccountFaildACK msg = ProtoBuf.Serializer.Deserialize<RegisterAccountFaildACK>(stream);
@@ -223,13 +212,4 @@ public class u3dclient
         }
         return true;
     }
-
-
-    //private bool construction_build_ACK_fun(System.IO.MemoryStream stream, SocketClient socketclient)
-    //{
-    //    construction_build_ACK msg = ProtoBuf.Serializer.Deserialize<construction_build_ACK>(stream);
-    //    construction_id_ = msg.construction_id;
-    //    return true;
-    //}
- 
 }

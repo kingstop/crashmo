@@ -666,18 +666,23 @@ public class crash_manager
         }
         else
         {
-            _lock_mole.Clear();
-            if (_freezen_creature == true)
+            if(_obj_creature != null)
             {
-                pos.move(dir_move.up);
-                if (check_pos_valid(pos))
+                _lock_mole.Clear();
+                if (_freezen_creature == true)
                 {
-                    crash_mole mole_temp = _obj_creature._crash_mole;
-                    mole_temp.remove_crash_obj(_obj_creature);
-                    _obj_creature = null;
+                    pos.move(dir_move.up);
+                    if (check_pos_valid(pos))
+                    {
+                        crash_mole mole_temp = _obj_creature._crash_mole;
+                        mole_temp.remove_crash_obj(_obj_creature);
+                        _obj_creature = null;
+                    }
+                    _freezen_creature = false;
                 }
-                _freezen_creature = false;
+
             }
+
         }
     }
 
