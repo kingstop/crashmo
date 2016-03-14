@@ -141,7 +141,7 @@ void OfficilMapManager::saveOfficilMap()
 	if (sql_excute.empty() == false)
 	{
 		message::ReqSaveOfficilMap msg;
-		msg.set_sql(sql_excute.c_str());
+		msg.set_sql(sql_excute.c_str());		
 		gGSDBClient.sendPBMessage(&msg, 0);
 		current_count = 0;
 		sql_excute.clear();
