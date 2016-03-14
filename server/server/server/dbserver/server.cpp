@@ -146,7 +146,7 @@ bool DBServer::initDataFromDatabase(DBQuery* p, const void* data)
 	}
 
 
-	if (gWorldDatabase.initDatabase(m_world_db_conf) == false)
+	if (gWorldDatabase.initDatabase(db_world_config) == false)
 	{
 		Mylog::log_server(LOG_ERROR, "init world db failed !");
 		return false;

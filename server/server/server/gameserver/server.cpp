@@ -198,31 +198,7 @@ bool GameServer::initDataFromCharacterDB(DBQuery* p, const void* data)
 
 bool GameServer::initDataFromWorldDB(DBQuery* p, const void* data)
 {
-	if (!p)
-	{ 
-		DBQuery& query = *p;
-		query << "select UNIX_TIMESTAMP(`create_time`),* from `offical_map`;";
-		query.parse();
-		SDBResult sResult = query.store();
-		int count = sResult.size();
-		for (int i = 0; i < count; i ++)
-		{
-			DBRow row = sResult[i];
-			row["account"];
-			row["creater_name"];
-			row["map_name"];
-			row["map_data"];
-			row["UNIX_TIMESTAMP(`create_time`)"];
-			row["is_complete"];
-			row["index_map"];
-			row["section"];
-			row["number"];
-
-		}
-
-		
-		return false;
-	}
+	gOfficilMapManager.init(p);
 	return true;
 }
 

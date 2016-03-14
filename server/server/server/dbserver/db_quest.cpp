@@ -1,6 +1,3 @@
-string
-string
-string
 #include "stdafx.h"
 #include "db_quest.h"
 #include "game_session.h"
@@ -50,6 +47,11 @@ void DBQuestManager::queryInfo(account_type a, tran_id_type t, u16 gs)
 //{
 //
 //}
+
+void DBQuestManager::saveOfficilObjs(const char* szsql)
+{
+	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, szsql, 0, NULL, _SAVE_OFFICIL_MAP_);
+}
 
 void DBQuestManager::delOfficilMap(int section, int number)
 {

@@ -4,6 +4,7 @@
 #include "base64_encode.h"
 #include "utilities.h"
 
+#define _SAVE_OFFICIL_TIME_  (20 * _TIME_SECOND_MSEL_)
 OfficilMapManager::OfficilMapManager()
 {
 }
@@ -16,10 +17,10 @@ OfficilMapManager::~OfficilMapManager()
 
 void OfficilMapManager::init(DBQuery* p)
 {
-	if (!p)
+	if (p)
 	{
 		DBQuery& query = *p;
-		query << "select UNIX_TIMESTAMP(`create_time`),* from `offical_map`;";
+		query << "select *,UNIX_TIMESTAMP(`create_time`) from `offical_map`;";
 		query.parse();
 		SDBResult sResult = query.store();
 		int count = sResult.size();
@@ -55,6 +56,11 @@ void OfficilMapManager::init(DBQuery* p)
 			_sections_names[row["section_id"]] = row["section_name"];
 		}
 
+	}
+
+	if (gEventMgr.hasEvent(this, EVENT_SAVE_OFFICIL_DATA_) == false)
+	{
+		gEventMgr.addEvent(this, &OfficilMapManager::saveOfficilMap, EVENT_SAVE_OFFICIL_DATA_, _SAVE_OFFICIL_TIME_, 99999999, 0);
 	}
 }
 

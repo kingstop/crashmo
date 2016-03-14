@@ -69,18 +69,22 @@ void GameSession::initPBModule()
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::gs2dbSaveOfficileMapReq), &GameSession::parseSaveOfficilMapReq);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::gs2dbDelOfficileReq), &GameSession::parseDelOfficilMapReq);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ReqSaveCharacterData), &GameSession::parseReqSaveCharacterData);
+	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ReqSaveOfficilMap), &GameSession::parseSaveOfficilMapsReq);
+	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ReqSaveOfficilSectionNames), &GameSession::parseSaveSectionNamesReq);
 }
 
 
 void GameSession::parseSaveOfficilMapsReq(google::protobuf::Message* p, pb_flag_type flag)
 {
 	message::ReqSaveOfficilMap* msg = (message::ReqSaveOfficilMap*) p;
+	gDBQuestMgr.saveOfficilObjs(msg->sql().c_str());
 
 }
 
 void GameSession::parseSaveSectionNamesReq(google::protobuf::Message* p, pb_flag_type flag)
 {
 	message::ReqSaveOfficilSectionNames* msg = (message::ReqSaveOfficilSectionNames*)p;
+	gDBQuestMgr.saveOfficilObjs(msg->sql().c_str());
 
 }
 

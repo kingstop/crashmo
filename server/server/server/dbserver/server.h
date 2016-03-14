@@ -16,8 +16,6 @@ public:
 	u16  getCityGS(u32 city);
 private:
 	obj_map<u32, u16>m_cityServers;
-protected:
-	DataBaseConfig m_world_db_conf;
 private:
 
 };
