@@ -52,5 +52,4 @@ add_definitions("-g")
 add_definitions(-DLOG4CXX_STATIC)
 
 #ADD_SUBDIRECTORY(server)
-ADD_SUBDIRECTORY(common)
 ADD_SUBDIRECTORY(server)
