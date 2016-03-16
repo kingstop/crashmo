@@ -32,10 +32,11 @@ LINK_DIRECTORIES(
 ) 
  
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../bin/server/${PROJECT_NAME}/ ) 
-
+set(CMAKE_EXE_LINKER_FLAGS "-lpthread -lrt")
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../lib) 
 
-add_definitions(-DDEBUG)
+add_definitions(-DDEBUG -pthread)
 add_definitions("-g")
 add_definitions(-DLOG4CXX_STATIC)
 ADD_SUBDIRECTORY(server)
+

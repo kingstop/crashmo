@@ -1,5 +1,5 @@
 #pragma once
-typedef std::map<int, std::map<int, message::CrashMapData>> OFFICILMAPLIST;
+typedef std::map<int, std::map<int, message::CrashMapData> > OFFICILMAPLIST;
 typedef std::map<int, std::string> SECTIONSNAMES;
 class OfficilMapManager : public EventableObject
 {
