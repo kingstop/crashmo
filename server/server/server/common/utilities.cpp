@@ -3,14 +3,28 @@
 #include <boost/interprocess/detail/atomic.hpp>
 #include <boost/version.hpp>
 
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/lexical_cast.hpp>
+/*
+
 #ifdef _WIN32_WINDOWS
 #include <objbase.h>  
 #else
 #include <uuid/uuid.h>
 #endif
+*/
 std::string newGUID()  
 {  
 	static std::string stc_string;
+	using namespace boost;
+	using namespace boost::uuids;
+	random_generator rgen;
+	uuid u = rgen();
+	stc_string = lexical_cast<std::string>(u);
+	return stc_string;
+/*
 	static char buf[64] = {0};
 #ifdef _WIN32_WINDOWS
 
@@ -40,10 +54,12 @@ std::string newGUID()
 	} 
 #endif
 	return stc_string;  
+*/
 } 
 
 void signal_handle(int i)
 {
+/*
 	switch (i)
 	{
 	case CTRL_C_EVENT:
@@ -62,6 +78,7 @@ void signal_handle(int i)
 		printf("CTRL_SHUTDOWN_EVENT \n");
 		break;
 	}
+*/
 }
 
 void save_pid()

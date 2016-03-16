@@ -4,12 +4,13 @@
 #include "message/msg_game_db.pb.h"
 #include <stdio.h>
 #include "base64_encode.h"
+/*
 #ifdef _WIN32_WINDOWS
 #include <objbase.h>  
 #else
 #include <uuid/uuid.h>
 #endif
-
+*/
 enum
 {
     _QUERY_SAVE_PLAYER_ = _NORMAL_THREAD + 1,

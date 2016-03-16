@@ -1,55 +1,41 @@
-PROJECT(project_mole)  
-#工程名  
-  
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)  
-#最低版本号  
-  
-INCLUDE(FindBoost)
-
-IF(LINUX)
-    MESSAGE("LINUX")
-ELSEIF(WIN32)
-    MESSAGE("WIN32")
-ELSE() 
- MESSAGE("not found")
-ENDIF()
-
-INCLUDE_DIRECTORIES(  
-    ${PROJECT_SOURCE_DIR}/include  
-    ${PROJECT_SOURCE_DIR}/include/linklist
-   ./../../../external_libs/include/boost-1_58/ 
-    ./../../../external_libs/
-    ./../../../external_libs/google/protobuf/src/ 
-    ./../../../external_libs/json/include/ 
-    ./../../server/code/contrib/include/log4cxx/ 
-    ./../../../external_libs/log4cplus/log4cplus-1.2.0/include/
-    ./common/
-    /usr/include/mysql/
-   /usr/local/include/mysql++/   
-   /usr/include/ 
-   /usr/local/log4cxx/lib/
-   /usr/local/include/ 
-)  
-#头文件目录  
-  
-    # ./../../../../external_libs/log4cxx/apache-log4cxx-0.10.0/src/main/include/
-    #./../../server/code/contrib/include/json_include/    
-LINK_DIRECTORIES(  
-    ${PROJECT_SOURCE_DIR}/lib  
-    /usr/local/lib  
-    /usr/lib  
-)  
-#链接库目录  
-  
-SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../bin/server/${PROJECT_NAME}/ )  
-#生成的可执行文件所在目录，PROJECT_BINARY_DIR即为外部编译目录，这里即为Build目录  
-  
-SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../lib)  
-#生成的库文件所在目录  
-#SET(GATE_SOURCE_LIST game_client.cpp game_manager.cpp login_client.cpp main.cpp server.cpp user_manager.cpp user_session.cpp user_tcp_server.cpp)
-add_definitions(-DDEBUG)
-add_definitions("-g")
-add_definitions(-DLOG4CXX_STATIC)
-
-#ADD_SUBDIRECTORY(server)
-ADD_SUBDIRECTORY(server)
+PROJECT(project_mole)
+
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8) 
+INCLUDE(FindBoost)
+IF(LINUX)
+    MESSAGE("LINUX")
+ELSEIF(WIN32)
+    MESSAGE("WIN32")
+ELSE()
+ MESSAGE("not found")
+ENDIF()
+
+INCLUDE_DIRECTORIES( 
+    ${PROJECT_SOURCE_DIR}/include 
+    ${PROJECT_SOURCE_DIR}/include/linklist
+   ./../../../external/boost/boost_1_59_0/
+    ./../../../external/mysql++-3.2.2/lib/
+    ./../../../external/google/protobuf/src/
+    ./../../../external/json/include/
+    ./../../../external/log4cplus/log4cplus-1.2.0/include/
+    ./server/common/
+    /usr/local/mysql/include/
+    /usr/include/mysql/
+   /usr/include/ 
+   /usr/local/include/
+) 
+
+LINK_DIRECTORIES( 
+    ${PROJECT_SOURCE_DIR}/lib 
+    /usr/local/lib 
+    /usr/lib 
+) 
+ 
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../bin/server/${PROJECT_NAME}/ ) 
+
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../lib) 
+
+add_definitions(-DDEBUG)
+add_definitions("-g")
+add_definitions(-DLOG4CXX_STATIC)
+ADD_SUBDIRECTORY(server)
