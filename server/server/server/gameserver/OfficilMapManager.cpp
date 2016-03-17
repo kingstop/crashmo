@@ -31,7 +31,7 @@ void OfficilMapManager::init(DBQuery* p)
 			temp_map.set_mapname(row["map_name"].c_str());
 			temp_map.set_creatername(row["creater_name"].c_str());
 			message::CrashmoMapBaseData* data_base = temp_map.mutable_data();
-			std::string str_data = row["map_data"];
+			std::string str_data = row["map_data"].c_str();
 			data_base->ParseFromString(base64_decode(str_data));			
 			temp_map.set_create_time(row["UNIX_TIMESTAMP(`create_time`)"]);
 			temp_map.set_number(row["section"]);
@@ -53,7 +53,7 @@ void OfficilMapManager::init(DBQuery* p)
 		for (int i = 0; i < count; i ++)
 		{
 			DBRow row = sResult[i];
-			_sections_names[row["section_id"]] = row["section_name"];
+			_sections_names[row["section_id"]] = row["section_name"].c_str();
 		}
 	}
 
