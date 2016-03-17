@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "CrashPlayerManager.h"
 #include "CrashPlayer.h"
 
