@@ -1,4 +1,3 @@
-string
 #include "stdafx.h"
 GameServer::GameServer()
     :m_EventHold(WORLD_INSTANCE)
