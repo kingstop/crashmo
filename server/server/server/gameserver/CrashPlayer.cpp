@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "CrashPlayer.h"
 #include "session.h"
 #define _SAVE_PLAYER_TIME_  (10 * _TIME_SECOND_MSEL_)
