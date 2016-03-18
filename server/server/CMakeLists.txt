@@ -18,6 +18,8 @@ INCLUDE_DIRECTORIES(
     ./../../../external/google/protobuf/src/
     ./../../../external/json/include/
     ./../../../external/log4cplus/log4cplus-1.2.0/include/
+    ./../../../external/mysql-5.7.10/build/include/
+    ./../../../external/mysql-5.7.10/include/
     ./server/common/
     /usr/local/mysql/include/
     /usr/include/mysql/
