@@ -90,7 +90,7 @@ void save_pid()
 		char sz[256];
 		memset(sz, 0, sizeof(sz));
 		fseek(fp, 0, SEEK_SET);
-		sprintf(sz, "%d", getpid());		
+		sprintf(sz, "%d\n", getpid());		
 		fwrite(sz, sizeof(char), strlen(sz), fp);
 		fclose(fp);
 	}

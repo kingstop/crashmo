@@ -35,9 +35,7 @@ bool ServerFrame::init()
 	_wait_stop = false;
 	_service_stop_state = 0;
     _print = false;
-#ifndef _WIN32_WINDOWS
-	save_pid();
-#endif
+
 	signal(SIGINT,signal_handle);
 
 	return true ;
@@ -46,6 +44,9 @@ bool ServerFrame::init()
 void ServerFrame::run()
 {
 
+#ifndef _WIN32_WINDOWS
+	save_pid();
+#endif
 	boost::posix_time::millisec_posix_time_system_config::time_duration_type time_elapse;
 	boost::posix_time::ptime nLastTime = boost::posix_time::microsec_clock::universal_time();  
 	boost::posix_time::ptime nStartTime = nLastTime ;
