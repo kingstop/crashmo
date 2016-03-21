@@ -122,9 +122,6 @@ public class creature : MonoBehaviour
         //    vec.y += _jump_speed;
         //    need_set = true;
         //}
-
-
-
         if (_state == creature_state.run)
         {
             
