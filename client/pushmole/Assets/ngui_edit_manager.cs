@@ -194,13 +194,9 @@ public class ngui_edit_manager : MonoBehaviour {
 
 	public void on_save_btn_click ()
 	{
-
         set_edit_btns_active(false);
 		set_edit_type_btns_active (false);
 		set_save_map_panel_active (true);
-		
-        
-
 	}
 
 	public void set_edit_type_btns_active(bool active)

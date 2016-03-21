@@ -720,6 +720,73 @@ public class crash_manager
         return grid;
     }
 
+    public bool is_block(float tempx, float tempy, float tempz)
+    {
+        crash_pos pos = new crash_pos();
+        pos._x = transform_to_map(tempx);
+        pos._y = transform_to_map(tempy);
+        pos._z = transform_to_map(tempz);
+        crash_mole target_mole = get_crash_mole_addr(pos)._crash_mole;
+        if(target_mole != null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    bool check_block(float tempx, float tempy, float tempz, float block_width)
+    {
+        if (is_block(tempx + block_width, tempy, tempz))
+        {
+            return true;
+        }
+
+        if (is_block(tempx, tempy + block_width, tempz))
+        {
+            return true;
+        }
+
+        if (is_block(tempx, tempy, tempz + block_width))
+        {
+            return true;
+        }
+
+        if (is_block(tempx + block_width, tempy + block_width, tempz))
+        {
+            return true;
+        }
+
+        if (is_block(tempx, tempy + block_width, tempz + block_width))
+        {
+            return true;
+        }
+
+        if (is_block(tempx + block_width, tempy, tempz + block_width))
+        {
+            return true;
+        }
+        return false;
+    }
+     public bool is_block_creature(float tempx, float tempy, float tempz)
+    {
+        float block_width = 0.35f;
+        if(is_block(tempx, tempy, tempz) == true)
+        {
+            return true;
+        }
+
+        if(check_block(tempx, tempy, tempz, block_width))
+        {
+            return true;
+        }
+
+        if (check_block(tempx, tempy, tempz, -block_width))
+        {
+            return true;
+        }
+        return false;
+
+    }
     public float transform_to_position(int number)
     {
         float position = _grid_distance * ((float)number + 0.5f);

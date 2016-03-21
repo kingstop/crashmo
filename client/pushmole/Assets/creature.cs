@@ -22,7 +22,7 @@ public class creature : MonoBehaviour
     Dictionary<creature_type, GameObject> _moles = new Dictionary<creature_type, GameObject>();
     List<GameObject> _moles_list = new List<GameObject>();
     Rigidbody _Rigidbody = null;
-    public float _move_speed = 0.02f;
+    public float _move_speed = 0.01f;
     public float _jump_speed = 0;
    
 
@@ -112,20 +112,20 @@ public class creature : MonoBehaviour
     {
         bool need_set = false;
         Vector3 vec = get_position();
-        if (_jump_speed > 0)
-        {
-            _jump_speed -= 0.01f;
-            if(_jump_speed < 0)
-            {
-                _jump_speed = 0;
-            }
-            vec.y += _jump_speed;
-            need_set = true;
-        }
-        
-        
+        //if (_jump_speed > 0)
+        //{
+        //    _jump_speed -= 0.01f;
+        //    if (_jump_speed < 0)
+        //    {
+        //        _jump_speed = 0;
+        //    }
+        //    vec.y += _jump_speed;
+        //    need_set = true;
+        //}
 
-        if(_state == creature_state.run)
+
+
+        if (_state == creature_state.run)
         {
             
             switch(_dir)
@@ -175,7 +175,10 @@ public class creature : MonoBehaviour
         }
         if(need_set == true)
         {
-            set_position(vec.x, vec.y, vec.z);
+            if(global_instance.Instance._crash_manager.is_block_creature(vec.x, vec.y, vec.z) == false)
+            {
+                set_position(vec.x, vec.y, vec.z);
+            }                        
         }
     }
 
