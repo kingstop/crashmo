@@ -75,7 +75,7 @@ public class u3dclient
 
     public void connect()
    {
-       socket_client.Connect("127.0.0.1", 10102);
+       socket_client.Connect("dh-app01.chinacloudapp.cn", 20002);
    }
 
     public void register_account(string acc, string pwd)

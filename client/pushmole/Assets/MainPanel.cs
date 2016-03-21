@@ -85,6 +85,8 @@ public class MainPanel : MonoBehaviour
             MapData temp = new MapData();
             temp.set_info(MapDataTemp);
             global_instance.Instance.SetMapData(temp);
+            global_instance.Instance._crash_mole_grid_manager.set_max_height(temp.height_);
+            global_instance.Instance._crash_mole_grid_manager.set_max_width(temp.width_);
             global_instance.Instance._ngui_edit_manager._main_panel.gameObject.SetActive(false);
             global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
         }

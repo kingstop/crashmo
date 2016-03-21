@@ -376,6 +376,7 @@ public class crash_manager
     int _move_count = 0;
     public void init()
     {
+        clear();
         _camera_dir = camera_dir.front;
         _want_camera_dir = want_move_dir.no;
         _move_count = 0;
@@ -394,6 +395,7 @@ public class crash_manager
                 }
             }
         }
+        need_fall_update();
     }
 
 
@@ -674,9 +676,13 @@ public class crash_manager
                     pos.move(dir_move.up);
                     if (check_pos_valid(pos))
                     {
-                        crash_mole mole_temp = _obj_creature._crash_mole;
-                        mole_temp.remove_crash_obj(_obj_creature);
-                        _obj_creature = null;
+                        if(_obj_creature._crash_mole != null)
+                        {
+                            crash_mole mole_temp = _obj_creature._crash_mole;
+                            mole_temp.remove_crash_obj(_obj_creature);
+                            _obj_creature = null;
+                        }
+                        
                     }
                     _freezen_creature = false;
                 }
@@ -728,14 +734,17 @@ public class crash_manager
 
     public void clear()
     {
-        for (int x = 0; x < (int)_max_x; x++)
+        if(_crash_objs != null && _crash_moles != null)
         {
-            for (int y = 0; y < (int)_max_y; y++)
+            for (int x = 0; x < (int)_max_x; x++)
             {
-                for (int z = 0; z < (int)_max_z; z++)
+                for (int y = 0; y < (int)_max_y; y++)
                 {
-                    _crash_objs[x, z, y]._crash_obj = null;
-                    _crash_moles[x, z, y]._crash_mole = null;
+                    for (int z = 0; z < (int)_max_z; z++)
+                    {
+                        _crash_objs[x, z, y]._crash_obj = null;
+                        _crash_moles[x, z, y]._crash_mole = null;
+                    }
                 }
             }
         }
