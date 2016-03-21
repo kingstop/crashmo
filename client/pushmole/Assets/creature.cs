@@ -33,7 +33,6 @@ public class creature : MonoBehaviour
 
     void Awake()
     {
-        
         GameObject obj_1 = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("character/model/zippermouth_a_PF"));
         _moles.Add(creature_type.creature_1, obj_1);
         GameObject obj_2 = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("character/model/zippermouth_b_PF"));
