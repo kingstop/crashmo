@@ -380,6 +380,9 @@ public class crash_manager
         _camera_dir = camera_dir.front;
         _want_camera_dir = want_move_dir.no;
         _move_count = 0;
+        _max_x = (int)crash_define.max_x;
+        _max_z = (int)crash_define.max_z;
+        _max_y = (int)crash_define.max_y;
         _can_move_locks = new bool[_max_x, _max_z, _max_y];
         _crash_objs = new crash_obj_addr[_max_x, _max_z, _max_y];
         _crash_moles = new crash_mole_addr[_max_x, _max_z, _max_y];
@@ -982,17 +985,19 @@ public class crash_manager
                     int group = map_data.groups_[i, j];
                     if (group != 11)
                     {
-                        crash_mole mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(i, 9, j + 20)._crash_mole;
+                        int temp_x = (_max_x - map_data.width_) / 2 + i;
+                        int temp_y = (_max_y - map_data.height_) + j + 20;
+                        crash_mole mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(temp_x, 9, temp_y)._crash_mole;
                         if (mole_entry == null)
                         {
                             crash_base_obj obj = null;
                             if (group != 10)
                             {
-                                obj = global_instance.Instance._crash_manager.create_crash_obj(i, j + 20);
+                                obj = global_instance.Instance._crash_manager.create_crash_obj(temp_x, temp_y);
                             }
                             else
                             {
-                                obj = global_instance.Instance._crash_manager.create_flag_obj(i, j + 20);
+                                obj = global_instance.Instance._crash_manager.create_flag_obj(temp_x, temp_y);
                             }
 
                             mole_entry = global_instance.Instance._crash_manager.create_crash_mole();
@@ -1048,8 +1053,8 @@ public class crash_manager
         foreach (crash_mole entry in _crash_moles_list)
         {
             entry.update_side();
-
         }
+
         if(_creature == null)
         {
             GameObject obj_temp = Resources.Load<GameObject>("prefab/creature");
@@ -1362,26 +1367,60 @@ public class crash_manager
         }
         _can_not_move_list.Add(mole);
     }
+
+    public bool isvalid(crash_pos temp)
+    {
+        return isvalid(temp._x, temp._y, temp._z);
+    }
+    public bool isvalid(int x, int y, int z)
+    {
+        if (x < _max_x && x >= 0 && z >= 0 && z < _max_z && y >= 0 && y < _max_y)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public crash_obj_addr get_crash_obj_addr(int x, int z, int y)
     {
-        return _crash_objs[x, y, z];
+        crash_obj_addr temp = null;
+        if (isvalid(x, y, z))
+        {
+            temp = _crash_objs[x, y, z];
+        }
+        return temp;
     }
 
 
     public crash_mole_addr get_crash_mole_addr(int x, int z, int y)
     {
-        return _crash_moles[x, z, y];
+        crash_mole_addr temp = null;
+        if(isvalid(x, y, z))
+        {
+            temp = _crash_moles[x, z, y];
+        }
+        return temp;
     }
 
 
     public crash_obj_addr get_crash_obj_addr(crash_pos pos)
     {
-        return _crash_objs[pos._x, pos._z, pos._y];
+        crash_obj_addr temp = null;
+        if(isvalid(pos))
+        {
+            temp = _crash_objs[pos._x, pos._z, pos._y];
+        }
+        return temp;
     }
 
     public crash_mole_addr get_crash_mole_addr(crash_pos pos)
     {
-        return _crash_moles[pos._x, pos._z, pos._y];
+        crash_mole_addr temp = null;
+        if(isvalid(pos))
+        {
+            temp = _crash_moles[pos._x, pos._z, pos._y];
+        }
+        return temp;
     }
 
     public bool add_crash_obj(crash_obj obj_temp)

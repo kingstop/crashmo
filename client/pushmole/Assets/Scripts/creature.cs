@@ -123,8 +123,11 @@ public class creature : MonoBehaviour
         //}
         if (_state == creature_state.run)
         {
-            
-            switch(_dir)
+            if (_state == creature_state.run)
+            {
+                Debug.Log("RUN");
+            }
+            switch (_dir)
             {
                 case dir_move.left:
                     {
@@ -174,7 +177,12 @@ public class creature : MonoBehaviour
             if(global_instance.Instance._crash_manager.is_block_creature(vec.x, vec.y, vec.z) == false)
             {
                 set_position(vec.x, vec.y, vec.z);
-            }                        
+            }
+            else
+            {
+                Debug.Log("is block");
+            } 
+                                   
         }
     }
 
