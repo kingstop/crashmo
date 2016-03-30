@@ -939,21 +939,22 @@ public class crash_manager
             group = map_data.groups_[temp_x, temp_y];
             if (group != 11)
             {
-                mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(temp_x, 9, temp_y + 20)._crash_mole;
+                int x_offset = (_max_x - map_data.width_) / 2;
+                mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(temp_x + x_offset, 9, temp_y + 20)._crash_mole;
                 if (mole_entry == null)
                 {
                     if (group == 10)
                     {
                         if (dir_up == true)
                         {
-                            crash_base_obj obj = global_instance.Instance._crash_manager.create_flag_obj(temp_x, temp_y + 20);
+                            crash_base_obj obj = global_instance.Instance._crash_manager.create_flag_obj(temp_x + x_offset, temp_y + 20);
                             mole.add_crash_obj(obj);
                             create_mole(temp_x, temp_y, mole);
                         }
                     }
                     else if (group == mole._color_group || dir_up == true && group == 10)
                     {
-                        crash_obj obj = global_instance.Instance._crash_manager.create_crash_obj(temp_x, temp_y + 20);
+                        crash_obj obj = global_instance.Instance._crash_manager.create_crash_obj(temp_x + x_offset, temp_y + 20);
                         mole.add_crash_obj(obj);
                         create_mole(temp_x, temp_y, mole);
                     }
@@ -986,7 +987,7 @@ public class crash_manager
                     if (group != 11)
                     {
                         int temp_x = (_max_x - map_data.width_) / 2 + i;
-                        int temp_y = (_max_y - map_data.height_) + j + 20;
+                        int temp_y = /*(_max_y - map_data.height_)+ */j + 20;
                         crash_mole mole_entry = global_instance.Instance._crash_manager.get_crash_mole_addr(temp_x, 9, temp_y)._crash_mole;
                         if (mole_entry == null)
                         {
