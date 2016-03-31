@@ -21,9 +21,13 @@ public class creature : MonoBehaviour
 {
     Dictionary<creature_type, GameObject> _moles = new Dictionary<creature_type, GameObject>();
     List<GameObject> _moles_list = new List<GameObject>();
-    Rigidbody _Rigidbody = null;
-    public float _move_speed = 0.01f;
+    //Rigidbody _Rigidbody = null;
+    public float _move_speed = 0.005f;
     public float _jump_speed = 0;
+    public float _fallspeed = -0.01f;
+    public float _current_fall_speed = 0;
+    public bool _is_in_falldown = false;
+
    
 
     public creature()
@@ -47,9 +51,10 @@ public class creature : MonoBehaviour
             obj_entry.transform.parent = gameObject.transform;   
         }
                 
-        _Rigidbody = GetComponent<Rigidbody>();
+       // _Rigidbody = GetComponent<Rigidbody>();
         set_dir(dir_move.front);
         set_state(creature_state.idle);
+        _is_in_falldown = false;
 
     }
 
@@ -71,21 +76,21 @@ public class creature : MonoBehaviour
 
     public void jump()
     {
-        if(_Rigidbody.velocity.y > 0)
-        {
-            return;
-        }
-        else
-        {
-            Vector3 vc = new Vector3(0, 4.8f, 0);
-            _Rigidbody.velocity = vc;
-        }
+        //if(_Rigidbody.velocity.y > 0)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    Vector3 vc = new Vector3(0, 4.8f, 0);
+        //    _Rigidbody.velocity = vc;
+        //}
         
-        //_jump_speed = 0.25f;
+        _jump_speed = 0.6f;
     }
     public void set_position(float x, float y, float z)
     {
-        y -= 0.5f;
+        
         Vector3 vc = new Vector3(x, y, z);
         this.transform.position = vc;
         foreach (var entry in _moles)
@@ -102,25 +107,86 @@ public class creature : MonoBehaviour
     {
         Vector3 vec = new Vector3();
         vec = this.transform.position;
-        vec.y += 0.5f;
+       // vec.y += 0.5f;
         return vec;
     }
 
 
+    Vector3  FallDown()
+    {
+        Vector3 vec_temp = new Vector3();
+        Vector3 vec = get_position();
+        vec_temp = vec;
+        if (global_instance.Instance._crash_manager._freezen_creature == false)
+        {            
+            if(_jump_speed > 0)
+            {
+                _current_fall_speed = _jump_speed;
+                _jump_speed = 0;
+            }
+            
+            _current_fall_speed += _fallspeed;
+            vec.y += _current_fall_speed;
+            if(global_instance.Instance._crash_manager.is_block_creature(vec.x, vec.y, vec.z) == false)
+            {
+                //set_position(vec.x, vec.y, vec.z);
+                vec_temp = vec;
+                _is_in_falldown = true;
+            }
+            else
+            {
+                if(_current_fall_speed > 0)
+                {
+                    _current_fall_speed = 0;
+                }
+                else
+                {
+                    _current_fall_speed = 0;
+                    _is_in_falldown = false;
+                }
+
+            }
+        }
+        return vec_temp;
+    }
     public void Update()
     {
         bool need_set = false;
         Vector3 vec = get_position();
-        //if (_jump_speed > 0)
-        //{
-        //    _jump_speed -= 0.01f;
-        //    if (_jump_speed < 0)
-        //    {
-        //        _jump_speed = 0;
-        //    }
-        //    vec.y += _jump_speed;
-        //    need_set = true;
-        //}
+        Vector3 temp_vec = new Vector3();
+        temp_vec = vec;
+
+        if (global_instance.Instance._crash_manager._freezen_creature == false)
+        {
+            if (_jump_speed > 0)
+            {
+                _current_fall_speed = _jump_speed;
+                _jump_speed = 0;
+            }
+
+            _current_fall_speed += _fallspeed;
+            vec.y += _current_fall_speed;
+            if (global_instance.Instance._crash_manager.is_block_creature(vec.x, vec.y, vec.z) == false)
+            {
+                _is_in_falldown = true;
+                temp_vec = vec;
+                need_set = true;
+            }
+            else
+            {
+                if (_current_fall_speed > 0)
+                {
+                    _current_fall_speed = 0;
+                }
+                else
+                {
+                    _current_fall_speed = 0;
+                    _is_in_falldown = false;
+                }
+
+            }
+        }
+        vec = temp_vec;
         if (_state == creature_state.run)
         {
             if (_state == creature_state.run)
@@ -150,39 +216,43 @@ public class creature : MonoBehaviour
                     }
                     break;
             }
-            if(vec.y < 0)
-            {
-                vec.y = 0;            
-            }
-            if(vec.x < -4)
-            {
-                vec.x = -4;
-            }
-            if(vec.x > 24)
-            {
-                vec.x = 24;
-            }
-            if(vec.z < 3)
-            {
-                vec.z = 3;
-            }
-            if(vec.z > 17)
-            {
-                vec.z = 17;
-            }
+            //if(vec.y < 0)
+            //{
+            //    vec.y = 0;            
+            //}
+            //if(vec.x < -4)
+            //{
+            //    vec.x = -4;
+            //}
+            //if(vec.x > 24)
+            //{
+            //    vec.x = 24;
+            //}
+            //if(vec.z < 3)
+            //{
+            //    vec.z = 3;
+            //}
+            //if(vec.z > 17)
+            //{
+            //    vec.z = 17;
+            //}
             need_set = true;                        
         }
-        if(need_set == true)
+        else
+        {
+            Debug.Log("is idle");
+        }
+
+        if (need_set == true)
         {
             if(global_instance.Instance._crash_manager.is_block_creature(vec.x, vec.y, vec.z) == false)
             {
-                set_position(vec.x, vec.y, vec.z);
+                temp_vec = vec;                
             }
-            else
-            {
-                Debug.Log("is block");
-            } 
-                                   
+
+            set_position(temp_vec.x, temp_vec.y, temp_vec.z);
+
+
         }
     }
 
@@ -292,7 +362,7 @@ public class creature : MonoBehaviour
 
     public void OnCollisionEnter(Collision obj)
     {
-        set_state(creature_state.idle);
+        //set_state(creature_state.idle);
     }
     public void OnCollisionExit(Collision obj)
     {

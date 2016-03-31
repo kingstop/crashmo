@@ -567,7 +567,10 @@ public class crash_manager
     {
         if(_creature != null)
         {
-            _creature.jump();
+            if(_freezen_creature == false)
+            {
+                _creature.jump();
+            }            
         }
     }
     public void update_dir_btn()
@@ -630,69 +633,71 @@ public class crash_manager
     }
     public void catch_click(int i)
     {
-        if(i == 0)
+        if(_creature._is_in_falldown == false)
         {
-            _cash_click = false;
-        }
-        else
-        {
-            _cash_click = true;
-        }
-        Vector3 vc = _creature.get_position();
-        dir_move dir = _creature.get_dir();
-        crash_pos pos = new crash_pos();
-        pos._x = transform_to_map(vc.x);
-        pos._y = transform_to_map(vc.y);
-        pos._z = transform_to_map(vc.z);
-        if(_cash_click)
-        {
-            crash_pos pos_target = new crash_pos();
-            pos_target.clone(pos);
-            pos_target.move(dir);
-            if (check_pos_valid(pos_target) == true)
+            if (i == 0)
             {
-                crash_mole target_mole = get_crash_mole_addr(pos_target)._crash_mole;
-
-                if (target_mole != null)
-                {
-                    _freezen_creature = true;                    
-                    _obj_creature = new crash_obj_creature(pos._x, pos._y, pos._z);
-                    _obj_creature._creature = _creature;
-                    _creature.set_position(pos._x, pos._y, pos._z);
-                    target_mole.add_crash_obj(_obj_creature);
-                    _lock_mole.Add(target_mole);
-                }
-                else
-                {
-
-                }
-
-            }        
-        }
-        else
-        {
-            if(_obj_creature != null)
-            {
-                _lock_mole.Clear();
-                if (_freezen_creature == true)
-                {
-                    pos.move(dir_move.up);
-                    if (check_pos_valid(pos))
-                    {
-                        if(_obj_creature._crash_mole != null)
-                        {
-                            crash_mole mole_temp = _obj_creature._crash_mole;
-                            mole_temp.remove_crash_obj(_obj_creature);
-                            _obj_creature = null;
-                        }
-                        
-                    }
-                    _freezen_creature = false;
-                }
-
+                _cash_click = false;
             }
+            else
+            {
+                _cash_click = true;
+            }
+            Vector3 vc = _creature.get_position();
+            dir_move dir = _creature.get_dir();
+            crash_pos pos = new crash_pos();
+            pos._x = transform_to_map(vc.x);
+            pos._y = transform_to_map(vc.y);
+            pos._z = transform_to_map(vc.z);
+            if (_cash_click)
+            {
+                crash_pos pos_target = new crash_pos();
+                pos_target.clone(pos);
+                pos_target.move(dir);
+                if (check_pos_valid(pos_target) == true)
+                {
+                    crash_mole target_mole = get_crash_mole_addr(pos_target)._crash_mole;
 
+                    if (target_mole != null)
+                    {
+                        _freezen_creature = true;
+                        _obj_creature = new crash_obj_creature(pos._x, pos._y, pos._z);
+                        _obj_creature._creature = _creature;
+                        _creature.set_position(pos._x, pos._y, pos._z);
+                        target_mole.add_crash_obj(_obj_creature);
+                        _lock_mole.Add(target_mole);
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+            }
+            else
+            {
+                if (_obj_creature != null)
+                {
+                    _lock_mole.Clear();
+                    if (_freezen_creature == true)
+                    {
+                        pos.move(dir_move.up);
+                        if (check_pos_valid(pos))
+                        {
+                            if (_obj_creature._crash_mole != null)
+                            {
+                                crash_mole mole_temp = _obj_creature._crash_mole;
+                                mole_temp.remove_crash_obj(_obj_creature);
+                                _obj_creature = null;
+                            }
+
+                        }
+                        _freezen_creature = false;
+                    }
+                }
+            }
         }
+
     }
 
     public void update_camera_pos()
@@ -729,11 +734,11 @@ public class crash_manager
         pos._x = transform_to_map(tempx);
         pos._y = transform_to_map(tempy);
         pos._z = transform_to_map(tempz);
-        crash_mole target_mole = get_crash_mole_addr(pos)._crash_mole;
-        if(target_mole != null)
+        if(get_crash_mole_addr(pos) == null || (get_crash_mole_addr(pos) != null && get_crash_mole_addr(pos)._crash_mole != null))
         {
             return true;
         }
+
         return false;
     }
 
@@ -773,7 +778,15 @@ public class crash_manager
      public bool is_block_creature(float tempx, float tempy, float tempz)
     {
         float block_width = 0.35f;
-        if(is_block(tempx, tempy, tempz) == true)
+        crash_pos pos = new crash_pos();
+        pos._x = transform_to_map(tempx);
+        pos._y = transform_to_map(tempy);
+        pos._z = transform_to_map(tempz);
+        if(isvalid(pos) == false)
+        {
+            return true;
+        }
+        if (is_block(tempx, tempy, tempz) == true)
         {
             return true;
         }
@@ -1014,7 +1027,6 @@ public class crash_manager
 
         for (int x = 0; x < (int)_max_x; x++)
         {
-
             for (int z = 0; z < (int)_max_z; z++)
             {
                 for (int y = 0; y < (int)_max_y; y++)
