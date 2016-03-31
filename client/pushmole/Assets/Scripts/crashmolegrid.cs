@@ -8,6 +8,22 @@ public enum side_type
     side_top,
     side_bottom
 }
+
+public enum box_side_type
+{
+    box_side_left_front,
+    box_side_right_front,
+    box_side_top_front,
+    box_side_bottom_front,
+    box_side_left_back,
+    box_side_right_back,
+    box_side_top_back,
+    box_side_bottom_back,
+    box_line_1,
+    box_line_2,
+    box_line_3,
+    box_line_4
+}
 public class crashmolegrid : MonoBehaviour
 {
     public MeshRenderer current_mesh_render_;
@@ -49,12 +65,47 @@ public class crashmolegrid : MonoBehaviour
 
     public void show_side(side_type dir)
     {
-        int temp = (int)dir;
-        if(temp >= _side.Length)
+        switch(dir)
         {
-            return;
+            case side_type.side_bottom:
+                {
+                    _side[(int)box_side_type.box_side_bottom_front].SetActive(true);
+                    _side[(int)box_side_type.box_side_bottom_back].SetActive(true);
+                    _side[(int)box_side_type.box_line_2].SetActive(true);
+                    _side[(int)box_side_type.box_line_3].SetActive(true);
+                }
+                break;
+            case side_type.side_top:
+                {
+                    _side[(int)box_side_type.box_side_top_front].SetActive(true);
+                    _side[(int)box_side_type.box_side_top_back].SetActive(true);
+                    _side[(int)box_side_type.box_line_1].SetActive(true);
+                    _side[(int)box_side_type.box_line_4].SetActive(true);
+                }
+                break;
+            case side_type.side_left:
+                {
+                    _side[(int)box_side_type.box_side_left_front].SetActive(true);
+                    _side[(int)box_side_type.box_side_left_back].SetActive(true);
+                    _side[(int)box_side_type.box_line_3].SetActive(true);
+                    _side[(int)box_side_type.box_line_4].SetActive(true);
+                }
+                break;
+            case side_type.side_right:
+                {
+                    _side[(int)box_side_type.box_side_right_front].SetActive(true);
+                    _side[(int)box_side_type.box_side_right_back].SetActive(true);
+                    _side[(int)box_side_type.box_line_1].SetActive(true);
+                    _side[(int)box_side_type.box_line_2].SetActive(true);
+                }
+                break;
         }
-        _side[temp].SetActive(true);
+        //int temp = (int)dir;
+        //if(temp >= _side.Length)
+        //{
+        //    return;
+        //}
+        //_side[temp].SetActive(true);
     }
 
     public void set_color(Color color)
