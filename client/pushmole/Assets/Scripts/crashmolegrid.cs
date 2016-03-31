@@ -34,6 +34,7 @@ public class crashmolegrid : MonoBehaviour
     private Texture _flag_texture;
     private Material _main_material;
     private bool _is_flag;
+    private int[] _line_count = new  int[4];
 
     public crashmolegrid()
     {
@@ -61,6 +62,11 @@ public class crashmolegrid : MonoBehaviour
         {
             obj.SetActive(false);
         }
+        int length = _line_count.Length;
+        for(int i = 0; i < length; i ++)
+        {
+            _line_count[i] = 0;
+        }
     }
 
     public void show_side(side_type dir)
@@ -71,35 +77,47 @@ public class crashmolegrid : MonoBehaviour
                 {
                     _side[(int)box_side_type.box_side_bottom_front].SetActive(true);
                     _side[(int)box_side_type.box_side_bottom_back].SetActive(true);
-                    _side[(int)box_side_type.box_line_2].SetActive(true);
-                    _side[(int)box_side_type.box_line_3].SetActive(true);
+                    _line_count[(int)box_side_type.box_line_2 - 8]++;
+                    _line_count[(int)box_side_type.box_line_3 - 8]++;
+
                 }
                 break;
             case side_type.side_top:
                 {
                     _side[(int)box_side_type.box_side_top_front].SetActive(true);
                     _side[(int)box_side_type.box_side_top_back].SetActive(true);
-                    _side[(int)box_side_type.box_line_1].SetActive(true);
-                    _side[(int)box_side_type.box_line_4].SetActive(true);
+                    _line_count[(int)box_side_type.box_line_1 - 8]++;
+                    _line_count[(int)box_side_type.box_line_4 - 8]++;
+
                 }
                 break;
             case side_type.side_left:
                 {
                     _side[(int)box_side_type.box_side_left_front].SetActive(true);
                     _side[(int)box_side_type.box_side_left_back].SetActive(true);
-                    _side[(int)box_side_type.box_line_3].SetActive(true);
-                    _side[(int)box_side_type.box_line_4].SetActive(true);
+                    _line_count[(int)box_side_type.box_line_3 - 8]++;
+                    _line_count[(int)box_side_type.box_line_4 - 8]++;
+
                 }
                 break;
             case side_type.side_right:
                 {
                     _side[(int)box_side_type.box_side_right_front].SetActive(true);
                     _side[(int)box_side_type.box_side_right_back].SetActive(true);
-                    _side[(int)box_side_type.box_line_1].SetActive(true);
-                    _side[(int)box_side_type.box_line_2].SetActive(true);
+                    _line_count[(int)box_side_type.box_line_1 - 8]++;
+                    _line_count[(int)box_side_type.box_line_2 - 8]++;
                 }
                 break;
         }
+        int length = _line_count.Length;
+        for(int i = 0; i < length; i ++)
+        {
+            if(_line_count[i] >= 2)
+            {
+                _side[i + 8].SetActive(true);
+            }
+        }
+
         //int temp = (int)dir;
         //if(temp >= _side.Length)
         //{
