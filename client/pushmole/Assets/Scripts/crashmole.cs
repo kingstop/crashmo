@@ -158,8 +158,8 @@ public class crash_obj_creature : crash_base_obj
     public override void set_position(float x, float y, float z)
     {
         if(_creature != null)
-        {
-            _creature.set_position(x, y, z);
+        {            
+            _creature.set_position(x + 0.25f, y - 0.74f, z + 0.4f);
         }
     }
 
@@ -663,7 +663,7 @@ public class crash_manager
                         _freezen_creature = true;
                         _obj_creature = new crash_obj_creature(pos._x, pos._y, pos._z);
                         _obj_creature._creature = _creature;
-                        _creature.set_position(pos._x, pos._y, pos._z);
+                        _creature.set_position(pos._x + 0.25f, pos._y - 0.74f, pos._z + 0.4f);
                         target_mole.add_crash_obj(_obj_creature);
                         _lock_mole.Add(target_mole);
                     }
@@ -718,6 +718,10 @@ public class crash_manager
 
     public int transform_to_map(float temp_number)
     {
+        if(temp_number < 0)
+        {
+            return -1;
+        }
         int temp = (int)temp_number;
         if(temp_number - (float)temp > 0.8)
         {
@@ -777,7 +781,7 @@ public class crash_manager
     }
      public bool is_block_creature(float tempx, float tempy, float tempz)
     {
-        float block_width = 0.35f;
+        float block_width = 0.18f;
         crash_pos pos = new crash_pos();
         pos._x = transform_to_map(tempx);
         pos._y = transform_to_map(tempy);

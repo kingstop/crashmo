@@ -24,7 +24,7 @@ public class creature : MonoBehaviour
     //Rigidbody _Rigidbody = null;
     public float _move_speed = 0.005f;
     public float _jump_speed = 0;
-    public float _fallspeed = -0.01f;
+    public float _fallspeed = -0.003f;
     public float _current_fall_speed = 0;
     public bool _is_in_falldown = false;
 
@@ -48,7 +48,10 @@ public class creature : MonoBehaviour
         _moles_list.Add(obj_3);
         foreach(GameObject obj_entry in _moles_list)
         {
-            obj_entry.transform.parent = gameObject.transform;   
+            obj_entry.transform.parent = gameObject.transform;
+            //Vector3 vc = new Vector3(0, 0, 0);
+            //obj_entry.gameObject.transform.position = vc;
+
         }
                 
        // _Rigidbody = GetComponent<Rigidbody>();
@@ -90,12 +93,17 @@ public class creature : MonoBehaviour
     }
     public void set_position(float x, float y, float z)
     {
-        
         Vector3 vc = new Vector3(x, y, z);
+
         this.transform.position = vc;
+        vc.y -= 0.6f;
+        vc.x -= 0.28f;
+        vc.z -= 0.2f;
+        Vector3 vec = new Vector3(0, 0, 0);
         foreach (var entry in _moles)
         {
             GameObject obj_entry = entry.Value;
+
             obj_entry.transform.position = vc;
         }
         global_instance.Instance._crash_manager.update_camera();
@@ -107,7 +115,10 @@ public class creature : MonoBehaviour
     {
         Vector3 vec = new Vector3();
         vec = this.transform.position;
-       // vec.y += 0.5f;
+        //vec.y += 0.6f;
+        //vec.x += 0.28f;
+        //vec.z += 0.2f;
+        // vec.y += 0.5f;
         return vec;
     }
 
