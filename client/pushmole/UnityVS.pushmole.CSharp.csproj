@@ -81,10 +81,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ChooseItemEntry.cs" />
-    <Compile Include="Assets\CrashPlayer.cs" />
-    <Compile Include="Assets\MainPanel.cs" />
-    <Compile Include="Assets\MainPanelTitleButtonItem.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -222,24 +218,32 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-    <Compile Include="Assets\SaveMapPanel.cs" />
-    <Compile Include="Assets\SaveMapTitleButton.cs" />
+    <Compile Include="Assets\Scripts\ChooseItemEntry.cs" />
+    <Compile Include="Assets\Scripts\CrashPlayer.cs" />
+    <Compile Include="Assets\Scripts\MainPanel.cs" />
+    <Compile Include="Assets\Scripts\MainPanelTitleButtonItem.cs" />
+    <Compile Include="Assets\Scripts\SaveMapPanel.cs" />
+    <Compile Include="Assets\Scripts\SaveMapTitleButton.cs" />
+    <Compile Include="Assets\Scripts\SectionEditPanel.cs" />
+    <Compile Include="Assets\Scripts\button_event_handler.cs" />
+    <Compile Include="Assets\Scripts\client_session.cs" />
+    <Compile Include="Assets\Scripts\color_button_click.cs" />
+    <Compile Include="Assets\Scripts\crash_flag.cs" />
+    <Compile Include="Assets\Scripts\crash_mole_grid_manager.cs" />
+    <Compile Include="Assets\Scripts\crashmole.cs" />
+    <Compile Include="Assets\Scripts\crashmolegrid.cs" />
+    <Compile Include="Assets\Scripts\creature.cs" />
+    <Compile Include="Assets\Scripts\game_btn_down.cs" />
+    <Compile Include="Assets\Scripts\game_type_click.cs" />
+    <Compile Include="Assets\Scripts\global_instance.cs" />
+    <Compile Include="Assets\Scripts\next_step_click.cs" />
+    <Compile Include="Assets\Scripts\ngui_edit_manager.cs" />
+    <Compile Include="Assets\Scripts\on_Collision_stay.cs" />
+    <Compile Include="Assets\Scripts\on_scrollbar_change.cs" />
+    <Compile Include="Assets\Scripts\plant_ctrl.cs" />
     <Compile Include="Assets\ScrollView\ScrollViewAdjust.cs" />
     <Compile Include="Assets\ScrollView\ScrollViewHarizonAdjust.cs" />
     <Compile Include="Assets\ScrollView\ScrollViewVerticalAdjust.cs" />
-    <Compile Include="Assets\button_event_handler.cs" />
-    <Compile Include="Assets\client_session.cs" />
-    <Compile Include="Assets\color_button_click.cs" />
-    <Compile Include="Assets\crash_flag.cs" />
-    <Compile Include="Assets\crash_mole_grid_manager.cs" />
-    <Compile Include="Assets\crashmole.cs" />
-    <Compile Include="Assets\crashmolegrid.cs" />
-    <Compile Include="Assets\creature.cs" />
-    <Compile Include="Assets\dpt_zippermouth\demo_scene\GUITest.cs" />
-    <Compile Include="Assets\dpt_zippermouth\demo_scene\ObjectRotation.cs" />
-    <Compile Include="Assets\game_btn_down.cs" />
-    <Compile Include="Assets\game_type_click.cs" />
-    <Compile Include="Assets\global_instance.cs" />
     <Compile Include="Assets\mole_net\CRC32.cs" />
     <Compile Include="Assets\mole_net\SocketBase.cs" />
     <Compile Include="Assets\mole_net\SocketClient.cs" />
@@ -339,10 +343,6 @@
     <Compile Include="Assets\mole_net\proto-net\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="Assets\mole_net\proto-net\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="Assets\mole_net\proto-net\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="Assets\next_step_click.cs" />
-    <Compile Include="Assets\ngui_edit_manager.cs" />
-    <Compile Include="Assets\on_Collision_stay.cs" />
-    <Compile Include="Assets\on_scrollbar_change.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
@@ -472,11 +472,6 @@
     <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
     <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpec.shader" />
     <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpecTransp.shader" />
-    <None Include="Assets\dpt_zippermouth\chr\Materials\T_double.shader" />
-    <None Include="Assets\dpt_zippermouth\chr\Materials\T_single.shader" />
-    <None Include="Assets\dpt_zippermouth\chr\Materials\double.shader" />
-    <None Include="Assets\dpt_zippermouth\chr\Materials\single.shader" />
-    <None Include="Assets\dpt_zippermouth\readme.txt" />
     <None Include="Assets\mole_net\proto-net\Web\TODO.txt" />
     <None Include="Assets\mole_net\proto-net\obj\Debug\protobuf-net.csproj.FileListAbsolute.txt" />
   </ItemGroup>

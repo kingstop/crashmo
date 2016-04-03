@@ -294,11 +294,6 @@
     <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
     <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpec.shader" />
     <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpecTransp.shader" />
-    <None Include="Assets\dpt_zippermouth\chr\Materials\T_double.shader" />
-    <None Include="Assets\dpt_zippermouth\chr\Materials\T_single.shader" />
-    <None Include="Assets\dpt_zippermouth\chr\Materials\double.shader" />
-    <None Include="Assets\dpt_zippermouth\chr\Materials\single.shader" />
-    <None Include="Assets\dpt_zippermouth\readme.txt" />
     <None Include="Assets\mole_net\proto-net\Web\TODO.txt" />
     <None Include="Assets\mole_net\proto-net\obj\Debug\protobuf-net.csproj.FileListAbsolute.txt" />
   </ItemGroup>

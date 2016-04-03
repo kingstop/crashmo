@@ -45,10 +45,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ChooseItemEntry.cs" />
-     <Compile Include="Assets\CrashPlayer.cs" />
-     <Compile Include="Assets\MainPanel.cs" />
-     <Compile Include="Assets\MainPanelTitleButtonItem.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -186,24 +182,32 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-     <Compile Include="Assets\SaveMapPanel.cs" />
-     <Compile Include="Assets\SaveMapTitleButton.cs" />
+     <Compile Include="Assets\Scripts\ChooseItemEntry.cs" />
+     <Compile Include="Assets\Scripts\CrashPlayer.cs" />
+     <Compile Include="Assets\Scripts\MainPanel.cs" />
+     <Compile Include="Assets\Scripts\MainPanelTitleButtonItem.cs" />
+     <Compile Include="Assets\Scripts\SaveMapPanel.cs" />
+     <Compile Include="Assets\Scripts\SaveMapTitleButton.cs" />
+     <Compile Include="Assets\Scripts\SectionEditPanel.cs" />
+     <Compile Include="Assets\Scripts\button_event_handler.cs" />
+     <Compile Include="Assets\Scripts\client_session.cs" />
+     <Compile Include="Assets\Scripts\color_button_click.cs" />
+     <Compile Include="Assets\Scripts\crash_flag.cs" />
+     <Compile Include="Assets\Scripts\crash_mole_grid_manager.cs" />
+     <Compile Include="Assets\Scripts\crashmole.cs" />
+     <Compile Include="Assets\Scripts\crashmolegrid.cs" />
+     <Compile Include="Assets\Scripts\creature.cs" />
+     <Compile Include="Assets\Scripts\game_btn_down.cs" />
+     <Compile Include="Assets\Scripts\game_type_click.cs" />
+     <Compile Include="Assets\Scripts\global_instance.cs" />
+     <Compile Include="Assets\Scripts\next_step_click.cs" />
+     <Compile Include="Assets\Scripts\ngui_edit_manager.cs" />
+     <Compile Include="Assets\Scripts\on_Collision_stay.cs" />
+     <Compile Include="Assets\Scripts\on_scrollbar_change.cs" />
+     <Compile Include="Assets\Scripts\plant_ctrl.cs" />
      <Compile Include="Assets\ScrollView\ScrollViewAdjust.cs" />
      <Compile Include="Assets\ScrollView\ScrollViewHarizonAdjust.cs" />
      <Compile Include="Assets\ScrollView\ScrollViewVerticalAdjust.cs" />
-     <Compile Include="Assets\button_event_handler.cs" />
-     <Compile Include="Assets\client_session.cs" />
-     <Compile Include="Assets\color_button_click.cs" />
-     <Compile Include="Assets\crash_flag.cs" />
-     <Compile Include="Assets\crash_mole_grid_manager.cs" />
-     <Compile Include="Assets\crashmole.cs" />
-     <Compile Include="Assets\crashmolegrid.cs" />
-     <Compile Include="Assets\creature.cs" />
-     <Compile Include="Assets\dpt_zippermouth\demo_scene\GUITest.cs" />
-     <Compile Include="Assets\dpt_zippermouth\demo_scene\ObjectRotation.cs" />
-     <Compile Include="Assets\game_btn_down.cs" />
-     <Compile Include="Assets\game_type_click.cs" />
-     <Compile Include="Assets\global_instance.cs" />
      <Compile Include="Assets\mole_net\CRC32.cs" />
      <Compile Include="Assets\mole_net\SocketBase.cs" />
      <Compile Include="Assets\mole_net\SocketClient.cs" />
@@ -303,11 +307,6 @@
      <Compile Include="Assets\mole_net\proto-net\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
      <Compile Include="Assets\mole_net\proto-net\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
      <Compile Include="Assets\mole_net\proto-net\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-     <Compile Include="Assets\next_step_click.cs" />
-     <Compile Include="Assets\ngui_edit_manager.cs" />
-     <Compile Include="Assets\on_Collision_stay.cs" />
-     <Compile Include="Assets\on_scrollbar_change.cs" />
-     <None Include="Assets\dpt_zippermouth\chr\Materials\double.shader" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.9.0.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />
@@ -365,14 +364,12 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 2.shader" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
-     <None Include="Assets\dpt_zippermouth\chr\Materials\single.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 3.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
-     <None Include="Assets\dpt_zippermouth\chr\Materials\T_single.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
@@ -417,7 +414,6 @@
      <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
      <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader" />
-     <None Include="Assets\dpt_zippermouth\chr\Materials\T_double.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
@@ -425,7 +421,6 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
-     <None Include="Assets\dpt_zippermouth\readme.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
@@ -441,11 +436,17 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader" />
      <None Include="Assets\Resources\character\Materials\single.shader" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="protobuf-net">
  <HintPath>/Users/apple/Desktop/work/crashmo/client/pushmole/Assets/mole_net/proto-net/obj/Debug/protobuf-net.dll</HintPath>

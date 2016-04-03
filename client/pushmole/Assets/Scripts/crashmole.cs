@@ -159,7 +159,8 @@ public class crash_obj_creature : crash_base_obj
     {
         if(_creature != null)
         {            
-            _creature.set_position(x + 0.25f, y - 0.74f, z + 0.4f);
+
+            _creature.set_position(x + 0.25f, y + 0.2f, z);
         }
     }
 
@@ -649,42 +650,48 @@ public class crash_manager
             pos._x = transform_to_map(vc.x);
             pos._y = transform_to_map(vc.y);
             pos._z = transform_to_map(vc.z);
+
             if (_cash_click)
             {
-                crash_pos pos_target = new crash_pos();
-                pos_target.clone(pos);
-                pos_target.move(dir);
-                if (check_pos_valid(pos_target) == true)
-                {
-                    crash_mole target_mole = get_crash_mole_addr(pos_target)._crash_mole;
-
-                    if (target_mole != null)
-                    {
-                        _freezen_creature = true;
-                        _obj_creature = new crash_obj_creature(pos._x, pos._y, pos._z);
-                        _obj_creature._creature = _creature;
-                        _creature.set_position(pos._x + 0.25f, pos._y - 0.74f, pos._z + 0.4f);
-                        target_mole.add_crash_obj(_obj_creature);
-                        _lock_mole.Add(target_mole);
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-            }
-            else
-            {
-                if (_obj_creature != null)
-                {
-                    _lock_mole.Clear();
-                    if (_freezen_creature == true)
-                    {
-                        pos.move(dir_move.up);
-                        if (check_pos_valid(pos))
-                        {
-                            if (_obj_creature._crash_mole != null)
+				if(_freezen_creature == false)
+				{
+					crash_pos pos_target = new crash_pos();
+					pos_target.clone(pos);
+					pos_target.move(dir);
+					if (check_pos_valid(pos_target) == true)
+					{
+						crash_mole target_mole = get_crash_mole_addr(pos_target)._crash_mole;
+						
+						if (target_mole != null)
+						{
+							_freezen_creature = true;
+							_obj_creature = new crash_obj_creature(pos._x, pos._y, pos._z);
+							_obj_creature._creature = _creature;
+							_creature.set_position(pos._x + 0.25f, pos._y + 0.2f, pos._z);
+							target_mole.add_crash_obj(_obj_creature);
+							_lock_mole.Add(target_mole);
+						}
+						else
+						{
+							
+						}
+						
+					}
+				}
+				
+				
+			}
+			else
+			{
+				if (_obj_creature != null)
+				{
+					_lock_mole.Clear();
+					if (_freezen_creature == true)
+					{
+						pos.move(dir_move.up);
+						if (check_pos_valid(pos))
+						{
+							if (_obj_creature._crash_mole != null)
                             {
                                 crash_mole mole_temp = _obj_creature._crash_mole;
                                 mole_temp.remove_crash_obj(_obj_creature);

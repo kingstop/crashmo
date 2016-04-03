@@ -94,11 +94,16 @@ public class creature : MonoBehaviour
     public void set_position(float x, float y, float z)
     {
         Vector3 vc = new Vector3(x, y, z);
-
+		vc.y -= 0.7f;
+		vc.x -= 0.28f;
+		vc.z -= 0.2f;
         this.transform.position = vc;
-        vc.y -= 0.6f;
-        vc.x -= 0.28f;
-        vc.z -= 0.2f;
+        
+		if (global_instance.Instance._crash_manager._freezen_creature) {
+			int n = 0;
+			n ++;
+		}
+
         Vector3 vec = new Vector3(0, 0, 0);
         foreach (var entry in _moles)
         {
@@ -115,9 +120,9 @@ public class creature : MonoBehaviour
     {
         Vector3 vec = new Vector3();
         vec = this.transform.position;
-        //vec.y += 0.6f;
-        //vec.x += 0.28f;
-        //vec.z += 0.2f;
+        vec.y += 0.7f;
+        vec.x += 0.28f;
+        vec.z += 0.2f;
         // vec.y += 0.5f;
         return vec;
     }
@@ -251,7 +256,7 @@ public class creature : MonoBehaviour
         }
         else
         {
-            Debug.Log("is idle");
+            //Debug.Log("is idle");
         }
 
         if (need_set == true)
