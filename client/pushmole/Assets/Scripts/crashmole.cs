@@ -370,7 +370,8 @@ public class crash_manager
     public GameObject _creaatuee_obj = null;
     public bool _cash_click = false;
     public bool _freezen_creature = false;
-    public List<crash_mole> _lock_mole = new List<crash_mole>();  
+    public List<crash_mole> _lock_mole = new List<crash_mole>();
+    public List<GameObject> _enclosure_objs = new List<GameObject>();
     public crash_obj_creature _obj_creature = null;
     camera_dir _camera_dir = camera_dir.front;
     want_move_dir _want_camera_dir = want_move_dir.no;
@@ -383,7 +384,7 @@ public class crash_manager
         _move_count = 0;
         _max_x = (int)crash_define.max_x;
         _max_z = (int)crash_define.max_z;
-        _max_y = (int)crash_define.max_y;
+        _max_y = (int)crash_define.max_y; 
         _can_move_locks = new bool[_max_x, _max_z, _max_y];
         _crash_objs = new crash_obj_addr[_max_x, _max_z, _max_y];
         _crash_moles = new crash_mole_addr[_max_x, _max_z, _max_y];
@@ -539,7 +540,6 @@ public class crash_manager
                 break;
             case camera_dir.right:
                 {
-
                     vc.y = 270;
                 }
                 break;
@@ -660,8 +660,7 @@ public class crash_manager
 					pos_target.move(dir);
 					if (check_pos_valid(pos_target) == true)
 					{
-						crash_mole target_mole = get_crash_mole_addr(pos_target)._crash_mole;
-						
+						crash_mole target_mole = get_crash_mole_addr(pos_target)._crash_mole;						
 						if (target_mole != null)
 						{
 							_freezen_creature = true;
@@ -671,11 +670,6 @@ public class crash_manager
 							target_mole.add_crash_obj(_obj_creature);
 							_lock_mole.Add(target_mole);
 						}
-						else
-						{
-							
-						}
-						
 					}
 				}
 				
@@ -828,7 +822,8 @@ public class crash_manager
 
     public void clear()
     {
-        if(_crash_objs != null && _crash_moles != null)
+        clear_enclosure();
+        if (_crash_objs != null && _crash_moles != null)
         {
             for (int x = 0; x < (int)_max_x; x++)
             {
@@ -997,9 +992,46 @@ public class crash_manager
         seek_create_mole(x, y + 1, mole, true);
     }
 
+    public void clear_enclosure()
+    {
+        foreach(GameObject obj in _enclosure_objs)
+        {
+            GameObject.Destroy(obj);
+
+        }
+    }
+    public void create_enclosure()
+    {
+        GameObject obj_temp = null;
+        crashmolegrid grid = null;
+        for (int i = 0; i < _max_x; i ++)
+        {
+            obj_temp = Object.Instantiate<GameObject>(_source_crash_mole_obj);
+            grid  = obj_temp.GetComponent<crashmolegrid>();
+            grid.set_position(i, 0, -1);
+            _enclosure_objs.Add(obj_temp);
+            obj_temp = Object.Instantiate<GameObject>(_source_crash_mole_obj);
+            grid = obj_temp.GetComponent<crashmolegrid>();
+            grid.set_position(i, 0, _max_z);
+            _enclosure_objs.Add(obj_temp);
+        }
+
+        for(int i = 0; i < _max_z; i ++)
+        {
+            obj_temp = Object.Instantiate<GameObject>(_source_crash_mole_obj);
+            grid = obj_temp.GetComponent<crashmolegrid>();
+            grid.set_position(-1, 0, i);
+            _enclosure_objs.Add(obj_temp);
+            obj_temp = Object.Instantiate<GameObject>(_source_crash_mole_obj);
+            grid = obj_temp.GetComponent<crashmolegrid>();
+            grid.set_position(_max_x, 0, i);
+            _enclosure_objs.Add(obj_temp);
+        }
+    }
 
     public void create_map()
     {
+        create_enclosure();
         MapData map_data = global_instance.Instance.GetMapData();
         if(map_data != null)
         {
