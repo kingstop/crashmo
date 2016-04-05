@@ -128,7 +128,12 @@ public class crashmolegrid : MonoBehaviour
 
     public void set_color(Color color)
     {
-        _main_material.color = color;
+        _main_material.SetColor("_TintColor", color);
+    }
+
+    public void set_alpha(float temp)
+    {
+        _main_material.SetFloat("_InvFade", temp);
     }
 
     public void set_is_flag(bool b)
@@ -206,6 +211,7 @@ public class crashmolegrid : MonoBehaviour
         return tex;
     }
 
+    
 	// Update is called once per frame
 	void Update () {
         if(_mouse_down&& global_instance.Instance._can_set_group == true)
