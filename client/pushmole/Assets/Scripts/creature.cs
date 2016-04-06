@@ -250,7 +250,7 @@ public class creature : MonoBehaviour
             crashmolegrid grid = entry.collider.gameObject.GetComponent<crashmolegrid>();
             if (grid != null)
             {
-                grid.set_alpha(0.3f);
+                grid.set_alpha(0.2f);
                 _alpha_grids.Add(grid);
 
             }
