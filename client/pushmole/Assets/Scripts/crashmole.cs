@@ -355,7 +355,8 @@ public class crash_manager
     public crash_mole_addr[, ,] _crash_moles;
     public List<crash_mole> _crash_moles_list = new List<crash_mole>();
     public List<crash_mole> _move_mole_list = new List<crash_mole>();
-    public List<crash_mole> _can_not_move_list = new List<crash_mole>();    
+    public List<crash_mole> _can_not_move_list = new List<crash_mole>();
+    public List<crashmolegrid> _alpha_grids = new List<crashmolegrid>();
     public float _grid_distance;
     public float _current_move_distance;
     public float _move_animation_distance;
@@ -787,7 +788,9 @@ public class crash_manager
         pos._x = transform_to_map(tempx);
         pos._y = transform_to_map(tempy);
         pos._z = transform_to_map(tempz);
-        if(isvalid(pos) == false)
+
+
+        if (isvalid(pos) == false)
         {
             return true;
         }
@@ -1009,10 +1012,12 @@ public class crash_manager
             obj_temp = Object.Instantiate<GameObject>(_source_crash_mole_obj);
             grid  = obj_temp.GetComponent<crashmolegrid>();
             grid.set_position(i, 0, -1);
+            grid.set_alpha(12);
             _enclosure_objs.Add(obj_temp);
             obj_temp = Object.Instantiate<GameObject>(_source_crash_mole_obj);
             grid = obj_temp.GetComponent<crashmolegrid>();
             grid.set_position(i, 0, _max_z);
+            grid.set_alpha(12);
             _enclosure_objs.Add(obj_temp);
         }
 
@@ -1021,10 +1026,12 @@ public class crash_manager
             obj_temp = Object.Instantiate<GameObject>(_source_crash_mole_obj);
             grid = obj_temp.GetComponent<crashmolegrid>();
             grid.set_position(-1, 0, i);
+            grid.set_alpha(12);
             _enclosure_objs.Add(obj_temp);
             obj_temp = Object.Instantiate<GameObject>(_source_crash_mole_obj);
             grid = obj_temp.GetComponent<crashmolegrid>();
             grid.set_position(_max_x, 0, i);
+            grid.set_alpha(12);
             _enclosure_objs.Add(obj_temp);
         }
     }

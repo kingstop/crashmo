@@ -27,8 +27,10 @@ public class creature : MonoBehaviour
     public float _fallspeed = -0.003f;
     public float _current_fall_speed = 0;
     public bool _is_in_falldown = false;
+    public List<crashmolegrid> _alpha_grids = new List<crashmolegrid>();
 
-   
+
+
 
     public creature()
     {
@@ -99,11 +101,6 @@ public class creature : MonoBehaviour
 		vc.z -= 0.2f;
         this.transform.position = vc;
         
-		if (global_instance.Instance._crash_manager._freezen_creature) {
-			int n = 0;
-			n ++;
-		}
-
         Vector3 vec = new Vector3(0, 0, 0);
         foreach (var entry in _moles)
         {
@@ -165,8 +162,105 @@ public class creature : MonoBehaviour
         }
         return vec_temp;
     }
+
+    public void UpdateAlpha()
+    {
+        Vector3 vec = this.gameObject.transform.position;
+        List<RaycastHit> list_hits = new List<RaycastHit>();
+        Vector3 vec_temp = new Vector3();
+
+
+        foreach (crashmolegrid entry in _alpha_grids)
+        {
+            entry.set_alpha(1);
+        }
+        _alpha_grids.Clear();
+        RaycastHit[] temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
+        Vector3[] poses = new Vector3[2];
+        poses[0] = Camera.main.transform.position;
+        poses[1] = vec_temp;
+
+        
+
+
+
+
+
+        foreach (RaycastHit entry in temp)
+        {
+            list_hits.Add(entry);
+        }
+
+        float alpha_width = 0.5f;
+        vec_temp.x += alpha_width;
+        temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
+        poses[0] = Camera.main.transform.position;
+        poses[1] = vec_temp;
+        
+
+
+        foreach (RaycastHit entry in temp)
+        {
+            list_hits.Add(entry);
+        }
+
+        vec_temp = vec;
+        vec_temp.x -= alpha_width;
+        temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
+        poses[0] = Camera.main.transform.position;
+        poses[1] = vec_temp;
+        
+
+
+        foreach (RaycastHit entry in temp)
+        {
+            list_hits.Add(entry);
+        }
+
+        vec_temp = vec;
+        vec_temp.y -= alpha_width;
+        temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
+        poses[0] = Camera.main.transform.position;
+        poses[1] = vec_temp;
+        
+
+
+        foreach (RaycastHit entry in temp)
+        {
+            list_hits.Add(entry);
+        }
+
+
+        vec_temp = vec;
+        vec_temp.y += alpha_width;
+        temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
+        poses[0] = Camera.main.transform.position;
+        poses[1] = vec_temp;
+        
+
+
+        foreach (RaycastHit entry in temp)
+        {
+            list_hits.Add(entry);
+        }
+
+        List<crashmolegrid> list_grid = new List<crashmolegrid>();
+        foreach (RaycastHit entry in list_hits)
+        {
+            crashmolegrid grid = entry.collider.gameObject.GetComponent<crashmolegrid>();
+            if (grid != null)
+            {
+                grid.set_alpha(0.3f);
+                _alpha_grids.Add(grid);
+
+            }
+        }
+
+
+    }
     public void Update()
     {
+        UpdateAlpha();
         bool need_set = false;
         Vector3 vec = get_position();
         Vector3 temp_vec = new Vector3();
