@@ -180,18 +180,14 @@ public class creature : MonoBehaviour
         poses[0] = Camera.main.transform.position;
         poses[1] = vec_temp;
 
-        
-
-
-
-
-
+        float dis_target = Vector3.Distance(vec, Camera.main.transform.position);
         foreach (RaycastHit entry in temp)
         {
             list_hits.Add(entry);
         }
 
         float alpha_width = 0.5f;
+        vec_temp = vec;
         vec_temp.x += alpha_width;
         temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
         poses[0] = Camera.main.transform.position;
@@ -237,8 +233,6 @@ public class creature : MonoBehaviour
         poses[0] = Camera.main.transform.position;
         poses[1] = vec_temp;
         
-
-
         foreach (RaycastHit entry in temp)
         {
             list_hits.Add(entry);
@@ -248,15 +242,16 @@ public class creature : MonoBehaviour
         foreach (RaycastHit entry in list_hits)
         {
             crashmolegrid grid = entry.collider.gameObject.GetComponent<crashmolegrid>();
-            if (grid != null)
+            float temp_target = Vector3.Distance(entry.collider.gameObject.transform.position, Camera.main.transform.position);
+            if(temp_target < dis_target)
             {
-                grid.set_alpha(0.2f);
-                _alpha_grids.Add(grid);
-
+                if (grid != null)
+                {
+                    grid.set_alpha(0.5f);
+                    _alpha_grids.Add(grid);
+                }
             }
         }
-
-
     }
     public void Update()
     {
@@ -299,10 +294,6 @@ public class creature : MonoBehaviour
         vec = temp_vec;
         if (_state == creature_state.run)
         {
-            if (_state == creature_state.run)
-            {
-                Debug.Log("RUN");
-            }
             switch (_dir)
             {
                 case dir_move.left:
@@ -326,26 +317,6 @@ public class creature : MonoBehaviour
                     }
                     break;
             }
-            //if(vec.y < 0)
-            //{
-            //    vec.y = 0;            
-            //}
-            //if(vec.x < -4)
-            //{
-            //    vec.x = -4;
-            //}
-            //if(vec.x > 24)
-            //{
-            //    vec.x = 24;
-            //}
-            //if(vec.z < 3)
-            //{
-            //    vec.z = 3;
-            //}
-            //if(vec.z > 17)
-            //{
-            //    vec.z = 17;
-            //}
             need_set = true;                        
         }
         else
@@ -397,7 +368,7 @@ public class creature : MonoBehaviour
             _state = state;
             if(_state == creature_state.idle)
             {
-                Debug.Log("idle");
+            
             }
         }
 

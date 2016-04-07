@@ -130,20 +130,20 @@ public class crashmolegrid : MonoBehaviour
     {
 
         Color temp_color = new Color();
-        temp_color = _main_material.GetColor("_TintColor");
+        temp_color = _main_material.GetColor("_Color");
         temp_color.r = color.r;
         temp_color.b = color.b;
         temp_color.g = color.g;
 
-        _main_material.SetColor("_TintColor", temp_color);
+        _main_material.SetColor("_Color", temp_color);
     }
 
     public void set_alpha(float temp)
     {
         Color temp_color = new Color();
-        temp_color = _main_material.GetColor("_TintColor");
+        temp_color = _main_material.GetColor("_Color");
         temp_color.a = temp;
-        _main_material.SetColor("_TintColor", temp_color);
+        _main_material.SetColor("_Color", temp_color);
 
 
 
