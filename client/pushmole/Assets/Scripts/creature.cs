@@ -97,8 +97,8 @@ public class creature : MonoBehaviour
     {
         Vector3 vc = new Vector3(x, y, z);
 		vc.y -= 0.7f;
-		vc.x -= 0.28f;
-		vc.z -= 0.2f;
+		vc.x -= 0.5f;
+		vc.z -= 0.6f;
         this.transform.position = vc;
         
         Vector3 vec = new Vector3(0, 0, 0);
@@ -118,8 +118,8 @@ public class creature : MonoBehaviour
         Vector3 vec = new Vector3();
         vec = this.transform.position;
         vec.y += 0.7f;
-        vec.x += 0.28f;
-        vec.z += 0.2f;
+        vec.x += 0.5f;
+        vec.z += 0.6f;
         // vec.y += 0.5f;
         return vec;
     }
@@ -174,6 +174,7 @@ public class creature : MonoBehaviour
         {
             entry.set_alpha(1);
         }
+        vec_temp = vec;
         _alpha_grids.Clear();
         RaycastHit[] temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
         Vector3[] poses = new Vector3[2];
@@ -192,8 +193,6 @@ public class creature : MonoBehaviour
         temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
         poses[0] = Camera.main.transform.position;
         poses[1] = vec_temp;
-        
-
 
         foreach (RaycastHit entry in temp)
         {
@@ -205,8 +204,6 @@ public class creature : MonoBehaviour
         temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
         poses[0] = Camera.main.transform.position;
         poses[1] = vec_temp;
-        
-
 
         foreach (RaycastHit entry in temp)
         {
@@ -218,21 +215,18 @@ public class creature : MonoBehaviour
         temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
         poses[0] = Camera.main.transform.position;
         poses[1] = vec_temp;
-        
-
 
         foreach (RaycastHit entry in temp)
         {
             list_hits.Add(entry);
         }
 
-
         vec_temp = vec;
         vec_temp.y += alpha_width;
         temp = Physics.RaycastAll(Camera.main.transform.position, vec_temp - Camera.main.transform.position);
         poses[0] = Camera.main.transform.position;
         poses[1] = vec_temp;
-        
+
         foreach (RaycastHit entry in temp)
         {
             list_hits.Add(entry);

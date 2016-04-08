@@ -725,12 +725,12 @@ public class crash_manager
             return -1;
         }
         int temp = (int)temp_number;
-        if(temp_number - (float)temp > 0.8)
-        {
-            temp_number += 0.2f;
-        }
+        //if(temp_number - (float)temp > 0.6)
+        //{
+        //    temp_number += 0.4f;
+        //}
         
-        int grid = (int)(temp_number / _grid_distance);
+        int grid = (int)(temp / _grid_distance);
         return grid;
     }
 
@@ -740,11 +740,24 @@ public class crash_manager
         pos._x = transform_to_map(tempx);
         pos._y = transform_to_map(tempy);
         pos._z = transform_to_map(tempz);
-        if(get_crash_mole_addr(pos) == null || (get_crash_mole_addr(pos) != null && get_crash_mole_addr(pos)._crash_mole != null))
+        if(get_crash_mole_addr(pos) == null)            
         {
+
             return true;
         }
+        else if (get_crash_mole_addr(pos) != null && get_crash_mole_addr(pos)._crash_mole != null)
+        {
 
+            if(get_crash_obj_addr(pos) != null)
+            {
+                if(get_crash_obj_addr(pos)._crash_obj.get_obj_type() == crash_obj_type.flag)
+                {
+
+                }
+            }
+
+            
+        }
         return false;
     }
 
