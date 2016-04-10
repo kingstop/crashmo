@@ -1,12 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/creature.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/crash_mole_grid_manager.cs">
     <Files>
       <File FileName="Assets/Scripts/color_button_click.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/creature.cs" Line="253" Column="35" />
-      <File FileName="Assets/Scripts/crashmole.cs" Line="39" Column="6" />
+      <File FileName="Assets/Scripts/crashmole.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="84" Column="1" />
       <File FileName="Assets/Scripts/crashmolegrid.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="1" Column="1" />
       <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="1" Column="1" />
@@ -18,8 +18,9 @@
             <Node name="mole_net" expanded="True">
               <Node name="proto-net" expanded="True" />
             </Node>
-            <Node name="Scripts" expanded="True" />
-            <Node name="Standard Assets" selected="True" />
+            <Node name="Scripts" expanded="True">
+              <Node name="crash_mole_grid_manager.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
