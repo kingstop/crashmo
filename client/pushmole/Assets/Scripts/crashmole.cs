@@ -750,7 +750,7 @@ public class crash_manager
 
             if(get_crash_obj_addr(pos) != null)
             {
-                if(get_crash_obj_addr(pos)._crash_obj.get_obj_type() == crash_obj_type.flag)
+                if(get_crash_obj_addr(pos)._crash_obj.get_obj_type() != crash_obj_type.flag)
                 {
 
                 }
