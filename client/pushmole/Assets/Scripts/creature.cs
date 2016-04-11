@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public enum creature_type
@@ -51,16 +50,11 @@ public class creature : MonoBehaviour
         foreach(GameObject obj_entry in _moles_list)
         {
             obj_entry.transform.parent = gameObject.transform;
-            //Vector3 vc = new Vector3(0, 0, 0);
-            //obj_entry.gameObject.transform.position = vc;
-
         }
-                
-       // _Rigidbody = GetComponent<Rigidbody>();
         set_dir(dir_move.front);
         set_state(creature_state.idle);
         _is_in_falldown = false;
-
+        _frame_count = 0;
     }
 
     void Start()
@@ -81,16 +75,6 @@ public class creature : MonoBehaviour
 
     public void jump()
     {
-        //if(_Rigidbody.velocity.y > 0)
-        //{
-        //    return;
-        //}
-        //else
-        //{
-        //    Vector3 vc = new Vector3(0, 4.8f, 0);
-        //    _Rigidbody.velocity = vc;
-        //}
-        
         _jump_speed = 0.6f;
     }
     public void set_position(float x, float y, float z)
@@ -105,12 +89,9 @@ public class creature : MonoBehaviour
         foreach (var entry in _moles)
         {
             GameObject obj_entry = entry.Value;
-
             obj_entry.transform.position = vc;
         }
         global_instance.Instance._crash_manager.update_camera();
-
-      //  _creature_physics.transform.position = _current_position;
     }
 
     public Vector3 get_position()
@@ -120,55 +101,15 @@ public class creature : MonoBehaviour
         vec.y += 0.7f;
         vec.x += 0.5f;
         vec.z += 0.6f;
-        // vec.y += 0.5f;
         return vec;
     }
 
-
-    Vector3  FallDown()
-    {
-        Vector3 vec_temp = new Vector3();
-        Vector3 vec = get_position();
-        vec_temp = vec;
-        if (global_instance.Instance._crash_manager._freezen_creature == false)
-        {            
-            if(_jump_speed > 0)
-            {
-                _current_fall_speed = _jump_speed;
-                _jump_speed = 0;
-            }
-            
-            _current_fall_speed += _fallspeed;
-            vec.y += _current_fall_speed;
-            if(global_instance.Instance._crash_manager.is_block_creature(vec.x, vec.y, vec.z) == false)
-            {
-                //set_position(vec.x, vec.y, vec.z);
-                vec_temp = vec;
-                _is_in_falldown = true;
-            }
-            else
-            {
-                if(_current_fall_speed > 0)
-                {
-                    _current_fall_speed = 0;
-                }
-                else
-                {
-                    _current_fall_speed = 0;
-                    _is_in_falldown = false;
-                }
-
-            }
-        }
-        return vec_temp;
-    }
 
     public void UpdateAlpha()
     {
         Vector3 vec = this.gameObject.transform.position;
         List<RaycastHit> list_hits = new List<RaycastHit>();
         Vector3 vec_temp = new Vector3();
-
 
         foreach (crashmolegrid entry in _alpha_grids)
         {
@@ -249,6 +190,7 @@ public class creature : MonoBehaviour
     }
     public void Update()
     {
+        _frame_count++;
         UpdateAlpha();
         bool need_set = false;
         Vector3 vec = get_position();
@@ -282,7 +224,6 @@ public class creature : MonoBehaviour
                     _current_fall_speed = 0;
                     _is_in_falldown = false;
                 }
-
             }
         }
         vec = temp_vec;
@@ -313,10 +254,6 @@ public class creature : MonoBehaviour
             }
             need_set = true;                        
         }
-        else
-        {
-            //Debug.Log("is idle");
-        }
 
         if (need_set == true)
         {
@@ -324,17 +261,45 @@ public class creature : MonoBehaviour
             {
                 temp_vec = vec;                
             }
-
             set_position(temp_vec.x, temp_vec.y, temp_vec.z);
-
-
         }
     }
 
-    
+    protected MolMoveHistory get_last_history()
+    {
+        MolMoveHistory history = null;
+        int count_temp = global_instance.Instance._crash_manager._History._mol_history.Count;
+        if (count_temp > 0)
+        {
+            history = global_instance.Instance._crash_manager._History._mol_history[count_temp - 1];
+        }
+        else
+        {
+            history = new MolMoveHistory();
+            global_instance.Instance._crash_manager._History._mol_history.Add(history);
+        }
+        return history;        
+    }
+
+    protected void set_last_history(MolMoveHistory history)
+    {
+        int count_temp = global_instance.Instance._crash_manager._History._mol_history.Count;
+        if(count_temp > 0)
+        {
+            global_instance.Instance._crash_manager._History._mol_history.RemoveAt(count_temp - 1);
+        }
+        global_instance.Instance._crash_manager._History._mol_history.Add(history);
+
+
+
+    }
     public void set_state(creature_state state)
     {
-        if(state != _state)
+        MolMoveHistory his = get_last_history();
+
+        //global_instance.Instance._crash_manager._History._mol_history.Count
+
+        if (state != _state)
         {
             switch(state)
             {
@@ -360,10 +325,6 @@ public class creature : MonoBehaviour
                     break;
             }
             _state = state;
-            if(_state == creature_state.idle)
-            {
-            
-            }
         }
 
     }
@@ -437,7 +398,6 @@ public class creature : MonoBehaviour
 
     public void OnCollisionEnter(Collision obj)
     {
-        //set_state(creature_state.idle);
     }
     public void OnCollisionExit(Collision obj)
     {
@@ -479,10 +439,9 @@ public class creature : MonoBehaviour
         }
     }
 
-
     protected creature_type _cureent_type;
     protected Vector3 _current_position = new Vector3();
     protected dir_move _dir;
     protected creature_state _state;
-
+    protected int _frame_count;
 }

@@ -108,7 +108,6 @@ public class crash_base_obj
         return _type;
     }
 
-
     public crash_pos _pos = new crash_pos();
     public crash_pos _last_pos = new crash_pos();
     public crash_mole _crash_mole;
@@ -136,7 +135,6 @@ public class crash_obj_flag : crash_base_obj
         {
             _flag.set_position(x, y, z);
         }
-        //base.set_position(x, y, z);
     }
 
     public crash_flag _flag;
@@ -163,11 +161,7 @@ public class crash_obj_creature : crash_base_obj
             _creature.set_position(x + 0.25f, y + 0.2f, z);
         }
     }
-
-
     public creature _creature;
-
-
 }
 public class crash_obj : crash_base_obj
 {
@@ -344,6 +338,48 @@ public enum want_move_dir
 }
 
 
+enum CreatureHistory_type
+{
+    moveState,
+    set_pos,
+    free
+}
+public class CreatureHistory
+{
+    public int fram_index;
+}
+
+
+public class CreatureMoveHistory : CreatureHistory
+{
+    public dir_move _dir = new dir_move();
+    public bool _move;
+}
+
+public class Creaturefrozen : CreatureHistory
+{
+    public bool frozen;
+}
+public class CreaturePosSetHistory : CreatureHistory
+{
+    public dir_move _dir = new dir_move();
+    public Vector3 _pos = new Vector3();
+}
+
+public class MolMoveHistory
+{
+    public dir_move _dir = new dir_move();
+    public List<crash_mole> move_moles = new List<crash_mole>();
+    public List<CreatureHistory> _Creature_acts = new List<CreatureHistory>();
+}
+
+
+public class CrashMoveHistory
+{
+    public List<MolMoveHistory> _mol_history = new List<MolMoveHistory>();
+
+}
+
 public class crash_manager
 {
     public int _max_x = 0;
@@ -377,6 +413,7 @@ public class crash_manager
     camera_dir _camera_dir = camera_dir.front;
     want_move_dir _want_camera_dir = want_move_dir.no;
     int _move_count = 0;
+    public CrashMoveHistory _History = new CrashMoveHistory();
     public void init()
     {
         clear();
@@ -413,6 +450,8 @@ public class crash_manager
             _move_count = 0;
         }
     }
+
+
 
     public void move_camera_right()
     {
@@ -1286,15 +1325,25 @@ public class crash_manager
             for (int i = 0; i < cur_count; i++)
             {
                 _move_mole_list.Add(enry_list[i]);
+                
             }
+            MolMoveHistory history = new MolMoveHistory();
+            history._dir = dir;
+            foreach(crash_mole entry in _move_mole_list)
+            {
+                history.move_moles.Add(entry);                
+            }
+            _History._mol_history.Add(history);
         }
-        return can_fall_temp;
 
+        return can_fall_temp;
     }
     public bool need_fall_update()
     {
         return move_list(_crash_moles_list, dir_move.down);
     }
+
+
 
     public void update_move_list(List<crash_mole> temp_list, dir_move dir)
     {
