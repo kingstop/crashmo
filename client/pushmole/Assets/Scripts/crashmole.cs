@@ -354,6 +354,7 @@ public class CreatureMoveHistory : CreatureHistory
 {
     public dir_move _dir = new dir_move();
     public bool _move;
+    public Vector3 _pos = new Vector3();
 }
 
 public class Creaturefrozen : CreatureHistory
@@ -371,6 +372,7 @@ public class MolMoveHistory
     public dir_move _dir = new dir_move();
     public List<crash_mole> move_moles = new List<crash_mole>();
     public List<CreatureHistory> _Creature_acts = new List<CreatureHistory>();
+    public int _mole_move_count;
 }
 
 
@@ -378,6 +380,21 @@ public class CrashMoveHistory
 {
     public List<MolMoveHistory> _mol_history = new List<MolMoveHistory>();
 
+}
+
+
+public class CrashMoRecord
+{
+    public CrashMoRecord()
+    {
+        _frame_begin = 0;
+        _frame_index = 0;
+        _open_record = false;
+    }
+    public int _frame_begin;
+    public List<MolMoveHistory> _mol_history = new List<MolMoveHistory>();
+    public int _frame_index;
+    public bool _open_record;
 }
 
 public class crash_manager
@@ -414,9 +431,12 @@ public class crash_manager
     want_move_dir _want_camera_dir = want_move_dir.no;
     int _move_count = 0;
     public CrashMoveHistory _History = new CrashMoveHistory();
+    public CrashMoRecord _record = new CrashMoRecord();
+    public int _current_frame_count;
     public void init()
     {
         clear();
+        _current_frame_count = 0;
         _camera_dir = camera_dir.front;
         _want_camera_dir = want_move_dir.no;
         _move_count = 0;
@@ -764,11 +784,6 @@ public class crash_manager
             return -1;
         }
         int temp = (int)temp_number;
-        //if(temp_number - (float)temp > 0.6)
-        //{
-        //    temp_number += 0.4f;
-        //}
-        
         int grid = (int)(temp / _grid_distance);
         return grid;
     }
@@ -791,7 +806,7 @@ public class crash_manager
             {
                 if(get_crash_obj_addr(pos)._crash_obj.get_obj_type() != crash_obj_type.flag)
                 {
-
+                    return true;
                 }
             }
 
@@ -1333,6 +1348,8 @@ public class crash_manager
             {
                 history.move_moles.Add(entry);                
             }
+            _current_frame_count++;
+            history._mole_move_count = _current_frame_count;
             _History._mol_history.Add(history);
         }
 

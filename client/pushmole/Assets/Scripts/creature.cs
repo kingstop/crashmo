@@ -262,6 +262,16 @@ public class creature : MonoBehaviour
                 temp_vec = vec;                
             }
             set_position(temp_vec.x, temp_vec.y, temp_vec.z);
+            if(_is_in_falldown == true)
+            {
+                MolMoveHistory hist = get_last_history();
+                CreaturePosSetHistory creaturehist = new CreaturePosSetHistory();
+                creaturehist.fram_index = _frame_count;
+                creaturehist._dir = get_dir();
+                creaturehist._pos = get_position();
+                hist._Creature_acts.Add(creaturehist);
+                set_last_history(hist);
+            }
         }
     }
 
@@ -289,16 +299,10 @@ public class creature : MonoBehaviour
             global_instance.Instance._crash_manager._History._mol_history.RemoveAt(count_temp - 1);
         }
         global_instance.Instance._crash_manager._History._mol_history.Add(history);
-
-
-
     }
     public void set_state(creature_state state)
     {
-        MolMoveHistory his = get_last_history();
-
         //global_instance.Instance._crash_manager._History._mol_history.Count
-
         if (state != _state)
         {
             switch(state)
@@ -326,7 +330,21 @@ public class creature : MonoBehaviour
             }
             _state = state;
         }
-
+        MolMoveHistory his = get_last_history();
+        CreatureMoveHistory creature_his = new CreatureMoveHistory();
+        creature_his._dir = get_dir();
+        if(_state == creature_state.idle)
+        {
+            creature_his._move = false;
+        }
+        else
+        {
+            creature_his._move = true;
+        }
+        creature_his.fram_index = _frame_count;
+        creature_his._pos = get_position();
+        his._Creature_acts.Add(creature_his);
+        set_last_history(his);
     }
 
     public dir_move get_dir()
