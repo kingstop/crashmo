@@ -262,15 +262,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
 
     void Update()
     {
-        if (get_game_type() == game_type.edit)
-        {
 
-        }
-        else
-        {
-            global_instance.Instance._crash_manager.update_move_animation();
-        }
-        
     }
 
     void OnMouseUp()

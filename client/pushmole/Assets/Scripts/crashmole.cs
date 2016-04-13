@@ -395,6 +395,7 @@ public class CrashMoRecord
     public List<MolMoveHistory> _mol_history = new List<MolMoveHistory>();
     public int _frame_index;
     public bool _open_record;
+    public bool _creature_lock;
 }
 
 public class crash_manager
@@ -458,7 +459,7 @@ public class crash_manager
                 }
             }
         }
-        need_fall_update();
+        next_update();
     }
 
 
@@ -731,9 +732,7 @@ public class crash_manager
 							_lock_mole.Add(target_mole);
 						}
 					}
-				}
-				
-				
+				}								
 			}
 			else
 			{
@@ -761,19 +760,24 @@ public class crash_manager
 
     }
 
-    public void update_camera_pos()
-    {        
-       // Vector3 pos = _creature.get_position();
-        //pos.z = Camera.main.transform.position.z;
-       // pos.y = pos.y + 3.4f;
-        //Camera.main.transform.position = pos;
-    }
+    //public void update_camera_pos()
+    //{        
+    //   // Vector3 pos = _creature.get_position();
+    //    //pos.z = Camera.main.transform.position.z;
+    //   // pos.y = pos.y + 3.4f;
+    //    //Camera.main.transform.position = pos;
+    //}
     public void update()
     {
         camera_move_update();
         //update_dir_btn();
        // need_fall_update();
-        update_camera_pos();
+        //update_camera_pos();
+        if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game)
+        {
+            update_move_animation();
+        }        
+        
     }
 
 
@@ -796,7 +800,6 @@ public class crash_manager
         pos._z = transform_to_map(tempz);
         if(get_crash_mole_addr(pos) == null)            
         {
-
             return true;
         }
         else if (get_crash_mole_addr(pos) != null && get_crash_mole_addr(pos)._crash_mole != null)
@@ -1006,7 +1009,7 @@ public class crash_manager
                 }
                 _current_move_distance = 0;
                 _need_play_animation = false;
-                need_fall_update();
+                next_update();
             }
         }
 
@@ -1202,7 +1205,7 @@ public class crash_manager
             _dir_btn_down[i] = false;
         }
 
-        need_fall_update();
+        next_update();
     }
 
     public crash_obj create_crash_obj(int x, int y)
@@ -1247,10 +1250,8 @@ public class crash_manager
 
     public void clear_block()
     {
-
         for (int x = 0; x < (int)_max_x; x++)
         {
-
             for (int z = 0; z < (int)_max_z; z++)
             {
                 for (int y = 0; y < (int)_max_z; y++)
@@ -1287,7 +1288,6 @@ public class crash_manager
         _move_mole_list.Clear();
         List<crash_mole> enry_list = new List<crash_mole>();
         int current_count = list.Count;
-        //crash_pos temp_pos = new crash_pos();
         bool can_fall_temp = true;
         for (int i = 0; i < current_count; i++)
         {
@@ -1360,6 +1360,31 @@ public class crash_manager
         return move_list(_crash_moles_list, dir_move.down);
     }
 
+    public void next_update()
+    {
+        if(_record._open_record == true)
+        {
+
+            if(_record._creature_lock != true&& _need_play_animation == false)
+            {
+                int count = _record._mol_history.Count;
+                if (count > 0)
+                {
+                    _record._frame_begin = _current_frame_count;
+                    MolMoveHistory history = _record._mol_history[count - 1];
+                    if (history._Creature_acts.Count != 0)
+                    {
+                        _record._creature_lock = true;
+                    } 
+                }
+
+            }
+        }
+        else
+        {
+            need_fall_update();
+        }
+    }
 
 
     public void update_move_list(List<crash_mole> temp_list, dir_move dir)
@@ -1484,10 +1509,8 @@ public class crash_manager
                         }
                         _move_mole_list.Clear();
                         return false;
-                    }                    
-                    
-                }
-                
+                    }                                        
+                }                
             }
             else
             {

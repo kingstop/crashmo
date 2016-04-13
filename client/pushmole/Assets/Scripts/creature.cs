@@ -27,10 +27,6 @@ public class creature : MonoBehaviour
     public float _current_fall_speed = 0;
     public bool _is_in_falldown = false;
     public List<crashmolegrid> _alpha_grids = new List<crashmolegrid>();
-
-
-
-
     public creature()
     {
       

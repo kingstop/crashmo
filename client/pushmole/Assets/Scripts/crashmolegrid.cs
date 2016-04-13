@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-
 public enum side_type
 {
     side_left,
@@ -117,24 +115,15 @@ public class crashmolegrid : MonoBehaviour
                 _side[i + 8].SetActive(true);
             }
         }
-
-        //int temp = (int)dir;
-        //if(temp >= _side.Length)
-        //{
-        //    return;
-        //}
-        //_side[temp].SetActive(true);
     }
 
     public void set_color(Color color)
     {
-
         Color temp_color = new Color();
         temp_color = _main_material.GetColor("_Color");
         temp_color.r = color.r;
         temp_color.b = color.b;
         temp_color.g = color.g;
-
         _main_material.SetColor("_Color", temp_color);
     }
 
@@ -144,10 +133,6 @@ public class crashmolegrid : MonoBehaviour
         temp_color = _main_material.GetColor("_Color");
         temp_color.a = temp;
         _main_material.SetColor("_Color", temp_color);
-
-
-
-        //_main_material.SetFloat("_InvFade", temp);
     }
 
     public void set_is_flag(bool b)
