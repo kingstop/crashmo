@@ -338,31 +338,55 @@ public enum want_move_dir
 }
 
 
-enum CreatureHistory_type
+public enum CreatureHistory_type
 {
     moveState,
     set_pos,
-    free
+    free,
+    frozen
 }
 public class CreatureHistory
 {
+    protected CreatureHistory_type _creature_type;
+    public CreatureHistory_type get_hist_type()
+    {
+        return _creature_type;
+    }
+
     public int fram_index;
+
 }
 
 
 public class CreatureMoveHistory : CreatureHistory
 {
+    public CreatureMoveHistory()
+    {
+        _creature_type = CreatureHistory_type.moveState;
+    }
     public dir_move _dir = new dir_move();
     public bool _move;
     public Vector3 _pos = new Vector3();
 }
 
-public class Creaturefrozen : CreatureHistory
+public class CreatureFrozenHistory : CreatureHistory
 {
-    public bool frozen;
+    public CreatureFrozenHistory()
+    {
+        _creature_type = CreatureHistory_type.frozen;
+    }
+    public dir_move _dir = new dir_move();
+
+    public Vector3 _pos = new Vector3();
+
+    public bool _frozen;
 }
 public class CreaturePosSetHistory : CreatureHistory
 {
+    public CreaturePosSetHistory()
+    {
+        _creature_type = CreatureHistory_type.set_pos;
+    }
     public dir_move _dir = new dir_move();
     public Vector3 _pos = new Vector3();
 }
@@ -693,7 +717,7 @@ public class crash_manager
     {
         move_list(_lock_mole, dir);
     }
-    public void catch_click(int i)
+    public void catch_click(int i, bool his = false)
     {
         if(_creature._is_in_falldown == false)
         {
@@ -725,7 +749,11 @@ public class crash_manager
 						if (target_mole != null)
 						{
 							_freezen_creature = true;
-							_obj_creature = new crash_obj_creature(pos._x, pos._y, pos._z);
+                            if(his == false)
+                            {
+                                _creature.frozen_history(_freezen_creature);
+                            }                            
+                            _obj_creature = new crash_obj_creature(pos._x, pos._y, pos._z);
 							_obj_creature._creature = _creature;
 							_creature.set_position(pos._x + 0.25f, pos._y + 0.2f, pos._z);
 							target_mole.add_crash_obj(_obj_creature);
@@ -753,6 +781,10 @@ public class crash_manager
 
                         }
                         _freezen_creature = false;
+                        if (his == false)
+                        {
+                            _creature.frozen_history(_freezen_creature);
+                        }
                     }
                 }
             }
@@ -1364,9 +1396,9 @@ public class crash_manager
     {
         if(_record._open_record == true)
         {
-
             if(_record._creature_lock != true&& _need_play_animation == false)
             {
+
                 int count = _record._mol_history.Count;
                 if (count > 0)
                 {
@@ -1375,9 +1407,54 @@ public class crash_manager
                     if (history._Creature_acts.Count != 0)
                     {
                         _record._creature_lock = true;
-                    } 
+                        foreach(CreatureHistory entry in history._Creature_acts)
+                        {
+                            _creature._Creature_history.Add(entry);
+                        }
+                    }
+                    int mole_count = history.move_moles.Count;
+                    foreach(crash_mole entry in history.move_moles)
+                    {
+                        _move_mole_list.Add(entry);
+                    }
+                   switch(history._dir)
+                    {
+                        case dir_move.back:
+                            {
+                                _last_move_dir = dir_move.front;
+                            }
+                            break;
+                        case dir_move.front:
+                            {
+                                _last_move_dir = dir_move.back;
+                            }
+                            break;
+                        case dir_move.left:
+                            {
+                                _last_move_dir = dir_move.right;
+                            }
+                            break;
+                        case dir_move.right:
+                            {
+                                _last_move_dir = dir_move.left;
+                            }
+                            break;
+                        case dir_move.down:
+                            {
+                                _last_move_dir = dir_move.up;
+                            }
+                            break;
+                        case dir_move.up:
+                            {
+                                _last_move_dir = dir_move.down;
+                            }
+                            break;
+                    }
                 }
-
+                else
+                {
+                    _record._open_record = false;
+                }
             }
         }
         else

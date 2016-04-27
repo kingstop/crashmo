@@ -66,7 +66,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>log4cplusSD.lib;libprotobuf_d.lib;common_d.lib;libmysqld.lib;mysqlclient.lib;mysqlpp_d.lib;json_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\bin\libs;..\..\..\bin\common;..\..\..\..\..\..\code\boost\boost_1_58_0\stage\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\bin\lib;..\..\..\..\..\..\bin\common;..\..\..\..\..\..\code\boost\boost_1_58_0\stage\lib\;..\..\..\..\..\..\bin\external_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

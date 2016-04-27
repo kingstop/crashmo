@@ -61,7 +61,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>log4cplusSD.lib;libprotobuf_d.lib;common_d.lib;libmysqld.lib;mysqlclient.lib;mysqlpp_d.lib;json_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>json_d.lib;log4cplusSD.lib;libprotobuf_d.lib;mysqlpp_d.lib;libmysqld.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\bin\libs;..\..\..\bin\common;..\..\..\..\..\..\code\boost\boost_1_58_0\stage\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

@@ -184,6 +184,134 @@ public class creature : MonoBehaviour
             }
         }
     }
+
+    public void frozen_history(bool b)
+    {
+        CreatureFrozenHistory his = new CreatureFrozenHistory();
+        his._frozen = b;
+        his._pos = get_position();
+        his._dir = get_dir();
+        MolMoveHistory mole_his = get_last_history();
+        mole_his._Creature_acts.Add(his);
+        set_last_history(mole_his);
+
+    }
+
+    
+    public void UpdateHistory()
+    {
+        if(global_instance.Instance._crash_manager._record._open_record)
+        {
+            if(_Creature_history.Count == 0 && _current_history == null)
+            {
+                global_instance.Instance._crash_manager._record._creature_lock = false;
+            }
+            if(_Creature_history.Count > 0)
+            {
+                _current_history = _Creature_history[_Creature_history.Count - 1];
+                _Creature_history.RemoveAt(_Creature_history.Count - 1);
+            }
+            
+            if(_current_history != null)
+            {
+               switch(_current_history.get_hist_type())
+                {
+                    case CreatureHistory_type.frozen:
+                        {
+                            CreatureFrozenHistory hist = (CreatureFrozenHistory)_current_history;
+                            set_dir(hist._dir);
+                            set_position(hist._pos.x, hist._pos.y, hist._pos.z);                            
+                            if(hist._frozen)
+                            {
+                                global_instance.Instance._crash_manager.catch_click(1);
+                            }
+                            else
+                            {
+                                global_instance.Instance._crash_manager.catch_click(0);
+                            }
+                            _current_history = null;
+                        }
+                        break;
+                    case CreatureHistory_type.moveState:
+                        {
+                            //_state = creature_state                            
+                            Vector3 vec = get_position();
+                            CreatureMoveHistory hist = (CreatureMoveHistory)_current_history;
+                            bool is_end = false;
+                            if(hist._move)
+                            {
+                                switch (hist._dir)
+                                {
+                                    case dir_move.left:
+                                        {
+                                            vec.x += _move_speed;
+                                            if(vec.x > hist._pos.x)
+                                            {
+                                                vec.x = hist._pos.x;
+                                                is_end = true;
+                                            }
+                                        }
+                                        break;
+                                    case dir_move.right:
+                                        {
+                                            vec.x -= _move_speed;
+                                            if(vec.x　< hist._pos.x)
+                                            {
+                                                vec.x = hist._pos.x;
+                                                is_end = true;
+                                            }
+                                        }
+                                        break;
+                                    case dir_move.back:
+                                        {
+                                            vec.z -= _move_speed;
+                                            if(vec.z < hist._pos.z)
+                                            {
+                                                vec.z = hist._pos.z;
+                                                is_end = true;
+                                            }
+                                        }
+                                        break;
+                                    case dir_move.front:
+                                        {
+                                            vec.z += _move_speed;
+                                            if(vec.z > hist._pos.z)
+                                            {
+                                                vec.z = hist._pos.z;
+                                                is_end = true;
+                                            }
+                                        }
+                                        break;
+                                }
+                            }
+
+                            set_position(vec.x, vec.y, vec.z);
+                            set_dir(hist._dir);
+
+                            if(is_end == true)
+                            {
+                                _current_history = null;
+                            }
+                            
+                            
+                        }
+                        break;
+                    case CreatureHistory_type.set_pos:
+                        {
+                            CreaturePosSetHistory hist = (CreaturePosSetHistory)_current_history;
+                            set_dir(hist._dir);
+                            set_position(hist._pos.x, hist._pos.y, hist._pos.z);
+                            _current_history = null;
+                        }
+                        break;
+                }
+                
+            }
+
+
+        }
+    }
+
     public void Update()
     {
         _frame_count++;
@@ -257,17 +385,18 @@ public class creature : MonoBehaviour
             {
                 temp_vec = vec;                
             }
-            set_position(temp_vec.x, temp_vec.y, temp_vec.z);
+            set_position(temp_vec.x, temp_vec.y, temp_vec.z);            
             if(_is_in_falldown == true)
             {
-                MolMoveHistory hist = get_last_history();
-                CreaturePosSetHistory creaturehist = new CreaturePosSetHistory();
-                creaturehist.fram_index = _frame_count;
-                creaturehist._dir = get_dir();
-                creaturehist._pos = get_position();
-                hist._Creature_acts.Add(creaturehist);
-                set_last_history(hist);
-            }
+                update_set_his();
+            }            
+        }
+
+        if (_is_in_falldown == false && _last_state != _state || _is_in_falldown != _last_fallen_state)
+        {
+            update_move_his();
+            _last_fallen_state = _is_in_falldown;
+            _last_state = _state;
         }
     }
 
@@ -386,8 +515,46 @@ public class creature : MonoBehaviour
                 a_temp.eulerAngles = vc;
                 _moles_list[i].transform.rotation = a_temp;                
             }
+            update_set_his();
+            update_move_his();
         }
         _dir = dir;
+
+    }
+
+
+    public void update_set_his()
+    {
+        CreaturePosSetHistory his = new CreaturePosSetHistory();
+        his._dir = _dir;
+        his._pos = get_position();
+        MolMoveHistory mole_his = get_last_history();
+        mole_his._Creature_acts.Add(his);
+        set_last_history(mole_his);
+    }
+
+    public void update_move_his()
+    {
+        CreatureMoveHistory hist_move_hist = new CreatureMoveHistory();
+        hist_move_hist._pos = get_position();
+        hist_move_hist._dir = get_dir();
+
+        switch (_state)
+        {
+            case creature_state.run:
+                {
+                    hist_move_hist._move = true;
+                }
+                break;
+            case creature_state.idle:
+                {
+                    hist_move_hist._move = false;
+                }
+                break;
+        }
+        MolMoveHistory hist = get_last_history();
+        hist._Creature_acts.Add(hist_move_hist);
+        set_last_history(hist);
 
     }
 
@@ -457,5 +624,11 @@ public class creature : MonoBehaviour
     protected Vector3 _current_position = new Vector3();
     protected dir_move _dir;
     protected creature_state _state;
+    protected creature_state _last_state;
+    protected bool _last_fallen_state;
     protected int _frame_count;
+    public List<CreatureHistory> _Creature_history = new List<CreatureHistory>();
+    public CreatureHistory _current_history;
+    
+    
 }
