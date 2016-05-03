@@ -292,8 +292,7 @@ public class creature : MonoBehaviour
                             {
                                 _current_history = null;
                             }
-                            
-                            
+                                                       
                         }
                         break;
                     case CreatureHistory_type.set_pos:
@@ -629,6 +628,4 @@ public class creature : MonoBehaviour
     protected int _frame_count;
     public List<CreatureHistory> _Creature_history = new List<CreatureHistory>();
     public CreatureHistory _current_history;
-    
-    
 }
