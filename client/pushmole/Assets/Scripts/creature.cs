@@ -255,7 +255,7 @@ public class creature : MonoBehaviour
                                     case dir_move.right:
                                         {
                                             vec.x -= _move_speed;
-                                            if(vec.x　< hist._pos.x)
+                                            if(vec.x < hist._pos.x)
                                             {
                                                 vec.x = hist._pos.x;
                                                 is_end = true;
