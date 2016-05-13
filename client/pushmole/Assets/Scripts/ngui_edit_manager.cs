@@ -477,6 +477,22 @@ public class ngui_edit_manager : MonoBehaviour {
         }
     }
 
+    public void OnRecordClick()
+    {
+        if(global_instance.Instance._global_game_type == global_game_type.global_game_type_game)
+        {
+            if (global_instance.Instance._crash_manager._record._open_record)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
+    }
+
     public void update_game_type(game_type type)
     {
         _edit_obj_btns.SetActive(false);

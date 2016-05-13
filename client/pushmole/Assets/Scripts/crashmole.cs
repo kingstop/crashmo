@@ -1398,7 +1398,6 @@ public class crash_manager
         {
             if(_record._creature_lock != true&& _need_play_animation == false)
             {
-
                 int count = _record._mol_history.Count;
                 if (count > 0)
                 {

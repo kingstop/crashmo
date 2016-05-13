@@ -291,8 +291,7 @@ public class creature : MonoBehaviour
                             if(is_end == true)
                             {
                                 _current_history = null;
-                            }
-                                                       
+                            }                                                       
                         }
                         break;
                     case CreatureHistory_type.set_pos:
@@ -303,15 +302,13 @@ public class creature : MonoBehaviour
                             _current_history = null;
                         }
                         break;
-                }
-                
+                }                
             }
-
-
         }
     }
 
-    public void Update()
+
+    public void NormalUpdate()
     {
         _frame_count++;
         UpdateAlpha();
@@ -375,20 +372,20 @@ public class creature : MonoBehaviour
                     }
                     break;
             }
-            need_set = true;                        
+            need_set = true;
         }
 
         if (need_set == true)
         {
-            if(global_instance.Instance._crash_manager.is_block_creature(vec.x, vec.y, vec.z) == false)
+            if (global_instance.Instance._crash_manager.is_block_creature(vec.x, vec.y, vec.z) == false)
             {
-                temp_vec = vec;                
+                temp_vec = vec;
             }
-            set_position(temp_vec.x, temp_vec.y, temp_vec.z);            
-            if(_is_in_falldown == true)
+            set_position(temp_vec.x, temp_vec.y, temp_vec.z);
+            if (_is_in_falldown == true)
             {
                 update_set_his();
-            }            
+            }
         }
 
         if (_is_in_falldown == false && _last_state != _state || _is_in_falldown != _last_fallen_state)
@@ -396,6 +393,18 @@ public class creature : MonoBehaviour
             update_move_his();
             _last_fallen_state = _is_in_falldown;
             _last_state = _state;
+        }
+
+    }
+    public void Update()
+    {
+        if(global_instance.Instance._crash_manager._record._open_record)
+        {
+            UpdateHistory();
+        }
+        else
+        {
+            NormalUpdate();
         }
     }
 
