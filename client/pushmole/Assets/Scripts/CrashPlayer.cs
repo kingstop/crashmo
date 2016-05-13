@@ -102,7 +102,6 @@ public class CrashPlayer
                                 list_entry.Value.Remove(key_entry.Key);
                                 break;
                             }
-
                         } 
                     }
                 }
