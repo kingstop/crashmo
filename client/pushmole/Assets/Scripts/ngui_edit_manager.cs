@@ -48,6 +48,8 @@ public class ngui_edit_manager : MonoBehaviour {
     public GameObject _game_obj_btns;
 	public GameObject _edit_type_obj_btns;
 
+	public Text _record_txt;
+
     public Text _account;
     public Text _password;
     
@@ -481,14 +483,37 @@ public class ngui_edit_manager : MonoBehaviour {
     {
         if(global_instance.Instance._global_game_type == global_game_type.global_game_type_game)
         {
-            if (global_instance.Instance._crash_manager._record._open_record)
-            {
+			crashmo_record_type current_type = global_instance.Instance._crash_manager._record.get_open_type ();
+			if (current_type == crashmo_record_type.record_open || current_type == crashmo_record_type.record_ready_for_open) {
+				global_instance.Instance._crash_manager._record.ready_for_record_closed ();
+			} else {
+				global_instance.Instance._crash_manager._record.ready_for_record_open ();	
+			}
+			switch (current_type) 
+			{
+			case crashmo_record_type.record_closed:
+				{
+					global_instance.Instance._crash_manager._record.ready_for_record_open ();	
+				}
+				break;
+			case crashmo_record_type.record_open:
+				{
+					global_instance.Instance._crash_manager._record.ready_for_record_closed();
+				}
+				break;
+			case crashmo_record_type.record_ready_for_closed:
+				{
+					global_instance.Instance._crash_manager._record.ready_for_record_open ();
+				}
+				break;
+			case crashmo_record_type.record_ready_for_open:
+				{
+					global_instance.Instance._crash_manager._record.ready_for_record_closed();
+				}
+				break;
 
-            }
-            else
-            {
+			}
 
-            }
         }
 
     }

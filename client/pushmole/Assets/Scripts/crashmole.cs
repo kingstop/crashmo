@@ -407,19 +407,111 @@ public class CrashMoveHistory
 }
 
 
+public enum crashmo_record_type
+{
+	record_closed,
+	record_ready_for_open,
+	record_open,
+	record_ready_for_closed,
+
+}
+
 public class CrashMoRecord
 {
     public CrashMoRecord()
     {
         _frame_begin = 0;
         _frame_index = 0;
-        _open_record = false;
+        //_open_record = false;
+		_open_record_state = false;
+		//set_open_type(crashmo_record_type.record_closed);
     }
+
+	public bool _open_record
+	{
+		get {
+			return _open_record_state;
+		}
+
+	}
     public int _frame_begin;
     public List<MolMoveHistory> _mol_history = new List<MolMoveHistory>();
     public int _frame_index;
-    public bool _open_record;
+    public bool _my_open_record;
+	private bool _open_record_state;
     public bool _creature_lock;
+	private crashmo_record_type _open_type = new crashmo_record_type();
+	public crashmo_record_type get_open_type()
+	{
+		return _open_type;
+	}
+	private void ModifyButton (string txt)
+	{
+		global_instance.Instance._ngui_edit_manager._record_txt.text = txt;
+	}
+	private void set_open_type(crashmo_record_type tp)
+	{
+		switch (tp) {
+		case crashmo_record_type.record_closed:
+			{
+				ModifyButton("reacord");
+			}
+			break;
+		case crashmo_record_type.record_open:
+			{
+				ModifyButton("close reacord");
+			}
+			break;
+		case crashmo_record_type.record_ready_for_closed:
+			{
+				ModifyButton("prepare closed");
+			}
+			break;
+
+		case crashmo_record_type.record_ready_for_open:
+			{
+				ModifyButton("prepare open");
+			}
+			break;
+		}
+		_open_type = tp;
+		
+	}
+	public void ready_for_record_closed()
+	{
+		set_open_type (crashmo_record_type.record_ready_for_closed);
+
+	}
+
+	public void ready_for_record_open()
+	{		
+		set_open_type (crashmo_record_type.record_ready_for_open);
+	}
+
+	private bool is_in_ready_type()
+	{
+		if (_open_type == crashmo_record_type.record_closed || _open_type == crashmo_record_type.record_open) 
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	public void try_to_next_state()
+	{		
+		if (_open_type == crashmo_record_type.record_ready_for_closed) 
+		{
+			set_open_type (crashmo_record_type.record_closed);
+			_open_record_state = false;
+		}
+
+		if (_open_type == crashmo_record_type.record_ready_for_open) 
+		{
+			set_open_type (crashmo_record_type.record_open);
+			_open_record_state = true;
+		}
+	}
 }
 
 public class crash_manager
@@ -1452,13 +1544,19 @@ public class crash_manager
                 }
                 else
                 {
-                    _record._open_record = false;
+					_record.ready_for_record_closed();
+					_record.try_to_next_state ();
+
                 }
             }
         }
         else
         {
-            need_fall_update();
+            bool temp = need_fall_update();
+			if (temp) 
+			{
+				_record.try_to_next_state ();
+			}
         }
     }
 
