@@ -1,19 +1,26 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/crash_mole_grid_manager.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ngui_edit_manager.cs">
     <Files>
+      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="485" Column="10" />
       <File FileName="Assets/Scripts/color_button_click.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/creature.cs" Line="489" Column="1" />
-      <File FileName="Assets/Scripts/crashmole.cs" Line="1551" Column="2" />
+      <File FileName="Assets/Scripts/creature.cs" Line="28" Column="32" />
+      <File FileName="Assets/Scripts/crashmole.cs" Line="540" Column="4" />
       <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="84" Column="1" />
-      <File FileName="Assets/Scripts/crashmolegrid.cs" Line="255" Column="1" />
-      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="150" Column="14" />
+      <File FileName="Assets/Scripts/crashmolegrid.cs" Line="240" Column="1" />
+      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="537" Column="2" />
+      <File FileName="Assets/Scripts/global_instance.cs" Line="57" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True" />
+        <State name="__root__">
+          <Node name="pushmole" expanded="True" selected="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Scripts" expanded="True" />
+            </Node>
+          </Node>
+        </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
@@ -22,11 +29,17 @@
           <Value>obj</Value>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="pushmole" expanded="True" selected="True" />
+        </State>
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/apple/Desktop/work/crashmo/client/pushmole/Assets/Scripts/creature.cs" line="136" />
+      <Breakpoint file="/Users/apple/Desktop/work/crashmo/client/pushmole/Assets/Scripts/creature.cs" line="136" column="1" />
+      <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/ngui_edit_manager.cs" line="484" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

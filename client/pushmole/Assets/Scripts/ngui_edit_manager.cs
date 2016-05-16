@@ -489,31 +489,24 @@ public class ngui_edit_manager : MonoBehaviour {
 			} else {
 				global_instance.Instance._crash_manager._record.ready_for_record_open ();	
 			}
-			switch (current_type) 
+
+			if (global_instance.Instance._crash_manager._need_play_animation == false) 
 			{
-			case crashmo_record_type.record_closed:
+				if (global_instance.Instance._crash_manager._creature._is_in_falldown == false) 
 				{
-					global_instance.Instance._crash_manager._record.ready_for_record_open ();	
-				}
-				break;
-			case crashmo_record_type.record_open:
-				{
-					global_instance.Instance._crash_manager._record.ready_for_record_closed();
-				}
-				break;
-			case crashmo_record_type.record_ready_for_closed:
-				{
-					global_instance.Instance._crash_manager._record.ready_for_record_open ();
-				}
-				break;
-			case crashmo_record_type.record_ready_for_open:
-				{
-					global_instance.Instance._crash_manager._record.ready_for_record_closed();
-				}
-				break;
+					if (global_instance.Instance._crash_manager.need_fall_update () == false) {
+						global_instance.Instance._crash_manager._record.try_to_next_state ();
+					}
 
+				}
 			}
-
+/*
+			bool temp = need_fall_update();
+			if (temp) 
+			{
+				_record.try_to_next_state ();
+			}
+			*/
         }
 
     }

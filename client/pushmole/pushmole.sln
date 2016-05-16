@@ -1,11 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pushmole.CSharp.Plugins", "pushmole.CSharp.Plugins.csproj", "{1BECA5D4-DA86-E119-50CB-5A0CF2A6004F}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{4789CD2B-A3F3-E8A0-A1D0-2BA352D737AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pushmole.CSharp", "pushmole.CSharp.csproj", "{648C73AC-73C2-CDE2-6DC2-D6735A51A788}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{9E50F885-1268-BA8A-7AC0-9112C6D6284B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pushmole.CSharp.Editor", "pushmole.CSharp.Editor.csproj", "{6D40A1A5-B785-4CFC-DAC4-8D32B37BDB70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{577A55C0-5CD7-E556-E1C0-D8A6433B56BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,18 +13,49 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1BECA5D4-DA86-E119-50CB-5A0CF2A6004F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BECA5D4-DA86-E119-50CB-5A0CF2A6004F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BECA5D4-DA86-E119-50CB-5A0CF2A6004F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BECA5D4-DA86-E119-50CB-5A0CF2A6004F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{648C73AC-73C2-CDE2-6DC2-D6735A51A788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{648C73AC-73C2-CDE2-6DC2-D6735A51A788}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{648C73AC-73C2-CDE2-6DC2-D6735A51A788}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{648C73AC-73C2-CDE2-6DC2-D6735A51A788}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D40A1A5-B785-4CFC-DAC4-8D32B37BDB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D40A1A5-B785-4CFC-DAC4-8D32B37BDB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D40A1A5-B785-4CFC-DAC4-8D32B37BDB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D40A1A5-B785-4CFC-DAC4-8D32B37BDB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4789CD2B-A3F3-E8A0-A1D0-2BA352D737AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4789CD2B-A3F3-E8A0-A1D0-2BA352D737AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4789CD2B-A3F3-E8A0-A1D0-2BA352D737AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4789CD2B-A3F3-E8A0-A1D0-2BA352D737AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{577A55C0-5CD7-E556-E1C0-D8A6433B56BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{577A55C0-5CD7-E556-E1C0-D8A6433B56BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{577A55C0-5CD7-E556-E1C0-D8A6433B56BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{577A55C0-5CD7-E556-E1C0-D8A6433B56BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E50F885-1268-BA8A-7AC0-9112C6D6284B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E50F885-1268-BA8A-7AC0-9112C6D6284B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E50F885-1268-BA8A-7AC0-9112C6D6284B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E50F885-1268-BA8A-7AC0-9112C6D6284B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.AfterDelegateDeclarationParameterComma = True
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/x-csharp
+		$3.scope = text/x-csharp
+		$0.TextStylePolicy = $4
+		$4.FileWidth = 120
+		$4.TabsToSpaces = False
+		$4.inheritsSet = VisualStudio
+		$4.inheritsScope = text/plain
+		$4.scope = text/plain
+		$0.TextStylePolicy = $5
+		$5.inheritsSet = null
+		$5.scope = text/x-shader
+		$0.TextStylePolicy = $6
+		$6.inheritsSet = null
+		$6.scope = text/x-unitytxt
+		$0.StandardHeader = $7
+		$7.Text = 
+		$7.IncludeInNewFiles = True
+		$0.VersionControlPolicy = $8
+		$8.inheritsSet = Mono
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
