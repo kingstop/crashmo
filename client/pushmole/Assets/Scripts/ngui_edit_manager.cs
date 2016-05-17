@@ -496,6 +496,7 @@ public class ngui_edit_manager : MonoBehaviour {
 				{
 					if (global_instance.Instance._crash_manager.need_fall_update () == false) {
 						global_instance.Instance._crash_manager._record.try_to_next_state ();
+                        
 					}
 
 				}
@@ -545,9 +546,7 @@ public class ngui_edit_manager : MonoBehaviour {
                     Camera.main.transform.position = vec;
                     Camera.main.fieldOfView = 34;
                     show_game_btns();
-                    //global_instance.Instance._crash_manager._max_x = global_instance.Instance._crash_mole_grid_manager.get_max_width();
-                    //global_instance.Instance._crash_manager._max_y = global_instance.Instance._crash_mole_grid_manager.get_max_height() + 20;
-                    //global_instance.Instance._crash_manager._max_z = 18;
+
                     global_instance.Instance._crash_manager.init();
                 }
                 break;

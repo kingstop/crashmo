@@ -435,7 +435,6 @@ public class CrashMoRecord
 
 	}
     public int _frame_begin;
-    public List<MolMoveHistory> _mol_history = new List<MolMoveHistory>();
     public int _frame_index;
     public bool _my_open_record;
 	private bool _open_record_state;
@@ -499,18 +498,27 @@ public class CrashMoRecord
 	}
 
 	public void try_to_next_state()
-	{		
+	{
+        bool need_next_update = false;
 		if (_open_type == crashmo_record_type.record_ready_for_closed) 
 		{
 			set_open_type (crashmo_record_type.record_closed);
 			_open_record_state = false;
-		}
+            need_next_update = true;
+
+        }
 
 		if (_open_type == crashmo_record_type.record_ready_for_open) 
 		{
 			set_open_type (crashmo_record_type.record_open);
 			_open_record_state = true;
-		}
+            need_next_update = true;
+        }
+
+        if(need_next_update)
+        {
+            global_instance.Instance._crash_manager.next_update();
+        }
 	}
 }
 
@@ -884,19 +892,10 @@ public class crash_manager
 
     }
 
-    //public void update_camera_pos()
-    //{        
-    //   // Vector3 pos = _creature.get_position();
-    //    //pos.z = Camera.main.transform.position.z;
-    //   // pos.y = pos.y + 3.4f;
-    //    //Camera.main.transform.position = pos;
-    //}
+
     public void update()
     {
         camera_move_update();
-        //update_dir_btn();
-       // need_fall_update();
-        //update_camera_pos();
         if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game)
         {
             update_move_animation();
@@ -1412,7 +1411,7 @@ public class crash_manager
         _move_mole_list.Clear();
         List<crash_mole> enry_list = new List<crash_mole>();
         int current_count = list.Count;
-        bool can_fall_temp = true;
+        bool can_fall_temp = false;
         for (int i = 0; i < current_count; i++)
         {
             bool need_continue = false;
@@ -1463,18 +1462,21 @@ public class crash_manager
             _move_mole_list.Clear();
             for (int i = 0; i < cur_count; i++)
             {
-                _move_mole_list.Add(enry_list[i]);
-                
+                _move_mole_list.Add(enry_list[i]);                
             }
-            MolMoveHistory history = new MolMoveHistory();
-            history._dir = dir;
-            foreach(crash_mole entry in _move_mole_list)
+
+            if(_record._open_record == false)
             {
-                history.move_moles.Add(entry);                
+                MolMoveHistory history = new MolMoveHistory();
+                history._dir = dir;
+                foreach (crash_mole entry in _move_mole_list)
+                {
+                    history.move_moles.Add(entry);
+                }
+                _current_frame_count++;
+                history._mole_move_count = _current_frame_count;
+                _History._mol_history.Add(history);
             }
-            _current_frame_count++;
-            history._mole_move_count = _current_frame_count;
-            _History._mol_history.Add(history);
         }
 
         return can_fall_temp;
@@ -1490,11 +1492,12 @@ public class crash_manager
         {
             if(_record._creature_lock != true&& _need_play_animation == false)
             {
-                int count = _record._mol_history.Count;
+                int count = _History._mol_history.Count;
                 if (count > 0)
                 {
                     _record._frame_begin = _current_frame_count;
-                    MolMoveHistory history = _record._mol_history[count - 1];
+                    MolMoveHistory history = _History._mol_history[count - 1];
+                    _History._mol_history.RemoveAt(count - 1);
                     if (history._Creature_acts.Count != 0)
                     {
                         _record._creature_lock = true;
@@ -1541,6 +1544,10 @@ public class crash_manager
                             }
                             break;
                     }
+                    if(_crash_moles_list.Count != 0)
+                    {
+                        move_list(_crash_moles_list, _last_move_dir);
+                    }                    
                 }
                 else
                 {
