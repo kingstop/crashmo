@@ -605,8 +605,6 @@ std::string get_time(time_t cur_time)
 	{
 		timep = cur_time;
 	}
-
-
 	struct tm* cur = localtime(&timep);
 	char sz_time[256];
 	sprintf(sz_time, "%d-%d-%d %d:%d:%d", cur->tm_year + 1900, cur->tm_mon + 1, cur->tm_mday + 1, cur->tm_hour, cur->tm_min, cur->tm_sec);
