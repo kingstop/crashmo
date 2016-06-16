@@ -76,7 +76,8 @@ void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
 	int temp_number = map_temp->number();
 	std::string create_time = get_time(map_temp->create_time());
 	sprintf(sql, "(%lu, '%s', '%s', '%s', '%s', %d, %d)",0, map_temp->creatername().c_str(),
-		map_temp->mapname().c_str(), base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size()), 
+		map_temp->mapname().c_str(), 
+		base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size()).c_str(), 
 		create_time.c_str(), 
 		map_temp->section(), 
 		temp_number);
