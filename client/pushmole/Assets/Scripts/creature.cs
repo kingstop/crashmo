@@ -80,8 +80,7 @@ public class creature : MonoBehaviour
 		vc.x -= 0.5f;
 		vc.z -= 0.6f;
         this.transform.position = vc;
-        
-        Vector3 vec = new Vector3(0, 0, 0);
+              
         foreach (var entry in _moles)
         {
             GameObject obj_entry = entry.Value;
@@ -169,7 +168,7 @@ public class creature : MonoBehaviour
             list_hits.Add(entry);
         }
 
-        List<crashmolegrid> list_grid = new List<crashmolegrid>();
+     
         foreach (RaycastHit entry in list_hits)
         {
             crashmolegrid grid = entry.collider.gameObject.GetComponent<crashmolegrid>();
@@ -187,6 +186,7 @@ public class creature : MonoBehaviour
 
     public void frozen_history(bool b)
     {
+		
         CreatureFrozenHistory his = new CreatureFrozenHistory();
         his._frozen = b;
         his._pos = get_position();
@@ -382,7 +382,7 @@ public class creature : MonoBehaviour
                 temp_vec = vec;
             }
             set_position(temp_vec.x, temp_vec.y, temp_vec.z);
-            if (_is_in_falldown == true)
+			if (_is_in_falldown == true && isNeedRecord())
             {
                 update_set_his();
             }
@@ -390,7 +390,12 @@ public class creature : MonoBehaviour
 
         if (_is_in_falldown == false && _last_state != _state || _is_in_falldown != _last_fallen_state)
         {
-            update_move_his();
+			if (isNeedRecord ()) 
+			{
+				update_move_his();
+			}
+
+            
             _last_fallen_state = _is_in_falldown;
             _last_state = _state;
         }
@@ -412,15 +417,23 @@ public class creature : MonoBehaviour
     {
         MolMoveHistory history = null;
         int count_temp = global_instance.Instance._crash_manager._History._mol_history.Count;
-        if (count_temp > 0)
-        {
-            history = global_instance.Instance._crash_manager._History._mol_history[count_temp - 1];
-        }
-        else
-        {
-            history = new MolMoveHistory();
-            global_instance.Instance._crash_manager._History._mol_history.Add(history);
-        }
+		if (count_temp == 0) {
+			history = new MolMoveHistory ();
+			global_instance.Instance._crash_manager._History._mol_history.Add (history);
+		} 
+		else
+		{
+			history = global_instance.Instance._crash_manager._History._mol_history[count_temp - 1];
+			if (history.move_moles.Count != 0 && global_instance.Instance._crash_manager.need_fall_update() == false 
+				&& global_instance.Instance._crash_manager._need_play_animation == false) 
+			{
+				history = new MolMoveHistory ();
+				global_instance.Instance._crash_manager._History._mol_history.Add (history);
+			}
+
+				
+
+		}
         return history;        
     }
 
@@ -436,6 +449,12 @@ public class creature : MonoBehaviour
     public void set_state(creature_state state)
     {
         //global_instance.Instance._crash_manager._History._mol_history.Count
+
+		if (global_instance.Instance._crash_manager._game_begin == false) 
+		{
+			return;
+		}
+
         if (state != _state)
         {
             switch(state)
@@ -463,21 +482,25 @@ public class creature : MonoBehaviour
             }
             _state = state;
         }
-        MolMoveHistory his = get_last_history();
-        CreatureMoveHistory creature_his = new CreatureMoveHistory();
-        creature_his._dir = get_dir();
-        if(_state == creature_state.idle)
-        {
-            creature_his._move = false;
-        }
-        else
-        {
-            creature_his._move = true;
-        }
-        creature_his.fram_index = _frame_count;
-        creature_his._pos = get_position();
-        his._Creature_acts.Add(creature_his);
-        set_last_history(his);
+		if (isNeedRecord ()) 
+		{
+			MolMoveHistory his = get_last_history();
+			CreatureMoveHistory creature_his = new CreatureMoveHistory();
+			creature_his._dir = get_dir();
+			if(_state == creature_state.idle)
+			{
+				creature_his._move = false;
+			}
+			else
+			{
+				creature_his._move = true;
+			}
+			creature_his.fram_index = _frame_count;
+			creature_his._pos = get_position();
+			his._Creature_acts.Add(creature_his);
+			set_last_history(his);
+		}
+
     }
 
     public dir_move get_dir()
@@ -523,16 +546,33 @@ public class creature : MonoBehaviour
                 a_temp.eulerAngles = vc;
                 _moles_list[i].transform.rotation = a_temp;                
             }
-            update_set_his();
-            update_move_his();
+			if (isNeedRecord()) 
+			{
+				update_set_his();
+				update_move_his();	
+			}
+
         }
         _dir = dir;
 
     }
 
+	public bool isNeedRecord()
+	{
+		if (global_instance.Instance._crash_manager._game_begin == true && global_instance.Instance._crash_manager._record._open_record == false) 
+		{
+			return true;
+		}
+		return false;
+	}
 
     public void update_set_his()
     {
+		if (global_instance.Instance._crash_manager._game_begin == false) 
+		{
+			return;
+		}
+			
         CreaturePosSetHistory his = new CreaturePosSetHistory();
         his._dir = _dir;
         his._pos = get_position();
@@ -543,6 +583,11 @@ public class creature : MonoBehaviour
 
     public void update_move_his()
     {
+		if (isNeedRecord()) 
+		{
+			return;
+		}
+
         CreatureMoveHistory hist_move_hist = new CreatureMoveHistory();
         hist_move_hist._pos = get_position();
         hist_move_hist._dir = get_dir();

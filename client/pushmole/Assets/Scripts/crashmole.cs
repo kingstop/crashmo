@@ -558,6 +558,7 @@ public class crash_manager
     public CrashMoveHistory _History = new CrashMoveHistory();
     public CrashMoRecord _record = new CrashMoRecord();
     public int _current_frame_count;
+	public bool _game_begin = false;
     public void init()
     {
         clear();
@@ -1465,7 +1466,7 @@ public class crash_manager
                 _move_mole_list.Add(enry_list[i]);                
             }
 
-            if(_record._open_record == false)
+			if(_record._open_record == false&& _game_begin == true)
             {
                 MolMoveHistory history = new MolMoveHistory();
                 history._dir = dir;
@@ -1490,8 +1491,8 @@ public class crash_manager
     {
         if(_record._open_record == true)
         {
-            if(_record._creature_lock != true&& _need_play_animation == false)
-            {
+			if(_creature._Creature_history.Count == 0&&_record._creature_lock != true&& _need_play_animation == false)
+            {									
                 int count = _History._mol_history.Count;
                 if (count > 0)
                 {
@@ -1560,6 +1561,10 @@ public class crash_manager
         else
         {
             bool temp = need_fall_update();
+			if (temp == false && _need_play_animation == false && _crash_moles_list.Count != 0) 
+			{
+				_game_begin = true;
+			}
 			if (temp) 
 			{
 				_record.try_to_next_state ();
