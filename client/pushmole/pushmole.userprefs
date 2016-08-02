@@ -7,7 +7,7 @@
       <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/color_button_click.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/creature.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/crashmole.cs" Line="1484" Column="6" />
+      <File FileName="Assets/Scripts/crashmole.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="1" Column="1" />
       <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="1" Column="1" />
