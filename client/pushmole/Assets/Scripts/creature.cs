@@ -205,6 +205,7 @@ public class creature : MonoBehaviour
             if(_Creature_history.Count == 0 && _current_history == null)
             {
                 global_instance.Instance._crash_manager._record._creature_lock = false;
+				global_instance.Instance._crash_manager.next_update ();
             }
             if(_Creature_history.Count > 0)
             {

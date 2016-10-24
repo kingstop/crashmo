@@ -393,6 +393,10 @@ public class CreaturePosSetHistory : CreatureHistory
 
 public class MolMoveHistory
 {
+	public MolMoveHistory()
+	{
+		_dir = dir_move.no;
+	}
     public dir_move _dir = new dir_move();
     public List<crash_mole> move_moles = new List<crash_mole>();
     public List<CreatureHistory> _Creature_acts = new List<CreatureHistory>();
@@ -453,12 +457,12 @@ public class CrashMoRecord
 		switch (tp) {
 		case crashmo_record_type.record_closed:
 			{
-				ModifyButton("reacord");
+				ModifyButton("record");
 			}
 			break;
 		case crashmo_record_type.record_open:
 			{
-				ModifyButton("close reacord");
+				ModifyButton("close record");
 			}
 			break;
 		case crashmo_record_type.record_ready_for_closed:
@@ -1322,7 +1326,7 @@ public class crash_manager
         _camera_dir = camera_dir.front;
         _want_camera_dir = want_move_dir.no;
         _creature.gameObject.SetActive(true);
-        _creature.set_position(8, 0, 3);
+        _creature.set_position(8, 2, 3);
 
         for(int i = 0 ;i < 4; i ++)
         {
@@ -1508,9 +1512,10 @@ public class crash_manager
                         }
                     }
                     int mole_count = history.move_moles.Count;
+					List<crash_mole> temp_list = new List<crash_mole> (); 
                     foreach(crash_mole entry in history.move_moles)
                     {
-                        _move_mole_list.Add(entry);
+						temp_list.Add(entry);
                     }
                    switch(history._dir)
                     {
@@ -1545,9 +1550,9 @@ public class crash_manager
                             }
                             break;
                     }
-                    if(_crash_moles_list.Count != 0)
+					if(temp_list.Count != 0)
                     {
-                        move_list(_crash_moles_list, _last_move_dir);
+						move_list(temp_list, _last_move_dir);
                     }                    
                 }
                 else
