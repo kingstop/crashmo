@@ -224,11 +224,11 @@ public class creature : MonoBehaviour
                             set_position(hist._pos.x, hist._pos.y, hist._pos.z);                            
                             if(hist._frozen)
                             {
-                                global_instance.Instance._crash_manager.catch_click(1);
+								global_instance.Instance._crash_manager.catch_click(0, true);
                             }
                             else
                             {
-                                global_instance.Instance._crash_manager.catch_click(0);
+								global_instance.Instance._crash_manager.catch_click(1, true);
                             }
                             _current_history = null;
                         }
@@ -239,60 +239,62 @@ public class creature : MonoBehaviour
                             Vector3 vec = get_position();
                             CreatureMoveHistory hist = (CreatureMoveHistory)_current_history;
                             bool is_end = false;
-                            if(hist._move)
-                            {
-                                switch (hist._dir)
-                                {
-                                    case dir_move.left:
-                                        {
-                                            vec.x += _move_speed;
-                                            if(vec.x > hist._pos.x)
-                                            {
-                                                vec.x = hist._pos.x;
-                                                is_end = true;
-                                            }
-                                        }
-                                        break;
-                                    case dir_move.right:
-                                        {
-                                            vec.x -= _move_speed;
-                                            if(vec.x < hist._pos.x)
-                                            {
-                                                vec.x = hist._pos.x;
-                                                is_end = true;
-                                            }
-                                        }
-                                        break;
-                                    case dir_move.back:
-                                        {
-                                            vec.z -= _move_speed;
-                                            if(vec.z < hist._pos.z)
-                                            {
-                                                vec.z = hist._pos.z;
-                                                is_end = true;
-                                            }
-                                        }
-                                        break;
-                                    case dir_move.front:
-                                        {
-                                            vec.z += _move_speed;
-                                            if(vec.z > hist._pos.z)
-                                            {
-                                                vec.z = hist._pos.z;
-                                                is_end = true;
-                                            }
-                                        }
-                                        break;
-                                }
-                            }
+							if (hist._move) {
+								switch (hist._dir) {
+								case dir_move.left:
+									{
+										vec.x += _move_speed;
+										if (vec.x > hist._pos.x) {
+											vec.x = hist._pos.x;
+											is_end = true;
+										}
+									}
+									break;
+								case dir_move.right:
+									{
+										vec.x -= _move_speed;
+										if (vec.x < hist._pos.x) {
+											vec.x = hist._pos.x;
+											is_end = true;
+										}
+									}
+									break;
+								case dir_move.back:
+									{
+										vec.z -= _move_speed;
+										if (vec.z < hist._pos.z) {
+											vec.z = hist._pos.z;
+											is_end = true;
+										}
+									}
+									break;
+								case dir_move.front:
+									{
+										vec.z += _move_speed;
+										if (vec.z > hist._pos.z) {
+											vec.z = hist._pos.z;
+											is_end = true;
+										}
+									}
+									break;
+								}
+								set_position(vec.x, vec.y, vec.z);
+								set_dir(hist._dir);
 
-                            set_position(vec.x, vec.y, vec.z);
-                            set_dir(hist._dir);
+								if(is_end == true)
+								{
+									_current_history = null;
+								}   
+							} 
+							else 
+							{
+								set_position(hist._pos.x, hist._pos.y, hist._pos.z);
+								set_dir(hist._dir);
+								_current_history = null;
+							}
 
-                            if(is_end == true)
-                            {
-                                _current_history = null;
-                            }                                                       
+
+                                                    
                         }
                         break;
                     case CreatureHistory_type.set_pos:
@@ -560,7 +562,7 @@ public class creature : MonoBehaviour
 
 	public bool isNeedRecord()
 	{
-		if (global_instance.Instance._crash_manager._game_begin == true && global_instance.Instance._crash_manager._record._open_record == false) 
+		if (global_instance.Instance._crash_manager._game_begin == true && global_instance.Instance._crash_manager._record._open_record == false && global_instance.Instance._crash_manager._freezen_creature == false) 
 		{
 			return true;
 		}
@@ -569,7 +571,7 @@ public class creature : MonoBehaviour
 
     public void update_set_his()
     {
-		if (global_instance.Instance._crash_manager._game_begin == false) 
+		if (isNeedRecord() == false) 
 		{
 			return;
 		}
@@ -584,7 +586,7 @@ public class creature : MonoBehaviour
 
     public void update_move_his()
     {
-		if (isNeedRecord()) 
+		if (isNeedRecord() == false) 
 		{
 			return;
 		}

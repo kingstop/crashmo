@@ -330,7 +330,7 @@ public class ngui_edit_manager : MonoBehaviour {
 
     void UpdateKeyboard()
     {
-        if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game)
+		if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game && global_instance.Instance._crash_manager._record._open_record == false)
         {
             int length = _dir_btn_down.Length;
             for (int i = 0; i < length; i++)
@@ -381,7 +381,6 @@ public class ngui_edit_manager : MonoBehaviour {
     }
 
     private bool _jump_click = false;
-    private bool _catch_click = false;
     public void BackToMainPanel()
     {
         HideAlluis();
@@ -408,8 +407,6 @@ public class ngui_edit_manager : MonoBehaviour {
     {
         Scrollbar bar_temp = obj.GetComponent<Scrollbar>();
         float value = bar_temp.value;
-        float min_ = (float)min;
-        float max_ = (float)max;
         float temp_distance = (max - min) * value;
         float target_ = temp_distance + min;
         int target = max - (int)target_ + min;        

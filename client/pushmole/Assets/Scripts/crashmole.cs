@@ -824,10 +824,12 @@ public class crash_manager
     }
     public void catch_click(int i, bool his = false)
 	{
+		/*
 		if (global_instance.Instance._crash_manager._record._open_record) 
 		{
 			return;
 		}
+		*/
 
         if(_creature._is_in_falldown == false)
         {
