@@ -40,11 +40,13 @@ public class ChooseItemEntry : MonoBehaviour {
     public void SetTexture(Texture t)
     {
         Material material_temp = new Material(_image.material);
+
         if(material_temp != null)
         {
             material_temp.mainTexture = t;
             _image.material = material_temp;            
         }
+		_image.transform.SetParent (this.transform);
     }
     private void selectstate(bool b)
     {

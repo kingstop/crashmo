@@ -217,20 +217,27 @@ namespace common.Sockets
 		private void ParseMessage(Int32 TotalLength)
 		{
             byte[] read_buffer = null;
-            if (_lastbuffer != null && _lastbuffer.Length != 0)
-            {
-                
-                byte[] temp_buffer = (byte[])_buffer_queue.Dequeue();
-                TotalLength = _lastbuffer.Length + temp_buffer.Length;
-                read_buffer = new byte[TotalLength];
-                Array.Copy(_lastbuffer, read_buffer, _lastbuffer.Length);
-                Array.Copy(read_buffer, 0, read_buffer, _lastbuffer.Length, temp_buffer.Length);
-                _lastbuffer = null;
-            }
-            else
-            {
-                read_buffer = (byte[])_buffer_queue.Dequeue();
-            }
+			bool bDequeue = true;
+			if (_lastbuffer != null) 
+			{
+				if (_lastbuffer.Length != 0) 
+				{
+					int cur_total_length = TotalLength;
+					byte[] temp_buffer = (byte[])_buffer_queue.Dequeue();
+					TotalLength = _lastbuffer.Length + TotalLength;
+					read_buffer = new byte[TotalLength];
+					Array.Copy(_lastbuffer, read_buffer, _lastbuffer.Length);
+					Array.Copy(temp_buffer, 0, read_buffer, _lastbuffer.Length, cur_total_length);
+					_lastbuffer = null;
+					bDequeue = false;
+				}
+
+			}
+
+			if (bDequeue) 
+			{
+				read_buffer = (byte[])_buffer_queue.Dequeue();
+			}
             
             int ptr = 0;
 			try 
@@ -248,8 +255,9 @@ namespace common.Sockets
                         }
                         else if(length > TotalLength)
                         {
-                            _lastbuffer = new byte[TotalLength];
-                            Array.Copy(read_buffer, _lastbuffer, read_buffer.Length);
+							length = 0;
+							_lastbuffer = new byte[TotalLength];
+							Array.Copy(read_buffer, _lastbuffer, TotalLength);
                             break;
                         }
                         ptr += sizeof(UInt32);

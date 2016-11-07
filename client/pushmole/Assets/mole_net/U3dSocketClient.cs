@@ -28,11 +28,15 @@ public class u3dclient
     public u3dclient()
     {
         register_function();
-        socket_client = new SocketClient(1048576, 1048576, 131072, null, new MessageHandler(MessageClient), 
-            new CloseHandler(CloseClient), new ErrorHandler(ErrorClient), new ConnectHandler(on_connect));
     }
-      public static u3dclient Instance 
-     { 
+
+	protected SocketClient  CreateSocket()
+	{
+		return new SocketClient(1048576, 1048576, 131072, null, new MessageHandler(MessageClient), 
+			new CloseHandler(CloseClient), new ErrorHandler(ErrorClient), new ConnectHandler(on_connect));
+	}
+    public static u3dclient Instance 
+    { 
           get  
           { 
              if (_instance == null) 
@@ -41,7 +45,7 @@ public class u3dclient
              } 
              return _instance; 
           } 
-      } 
+     } 
 
    public delegate bool ProcessDelegate(System.IO.MemoryStream stream, SocketClient socketclient);
 
@@ -75,6 +79,7 @@ public class u3dclient
 
     public void connect()
    {
+		socket_client = CreateSocket ();
 		socket_client.Connect("114.55.116.251", 20002);
    }
 
@@ -208,6 +213,7 @@ public class u3dclient
             _gate_port = (int)msg.gate_port;
             _user_account = msg.user_account;
             _connect_state = u3dclient_state.connect_gate;
+			socket_client = CreateSocket ();
             socket_client.Connect(_gate_ip, _gate_port);
         }
         return true;
