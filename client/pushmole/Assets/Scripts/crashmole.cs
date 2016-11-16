@@ -158,7 +158,7 @@ public class crash_obj_creature : crash_base_obj
         if(_creature != null)
         {            
 
-            _creature.set_position(x + 0.25f, y + 0.2f, z);
+			_creature.set_position(x + 0.45f, y + 0.2f, z + 0.5f);
         }
     }
     public creature _creature;
@@ -867,7 +867,7 @@ public class crash_manager
                             }                            
                             _obj_creature = new crash_obj_creature(pos._x, pos._y, pos._z);
 							_obj_creature._creature = _creature;
-							_creature.set_position(pos._x + 0.25f, pos._y + 0.2f, pos._z);
+							_creature.set_position(pos._x + 0.45f, pos._y + 0.2f, pos._z + 0.5f);
 							target_mole.add_crash_obj(_obj_creature);
 							_lock_mole.Add(target_mole);
 						}

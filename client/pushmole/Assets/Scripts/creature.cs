@@ -21,7 +21,7 @@ public class creature : MonoBehaviour
     Dictionary<creature_type, GameObject> _moles = new Dictionary<creature_type, GameObject>();
     List<GameObject> _moles_list = new List<GameObject>();
     //Rigidbody _Rigidbody = null;
-    public float _move_speed = 0.005f;
+    public float _move_speed = 0.0001f;
     public float _jump_speed = 0;
     public float _fallspeed = -0.003f;
     public float _current_fall_speed = 0;
@@ -51,6 +51,7 @@ public class creature : MonoBehaviour
         set_state(creature_state.idle);
         _is_in_falldown = false;
         _frame_count = 0;
+		_move_speed = 0.05f;
     }
 
     void Start()
@@ -314,7 +315,7 @@ public class creature : MonoBehaviour
     public void NormalUpdate()
     {
         _frame_count++;
-        UpdateAlpha();
+        //UpdateAlpha();
         bool need_set = false;
         Vector3 vec = get_position();
         Vector3 temp_vec = new Vector3();
@@ -406,6 +407,7 @@ public class creature : MonoBehaviour
     }
     public void Update()
     {
+		UpdateAlpha ();
         if(global_instance.Instance._crash_manager._record._open_record)
         {
             UpdateHistory();
