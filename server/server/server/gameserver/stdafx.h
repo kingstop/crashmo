@@ -40,6 +40,7 @@ enum EventTypes
 	EVENT_SAVE_PLAYER_DATA_,
 	EVENT_SAVE_OFFICIL_DATA_,
 	EVENT_DAILY_RANK_,
+	EVENT_DELETE_PLAYER_,
 	EVENT_NEWS_
 };
 struct FuGameFather
@@ -74,6 +75,7 @@ extern FuGameFather* gFuGameFather;
 #define gWorldDatabase		gFuGameFather->sWorldDB
 #define gPlayerManager		gFuGameFather->sPlayerManager
 #define gOfficilMapManager  gFuGameFather->sOfficilMapManager
+
 //#define gCharacterManager   gFuGameFather->sNoneCharacterManager
 //#define gGameConfig			gFuGameFather->sGameConfig
 enum

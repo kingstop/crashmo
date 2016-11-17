@@ -11,6 +11,7 @@ public:
 	CrashPlayer* CreatePlayer(account_type acc, Session* session);
 	CrashPlayer* CreatePlayer(account_type acc, Session* session, message::CharacterDataACK* info);
 	CrashPlayer* GetPlayer(account_type acc);
+	void DestroyPlayer(CrashPlayer* p);
 	u64 GenerateMapIndex();
 protected:
 	CRASHPLAYERS _players;

@@ -64,6 +64,7 @@ Session::Session(tran_id_type t, account_type a, u16 gate)
 	else
 	{
 		_player->SetSession(this);
+		_player->StartSave();
 
 	}
 }
@@ -78,6 +79,12 @@ Session::~Session()
   //  delete _girl;
 }
 
+
+void Session::setPlayer(CrashPlayer* p)
+{
+	_player = p;
+}
+
 void Session::queryDBPlayerInfo()
 {
 
@@ -85,7 +92,10 @@ void Session::queryDBPlayerInfo()
 
 void Session::close()
 {
-
+	if (_player)
+	{
+		_player->StartDeleteClock();
+	}
 }
 
 void Session::setReconnet()

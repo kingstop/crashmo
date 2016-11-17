@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "CrashPlayer.h"
 #include "session.h"
+#include "CrashPlayerManager.h"
 #define _SAVE_PLAYER_TIME_  (10 * _TIME_SECOND_MSEL_)
+#define _DELETE_PLAYER_TIME_ (100 * _TIME_SECOND_MSEL_)
 
 CrashPlayer::CrashPlayer(Session* session):_session(session)
 {
@@ -29,6 +31,41 @@ void CrashPlayer::SetSession(Session* session)
 	_session = session;
 }
 
+void CrashPlayer::Destroy()
+{
+	SaveCrashInfo();
+	_session->setPlayer(NULL);
+	gPlayerManager.DestroyPlayer(this);
+	
+}
+
+account_type CrashPlayer::getAccount()
+{
+	return _info.account();
+}
+
+void CrashPlayer::StartDeleteClock()
+{
+	if (gEventMgr.hasEvent(this, EVENT_DELETE_PLAYER_) == false)
+	{
+		gEventMgr.addEvent(this, &CrashPlayer::Destroy, EVENT_DELETE_PLAYER_, _DELETE_PLAYER_TIME_, 1, 0);
+	}
+	else
+	{
+		gEventMgr.modifyEventTime(this, EVENT_DELETE_PLAYER_, _DELETE_PLAYER_TIME_);
+	}
+}
+
+void CrashPlayer::StopDeleteClock()
+{
+	if (gEventMgr.hasEvent(this, EVENT_DELETE_PLAYER_) == true)
+	{
+		gEventMgr.removeEvents(this, EVENT_DELETE_PLAYER_);
+	}
+}
+
+
+
 Session* CrashPlayer::GetSession()
 {
 	return _session;
@@ -45,7 +82,7 @@ void CrashPlayer::SaveCrashInfo()
 
 void CrashPlayer::StartSave()
 {
-	
+	StopDeleteClock();
 	if (gEventMgr.hasEvent(this, EVENT_SAVE_PLAYER_DATA_) == false)
 	{
 		gEventMgr.addEvent(this,&CrashPlayer::SaveCrashInfo, EVENT_SAVE_PLAYER_DATA_, _SAVE_PLAYER_TIME_, 99999999, 0);

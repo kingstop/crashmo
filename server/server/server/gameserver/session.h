@@ -12,6 +12,7 @@ public:
 	};
 	void prasePBDefault(google::protobuf::Message* p);
 	static void registerPBCall();
+	void setPlayer(CrashPlayer* p);
 public:
 	void queryDBPlayerInfo();
 public:
@@ -27,11 +28,11 @@ public:
 	void parsePBMessage(google::protobuf::Message* p);
 	void createInfo();
 	void createInfo(message::CharacterDataACK* msg);
-
 	void parseSaveMap(google::protobuf::Message* p);
 	void parseDelMap(google::protobuf::Message* p);
 	void parseModifySectionName(google::protobuf::Message* p);
 	void parseGetSectionNameReq(google::protobuf::Message* p);
+
 protected:
 	void CreateCrashMoClientInit();
 	//Player* getPlayer(){return m_pkOwer;}

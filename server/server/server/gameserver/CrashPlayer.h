@@ -12,12 +12,16 @@ public:
 	Session* GetSession();
 	void SaveCrashInfo();
 	void StartSave();
-	void StopSave();	
+	void StopSave();
+	void StartDeleteClock();
+	void StopDeleteClock();
 	void SaveMap(message::MsgSaveMapReq* msg);
 	void DelMap(message::MsgDelMapReq* msg);
 	void sendPBMessage(google::protobuf::Message* p);
+	account_type getAccount();
 protected:
 	bool havemapname(const char* mapname);
+	void Destroy();
 
 protected:
 	Session* _session;

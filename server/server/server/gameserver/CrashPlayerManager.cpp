@@ -44,6 +44,16 @@ CrashPlayer* CrashPlayerManager::CreatePlayer(account_type acc, Session* session
 
 }
 
+void CrashPlayerManager::DestroyPlayer(CrashPlayer* p)
+{
+	CRASHPLAYERS::iterator it = _players.find(p->getAccount());
+	if (it != _players.end())
+	{
+		_players.erase(it);
+	}
+	delete p;
+}
+
 CrashPlayer* CrashPlayerManager::CreatePlayer(account_type acc, Session* session)
 {
 	CrashPlayer* player = NULL;
