@@ -215,23 +215,27 @@ public class crashmolegrid : MonoBehaviour
 	void Update () {
         if(_mouse_down&& global_instance.Instance._can_set_group == true)
         {
-            if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.edit)
+            if(global_instance.Instance._crash_mole_grid_manager != null)
             {
-                RaycastHit hitt = new RaycastHit();
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                Physics.Raycast(ray, out hitt, 100);
-                if (null != hitt.transform)
+                if (global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.edit)
                 {
-                    crashmolegrid grid_temp = hitt.transform.gameObject.GetComponent<crashmolegrid>();
-                    if (grid_temp != null)
+                    RaycastHit hitt = new RaycastHit();
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    Physics.Raycast(ray, out hitt, 100);
+                    if (null != hitt.transform)
                     {
-                        if (grid_temp.get_group() != global_instance.Instance._current_group)
+                        crashmolegrid grid_temp = hitt.transform.gameObject.GetComponent<crashmolegrid>();
+                        if (grid_temp != null)
                         {
-                            grid_temp.set_group(global_instance.Instance._current_group);
-                            global_instance.Instance._crash_manager.add_color(global_instance.Instance._current_group, global_instance.Instance._current_color);
+                            if (grid_temp.get_group() != global_instance.Instance._current_group)
+                            {
+                                grid_temp.set_group(global_instance.Instance._current_group);
+                                global_instance.Instance._crash_manager.add_color(global_instance.Instance._current_group, global_instance.Instance._current_color);
+                            }
                         }
                     }
                 }
+
             }
         }
 

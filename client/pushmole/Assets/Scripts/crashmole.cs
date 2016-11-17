@@ -571,10 +571,6 @@ public class crash_manager
     public void init()
     {
         clear();
-        _current_frame_count = 0;
-        _camera_dir = camera_dir.front;
-        _want_camera_dir = want_move_dir.no;
-        _move_count = 0;
         _max_x = (int)crash_define.max_x;
         _max_z = (int)crash_define.max_z;
         _max_y = (int)crash_define.max_y; 
@@ -691,28 +687,33 @@ public class crash_manager
 
     public Vector3 get_camera_pos(camera_dir dir)
     {
+        Vector3 vc_temp = Camera.main.transform.position;
         Vector3 vc = _creature.get_position();
-        vc.y += 3.37f;
+
+        vc.y += 1.21f;
         switch (dir)
         {
             case camera_dir.front:
                 {
-                    vc.z = -13.64f;
+                    vc.z -= 4.48f;
+                    vc.x -= 0.5f;
                 }
                 break;
             case camera_dir.back:
                 {
-                    vc.z = 33.7f;                    
+                    vc.z += 4.48f;
+                    vc.x += 0.5f;
                 }
                 break;
             case camera_dir.right:
                 {
-                    vc.x = 40.6f;
+                    vc.x += 4.48f;
+                    vc.z -= 0.5f;
                 }
                 break;
             case camera_dir.left:
                 {
-                    vc.x = -20.07f;
+                    vc.x -= 4.48f;
                 }
                 break;
         }
@@ -721,7 +722,7 @@ public class crash_manager
 
     public Vector3 get_camera_rotation(camera_dir dir)
     {
-        Vector3 vc = new Vector3(0, 0,0);
+        Vector3 vc = new Vector3(12, 0,0);
         switch (dir)
         {
             case camera_dir.front:
@@ -750,7 +751,42 @@ public class crash_manager
     }
     public void update_camera()
     {
-        Camera.main.transform.position = get_camera_pos(_camera_dir);
+        Vector3 vc_target = get_camera_pos(_camera_dir);
+        
+        float offset_x = Camera.main.transform.position.x - vc_target.x;
+        float offset_y = Camera.main.transform.position.y - vc_target.y;
+        float offset_z = Camera.main.transform.position.z - vc_target.z;
+        Vector3 vc_target_temp = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
+        float offset_temp = 0.2f;
+        if(offset_x < -offset_temp)
+        {
+            vc_target_temp.x = vc_target.x - offset_temp;
+        }
+        else if(offset_x > offset_temp)
+        {
+            vc_target_temp.x = vc_target.x + offset_temp;
+        }
+
+
+        if(offset_y < -offset_temp)
+        {
+            vc_target_temp.y = vc_target.y - offset_temp;
+        }
+        else if(offset_y > offset_temp)
+        {
+            vc_target_temp.y = vc_target.y + offset_temp;
+        }
+        
+        if(offset_z < -offset_temp)
+        {
+            vc_target_temp.z = vc_target.z - offset_temp;
+        }
+        else if(offset_z > offset_temp)
+        {
+            vc_target_temp.z = vc_target.z + offset_temp;
+        }
+ 
+        Camera.main.transform.position = vc_target_temp;
     }
     public void add_color(int group, Color temp_color)
     {
@@ -1088,7 +1124,10 @@ public class crash_manager
         _catch_click_list.Clear();
         _game_begin = false;
        _History.reset();
-        
+        _current_frame_count = 0;
+        _camera_dir = camera_dir.front;
+        _want_camera_dir = want_move_dir.no;
+        _move_count = 0;
     }
     public void update_move_animation()
     {

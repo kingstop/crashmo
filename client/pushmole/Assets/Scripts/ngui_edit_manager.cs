@@ -539,7 +539,9 @@ public class ngui_edit_manager : MonoBehaviour {
             case game_type.game:
                 {
                     _game_obj_btns.SetActive(true);
-                    Vector3 vec = new Vector3(8.59f, 3.37f, -13.64f);
+                    Vector3 vec = new Vector3(7.5f, 1.73f, -2.7f);
+                    Vector3 vec_rot = new Vector3(11f, 0, 0);
+                    Camera.main.transform.Rotate(vec_rot);
                     Camera.main.transform.position = vec;
                     Camera.main.fieldOfView = 34;
                     show_game_btns();
