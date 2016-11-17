@@ -47,6 +47,7 @@ public class ngui_edit_manager : MonoBehaviour {
     public GameObject _edit_obj_create_btns;
     public GameObject _game_obj_btns;
 	public GameObject _edit_type_obj_btns;
+	public Image _map_image;
 
 	public Text _record_txt;
 
@@ -65,6 +66,7 @@ public class ngui_edit_manager : MonoBehaviour {
         hide_game_btns();
         show_create_btns();
         global_instance.Instance._net_client = new u3dclient();
+
 
     }
     public Color get_color_by_group(int group)

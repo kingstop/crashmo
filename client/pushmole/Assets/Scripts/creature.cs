@@ -401,9 +401,7 @@ public class creature : MonoBehaviour
 			if (isNeedRecord ()) 
 			{
 				update_move_his();
-			}
-
-            
+			}				           
             _last_fallen_state = _is_in_falldown;
             _last_state = _state;
         }
