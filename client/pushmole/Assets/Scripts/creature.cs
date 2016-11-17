@@ -72,6 +72,10 @@ public class creature : MonoBehaviour
 
     public void jump()
     {
+        if (global_instance.Instance._crash_manager._game_begin == false)
+        {
+            return;
+        }
         _jump_speed = 0.6f;
     }
     public void set_position(float x, float y, float z)
@@ -435,9 +439,6 @@ public class creature : MonoBehaviour
 				history = new MolMoveHistory ();
 				global_instance.Instance._crash_manager._History._mol_history.Add (history);
 			}
-
-				
-
 		}
         return history;        
     }
@@ -514,7 +515,11 @@ public class creature : MonoBehaviour
     }
     public void set_dir(dir_move dir)
     {
-        if(_dir != dir)
+        if (global_instance.Instance._crash_manager._game_begin == false)
+        {
+            return;
+        }
+        if (_dir != dir)
         {
             float y_r = 0.0f;
             switch (dir)

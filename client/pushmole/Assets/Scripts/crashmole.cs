@@ -407,6 +407,10 @@ public class MolMoveHistory
 public class CrashMoveHistory
 {
     public List<MolMoveHistory> _mol_history = new List<MolMoveHistory>();
+    public void reset()
+    {
+        _mol_history.Clear();
+    }
 
 }
 
@@ -563,6 +567,7 @@ public class crash_manager
     public CrashMoRecord _record = new CrashMoRecord();
     public int _current_frame_count;
 	public bool _game_begin = false;
+    protected Queue<KeyValuePair<int, bool>> _catch_click_list = new Queue<KeyValuePair<int, bool>>();
     public void init()
     {
         clear();
@@ -589,6 +594,7 @@ public class crash_manager
             }
         }
         next_update();
+
     }
 
 
@@ -822,16 +828,12 @@ public class crash_manager
     {
         move_list(_lock_mole, dir);
     }
-    public void catch_click(int i, bool his = false)
-	{
-		/*
-		if (global_instance.Instance._crash_manager._record._open_record) 
-		{
-			return;
-		}
-		*/
 
-        if(_creature._is_in_falldown == false)
+    
+    protected void _catch_click(int i, bool his)
+    {
+
+        if (_creature._is_in_falldown == false)
         {
             if (i == 0)
             {
@@ -850,41 +852,41 @@ public class crash_manager
 
             if (_cash_click)
             {
-				if(_freezen_creature == false)
-				{
-					crash_pos pos_target = new crash_pos();
-					pos_target.clone(pos);
-					pos_target.move(dir);
-					if (check_pos_valid(pos_target) == true)
-					{
-						crash_mole target_mole = get_crash_mole_addr(pos_target)._crash_mole;						
-						if (target_mole != null)
-						{
-							_freezen_creature = true;
-                            if(his == false)
+                if (_freezen_creature == false)
+                {
+                    crash_pos pos_target = new crash_pos();
+                    pos_target.clone(pos);
+                    pos_target.move(dir);
+                    if (check_pos_valid(pos_target) == true)
+                    {
+                        crash_mole target_mole = get_crash_mole_addr(pos_target)._crash_mole;
+                        if (target_mole != null)
+                        {
+                            _freezen_creature = true;
+                            if (his == false)
                             {
                                 _creature.frozen_history(_freezen_creature);
-                            }                            
+                            }
                             _obj_creature = new crash_obj_creature(pos._x, pos._y, pos._z);
-							_obj_creature._creature = _creature;
-							_creature.set_position(pos._x + 0.45f, pos._y + 0.2f, pos._z + 0.5f);
-							target_mole.add_crash_obj(_obj_creature);
-							_lock_mole.Add(target_mole);
-						}
-					}
-				}								
-			}
-			else
-			{
-				if (_obj_creature != null)
-				{
-					_lock_mole.Clear();
-					if (_freezen_creature == true)
-					{
-						pos.move(dir_move.up);
-						if (check_pos_valid(pos))
-						{
-							if (_obj_creature._crash_mole != null)
+                            _obj_creature._creature = _creature;
+                            _creature.set_position(pos._x + 0.45f, pos._y + 0.2f, pos._z + 0.5f);
+                            target_mole.add_crash_obj(_obj_creature);
+                            _lock_mole.Add(target_mole);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (_obj_creature != null)
+                {
+                    _lock_mole.Clear();
+                    if (_freezen_creature == true)
+                    {
+                        pos.move(dir_move.up);
+                        if (check_pos_valid(pos))
+                        {
+                            if (_obj_creature._crash_mole != null)
                             {
                                 crash_mole mole_temp = _obj_creature._crash_mole;
                                 mole_temp.remove_crash_obj(_obj_creature);
@@ -901,15 +903,34 @@ public class crash_manager
                 }
             }
         }
-
+    }
+    public void catch_click(int i, bool his = false)
+	{
+        if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game && _game_begin == true)
+        {
+            KeyValuePair<int, bool> entry = new KeyValuePair<int, bool>(i, his);
+            _catch_click_list.Enqueue(entry);
+        }
+        
     }
 
 
     public void update()
     {
         camera_move_update();
+        
         if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game)
         {
+            if(_game_begin && _need_play_animation == false)
+            {
+                while (_catch_click_list.Count != 0)
+                {
+                    KeyValuePair<int, bool> entry = _catch_click_list.Dequeue();
+                    _catch_click(entry.Key, entry.Value);
+                }
+                    
+            }
+
             update_move_animation();
         }        
         
@@ -1064,6 +1085,10 @@ public class crash_manager
         {
             _creature.gameObject.SetActive(false);
         }
+        _catch_click_list.Clear();
+        _game_begin = false;
+       _History.reset();
+        
     }
     public void update_move_animation()
     {
