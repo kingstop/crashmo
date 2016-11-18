@@ -172,7 +172,6 @@ public class creature : MonoBehaviour
         {
             list_hits.Add(entry);
         }
-
      
         foreach (RaycastHit entry in list_hits)
         {
@@ -190,8 +189,7 @@ public class creature : MonoBehaviour
     }
 
     public void frozen_history(bool b)
-    {
-		
+    {		
         CreatureFrozenHistory his = new CreatureFrozenHistory();
         his._frozen = b;
         his._pos = get_position();
@@ -199,7 +197,6 @@ public class creature : MonoBehaviour
         MolMoveHistory mole_his = get_last_history();
         mole_his._Creature_acts.Add(his);
         set_last_history(mole_his);
-
     }
 
     
@@ -297,9 +294,6 @@ public class creature : MonoBehaviour
 								set_dir(hist._dir);
 								_current_history = null;
 							}
-
-
-                                                    
                         }
                         break;
                     case CreatureHistory_type.set_pos:

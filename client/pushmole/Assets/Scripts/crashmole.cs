@@ -614,6 +614,8 @@ public class crash_manager
         }
 
     }
+
+
     void camera_move_update()
     {        
         if(_want_camera_dir != want_move_dir.no)
@@ -646,17 +648,26 @@ public class crash_manager
             }
             special_temp = 0;
             Vector3 current_pos = get_camera_pos(_camera_dir);
+            Vector3 map_current_pos = get_map_camera_pos(_camera_dir);
             Vector3 current_rotation = get_camera_rotation(_camera_dir);
 
+
+
             Vector3 target_pos = get_camera_pos((camera_dir)current);
+            Vector3 map_target_pos = get_map_camera_pos((camera_dir)current);
             Vector3 target_rotetion = get_camera_rotation((camera_dir)current);
             Vector3 current_camera_pos = new Vector3();
+            Vector3 map_current_camera_pos = new Vector3();
             Vector3 current_camera_roation = new Vector3();
             int need_count = 20;
             _move_count += 1;
             current_camera_pos.x = current_pos.x + ((target_pos.x - current_pos.x) / need_count * _move_count);
             current_camera_pos.y = current_pos.y + ((target_pos.y - current_pos.y) / need_count * _move_count);
             current_camera_pos.z = current_pos.z + ((target_pos.z - current_pos.z) / need_count * _move_count);
+
+            map_current_camera_pos.x = map_current_pos.x + ((map_target_pos.x - map_current_pos.x) / need_count * _move_count);
+            map_current_camera_pos.y = map_current_pos.y + ((map_target_pos.y - map_current_pos.y) / need_count * _move_count);
+            map_current_camera_pos.z = map_current_pos.z + ((map_target_pos.z - map_current_pos.z) / need_count * _move_count);
 
             current_camera_roation.x = current_rotation.x + ((target_rotetion.x - current_rotation.x) / need_count * _move_count);
             if (special_temp == 0)
@@ -675,7 +686,9 @@ public class crash_manager
             current_camera_roation.z = current_rotation.z + ((target_rotetion.z - current_rotation.z) / need_count * _move_count);
             Camera.main.transform.position = current_camera_pos;
             Camera.main.transform.eulerAngles = current_camera_roation;
-            if(_move_count == need_count)
+            global_instance.Instance._ngui_edit_manager._camera_map.transform.position = map_current_camera_pos;
+            global_instance.Instance._ngui_edit_manager._camera_map.transform.eulerAngles = current_camera_roation;
+            if (_move_count == need_count)
             {
                 _want_camera_dir = want_move_dir.no;
                 _move_count = 0;
@@ -685,9 +698,40 @@ public class crash_manager
 
     }
 
-    public Vector3 get_camera_pos(camera_dir dir)
+    public Vector3 get_map_camera_pos(camera_dir dir)
     {
-        Vector3 vc_temp = Camera.main.transform.position;
+        Vector3 vc = _creature.get_position();
+        vc.y += 1.21f;
+        switch (dir)
+        {
+            case camera_dir.front:
+                {
+                    vc.z -= (20 + 4.48f);
+                    vc.x -= 0.5f;
+                }
+                break;
+            case camera_dir.back:
+                {
+                    vc.z += (20 + 4.48f);
+                    vc.x += 0.5f;
+                }
+                break;
+            case camera_dir.right:
+                {
+                    vc.x += (20 + 4.48f);
+                    vc.z -= 0.5f;
+                }
+                break;
+            case camera_dir.left:
+                {
+                    vc.x -= (20 + 4.48f);
+                }
+                break;
+        }
+        return vc;
+    }
+    public Vector3 get_camera_pos(camera_dir dir)
+    {       
         Vector3 vc = _creature.get_position();
 
         vc.y += 1.21f;
@@ -1125,8 +1169,15 @@ public class crash_manager
         _game_begin = false;
        _History.reset();
         _current_frame_count = 0;
-        _camera_dir = camera_dir.front;
-        _want_camera_dir = want_move_dir.no;
+        //_camera_dir = camera_dir.front;
+        //_want_camera_dir = want_move_dir.no;
+        //Camera.main.transform.position = get_camera_pos(_camera_dir);
+        //Camera.main.transform.eulerAngles = get_camera_rotation(_camera_dir);
+
+        //global_instance.Instance._ngui_edit_manager._camera_map.transform.position = get_map_camera_pos(_camera_dir);
+        //global_instance.Instance._ngui_edit_manager._camera_map.transform.eulerAngles = get_camera_rotation(_camera_dir);
+
+
         _move_count = 0;
     }
     public void update_move_animation()
@@ -1399,7 +1450,15 @@ public class crash_manager
         _creature.gameObject.SetActive(true);
         _creature.set_position(8, 2, 3);
 
-        for(int i = 0 ;i < 4; i ++)
+        _camera_dir = camera_dir.front;
+        _want_camera_dir = want_move_dir.no;
+        Camera.main.transform.position = get_camera_pos(_camera_dir);
+        Camera.main.transform.eulerAngles = get_camera_rotation(_camera_dir);
+
+        global_instance.Instance._ngui_edit_manager._camera_map.transform.position = get_map_camera_pos(_camera_dir);
+        global_instance.Instance._ngui_edit_manager._camera_map.transform.eulerAngles = get_camera_rotation(_camera_dir);
+
+        for (int i = 0 ;i < 4; i ++)
         {
             _dir_btn_down[i] = false;
         }

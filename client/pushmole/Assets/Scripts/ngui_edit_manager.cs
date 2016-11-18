@@ -48,6 +48,7 @@ public class ngui_edit_manager : MonoBehaviour {
     public GameObject _game_obj_btns;
 	public GameObject _edit_type_obj_btns;
 	public Image _map_image;
+    public Camera _camera_map;
 
 	public Text _record_txt;
 
