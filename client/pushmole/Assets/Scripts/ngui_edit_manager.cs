@@ -49,9 +49,8 @@ public class ngui_edit_manager : MonoBehaviour {
 	public GameObject _edit_type_obj_btns;
 	public Image _map_image;
     public Camera _camera_map;
-
-	public Text _record_txt;
-
+    public bool _input_keyboard;
+    public Text _record_txt;
     public Text _account;
     public Text _password;
     
@@ -67,7 +66,7 @@ public class ngui_edit_manager : MonoBehaviour {
         hide_game_btns();
         show_create_btns();
         global_instance.Instance._net_client = new u3dclient();
-
+        _input_keyboard = false;
 
     }
     public Color get_color_by_group(int group)
@@ -238,57 +237,80 @@ public class ngui_edit_manager : MonoBehaviour {
     {
         set_game_btns_state(true);
     }
+    protected bool game_catch_action()
+    {
+        if (global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game
+            && global_instance.Instance._crash_manager._record._open_record == false)
+        {
+            return true;
+        }
 
+        return false;
+    }
     public void click_jump()
     {
-        global_instance.Instance._crash_manager.creature_jump();
+        if (game_catch_action() && _input_keyboard == false)
+        {
+            global_instance.Instance._crash_manager.creature_jump();
+        }
+            
     }
     public void btn_down(Button entry)
     {
-        int length = _dir_btn.Length;
-        for(int i = 0; i < length; i ++)
+        if (game_catch_action() && _input_keyboard == false)
         {
-            if(_dir_btn[i] == entry)
+            int length = _dir_btn.Length;
+            for(int i = 0; i < length; i ++)
             {
-                _dir_btn_down[i] = true;                
+                if(_dir_btn[i] == entry)
+                {
+                    _dir_btn_down[i] = true;                
+                }
+                else
+                {
+                    _dir_btn_down[i] = false;                
+                }       
             }
-            else
-            {
-                _dir_btn_down[i] = false;                
-            }       
+            global_instance.Instance._crash_manager.update_dir_btn();
         }
-        global_instance.Instance._crash_manager.update_dir_btn();
+
     }
 
     public void catch_btn_down(Button entry)
     {
-        int count = _catch.Length;
-        int temp_ = 0;
-        for(int i = 0; i < count; i ++)
+        if (game_catch_action() && _input_keyboard == false)
         {
-            if(_catch[i] == entry)
+            int count = _catch.Length;
+            int temp_ = 0;
+            for (int i = 0; i < count; i++)
             {
-                temp_ = i;
-                _catch[i].gameObject.SetActive(false);
+                if (_catch[i] == entry)
+                {
+                    temp_ = i;
+                    _catch[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    _catch[i].gameObject.SetActive(true);
+                }
             }
-            else
-            {
-                _catch[i].gameObject.SetActive(true);
-            }                      
-        }
-        global_instance.Instance._crash_manager.catch_click(temp_);        
+            global_instance.Instance._crash_manager.catch_click(temp_);
+        } 
     }
     public void btn_up(Button entry)
     {
-        int length = _dir_btn.Length;
-        for (int i = 0; i < length; i++)
+        if(game_catch_action() && _input_keyboard == false)
         {
-            if (_dir_btn[i] == entry)
+            int length = _dir_btn.Length;
+            for (int i = 0; i < length; i++)
             {
-                _dir_btn_down[i] = false;
+                if (_dir_btn[i] == entry)
+                {
+                    _dir_btn_down[i] = false;
+                }
             }
+            global_instance.Instance._crash_manager.update_dir_btn();
         }
-        global_instance.Instance._crash_manager.update_dir_btn();
     }
 
 	// Use this for initialization
@@ -333,7 +355,7 @@ public class ngui_edit_manager : MonoBehaviour {
 
     void UpdateKeyboard()
     {
-		if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game && global_instance.Instance._crash_manager._record._open_record == false)
+		if(game_catch_action() && _input_keyboard == true)
         {
             int length = _dir_btn_down.Length;
             for (int i = 0; i < length; i++)

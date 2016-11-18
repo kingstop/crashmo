@@ -201,6 +201,8 @@ public class MainPanel : MonoBehaviour
         ChooseItemEntry entry = obj_temp.GetComponent<ChooseItemEntry>();
         return entry;
     }
+
+
     void addItem(CrashMapData entry, bool self = true)
     {
         ChooseItemEntry temp = CreateItemEntry();
@@ -223,6 +225,7 @@ public class MainPanel : MonoBehaviour
         {
             temp._map_index = (ulong)entry.number;
         }
+        temp.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
 
     }
