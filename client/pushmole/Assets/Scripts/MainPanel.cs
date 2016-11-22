@@ -199,6 +199,7 @@ public class MainPanel : MonoBehaviour
     {
         GameObject obj_temp = Object.Instantiate<GameObject>(_source_item);
         ChooseItemEntry entry = obj_temp.GetComponent<ChooseItemEntry>();
+        entry.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         return entry;
     }
 
@@ -225,9 +226,6 @@ public class MainPanel : MonoBehaviour
         {
             temp._map_index = (ulong)entry.number;
         }
-        temp.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-
-
     }
 
     void Awake()
