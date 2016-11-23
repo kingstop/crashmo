@@ -53,10 +53,30 @@ public class ngui_edit_manager : MonoBehaviour {
     public Text _record_txt;
     public Text _account;
     public Text _password;
-    
+    public UIGameEnd _game_end;
+    public ColorBoard _color_board;
+
     void Awake()
     {
+        Dictionary<int, Color> temp_dic = new Dictionary<int, Color>();
+        temp_dic.Add(0, new Color((float)71/360, (float)251 /255, (float) 246 /255));
+        temp_dic.Add(1, new Color(0, 0, (float)56 /255));
+        temp_dic.Add(2, new Color(0, (float)255 / 255, (float)255 / 255));
+        temp_dic.Add(3, new Color((float)120 / 360, (float)242 / 255, (float)84 / 255));
+        temp_dic.Add(4, new Color((float)239 / 360, (float)246 / 255, (float)246 / 255));
+        temp_dic.Add(5, new Color(0, (float)216 / 255, (float)99 / 255));
+        temp_dic.Add(6, new Color((float)108 / 360, (float)244 / 255, (float)251 / 255));
+        temp_dic.Add(7, new Color((float)301 / 360, (float)178 / 255, (float)148 / 255));
+        temp_dic.Add(8, new Color(0, 0, 0));
+        temp_dic.Add(9, new Color((float)180 / 360, (float)2 / 255, (float)223 / 255));
+        int color_index = 0;
+        foreach(KeyValuePair<int, Color> entry_pair in temp_dic)
+        {
+            _color_board.SetButtonGroupColor(color_index,entry_pair.Key, entry_pair.Value); ;
+            color_index++;
+        }
         global_instance.Instance._ngui_edit_manager = this;
+
         int count_temp = _Buttons_simple.Length;
         for (int i = 0; i < count_temp; i++)
         {
@@ -419,7 +439,8 @@ public class ngui_edit_manager : MonoBehaviour {
         _edit_obj_create_btns.SetActive(false);
         _edit_obj_draw_btns.SetActive(false);
         _game_obj_btns.SetActive(false);
-        _edit_type_obj_btns.SetActive(false); 
+        _edit_type_obj_btns.SetActive(false);
+        _game_end.gameObject.SetActive(false);
     }
 
     public void ClearGameObj()
@@ -538,8 +559,8 @@ public class ngui_edit_manager : MonoBehaviour {
     {
         _edit_obj_btns.SetActive(false);
         _game_obj_btns.SetActive(false);
-       
-        gamestate_btn(type);
+        _game_end.gameObject.SetActive(false);
+         gamestate_btn(type);
         //hide_game_btns();
         //hide_edit_btn();
         //hide_create_btns();

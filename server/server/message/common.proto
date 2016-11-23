@@ -23,6 +23,13 @@ message CrashMapData
 	required uint64 create_time = 6;
 }
 
+
+message intPair
+{
+	required int32 number_1 = 1;
+	required int32 number_2 = 2;
+}
+
 message CrashPlayerInfo
 {
 	required uint64 account = 1;
@@ -32,6 +39,7 @@ message CrashPlayerInfo
 	repeated CrashMapData IncompleteMap = 6;
 	repeated CrashMapData CompleteMap = 7;
 	required bool isadmin = 8;
+	repeated intPair resources = 9;
 }
 
 

@@ -39,6 +39,7 @@ void protobuf_ShutdownFile_common_2eproto();
 class int32array;
 class CrashmoMapBaseData;
 class CrashMapData;
+class intPair;
 class CrashPlayerInfo;
 
 // ===================================================================
@@ -414,6 +415,108 @@ class CrashMapData : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class intPair : public ::google::protobuf::Message {
+ public:
+  intPair();
+  virtual ~intPair();
+
+  intPair(const intPair& from);
+
+  inline intPair& operator=(const intPair& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const intPair& default_instance();
+
+  void Swap(intPair* other);
+
+  // implements Message ----------------------------------------------
+
+  inline intPair* New() const { return New(NULL); }
+
+  intPair* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const intPair& from);
+  void MergeFrom(const intPair& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(intPair* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 number_1 = 1;
+  bool has_number_1() const;
+  void clear_number_1();
+  static const int kNumber1FieldNumber = 1;
+  ::google::protobuf::int32 number_1() const;
+  void set_number_1(::google::protobuf::int32 value);
+
+  // required int32 number_2 = 2;
+  bool has_number_2() const;
+  void clear_number_2();
+  static const int kNumber2FieldNumber = 2;
+  ::google::protobuf::int32 number_2() const;
+  void set_number_2(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:message.intPair)
+ private:
+  inline void set_has_number_1();
+  inline void clear_has_number_1();
+  inline void set_has_number_2();
+  inline void clear_has_number_2();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 number_1_;
+  ::google::protobuf::int32 number_2_;
+  friend void  protobuf_AddDesc_common_2eproto();
+  friend void protobuf_AssignDesc_common_2eproto();
+  friend void protobuf_ShutdownFile_common_2eproto();
+
+  void InitAsDefaultInstance();
+  static intPair* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class CrashPlayerInfo : public ::google::protobuf::Message {
  public:
   CrashPlayerInfo();
@@ -542,6 +645,18 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   bool isadmin() const;
   void set_isadmin(bool value);
 
+  // repeated .message.intPair resources = 9;
+  int resources_size() const;
+  void clear_resources();
+  static const int kResourcesFieldNumber = 9;
+  const ::message::intPair& resources(int index) const;
+  ::message::intPair* mutable_resources(int index);
+  ::message::intPair* add_resources();
+  const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
+      resources() const;
+  ::google::protobuf::RepeatedPtrField< ::message::intPair >*
+      mutable_resources();
+
   // @@protoc_insertion_point(class_scope:message.CrashPlayerInfo)
  private:
   inline void set_has_account();
@@ -567,6 +682,7 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > incompletemap_;
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > completemap_;
+  ::google::protobuf::RepeatedPtrField< ::message::intPair > resources_;
   bool isadmin_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
@@ -946,6 +1062,58 @@ inline void CrashMapData::set_create_time(::google::protobuf::uint64 value) {
 
 // -------------------------------------------------------------------
 
+// intPair
+
+// required int32 number_1 = 1;
+inline bool intPair::has_number_1() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void intPair::set_has_number_1() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void intPair::clear_has_number_1() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void intPair::clear_number_1() {
+  number_1_ = 0;
+  clear_has_number_1();
+}
+inline ::google::protobuf::int32 intPair::number_1() const {
+  // @@protoc_insertion_point(field_get:message.intPair.number_1)
+  return number_1_;
+}
+inline void intPair::set_number_1(::google::protobuf::int32 value) {
+  set_has_number_1();
+  number_1_ = value;
+  // @@protoc_insertion_point(field_set:message.intPair.number_1)
+}
+
+// required int32 number_2 = 2;
+inline bool intPair::has_number_2() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void intPair::set_has_number_2() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void intPair::clear_has_number_2() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void intPair::clear_number_2() {
+  number_2_ = 0;
+  clear_has_number_2();
+}
+inline ::google::protobuf::int32 intPair::number_2() const {
+  // @@protoc_insertion_point(field_get:message.intPair.number_2)
+  return number_2_;
+}
+inline void intPair::set_number_2(::google::protobuf::int32 value) {
+  set_has_number_2();
+  number_2_ = value;
+  // @@protoc_insertion_point(field_set:message.intPair.number_2)
+}
+
+// -------------------------------------------------------------------
+
 // CrashPlayerInfo
 
 // required uint64 account = 1;
@@ -1155,6 +1323,36 @@ inline void CrashPlayerInfo::set_isadmin(bool value) {
   set_has_isadmin();
   isadmin_ = value;
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.isadmin)
+}
+
+// repeated .message.intPair resources = 9;
+inline int CrashPlayerInfo::resources_size() const {
+  return resources_.size();
+}
+inline void CrashPlayerInfo::clear_resources() {
+  resources_.Clear();
+}
+inline const ::message::intPair& CrashPlayerInfo::resources(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.resources)
+  return resources_.Get(index);
+}
+inline ::message::intPair* CrashPlayerInfo::mutable_resources(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.resources)
+  return resources_.Mutable(index);
+}
+inline ::message::intPair* CrashPlayerInfo::add_resources() {
+  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.resources)
+  return resources_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
+CrashPlayerInfo::resources() const {
+  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.resources)
+  return resources_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::intPair >*
+CrashPlayerInfo::mutable_resources() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.resources)
+  return &resources_;
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

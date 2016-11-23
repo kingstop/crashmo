@@ -29,6 +29,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CrashMapData_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CrashMapData_reflection_ = NULL;
+const ::google::protobuf::Descriptor* intPair_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  intPair_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CrashPlayerInfo_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CrashPlayerInfo_reflection_ = NULL;
@@ -95,8 +98,24 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(CrashMapData),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, _internal_metadata_),
       -1);
-  CrashPlayerInfo_descriptor_ = file->message_type(3);
-  static const int CrashPlayerInfo_offsets_[7] = {
+  intPair_descriptor_ = file->message_type(3);
+  static const int intPair_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, number_1_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, number_2_),
+  };
+  intPair_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      intPair_descriptor_,
+      intPair::default_instance_,
+      intPair_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(intPair),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, _internal_metadata_),
+      -1);
+  CrashPlayerInfo_descriptor_ = file->message_type(4);
+  static const int CrashPlayerInfo_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, account_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, pass_point_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, pass_section_),
@@ -104,6 +123,7 @@ void protobuf_AssignDesc_common_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, incompletemap_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, completemap_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, isadmin_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, resources_),
   };
   CrashPlayerInfo_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -135,6 +155,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CrashMapData_descriptor_, &CrashMapData::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      intPair_descriptor_, &intPair::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CrashPlayerInfo_descriptor_, &CrashPlayerInfo::default_instance());
 }
 
@@ -147,6 +169,8 @@ void protobuf_ShutdownFile_common_2eproto() {
   delete CrashmoMapBaseData_reflection_;
   delete CrashMapData::default_instance_;
   delete CrashMapData_reflection_;
+  delete intPair::default_instance_;
+  delete intPair_reflection_;
   delete CrashPlayerInfo::default_instance_;
   delete CrashPlayerInfo_reflection_;
 }
@@ -165,21 +189,25 @@ void protobuf_AddDesc_common_2eproto() {
     "(\004\"\225\001\n\014CrashMapData\022)\n\004Data\030\001 \002(\0132\033.mess"
     "age.CrashmoMapBaseData\022\017\n\007MapName\030\002 \002(\t\022"
     "\023\n\013CreaterName\030\003 \002(\t\022\017\n\007Section\030\004 \002(\005\022\016\n"
-    "\006number\030\005 \002(\005\022\023\n\013create_time\030\006 \002(\004\"\305\001\n\017C"
-    "rashPlayerInfo\022\017\n\007account\030\001 \002(\004\022\022\n\npass_"
-    "point\030\002 \002(\005\022\024\n\014pass_section\030\004 \002(\005\022\014\n\004nam"
-    "e\030\005 \002(\t\022,\n\rIncompleteMap\030\006 \003(\0132\025.message"
-    ".CrashMapData\022*\n\013CompleteMap\030\007 \003(\0132\025.mes"
-    "sage.CrashMapData\022\017\n\007isadmin\030\010 \002(\010", 514);
+    "\006number\030\005 \002(\005\022\023\n\013create_time\030\006 \002(\004\"-\n\007in"
+    "tPair\022\020\n\010number_1\030\001 \002(\005\022\020\n\010number_2\030\002 \002("
+    "\005\"\352\001\n\017CrashPlayerInfo\022\017\n\007account\030\001 \002(\004\022\022"
+    "\n\npass_point\030\002 \002(\005\022\024\n\014pass_section\030\004 \002(\005"
+    "\022\014\n\004name\030\005 \002(\t\022,\n\rIncompleteMap\030\006 \003(\0132\025."
+    "message.CrashMapData\022*\n\013CompleteMap\030\007 \003("
+    "\0132\025.message.CrashMapData\022\017\n\007isadmin\030\010 \002("
+    "\010\022#\n\tresources\030\t \003(\0132\020.message.intPair", 598);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   int32array::default_instance_ = new int32array();
   CrashmoMapBaseData::default_instance_ = new CrashmoMapBaseData();
   CrashMapData::default_instance_ = new CrashMapData();
+  intPair::default_instance_ = new intPair();
   CrashPlayerInfo::default_instance_ = new CrashPlayerInfo();
   int32array::default_instance_->InitAsDefaultInstance();
   CrashmoMapBaseData::default_instance_->InitAsDefaultInstance();
   CrashMapData::default_instance_->InitAsDefaultInstance();
+  intPair::default_instance_->InitAsDefaultInstance();
   CrashPlayerInfo::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_common_2eproto);
 }
@@ -1712,6 +1740,359 @@ void CrashMapData::InternalSwap(CrashMapData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int intPair::kNumber1FieldNumber;
+const int intPair::kNumber2FieldNumber;
+#endif  // !_MSC_VER
+
+intPair::intPair()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.intPair)
+}
+
+void intPair::InitAsDefaultInstance() {
+}
+
+intPair::intPair(const intPair& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.intPair)
+}
+
+void intPair::SharedCtor() {
+  _cached_size_ = 0;
+  number_1_ = 0;
+  number_2_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+intPair::~intPair() {
+  // @@protoc_insertion_point(destructor:message.intPair)
+  SharedDtor();
+}
+
+void intPair::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void intPair::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* intPair::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return intPair_descriptor_;
+}
+
+const intPair& intPair::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_common_2eproto();
+  return *default_instance_;
+}
+
+intPair* intPair::default_instance_ = NULL;
+
+intPair* intPair::New(::google::protobuf::Arena* arena) const {
+  intPair* n = new intPair;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void intPair::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<intPair*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(number_1_, number_2_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool intPair::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.intPair)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 number_1 = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &number_1_)));
+          set_has_number_1();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_number_2;
+        break;
+      }
+
+      // required int32 number_2 = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_number_2:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &number_2_)));
+          set_has_number_2();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.intPair)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.intPair)
+  return false;
+#undef DO_
+}
+
+void intPair::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.intPair)
+  // required int32 number_1 = 1;
+  if (has_number_1()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->number_1(), output);
+  }
+
+  // required int32 number_2 = 2;
+  if (has_number_2()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->number_2(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.intPair)
+}
+
+::google::protobuf::uint8* intPair::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.intPair)
+  // required int32 number_1 = 1;
+  if (has_number_1()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->number_1(), target);
+  }
+
+  // required int32 number_2 = 2;
+  if (has_number_2()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->number_2(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.intPair)
+  return target;
+}
+
+int intPair::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_number_1()) {
+    // required int32 number_1 = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->number_1());
+  }
+
+  if (has_number_2()) {
+    // required int32 number_2 = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->number_2());
+  }
+
+  return total_size;
+}
+int intPair::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required int32 number_1 = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->number_1());
+
+    // required int32 number_2 = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->number_2());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void intPair::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const intPair* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const intPair*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void intPair::MergeFrom(const intPair& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_number_1()) {
+      set_number_1(from.number_1());
+    }
+    if (from.has_number_2()) {
+      set_number_2(from.number_2());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void intPair::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void intPair::CopyFrom(const intPair& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool intPair::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void intPair::Swap(intPair* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void intPair::InternalSwap(intPair* other) {
+  std::swap(number_1_, other->number_1_);
+  std::swap(number_2_, other->number_2_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata intPair::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = intPair_descriptor_;
+  metadata.reflection = intPair_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// intPair
+
+// required int32 number_1 = 1;
+ bool intPair::has_number_1() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void intPair::set_has_number_1() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void intPair::clear_has_number_1() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void intPair::clear_number_1() {
+  number_1_ = 0;
+  clear_has_number_1();
+}
+ ::google::protobuf::int32 intPair::number_1() const {
+  // @@protoc_insertion_point(field_get:message.intPair.number_1)
+  return number_1_;
+}
+ void intPair::set_number_1(::google::protobuf::int32 value) {
+  set_has_number_1();
+  number_1_ = value;
+  // @@protoc_insertion_point(field_set:message.intPair.number_1)
+}
+
+// required int32 number_2 = 2;
+ bool intPair::has_number_2() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void intPair::set_has_number_2() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void intPair::clear_has_number_2() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void intPair::clear_number_2() {
+  number_2_ = 0;
+  clear_has_number_2();
+}
+ ::google::protobuf::int32 intPair::number_2() const {
+  // @@protoc_insertion_point(field_get:message.intPair.number_2)
+  return number_2_;
+}
+ void intPair::set_number_2(::google::protobuf::int32 value) {
+  set_has_number_2();
+  number_2_ = value;
+  // @@protoc_insertion_point(field_set:message.intPair.number_2)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int CrashPlayerInfo::kAccountFieldNumber;
 const int CrashPlayerInfo::kPassPointFieldNumber;
 const int CrashPlayerInfo::kPassSectionFieldNumber;
@@ -1719,6 +2100,7 @@ const int CrashPlayerInfo::kNameFieldNumber;
 const int CrashPlayerInfo::kIncompleteMapFieldNumber;
 const int CrashPlayerInfo::kCompleteMapFieldNumber;
 const int CrashPlayerInfo::kIsadminFieldNumber;
+const int CrashPlayerInfo::kResourcesFieldNumber;
 #endif  // !_MSC_VER
 
 CrashPlayerInfo::CrashPlayerInfo()
@@ -1807,6 +2189,7 @@ void CrashPlayerInfo::Clear() {
 
   incompletemap_.Clear();
   completemap_.Clear();
+  resources_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->Clear();
@@ -1923,6 +2306,20 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(74)) goto parse_resources;
+        break;
+      }
+
+      // repeated .message.intPair resources = 9;
+      case 9: {
+        if (tag == 74) {
+         parse_resources:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_resources()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(74)) goto parse_resources;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1994,6 +2391,12 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->isadmin(), output);
   }
 
+  // repeated .message.intPair resources = 9;
+  for (unsigned int i = 0, n = this->resources_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->resources(i), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -2047,6 +2450,13 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
   // required bool isadmin = 8;
   if (has_isadmin()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->isadmin(), target);
+  }
+
+  // repeated .message.intPair resources = 9;
+  for (unsigned int i = 0, n = this->resources_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, this->resources(i), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2141,6 +2551,14 @@ int CrashPlayerInfo::ByteSize() const {
         this->completemap(i));
   }
 
+  // repeated .message.intPair resources = 9;
+  total_size += 1 * this->resources_size();
+  for (int i = 0; i < this->resources_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->resources(i));
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -2168,6 +2586,7 @@ void CrashPlayerInfo::MergeFrom(const CrashPlayerInfo& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   incompletemap_.MergeFrom(from.incompletemap_);
   completemap_.MergeFrom(from.completemap_);
+  resources_.MergeFrom(from.resources_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_account()) {
       set_account(from.account());
@@ -2208,6 +2627,7 @@ bool CrashPlayerInfo::IsInitialized() const {
 
   if (!::google::protobuf::internal::AllAreInitialized(this->incompletemap())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->completemap())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->resources())) return false;
   return true;
 }
 
@@ -2223,6 +2643,7 @@ void CrashPlayerInfo::InternalSwap(CrashPlayerInfo* other) {
   incompletemap_.UnsafeArenaSwap(&other->incompletemap_);
   completemap_.UnsafeArenaSwap(&other->completemap_);
   std::swap(isadmin_, other->isadmin_);
+  resources_.UnsafeArenaSwap(&other->resources_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -2446,6 +2867,36 @@ CrashPlayerInfo::mutable_completemap() {
   set_has_isadmin();
   isadmin_ = value;
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.isadmin)
+}
+
+// repeated .message.intPair resources = 9;
+ int CrashPlayerInfo::resources_size() const {
+  return resources_.size();
+}
+ void CrashPlayerInfo::clear_resources() {
+  resources_.Clear();
+}
+ const ::message::intPair& CrashPlayerInfo::resources(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.resources)
+  return resources_.Get(index);
+}
+ ::message::intPair* CrashPlayerInfo::mutable_resources(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.resources)
+  return resources_.Mutable(index);
+}
+ ::message::intPair* CrashPlayerInfo::add_resources() {
+  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.resources)
+  return resources_.Add();
+}
+ const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
+CrashPlayerInfo::resources() const {
+  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.resources)
+  return resources_;
+}
+ ::google::protobuf::RepeatedPtrField< ::message::intPair >*
+CrashPlayerInfo::mutable_resources() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.resources)
+  return &resources_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
