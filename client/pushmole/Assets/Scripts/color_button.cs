@@ -23,7 +23,8 @@ public class color_button : MonoBehaviour {
 
     public void setSelect(bool b)
     {
-
+        Sliced_.gameObject.SetActive(b);
+        Simple_.gameObject.SetActive(!b);
     }
     public void setColor(Color c)
     {
@@ -57,5 +58,13 @@ public class color_button : MonoBehaviour {
         Text_.text = i.ToString();
     }
 
+    public void setText(string s)
+    {
+        Text_.text = s;
+    }
+    public void setParent(ColorBoard parent)
+    {
+        _parent = parent;
+    }
 
 }

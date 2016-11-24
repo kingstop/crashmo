@@ -200,6 +200,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
         _crashmolegrids = new crashmolegrid[_max_width, _max_height];
 		Vector3 new_position = new Vector3((float)7.7, (float)4.7, (float)-10.6);
 		Camera.main.transform.position = new_position;
+        Dictionary<int, int> dic = new Dictionary<int, int>();
 
 		for (int i = 0; i < _max_width; i++)
 		{
@@ -216,9 +217,15 @@ public class crash_mole_grid_manager : MonoBehaviour {
                 _crashmolegrids[i, j].set_group(11);
                 if (mapinfo != null)
                 {
+                    
                     int group = mapinfo.groups_[i, j];
-                    if(group != 11)
+                    if (dic.ContainsKey(group) == false)
                     {
+                        dic.Add(group, 0);
+                    }
+                    if (group != 11)
+                    {
+                        dic[group] += 1;
                         _crashmolegrids[i, j].set_group(group);
                     }
                 }

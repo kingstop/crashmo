@@ -6,8 +6,16 @@ public class ColorBoard : MonoBehaviour {
     public color_button[] ColorButtons_;
     public int _current_group;
 	// Use this for initialization
+    void Awake()
+    {
+        foreach(color_button entry in ColorButtons_)
+        {
+            entry.setParent(this);
+        }
+    }
 	void Start () {
         _current_group = 0;
+        OnButtonClick(ColorButtons_[0]);
     }
 	
 	// Update is called once per frame
@@ -19,6 +27,15 @@ public class ColorBoard : MonoBehaviour {
     {
         ColorButtons_[index].setColor(color);
         ColorButtons_[index].setGroup(group);
+    }
+    public void SetCount(int index, int count)
+    {
+        ColorButtons_[index].setCount(count);
+    }
+
+    public void SetText(int index, string s)
+    {
+        ColorButtons_[index].setText(s);
     }
 
     public void OnButtonClick(color_button entry)
@@ -34,7 +51,7 @@ public class ColorBoard : MonoBehaviour {
 				global_instance.Instance._current_group = i;
                 b_ret = true;
             }
-            entry.setSelect(b_ret);
+            entry_temp.setSelect(b_ret);
 			i++;
         }
     }

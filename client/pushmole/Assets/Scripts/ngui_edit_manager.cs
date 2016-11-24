@@ -59,33 +59,38 @@ public class ngui_edit_manager : MonoBehaviour {
     void Awake()
     {
         Dictionary<int, Color> temp_dic = new Dictionary<int, Color>();
-        temp_dic.Add(0, new Color((float)120/255, (float)56/255, (float)56/255));
+        _group_color.Add(0, new Color((float)120/255, (float)56/255, (float)56/255));
 
-		temp_dic.Add(1, new Color((float)170/255, (float)170/255, (float)255/255));
-		temp_dic.Add(2, new Color((float)246/255, (float)152/255, (float)152/255));
-        temp_dic.Add(3, new Color((float)154/255, (float)61/255, (float)154/255));
+        _group_color.Add(1, new Color((float)170/255, (float)170/255, (float)255/255));
+        _group_color.Add(2, new Color((float)246/255, (float)152/255, (float)152/255));
+        _group_color.Add(3, new Color((float)154/255, (float)61/255, (float)154/255));
 
-		temp_dic.Add(4, new Color((float)90/255, (float)174/255, (float)174/255));
-		temp_dic.Add(5, new Color((float)255/255, (float)245/255, (float)71/255));
-		temp_dic.Add(6, new Color((float)180/255, (float)116/255, (float)116/255));
+        _group_color.Add(4, new Color((float)90/255, (float)174/255, (float)174/255));
+        _group_color.Add(5, new Color((float)255/255, (float)245/255, (float)71/255));
+        _group_color.Add(6, new Color((float)180/255, (float)116/255, (float)116/255));
 
-		temp_dic.Add(7, new Color((float)219/255, (float)0/255, (float)0/255));
-		temp_dic.Add(8, new Color((float)5/255, (float)72/255, (float)246/255));
-		temp_dic.Add(9, new Color((float)0 / 255, (float)0 / 255, (float)0 / 255));
+        _group_color.Add(7, new Color((float)219/255, (float)0/255, (float)0/255));
+        _group_color.Add(8, new Color((float)5/255, (float)72/255, (float)246/255));
+        _group_color.Add(9, new Color((float)0 / 255, (float)0 / 255, (float)0 / 255));
+        _group_color.Add(10, new Color((float)255 / 255, (float)0 / 255, (float)0 / 255));
+        _group_color.Add(11, new Color((float)255 / 255, (float)0 / 255, (float)0 / 255));
 
         int color_index = 0;
-        foreach(KeyValuePair<int, Color> entry_pair in temp_dic)
+        foreach(KeyValuePair<int, Color> entry_pair in _group_color)
         {
-            _color_board.SetButtonGroupColor(color_index,entry_pair.Key, entry_pair.Value); ;
+            _color_board.SetButtonGroupColor(color_index,entry_pair.Key, entry_pair.Value);
+            _color_board.SetCount(color_index, 0);
             color_index++;
         }
+        _color_board.SetText(10, "");
+        _color_board.SetText(11, "");
         global_instance.Instance._ngui_edit_manager = this;
 
-        int count_temp = _Buttons_simple.Length;
-        for (int i = 0; i < count_temp; i++)
-        {
-            _group_color.Add(i, global_instance.Instance._current_color = _Buttons_simple[i].GetComponent<Image>().color);
-        }
+        //int count_temp = _Buttons_simple.Length;
+        //for (int i = 0; i < count_temp; i++)
+        //{
+        //    _group_color.Add(i, global_instance.Instance._current_color = _Buttons_simple[i].GetComponent<Image>().color);
+        //}
         hide_edit_btn();
         hide_game_btns();
         show_create_btns();
@@ -548,13 +553,7 @@ public class ngui_edit_manager : MonoBehaviour {
 
 				}
 			}
-/*
-			bool temp = need_fall_update();
-			if (temp) 
-			{
-				_record.try_to_next_state ();
-			}
-			*/
+
         }
 
     }
