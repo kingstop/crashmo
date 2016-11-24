@@ -59,16 +59,20 @@ public class ngui_edit_manager : MonoBehaviour {
     void Awake()
     {
         Dictionary<int, Color> temp_dic = new Dictionary<int, Color>();
-        temp_dic.Add(0, new Color((float)71/360, (float)251 /255, (float) 246 /255));
-        temp_dic.Add(1, new Color(0, 0, (float)56 /255));
-        temp_dic.Add(2, new Color(0, (float)255 / 255, (float)255 / 255));
-        temp_dic.Add(3, new Color((float)120 / 360, (float)242 / 255, (float)84 / 255));
-        temp_dic.Add(4, new Color((float)239 / 360, (float)246 / 255, (float)246 / 255));
-        temp_dic.Add(5, new Color(0, (float)216 / 255, (float)99 / 255));
-        temp_dic.Add(6, new Color((float)108 / 360, (float)244 / 255, (float)251 / 255));
-        temp_dic.Add(7, new Color((float)301 / 360, (float)178 / 255, (float)148 / 255));
-        temp_dic.Add(8, new Color(0, 0, 0));
-        temp_dic.Add(9, new Color((float)180 / 360, (float)2 / 255, (float)223 / 255));
+        temp_dic.Add(0, new Color((float)120/255, (float)56/255, (float)56/255));
+
+		temp_dic.Add(1, new Color((float)170/255, (float)170/255, (float)255/255));
+		temp_dic.Add(2, new Color((float)246/255, (float)152/255, (float)152/255));
+        temp_dic.Add(3, new Color((float)154/255, (float)61/255, (float)154/255));
+
+		temp_dic.Add(4, new Color((float)90/255, (float)174/255, (float)174/255));
+		temp_dic.Add(5, new Color((float)255/255, (float)245/255, (float)71/255));
+		temp_dic.Add(6, new Color((float)180/255, (float)116/255, (float)116/255));
+
+		temp_dic.Add(7, new Color((float)219/255, (float)0/255, (float)0/255));
+		temp_dic.Add(8, new Color((float)5/255, (float)72/255, (float)246/255));
+		temp_dic.Add(9, new Color((float)0 / 255, (float)0 / 255, (float)0 / 255));
+
         int color_index = 0;
         foreach(KeyValuePair<int, Color> entry_pair in temp_dic)
         {

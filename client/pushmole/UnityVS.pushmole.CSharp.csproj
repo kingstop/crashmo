@@ -58,12 +58,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -84,7 +78,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MainCameraLine.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -223,14 +216,19 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\Scripts\ChooseItemEntry.cs" />
+    <Compile Include="Assets\Scripts\ColorBoard.cs" />
     <Compile Include="Assets\Scripts\CrashPlayer.cs" />
+    <Compile Include="Assets\Scripts\MainCameraLine.cs" />
     <Compile Include="Assets\Scripts\MainPanel.cs" />
     <Compile Include="Assets\Scripts\MainPanelTitleButtonItem.cs" />
+    <Compile Include="Assets\Scripts\RewardEntry.cs" />
     <Compile Include="Assets\Scripts\SaveMapPanel.cs" />
     <Compile Include="Assets\Scripts\SaveMapTitleButton.cs" />
     <Compile Include="Assets\Scripts\SectionEditPanel.cs" />
+    <Compile Include="Assets\Scripts\UIGameEnd.cs" />
     <Compile Include="Assets\Scripts\button_event_handler.cs" />
     <Compile Include="Assets\Scripts\client_session.cs" />
+    <Compile Include="Assets\Scripts\color_button.cs" />
     <Compile Include="Assets\Scripts\color_button_click.cs" />
     <Compile Include="Assets\Scripts\crash_flag.cs" />
     <Compile Include="Assets\Scripts\crash_mole_grid_manager.cs" />
@@ -472,6 +470,7 @@
     <None Include="Assets\Resources\Shader\Shader\Falloff Texture.shader" />
     <None Include="Assets\Resources\Shader\Shader\Mask Add.shader" />
     <None Include="Assets\Resources\Shader\Shader\Mask AlphaBlend.shader" />
+    <None Include="Assets\Resources\Shader\transparent.shader" />
     <None Include="Assets\Resources\character\Materials\T_double.shader" />
     <None Include="Assets\Resources\character\Materials\T_single.shader" />
     <None Include="Assets\Resources\character\Materials\double.shader" />

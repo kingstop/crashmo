@@ -32,6 +32,7 @@ public class color_button : MonoBehaviour {
         Simple_.GetComponent<Image>().color = _color;
     }
 
+
     public void setGroup(int group)
     {
         _group = group;
@@ -41,6 +42,12 @@ public class color_button : MonoBehaviour {
     {
         return _group;
     }
+
+	public Color getColor()
+	{
+		return _color;	
+	}
+
     public void OnButtonClick()
     {
         _parent.OnButtonClick(this);

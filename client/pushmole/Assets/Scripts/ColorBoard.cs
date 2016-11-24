@@ -23,15 +23,19 @@ public class ColorBoard : MonoBehaviour {
 
     public void OnButtonClick(color_button entry)
     {
+		int i = 0;
         foreach(color_button entry_temp in ColorButtons_)
         {
             bool b_ret = false;
             if(entry == entry_temp)
             {
                 _current_group = entry_temp.getGroup();
+				global_instance.Instance._current_color = entry_temp.getColor();
+				global_instance.Instance._current_group = i;
                 b_ret = true;
             }
             entry.setSelect(b_ret);
+			i++;
         }
     }
 }

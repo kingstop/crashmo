@@ -330,6 +330,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
+     <None Include="Assets\Resources\Shader\transparent.shader" />
      <None Include="Assets\Resources\Shader\HardSurface Shaders\HardSurface Free Opaque Specular.shader" />
      <None Include="Assets\Resources\Shader\HardSurface Shaders\HardSurface Pro Draw First Transparent.shader" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
