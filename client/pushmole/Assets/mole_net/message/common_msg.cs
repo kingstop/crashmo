@@ -117,6 +117,30 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"intPair")]
+  public partial class intPair : global::ProtoBuf.IExtensible
+  {
+    public intPair() {}
+    
+    private int _number_1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"number_1", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int number_1
+    {
+      get { return _number_1; }
+      set { _number_1 = value; }
+    }
+    private int _number_2;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"number_2", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int number_2
+    {
+      get { return _number_2; }
+      set { _number_2 = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CrashPlayerInfo")]
   public partial class CrashPlayerInfo : global::ProtoBuf.IExtensible
   {
@@ -171,6 +195,13 @@ namespace message
       get { return _isadmin; }
       set { _isadmin = value; }
     }
+    private readonly global::System.Collections.Generic.List<message.intPair> _resources = new global::System.Collections.Generic.List<message.intPair>();
+    [global::ProtoBuf.ProtoMember(9, Name=@"resources", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.intPair> resources
+    {
+      get { return _resources; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

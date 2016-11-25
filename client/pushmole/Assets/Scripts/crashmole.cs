@@ -590,10 +590,7 @@ public class crash_manager
             }
         }
         next_update();
-
     }
-
-
     public void move_camera_left()
     {
         if(_want_camera_dir == want_move_dir.no)
@@ -602,9 +599,6 @@ public class crash_manager
             _move_count = 0;
         }
     }
-
-
-
     public void move_camera_right()
     {
         if (_want_camera_dir == want_move_dir.no)
@@ -612,10 +606,7 @@ public class crash_manager
             _want_camera_dir = want_move_dir.right;
             _move_count = 0;
         }
-
-    }
-
-
+    }    
     void camera_move_update()
     {        
         if(_want_camera_dir != want_move_dir.no)
@@ -650,9 +641,6 @@ public class crash_manager
             Vector3 current_pos = get_camera_pos(_camera_dir);
             Vector3 map_current_pos = get_map_camera_pos(_camera_dir);
             Vector3 current_rotation = get_camera_rotation(_camera_dir);
-
-
-
             Vector3 target_pos = get_camera_pos((camera_dir)current);
             Vector3 map_target_pos = get_map_camera_pos((camera_dir)current);
             Vector3 target_rotetion = get_camera_rotation((camera_dir)current);
@@ -697,7 +685,6 @@ public class crash_manager
         }
 
     }
-
     public Vector3 get_map_camera_pos(camera_dir dir)
     {
         Vector3 vc = _creature.get_position();
@@ -763,7 +750,6 @@ public class crash_manager
         }
         return vc;
     }
-
     public Vector3 get_camera_rotation(camera_dir dir)
     {
         Vector3 vc = new Vector3(12, 0,0);
@@ -810,8 +796,6 @@ public class crash_manager
         {
             vc_target_temp.x = vc_target.x + offset_temp;
         }
-
-
         if(offset_y < -offset_temp)
         {
             vc_target_temp.y = vc_target.y - offset_temp;
@@ -839,7 +823,6 @@ public class crash_manager
             _group_colors.Add(group, temp_color);
         }        
     }
-
     public void creature_jump()
     {
         if(_creature != null)
@@ -903,16 +886,12 @@ public class crash_manager
             
         }
     }
-
     public void move_lock_mole(dir_move dir)
     {
         move_list(_lock_mole, dir);
-    }
-
-    
+    }    
     protected void _catch_click(int i, bool his)
     {
-
         if (_creature._is_in_falldown == false)
         {
             if (i == 0)
@@ -993,12 +972,9 @@ public class crash_manager
         }
         
     }
-
-
     public void update()
     {
-        camera_move_update();
-        
+        camera_move_update();        
         if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game)
         {
             if(_game_begin && _need_play_animation == false)
@@ -1008,15 +984,10 @@ public class crash_manager
                     KeyValuePair<int, bool> entry = _catch_click_list.Dequeue();
                     _catch_click(entry.Key, entry.Value);
                 }
-                    
             }
-
             update_move_animation();
         }        
-        
     }
-
-
     public int transform_to_map(float temp_number)
     {
         if(temp_number < 0)
@@ -1027,7 +998,6 @@ public class crash_manager
         int grid = (int)(temp / _grid_distance);
         return grid;
     }
-
     public bool is_block(float tempx, float tempy, float tempz)
     {
         crash_pos pos = new crash_pos();
@@ -1040,20 +1010,17 @@ public class crash_manager
         }
         else if (get_crash_mole_addr(pos) != null && get_crash_mole_addr(pos)._crash_mole != null)
         {
-
             if(get_crash_obj_addr(pos) != null)
             {
                 if(get_crash_obj_addr(pos)._crash_obj.get_obj_type() != crash_obj_type.flag)
                 {
                     return true;
                 }
-            }
-
-            
+            }   
         }
+
         return false;
     }
-
     bool check_block(float tempx, float tempy, float tempz, float block_width)
     {
         if (is_block(tempx + block_width, tempy, tempz))
@@ -1094,8 +1061,6 @@ public class crash_manager
         pos._x = transform_to_map(tempx);
         pos._y = transform_to_map(tempy);
         pos._z = transform_to_map(tempz);
-
-
         if (isvalid(pos) == false)
         {
             return true;
@@ -1122,13 +1087,11 @@ public class crash_manager
         float position = _grid_distance * ((float)number + 0.5f);
         return position;
     }
-
     public crash_manager()
     {
         _source_crash_mole_obj = Resources.Load<GameObject>("prefab/mole_object");
         _source_flag_mole_obj = Resources.Load<GameObject>("prefab/flag");        
     }
-
     public void clear()
     {
         clear_enclosure();
@@ -1169,15 +1132,6 @@ public class crash_manager
         _game_begin = false;
        _History.reset();
         _current_frame_count = 0;
-        //_camera_dir = camera_dir.front;
-        //_want_camera_dir = want_move_dir.no;
-        //Camera.main.transform.position = get_camera_pos(_camera_dir);
-        //Camera.main.transform.eulerAngles = get_camera_rotation(_camera_dir);
-
-        //global_instance.Instance._ngui_edit_manager._camera_map.transform.position = get_map_camera_pos(_camera_dir);
-        //global_instance.Instance._ngui_edit_manager._camera_map.transform.eulerAngles = get_camera_rotation(_camera_dir);
-
-
         _move_count = 0;
     }
     public void update_move_animation()
@@ -1264,8 +1218,6 @@ public class crash_manager
         }
 
     }
-
-
     void seek_create_mole(int temp_x, int temp_y, crash_mole mole, bool dir_up = false)
     {
         MapData map_data = global_instance.Instance.GetMapData();
@@ -1306,7 +1258,6 @@ public class crash_manager
 
         }
     }
-
     public void create_mole(int x, int y, crash_mole mole)
     {
         seek_create_mole(x - 1, y, mole);
@@ -1314,7 +1265,6 @@ public class crash_manager
         seek_create_mole(x, y - 1, mole);
         seek_create_mole(x, y + 1, mole, true);
     }
-
     public void clear_enclosure()
     {
         foreach(GameObject obj in _enclosure_objs)
@@ -1355,7 +1305,6 @@ public class crash_manager
             _enclosure_objs.Add(obj_temp);
         }
     }
-
     public void create_map()
     {
         create_enclosure();
@@ -1465,7 +1414,6 @@ public class crash_manager
 
         next_update();
     }
-
     public crash_obj create_crash_obj(int x, int y)
     {
         crash_obj obj = new crash_obj();
@@ -1519,12 +1467,10 @@ public class crash_manager
             }
         }
     }
-
     public void set_block(int x, int z, int y)
     {
         _can_move_locks[x, z, y] = true;
     }
-
     bool is_in_can_not_move_list(crash_mole entry)
     {
         foreach(crash_mole temp in _can_not_move_list)
@@ -1536,7 +1482,6 @@ public class crash_manager
         }
         return false;
     }
-
     public bool move_list(List<crash_mole> list, dir_move dir)
     {
         if (_need_play_animation == true)
@@ -1620,7 +1565,6 @@ public class crash_manager
     {
         return move_list(_crash_moles_list, dir_move.down);
     }
-
     public void next_update()
     {
         if(_record._open_record == true)
@@ -1706,8 +1650,6 @@ public class crash_manager
 			}
         }
     }
-
-
     public void update_move_list(List<crash_mole> temp_list, dir_move dir)
     {
         List<crash_mole> list = new List<crash_mole>();
@@ -1757,7 +1699,6 @@ public class crash_manager
             }
         }
     }
-
     protected bool move(crash_mole mole, dir_move dir)
     {
         if(mole == null)
@@ -1841,7 +1782,6 @@ public class crash_manager
         }
         return true;
     }
-
     void add_can_not_move_list(crash_mole mole)
     {
         foreach(crash_mole entry in _can_not_move_list)
@@ -1853,7 +1793,6 @@ public class crash_manager
         }
         _can_not_move_list.Add(mole);
     }
-
     public bool isvalid(crash_pos temp)
     {
         return isvalid(temp._x, temp._y, temp._z);
@@ -1866,7 +1805,6 @@ public class crash_manager
         }
         return false;
     }
-
     public crash_obj_addr get_crash_obj_addr(int x, int z, int y)
     {
         crash_obj_addr temp = null;
@@ -1875,9 +1813,7 @@ public class crash_manager
             temp = _crash_objs[x, y, z];
         }
         return temp;
-    }
-
-
+    }    
     public crash_mole_addr get_crash_mole_addr(int x, int z, int y)
     {
         crash_mole_addr temp = null;
@@ -1887,8 +1823,6 @@ public class crash_manager
         }
         return temp;
     }
-
-
     public crash_obj_addr get_crash_obj_addr(crash_pos pos)
     {
         crash_obj_addr temp = null;
@@ -1898,7 +1832,6 @@ public class crash_manager
         }
         return temp;
     }
-
     public crash_mole_addr get_crash_mole_addr(crash_pos pos)
     {
         crash_mole_addr temp = null;
@@ -1908,7 +1841,6 @@ public class crash_manager
         }
         return temp;
     }
-
     public bool add_crash_obj(crash_obj obj_temp)
     {
         if (isEmpty(obj_temp))
@@ -1921,7 +1853,6 @@ public class crash_manager
             return false;
         }
     }
-
     public bool add_crash_mole(crash_mole obj_temp)
     {
         foreach (crash_mole entry in _crash_moles_list)
@@ -1936,7 +1867,6 @@ public class crash_manager
         return true;
        
     }
-
     private bool isEmpty(crash_mole obj_temp)
     {
         int count_temp = obj_temp._crash_objs.Count;

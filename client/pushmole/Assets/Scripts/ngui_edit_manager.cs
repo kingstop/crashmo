@@ -72,8 +72,8 @@ public class ngui_edit_manager : MonoBehaviour {
         _group_color.Add(7, new Color((float)219/255, (float)0/255, (float)0/255));
         _group_color.Add(8, new Color((float)5/255, (float)72/255, (float)246/255));
         _group_color.Add(9, new Color((float)0 / 255, (float)0 / 255, (float)0 / 255));
-        _group_color.Add(10, new Color((float)255 / 255, (float)0 / 255, (float)0 / 255));
-        _group_color.Add(11, new Color((float)255 / 255, (float)0 / 255, (float)0 / 255));
+        _group_color.Add(10, new Color((float)255 / 255, (float)255 / 255, (float)255 / 255));
+        _group_color.Add(11, new Color((float)255 / 255, (float)255 / 255, (float)255 / 255));
 
         int color_index = 0;
         foreach(KeyValuePair<int, Color> entry_pair in _group_color)
@@ -106,6 +106,11 @@ public class ngui_edit_manager : MonoBehaviour {
             color = _group_color[group];
         }
         return color;
+    }
+
+    public void setColorButtonText(int group, string txt)
+    {
+        _color_board.SetText(group, txt);
     }
     public void show_main_panel()
     {

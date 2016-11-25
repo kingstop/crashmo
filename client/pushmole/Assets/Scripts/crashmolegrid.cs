@@ -227,10 +227,15 @@ public class crashmolegrid : MonoBehaviour
                         crashmolegrid grid_temp = hitt.transform.gameObject.GetComponent<crashmolegrid>();
                         if (grid_temp != null)
                         {
+
                             if (grid_temp.get_group() != global_instance.Instance._current_group)
                             {
+                                int count_temp = global_instance.Instance._crash_mole_grid_manager.getResourceRaminderCount(global_instance.Instance._current_group);
+                                //if(count_temp)
+
+
                                 grid_temp.set_group(global_instance.Instance._current_group);
-                                global_instance.Instance._crash_manager.add_color(global_instance.Instance._current_group, global_instance.Instance._current_color);
+                                //global_instance.Instance._crash_manager.add_color(global_instance.Instance._current_group, global_instance.Instance._current_color);
                             }
                         }
                     }

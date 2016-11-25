@@ -138,6 +138,10 @@ public class CrashPlayer
 		return _officil_section_names;
 	}
 
+    public List<message.intPair> get_resource()
+    {
+        return _info.resources;
+    }
     public void addSectionName(int section, string section_name)
     {
         _officil_section_names[section] = section_name;

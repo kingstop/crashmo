@@ -20,6 +20,7 @@ public class MapData
     public int number_;
     public int section_;
     public ulong map_index_;
+    protected Dictionary<int, int> _resorces = new Dictionary<int, int>();
     
     public Texture2D CreateTexture()
     {
@@ -108,14 +109,13 @@ public class crash_mole_grid_manager : MonoBehaviour {
     GameObject _source_map_mole_obj;
     crashmolegrid[,] _crashmolegrids;
     ArrayList _objlist = new ArrayList();
-    crashmolegrid _flag_grid;
-    bool _mouse_down = false;
     protected game_type _current_type;
-
+    protected Dictionary<int, int> _resorces = new Dictionary<int, int>();
+    protected Dictionary<int, int> _resources_max = new Dictionary<int, int>();
     private int _max_width;
     private int _max_height;
+    private bool _mouse_down;
 
-    
     public int get_max_width()
     {
         return _max_width;
@@ -216,23 +216,82 @@ public class crash_mole_grid_manager : MonoBehaviour {
 				_crashmolegrids[i, j].set_color(1, 1, 1, 1);
                 _crashmolegrids[i, j].set_group(11);
                 if (mapinfo != null)
-                {
-                    
+                {                    
                     int group = mapinfo.groups_[i, j];
-                    if (dic.ContainsKey(group) == false)
+                    if (_resorces.ContainsKey(group) == false)
                     {
-                        dic.Add(group, 0);
+                        _resorces.Add(group, 0);
                     }
                     if (group != 11)
                     {
-                        dic[group] += 1;
+                        _resorces[group] += 1;
                         _crashmolegrids[i, j].set_group(group);
                     }
                 }
 			}
 		}
-	}
+        List<message.intPair> hero_resources = global_instance.Instance._player.get_resource();
+        foreach(message.intPair entry in hero_resources)
+        {
+            _resources_max[entry.number_1] = entry.number_2;
+        }
+        for(int i = 0; i < 10; i ++)
+        {
+            updateColorButtonText(i);
+        }
+    }
 
+    public int getResourceMaxCount(int group)
+    {
+        int resource_max = 0;
+        if (_resources_max.ContainsKey(group) == true)
+        {
+            resource_max = _resources_max[group];
+        }
+        return resource_max;
+    }
+
+    public void updateColorButtonText(int group)
+    {
+        int current_resource = getResourceCount(group);
+        int max_resource = getResourceMaxCount(group);
+        string current_text = current_resource.ToString() + "/" + max_resource.ToString();
+        global_instance.Instance._ngui_edit_manager.setColorButtonText(group, current_text);
+    }
+
+    public int getResourceRaminderCount(int group)
+    {
+        int resource_max = getResourceMaxCount(group);
+        int current_resource_count = getResourceCount(group);
+
+        int remainder = resource_max - current_resource_count;
+        return remainder;
+    }
+
+    public void modifyResourceCount(int group, int i)
+    {
+        int max_count = getResourceMaxCount(group);
+        int current_count = getResourceCount(group);
+        int temp_count = current_count + i;
+        if(temp_count < 0)
+        {
+            temp_count = 0;
+        }
+        else if(temp_count > max_count)
+        {
+            temp_count = max_count;
+        }
+        _resorces[group] = temp_count;
+    }
+    public int getResourceCount(int group)
+    {
+        int current_resource_count = 0;
+        if (_resorces.ContainsKey(group) == true)
+        {
+            current_resource_count = _resorces[group];
+        }
+        return current_resource_count;
+    }
 	public MapData save_crash_mole_grid()
 	{
         MapData data = new MapData();
