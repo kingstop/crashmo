@@ -18,8 +18,8 @@ public enum map_def{
 }
 
 public class ngui_edit_manager : MonoBehaviour {
-    public Button[] _Buttons_sliced;
-    public Button[] _Buttons_simple;
+    //public Button[] _Buttons_sliced;
+    //public Button[] _Buttons_simple;
     public Button[] _Buttons_sliced_game_type;
     public Button[] _Buttons_simple_game_type;
     public Dictionary<int, Color> _group_color = new Dictionary<int,Color>();
@@ -171,6 +171,7 @@ public class ngui_edit_manager : MonoBehaviour {
 
     void set_edit_btns_state(bool show)
     {
+		/*
         if (_Buttons_simple.Length > 0 && _Buttons_sliced.Length > 0)
         {
             foreach (Button entry in _Buttons_simple)
@@ -184,6 +185,8 @@ public class ngui_edit_manager : MonoBehaviour {
                 entry.gameObject.SetActive(show);
             }
         }
+        */
+		_color_board.gameObject.SetActive(show);
         _open_create_btn.gameObject.SetActive(show);
         _edit_scrollbar.SetActive(show);
     }
@@ -360,7 +363,7 @@ public class ngui_edit_manager : MonoBehaviour {
     void show_edit_btn()
     {
         set_edit_btns_state(true); 
-		message_on_button_click (_Buttons_simple[0]);			
+		//message_on_button_click (_Buttons_simple[0]);			
     }
 	
 	// Update is called once per frame
@@ -586,7 +589,7 @@ public class ngui_edit_manager : MonoBehaviour {
                     _edit_obj_btns.SetActive(true);
                     _edit_obj_create_btns.SetActive(false);
                     _edit_obj_draw_btns.SetActive(true);
-                    Camera.main.fieldOfView = 60;
+
                     show_edit_btn();
                 }
                 break;
@@ -630,7 +633,7 @@ public class ngui_edit_manager : MonoBehaviour {
         }
     }
 
-
+	/*
     public void message_on_button_click(Button obj)
     {
         int count_temp = _Buttons_sliced.Length;
@@ -656,7 +659,7 @@ public class ngui_edit_manager : MonoBehaviour {
         }
 
     }
-
+*/
     public void on_button_click_camera_left()
     {
         global_instance.Instance._crash_manager.move_camera_left();

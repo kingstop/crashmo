@@ -16,7 +16,7 @@ public class color_button_click : MonoBehaviour {
 
     public void on_color_button_click(Button obj)
     {
-        ngui_edit_manager entry = this.GetComponentInParent<ngui_edit_manager>();
-        entry.message_on_button_click(obj);
+        //ngui_edit_manager entry = this.GetComponentInParent<ngui_edit_manager>();
+        //entry.message_on_button_click(obj);
     }
 }

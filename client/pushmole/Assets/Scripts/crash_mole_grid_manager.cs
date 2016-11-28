@@ -198,8 +198,8 @@ public class crash_mole_grid_manager : MonoBehaviour {
             _max_height = mapinfo.height_;
         }
         _crashmolegrids = new crashmolegrid[_max_width, _max_height];
-		Vector3 new_position = new Vector3((float)7.7, (float)4.7, (float)-10.6);
-		Camera.main.transform.position = new_position;
+		//Vector3 new_position = new Vector3((float)7.7, (float)4.7, (float)-10.6);
+		//Camera.main.transform.position = new_position;
         Dictionary<int, int> dic = new Dictionary<int, int>();
 
 		for (int i = 0; i < _max_width; i++)
@@ -239,6 +239,11 @@ public class crash_mole_grid_manager : MonoBehaviour {
         {
             updateColorButtonText(i);
         }
+		Vector3 vec = new Vector3(2.84f, 6f, 7.12f);
+		Vector3 vec_rot = new Vector3(0, 0, 0);
+		Camera.main.transform.eulerAngles = vec_rot;
+		Camera.main.transform.position = vec;
+		Camera.main.fieldOfView = 60;
     }
 
     public int getResourceMaxCount(int group)
