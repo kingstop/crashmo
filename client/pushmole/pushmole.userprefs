@@ -1,16 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/mole_net/proto-net/ProtoReader.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ColorBoard.cs">
     <Files>
       <File FileName="Assets/Scripts/creature.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/crashmolegrid.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/on_scrollbar_change.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="88" Column="10" />
+      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/color_button_click.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/crashmole.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="537" Column="2" />
+      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/global_instance.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/client_session.cs" Line="1" Column="1" />
       <File FileName="Assets/mole_net/U3dSocketClient.cs" Line="1" Column="1" />
@@ -20,6 +20,8 @@
       <File FileName="Assets/Scripts/game_btn_down.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MainPanelTitleButtonItem.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/crash_flag.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ColorBoard.cs" Line="34" Column="49" />
+      <File FileName="Assets/Scripts/color_button.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
