@@ -316,7 +316,7 @@ public class crash_mole_addr
 
 
 enum crash_define{
-    max_x = 18,
+    max_x = 50,
     max_z = 18,
     max_y = 80
 
@@ -1821,6 +1821,10 @@ public class crash_manager
         {
             temp = _crash_moles[x, z, y];
         }
+		if (temp == null) {
+			int n = 0;
+			n++;
+		}
         return temp;
     }
     public crash_obj_addr get_crash_obj_addr(crash_pos pos)

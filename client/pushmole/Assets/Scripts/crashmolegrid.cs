@@ -195,6 +195,7 @@ public class crashmolegrid : MonoBehaviour
 
     void OnMouseDown()
     {
+		Debug.Log (Input.mousePosition);
         _mouse_down = true;
 
     }
@@ -215,6 +216,12 @@ public class crashmolegrid : MonoBehaviour
 	void Update () {
         if(_mouse_down&& global_instance.Instance._can_set_group == true)
         {
+			int x = (int)Input.mousePosition.x;
+			if (x < 322) 
+			{
+				return;
+			}
+
             if(global_instance.Instance._crash_mole_grid_manager != null)
             {
                 if (global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.edit)
