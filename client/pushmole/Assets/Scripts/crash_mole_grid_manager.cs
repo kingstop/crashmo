@@ -105,7 +105,7 @@ public class MapData
 
 public class crash_mole_grid_manager : MonoBehaviour {
     GameObject _source_crash_mole_obj;
-    GameObject _source_flag_mole_obj;
+    //GameObject _source_flag_mole_obj;
     GameObject _source_map_mole_obj;
     crashmolegrid[,] _crashmolegrids;
     ArrayList _objlist = new ArrayList();
@@ -114,7 +114,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
     protected Dictionary<int, int> _resources_max = new Dictionary<int, int>();
     private int _max_width;
     private int _max_height;
-    private bool _mouse_down;
+   // private bool _mouse_down;
 
     public int get_max_width()
     {
@@ -142,7 +142,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
     void Awake()
     {
         _source_crash_mole_obj = Resources.Load<GameObject>("prefab/mole_object");
-        _source_flag_mole_obj = Resources.Load<GameObject>("prefab/flag");
+        //_source_flag_mole_obj = Resources.Load<GameObject>("prefab/flag");
         _source_map_mole_obj = Resources.Load<GameObject>("prefab/map");
         global_instance.Instance._crash_mole_grid_manager = this;
     }
@@ -200,7 +200,6 @@ public class crash_mole_grid_manager : MonoBehaviour {
         _crashmolegrids = new crashmolegrid[_max_width, _max_height];
 		//Vector3 new_position = new Vector3((float)7.7, (float)4.7, (float)-10.6);
 		//Camera.main.transform.position = new_position;
-        Dictionary<int, int> dic = new Dictionary<int, int>();
 
 		for (int i = 0; i < _max_width; i++)
 		{
@@ -284,9 +283,14 @@ public class crash_mole_grid_manager : MonoBehaviour {
         }
         else if(temp_count > max_count)
         {
-            temp_count = max_count;
+            //temp_count = max_count;
         }
         _resorces[group] = temp_count;
+		if (group != 11 && group != 10) 
+		{
+			string txt = temp_count.ToString () + "/" + max_count.ToString ();
+			global_instance.Instance._ngui_edit_manager.setColorButtonText (group, txt);
+		}
     }
     public int getResourceCount(int group)
     {
@@ -303,11 +307,11 @@ public class crash_mole_grid_manager : MonoBehaviour {
         data.create_name_ = "";
         data.width_ = _max_width;        
 		data.height_ = _max_height;
-        GameObject map_target = GameObject.Instantiate<GameObject>(_source_map_mole_obj);
+       // GameObject map_target = GameObject.Instantiate<GameObject>(_source_map_mole_obj);
         data.groups_ = new int[data.width_, data.height_];
         for (int j = 0; j < data.height_; j ++) 
 		{
-			message.int32array tem_array = new message.int32array();
+			//message.int32array tem_array = new message.int32array();
 			for(int i = 0; i < data.width_; i ++)
 			{
 				int group = _crashmolegrids[i, j].get_group();
@@ -328,7 +332,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {        
-        _mouse_down = false;
+       // _mouse_down = false;
 	}
 
     void Update()
@@ -338,12 +342,12 @@ public class crash_mole_grid_manager : MonoBehaviour {
 
     void OnMouseUp()
     {
-        _mouse_down = false;
+       // _mouse_down = false;
     }
 
     void OnMouseDown()
     {
-        _mouse_down = true;
+      //  _mouse_down = true;
 
     }
 

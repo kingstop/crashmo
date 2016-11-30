@@ -218,6 +218,7 @@
     <Compile Include="Assets\Scripts\ChooseItemEntry.cs" />
     <Compile Include="Assets\Scripts\ColorBoard.cs" />
     <Compile Include="Assets\Scripts\CrashPlayer.cs" />
+    <Compile Include="Assets\Scripts\FradeText.cs" />
     <Compile Include="Assets\Scripts\MainCameraLine.cs" />
     <Compile Include="Assets\Scripts\MainPanel.cs" />
     <Compile Include="Assets\Scripts\MainPanelTitleButtonItem.cs" />

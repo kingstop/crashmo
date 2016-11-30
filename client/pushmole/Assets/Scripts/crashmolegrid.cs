@@ -237,12 +237,26 @@ public class crashmolegrid : MonoBehaviour
 
                             if (grid_temp.get_group() != global_instance.Instance._current_group)
                             {
-                                int count_temp = global_instance.Instance._crash_mole_grid_manager.getResourceRaminderCount(global_instance.Instance._current_group);
-                                //if(count_temp)
+								int count_temp = 1;
+								if (global_instance.Instance._current_group != 11 || global_instance.Instance._current_group != 10) 
+								{
+									count_temp = global_instance.Instance._crash_mole_grid_manager.getResourceRaminderCount(global_instance.Instance._current_group);
+								}
 
+								if (count_temp > 0 || global_instance.Instance._player.isadmin() == true) 
+								{
+									int last_group = grid_temp.get_group ();
 
-                                grid_temp.set_group(global_instance.Instance._current_group);
-                                //global_instance.Instance._crash_manager.add_color(global_instance.Instance._current_group, global_instance.Instance._current_color);
+									grid_temp.set_group (global_instance.Instance._current_group);
+									global_instance.Instance._crash_mole_grid_manager.modifyResourceCount (last_group, -1);
+									global_instance.Instance._crash_mole_grid_manager.modifyResourceCount (global_instance.Instance._current_group, 1);
+									global_instance.Instance._ngui_edit_manager.set_point_text ("点点点");
+								}
+								else 
+								{
+
+								}                                									                               
+                                
                             }
                         }
                     }

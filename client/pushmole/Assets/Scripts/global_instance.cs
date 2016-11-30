@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public enum global_game_type
 {
@@ -51,6 +52,12 @@ public class global_instance
     {
         return _map_data;
     }
+
+	public long getTime()
+	{
+		TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+		return Convert.ToInt64 (ts.TotalSeconds);
+	}
 
     public Color _current_color;
     public int _current_group;

@@ -53,12 +53,19 @@ public class ngui_edit_manager : MonoBehaviour {
     public Text _record_txt;
     public Text _account;
     public Text _password;
+	public FradeText _point_out;
+
     public UIGameEnd _game_end;
     public ColorBoard _color_board;
 
+	/// <summary>
+
+	/// </summary>
     void Awake()
     {
-        Dictionary<int, Color> temp_dic = new Dictionary<int, Color>();
+		//_show_point_out = false;
+		_point_out.gameObject.SetActive (false);
+       // Dictionary<int, Color> temp_dic = new Dictionary<int, Color>();
         _group_color.Add(0, new Color((float)120/255, (float)56/255, (float)56/255));
 
         _group_color.Add(1, new Color((float)170/255, (float)170/255, (float)255/255));
@@ -82,20 +89,15 @@ public class ngui_edit_manager : MonoBehaviour {
             _color_board.SetCount(color_index, 0);
             color_index++;
         }
-        _color_board.SetText(10, "");
-        _color_board.SetText(11, "");
+        _color_board.SetText(10, "目标");
+        _color_board.SetText(11, "删除");
         global_instance.Instance._ngui_edit_manager = this;
-
-        //int count_temp = _Buttons_simple.Length;
-        //for (int i = 0; i < count_temp; i++)
-        //{
-        //    _group_color.Add(i, global_instance.Instance._current_color = _Buttons_simple[i].GetComponent<Image>().color);
-        //}
         hide_edit_btn();
         hide_game_btns();
         show_create_btns();
         global_instance.Instance._net_client = new u3dclient();
         _input_keyboard = false;
+
 
     }
     public Color get_color_by_group(int group)
@@ -107,6 +109,12 @@ public class ngui_edit_manager : MonoBehaviour {
         }
         return color;
     }
+
+	public void set_point_text(string txt)
+	{
+		_point_out.setText(txt);	
+		_point_out.gameObject.SetActive (true);
+	}
 
     public void setColorButtonText(int group, string txt)
     {
@@ -171,21 +179,6 @@ public class ngui_edit_manager : MonoBehaviour {
 
     void set_edit_btns_state(bool show)
     {
-		/*
-        if (_Buttons_simple.Length > 0 && _Buttons_sliced.Length > 0)
-        {
-            foreach (Button entry in _Buttons_simple)
-            {
-                //entry.hideFlags = HideFlags.HideAndDontSave;
-                entry.gameObject.SetActive(show);
-            }
-
-            foreach (Button entry in _Buttons_sliced)
-            {
-                entry.gameObject.SetActive(show);
-            }
-        }
-        */
 		_color_board.gameObject.SetActive(show);
         _open_create_btn.gameObject.SetActive(show);
         _edit_scrollbar.SetActive(show);
@@ -633,33 +626,7 @@ public class ngui_edit_manager : MonoBehaviour {
         }
     }
 
-	/*
-    public void message_on_button_click(Button obj)
-    {
-        int count_temp = _Buttons_sliced.Length;
-        bool b_set = true;
-        if (obj.GetComponent<Image>().type == Image.Type.Simple)
-        {
-            for (int i = 0; i < count_temp; i++)
-            {
-                if (_Buttons_simple[i] == obj)
-                {
-                    global_instance.Instance._current_color = _Buttons_simple[i].GetComponent<Image>().color;
-                    global_instance.Instance._current_group = i;
-                    _Buttons_simple[i].gameObject.SetActive(!b_set);
-                    _Buttons_sliced[i].gameObject.SetActive(b_set);
 
-                }
-                else
-                {
-                    _Buttons_simple[i].gameObject.SetActive(b_set);
-                    _Buttons_sliced[i].gameObject.SetActive(!b_set);
-                }
-            }
-        }
-
-    }
-*/
     public void on_button_click_camera_left()
     {
         global_instance.Instance._crash_manager.move_camera_left();
@@ -672,23 +639,7 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void on_buttion_click(GameObject obj)
     {
-        //ngui_edit_manager entry = this.GetComponentInParent<ngui_edit_manager>();
-        //entry.message_on_button_click(obj);
-        
-        
-        //foreach (Button entry in _Buttons)
-        //{
-        //    Image temp = entry.GetComponent<Image>();
-        //    if (entry == obj)
-        //    {
-                
-        //        temp.type = Image.Type.Sliced;
-        //    }
-        //    else
-        //    {
-        //        temp.type = Image.Type.Simple;
-        //    }
-        //}
+
     }
 
 
