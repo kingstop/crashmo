@@ -202,6 +202,27 @@ namespace message
       get { return _resources; }
     }
   
+    private int _map_width;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"map_width", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int map_width
+    {
+      get { return _map_width; }
+      set { _map_width = value; }
+    }
+    private int _map_height;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"map_height", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int map_height
+    {
+      get { return _map_height; }
+      set { _map_height = value; }
+    }
+    private int _map_count;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"map_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int map_count
+    {
+      get { return _map_count; }
+      set { _map_count = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

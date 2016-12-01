@@ -54,6 +54,34 @@ namespace message
       get { return _sections_names; }
     }
   
+    private readonly global::System.Collections.Generic.List<message.intPair> _resources_config_max = new global::System.Collections.Generic.List<message.intPair>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"resources_config_max", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.intPair> resources_config_max
+    {
+      get { return _resources_config_max; }
+    }
+  
+    private int _map_width_config_max;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"map_width_config_max", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int map_width_config_max
+    {
+      get { return _map_width_config_max; }
+      set { _map_width_config_max = value; }
+    }
+    private int _map_height_config_max;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"map_height_config_max", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int map_height_config_max
+    {
+      get { return _map_height_config_max; }
+      set { _map_height_config_max = value; }
+    }
+    private int _map_count_max;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"map_count_max", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int map_count_max
+    {
+      get { return _map_count_max; }
+      set { _map_count_max = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
