@@ -186,7 +186,17 @@ void Session::CreateCrashMoClientInit()
 		pair_temp->set_intger_temp(it->first);
 		pair_temp->set_string_temp(it->second.c_str());
 	}
-
+	const MapConfig* config_entry = gGameConfig.getMapConfig();
+	msg.set_map_height_config_max(config_entry->config_heigth_max_);
+	msg.set_map_width_config_max(config_entry->config_width_max_);
+	msg.set_map_count_max(config_entry->config_count_max_);
+	std::map<int,int>::const_iterator it_group_config = config_entry->group_config_max_count_.begin();
+	for (; it_group_config != config_entry->group_config_max_count_.end(); it_group_config++)
+	{
+		message::intPair* pairEntry =msg.add_resources_config_max();
+		pairEntry->set_number_1(it_group_config->first);
+		pairEntry->set_number_2(it_group_config->second);
+	}
 	message::CrashPlayerInfo* info = msg.mutable_info();
 	info->CopyFrom(_player->GetInfo());
 	sendPBMessage(&msg);

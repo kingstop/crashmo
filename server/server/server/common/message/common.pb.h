@@ -657,6 +657,27 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::intPair >*
       mutable_resources();
 
+  // required int32 map_width = 10;
+  bool has_map_width() const;
+  void clear_map_width();
+  static const int kMapWidthFieldNumber = 10;
+  ::google::protobuf::int32 map_width() const;
+  void set_map_width(::google::protobuf::int32 value);
+
+  // required int32 map_height = 11;
+  bool has_map_height() const;
+  void clear_map_height();
+  static const int kMapHeightFieldNumber = 11;
+  ::google::protobuf::int32 map_height() const;
+  void set_map_height(::google::protobuf::int32 value);
+
+  // required int32 map_count = 12;
+  bool has_map_count() const;
+  void clear_map_count();
+  static const int kMapCountFieldNumber = 12;
+  ::google::protobuf::int32 map_count() const;
+  void set_map_count(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:message.CrashPlayerInfo)
  private:
   inline void set_has_account();
@@ -669,6 +690,12 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   inline void clear_has_name();
   inline void set_has_isadmin();
   inline void clear_has_isadmin();
+  inline void set_has_map_width();
+  inline void clear_has_map_width();
+  inline void set_has_map_height();
+  inline void clear_has_map_height();
+  inline void set_has_map_count();
+  inline void clear_has_map_count();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -684,6 +711,9 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > completemap_;
   ::google::protobuf::RepeatedPtrField< ::message::intPair > resources_;
   bool isadmin_;
+  ::google::protobuf::int32 map_width_;
+  ::google::protobuf::int32 map_height_;
+  ::google::protobuf::int32 map_count_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
   friend void protobuf_ShutdownFile_common_2eproto();
@@ -1353,6 +1383,78 @@ inline ::google::protobuf::RepeatedPtrField< ::message::intPair >*
 CrashPlayerInfo::mutable_resources() {
   // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.resources)
   return &resources_;
+}
+
+// required int32 map_width = 10;
+inline bool CrashPlayerInfo::has_map_width() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void CrashPlayerInfo::set_has_map_width() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void CrashPlayerInfo::clear_has_map_width() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void CrashPlayerInfo::clear_map_width() {
+  map_width_ = 0;
+  clear_has_map_width();
+}
+inline ::google::protobuf::int32 CrashPlayerInfo::map_width() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.map_width)
+  return map_width_;
+}
+inline void CrashPlayerInfo::set_map_width(::google::protobuf::int32 value) {
+  set_has_map_width();
+  map_width_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_width)
+}
+
+// required int32 map_height = 11;
+inline bool CrashPlayerInfo::has_map_height() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void CrashPlayerInfo::set_has_map_height() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void CrashPlayerInfo::clear_has_map_height() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void CrashPlayerInfo::clear_map_height() {
+  map_height_ = 0;
+  clear_has_map_height();
+}
+inline ::google::protobuf::int32 CrashPlayerInfo::map_height() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.map_height)
+  return map_height_;
+}
+inline void CrashPlayerInfo::set_map_height(::google::protobuf::int32 value) {
+  set_has_map_height();
+  map_height_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_height)
+}
+
+// required int32 map_count = 12;
+inline bool CrashPlayerInfo::has_map_count() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void CrashPlayerInfo::set_has_map_count() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void CrashPlayerInfo::clear_has_map_count() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void CrashPlayerInfo::clear_map_count() {
+  map_count_ = 0;
+  clear_has_map_count();
+}
+inline ::google::protobuf::int32 CrashPlayerInfo::map_count() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.map_count)
+  return map_count_;
+}
+inline void CrashPlayerInfo::set_map_count(::google::protobuf::int32 value) {
+  set_has_map_count();
+  map_count_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_count)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

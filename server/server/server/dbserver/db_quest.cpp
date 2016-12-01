@@ -92,8 +92,24 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 	account_type acc_temp = playerInfo->account();
 	char sql[4096];
 	DBQParms parms;
-	sprintf(sql, "replace into `character`(`account`, `pass_point`, `pass_section`, `name`, `isadmin`) values (%u,%d,%d,'%s',%d)",
-		acc_temp, playerInfo->pass_point(), playerInfo->pass_section(), playerInfo->name().c_str(), (int)playerInfo->isadmin());
+	google::protobuf::RepeatedPtrField< ::message::intPair >* resources = playerInfo->mutable_resources();
+	google::protobuf::RepeatedPtrField< ::message::intPair >::const_iterator it = resources->begin();
+	std::string resource_str;
+	char sz_resource[256];
+	for (; it != resources->end(); it ++)
+	{
+		if (resource_str.empty() == false)
+		{
+			resource_str += ";";
+		}
+		sprintf(sz_resource, "%d,%d", it->number_1(), it->number_2());
+		resource_str += sz_resource;
+	}
+	sprintf(sql, "replace into `character`(`account`, `pass_point`, `pass_section`,\
+		 `name`, `isadmin`, `map_width`,\
+		 `map_height`, `map_count`, `group_count`) values (%u, %d, %d, '%s', %d, %d, %d, %d, '%s')",
+		acc_temp, playerInfo->pass_point(), playerInfo->pass_section(), playerInfo->name().c_str(), (int)playerInfo->isadmin(),
+		playerInfo->map_width(), playerInfo->map_height(), playerInfo->map_count(), resource_str.c_str());
 	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, &parms, NULL, _QUERY_SAVE_PLAYER_);
 	int temp_size = playerInfo->completemap_size();
 	
@@ -176,6 +192,30 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 		info->set_pass_point(row["pass_point"]);
 		info->set_pass_section(row["pass_section"]);
 		int is_admin = row["isadmin"];
+		info->set_map_width(row["map_width"]);
+		info->set_map_height(row["map_height"]);
+		info->set_map_count(row["map_count"]);
+		std::string group_str =	row["group_count"].c_str();
+		if (group_str.empty() == false)
+		{
+			std::vector<std::string> vcStr1;
+			std::vector<std::string> vcStr2;
+			splitString(group_str, ";", vcStr1);
+			int size_str_split_count = vcStr1.size();
+			for (size_t i = 0; i < size_str_split_count; i++)
+			{
+				splitString(vcStr1[i], ",", vcStr2);
+				if (vcStr2.size() == 2)
+				{
+					message::intPair* pair_entry = info->add_resources();
+					int number_1 = atoi(vcStr2[0].c_str());
+					int number_2 = atoi(vcStr2[1].c_str());
+					pair_entry->set_number_1(number_1);
+					pair_entry->set_number_2(number_2);
+				}
+
+			}
+		}
 		if (is_admin == 0)
 		{
 			info->set_isadmin(false);

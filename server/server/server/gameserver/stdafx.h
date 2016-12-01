@@ -54,7 +54,7 @@ struct FuGameFather
 	GateManager     sGateManager;
 	GateTcpServer   sGateTcpServer;
 	GameDBClient    sGameConnDB;
-	//GameConfig		sGameConfig;
+	GameConfig		sGameConfig;
 	Database        sCharacterDB;
 	Database		sCenterDB;
 	Database		sWorldDB;
@@ -75,6 +75,7 @@ extern FuGameFather* gFuGameFather;
 #define gWorldDatabase		gFuGameFather->sWorldDB
 #define gPlayerManager		gFuGameFather->sPlayerManager
 #define gOfficilMapManager  gFuGameFather->sOfficilMapManager
+#define gGameConfig			gFuGameFather->sGameConfig
 
 //#define gCharacterManager   gFuGameFather->sNoneCharacterManager
 //#define gGameConfig			gFuGameFather->sGameConfig

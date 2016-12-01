@@ -8,12 +8,33 @@
 CrashPlayer::CrashPlayer(Session* session):_session(session)
 {
 }
-
+CrashPlayer::CrashPlayer(Session* session, account_type acc) : _session(session)
+{
+	_info.set_name("name");
+	_info.set_pass_point(0);
+	_info.set_pass_section(0);	
+	_info.set_isadmin(true);
+	_info.set_account(acc);
+}
 
 CrashPlayer::~CrashPlayer(void)
 {
 }
 
+void CrashPlayer::LoadConfig()
+{
+	const MapConfig* config = gGameConfig.getMapConfig();
+	google::protobuf::RepeatedPtrField< ::message::intPair >* resources = _info.mutable_resources();
+	resources->Clear();
+	std::map<int, int>::const_iterator const_it = config->group_config_count_.begin();
+	for (; const_it != config->group_config_count_.end(); ++ const_it)
+	{
+		message::intPair* pair_entry = resources->Add();
+		pair_entry->set_number_1(const_it->first);
+		pair_entry->set_number_2(const_it->second);
+
+	}
+}
 
 void CrashPlayer::SetInfo(message::CrashPlayerInfo info)
 {

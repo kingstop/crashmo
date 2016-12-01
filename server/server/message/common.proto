@@ -40,6 +40,9 @@ message CrashPlayerInfo
 	repeated CrashMapData CompleteMap = 7;
 	required bool isadmin = 8;
 	repeated intPair resources = 9;
+	required int32 map_width = 10;
+	required int32 map_height = 11;	
+	required int32 map_count = 12;
 }
 
 

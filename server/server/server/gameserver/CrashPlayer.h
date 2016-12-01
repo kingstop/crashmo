@@ -4,6 +4,7 @@ class CrashPlayer : public EventableObject
 {
 public:
 	CrashPlayer(Session* session);
+	CrashPlayer(Session* session, account_type acc);
 	virtual ~CrashPlayer(void);
 public:
 	void SetInfo(message::CrashPlayerInfo info);	
@@ -18,6 +19,7 @@ public:
 	void SaveMap(message::MsgSaveMapReq* msg);
 	void DelMap(message::MsgDelMapReq* msg);
 	void sendPBMessage(google::protobuf::Message* p);
+	void LoadConfig();
 	account_type getAccount();
 protected:
 	bool havemapname(const char* mapname);

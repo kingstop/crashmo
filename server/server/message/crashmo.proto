@@ -20,6 +20,10 @@ message CrashmoClientInit
 {
 	required CrashPlayerInfo info = 1;
 	repeated MsgIntStringProto sections_names = 2;
+	repeated intPair resources_config_max = 3;
+	required int32 map_width_config_max = 4;
+	required int32 map_height_config_max = 5;
+	required int32 map_count_max = 6;
 }
 
 
