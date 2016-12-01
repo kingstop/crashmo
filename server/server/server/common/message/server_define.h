@@ -98,7 +98,7 @@ enum
 
 
 
-typedef u32  account_type ;
+typedef u64  account_type ;
 
 typedef u32  tran_id_type;
 

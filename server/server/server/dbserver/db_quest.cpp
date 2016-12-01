@@ -107,7 +107,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 	}
 	sprintf(sql, "replace into `character`(`account`, `pass_point`, `pass_section`,\
 		 `name`, `isadmin`, `map_width`,\
-		 `map_height`, `map_count`, `group_count`) values (%u, %d, %d, '%s', %d, %d, %d, %d, '%s')",
+		 `map_height`, `map_count`, `group_count`) values (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s')",
 		acc_temp, playerInfo->pass_point(), playerInfo->pass_section(), playerInfo->name().c_str(), (int)playerInfo->isadmin(),
 		playerInfo->map_width(), playerInfo->map_height(), playerInfo->map_count(), resource_str.c_str());
 	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, &parms, NULL, _QUERY_SAVE_PLAYER_);
@@ -120,7 +120,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 	}
 
 	std::string temp_sql_replace;
-	sprintf(sql, "delete from player_map where `account`=%lu;", acc_temp);
+	sprintf(sql, "delete from player_map where `account`=%llu;", acc_temp);
 	temp_sql_replace += sql;
 	temp_sql_replace += "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`) values";
 	int count = 0;
@@ -136,7 +136,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
 
-		sprintf(sql, "(%llu, %lu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
+		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
 			Data.mapname().c_str(), temp_data.c_str(),
 			create_time.c_str(), 1);
 		temp_sql_replace += sql;
@@ -158,7 +158,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		std::string create_time = get_time(Data.create_time());
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
-		sprintf(sql, "(%llu, %lu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
+		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
 			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0);
 		temp_sql_replace += sql;
 	}
@@ -178,7 +178,7 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 	DBQuery& query = *p;
 	DBQParms parms;
 	char sql[256];
-	sprintf(sql, "select * from `character` where `account` = %u", pkParm->account_);
+	sprintf(sql, "select * from `character` where `account` = %llu", pkParm->account_);
 	query << sql;
 	query.parse();
 	SDBResult sResult = query.store(parms);
@@ -225,7 +225,7 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 			info->set_isadmin(true);
 		}
 
-		sprintf(sql, "select *,UNIX_TIMESTAMP(`create_time`) from player_map where account = %u", pkParm->account_);
+		sprintf(sql, "select *,UNIX_TIMESTAMP(`create_time`) from player_map where account = %llu", pkParm->account_);
 		query.reset();
 		//query.clear();
 		query << sql;
