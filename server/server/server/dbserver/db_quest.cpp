@@ -75,7 +75,7 @@ void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
 	temp_data = map_temp->data().SerializeAsString();
 	int temp_number = map_temp->number();
 	std::string create_time = get_time(map_temp->create_time());
-	sprintf(sql, "(%llu, '%s', '%s', '%s', '%s', %d, %d)",0, map_temp->creatername().c_str(),
+	sprintf(sql, "(%d, '%s', '%s', '%s', '%s', %d, %d)",0, map_temp->creatername().c_str(),
 		map_temp->mapname().c_str(), 
 		base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size()).c_str(), 
 		create_time.c_str(), 
@@ -136,7 +136,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
 
-		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
+		sprintf(sql, "(%lu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
 			Data.mapname().c_str(), temp_data.c_str(),
 			create_time.c_str(), 1);
 		temp_sql_replace += sql;
@@ -158,7 +158,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		std::string create_time = get_time(Data.create_time());
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
-		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
+		sprintf(sql, "(%lu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
 			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0);
 		temp_sql_replace += sql;
 	}
