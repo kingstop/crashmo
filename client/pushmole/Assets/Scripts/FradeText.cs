@@ -4,73 +4,28 @@ using System.Collections;
 
 public class FradeText : MonoBehaviour {
 	public Text _title;
-	protected long _start_time;
+    protected ngui_edit_manager _parent;
+    protected long _start_time;
 
-	/*
-	public static void FadeOpenMenu(GameObject targetGO)  
-	{  
-		Component[] comps = targetGO.GetComponentsInChildren<Component>();  
-		for (int index = 0; index < comps.Length; index++)  
-		{  
-			Component c = comps[index];  
-			if (c is Graphic)  
-			{  
-				//(c as Graphic).color = new Color(1, 1, 1, 0);  
-				// (c as Graphic).CrossFadeAlpha(1f, MENU_FADE_IN_TIME, true);  
-				(c as Graphic).CrossFadeAlpha  
-					.DoFade(0f, MENU_FADE_IN_TIME)  
-					.SetDelay(CAMERA_ZOOM_IN_DELAY)  
-					.SetEase(MENU_SCALE_OPEN_TYPE)  
-					.From()  
-					.OnComplete(  
-						() =>  
-						{  
-							MenuSignalManager.OpenedMenuSignal.Dispatch();  
-						});  
-			}  
-		}  
-		// 执行完毕的回调  
-	}  
-	/// <summary>  
-	/// 渐隐菜单(无销毁操作)  
-	/// </summary>  
-	/// <param name="targetGO">菜单游戏对象</param>  
-	public static void FadeCloseMenu(GameObject targetGO)  
-	{  
-		Component[] comps = targetGO.GetComponentsInChildren<Component>();  
-		for (int index = 0; index < comps.Length; index++)  
-		{  
-			Component c = comps[index];  
-			if (c is Graphic)  
-			{  
-				//(c as Graphic).CrossFadeAlpha(0, MENU_FADE_OUT_TIME, true);      // 当然了如果认为不方便的话，可以使用dotween的Graphic的DoColor、DoFade  
-				(c as Graphic).  
-				DoFade(0, MENU_FADE_OUT_TIME)  
-					.SetEase(MENU_FADE_OUT_TYPE)  
-					.OnComplete(() =>  
-						{  
-							MenuSignalManager.CloseedMenuSignal.Dispatch(targetGO);  
-						});  
-			}  
-		}  
-		// 执行完毕的回调  
-	} 
-	*/
 	// Use this for initialization
-	void Start () {	
-		
-		Component[] comps = GetComponentsInChildren<Component>();  
+	void Start () {
+        _start_time = global_instance.Instance.getTime();
+        Component[] comps = GetComponentsInChildren<Component>();  
 		foreach (Component c in comps)  
 		{  
 			if (c is Graphic)  
 			{  
-				(c as Graphic).CrossFadeAlpha(0, 6, true);  
+				(c as Graphic).CrossFadeAlpha(0, 4, true);  
 			}  
 
 		}  
 	//	FadeOpenMenu (this.gameObject);
 	}
 
+    public void setParent(ngui_edit_manager parent)
+    {
+        _parent = parent;
+    }
 	public void setText(string txt)
 	{
 		_title.text = txt;
@@ -92,7 +47,20 @@ public class FradeText : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	}
+        long cur_time = global_instance.Instance.getTime();
+        long spwan_time =  cur_time - _start_time;
+        if(spwan_time > 5)
+        {
+            _parent.DestroyFrade(this);
+        }
+        else
+        {
+            Vector3 vc_position = this.gameObject.transform.position;
+            vc_position.y += 0.15f;
+            this.gameObject.transform.position = vc_position;
+        }
+
+    }
 
 
 

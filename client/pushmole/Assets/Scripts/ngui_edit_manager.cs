@@ -53,19 +53,22 @@ public class ngui_edit_manager : MonoBehaviour {
     public Text _record_txt;
     public Text _account;
     public Text _password;
-	public FradeText _point_out;
-
+    public List<FradeText> _frade_texts = new List<FradeText>();
+	//public FradeText _point_out;
     public UIGameEnd _game_end;
     public ColorBoard _color_board;
+    public GameObject _point_text_position_obj;
+    protected GameObject _source_frade;
 
 	/// <summary>
 
 	/// </summary>
     void Awake()
     {
-		//_show_point_out = false;
-		_point_out.gameObject.SetActive (false);
-       // Dictionary<int, Color> temp_dic = new Dictionary<int, Color>();
+        _source_frade = Resources.Load<GameObject>("prefab/point_out_txt");
+        //_show_point_out = false;
+        //_point_out.gameObject.SetActive (false);
+        // Dictionary<int, Color> temp_dic = new Dictionary<int, Color>();
         _group_color.Add(0, new Color((float)120/255, (float)56/255, (float)56/255));
 
         _group_color.Add(1, new Color((float)170/255, (float)170/255, (float)255/255));
@@ -112,8 +115,12 @@ public class ngui_edit_manager : MonoBehaviour {
 
 	public void set_point_text(string txt)
 	{
-		_point_out.setText(txt);	
-		_point_out.gameObject.SetActive (true);
+        FradeText frab = GameObject.Instantiate(_source_frade).GetComponent<FradeText>();
+        frab.gameObject.transform.position = _point_text_position_obj.transform.position;
+        frab.setText(txt);
+        frab.setParent(this);
+        frab.gameObject.transform.parent = _edit_obj_btns.gameObject.transform;
+        _frade_texts.Add(frab);
 	}
 
     public void setColorButtonText(int group, string txt)
@@ -565,10 +572,11 @@ public class ngui_edit_manager : MonoBehaviour {
         _game_obj_btns.SetActive(false);
         _game_end.gameObject.SetActive(false);
          gamestate_btn(type);
+        ClearFradeText();
         //hide_game_btns();
         //hide_edit_btn();
         //hide_create_btns();
-        switch(type)
+        switch (type)
         {
             case game_type.create:
                 {
@@ -642,5 +650,19 @@ public class ngui_edit_manager : MonoBehaviour {
 
     }
 
+    public void DestroyFrade(FradeText entry)
+    {
+        _frade_texts.Remove(entry);
+        DestroyObject(entry.gameObject);
+    }
+
+    protected void ClearFradeText()
+    {
+        foreach(FradeText entry in _frade_texts)
+        {
+            DestroyObject(entry.gameObject);
+        }
+        _frade_texts.Clear();
+    }
 
 }

@@ -246,17 +246,15 @@ public class crashmolegrid : MonoBehaviour
 								if (count_temp > 0 || global_instance.Instance._player.isadmin() == true) 
 								{
 									int last_group = grid_temp.get_group ();
-
 									grid_temp.set_group (global_instance.Instance._current_group);
 									global_instance.Instance._crash_mole_grid_manager.modifyResourceCount (last_group, -1);
 									global_instance.Instance._crash_mole_grid_manager.modifyResourceCount (global_instance.Instance._current_group, 1);
-									global_instance.Instance._ngui_edit_manager.set_point_text ("点点点");
+									
 								}
 								else 
 								{
-
-								}                                									                               
-                                
+                                    global_instance.Instance._ngui_edit_manager.set_point_text("没有足够资源");
+                                }                                									                                                               
                             }
                         }
                     }
