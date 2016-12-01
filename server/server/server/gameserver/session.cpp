@@ -65,7 +65,7 @@ Session::Session(tran_id_type t, account_type a, u16 gate)
 	{
 		_player->SetSession(this);
 		_player->StartSave();
-
+		CreateCrashMoClientInit();
 	}
 }
 
