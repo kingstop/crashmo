@@ -105,7 +105,6 @@ public class MapData
 
 public class crash_mole_grid_manager : MonoBehaviour {
     GameObject _source_crash_mole_obj;
-    //GameObject _source_flag_mole_obj;
     GameObject _source_map_mole_obj;
     crashmolegrid[,] _crashmolegrids;
     ArrayList _objlist = new ArrayList();
@@ -114,7 +113,6 @@ public class crash_mole_grid_manager : MonoBehaviour {
     protected Dictionary<int, int> _resources_max = new Dictionary<int, int>();
     private int _max_width;
     private int _max_height;
-   // private bool _mouse_down;
 
     public int get_max_width()
     {
@@ -142,7 +140,6 @@ public class crash_mole_grid_manager : MonoBehaviour {
     void Awake()
     {
         _source_crash_mole_obj = Resources.Load<GameObject>("prefab/mole_object");
-        //_source_flag_mole_obj = Resources.Load<GameObject>("prefab/flag");
         _source_map_mole_obj = Resources.Load<GameObject>("prefab/map");
         global_instance.Instance._crash_mole_grid_manager = this;
     }
@@ -198,9 +195,6 @@ public class crash_mole_grid_manager : MonoBehaviour {
             _max_height = mapinfo.height_;
         }
         _crashmolegrids = new crashmolegrid[_max_width, _max_height];
-		//Vector3 new_position = new Vector3((float)7.7, (float)4.7, (float)-10.6);
-		//Camera.main.transform.position = new_position;
-
 		for (int i = 0; i < _max_width; i++)
 		{
 			for (int j = 0; j < _max_height; j++)
@@ -267,7 +261,6 @@ public class crash_mole_grid_manager : MonoBehaviour {
     {
         int resource_max = getResourceMaxCount(group);
         int current_resource_count = getResourceCount(group);
-
         int remainder = resource_max - current_resource_count;
         return remainder;
     }
