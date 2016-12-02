@@ -3,8 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using message;
-using System.IO;
 using common.Sockets;
+using System.IO;
 
 enum u3dclient_state
 {
@@ -81,6 +81,7 @@ public class u3dclient
     public void connect()
     {
         //socket_client.Connect("192.168.0.106", 30004);// 内网IP
+        socket_client.Connect("114.55.116.251", 20002);// 外网IP 114.55.116.251 Port 30004
         //socket_client.Connect("114.55.116.251", 41005);// 外网IP 114.55.116.251 Port 41005
         //socket_client.Connect("114.55.116.251", 50004);// 外网IP 114.55.116.251 Port 50004
         //socket_client.Connect("127.0.0.1", 41005);// 外网IP 114.55.116.251 Port 41005
