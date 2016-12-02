@@ -185,7 +185,7 @@ void GateSession::proc_message( const message_t& msg )
 
 {
 
-	parsePBMessage(msg.data, msg.len, _base64);
+	parsePBMessage(msg.data, msg.len, msg.base64);
 
 }
 

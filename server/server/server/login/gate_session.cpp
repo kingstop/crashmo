@@ -70,7 +70,7 @@ void GateSession::initPBModule()
 }
 void GateSession::proc_message( const message_t& msg )
 {
-	parsePBMessage(msg.data, msg.len, _base64);
+	parsePBMessage(msg.data, msg.len, msg.base64);
 }
 void GateSession::on_close( const boost::system::error_code& error )
 {

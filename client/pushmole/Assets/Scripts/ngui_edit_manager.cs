@@ -220,7 +220,7 @@ public class ngui_edit_manager : MonoBehaviour {
     {
         string account = _account.text;
         string password = _account.text;
-        global_instance.Instance._net_client.register_account(account, password);
+        //global_instance.Instance._net_client.register_account(account, password);
     }
 
     public void on_create_btn_click()

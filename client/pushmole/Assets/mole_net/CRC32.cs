@@ -59,4 +59,23 @@ public sealed class CRC32
         int t = (int)temp;
         return (t);
     }
+
+    public static int GetCRC32(byte[] bytes)
+    {
+        if(bytes.Length == 0)
+        {
+            return 0;
+        }
+
+        int iCount = bytes.Length;
+        UInt32 crc = 0 ^ 0xFFFFFFFF;
+        for (int i = 0; i < iCount; i++)
+        {
+            crc = crcTable[(crc ^ bytes[i]) & 0xFF] ^  (crc >> 8);
+        }
+        UInt32 temp = crc ^ 0xFFFFFFFF;
+        int t = (int)temp;
+        return (t);
+
+    }
 }

@@ -275,12 +275,20 @@ namespace common.Sockets
                         Array.Copy(read_buffer, cur_ptr, msg, 0, data_length);
                         ptr = cur_ptr + (int)data_length;
                         length = 0;
+                        //int current_data_length = cur_ptr + (int)data_length;
+                        //int last_buffer_length = (int)TotalLength - (int)current_data_length;
+                        //if (last_buffer_length > 0)
+                        //{
+                        //    _lastbuffer = new byte[last_buffer_length];
+                        //    Array.Copy(read_buffer, current_data_length, _lastbuffer,0,  last_buffer_length);
+
+                        //}
                         messageQueue.Enqueue(msg);
                     }
 					
 				}
 			}
-			catch(Exception e)
+			catch
 			{
 				Console.WriteLine("Error:SocketClient: Got Exception while ParseMessage");
 			}
@@ -415,38 +423,39 @@ namespace common.Sockets
 		/// <param name="iPort"> The Port to connect to </param>
 		public void Connect(String ipAddress, int port)
 		{
-			try
-			{
-				if (this.networkStream == null)
-				{
-					// Set the Ipaddress and Port
-					this.IpAddress = ipAddress;
-					this.Port = port;
+            try
+            {
+                if (this.networkStream == null)
+                {
+                    // Set the Ipaddress and Port
+                    this.IpAddress = ipAddress;
+                    this.Port = port;
 
-					// Attempt to establish a connection
-					this.tcpClient = new TcpClient(this.IpAddress, this.Port);
-					this.networkStream = this.tcpClient.GetStream();
+                    // Attempt to establish a connection
+                    this.tcpClient = new TcpClient(this.IpAddress, this.Port);
+                    this.networkStream = this.tcpClient.GetStream();
 
-					// Set these socket options
-					this.tcpClient.ReceiveBufferSize = this.receiveBufferSize;
-					this.tcpClient.SendBufferSize = this.sendBufferSize;
-					this.tcpClient.NoDelay = true;
-					this.tcpClient.LingerState = new System.Net.Sockets.LingerOption(false,0);
-					
-					this.m_Connected = true;
-					// Start to receive messages
-                    if(this.connectHandler != null)
+                    // Set these socket options
+                    this.tcpClient.ReceiveBufferSize = this.receiveBufferSize;
+                    this.tcpClient.SendBufferSize = this.sendBufferSize;
+                    this.tcpClient.NoDelay = true;
+                    this.tcpClient.LingerState = new System.Net.Sockets.LingerOption(false, 0);
+
+                    this.m_Connected = true;
+                    // Start to receive messages
+                    if (this.connectHandler != null)
                     {
                         connectHandler(this);
                     }
-					Receive();
-				}
-			}
-			catch (System.Net.Sockets.SocketException e)
-			{
-				Console.WriteLine("Error:SocketClient: Got Exception while Connect:"+ e.Message);
-				throw new Exception(e.Message, e.InnerException);
-			}
+                    Receive();
+                }
+            }
+            catch (System.Net.Sockets.SocketException e)
+            {
+               // global_instance.Instance._client_session.addmsg(Consts.NetworkError, new System.IO.MemoryStream());
+                //Console.WriteLine("Error:SocketClient: Got Exception while Connect:" + e.Message);
+                //throw new Exception(e.Message, e.InnerException);
+            }
 		}
 
 		/// <summary> 
@@ -494,22 +503,34 @@ namespace common.Sockets
 
 		public bool Send(Byte[] rawBuffer)
 		{
-			if ((this.networkStream != null) && (this.networkStream.CanWrite))
-				//&& 
-				//(clientSocket != null) && (this.clientSocket.Connected == true))
-			{
-				// Issue an asynchronus write
+            if ((this.networkStream != null) && (this.networkStream.CanWrite))
+            //&& 
+            //(clientSocket != null) && (this.clientSocket.Connected == true))
+            {
+                if (!CheckInConnection())
+                {
+                    CachedMessage();
+                }
+
+                // Issue an asynchronus write
                 int size = rawBuffer.GetLength(0) + 4;
                 byte[]  bytes = BitConverter.GetBytes(size);
                 int SendNumber = bytes.GetLength(0) + rawBuffer.GetLength(0);
                 byte[] send_buf = new byte[SendNumber];
                 Array.Copy(bytes, send_buf, bytes.Length);
                 Array.Copy(rawBuffer, 0, send_buf, bytes.Length, rawBuffer.Length);
-
-                this.networkStream.BeginWrite(send_buf, 0, send_buf.GetLength(0), this.callbackWriteMethod, null);
+                try
+                {
+                    this.networkStream.BeginWrite(send_buf, 0, send_buf.GetLength(0), this.callbackWriteMethod, null);
+                }
+                catch (System.Exception e)
+                {
+                    CachedMessage();
+                    //throw new Exception(e.Message, e.InnerException);
+                }
 
                 //this.networkStream.EndWrite()
-				return true;
+                return true;
 			}
 			else
 				return false;
@@ -539,6 +560,40 @@ namespace common.Sockets
 				throw new Exception("Socket Closed");
 		}
 
+        private void CachedMessage()
+        {
+            //if (global_instance.Instance.toSendMsg == null)
+            //{
+            //    Disconnect();
+            //    global_instance.Instance.toSendMsg = global_instance.Instance._net_client.cachedMsg;
+            //    global_instance.Instance._client_session.addmsg(Consts.NetworkError, new System.IO.MemoryStream());
+            //}
+        }
+
+        public bool CheckInConnection()
+        {
+            if (tcpClient == null || !tcpClient.Connected) return false;
+            if (tcpClient.Client == null) return false;
+            //if (HeartBeatManager.Instance.StartHeartBeat && !HeartBeatManager.Instance.IsConnected) return false;
+            //try
+            //{
+            //    if (tcpClient.Client.Poll(10, SelectMode.SelectRead))
+            //    {
+            //        byte[] buffer = new Byte[this.SizeOfRawBuffer];
+            //        int nRead = tcpClient.Client.Receive(buffer);
+            //        if (nRead == 0)
+            //        {
+            //            //socket连接已断开
+            //            return false;
+            //        }
+            //    }
+            //}
+            //catch
+            //{
+            //    return false;
+            //}
+            return true;
+        }
 	}
 }
 
