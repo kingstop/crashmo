@@ -1,5 +1,6 @@
 #ifndef __common_type_h__
 #define __common_type_h__
+#include "stdint.h"
 #ifndef WIN32
 typedef unsigned char           u8;
 typedef signed char             s8;

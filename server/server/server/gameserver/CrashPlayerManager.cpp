@@ -39,6 +39,7 @@ CrashPlayer* CrashPlayerManager::CreatePlayer(account_type acc, Session* session
 		info_temp.CopyFrom(info->data());
 		player = new CrashPlayer(session);
 		player->SetInfo(info_temp);
+		_players.insert(CRASHPLAYERS::value_type(player->getAccount(), player));
 	}
 	return player;
 
@@ -46,6 +47,7 @@ CrashPlayer* CrashPlayerManager::CreatePlayer(account_type acc, Session* session
 
 void CrashPlayerManager::DestroyPlayer(CrashPlayer* p)
 {
+	int length = _players.size();
 	CRASHPLAYERS::iterator it = _players.find(p->getAccount());
 	if (it != _players.end())
 	{
@@ -63,7 +65,7 @@ CrashPlayer* CrashPlayerManager::CreatePlayer(account_type acc, Session* session
 
 		player = new CrashPlayer(session);
 		player->LoadConfig();
-		
+		_players.insert(CRASHPLAYERS::value_type(player->getAccount(), player));
 		//player->SetInfo(info);
 	}
 	return player;

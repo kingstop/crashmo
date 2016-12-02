@@ -90,7 +90,7 @@ void GameSession::parseSaveSectionNamesReq(google::protobuf::Message* p, pb_flag
 
 void GameSession::proc_message( const message_t& msg )
 {
-	parsePBMessage(msg.data, msg.len);
+	parsePBMessage(msg.data, msg.len, _base64);
 }
 
 void GameSession::on_close( const boost::system::error_code& error )

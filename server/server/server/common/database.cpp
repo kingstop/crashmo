@@ -140,10 +140,10 @@ void db_thread::work()
 	{
 		if (!_mysql->connected())
 		{ 
-
 			Mylog::log_database( LOG_ERROR, "mysql connect disconnect..!");
             return ;
-		}			
+		}
+			
 		try
 		{
 			switch ( _task->store)
@@ -296,6 +296,9 @@ void Database::addDone(DBTask* task)
 	boost::mutex::scoped_lock lock(_mutex_done);
 	_results.push_back( task );
 }
+
+
+
 void Database::checkStop()
 {
 	if (isObjState(_wait_stop_))

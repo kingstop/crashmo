@@ -8,6 +8,10 @@
 //////////////////////////////////////////////////////////////////////////
 //  server frame ...													//
 //////////////////////////////////////////////////////////////////////////
+extern bool g_wait_stop;
+extern s64 g_server_time;
+extern s64 g_server_start_time;
+
 class ServerFrame
 {
 public:
@@ -24,6 +28,7 @@ public:
     {
         _FU_CHARACTER_DATABASE_,  //角色数据服
         _FU_WORLD_DATABASE_,      //游戏数据配置服
+		_FU_RECORD_DATABASE_      //游戏统计服务器
     };
 	
 	virtual bool init();					// init server service
@@ -34,7 +39,7 @@ public:
 	virtual void memoryLog() = 0;			// memory information
 	virtual void setStop() = 0;				// set stop service..
 	virtual void checkStop() = 0;			// check service stop
-
+	virtual void signalStop();
 	static bool loadNetConfig(net_info& _conf, const char* str);
 	static bool loadDBConfig(DataBaseConfig&_config, const char* str);
     static bool loadServiceConfig(service_config& _config, const char* str);

@@ -4,12 +4,11 @@
 #ifndef BOOST_ALL_NO_LIB
 #define BOOST_ALL_NO_LIB
 #endif
-
 #endif
+
 #ifndef BOOST_HAS_THREADS
 #define BOOST_HAS_THREADS
 #endif
-
 #include <algorithm>
 #include <cstdlib>
 #include <set>
@@ -21,7 +20,7 @@
 #include <boost/thread/condition.hpp>
 #include <boost/pool/pool.hpp>
 #include <boost/pool/object_pool.hpp>
-#ifndef _WIN32_WINDOWS
+#ifndef WIN32
 #include <sys/types.h>
 #include <unistd.h>
 #else
@@ -30,29 +29,32 @@
 #include <time.h>
 #include <stdio.h>
 #include <signal.h>
-void signal_handle(int);
+
+#include <stdio.h>
+void signal_handle(int n);
 bool is_in_today(const time_t * t);
 bool is_in_current_mon(const time_t * t);
 void save_pid();
-std::string newGUID();
 template<class T>
 void safe_delete( T*& p )
 {
 	if( p )
 	{
 		delete p;
-		p = 0;
+		p = NULL;
 	}
 }
+
 template<class T>
 void safe_release( T*& p )
 {
 	if( p )
 	{
 		p->release();
-		p = 0;
+		p = NULL;
 	}
 }
+
 template<class T>
 class auto_array_ptr
 {
@@ -65,6 +67,7 @@ public:
 private:
 	T* m_ptr;
 };
+
 template<class T>
 class smart_ptr
 {
@@ -72,7 +75,6 @@ public:
 	typedef smart_ptr<T> self_type;
 	smart_ptr( T* p ) : m_ptr( p ), m_owner( true )
 	{
-
 	}
 
 	smart_ptr( const self_type& sp ) : m_owner( true ), m_ptr( sp.m_ptr )
@@ -134,13 +136,11 @@ public:
 	{
 		return m_ptr != NULL;
 	}
-
 private:
 	mutable bool m_owner;
 	T* m_ptr;
 };
 
-int splitString(const std::string & strSrc, const std::string& strDelims, std::vector<std::string>& strDest);
 boost::uint32_t interlocked_increment( volatile boost::uint32_t* target );
 boost::uint32_t interlocked_decrement( volatile boost::uint32_t* target );
 void interlocked_write( volatile boost::uint32_t* target, boost::uint32_t value );
@@ -154,6 +154,7 @@ unsigned int get_tick_count();
 #ifndef _WIN32
 const char* itoa( int value, char* str, int base );
 #endif
+
 template<class T>
 bool combine_checksum( std::pair<int, T>* a, int n, int m, int b[], const int M, const int sum, std::vector<std::pair<int, T>*>& out )
 {
@@ -177,6 +178,7 @@ bool combine_checksum( std::pair<int, T>* a, int n, int m, int b[], const int M,
 				if( s == sum )
 					su = true;
 			}
+
 			if( su )
 			{
 				int s = 0;
@@ -212,22 +214,54 @@ class function_spend_time_monitor
 public:
 	function_spend_time_monitor( const char* fn_name );
 	~function_spend_time_monitor();
+
+
+
 private:
+
 	unsigned int m_begin;
+
 	unsigned int m_end;
+
 	std::string m_name;
+
 };
+
+
 
 void convert_unix_time( unsigned int t, int* outyear, int* outmonth, int* outday, int* outhour, int* outminute, int* outsecond );
 void build_unix_time_to_string( unsigned int t, std::string& out );
 unsigned int make_unix_time( int year, int month, int day, int hour, int minute, int second );
 bool same_month( unsigned int t1, unsigned int t2 );
 bool same_week( unsigned int t1, unsigned int t2 );
+bool same_day(unsigned int t1, unsigned int t2);
 bool is_dayofweek( unsigned int t, unsigned char dow );
 bool in_duration( unsigned int t, unsigned char hstart, unsigned char hend );
+int SplitStringA(const std::string& strIn, const std::string& strDelimiter, std::vector<std::string>& ret);
+bool isIntger(std::string str);
 bool is_valid_string( const std::string& str );
 char* get_and_create_static_buffer( std::size_t size );
+static unsigned char char_to_hex(unsigned char x)
+{
+	return (unsigned char)(x > 9 ? x + 55 : x + 48);
+}
+
+static int is_alpha_number_char(unsigned char c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'))
+		return 1;
+	return 0;
+}
+
+//url编码实现 
+
+void urlencode(unsigned char * src, unsigned char * dest);
+
+
+//解url编码实现 
+char* urldecode(char* encd, char* decd);
 std::string get_time(time_t cur_time);
+
 struct memory_leak_monitor
 {
 	virtual ~memory_leak_monitor() {}
@@ -247,5 +281,19 @@ private:
 	unsigned int send_index;
 	unsigned int recv_index;
 };
+
+//bool base64_encode(std::string &input, std::string &output);
+//bool Base64_decode(const std::string& input, std::string& output);
+
+
+
+char * base64_encode(const unsigned char * bindata, char * base64, int binlength);
+
+int base64_decode(const char * base64, unsigned char * bindata);
+
+int Base64Encode(unsigned char *out, const unsigned char *in, int inlen);
+int Base64Decode(const char *base64code, long base64length, unsigned char* outbin);
+//std::string base64_encode(unsigned char const*, unsigned int len);
+//std::string base64_decode(std::string const& s);
 #endif // _NEW_COMMON_UTILITIES_HEAD
 

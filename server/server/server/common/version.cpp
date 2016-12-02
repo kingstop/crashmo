@@ -1,4 +1,5 @@
 #include "version.h"
+#include "stdio.h"
 
 std::string Version::toString()
 {

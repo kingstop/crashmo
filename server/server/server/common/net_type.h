@@ -6,7 +6,7 @@ struct net_info
     net_info()
     {
         _id = 0;
-        _ip = "116.228.58.60";
+        _ip = "10.1.1.115";
         _port = 10104;
         _time_out = 0;
         _max_connect = 2000;

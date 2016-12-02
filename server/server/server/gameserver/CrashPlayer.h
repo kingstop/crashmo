@@ -24,9 +24,11 @@ public:
 protected:
 	bool havemapname(const char* mapname);
 	void Destroy();
+	void SendPing();
 
 protected:
 	Session* _session;
 	message::CrashPlayerInfo _info;
+	int _ping_count;
 };
 

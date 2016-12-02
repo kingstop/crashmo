@@ -1,17 +1,17 @@
 /********************************************************************
 
-Filename:   MyLog
+  Filename:   MyLog
 
-Description:MyLog
+  Description:MyLog
 
-Version:  1.0
-Created:  30:3:2015   12:01
-Revison:  none
-Compiler: gcc vc
+  Version:  1.0
+  Created:  30:3:2015   12:01
+  Revison:  none
+  Compiler: gcc vc
 
-Author:   wufan, love19862003@163.com
+  Author:   wufan, love19862003@163.com
 
-Organization:
+  Organization:
 *********************************************************************/
 #ifndef __MyLog_H__
 #define __MyLog_H__
@@ -25,11 +25,11 @@ Organization:
 namespace ShareSpace {
 
 	namespace MyLog {
-		template < typename T > std::string to_string(const T& n)
+		template < typename T > std::string to_string( const T& n )
 		{
-			std::ostringstream stm;
-			stm << n;
-			return stm.str();
+			std::ostringstream stm ;
+			stm << n ;
+			return stm.str() ;
 		}
 		struct Log {
 			static bool log_init(const std::string& f);
@@ -220,6 +220,6 @@ namespace ShareSpace {
 
 		}
 	}
-	//#endif
+//#endif
 
 #endif

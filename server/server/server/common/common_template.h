@@ -138,20 +138,10 @@ public:
     {
         typename std::map<KEY, T>::iterator it = m_DataMap.begin();
         typename std::map<KEY, T>::iterator itend = m_DataMap.end();
-
-#ifndef _WIN32_WINDOWS
-
-		for(it; it != itend; ++it)
-		{
-			T& a = it->second;
-			if (a == v)
-			{
-				m_DataMap.erase(it);
-			}                         
-		}
-#else 
-		for(it; it != itend;)
-		{
+        
+        for(it; it != itend;)
+        {
+#ifdef WIN32
 			T& a = it->second;
 			if (a == v)
 			{
@@ -159,13 +149,22 @@ public:
 			}
 			else
 			{
-				 ++it;
+				++it;
 			}
-		}
+#else
 
-#endif
+			T& a = it->second;
+			if (a == v)
+			{
+				m_DataMap.erase(it);
+			}
 
+			++it;
 
+#endif // WIN32
+
+                         
+        }
        
     }
 

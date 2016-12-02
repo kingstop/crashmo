@@ -18,6 +18,7 @@ public:
 	virtual void push_message( message_t* msg );
 	virtual void reset();
 	virtual void run();
+	void set_base64(bool b);
 
 public:
 	bool is_valid();
@@ -30,9 +31,10 @@ public:
 	std::string get_remote_address_string() const;
 	unsigned int get_remote_address_ui() const;
 	unsigned short get_remote_port() const;
+	bool get_base64() { return _base64; }
 
 
-	void send_message( const void* data,const unsigned int len );
+	void send_message( const void* data, const unsigned int len, bool base64);
 	void close();
 	void close_and_ban();
 public:
@@ -50,8 +52,8 @@ protected:
 	void _send_message( message_t* msg );
 	void begin_read_message();
 	bool _uncompress_message( char* data );
-	message_t* _compress_message( const void* data, message_len len, int t_idx );
-	message_t* _make_message( const void* data, message_len len );
+	message_t* _compress_message( const void* data, message_len len, int t_idx, bool base64);
+	message_t* _make_message( const void* data, message_len len, bool base64 );
 	void _clear_recv_msg();
 	void _clear_send_msg();
 	void _on_close( const boost::system::error_code& error );
@@ -77,6 +79,7 @@ protected:
 	volatile long m_not_sent_size;
 	unsigned char m_send_crypt_key;
 	unsigned char m_recv_crypt_key;
+	bool _base64;
 
 };
 

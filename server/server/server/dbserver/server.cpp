@@ -59,12 +59,6 @@ void DBServer::checkStop()
 
 }
 
-u16  DBServer::getCityGS(u32 city)
-{
-	u16 gs = INVALID_GAME_ID; 
-	m_cityServers.getData(city, gs);
-	return gs;
-}
 
 bool DBServer::initDataFromCharDB(DBQuery* p, const void* data)
 {

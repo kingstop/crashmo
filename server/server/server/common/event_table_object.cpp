@@ -259,15 +259,12 @@ void EventableObjectHolder::update(u32 time_difference)
 				continue;
 			}
 			else
-            {	ev->cb->execute();}
-
-            if(ev->repeats && --ev->repeats == 0)
-			{
-				ev->decRef();
-				m_events.erase(it2);
-				continue;
+            {	
+				ev->cb->execute();
 			}
-			else if(ev->deleted)
+
+			
+            if((ev >= 0 &&(ev->repeats && --ev->repeats == 0) )|| ev->deleted)
 			{
 				ev->decRef();
 				m_events.erase(it2);
@@ -277,7 +274,9 @@ void EventableObjectHolder::update(u32 time_difference)
 			ev->currTime = ev->msTime;
 		}
 		else
-		{   ev->currTime -= time_difference;}
+		{ 
+			ev->currTime -= time_difference;
+		}
 	}
 
 }

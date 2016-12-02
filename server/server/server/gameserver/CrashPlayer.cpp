@@ -7,6 +7,7 @@
 
 CrashPlayer::CrashPlayer(Session* session):_session(session)
 {
+	_ping_count = 0;
 }
 CrashPlayer::CrashPlayer(Session* session, account_type acc) : _session(session)
 {
@@ -15,6 +16,7 @@ CrashPlayer::CrashPlayer(Session* session, account_type acc) : _session(session)
 	_info.set_pass_section(0);	
 	_info.set_isadmin(true);
 	_info.set_account(acc);
+	_ping_count = 0;
 }
 
 CrashPlayer::~CrashPlayer(void)
@@ -99,6 +101,16 @@ void CrashPlayer::SaveCrashInfo()
 	pl_data->CopyFrom(_info);
 
 	gGSDBClient.sendPBMessage(&msg, _session->getTranId());
+}
+
+
+void CrashPlayer::SendPing()
+{
+	_ping_count++;
+	message::MsgS2CNotifyPing msg;
+	msg.set_time_stamp(g_server_time);
+	msg.set_ping_count(_ping_count);
+	sendPBMessage(&msg);
 }
 
 void CrashPlayer::StartSave()

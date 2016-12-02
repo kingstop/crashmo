@@ -7,7 +7,7 @@
 
 struct compress_send_task : public task
 {
-	compress_send_task( const void* src, unsigned short l, tcp_session* s, int ti ) : len( l ), session( s ), thread_index( ti )
+	compress_send_task( const void* src, unsigned short l, tcp_session* s, int ti, bool base64 ) : len( l ), session( s ), thread_index( ti ), _base64(base64)
 	{
 		data = (char*)malloc( len );
 		memcpy( data, src, len );
@@ -15,7 +15,7 @@ struct compress_send_task : public task
 	virtual void execute()
 	{
 		if( session->is_valid() )
-			result = session->_compress_message( data, len, get_thread_index() );
+			result = session->_compress_message( data, len, get_thread_index(), _base64 );
 	}
 
 	virtual void end()
@@ -40,15 +40,21 @@ private:
 	message_t* result;
 	tcp_session* session;
 	int thread_index;
+	bool _base64;
 };
 
 tcp_session::tcp_session( boost::asio::io_service& is )
 : m_socket( NULL ), m_io_service( is ), m_isvalid( false ), m_iscompress( false ), m_thread_index( 0 ), m_isclosing( false ), m_recive_buffer_pos( 0 ),
-	m_remote_ip_ui( 0 ), m_not_sent_size( 0 ), m_send_crypt_key( 0 ), m_recv_crypt_key( 0 ), m_is_sending_data( false )
+	m_remote_ip_ui( 0 ), m_not_sent_size( 0 ), m_send_crypt_key( 0 ), m_recv_crypt_key( 0 ), m_is_sending_data( false ), _base64(false)
 {
 	memset(m_sending_data, 0, sizeof(m_sending_data));
 	memset(m_recv_buffer, 0, sizeof(m_recv_buffer));
 	memset(buffer_, 0, sizeof(buffer_));
+}
+
+void tcp_session::set_base64(bool b)
+{
+	_base64 = b;
 }
 
 tcp_session::~tcp_session()
@@ -133,7 +139,7 @@ unsigned short tcp_session::get_remote_port() const
 	}
 }
 
-void tcp_session::send_message( const void* data, const unsigned int len )
+void tcp_session::send_message( const void* data, const unsigned int len, bool base64)
 {
 	if( !is_valid() || !m_isconnected || !data || !len || len > MAX_MESSAGE_LEN - 1 /*|| m_send_crypt_key == 0*/ )
 		return;
@@ -152,14 +158,16 @@ void tcp_session::send_message( const void* data, const unsigned int len )
 				ti = get_thread_index();
 
 			task* t = NULL;
-			t = new compress_send_task( data, len, this, ti );
+			t = new compress_send_task( data, len, this, ti, base64);
 			m_father->push_task( t );
 		}
 		else
-			_send_message( _make_message( data, len ) );
+			_send_message( _make_message( data, len, base64) );
 	}
 	else
-	{	_send_message(_compress_message( data, len, -1 ) );}
+	{	
+		_send_message(_compress_message( data, len, -1, base64) );
+	}
 }
 
 void tcp_session::close()
@@ -177,15 +185,19 @@ void tcp_session::close_and_ban()
 
 void tcp_session::handle_close()
 {
-	boost::system::error_code ignored_ec;
-	m_socket->shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_ec);
+	if (m_socket != NULL)
+	{
+		boost::system::error_code ignored_ec;
+		m_socket->shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_ec);
 
-	try
-	{
-		m_socket->close();
-	}
-	catch( const boost::system::error_code& )
-	{
+		try
+		{
+			m_socket->close();
+		}
+		catch (const boost::system::error_code&)
+		{
+
+		}
 	}
 
 	//m_send_crypt_key = 0;
@@ -263,7 +275,7 @@ bool tcp_session::_uncompress_message( char* data )
 
 static char static_compress_buffer[MAX_MESSAGE_LEN];
 
-message_t* tcp_session::_compress_message( const void* data, message_len len, int t_idx )
+message_t* tcp_session::_compress_message( const void* data, message_len len, int t_idx, bool base64)
 {
 	message_len size = MAX_MESSAGE_LEN;
 	char* buffptr = NULL;
@@ -272,12 +284,12 @@ message_t* tcp_session::_compress_message( const void* data, message_len len, in
 	else
 		buffptr = static_compress_buffer;
 
-	return message_interface::compress(this, (const char*)data, len, buffptr, size ,&m_send_crypt_key);
+	return message_interface::compress(this, (const char*)data, len, buffptr, size ,&m_send_crypt_key, base64);
 }
 
-message_t* tcp_session::_make_message( const void* data, message_len len )
+message_t* tcp_session::_make_message( const void* data, message_len len, bool base64)
 {
-	return message_interface::makeMessage(this, (const char*)data, len, &m_send_crypt_key, false);
+	return message_interface::makeMessage(this, (const char*)data, len, &m_send_crypt_key, false, base64);
 }
 
 void tcp_session::_clear_send_msg()

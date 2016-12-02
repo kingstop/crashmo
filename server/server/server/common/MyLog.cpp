@@ -5,7 +5,7 @@
 using namespace log4cplus;
 namespace ShareSpace {
 	namespace MyLog {
-		enum {
+		enum  {
 			LOG_FATAL = 0,
 			LOG_ERROR = 1,
 			LOG_WARNING = 2,

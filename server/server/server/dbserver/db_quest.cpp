@@ -136,7 +136,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
 
-		sprintf(sql, "(%lu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
+		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
 			Data.mapname().c_str(), temp_data.c_str(),
 			create_time.c_str(), 1);
 		temp_sql_replace += sql;
@@ -158,7 +158,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		std::string create_time = get_time(Data.create_time());
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
-		sprintf(sql, "(%lu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
+		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
 			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0);
 		temp_sql_replace += sql;
 	}
@@ -200,11 +200,11 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 		{
 			std::vector<std::string> vcStr1;
 			std::vector<std::string> vcStr2;
-			splitString(group_str, ";", vcStr1);
+			SplitStringA(group_str, ";", vcStr1);
 			int size_str_split_count = vcStr1.size();
 			for (size_t i = 0; i < size_str_split_count; i++)
 			{
-				splitString(vcStr1[i], ",", vcStr2);
+				SplitStringA(vcStr1[i], ",", vcStr2);
 				if (vcStr2.size() == 2)
 				{
 					message::intPair* pair_entry = info->add_resources();

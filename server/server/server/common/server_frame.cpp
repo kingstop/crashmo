@@ -1,13 +1,14 @@
 #include "server_frame.h"
 #include "json_help.h"
 #include "utilities.h"
-#ifndef _WIN32_WINDOWS
+#ifndef WIN32
 #include <netdb.h>
 #endif
 
 #include <boost/date_time/posix_time/posix_time.hpp>  
-
-
+bool g_wait_stop = false;
+s64 g_server_time = 0;
+s64 g_server_start_time = 0;
 bool ServerFrame::loadNetConfig(net_info& _config, const char* strfile)
 {
 	_config._ip = "127.0.0.1";
@@ -15,7 +16,6 @@ bool ServerFrame::loadNetConfig(net_info& _config, const char* strfile)
 	_config._time_out = 3000;
 	_config._max_connect = 2000;
 	_config._thread_count = 1;
-
 	JsonHelper help(strfile);
 	if (!help.loadJson())
 	{   return false;}
@@ -25,7 +25,6 @@ bool ServerFrame::loadNetConfig(net_info& _config, const char* strfile)
 	LAZY_JSON_GET_UINT(_config._time_out,			"time_out",			Root);
 	LAZY_JSON_GET_UINT(_config._max_connect	,		"max_connect",		Root);
 	LAZY_JSON_GET_UINT(_config._thread_count,		"thread_count",		Root);
-
 	getIpByname(_config._ip.c_str(), _config._ip);
 	return true ;
 }
@@ -35,18 +34,19 @@ bool ServerFrame::init()
 	_wait_stop = false;
 	_service_stop_state = 0;
     _print = false;
-#ifndef _WIN32_WINDOWS
+	signal(SIGINT, signal_handle);
+#ifndef WIN32
+	signal(SIGHUP, signal_handle); //* 下面设置三个信号的处理方法
+	signal(SIGQUIT, signal_handle);
 	save_pid();
 #endif
-	signal(SIGINT,signal_handle);
-
-	return true ;
+	g_server_start_time = time(NULL);
+	g_server_time = g_server_start_time;
+	return true;
 }
 
 void ServerFrame::run()
 {
-
-
 	boost::posix_time::millisec_posix_time_system_config::time_duration_type time_elapse;
 	boost::posix_time::ptime nLastTime = boost::posix_time::microsec_clock::universal_time();  
 	boost::posix_time::ptime nStartTime = nLastTime ;
@@ -55,11 +55,14 @@ void ServerFrame::run()
 		nStartTime = boost::posix_time::microsec_clock::universal_time();
 		time_elapse = nStartTime - nLastTime ;
 		nLastTime = nStartTime ;
-        
+		g_server_time = time(NULL);
 		runOnce((u32)(time_elapse.total_milliseconds()));
 		onKey();
 		if (_wait_stop)
-		{ checkStop();}
+		{ 
+			checkStop();
+		}
+		signalStop();
 #ifdef _WIN32
 		Sleep(1);
 #else
@@ -144,4 +147,16 @@ bool ServerFrame::loadServiceConfig(service_config& _config, const char* str)
     LAZY_JSON_GET_UINT(_config.speed_,		    "max_speed",			    Root);			
     LAZY_JSON_GET_UINT(_config.msg_pool_size,	"msg_pool_size",	        Root);
     return true ;
+}
+
+void ServerFrame::signalStop()
+{
+	if (g_wait_stop == true)
+	{
+		if (g_wait_stop != _wait_stop)
+		{
+			setStop();
+			_wait_stop = true;
+		}
+	}
 }

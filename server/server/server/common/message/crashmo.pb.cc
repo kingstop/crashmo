@@ -56,6 +56,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* MsgSectionNameACK_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgSectionNameACK_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgS2CNotifyPing_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgS2CNotifyPing_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* ServerError_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* MapType_descriptor_ = NULL;
 
@@ -262,6 +265,22 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgSectionNameACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSectionNameACK, _internal_metadata_),
       -1);
+  MsgS2CNotifyPing_descriptor_ = file->message_type(12);
+  static const int MsgS2CNotifyPing_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNotifyPing, time_stamp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNotifyPing, ping_count_),
+  };
+  MsgS2CNotifyPing_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgS2CNotifyPing_descriptor_,
+      MsgS2CNotifyPing::default_instance_,
+      MsgS2CNotifyPing_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNotifyPing, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgS2CNotifyPing),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNotifyPing, _internal_metadata_),
+      -1);
   ServerError_descriptor_ = file->enum_type(0);
   MapType_descriptor_ = file->enum_type(1);
 }
@@ -300,6 +319,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
       MsgSectionNameReq_descriptor_, &MsgSectionNameReq::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       MsgSectionNameACK_descriptor_, &MsgSectionNameACK::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgS2CNotifyPing_descriptor_, &MsgS2CNotifyPing::default_instance());
 }
 
 }  // namespace
@@ -329,6 +350,8 @@ void protobuf_ShutdownFile_crashmo_2eproto() {
   delete MsgSectionNameReq_reflection_;
   delete MsgSectionNameACK::default_instance_;
   delete MsgSectionNameACK_reflection_;
+  delete MsgS2CNotifyPing::default_instance_;
+  delete MsgS2CNotifyPing_reflection_;
 }
 
 void protobuf_AddDesc_crashmo_2eproto() {
@@ -366,12 +389,14 @@ void protobuf_AddDesc_crashmo_2eproto() {
     "\t\"@\n\027MsgModifySectionNameACK\022\017\n\007section\030"
     "\001 \002(\005\022\024\n\014section_name\030\002 \002(\t\"\023\n\021MsgSectio"
     "nNameReq\"A\n\021MsgSectionNameACK\022,\n\010section"
-    "s\030\001 \003(\0132\032.message.MsgIntStringProto*\177\n\013S"
-    "erverError\022\022\n\016ServerError_NO\020\000\022\026\n\022Server"
-    "Error_Unknow\020\001\022\034\n\030ServerError_HaveSameNa"
-    "me\020\002\022&\n\"ServerError_NotFoundMapNameWhenD"
-    "el\020\003*<\n\007MapType\022\r\n\tOfficeMap\020\001\022\021\n\rImcomp"
-    "leteMap\020\002\022\017\n\013CompleteMap\020\003", 1306);
+    "s\030\001 \003(\0132\032.message.MsgIntStringProto\":\n\020M"
+    "sgS2CNotifyPing\022\022\n\ntime_stamp\030\001 \002(\003\022\022\n\np"
+    "ing_count\030\002 \002(\005*\177\n\013ServerError\022\022\n\016Server"
+    "Error_NO\020\000\022\026\n\022ServerError_Unknow\020\001\022\034\n\030Se"
+    "rverError_HaveSameName\020\002\022&\n\"ServerError_"
+    "NotFoundMapNameWhenDel\020\003*<\n\007MapType\022\r\n\tO"
+    "fficeMap\020\001\022\021\n\rImcompleteMap\020\002\022\017\n\013Complet"
+    "eMap\020\003", 1366);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "crashmo.proto", &protobuf_RegisterTypes);
   MsgIntStringProto::default_instance_ = new MsgIntStringProto();
@@ -386,6 +411,7 @@ void protobuf_AddDesc_crashmo_2eproto() {
   MsgModifySectionNameACK::default_instance_ = new MsgModifySectionNameACK();
   MsgSectionNameReq::default_instance_ = new MsgSectionNameReq();
   MsgSectionNameACK::default_instance_ = new MsgSectionNameACK();
+  MsgS2CNotifyPing::default_instance_ = new MsgS2CNotifyPing();
   MsgIntStringProto::default_instance_->InitAsDefaultInstance();
   CrashmoClientInit::default_instance_->InitAsDefaultInstance();
   MsgSaveMapReq::default_instance_->InitAsDefaultInstance();
@@ -398,6 +424,7 @@ void protobuf_AddDesc_crashmo_2eproto() {
   MsgModifySectionNameACK::default_instance_->InitAsDefaultInstance();
   MsgSectionNameReq::default_instance_->InitAsDefaultInstance();
   MsgSectionNameACK::default_instance_->InitAsDefaultInstance();
+  MsgS2CNotifyPing::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_crashmo_2eproto);
 }
 
@@ -5037,6 +5064,359 @@ MsgSectionNameACK::sections() const {
 MsgSectionNameACK::mutable_sections() {
   // @@protoc_insertion_point(field_mutable_list:message.MsgSectionNameACK.sections)
   return &sections_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MsgS2CNotifyPing::kTimeStampFieldNumber;
+const int MsgS2CNotifyPing::kPingCountFieldNumber;
+#endif  // !_MSC_VER
+
+MsgS2CNotifyPing::MsgS2CNotifyPing()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgS2CNotifyPing)
+}
+
+void MsgS2CNotifyPing::InitAsDefaultInstance() {
+}
+
+MsgS2CNotifyPing::MsgS2CNotifyPing(const MsgS2CNotifyPing& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgS2CNotifyPing)
+}
+
+void MsgS2CNotifyPing::SharedCtor() {
+  _cached_size_ = 0;
+  time_stamp_ = GOOGLE_LONGLONG(0);
+  ping_count_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgS2CNotifyPing::~MsgS2CNotifyPing() {
+  // @@protoc_insertion_point(destructor:message.MsgS2CNotifyPing)
+  SharedDtor();
+}
+
+void MsgS2CNotifyPing::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void MsgS2CNotifyPing::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgS2CNotifyPing::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgS2CNotifyPing_descriptor_;
+}
+
+const MsgS2CNotifyPing& MsgS2CNotifyPing::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_crashmo_2eproto();
+  return *default_instance_;
+}
+
+MsgS2CNotifyPing* MsgS2CNotifyPing::default_instance_ = NULL;
+
+MsgS2CNotifyPing* MsgS2CNotifyPing::New(::google::protobuf::Arena* arena) const {
+  MsgS2CNotifyPing* n = new MsgS2CNotifyPing;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgS2CNotifyPing::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgS2CNotifyPing*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(time_stamp_, ping_count_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgS2CNotifyPing::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgS2CNotifyPing)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int64 time_stamp = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &time_stamp_)));
+          set_has_time_stamp();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_ping_count;
+        break;
+      }
+
+      // required int32 ping_count = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_ping_count:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &ping_count_)));
+          set_has_ping_count();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgS2CNotifyPing)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgS2CNotifyPing)
+  return false;
+#undef DO_
+}
+
+void MsgS2CNotifyPing::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgS2CNotifyPing)
+  // required int64 time_stamp = 1;
+  if (has_time_stamp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->time_stamp(), output);
+  }
+
+  // required int32 ping_count = 2;
+  if (has_ping_count()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->ping_count(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgS2CNotifyPing)
+}
+
+::google::protobuf::uint8* MsgS2CNotifyPing::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgS2CNotifyPing)
+  // required int64 time_stamp = 1;
+  if (has_time_stamp()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->time_stamp(), target);
+  }
+
+  // required int32 ping_count = 2;
+  if (has_ping_count()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->ping_count(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgS2CNotifyPing)
+  return target;
+}
+
+int MsgS2CNotifyPing::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_time_stamp()) {
+    // required int64 time_stamp = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
+        this->time_stamp());
+  }
+
+  if (has_ping_count()) {
+    // required int32 ping_count = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->ping_count());
+  }
+
+  return total_size;
+}
+int MsgS2CNotifyPing::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required int64 time_stamp = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
+        this->time_stamp());
+
+    // required int32 ping_count = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->ping_count());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgS2CNotifyPing::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgS2CNotifyPing* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgS2CNotifyPing*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgS2CNotifyPing::MergeFrom(const MsgS2CNotifyPing& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_time_stamp()) {
+      set_time_stamp(from.time_stamp());
+    }
+    if (from.has_ping_count()) {
+      set_ping_count(from.ping_count());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgS2CNotifyPing::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgS2CNotifyPing::CopyFrom(const MsgS2CNotifyPing& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgS2CNotifyPing::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void MsgS2CNotifyPing::Swap(MsgS2CNotifyPing* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgS2CNotifyPing::InternalSwap(MsgS2CNotifyPing* other) {
+  std::swap(time_stamp_, other->time_stamp_);
+  std::swap(ping_count_, other->ping_count_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgS2CNotifyPing::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgS2CNotifyPing_descriptor_;
+  metadata.reflection = MsgS2CNotifyPing_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgS2CNotifyPing
+
+// required int64 time_stamp = 1;
+ bool MsgS2CNotifyPing::has_time_stamp() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void MsgS2CNotifyPing::set_has_time_stamp() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void MsgS2CNotifyPing::clear_has_time_stamp() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void MsgS2CNotifyPing::clear_time_stamp() {
+  time_stamp_ = GOOGLE_LONGLONG(0);
+  clear_has_time_stamp();
+}
+ ::google::protobuf::int64 MsgS2CNotifyPing::time_stamp() const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CNotifyPing.time_stamp)
+  return time_stamp_;
+}
+ void MsgS2CNotifyPing::set_time_stamp(::google::protobuf::int64 value) {
+  set_has_time_stamp();
+  time_stamp_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgS2CNotifyPing.time_stamp)
+}
+
+// required int32 ping_count = 2;
+ bool MsgS2CNotifyPing::has_ping_count() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void MsgS2CNotifyPing::set_has_ping_count() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void MsgS2CNotifyPing::clear_has_ping_count() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void MsgS2CNotifyPing::clear_ping_count() {
+  ping_count_ = 0;
+  clear_has_ping_count();
+}
+ ::google::protobuf::int32 MsgS2CNotifyPing::ping_count() const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CNotifyPing.ping_count)
+  return ping_count_;
+}
+ void MsgS2CNotifyPing::set_ping_count(::google::protobuf::int32 value) {
+  set_has_ping_count();
+  ping_count_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgS2CNotifyPing.ping_count)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

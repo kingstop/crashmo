@@ -38,9 +38,9 @@ void net_global::init_net_service( int thread_count, int proc_interval, compress
 }
 
 
-message_t* net_global::get_message(message_len size, tcp_session* from )
+message_t* net_global::get_message(message_len size, tcp_session* from, bool base64)
 {
-	return message_interface::createMessage(from, size);
+	return message_interface::createMessage(from, size, base64);
 }
 
 void net_global::free_message( message_t* p )
@@ -299,15 +299,35 @@ void tcp_server::run_no_wait()
 void tcp_server::stop()
 {
 	m_sessions.clear();
-	m_acceptor->close();
-	m_ttp->shutdown();
-
-	if( m_acceptor )
+	if (m_acceptor != NULL)
+	{
+		m_acceptor->close();
+	}
+	
+	if (m_ttp != NULL)
+	{
+		m_ttp->shutdown();
+	}
+	
+	if (m_acceptor)
+	{
 		delete m_acceptor;
+		m_acceptor = NULL;
+	}
+		
 
-	delete m_ttp;
+	if (m_ttp)
+	{
+		delete m_ttp;
+		m_ttp = NULL;
+	}
+	
 	if( m_thread_buffer )
+	{
 		delete[] m_thread_buffer;
+		m_thread_buffer = NULL;
+	}
+		
 }
 
 void tcp_server::_real_run( bool is_wait )

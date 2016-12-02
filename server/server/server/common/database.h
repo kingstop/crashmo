@@ -272,10 +272,12 @@ class Database : public RunObject
 public:
 	Database();
 	virtual ~Database();
+public:
 	bool initDatabase(const DataBaseConfig& _conf);
 	void shutDown();
 	void run(u32 delay);
 	virtual void checkStop();
+	
 	
 	static void getString(char* in,  const mysqlpp::String& str, u32 len)
 	{
@@ -370,7 +372,7 @@ protected:
 	std::map<u32, db_thread_task_manager*> _tasks;
 	boost::mutex _mutex_done;
 	std::list<db_thread*> _dbthread_list;
-private:
+
 };
 template<class Class>
 bool Database::addBlockTask(const DataBaseConfig& conf, Class* obj, bool(Class::*method)(DBQuery*, const void* ), const void* data)
@@ -378,11 +380,12 @@ bool Database::addBlockTask(const DataBaseConfig& conf, Class* obj, bool(Class::
 	try
 	{
 		mysqlpp::Connection myconn;
-		myconn.set_option(new mysqlpp::SetCharsetNameOption("utf8"));
-		myconn.set_option(new mysqlpp::MultiStatementsOption(true));
+		mysqlpp::SetCharsetNameOption* CharsetNameOption = new mysqlpp::SetCharsetNameOption("utf8");
+		myconn.set_option(CharsetNameOption);
+		mysqlpp::MultiStatementsOption* MultiStatements = new mysqlpp::MultiStatementsOption(true);
+		myconn.set_option(MultiStatements);
 		if (myconn.connect( conf._db.c_str(), conf._adrs.c_str(), conf._user.c_str(), conf._pwd.c_str(), conf._port))
 		{
-
 			DBQuery query= myconn.query();
 			if (obj && method)
 			{ 

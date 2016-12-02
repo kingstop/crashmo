@@ -1,6 +1,7 @@
 #ifndef __version_h__
 #define __version_h__
 #include "common_header.h"
+#include "common_type.h"
 #define PROJECT_NAME	 "FU"
 #define VERSION_MAJOR    0      // Application major version number.
 #define VERSION_MINOR    0	    // Application minor version number.	

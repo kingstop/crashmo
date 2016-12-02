@@ -85,5 +85,5 @@ void GameDBClient::on_connect_failed( boost::system::error_code error )
 
 void GameDBClient::proc_message( const message_t& msg )
 {
-	parsePBMessage(msg.data, msg.len);
+	parsePBMessage(msg.data, msg.len, _base64);
 }

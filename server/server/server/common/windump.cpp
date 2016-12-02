@@ -1,6 +1,6 @@
-#ifdef LINUX
+#ifdef WIN32
 
-#elif _WIN32_WINDOWS
+
 
 #include "windump.h"
 
