@@ -815,6 +815,7 @@ public class crash_manager
         }
  
         Camera.main.transform.position = vc_target_temp;
+		global_instance.Instance._ngui_edit_manager._camera_map.transform.position = get_map_camera_pos (_camera_dir);
     }
     public void add_color(int group, Color temp_color)
     {
