@@ -183,13 +183,13 @@ public class u3dclient
         socket_client.Send(sendbuff);
     }
 
-    public void callFunction(byte[] bytes, SocketClient socketclient)
+    public void callFunction(byte[] ArguBytes, SocketClient socketclient)
     {
         //string str_base64 = System.Text.Encoding.UTF8.GetString(bytes);
         //System.Text.Encoding.Default.GetChars(bytes);
-        char[] base64_chars = System.Text.Encoding.Default.GetChars(bytes);
-        
-        bytes = Convert.FromBase64CharArray(base64_chars,0, base64_chars.Length);
+        char[] base64_chars = System.Text.Encoding.Default.GetChars(ArguBytes);
+
+        byte[] bytes = Convert.FromBase64CharArray(base64_chars,0, base64_chars.Length);
         //bytes = Convert.FromBase64String(str_base64);
         UInt32 max_length = (UInt32)bytes.Length;
         UInt32 ptr = 0;
