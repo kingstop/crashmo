@@ -313,6 +313,30 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CNotifyPing")]
+  public partial class MsgS2CNotifyPing : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CNotifyPing() {}
+    
+    private long _time_stamp;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"time_stamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long time_stamp
+    {
+      get { return _time_stamp; }
+      set { _time_stamp = value; }
+    }
+    private int _ping_count;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"ping_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int ping_count
+    {
+      get { return _ping_count; }
+      set { _ping_count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"ServerError")]
     public enum ServerError
     {

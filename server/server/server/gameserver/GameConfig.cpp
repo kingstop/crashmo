@@ -55,6 +55,7 @@ void GameConfig::LoadGameConfig(DBQuery* p)
 		_map_config.config_width_max_ =  row["map_config_max_width"];
 		_map_config.config_heigth_max_ =  row["map_config_max_height"];
 		_map_config.config_count_max_ =  row["map_config_max_count"];
+		_map_config.gold_ = row["gold"];
 	}
 
 	query.reset();

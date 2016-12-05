@@ -530,6 +530,12 @@ public class CrashMoRecord
 	}
 }
 
+public enum gameState
+{
+    game_prepare,
+    game_playing,
+    game_end
+}
 public class crash_manager
 {
     public int _max_x = 0;
@@ -566,7 +572,8 @@ public class crash_manager
     public CrashMoveHistory _History = new CrashMoveHistory();
     public CrashMoRecord _record = new CrashMoRecord();
     public int _current_frame_count;
-	public bool _game_begin = false;
+    gameState _game_state = gameState.game_prepare;
+    //public bool _game_begin = false;
     protected Queue<KeyValuePair<int, bool>> _catch_click_list = new Queue<KeyValuePair<int, bool>>();
     public void init()
     {
@@ -590,6 +597,11 @@ public class crash_manager
             }
         }
         next_update();
+    }
+
+    public gameState getGameState()
+    {
+        return _game_state;
     }
     public void move_camera_left()
     {
@@ -966,20 +978,42 @@ public class crash_manager
     }
     public void catch_click(int i, bool his = false)
 	{
-        if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game && _game_begin == true)
+        if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game 
+            && _game_state == gameState.game_playing)
         {
             KeyValuePair<int, bool> entry = new KeyValuePair<int, bool>(i, his);
             _catch_click_list.Enqueue(entry);
         }
         
     }
+
+    protected void GameEnd()
+    {
+        _game_state = gameState.game_end;
+        global_instance.Instance._ngui_edit_manager.game_win();        
+    }
     public void update()
     {
         camera_move_update();        
         if(global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game)
         {
-            if(_game_begin && _need_play_animation == false)
+            if (_game_state == gameState.game_playing && _need_play_animation == false)
             {
+                Vector3 vc_position = _creature.get_position();
+                crash_pos pos = new crash_pos();
+                pos._x = transform_to_map(vc_position.x);
+                pos._y = transform_to_map(vc_position.y);
+                pos._z = transform_to_map(vc_position.z);
+                if (get_crash_obj_addr(pos) != null)
+                {
+                    if (get_crash_obj_addr(pos)._crash_obj != null)
+                    {
+                        if (get_crash_obj_addr(pos)._crash_obj.get_obj_type() == crash_obj_type.flag)
+                        {                            
+                            GameEnd();
+                        }
+                    }
+                }
                 while (_catch_click_list.Count != 0)
                 {
                     KeyValuePair<int, bool> entry = _catch_click_list.Dequeue();
@@ -1130,7 +1164,7 @@ public class crash_manager
             _creature.gameObject.SetActive(false);
         }
         _catch_click_list.Clear();
-        _game_begin = false;
+        _game_state = gameState.game_prepare;
        _History.reset();
         _current_frame_count = 0;
         _move_count = 0;
@@ -1546,7 +1580,7 @@ public class crash_manager
                 _move_mole_list.Add(enry_list[i]);                
             }
 
-			if(_record._open_record == false&& _game_begin == true)
+			if(_record._open_record == false&& _game_state == gameState.game_playing)
             {
                 MolMoveHistory history = new MolMoveHistory();
                 history._dir = dir;
@@ -1643,7 +1677,7 @@ public class crash_manager
             bool temp = need_fall_update();
 			if (temp == false && _need_play_animation == false && _crash_moles_list.Count != 0) 
 			{
-				_game_begin = true;
+				_game_state = gameState.game_playing;
 			}
 			if (temp) 
 			{

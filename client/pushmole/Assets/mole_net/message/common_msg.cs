@@ -112,6 +112,65 @@ namespace message
       get { return _create_time; }
       set { _create_time = value; }
     }
+    private int _gold;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int gold
+    {
+      get { return _gold; }
+      set { _gold = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CrashPlayerPublishMap")]
+  public partial class CrashPlayerPublishMap : global::ProtoBuf.IExtensible
+  {
+    public CrashPlayerPublishMap() {}
+    
+    private message.CrashMapData _crashmap;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"crashmap", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public message.CrashMapData crashmap
+    {
+      get { return _crashmap; }
+      set { _crashmap = value; }
+    }
+    private ulong _publish_time;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"publish_time", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong publish_time
+    {
+      get { return _publish_time; }
+      set { _publish_time = value; }
+    }
+    private int _challenge_times;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"challenge_times", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int challenge_times
+    {
+      get { return _challenge_times; }
+      set { _challenge_times = value; }
+    }
+    private int _failed_of_challenge_times;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"failed_of_challenge_times", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int failed_of_challenge_times
+    {
+      get { return _failed_of_challenge_times; }
+      set { _failed_of_challenge_times = value; }
+    }
+    private int _map_rank;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"map_rank", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int map_rank
+    {
+      get { return _map_rank; }
+      set { _map_rank = value; }
+    }
+    private readonly global::System.Collections.Generic.List<string> _map_blog = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"map_blog", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> map_blog
+    {
+      get { return _map_blog; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -222,6 +281,13 @@ namespace message
     {
       get { return _map_count; }
       set { _map_count = value; }
+    }
+    private int _gold;
+    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int gold
+    {
+      get { return _gold; }
+      set { _gold = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

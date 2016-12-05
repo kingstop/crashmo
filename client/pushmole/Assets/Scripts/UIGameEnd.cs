@@ -7,6 +7,7 @@ public enum enResult
 }
 public class UIGameEnd : MonoBehaviour {
     public RewardEntry[] rewardEntrys_;
+    protected int _current_count = 0;
     protected enResult _en;
     // Use this for initialization
     void Start () {
@@ -17,10 +18,17 @@ public class UIGameEnd : MonoBehaviour {
 	void Update () {
 	
 	}
-
+    public void AddRewardCount(int group, int count)
+    {
+        rewardEntrys_[_current_count].setColor(global_instance.Instance._ngui_edit_manager.get_color_by_group(group));
+        rewardEntrys_[_current_count].setCount(count);
+        rewardEntrys_[_current_count].gameObject.SetActive(true);
+        _current_count++;
+    }
     public void setType(enResult en)
     {
         _en = en;
+        /*
         foreach (RewardEntry entry in rewardEntrys_)
         {
             if (_en == enResult.failed)
@@ -29,8 +37,18 @@ public class UIGameEnd : MonoBehaviour {
             }
             else
             {
-                entry.gameObject.SetActive(true);
+                entry.gameObject.SetActive(false);
             }
        }
+       */
+    }
+
+    public void clear()
+    {
+        _current_count = 0;
+        foreach (RewardEntry entry in rewardEntrys_)
+        {
+            entry.gameObject.SetActive(false);
+        }
     }
 }

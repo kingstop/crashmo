@@ -36,6 +36,11 @@ void CrashPlayer::LoadConfig()
 		pair_entry->set_number_2(const_it->second);
 
 	}
+	_info.set_gold(config->gold_);
+	_info.set_map_count(config->config_count_);
+	_info.set_map_width(config->config_width_);
+	_info.set_map_height(config->config_heigth_);
+
 }
 
 void CrashPlayer::SetInfo(message::CrashPlayerInfo info)

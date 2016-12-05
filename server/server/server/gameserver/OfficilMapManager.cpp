@@ -97,7 +97,7 @@ void OfficilMapManager::modifySectionName(int section, const char* name, CrashPl
 void OfficilMapManager::saveOfficilMap()
 {
 	char sztemp[4096];
-	std::string sql_head = "replace into `offical_map`(`account`,`creater_name`,`map_name`,`map_data`,`create_time`,`section`,`number`) values";
+	std::string sql_head = "replace into `offical_map`(`account`,`creater_name`,`map_name`,`map_data`,`create_time`,`section`,`number`, `gold`) values";
 	std::string sql_excute;
 	int current_count = 0;
 	int max_save_count = 5;
@@ -123,8 +123,8 @@ void OfficilMapManager::saveOfficilMap()
 			std::string create_time = get_time(temp_map.create_time());
 			temp_data = temp_map.data().SerializeAsString();
 			temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
-			sprintf(sztemp, "(%lu,'%s','%s','%s','%s',%d,%d)", acc, temp_map.creatername().c_str(), temp_map.mapname().c_str(),
-				temp_data.c_str(), create_time.c_str(), temp_map.section(),temp_map.number());			
+			sprintf(sztemp, "(%lu,'%s','%s','%s','%s',%d, %d, %d)", acc, temp_map.creatername().c_str(), temp_map.mapname().c_str(),
+				temp_data.c_str(), create_time.c_str(), temp_map.section(),temp_map.number(), temp_map.gold());
 			sql_excute += sztemp;			
 			if (current_count > max_save_count)
 			{

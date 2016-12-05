@@ -107,9 +107,9 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 	}
 	sprintf(sql, "replace into `character`(`account`, `pass_point`, `pass_section`,\
 		 `name`, `isadmin`, `map_width`,\
-		 `map_height`, `map_count`, `group_count`) values (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s')",
+		 `map_height`, `map_count`, `group_count`, `gold`) values (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s', %d)",
 		acc_temp, playerInfo->pass_point(), playerInfo->pass_section(), playerInfo->name().c_str(), (int)playerInfo->isadmin(),
-		playerInfo->map_width(), playerInfo->map_height(), playerInfo->map_count(), resource_str.c_str());
+		playerInfo->map_width(), playerInfo->map_height(), playerInfo->map_count(), resource_str.c_str(), playerInfo->gold());
 	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, &parms, NULL, _QUERY_SAVE_PLAYER_);
 	int temp_size = playerInfo->completemap_size();
 	

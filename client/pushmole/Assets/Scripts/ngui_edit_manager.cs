@@ -16,6 +16,11 @@ public enum map_def{
     map_def_min_height = 15,
     map_def_max_height = 60
 }
+public enum EditType
+{
+    EditPlayer,
+    EditOfficil
+}
 
 public class ngui_edit_manager : MonoBehaviour {
     //public Button[] _Buttons_sliced;
@@ -58,13 +63,17 @@ public class ngui_edit_manager : MonoBehaviour {
     public UIGameEnd _game_end;
     public ColorBoard _color_board;
     public GameObject _point_text_position_obj;
+    public UISectionGiftGold _ui_section_gold;
+    protected EditType _EditType;
     protected GameObject _source_frade;
+    
 
-	/// <summary>
+    /// <summary>
 
-	/// </summary>
+    /// </summary>
     void Awake()
     {
+        _EditType = EditType.EditPlayer;
         _source_frade = Resources.Load<GameObject>("prefab/point_out_txt");
         //_show_point_out = false;
         //_point_out.gameObject.SetActive (false);
@@ -244,6 +253,13 @@ public class ngui_edit_manager : MonoBehaviour {
 	{
 		_edit_type_obj_btns.gameObject.SetActive (active);
 	}
+
+    public void game_win()
+    {
+        _game_end.clear();
+        _game_end.gameObject.SetActive(true);
+        //_game_end.AddRewardCount();
+    }
 
     public void on_create_empty_map_click()
     {
@@ -541,7 +557,7 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void OnRecordClick()
     {
-        if(global_instance.Instance._global_game_type == global_game_type.global_game_type_game && global_instance.Instance._crash_manager._game_begin == true)
+        if(global_instance.Instance._global_game_type == global_game_type.global_game_type_game && global_instance.Instance._crash_manager.getGameState() == gameState.game_playing)
         {
 			crashmo_record_type current_type = global_instance.Instance._crash_manager._record.get_open_type ();
 			if (current_type == crashmo_record_type.record_open || current_type == crashmo_record_type.record_ready_for_open) {

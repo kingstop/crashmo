@@ -39,6 +39,7 @@ void protobuf_ShutdownFile_common_2eproto();
 class int32array;
 class CrashmoMapBaseData;
 class CrashMapData;
+class CrashPlayerPublishMap;
 class intPair;
 class CrashPlayerInfo;
 
@@ -379,6 +380,13 @@ class CrashMapData : public ::google::protobuf::Message {
   ::google::protobuf::uint64 create_time() const;
   void set_create_time(::google::protobuf::uint64 value);
 
+  // required int32 gold = 7;
+  bool has_gold() const;
+  void clear_gold();
+  static const int kGoldFieldNumber = 7;
+  ::google::protobuf::int32 gold() const;
+  void set_gold(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:message.CrashMapData)
  private:
   inline void set_has_data();
@@ -393,6 +401,8 @@ class CrashMapData : public ::google::protobuf::Message {
   inline void clear_has_number();
   inline void set_has_create_time();
   inline void clear_has_create_time();
+  inline void set_has_gold();
+  inline void clear_has_gold();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -406,12 +416,164 @@ class CrashMapData : public ::google::protobuf::Message {
   ::google::protobuf::int32 section_;
   ::google::protobuf::int32 number_;
   ::google::protobuf::uint64 create_time_;
+  ::google::protobuf::int32 gold_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
   friend void protobuf_ShutdownFile_common_2eproto();
 
   void InitAsDefaultInstance();
   static CrashMapData* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class CrashPlayerPublishMap : public ::google::protobuf::Message {
+ public:
+  CrashPlayerPublishMap();
+  virtual ~CrashPlayerPublishMap();
+
+  CrashPlayerPublishMap(const CrashPlayerPublishMap& from);
+
+  inline CrashPlayerPublishMap& operator=(const CrashPlayerPublishMap& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CrashPlayerPublishMap& default_instance();
+
+  void Swap(CrashPlayerPublishMap* other);
+
+  // implements Message ----------------------------------------------
+
+  inline CrashPlayerPublishMap* New() const { return New(NULL); }
+
+  CrashPlayerPublishMap* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CrashPlayerPublishMap& from);
+  void MergeFrom(const CrashPlayerPublishMap& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(CrashPlayerPublishMap* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .message.CrashMapData crashmap = 1;
+  bool has_crashmap() const;
+  void clear_crashmap();
+  static const int kCrashmapFieldNumber = 1;
+  const ::message::CrashMapData& crashmap() const;
+  ::message::CrashMapData* mutable_crashmap();
+  ::message::CrashMapData* release_crashmap();
+  void set_allocated_crashmap(::message::CrashMapData* crashmap);
+
+  // required uint64 publish_time = 2;
+  bool has_publish_time() const;
+  void clear_publish_time();
+  static const int kPublishTimeFieldNumber = 2;
+  ::google::protobuf::uint64 publish_time() const;
+  void set_publish_time(::google::protobuf::uint64 value);
+
+  // required int32 challenge_times = 3;
+  bool has_challenge_times() const;
+  void clear_challenge_times();
+  static const int kChallengeTimesFieldNumber = 3;
+  ::google::protobuf::int32 challenge_times() const;
+  void set_challenge_times(::google::protobuf::int32 value);
+
+  // required int32 failed_of_challenge_times = 4;
+  bool has_failed_of_challenge_times() const;
+  void clear_failed_of_challenge_times();
+  static const int kFailedOfChallengeTimesFieldNumber = 4;
+  ::google::protobuf::int32 failed_of_challenge_times() const;
+  void set_failed_of_challenge_times(::google::protobuf::int32 value);
+
+  // required int32 map_rank = 5;
+  bool has_map_rank() const;
+  void clear_map_rank();
+  static const int kMapRankFieldNumber = 5;
+  ::google::protobuf::int32 map_rank() const;
+  void set_map_rank(::google::protobuf::int32 value);
+
+  // repeated string map_blog = 6;
+  int map_blog_size() const;
+  void clear_map_blog();
+  static const int kMapBlogFieldNumber = 6;
+  const ::std::string& map_blog(int index) const;
+  ::std::string* mutable_map_blog(int index);
+  void set_map_blog(int index, const ::std::string& value);
+  void set_map_blog(int index, const char* value);
+  void set_map_blog(int index, const char* value, size_t size);
+  ::std::string* add_map_blog();
+  void add_map_blog(const ::std::string& value);
+  void add_map_blog(const char* value);
+  void add_map_blog(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& map_blog() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_map_blog();
+
+  // @@protoc_insertion_point(class_scope:message.CrashPlayerPublishMap)
+ private:
+  inline void set_has_crashmap();
+  inline void clear_has_crashmap();
+  inline void set_has_publish_time();
+  inline void clear_has_publish_time();
+  inline void set_has_challenge_times();
+  inline void clear_has_challenge_times();
+  inline void set_has_failed_of_challenge_times();
+  inline void clear_has_failed_of_challenge_times();
+  inline void set_has_map_rank();
+  inline void clear_has_map_rank();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::message::CrashMapData* crashmap_;
+  ::google::protobuf::uint64 publish_time_;
+  ::google::protobuf::int32 challenge_times_;
+  ::google::protobuf::int32 failed_of_challenge_times_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> map_blog_;
+  ::google::protobuf::int32 map_rank_;
+  friend void  protobuf_AddDesc_common_2eproto();
+  friend void protobuf_AssignDesc_common_2eproto();
+  friend void protobuf_ShutdownFile_common_2eproto();
+
+  void InitAsDefaultInstance();
+  static CrashPlayerPublishMap* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -678,6 +840,13 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::int32 map_count() const;
   void set_map_count(::google::protobuf::int32 value);
 
+  // required int32 gold = 13;
+  bool has_gold() const;
+  void clear_gold();
+  static const int kGoldFieldNumber = 13;
+  ::google::protobuf::int32 gold() const;
+  void set_gold(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:message.CrashPlayerInfo)
  private:
   inline void set_has_account();
@@ -696,6 +865,8 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   inline void clear_has_map_height();
   inline void set_has_map_count();
   inline void clear_has_map_count();
+  inline void set_has_gold();
+  inline void clear_has_gold();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -714,6 +885,7 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::int32 map_width_;
   ::google::protobuf::int32 map_height_;
   ::google::protobuf::int32 map_count_;
+  ::google::protobuf::int32 gold_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
   friend void protobuf_ShutdownFile_common_2eproto();
@@ -1090,6 +1262,227 @@ inline void CrashMapData::set_create_time(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:message.CrashMapData.create_time)
 }
 
+// required int32 gold = 7;
+inline bool CrashMapData::has_gold() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void CrashMapData::set_has_gold() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void CrashMapData::clear_has_gold() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void CrashMapData::clear_gold() {
+  gold_ = 0;
+  clear_has_gold();
+}
+inline ::google::protobuf::int32 CrashMapData::gold() const {
+  // @@protoc_insertion_point(field_get:message.CrashMapData.gold)
+  return gold_;
+}
+inline void CrashMapData::set_gold(::google::protobuf::int32 value) {
+  set_has_gold();
+  gold_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashMapData.gold)
+}
+
+// -------------------------------------------------------------------
+
+// CrashPlayerPublishMap
+
+// required .message.CrashMapData crashmap = 1;
+inline bool CrashPlayerPublishMap::has_crashmap() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CrashPlayerPublishMap::set_has_crashmap() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CrashPlayerPublishMap::clear_has_crashmap() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CrashPlayerPublishMap::clear_crashmap() {
+  if (crashmap_ != NULL) crashmap_->::message::CrashMapData::Clear();
+  clear_has_crashmap();
+}
+inline const ::message::CrashMapData& CrashPlayerPublishMap::crashmap() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.crashmap)
+  return crashmap_ != NULL ? *crashmap_ : *default_instance_->crashmap_;
+}
+inline ::message::CrashMapData* CrashPlayerPublishMap::mutable_crashmap() {
+  set_has_crashmap();
+  if (crashmap_ == NULL) {
+    crashmap_ = new ::message::CrashMapData;
+  }
+  // @@protoc_insertion_point(field_mutable:message.CrashPlayerPublishMap.crashmap)
+  return crashmap_;
+}
+inline ::message::CrashMapData* CrashPlayerPublishMap::release_crashmap() {
+  clear_has_crashmap();
+  ::message::CrashMapData* temp = crashmap_;
+  crashmap_ = NULL;
+  return temp;
+}
+inline void CrashPlayerPublishMap::set_allocated_crashmap(::message::CrashMapData* crashmap) {
+  delete crashmap_;
+  crashmap_ = crashmap;
+  if (crashmap) {
+    set_has_crashmap();
+  } else {
+    clear_has_crashmap();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.CrashPlayerPublishMap.crashmap)
+}
+
+// required uint64 publish_time = 2;
+inline bool CrashPlayerPublishMap::has_publish_time() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CrashPlayerPublishMap::set_has_publish_time() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void CrashPlayerPublishMap::clear_has_publish_time() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void CrashPlayerPublishMap::clear_publish_time() {
+  publish_time_ = GOOGLE_ULONGLONG(0);
+  clear_has_publish_time();
+}
+inline ::google::protobuf::uint64 CrashPlayerPublishMap::publish_time() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.publish_time)
+  return publish_time_;
+}
+inline void CrashPlayerPublishMap::set_publish_time(::google::protobuf::uint64 value) {
+  set_has_publish_time();
+  publish_time_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.publish_time)
+}
+
+// required int32 challenge_times = 3;
+inline bool CrashPlayerPublishMap::has_challenge_times() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CrashPlayerPublishMap::set_has_challenge_times() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CrashPlayerPublishMap::clear_has_challenge_times() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void CrashPlayerPublishMap::clear_challenge_times() {
+  challenge_times_ = 0;
+  clear_has_challenge_times();
+}
+inline ::google::protobuf::int32 CrashPlayerPublishMap::challenge_times() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.challenge_times)
+  return challenge_times_;
+}
+inline void CrashPlayerPublishMap::set_challenge_times(::google::protobuf::int32 value) {
+  set_has_challenge_times();
+  challenge_times_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.challenge_times)
+}
+
+// required int32 failed_of_challenge_times = 4;
+inline bool CrashPlayerPublishMap::has_failed_of_challenge_times() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void CrashPlayerPublishMap::set_has_failed_of_challenge_times() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void CrashPlayerPublishMap::clear_has_failed_of_challenge_times() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void CrashPlayerPublishMap::clear_failed_of_challenge_times() {
+  failed_of_challenge_times_ = 0;
+  clear_has_failed_of_challenge_times();
+}
+inline ::google::protobuf::int32 CrashPlayerPublishMap::failed_of_challenge_times() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.failed_of_challenge_times)
+  return failed_of_challenge_times_;
+}
+inline void CrashPlayerPublishMap::set_failed_of_challenge_times(::google::protobuf::int32 value) {
+  set_has_failed_of_challenge_times();
+  failed_of_challenge_times_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.failed_of_challenge_times)
+}
+
+// required int32 map_rank = 5;
+inline bool CrashPlayerPublishMap::has_map_rank() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void CrashPlayerPublishMap::set_has_map_rank() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void CrashPlayerPublishMap::clear_has_map_rank() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void CrashPlayerPublishMap::clear_map_rank() {
+  map_rank_ = 0;
+  clear_has_map_rank();
+}
+inline ::google::protobuf::int32 CrashPlayerPublishMap::map_rank() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.map_rank)
+  return map_rank_;
+}
+inline void CrashPlayerPublishMap::set_map_rank(::google::protobuf::int32 value) {
+  set_has_map_rank();
+  map_rank_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.map_rank)
+}
+
+// repeated string map_blog = 6;
+inline int CrashPlayerPublishMap::map_blog_size() const {
+  return map_blog_.size();
+}
+inline void CrashPlayerPublishMap::clear_map_blog() {
+  map_blog_.Clear();
+}
+inline const ::std::string& CrashPlayerPublishMap::map_blog(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.map_blog)
+  return map_blog_.Get(index);
+}
+inline ::std::string* CrashPlayerPublishMap::mutable_map_blog(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashPlayerPublishMap.map_blog)
+  return map_blog_.Mutable(index);
+}
+inline void CrashPlayerPublishMap::set_map_blog(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.map_blog)
+  map_blog_.Mutable(index)->assign(value);
+}
+inline void CrashPlayerPublishMap::set_map_blog(int index, const char* value) {
+  map_blog_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:message.CrashPlayerPublishMap.map_blog)
+}
+inline void CrashPlayerPublishMap::set_map_blog(int index, const char* value, size_t size) {
+  map_blog_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:message.CrashPlayerPublishMap.map_blog)
+}
+inline ::std::string* CrashPlayerPublishMap::add_map_blog() {
+  return map_blog_.Add();
+}
+inline void CrashPlayerPublishMap::add_map_blog(const ::std::string& value) {
+  map_blog_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:message.CrashPlayerPublishMap.map_blog)
+}
+inline void CrashPlayerPublishMap::add_map_blog(const char* value) {
+  map_blog_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:message.CrashPlayerPublishMap.map_blog)
+}
+inline void CrashPlayerPublishMap::add_map_blog(const char* value, size_t size) {
+  map_blog_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:message.CrashPlayerPublishMap.map_blog)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+CrashPlayerPublishMap::map_blog() const {
+  // @@protoc_insertion_point(field_list:message.CrashPlayerPublishMap.map_blog)
+  return map_blog_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+CrashPlayerPublishMap::mutable_map_blog() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerPublishMap.map_blog)
+  return &map_blog_;
+}
+
 // -------------------------------------------------------------------
 
 // intPair
@@ -1455,6 +1848,30 @@ inline void CrashPlayerInfo::set_map_count(::google::protobuf::int32 value) {
   set_has_map_count();
   map_count_ = value;
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_count)
+}
+
+// required int32 gold = 13;
+inline bool CrashPlayerInfo::has_gold() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void CrashPlayerInfo::set_has_gold() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void CrashPlayerInfo::clear_has_gold() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void CrashPlayerInfo::clear_gold() {
+  gold_ = 0;
+  clear_has_gold();
+}
+inline ::google::protobuf::int32 CrashPlayerInfo::gold() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.gold)
+  return gold_;
+}
+inline void CrashPlayerInfo::set_gold(::google::protobuf::int32 value) {
+  set_has_gold();
+  gold_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.gold)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

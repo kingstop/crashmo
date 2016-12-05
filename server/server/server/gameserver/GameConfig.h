@@ -9,6 +9,7 @@ struct MapConfig
 	int config_width_max_;
 	int config_heigth_max_;
 	int config_count_max_;
+	int gold_;
 	std::map<int, int> group_config_count_;
 	std::map<int, int> group_config_max_count_;
 };

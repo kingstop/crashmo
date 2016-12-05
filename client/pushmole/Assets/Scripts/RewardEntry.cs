@@ -16,12 +16,12 @@ public class RewardEntry : MonoBehaviour {
 	
 	}
 
-    void setColor(Color color)
+    public void setColor(Color color)
     {
         image_.color = color;
     }
 
-    void setCount(int count)
+    public void setCount(int count)
     {
         count_.text = count.ToString();
     }
