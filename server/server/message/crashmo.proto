@@ -90,6 +90,8 @@ message MsgSectionNameReq
 
 }
 
+
+
 message MsgSectionNameACK
 {
 	repeated MsgIntStringProto sections = 1;
@@ -99,4 +101,26 @@ message MsgS2CNotifyPing
 {
 	required int64 time_stamp = 1;
 	required int32 ping_count = 2;
+}
+
+message MsgC2SOfficeMapReq
+{
+	required int32 chapter_id = 1;
+	required int32 section_id = 2;
+	required int32 map_count = 3;
+}
+
+message MsgS2COfficeMapACK
+{
+	required int32 chapter_id = 1;
+	required int32 section_id = 2;
+	repeated CrashMapData maps = 3;
+	required bool chapter_end = 4;
+	required bool section_end = 5;
+}
+
+message MsgS2CRankMapReq
+{
+	required int32 rank_begin = 1;
+	
 }

@@ -414,6 +414,11 @@ public class MainPanel : MonoBehaviour
             }
         }
     }
+
+    public page_type GetPageType()
+    {
+        return _current_page;
+    }
     public void TitleButtionClick(Button btn)
     {
         int count = _title_button.Length;

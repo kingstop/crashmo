@@ -180,7 +180,6 @@ void OfficilMapManager::saveOfficilMap()
 		message::ReqSaveOfficilSectionNames msg;
 		msg.set_sql(sql_excute.c_str());
 		gGSDBClient.sendPBMessage(&msg, 0);
-
 	}
 
 

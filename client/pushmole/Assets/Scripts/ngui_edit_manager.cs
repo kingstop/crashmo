@@ -18,6 +18,7 @@ public enum map_def{
 }
 public enum EditType
 {
+    EditNo,
     EditPlayer,
     EditOfficil
 }
@@ -65,8 +66,7 @@ public class ngui_edit_manager : MonoBehaviour {
     public GameObject _point_text_position_obj;
     public UISectionGiftGold _ui_section_gold;
     protected EditType _EditType;
-    protected GameObject _source_frade;
-    
+    protected GameObject _source_frade;    
 
     /// <summary>
 
@@ -122,7 +122,8 @@ public class ngui_edit_manager : MonoBehaviour {
         return color;
     }
 
-	public void set_point_text(string txt)
+    
+    public void set_point_text(string txt)
 	{
         FradeText frab = GameObject.Instantiate(_source_frade).GetComponent<FradeText>();
         frab.gameObject.transform.position = _point_text_position_obj.transform.position;
@@ -195,7 +196,18 @@ public class ngui_edit_manager : MonoBehaviour {
 
     void set_edit_btns_state(bool show)
     {
-		_color_board.gameObject.SetActive(show);
+        if (show == true)
+        {
+            if (_main_panel.GetPageType() == page_type.page_type_official)
+            {
+                _ui_section_gold.gameObject.SetActive(true);
+            }
+            else
+            {
+                _ui_section_gold.gameObject.SetActive(false);
+            }
+        }
+        _color_board.gameObject.SetActive(show);
         _open_create_btn.gameObject.SetActive(show);
         _edit_scrollbar.SetActive(show);
     }
@@ -519,6 +531,7 @@ public class ngui_edit_manager : MonoBehaviour {
     }
     public void gamestate_btn(game_type type)
     {
+        
         HideStateButton();
         if (type != game_type.create) 
 		{
@@ -536,6 +549,7 @@ public class ngui_edit_manager : MonoBehaviour {
                     break;
                 case game_type.edit:
                     {
+
                         _Buttons_simple_game_type[(int)game_type.edit].gameObject.SetActive(true);
                         _Buttons_sliced_game_type[(int)game_type.edit].gameObject.SetActive(false);
                         _Buttons_simple_game_type[(int)game_type.game].gameObject.SetActive(false);
@@ -549,6 +563,7 @@ public class ngui_edit_manager : MonoBehaviour {
                         _Buttons_sliced_game_type[(int)game_type.edit].gameObject.SetActive(true);
                         _Buttons_simple_game_type[(int)game_type.game].gameObject.SetActive(true);
                         _Buttons_sliced_game_type[(int)game_type.game].gameObject.SetActive(false);
+                        
                     }
                     break;
             }
@@ -584,6 +599,7 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void update_game_type(game_type type)
     {
+        
         _edit_obj_btns.SetActive(false);
         _game_obj_btns.SetActive(false);
         _game_end.gameObject.SetActive(false);
