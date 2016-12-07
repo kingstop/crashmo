@@ -39,6 +39,7 @@ void protobuf_ShutdownFile_common_2eproto();
 class int32array;
 class CrashmoMapBaseData;
 class CrashMapData;
+class RankMapBlogEntry;
 class CrashPlayerPublishMap;
 class intPair;
 class CrashPlayerInfo;
@@ -426,6 +427,138 @@ class CrashMapData : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class RankMapBlogEntry : public ::google::protobuf::Message {
+ public:
+  RankMapBlogEntry();
+  virtual ~RankMapBlogEntry();
+
+  RankMapBlogEntry(const RankMapBlogEntry& from);
+
+  inline RankMapBlogEntry& operator=(const RankMapBlogEntry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RankMapBlogEntry& default_instance();
+
+  void Swap(RankMapBlogEntry* other);
+
+  // implements Message ----------------------------------------------
+
+  inline RankMapBlogEntry* New() const { return New(NULL); }
+
+  RankMapBlogEntry* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RankMapBlogEntry& from);
+  void MergeFrom(const RankMapBlogEntry& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(RankMapBlogEntry* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint64 acc = 1;
+  bool has_acc() const;
+  void clear_acc();
+  static const int kAccFieldNumber = 1;
+  ::google::protobuf::uint64 acc() const;
+  void set_acc(::google::protobuf::uint64 value);
+
+  // required string name = 2;
+  bool has_name() const;
+  void clear_name();
+  static const int kNameFieldNumber = 2;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // required string sugges_ = 3;
+  bool has_sugges_() const;
+  void clear_sugges_();
+  static const int kSuggesFieldNumber = 3;
+  const ::std::string& sugges_() const;
+  void set_sugges_(const ::std::string& value);
+  void set_sugges_(const char* value);
+  void set_sugges_(const char* value, size_t size);
+  ::std::string* mutable_sugges_();
+  ::std::string* release_sugges_();
+  void set_allocated_sugges_(::std::string* sugges_);
+
+  // required int32 time = 4;
+  bool has_time() const;
+  void clear_time();
+  static const int kTimeFieldNumber = 4;
+  ::google::protobuf::int32 time() const;
+  void set_time(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:message.RankMapBlogEntry)
+ private:
+  inline void set_has_acc();
+  inline void clear_has_acc();
+  inline void set_has_name();
+  inline void clear_has_name();
+  inline void set_has_sugges_();
+  inline void clear_has_sugges_();
+  inline void set_has_time();
+  inline void clear_has_time();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::uint64 acc_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr sugges__;
+  ::google::protobuf::int32 time_;
+  friend void  protobuf_AddDesc_common_2eproto();
+  friend void protobuf_AssignDesc_common_2eproto();
+  friend void protobuf_ShutdownFile_common_2eproto();
+
+  void InitAsDefaultInstance();
+  static RankMapBlogEntry* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class CrashPlayerPublishMap : public ::google::protobuf::Message {
  public:
   CrashPlayerPublishMap();
@@ -527,21 +660,17 @@ class CrashPlayerPublishMap : public ::google::protobuf::Message {
   ::google::protobuf::int32 map_rank() const;
   void set_map_rank(::google::protobuf::int32 value);
 
-  // repeated string map_blog = 6;
+  // repeated .message.RankMapBlogEntry map_blog = 6;
   int map_blog_size() const;
   void clear_map_blog();
   static const int kMapBlogFieldNumber = 6;
-  const ::std::string& map_blog(int index) const;
-  ::std::string* mutable_map_blog(int index);
-  void set_map_blog(int index, const ::std::string& value);
-  void set_map_blog(int index, const char* value);
-  void set_map_blog(int index, const char* value, size_t size);
-  ::std::string* add_map_blog();
-  void add_map_blog(const ::std::string& value);
-  void add_map_blog(const char* value);
-  void add_map_blog(const char* value, size_t size);
-  const ::google::protobuf::RepeatedPtrField< ::std::string>& map_blog() const;
-  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_map_blog();
+  const ::message::RankMapBlogEntry& map_blog(int index) const;
+  ::message::RankMapBlogEntry* mutable_map_blog(int index);
+  ::message::RankMapBlogEntry* add_map_blog();
+  const ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >&
+      map_blog() const;
+  ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >*
+      mutable_map_blog();
 
   // @@protoc_insertion_point(class_scope:message.CrashPlayerPublishMap)
  private:
@@ -566,7 +695,7 @@ class CrashPlayerPublishMap : public ::google::protobuf::Message {
   ::google::protobuf::uint64 publish_time_;
   ::google::protobuf::int32 challenge_times_;
   ::google::protobuf::int32 failed_of_challenge_times_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> map_blog_;
+  ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry > map_blog_;
   ::google::protobuf::int32 map_rank_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
@@ -1288,6 +1417,164 @@ inline void CrashMapData::set_gold(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
+// RankMapBlogEntry
+
+// required uint64 acc = 1;
+inline bool RankMapBlogEntry::has_acc() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RankMapBlogEntry::set_has_acc() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RankMapBlogEntry::clear_has_acc() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RankMapBlogEntry::clear_acc() {
+  acc_ = GOOGLE_ULONGLONG(0);
+  clear_has_acc();
+}
+inline ::google::protobuf::uint64 RankMapBlogEntry::acc() const {
+  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.acc)
+  return acc_;
+}
+inline void RankMapBlogEntry::set_acc(::google::protobuf::uint64 value) {
+  set_has_acc();
+  acc_ = value;
+  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.acc)
+}
+
+// required string name = 2;
+inline bool RankMapBlogEntry::has_name() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RankMapBlogEntry::set_has_name() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RankMapBlogEntry::clear_has_name() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RankMapBlogEntry::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_name();
+}
+inline const ::std::string& RankMapBlogEntry::name() const {
+  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RankMapBlogEntry::set_name(const ::std::string& value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.name)
+}
+inline void RankMapBlogEntry::set_name(const char* value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.RankMapBlogEntry.name)
+}
+inline void RankMapBlogEntry::set_name(const char* value, size_t size) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.RankMapBlogEntry.name)
+}
+inline ::std::string* RankMapBlogEntry::mutable_name() {
+  set_has_name();
+  // @@protoc_insertion_point(field_mutable:message.RankMapBlogEntry.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RankMapBlogEntry::release_name() {
+  clear_has_name();
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RankMapBlogEntry::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    set_has_name();
+  } else {
+    clear_has_name();
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:message.RankMapBlogEntry.name)
+}
+
+// required string sugges_ = 3;
+inline bool RankMapBlogEntry::has_sugges_() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RankMapBlogEntry::set_has_sugges_() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RankMapBlogEntry::clear_has_sugges_() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RankMapBlogEntry::clear_sugges_() {
+  sugges__.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_sugges_();
+}
+inline const ::std::string& RankMapBlogEntry::sugges_() const {
+  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.sugges_)
+  return sugges__.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RankMapBlogEntry::set_sugges_(const ::std::string& value) {
+  set_has_sugges_();
+  sugges__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.sugges_)
+}
+inline void RankMapBlogEntry::set_sugges_(const char* value) {
+  set_has_sugges_();
+  sugges__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.RankMapBlogEntry.sugges_)
+}
+inline void RankMapBlogEntry::set_sugges_(const char* value, size_t size) {
+  set_has_sugges_();
+  sugges__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.RankMapBlogEntry.sugges_)
+}
+inline ::std::string* RankMapBlogEntry::mutable_sugges_() {
+  set_has_sugges_();
+  // @@protoc_insertion_point(field_mutable:message.RankMapBlogEntry.sugges_)
+  return sugges__.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RankMapBlogEntry::release_sugges_() {
+  clear_has_sugges_();
+  return sugges__.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RankMapBlogEntry::set_allocated_sugges_(::std::string* sugges_) {
+  if (sugges_ != NULL) {
+    set_has_sugges_();
+  } else {
+    clear_has_sugges_();
+  }
+  sugges__.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sugges_);
+  // @@protoc_insertion_point(field_set_allocated:message.RankMapBlogEntry.sugges_)
+}
+
+// required int32 time = 4;
+inline bool RankMapBlogEntry::has_time() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RankMapBlogEntry::set_has_time() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RankMapBlogEntry::clear_has_time() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RankMapBlogEntry::clear_time() {
+  time_ = 0;
+  clear_has_time();
+}
+inline ::google::protobuf::int32 RankMapBlogEntry::time() const {
+  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.time)
+  return time_;
+}
+inline void RankMapBlogEntry::set_time(::google::protobuf::int32 value) {
+  set_has_time();
+  time_ = value;
+  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.time)
+}
+
+// -------------------------------------------------------------------
+
 // CrashPlayerPublishMap
 
 // required .message.CrashMapData crashmap = 1;
@@ -1429,55 +1716,31 @@ inline void CrashPlayerPublishMap::set_map_rank(::google::protobuf::int32 value)
   // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.map_rank)
 }
 
-// repeated string map_blog = 6;
+// repeated .message.RankMapBlogEntry map_blog = 6;
 inline int CrashPlayerPublishMap::map_blog_size() const {
   return map_blog_.size();
 }
 inline void CrashPlayerPublishMap::clear_map_blog() {
   map_blog_.Clear();
 }
-inline const ::std::string& CrashPlayerPublishMap::map_blog(int index) const {
+inline const ::message::RankMapBlogEntry& CrashPlayerPublishMap::map_blog(int index) const {
   // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.map_blog)
   return map_blog_.Get(index);
 }
-inline ::std::string* CrashPlayerPublishMap::mutable_map_blog(int index) {
+inline ::message::RankMapBlogEntry* CrashPlayerPublishMap::mutable_map_blog(int index) {
   // @@protoc_insertion_point(field_mutable:message.CrashPlayerPublishMap.map_blog)
   return map_blog_.Mutable(index);
 }
-inline void CrashPlayerPublishMap::set_map_blog(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.map_blog)
-  map_blog_.Mutable(index)->assign(value);
-}
-inline void CrashPlayerPublishMap::set_map_blog(int index, const char* value) {
-  map_blog_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:message.CrashPlayerPublishMap.map_blog)
-}
-inline void CrashPlayerPublishMap::set_map_blog(int index, const char* value, size_t size) {
-  map_blog_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:message.CrashPlayerPublishMap.map_blog)
-}
-inline ::std::string* CrashPlayerPublishMap::add_map_blog() {
+inline ::message::RankMapBlogEntry* CrashPlayerPublishMap::add_map_blog() {
+  // @@protoc_insertion_point(field_add:message.CrashPlayerPublishMap.map_blog)
   return map_blog_.Add();
 }
-inline void CrashPlayerPublishMap::add_map_blog(const ::std::string& value) {
-  map_blog_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:message.CrashPlayerPublishMap.map_blog)
-}
-inline void CrashPlayerPublishMap::add_map_blog(const char* value) {
-  map_blog_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:message.CrashPlayerPublishMap.map_blog)
-}
-inline void CrashPlayerPublishMap::add_map_blog(const char* value, size_t size) {
-  map_blog_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:message.CrashPlayerPublishMap.map_blog)
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+inline const ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >&
 CrashPlayerPublishMap::map_blog() const {
   // @@protoc_insertion_point(field_list:message.CrashPlayerPublishMap.map_blog)
   return map_blog_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+inline ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >*
 CrashPlayerPublishMap::mutable_map_blog() {
   // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerPublishMap.map_blog)
   return &map_blog_;

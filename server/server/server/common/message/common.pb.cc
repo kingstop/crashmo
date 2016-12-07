@@ -29,6 +29,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CrashMapData_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CrashMapData_reflection_ = NULL;
+const ::google::protobuf::Descriptor* RankMapBlogEntry_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  RankMapBlogEntry_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CrashPlayerPublishMap_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CrashPlayerPublishMap_reflection_ = NULL;
@@ -102,7 +105,25 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(CrashMapData),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, _internal_metadata_),
       -1);
-  CrashPlayerPublishMap_descriptor_ = file->message_type(3);
+  RankMapBlogEntry_descriptor_ = file->message_type(3);
+  static const int RankMapBlogEntry_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankMapBlogEntry, acc_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankMapBlogEntry, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankMapBlogEntry, sugges__),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankMapBlogEntry, time_),
+  };
+  RankMapBlogEntry_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      RankMapBlogEntry_descriptor_,
+      RankMapBlogEntry::default_instance_,
+      RankMapBlogEntry_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankMapBlogEntry, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(RankMapBlogEntry),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankMapBlogEntry, _internal_metadata_),
+      -1);
+  CrashPlayerPublishMap_descriptor_ = file->message_type(4);
   static const int CrashPlayerPublishMap_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, crashmap_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, publish_time_),
@@ -122,7 +143,7 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(CrashPlayerPublishMap),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, _internal_metadata_),
       -1);
-  intPair_descriptor_ = file->message_type(4);
+  intPair_descriptor_ = file->message_type(5);
   static const int intPair_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, number_1_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, number_2_),
@@ -138,7 +159,7 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(intPair),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, _internal_metadata_),
       -1);
-  CrashPlayerInfo_descriptor_ = file->message_type(5);
+  CrashPlayerInfo_descriptor_ = file->message_type(6);
   static const int CrashPlayerInfo_offsets_[12] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, account_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, pass_point_),
@@ -183,6 +204,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CrashMapData_descriptor_, &CrashMapData::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      RankMapBlogEntry_descriptor_, &RankMapBlogEntry::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CrashPlayerPublishMap_descriptor_, &CrashPlayerPublishMap::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       intPair_descriptor_, &intPair::default_instance());
@@ -199,6 +222,8 @@ void protobuf_ShutdownFile_common_2eproto() {
   delete CrashmoMapBaseData_reflection_;
   delete CrashMapData::default_instance_;
   delete CrashMapData_reflection_;
+  delete RankMapBlogEntry::default_instance_;
+  delete RankMapBlogEntry_reflection_;
   delete CrashPlayerPublishMap::default_instance_;
   delete CrashPlayerPublishMap_reflection_;
   delete intPair::default_instance_;
@@ -222,31 +247,36 @@ void protobuf_AddDesc_common_2eproto() {
     "age.CrashmoMapBaseData\022\017\n\007MapName\030\002 \002(\t\022"
     "\023\n\013CreaterName\030\003 \002(\t\022\017\n\007Section\030\004 \002(\005\022\016\n"
     "\006number\030\005 \002(\005\022\023\n\013create_time\030\006 \002(\004\022\014\n\004go"
-    "ld\030\007 \002(\005\"\266\001\n\025CrashPlayerPublishMap\022\'\n\010cr"
-    "ashmap\030\001 \002(\0132\025.message.CrashMapData\022\024\n\014p"
-    "ublish_time\030\002 \002(\004\022\027\n\017challenge_times\030\003 \002"
-    "(\005\022!\n\031failed_of_challenge_times\030\004 \002(\005\022\020\n"
-    "\010map_rank\030\005 \002(\005\022\020\n\010map_blog\030\006 \003(\t\"-\n\007int"
-    "Pair\022\020\n\010number_1\030\001 \002(\005\022\020\n\010number_2\030\002 \002(\005"
-    "\"\262\002\n\017CrashPlayerInfo\022\017\n\007account\030\001 \002(\004\022\022\n"
-    "\npass_point\030\002 \002(\005\022\024\n\014pass_section\030\004 \002(\005\022"
-    "\014\n\004name\030\005 \002(\t\022,\n\rIncompleteMap\030\006 \003(\0132\025.m"
-    "essage.CrashMapData\022*\n\013CompleteMap\030\007 \003(\013"
-    "2\025.message.CrashMapData\022\017\n\007isadmin\030\010 \002(\010"
-    "\022#\n\tresources\030\t \003(\0132\020.message.intPair\022\021\n"
-    "\tmap_width\030\n \002(\005\022\022\n\nmap_height\030\013 \002(\005\022\021\n\t"
-    "map_count\030\014 \002(\005\022\014\n\004gold\030\r \002(\005", 869);
+    "ld\030\007 \002(\005\"L\n\020RankMapBlogEntry\022\013\n\003acc\030\001 \002("
+    "\004\022\014\n\004name\030\002 \002(\t\022\017\n\007sugges_\030\003 \002(\t\022\014\n\004time"
+    "\030\004 \002(\005\"\321\001\n\025CrashPlayerPublishMap\022\'\n\010cras"
+    "hmap\030\001 \002(\0132\025.message.CrashMapData\022\024\n\014pub"
+    "lish_time\030\002 \002(\004\022\027\n\017challenge_times\030\003 \002(\005"
+    "\022!\n\031failed_of_challenge_times\030\004 \002(\005\022\020\n\010m"
+    "ap_rank\030\005 \002(\005\022+\n\010map_blog\030\006 \003(\0132\031.messag"
+    "e.RankMapBlogEntry\"-\n\007intPair\022\020\n\010number_"
+    "1\030\001 \002(\005\022\020\n\010number_2\030\002 \002(\005\"\262\002\n\017CrashPlaye"
+    "rInfo\022\017\n\007account\030\001 \002(\004\022\022\n\npass_point\030\002 \002"
+    "(\005\022\024\n\014pass_section\030\004 \002(\005\022\014\n\004name\030\005 \002(\t\022,"
+    "\n\rIncompleteMap\030\006 \003(\0132\025.message.CrashMap"
+    "Data\022*\n\013CompleteMap\030\007 \003(\0132\025.message.Cras"
+    "hMapData\022\017\n\007isadmin\030\010 \002(\010\022#\n\tresources\030\t"
+    " \003(\0132\020.message.intPair\022\021\n\tmap_width\030\n \002("
+    "\005\022\022\n\nmap_height\030\013 \002(\005\022\021\n\tmap_count\030\014 \002(\005"
+    "\022\014\n\004gold\030\r \002(\005", 974);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   int32array::default_instance_ = new int32array();
   CrashmoMapBaseData::default_instance_ = new CrashmoMapBaseData();
   CrashMapData::default_instance_ = new CrashMapData();
+  RankMapBlogEntry::default_instance_ = new RankMapBlogEntry();
   CrashPlayerPublishMap::default_instance_ = new CrashPlayerPublishMap();
   intPair::default_instance_ = new intPair();
   CrashPlayerInfo::default_instance_ = new CrashPlayerInfo();
   int32array::default_instance_->InitAsDefaultInstance();
   CrashmoMapBaseData::default_instance_->InitAsDefaultInstance();
   CrashMapData::default_instance_->InitAsDefaultInstance();
+  RankMapBlogEntry::default_instance_->InitAsDefaultInstance();
   CrashPlayerPublishMap::default_instance_->InitAsDefaultInstance();
   intPair::default_instance_->InitAsDefaultInstance();
   CrashPlayerInfo::default_instance_->InitAsDefaultInstance();
@@ -1848,6 +1878,579 @@ void CrashMapData::InternalSwap(CrashMapData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int RankMapBlogEntry::kAccFieldNumber;
+const int RankMapBlogEntry::kNameFieldNumber;
+const int RankMapBlogEntry::kSuggesFieldNumber;
+const int RankMapBlogEntry::kTimeFieldNumber;
+#endif  // !_MSC_VER
+
+RankMapBlogEntry::RankMapBlogEntry()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.RankMapBlogEntry)
+}
+
+void RankMapBlogEntry::InitAsDefaultInstance() {
+}
+
+RankMapBlogEntry::RankMapBlogEntry(const RankMapBlogEntry& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.RankMapBlogEntry)
+}
+
+void RankMapBlogEntry::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  acc_ = GOOGLE_ULONGLONG(0);
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  sugges__.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  time_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+RankMapBlogEntry::~RankMapBlogEntry() {
+  // @@protoc_insertion_point(destructor:message.RankMapBlogEntry)
+  SharedDtor();
+}
+
+void RankMapBlogEntry::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  sugges__.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void RankMapBlogEntry::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* RankMapBlogEntry::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return RankMapBlogEntry_descriptor_;
+}
+
+const RankMapBlogEntry& RankMapBlogEntry::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_common_2eproto();
+  return *default_instance_;
+}
+
+RankMapBlogEntry* RankMapBlogEntry::default_instance_ = NULL;
+
+RankMapBlogEntry* RankMapBlogEntry::New(::google::protobuf::Arena* arena) const {
+  RankMapBlogEntry* n = new RankMapBlogEntry;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void RankMapBlogEntry::Clear() {
+  if (_has_bits_[0 / 32] & 15) {
+    acc_ = GOOGLE_ULONGLONG(0);
+    if (has_name()) {
+      name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    if (has_sugges_()) {
+      sugges__.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    time_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool RankMapBlogEntry::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.RankMapBlogEntry)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required uint64 acc = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &acc_)));
+          set_has_acc();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_name;
+        break;
+      }
+
+      // required string name = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.RankMapBlogEntry.name");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_sugges_;
+        break;
+      }
+
+      // required string sugges_ = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_sugges_:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_sugges_()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->sugges_().data(), this->sugges_().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.RankMapBlogEntry.sugges_");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_time;
+        break;
+      }
+
+      // required int32 time = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_time:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &time_)));
+          set_has_time();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.RankMapBlogEntry)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.RankMapBlogEntry)
+  return false;
+#undef DO_
+}
+
+void RankMapBlogEntry::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.RankMapBlogEntry)
+  // required uint64 acc = 1;
+  if (has_acc()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->acc(), output);
+  }
+
+  // required string name = 2;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.RankMapBlogEntry.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->name(), output);
+  }
+
+  // required string sugges_ = 3;
+  if (has_sugges_()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sugges_().data(), this->sugges_().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.RankMapBlogEntry.sugges_");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->sugges_(), output);
+  }
+
+  // required int32 time = 4;
+  if (has_time()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->time(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.RankMapBlogEntry)
+}
+
+::google::protobuf::uint8* RankMapBlogEntry::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.RankMapBlogEntry)
+  // required uint64 acc = 1;
+  if (has_acc()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->acc(), target);
+  }
+
+  // required string name = 2;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.RankMapBlogEntry.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->name(), target);
+  }
+
+  // required string sugges_ = 3;
+  if (has_sugges_()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sugges_().data(), this->sugges_().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.RankMapBlogEntry.sugges_");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->sugges_(), target);
+  }
+
+  // required int32 time = 4;
+  if (has_time()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->time(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.RankMapBlogEntry)
+  return target;
+}
+
+int RankMapBlogEntry::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_acc()) {
+    // required uint64 acc = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->acc());
+  }
+
+  if (has_name()) {
+    // required string name = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  if (has_sugges_()) {
+    // required string sugges_ = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->sugges_());
+  }
+
+  if (has_time()) {
+    // required int32 time = 4;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->time());
+  }
+
+  return total_size;
+}
+int RankMapBlogEntry::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+    // required uint64 acc = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->acc());
+
+    // required string name = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+
+    // required string sugges_ = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->sugges_());
+
+    // required int32 time = 4;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->time());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void RankMapBlogEntry::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const RankMapBlogEntry* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const RankMapBlogEntry*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void RankMapBlogEntry::MergeFrom(const RankMapBlogEntry& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_acc()) {
+      set_acc(from.acc());
+    }
+    if (from.has_name()) {
+      set_has_name();
+      name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+    }
+    if (from.has_sugges_()) {
+      set_has_sugges_();
+      sugges__.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.sugges__);
+    }
+    if (from.has_time()) {
+      set_time(from.time());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void RankMapBlogEntry::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RankMapBlogEntry::CopyFrom(const RankMapBlogEntry& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RankMapBlogEntry::IsInitialized() const {
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+
+  return true;
+}
+
+void RankMapBlogEntry::Swap(RankMapBlogEntry* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void RankMapBlogEntry::InternalSwap(RankMapBlogEntry* other) {
+  std::swap(acc_, other->acc_);
+  name_.Swap(&other->name_);
+  sugges__.Swap(&other->sugges__);
+  std::swap(time_, other->time_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata RankMapBlogEntry::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = RankMapBlogEntry_descriptor_;
+  metadata.reflection = RankMapBlogEntry_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// RankMapBlogEntry
+
+// required uint64 acc = 1;
+ bool RankMapBlogEntry::has_acc() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void RankMapBlogEntry::set_has_acc() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void RankMapBlogEntry::clear_has_acc() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void RankMapBlogEntry::clear_acc() {
+  acc_ = GOOGLE_ULONGLONG(0);
+  clear_has_acc();
+}
+ ::google::protobuf::uint64 RankMapBlogEntry::acc() const {
+  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.acc)
+  return acc_;
+}
+ void RankMapBlogEntry::set_acc(::google::protobuf::uint64 value) {
+  set_has_acc();
+  acc_ = value;
+  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.acc)
+}
+
+// required string name = 2;
+ bool RankMapBlogEntry::has_name() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void RankMapBlogEntry::set_has_name() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void RankMapBlogEntry::clear_has_name() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void RankMapBlogEntry::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_name();
+}
+ const ::std::string& RankMapBlogEntry::name() const {
+  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void RankMapBlogEntry::set_name(const ::std::string& value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.name)
+}
+ void RankMapBlogEntry::set_name(const char* value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.RankMapBlogEntry.name)
+}
+ void RankMapBlogEntry::set_name(const char* value, size_t size) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.RankMapBlogEntry.name)
+}
+ ::std::string* RankMapBlogEntry::mutable_name() {
+  set_has_name();
+  // @@protoc_insertion_point(field_mutable:message.RankMapBlogEntry.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* RankMapBlogEntry::release_name() {
+  clear_has_name();
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void RankMapBlogEntry::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    set_has_name();
+  } else {
+    clear_has_name();
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:message.RankMapBlogEntry.name)
+}
+
+// required string sugges_ = 3;
+ bool RankMapBlogEntry::has_sugges_() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+ void RankMapBlogEntry::set_has_sugges_() {
+  _has_bits_[0] |= 0x00000004u;
+}
+ void RankMapBlogEntry::clear_has_sugges_() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+ void RankMapBlogEntry::clear_sugges_() {
+  sugges__.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_sugges_();
+}
+ const ::std::string& RankMapBlogEntry::sugges_() const {
+  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.sugges_)
+  return sugges__.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void RankMapBlogEntry::set_sugges_(const ::std::string& value) {
+  set_has_sugges_();
+  sugges__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.sugges_)
+}
+ void RankMapBlogEntry::set_sugges_(const char* value) {
+  set_has_sugges_();
+  sugges__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.RankMapBlogEntry.sugges_)
+}
+ void RankMapBlogEntry::set_sugges_(const char* value, size_t size) {
+  set_has_sugges_();
+  sugges__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.RankMapBlogEntry.sugges_)
+}
+ ::std::string* RankMapBlogEntry::mutable_sugges_() {
+  set_has_sugges_();
+  // @@protoc_insertion_point(field_mutable:message.RankMapBlogEntry.sugges_)
+  return sugges__.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* RankMapBlogEntry::release_sugges_() {
+  clear_has_sugges_();
+  return sugges__.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void RankMapBlogEntry::set_allocated_sugges_(::std::string* sugges_) {
+  if (sugges_ != NULL) {
+    set_has_sugges_();
+  } else {
+    clear_has_sugges_();
+  }
+  sugges__.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sugges_);
+  // @@protoc_insertion_point(field_set_allocated:message.RankMapBlogEntry.sugges_)
+}
+
+// required int32 time = 4;
+ bool RankMapBlogEntry::has_time() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+ void RankMapBlogEntry::set_has_time() {
+  _has_bits_[0] |= 0x00000008u;
+}
+ void RankMapBlogEntry::clear_has_time() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+ void RankMapBlogEntry::clear_time() {
+  time_ = 0;
+  clear_has_time();
+}
+ ::google::protobuf::int32 RankMapBlogEntry::time() const {
+  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.time)
+  return time_;
+}
+ void RankMapBlogEntry::set_time(::google::protobuf::int32 value) {
+  set_has_time();
+  time_ = value;
+  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.time)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int CrashPlayerPublishMap::kCrashmapFieldNumber;
 const int CrashPlayerPublishMap::kPublishTimeFieldNumber;
 const int CrashPlayerPublishMap::kChallengeTimesFieldNumber;
@@ -1875,7 +2478,6 @@ CrashPlayerPublishMap::CrashPlayerPublishMap(const CrashPlayerPublishMap& from)
 }
 
 void CrashPlayerPublishMap::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   crashmap_ = NULL;
   publish_time_ = GOOGLE_ULONGLONG(0);
@@ -2030,17 +2632,12 @@ bool CrashPlayerPublishMap::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated string map_blog = 6;
+      // repeated .message.RankMapBlogEntry map_blog = 6;
       case 6: {
         if (tag == 50) {
          parse_map_blog:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_map_blog()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->map_blog(this->map_blog_size() - 1).data(),
-            this->map_blog(this->map_blog_size() - 1).length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "message.CrashPlayerPublishMap.map_blog");
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_map_blog()));
         } else {
           goto handle_unusual;
         }
@@ -2100,13 +2697,9 @@ void CrashPlayerPublishMap::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->map_rank(), output);
   }
 
-  // repeated string map_blog = 6;
-  for (int i = 0; i < this->map_blog_size(); i++) {
-  ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-    this->map_blog(i).data(), this->map_blog(i).length(),
-    ::google::protobuf::internal::WireFormat::SERIALIZE,
-    "message.CrashPlayerPublishMap.map_blog");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
+  // repeated .message.RankMapBlogEntry map_blog = 6;
+  for (unsigned int i = 0, n = this->map_blog_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, this->map_blog(i), output);
   }
 
@@ -2147,14 +2740,11 @@ void CrashPlayerPublishMap::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->map_rank(), target);
   }
 
-  // repeated string map_blog = 6;
-  for (int i = 0; i < this->map_blog_size(); i++) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->map_blog(i).data(), this->map_blog(i).length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "message.CrashPlayerPublishMap.map_blog");
+  // repeated .message.RankMapBlogEntry map_blog = 6;
+  for (unsigned int i = 0, n = this->map_blog_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(6, this->map_blog(i), target);
+      WriteMessageNoVirtualToArray(
+        6, this->map_blog(i), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2237,11 +2827,12 @@ int CrashPlayerPublishMap::ByteSize() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  // repeated string map_blog = 6;
+  // repeated .message.RankMapBlogEntry map_blog = 6;
   total_size += 1 * this->map_blog_size();
   for (int i = 0; i < this->map_blog_size(); i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->map_blog(i));
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->map_blog(i));
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2310,6 +2901,7 @@ bool CrashPlayerPublishMap::IsInitialized() const {
   if (has_crashmap()) {
     if (!this->crashmap_->IsInitialized()) return false;
   }
+  if (!::google::protobuf::internal::AllAreInitialized(this->map_blog())) return false;
   return true;
 }
 
@@ -2479,55 +3071,31 @@ void CrashPlayerPublishMap::InternalSwap(CrashPlayerPublishMap* other) {
   // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.map_rank)
 }
 
-// repeated string map_blog = 6;
+// repeated .message.RankMapBlogEntry map_blog = 6;
  int CrashPlayerPublishMap::map_blog_size() const {
   return map_blog_.size();
 }
  void CrashPlayerPublishMap::clear_map_blog() {
   map_blog_.Clear();
 }
- const ::std::string& CrashPlayerPublishMap::map_blog(int index) const {
+ const ::message::RankMapBlogEntry& CrashPlayerPublishMap::map_blog(int index) const {
   // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.map_blog)
   return map_blog_.Get(index);
 }
- ::std::string* CrashPlayerPublishMap::mutable_map_blog(int index) {
+ ::message::RankMapBlogEntry* CrashPlayerPublishMap::mutable_map_blog(int index) {
   // @@protoc_insertion_point(field_mutable:message.CrashPlayerPublishMap.map_blog)
   return map_blog_.Mutable(index);
 }
- void CrashPlayerPublishMap::set_map_blog(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.map_blog)
-  map_blog_.Mutable(index)->assign(value);
-}
- void CrashPlayerPublishMap::set_map_blog(int index, const char* value) {
-  map_blog_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:message.CrashPlayerPublishMap.map_blog)
-}
- void CrashPlayerPublishMap::set_map_blog(int index, const char* value, size_t size) {
-  map_blog_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:message.CrashPlayerPublishMap.map_blog)
-}
- ::std::string* CrashPlayerPublishMap::add_map_blog() {
+ ::message::RankMapBlogEntry* CrashPlayerPublishMap::add_map_blog() {
+  // @@protoc_insertion_point(field_add:message.CrashPlayerPublishMap.map_blog)
   return map_blog_.Add();
 }
- void CrashPlayerPublishMap::add_map_blog(const ::std::string& value) {
-  map_blog_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:message.CrashPlayerPublishMap.map_blog)
-}
- void CrashPlayerPublishMap::add_map_blog(const char* value) {
-  map_blog_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:message.CrashPlayerPublishMap.map_blog)
-}
- void CrashPlayerPublishMap::add_map_blog(const char* value, size_t size) {
-  map_blog_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:message.CrashPlayerPublishMap.map_blog)
-}
- const ::google::protobuf::RepeatedPtrField< ::std::string>&
+ const ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >&
 CrashPlayerPublishMap::map_blog() const {
   // @@protoc_insertion_point(field_list:message.CrashPlayerPublishMap.map_blog)
   return map_blog_;
 }
- ::google::protobuf::RepeatedPtrField< ::std::string>*
+ ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >*
 CrashPlayerPublishMap::mutable_map_blog() {
   // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerPublishMap.map_blog)
   return &map_blog_;

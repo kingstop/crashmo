@@ -30,6 +30,10 @@ public:
 	void createInfo(message::CharacterDataACK* msg);
 	void parseSaveMap(google::protobuf::Message* p);
 	void parseDelMap(google::protobuf::Message* p);
+	void parseReqOfficilMap(google::protobuf::Message* p);
+	void parseReqRankMap(google::protobuf::Message* p);
+	void parseReqOfficilStatus(google::protobuf::Message* p);
+
 	void parseModifySectionName(google::protobuf::Message* p);
 	void parseGetSectionNameReq(google::protobuf::Message* p);
 

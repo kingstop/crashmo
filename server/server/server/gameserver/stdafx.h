@@ -31,6 +31,7 @@
 #include "CrashPlayerManager.h"
 #include "OfficilMapManager.h"
 #include "GameConfig.h"
+#include "RankMapManager.h"
 std::string Utf8ToGBK(const char* strUtf8);
 std::string GBKToUtf8(const char* strGBK);
 
@@ -60,6 +61,7 @@ struct FuGameFather
 	Database		sWorldDB;
 	CrashPlayerManager sPlayerManager;
 	OfficilMapManager sOfficilMapManager;
+	RankMapManager    sRankMapManager;
 	//NoneCharacterManager sNoneCharacterManager;
 };
 
@@ -76,6 +78,7 @@ extern FuGameFather* gFuGameFather;
 #define gPlayerManager		gFuGameFather->sPlayerManager
 #define gOfficilMapManager  gFuGameFather->sOfficilMapManager
 #define gGameConfig			gFuGameFather->sGameConfig
+#define gRankMapManager     gFuGameFather->sRankMapManager
 
 //#define gCharacterManager   gFuGameFather->sNoneCharacterManager
 //#define gGameConfig			gFuGameFather->sGameConfig

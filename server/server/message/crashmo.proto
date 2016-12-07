@@ -103,6 +103,16 @@ message MsgS2CNotifyPing
 	required int32 ping_count = 2;
 }
 
+message MsgC2SOfficeStatusReq
+{
+	 
+}
+
+message MsgS2COfficeStatusACK
+{
+	repeated int32 chapter_id = 1;
+}
+
 message MsgC2SOfficeMapReq
 {
 	required int32 chapter_id = 1;
@@ -115,12 +125,25 @@ message MsgS2COfficeMapACK
 	required int32 chapter_id = 1;
 	required int32 section_id = 2;
 	repeated CrashMapData maps = 3;
-	required bool chapter_end = 4;
-	required bool section_end = 5;
+	required int32 section_count = 4;
 }
 
-message MsgS2CRankMapReq
+message MsgC2SRankMapReq
 {
 	required int32 rank_begin = 1;
-	
+	required int64 time_stamp = 2;
+	required int32 map_count = 3;
+}
+
+message MsgS2CRankMapACK
+{
+	repeated CrashPlayerPublishMap maps = 1;
+	required int32 end_rank  = 2;
+	required int64 time_stamp = 3;
+	required int32 rank_map_count = 4;
+}
+
+message MsgS2CRankMapRefreshNotify
+{
+	required int64 time_stamp = 1;	
 }

@@ -287,7 +287,7 @@ public class crash_mole
     }
     protected bool is_self(int x, int z, int y)
     {
-        if(x >= 0 && x < 18 && y >= 0 && y < 60)
+        if(x >= 0 && x <= (int)map_def.map_def_max_width && y >= 0 && y <= (int)map_def.map_def_min_height)
         {
             if(_crash_manager._crash_moles[x, z, y]._crash_mole == this)
             {

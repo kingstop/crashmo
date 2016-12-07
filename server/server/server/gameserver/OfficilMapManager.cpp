@@ -63,7 +63,10 @@ void OfficilMapManager::init(DBQuery* p)
 	}
 }
 
-
+const OFFICILMAPLIST* OfficilMapManager::getOfficilMap()
+{
+	return &_officilmap;
+}
 
 void OfficilMapManager::getOfficilMap(CrashPlayer* p, int page)
 {

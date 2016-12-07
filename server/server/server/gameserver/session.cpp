@@ -31,7 +31,9 @@ void Session::registerPBCall()
 	registerCBFun(PROTOCO_NAME(message::MsgDelMapReq), &Session::parseDelMap);
 	registerCBFun(PROTOCO_NAME(message::MsgModifySectionNameReq), &Session::parseModifySectionName);
 	registerCBFun(PROTOCO_NAME(message::MsgSectionNameReq), &Session::parseGetSectionNameReq);
-
+	registerCBFun(PROTOCO_NAME(message::MsgC2SRankMapReq), &Session::parseReqRankMap);
+	registerCBFun(PROTOCO_NAME(message::MsgC2SOfficeMapReq), &Session::parseReqOfficilMap);
+	registerCBFun(PROTOCO_NAME(message::MsgC2SOfficeStatusReq), &Session::parseReqOfficilStatus);
 }
 
 void Session::parsePBMessage(google::protobuf::Message* p)
@@ -216,4 +218,84 @@ void Session::createInfo(message::CharacterDataACK* msg)
 	_player->StartSave();
 }
 
+void Session::parseReqOfficilStatus(google::protobuf::Message* p)
+{
+	message::MsgC2SOfficeStatusReq* msg = (message::MsgC2SOfficeStatusReq*)p;
+	message::MsgS2COfficeStatusACK msgACK;
+	const OFFICILMAPLIST* officilmap = gOfficilMapManager.getOfficilMap();
+	OFFICILMAPLIST::const_iterator it_const = officilmap->begin();
+	for (; it_const != officilmap->end(); ++ it_const)
+	{
+		msgACK.add_chapter_id(it_const->first);		
+	}
+	sendPBMessage(&msgACK);
+}
 
+void Session::parseReqOfficilMap(google::protobuf::Message* p)
+{
+	message::MsgC2SOfficeMapReq* msg = (message::MsgC2SOfficeMapReq*)p;
+	int chapter_id = msg->chapter_id();
+	int section_id = msg->section_id();
+	int map_count = msg->map_count();
+	int current_count = 0;
+
+	message::MsgS2COfficeMapACK msgACK;
+	msgACK.set_section_count(0);
+	msgACK.set_chapter_id(chapter_id);
+	msgACK.set_section_id(0);
+	const OFFICILMAPLIST* officilmap = gOfficilMapManager.getOfficilMap();
+	OFFICILMAPLIST::const_iterator it_const = (*officilmap).find(chapter_id);
+	if (it_const != officilmap->end())
+	{
+		const std::map<int, message::CrashMapData>& map_entry = it_const->second;
+		msgACK.set_section_count(map_entry.size());
+
+		std::map<int, message::CrashMapData>::const_iterator it_section = map_entry.begin();
+		for (; it_section != map_entry.end(); ++ it_section)
+		{
+			if (it_section->first <= section_id)
+			{
+				continue;
+			}
+			else
+			{
+				current_count++;
+				message::CrashMapData* mapEntry = msgACK.add_maps();
+				mapEntry->CopyFrom(it_section->second);
+				msgACK.set_section_id(it_section->first);
+				if (current_count >= map_count)
+				{
+					break;
+				}
+			}
+		}
+	}
+	sendPBMessage(&msgACK);
+}
+void Session::parseReqRankMap(google::protobuf::Message* p)
+{
+	message::MsgC2SRankMapReq* msg = (message::MsgC2SRankMapReq*)p;
+	message::MsgS2CRankMapACK msgACK;
+	const std::map<s32, RankMapTg*>* rankMaps = gRankMapManager.GetRankMaps();
+	msgACK.set_time_stamp(gRankMapManager.getSortTimeStamp());
+	msgACK.set_rank_map_count(rankMaps->size());
+	int map_count = msg->map_count();
+	int current_count = 0;
+	std::map<s32, RankMapTg*>::const_iterator it_rank_map = rankMaps->begin();
+	for (; it_rank_map != rankMaps->end(); ++ it_rank_map)
+	{
+		if (it_rank_map->first <= msg->rank_begin())
+		{
+			continue;
+		}
+		else
+		{
+			RankMapTg* RankEntry = it_rank_map->second;
+			current_count++;
+			message::CrashPlayerPublishMap entryRankMap;
+			RankEntry->Copy(&entryRankMap);
+			msgACK.set_end_rank(it_rank_map->first);
+		}
+	}
+	sendPBMessage(&msgACK);
+}

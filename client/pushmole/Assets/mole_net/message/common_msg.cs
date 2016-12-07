@@ -124,6 +124,44 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RankMapBlogEntry")]
+  public partial class RankMapBlogEntry : global::ProtoBuf.IExtensible
+  {
+    public RankMapBlogEntry() {}
+    
+    private ulong _acc;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"acc", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong acc
+    {
+      get { return _acc; }
+      set { _acc = value; }
+    }
+    private string _name;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string name
+    {
+      get { return _name; }
+      set { _name = value; }
+    }
+    private string _sugges_;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"sugges_", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string sugges_
+    {
+      get { return _sugges_; }
+      set { _sugges_ = value; }
+    }
+    private int _time;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"time", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int time
+    {
+      get { return _time; }
+      set { _time = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CrashPlayerPublishMap")]
   public partial class CrashPlayerPublishMap : global::ProtoBuf.IExtensible
   {
@@ -164,9 +202,9 @@ namespace message
       get { return _map_rank; }
       set { _map_rank = value; }
     }
-    private readonly global::System.Collections.Generic.List<string> _map_blog = new global::System.Collections.Generic.List<string>();
+    private readonly global::System.Collections.Generic.List<message.RankMapBlogEntry> _map_blog = new global::System.Collections.Generic.List<message.RankMapBlogEntry>();
     [global::ProtoBuf.ProtoMember(6, Name=@"map_blog", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> map_blog
+    public global::System.Collections.Generic.List<message.RankMapBlogEntry> map_blog
     {
       get { return _map_blog; }
     }

@@ -25,6 +25,15 @@ message CrashMapData
 }
 
 
+
+message RankMapBlogEntry
+{
+	required uint64 acc = 1;
+	required string name = 2;
+	required string sugges_ = 3;
+	required int32 time = 4;
+};
+
 message CrashPlayerPublishMap
 {
 	required CrashMapData crashmap = 1;
@@ -32,7 +41,7 @@ message CrashPlayerPublishMap
 	required int32 challenge_times = 3;
 	required int32 failed_of_challenge_times = 4;
 	required int32 map_rank = 5;
-	repeated string map_blog = 6;
+	repeated RankMapBlogEntry map_blog = 6;
 }
 
 message intPair

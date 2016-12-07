@@ -337,6 +337,33 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SOfficeStatusReq")]
+  public partial class MsgC2SOfficeStatusReq : global::ProtoBuf.IExtensible
+  {
+    public MsgC2SOfficeStatusReq() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2COfficeStatusACK")]
+  public partial class MsgS2COfficeStatusACK : global::ProtoBuf.IExtensible
+  {
+    public MsgS2COfficeStatusACK() {}
+    
+    private readonly global::System.Collections.Generic.List<int> _chapter_id = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"chapter_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> chapter_id
+    {
+      get { return _chapter_id; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SOfficeMapReq")]
   public partial class MsgC2SOfficeMapReq : global::ProtoBuf.IExtensible
   {
@@ -394,19 +421,98 @@ namespace message
       get { return _maps; }
     }
   
-    private bool _chapter_end;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"chapter_end", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public bool chapter_end
+    private int _section_count;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"section_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int section_count
     {
-      get { return _chapter_end; }
-      set { _chapter_end = value; }
+      get { return _section_count; }
+      set { _section_count = value; }
     }
-    private bool _section_end;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"section_end", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public bool section_end
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SRankMapReq")]
+  public partial class MsgC2SRankMapReq : global::ProtoBuf.IExtensible
+  {
+    public MsgC2SRankMapReq() {}
+    
+    private int _rank_begin;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"rank_begin", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int rank_begin
     {
-      get { return _section_end; }
-      set { _section_end = value; }
+      get { return _rank_begin; }
+      set { _rank_begin = value; }
+    }
+    private long _time_stamp;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"time_stamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long time_stamp
+    {
+      get { return _time_stamp; }
+      set { _time_stamp = value; }
+    }
+    private int _map_count;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"map_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int map_count
+    {
+      get { return _map_count; }
+      set { _map_count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CRankMapACK")]
+  public partial class MsgS2CRankMapACK : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CRankMapACK() {}
+    
+    private readonly global::System.Collections.Generic.List<message.CrashPlayerPublishMap> _maps = new global::System.Collections.Generic.List<message.CrashPlayerPublishMap>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"maps", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.CrashPlayerPublishMap> maps
+    {
+      get { return _maps; }
+    }
+  
+    private int _end_rank;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"end_rank", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int end_rank
+    {
+      get { return _end_rank; }
+      set { _end_rank = value; }
+    }
+    private long _time_stamp;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"time_stamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long time_stamp
+    {
+      get { return _time_stamp; }
+      set { _time_stamp = value; }
+    }
+    private int _rank_map_count;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"rank_map_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int rank_map_count
+    {
+      get { return _rank_map_count; }
+      set { _rank_map_count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CRankMapRefreshNotify")]
+  public partial class MsgS2CRankMapRefreshNotify : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CRankMapRefreshNotify() {}
+    
+    private long _time_stamp;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"time_stamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long time_stamp
+    {
+      get { return _time_stamp; }
+      set { _time_stamp = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

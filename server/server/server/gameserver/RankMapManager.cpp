@@ -102,6 +102,17 @@ int RankMapManager::getNextDaySec()
 	return sec;
 }
 
+
+s64 RankMapManager::getSortTimeStamp()
+{
+	return _sort_time_stamp;
+}
+
+const std::map<s32, RankMapTg*>* RankMapManager::GetRankMaps()
+{
+	return &_rank_maps;
+}
+
 void RankMapManager::SortMap()
 {
 	std::vector<RankMapTg*> vcTempRankMap;
@@ -119,5 +130,6 @@ void RankMapManager::SortMap()
 		entry_map->map_rank_ = i;
 		_rank_maps[i] = entry_map;
 	}
+	_sort_time_stamp = g_server_time;
 	PrepareNextSort();
 }
