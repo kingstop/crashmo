@@ -69,8 +69,9 @@ public class global_instance
     public CrashPlayer _player;
     public bool _can_set_group = true;
     private MapData _map_data = null;
-
     public global_game_type _global_game_type = global_game_type.global_game_type_game;
+	public OfficilMapManager _officilMapManager = new OfficilMapManager ();
+	public RankMapManager _rankMapManager = new RankMapManager ();
 
 
 }

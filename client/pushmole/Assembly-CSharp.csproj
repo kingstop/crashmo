@@ -189,11 +189,14 @@
      <Compile Include="Assets\Scripts\MainCameraLine.cs" />
      <Compile Include="Assets\Scripts\MainPanel.cs" />
      <Compile Include="Assets\Scripts\MainPanelTitleButtonItem.cs" />
+     <Compile Include="Assets\Scripts\OfficilMapManager.cs" />
+     <Compile Include="Assets\Scripts\RankMapManager.cs" />
      <Compile Include="Assets\Scripts\RewardEntry.cs" />
      <Compile Include="Assets\Scripts\SaveMapPanel.cs" />
      <Compile Include="Assets\Scripts\SaveMapTitleButton.cs" />
      <Compile Include="Assets\Scripts\SectionEditPanel.cs" />
      <Compile Include="Assets\Scripts\UIGameEnd.cs" />
+     <Compile Include="Assets\Scripts\UISectionGiftGold.cs" />
      <Compile Include="Assets\Scripts\button_event_handler.cs" />
      <Compile Include="Assets\Scripts\client_session.cs" />
      <Compile Include="Assets\Scripts\color_button.cs" />

@@ -36,7 +36,7 @@ public class client_session
         global_instance.Instance._player.SetInfo(msg.info);
         foreach(message.MsgIntStringProto key_pair in msg.sections_names)
         {
-            global_instance.Instance._player.addSectionName(key_pair.intger_temp, key_pair.string_temp);
+			global_instance.Instance._officilMapManager.addChapterName(key_pair.intger_temp, key_pair.string_temp);
         }
         global_instance.Instance._ngui_edit_manager._login_obj.SetActive(false);
         global_instance.Instance._ngui_edit_manager.show_main_panel();
@@ -47,7 +47,7 @@ public class client_session
     public bool ModifySectionName(System.IO.MemoryStream stream)
     {
         MsgModifySectionNameACK msg = ProtoBuf.Serializer.Deserialize<MsgModifySectionNameACK>(stream);
-        global_instance.Instance._player.addSectionName(msg.section, msg.section_name);
+		global_instance.Instance._officilMapManager.addChapterName(msg.section, msg.section_name);
         global_instance.Instance._ngui_edit_manager._main_panel.refrashCurrentPage(global_instance.Instance._ngui_edit_manager._main_panel._current_page);
         global_instance.Instance._ngui_edit_manager.show_main_panel();
         return true;
@@ -74,7 +74,7 @@ public class client_session
                     break;
                 case MapType.OfficeMap:
                     {
-                        global_instance.Instance._player.add_map(msg.map);
+					global_instance.Instance._officilMapManager.addMap(msg.map);
                     }
                     break;
             }

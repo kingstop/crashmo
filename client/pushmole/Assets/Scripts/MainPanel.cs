@@ -73,7 +73,7 @@ public class MainPanel : MonoBehaviour
         message.CrashMapData MapDataTemp = null;
         if (_current_page == page_type.page_type_official)
         {
-            MapDataTemp = global_instance.Instance._player.getOfficilMap(_section_number, (int)_current_map_index);
+			MapDataTemp = global_instance.Instance._officilMapManager.getOfficilMap(_section_number, (int)_current_map_index);
         }
         else
         {
@@ -262,7 +262,7 @@ public class MainPanel : MonoBehaviour
                     SelfButtonChange(false);
                     _Back_obj_button.SetActive(false);
                     _edit_section_obj_button.SetActive(true);
-                    Dictionary<int, string> officil_section_names = global_instance.Instance._player.get_officil_section_names();
+					Dictionary<int, string> officil_section_names = global_instance.Instance._officilMapManager.getChapterNames();
                     foreach (KeyValuePair<int, string> key_temp in officil_section_names)
                     {
                         ChooseItemEntry temp = CreateItemEntry();
@@ -360,7 +360,7 @@ public class MainPanel : MonoBehaviour
             {
                 EnterToContainer(containers_type_panel.containers_type_panel_main);
                 _officil_page_type = offcil_page_type.offcil_page_type_number;
-                List<CrashMapData> list_maps = global_instance.Instance._player.getPageMaps((int)_current_map_index);
+				List<CrashMapData> list_maps = global_instance.Instance._officilMapManager.getChapterMaps((int)_current_map_index);
                 _play_obj_button.SetActive(true);
                 _create_obj_button.SetActive(false);
                 _edit_obj_button.SetActive(false);

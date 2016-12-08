@@ -24,7 +24,7 @@ public class CrashPlayer
     {
         return _info;
     }
-
+	/*
     public void add_map(CrashMapData temp)
     {
         if(_officil_map.ContainsKey(temp.Section) == false)
@@ -34,6 +34,7 @@ public class CrashPlayer
         }
         _officil_map[temp.Section][temp.number] = temp;        
     }
+    */
 
     public void del_map(string name)
     {
@@ -110,6 +111,7 @@ public class CrashPlayer
 
     }
 
+	/*
     public List<CrashMapData> getPageMaps(int page)
     {
         List<CrashMapData> temp = new List<CrashMapData>();
@@ -123,6 +125,7 @@ public class CrashPlayer
         }
         return temp;
     }
+
     public CrashMapData getOfficilMap(int page, int number)
     {
         CrashMapData temp = null;
@@ -132,20 +135,19 @@ public class CrashPlayer
         }
         return temp;
     }
+*/
 
-	public Dictionary<int, string>  get_officil_section_names()
-	{
-		return _officil_section_names;
-	}
 
     public List<message.intPair> get_resource()
     {
         return _info.resources;
     }
+	/*
     public void addSectionName(int section, string section_name)
     {
         _officil_section_names[section] = section_name;
     }
+    */
 
     public bool isadmin()
     {
