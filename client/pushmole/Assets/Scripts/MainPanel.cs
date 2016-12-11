@@ -44,11 +44,27 @@ public class MainPanel : MonoBehaviour
     private ulong _current_map_index;
     public page_type _current_page;
     private offcil_page_type _officil_page_type;
-    private int _section_number;
+    private int _chapter_id;
+	private int _section_id;
     MainPanel()
     {
         _current_page = page_type.page_type_official;
     }
+
+	public int GetChapterID()
+	{
+		return _chapter_id;
+	}
+	public ulong getSection()
+	{
+		return _current_map_index;
+	}
+
+	public page_type getPageType()
+	{
+		return _current_page;
+	}
+
     void selectTile(int index)
     {
         int titile_count = _title_button.Length;
@@ -73,7 +89,7 @@ public class MainPanel : MonoBehaviour
         message.CrashMapData MapDataTemp = null;
         if (_current_page == page_type.page_type_official)
         {
-			MapDataTemp = global_instance.Instance._officilMapManager.getOfficilMap(_section_number, (int)_current_map_index);
+			MapDataTemp = global_instance.Instance._officilMapManager.getOfficilMap(_chapter_id, (int)_current_map_index);
         }
         else
         {
@@ -292,7 +308,6 @@ public class MainPanel : MonoBehaviour
         {
             EnterToContainer(containers_type_panel.containers_type_panel_main);
         }
-        CrashPlayerInfo info = global_instance.Instance._player.GetInfo();
         selectTile((int)page);
         refrashCurrentPage(page);
     }
@@ -344,7 +359,7 @@ public class MainPanel : MonoBehaviour
                 _current_map_index = temp._map_index;
                 if (b_set_section)
                 {
-                    _section_number = (int)_current_map_index;
+					_chapter_id = (int)_current_map_index;
                 }
 
             }
@@ -361,9 +376,14 @@ public class MainPanel : MonoBehaviour
                 EnterToContainer(containers_type_panel.containers_type_panel_main);
                 _officil_page_type = offcil_page_type.offcil_page_type_number;
 				List<CrashMapData> list_maps = global_instance.Instance._officilMapManager.getChapterMaps((int)_current_map_index);
+				bool is_admin = false;
+				if (global_instance.Instance._player.isadmin ()) 
+				{
+					is_admin = true;
+				}
+				_edit_obj_button.SetActive(is_admin);
+				_create_obj_button.SetActive(is_admin);
                 _play_obj_button.SetActive(true);
-                _create_obj_button.SetActive(false);
-                _edit_obj_button.SetActive(false);
                 _edit_section_obj_button.SetActive(false);
                 _Back_obj_button.SetActive(true);
                 foreach (ChooseItemEntry entry_temp in _officil_items)

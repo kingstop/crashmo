@@ -223,6 +223,7 @@
     <Compile Include="Assets\Scripts\MainPanel.cs" />
     <Compile Include="Assets\Scripts\MainPanelTitleButtonItem.cs" />
     <Compile Include="Assets\Scripts\OfficilMapManager.cs" />
+    <Compile Include="Assets\Scripts\RankMapManager.cs" />
     <Compile Include="Assets\Scripts\RewardEntry.cs" />
     <Compile Include="Assets\Scripts\SaveMapPanel.cs" />
     <Compile Include="Assets\Scripts\SaveMapTitleButton.cs" />

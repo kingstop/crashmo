@@ -1,41 +1,48 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MainPanel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/mole_net/proto-net/ProtoReader.cs">
     <Files>
-      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="297" Column="2" />
       <File FileName="Assets/Scripts/crashmolegrid.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="676" Column="115" />
       <File FileName="Assets/Scripts/ColorBoard.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CrashPlayer.cs" Line="97" Column="2" />
-      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="537" Column="2" />
+      <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="529" Column="10" />
       <File FileName="Assets/Scripts/game_btn_down.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/FradeText.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/global_instance.cs" Line="38" Column="6" />
+      <File FileName="Assets/Scripts/FradeText.cs" Line="63" Column="1" />
+      <File FileName="Assets/Scripts/global_instance.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/button_event_handler.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/creature.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/client_session.cs" Line="81" Column="67" />
+      <File FileName="Assets/Scripts/creature.cs" Line="567" Column="4" />
+      <File FileName="Assets/Scripts/client_session.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ChooseItemEntry.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/crashmole.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/OfficilMapManager.cs" Line="124" Column="3" />
-      <File FileName="Assets/mole_net/message/crashmo_msg.cs" Line="341" Column="45" />
-      <File FileName="Assets/mole_net/U3dSocketClient.cs" Line="115" Column="5" />
+      <File FileName="Assets/Scripts/crashmole.cs" Line="993" Column="36" />
+      <File FileName="Assets/Scripts/OfficilMapManager.cs" Line="10" Column="2" />
+      <File FileName="Assets/mole_net/message/crashmo_msg.cs" Line="1" Column="1" />
+      <File FileName="Assets/mole_net/U3dSocketClient.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/RankMapManager.cs" Line="33" Column="32" />
-      <File FileName="Assets/Scripts/MainPanel.cs" Line="365" Column="53" />
+      <File FileName="Assets/Scripts/MainPanel.cs" Line="256" Column="25" />
+      <File FileName="Assets/Scripts/RewardEntry.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="41" Column="96" />
+      <File FileName="Assets/Scripts/MainPanelTitleButtonItem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UIGameEnd.cs" Line="76" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="pushmole" expanded="True">
+          <Node name="pushmole" expanded="True" selected="True">
             <Node name="Assembly-CSharp" expanded="True">
               <Node name="mole_net" expanded="True">
-                <Node name="message" expanded="True" />
                 <Node name="proto-net" expanded="True" />
               </Node>
-              <Node name="Scripts" expanded="True">
-                <Node name="MainPanel.cs" selected="True" />
-              </Node>
+              <Node name="Scripts" expanded="True" />
             </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>global_instance.Instance._crash_manager.getGameState()</Value>
+          <Value>gameState.game_playing</Value>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
@@ -52,13 +59,7 @@
       <Breakpoint enabled="false" file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/mole_net/SocketClient.cs" line="221" column="1" />
       <Breakpoint enabled="false" file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/mole_net/SocketClient.cs" line="237" column="1" />
       <Breakpoint enabled="false" file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/mole_net/U3dSocketClient.cs" line="167" column="1" />
-      <Breakpoint enabled="false" file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/crashmole.cs" line="871" column="1" />
-      <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/creature.cs" line="42" column="1" />
-      <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/ngui_edit_manager.cs" line="548" column="1" />
-      <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/ngui_edit_manager.cs" line="546" column="1" />
-      <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/crashmole.cs" line="1406" column="9" />
-      <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/crashmole.cs" line="1826" column="1" />
-      <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/FradeText.cs" line="62" column="1" />
+      <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/crashmole.cs" line="1014" column="29" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

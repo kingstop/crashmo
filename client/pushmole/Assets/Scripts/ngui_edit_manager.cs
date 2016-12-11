@@ -108,10 +108,25 @@ public class ngui_edit_manager : MonoBehaviour {
         hide_game_btns();
         show_create_btns();
         global_instance.Instance._net_client = new u3dclient();
-        _input_keyboard = false;
-
-
+        _input_keyboard = false;	
     }
+
+
+	public int GetChapterID()
+	{
+		return _main_panel.GetChapterID();
+	}
+	public ulong getSection()
+	{
+		return _main_panel.getSection ();
+	}
+
+	public page_type getPageType()
+	{
+		return _main_panel.getPageType();
+	}
+
+
     public Color get_color_by_group(int group)
     {
         Color color = new Color(0, 0, 0);
@@ -615,6 +630,7 @@ public class ngui_edit_manager : MonoBehaviour {
                     _edit_obj_btns.SetActive(true);
                     _edit_obj_create_btns.SetActive(true);
                     _edit_obj_draw_btns.SetActive(false);
+					_ui_section_gold.gameObject.SetActive (false);
                 }
                 break;
             case game_type.edit:
@@ -622,7 +638,7 @@ public class ngui_edit_manager : MonoBehaviour {
                     _edit_obj_btns.SetActive(true);
                     _edit_obj_create_btns.SetActive(false);
                     _edit_obj_draw_btns.SetActive(true);
-
+					_ui_section_gold.gameObject.SetActive (true);
                     show_edit_btn();
                 }
                 break;

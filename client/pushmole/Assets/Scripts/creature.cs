@@ -72,7 +72,7 @@ public class creature : MonoBehaviour
 
     public void jump()
     {
-        if (global_instance.Instance._crash_manager.getGameState() == gameState.game_playing)
+        if (global_instance.Instance._crash_manager.getGameState() != gameState.game_playing)
         {
             return;
         }
@@ -448,7 +448,7 @@ public class creature : MonoBehaviour
     {
         //global_instance.Instance._crash_manager._History._mol_history.Count
 
-        if (global_instance.Instance._crash_manager.getGameState() == gameState.game_playing)
+        if (global_instance.Instance._crash_manager.getGameState() != gameState.game_playing)
         {
 			return;
 		}
@@ -562,7 +562,9 @@ public class creature : MonoBehaviour
 	public bool isNeedRecord()
 	{
         
-        if (global_instance.Instance._crash_manager.getGameState() == gameState.game_playing && global_instance.Instance._crash_manager._record._open_record == false && global_instance.Instance._crash_manager._freezen_creature == false) 
+        if (global_instance.Instance._crash_manager.getGameState() == gameState.game_playing && 
+			global_instance.Instance._crash_manager._record._open_record == false && 
+			global_instance.Instance._crash_manager._freezen_creature == false) 
 		{
 			return true;
 		}

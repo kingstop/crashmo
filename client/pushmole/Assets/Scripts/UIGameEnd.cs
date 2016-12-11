@@ -7,6 +7,9 @@ public enum enResult
 }
 public class UIGameEnd : MonoBehaviour {
     public RewardEntry[] rewardEntrys_;
+	public GameObject objEdit_;
+	public GameObject objGame_;
+
     protected int _current_count = 0;
     protected enResult _en;
     // Use this for initialization
@@ -51,4 +54,25 @@ public class UIGameEnd : MonoBehaviour {
             entry.gameObject.SetActive(false);
         }
     }
+
+	public void OnSaveClick()
+	{
+
+
+	}
+
+	public void OnModifyClick()
+	{
+
+	}
+
+	public void OnGiveUpClick()
+	{
+
+	}
+
+	public void OnCompleteClick()
+	{
+
+	}
 }

@@ -11,16 +11,36 @@ public class SaveMapPanel : MonoBehaviour {
     public Button[] _btns;
     public SaveMapTitleButton[] _title_btns;
     public GameObject _admin_obj;
-    public GameObject _input_section_obj;
-    public GameObject _input_number_obj;
+	public GameObject _input_chapter_obj;
+	public GameObject _input_section_obj;
+	public InputField _input_chapter;
+	public InputField _input_section;
     // Use this for initialization
     public Text _map_name;
+    public Text _chapter_text;
     public Text _section_text;
-    public Text _number_text;
     public Text _txt_msg;
 
 	void Start () {
 	
+		bool is_admin = false;
+
+		if (global_instance.Instance._player.isadmin ()) 
+		{
+			is_admin = true;
+		}
+
+		foreach (Button entry in _btns) 
+		{
+			entry.gameObject.SetActive (is_admin);
+		}
+
+		if (is_admin == true && global_instance.Instance._ngui_edit_manager.getPageType() == page_type.page_type_official) 
+		{
+			_input_chapter.text = global_instance.Instance._ngui_edit_manager.GetChapterID ().ToString ();
+			_input_section.text = global_instance.Instance._ngui_edit_manager.getSection ().ToString ();
+		}
+			
 	}
 	
 	// Update is called once per frame
@@ -47,13 +67,13 @@ public class SaveMapPanel : MonoBehaviour {
             case SaveMapTitleType.Admin:
                 {
                     _input_section_obj.SetActive(true);
-                    _input_number_obj.SetActive(true);
+                    _input_chapter_obj.SetActive(true);
                 }
                 break;
             case SaveMapTitleType.Customer:
                 {
                     _input_section_obj.SetActive(false);
-                    _input_number_obj.SetActive(false);
+					_input_chapter_obj.SetActive(false);
                 }
                 break;
         }
@@ -149,8 +169,8 @@ public class SaveMapPanel : MonoBehaviour {
                 case SaveMapTitleType.Admin:
                     {
                         msg.save_type = message.MapType.OfficeMap;
-                        mapdata.Section = int.Parse(_section_text.text);
-                        mapdata.number = int.Parse(_number_text.text);
+                        mapdata.Section = int.Parse(_chapter_text.text);
+						mapdata.number = int.Parse(_section_text.text);
                     }
                     break;
             }

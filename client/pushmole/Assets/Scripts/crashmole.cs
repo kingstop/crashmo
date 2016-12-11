@@ -989,7 +989,8 @@ public class crash_manager
 
     protected void GameEnd()
     {
-        _game_state = gameState.game_end;
+		_creature.set_state (creature_state.idle);
+		_game_state = gameState.game_end;
         global_instance.Instance._ngui_edit_manager.game_win();        
     }
     public void update()
