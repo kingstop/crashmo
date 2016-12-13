@@ -23,7 +23,7 @@ public class UIGameEnd : MonoBehaviour {
 	}
     public void AddRewardCount(int group, int count)
     {
-        rewardEntrys_[_current_count].setColor(global_instance.Instance._ngui_edit_manager.get_color_by_group(group));
+        rewardEntrys_[_current_count].setColor(global_instance.Instance.get_color_by_group(group));
         rewardEntrys_[_current_count].setCount(count);
         rewardEntrys_[_current_count].gameObject.SetActive(true);
         _current_count++;

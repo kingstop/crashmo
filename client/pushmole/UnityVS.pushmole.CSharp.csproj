@@ -228,6 +228,7 @@
     <Compile Include="Assets\Scripts\SaveMapPanel.cs" />
     <Compile Include="Assets\Scripts\SaveMapTitleButton.cs" />
     <Compile Include="Assets\Scripts\SectionEditPanel.cs" />
+    <Compile Include="Assets\Scripts\UIEditMap.cs" />
     <Compile Include="Assets\Scripts\UIGameEnd.cs" />
     <Compile Include="Assets\Scripts\UISectionGiftGold.cs" />
     <Compile Include="Assets\Scripts\button_event_handler.cs" />

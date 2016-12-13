@@ -28,7 +28,7 @@ public class ngui_edit_manager : MonoBehaviour {
     //public Button[] _Buttons_simple;
     public Button[] _Buttons_sliced_game_type;
     public Button[] _Buttons_simple_game_type;
-    public Dictionary<int, Color> _group_color = new Dictionary<int,Color>();
+    //public Dictionary<int, Color> _group_color = new Dictionary<int,Color>();
     public Color _current_color;
     public Button[] _game_btns;
     public Button[] _dir_btn;
@@ -37,20 +37,20 @@ public class ngui_edit_manager : MonoBehaviour {
     public Button _create_ok_btn;
     public bool[] _dir_btn_down = new bool[4];
     public GameObject _edit_scrollbar;
-    public Text _text_width;
-    public Text _text_height;
-    public GameObject _edit_scrollbar_width;
-    public GameObject _edit_scrollbar_height;
-    public GameObject _static_edit_width;
-    public GameObject _static_edit_height;
+    //public Text _text_width;
+    //public Text _text_height;
+    //public GameObject _edit_scrollbar_width;
+    //public GameObject _edit_scrollbar_height;
+    //public GameObject _static_edit_width;
+    //public GameObject _static_edit_height;
     public crashmolegrid _flag_grid;
     public MainPanel _main_panel;
     public SaveMapPanel _SaveMapPanel;
     public SectionEditPanel _sectionEditPanel;
     public GameObject _login_obj;
-    public GameObject _edit_obj_btns;
-    public GameObject _edit_obj_draw_btns;
-    public GameObject _edit_obj_create_btns;
+    //public GameObject _edit_obj_btns;
+   // public GameObject _edit_obj_draw_btns;
+    //public GameObject _edit_obj_create_btns;
     public GameObject _game_obj_btns;
 	public GameObject _edit_type_obj_btns;
 	public Image _map_image;
@@ -59,14 +59,15 @@ public class ngui_edit_manager : MonoBehaviour {
     public Text _record_txt;
     public Text _account;
     public Text _password;
-    public List<FradeText> _frade_texts = new List<FradeText>();
+    //public List<FradeText> _frade_texts = new List<FradeText>();
 	//public FradeText _point_out;
     public UIGameEnd _game_end;
-    public ColorBoard _color_board;
+   // public ColorBoard _color_board;
     public GameObject _point_text_position_obj;
     public UISectionGiftGold _ui_section_gold;
+	public UIEditMap EditMap_;
     protected EditType _EditType;
-    protected GameObject _source_frade;    
+    //protected GameObject _source_frade;    
 
     /// <summary>
 
@@ -74,10 +75,11 @@ public class ngui_edit_manager : MonoBehaviour {
     void Awake()
     {
         _EditType = EditType.EditPlayer;
-        _source_frade = Resources.Load<GameObject>("prefab/point_out_txt");
+        //_source_frade = Resources.Load<GameObject>("prefab/point_out_txt");
         //_show_point_out = false;
         //_point_out.gameObject.SetActive (false);
         // Dictionary<int, Color> temp_dic = new Dictionary<int, Color>();
+		/*
         _group_color.Add(0, new Color((float)120/255, (float)56/255, (float)56/255));
 
         _group_color.Add(1, new Color((float)170/255, (float)170/255, (float)255/255));
@@ -93,7 +95,7 @@ public class ngui_edit_manager : MonoBehaviour {
         _group_color.Add(9, new Color((float)0 / 255, (float)0 / 255, (float)0 / 255));
         _group_color.Add(10, new Color((float)255 / 255, (float)255 / 255, (float)255 / 255));
         _group_color.Add(11, new Color((float)255 / 255, (float)255 / 255, (float)255 / 255));
-
+		
         int color_index = 0;
         foreach(KeyValuePair<int, Color> entry_pair in _group_color)
         {
@@ -103,10 +105,11 @@ public class ngui_edit_manager : MonoBehaviour {
         }
         _color_board.SetText(10, "目标");
         _color_board.SetText(11, "删除");
+        */
         global_instance.Instance._ngui_edit_manager = this;
-        hide_edit_btn();
-        hide_game_btns();
-        show_create_btns();
+        //hide_edit_btn();
+        //hide_game_btns();
+        //show_create_btns();
         global_instance.Instance._net_client = new u3dclient();
         _input_keyboard = false;	
     }
@@ -126,7 +129,7 @@ public class ngui_edit_manager : MonoBehaviour {
 		return _main_panel.getPageType();
 	}
 
-
+	/*
     public Color get_color_by_group(int group)
     {
         Color color = new Color(0, 0, 0);
@@ -136,21 +139,17 @@ public class ngui_edit_manager : MonoBehaviour {
         }
         return color;
     }
+    */
 
     
     public void set_point_text(string txt)
 	{
-        FradeText frab = GameObject.Instantiate(_source_frade).GetComponent<FradeText>();
-        frab.gameObject.transform.position = _point_text_position_obj.transform.position;
-        frab.setText(txt);
-        frab.setParent(this);
-        frab.gameObject.transform.parent = _edit_obj_btns.gameObject.transform;
-        _frade_texts.Add(frab);
+		EditMap_.set_point_text (txt);
 	}
 
     public void setColorButtonText(int group, string txt)
     {
-        _color_board.SetText(group, txt);
+		EditMap_.setColorButtonText (group, txt);
     }
     public void show_main_panel()
     {
@@ -165,17 +164,19 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void set_edit_btns_active(bool b)
     {
-        _edit_obj_btns.SetActive(b);
+		EditMap_.gameObject.SetActive (false);
+        //_edit_obj_btns.SetActive(b);
     }
 
     public void set_edit_draw_btns_active(bool b)
     {
-        _edit_obj_draw_btns.SetActive(b);
+		EditMap_.ShowEditBtns (true);
+        
     }
 
     public void set_edit_create_btns_active(bool b)
     {
-        _edit_obj_create_btns.SetActive(b);
+		EditMap_.ShowCreateBtns (true);
     }
     
     public void set_flag_grid(crashmolegrid grid)
@@ -222,15 +223,15 @@ public class ngui_edit_manager : MonoBehaviour {
                 _ui_section_gold.gameObject.SetActive(false);
             }
         }
-        _color_board.gameObject.SetActive(show);
+        //_color_board.gameObject.SetActive(show);
         _open_create_btn.gameObject.SetActive(show);
         _edit_scrollbar.SetActive(show);
     }
-
+	/*
     void set_create_btns_state(bool show)
     {
-        _text_width.gameObject.SetActive(show);
-        _text_height.gameObject.SetActive(show);
+        //_text_width.gameObject.SetActive(show);
+        //_text_height.gameObject.SetActive(show);
         _edit_scrollbar_width.gameObject.SetActive(show);
         _edit_scrollbar_height.gameObject.SetActive(show);
         _static_edit_width.gameObject.SetActive(show);
@@ -244,6 +245,7 @@ public class ngui_edit_manager : MonoBehaviour {
             _text_height.text = min_height.ToString();
         }
     }
+    */
 
     public void on_login_btn_click()
     {
@@ -259,10 +261,10 @@ public class ngui_edit_manager : MonoBehaviour {
         //global_instance.Instance._net_client.register_account(account, password);
     }
 
-    public void on_create_btn_click()
-    {
-        update_game_type(game_type.create);
-    }
+    //public void on_create_btn_click()
+    //{
+     //   update_game_type(game_type.create);
+    //}
 
 	public void set_save_map_panel_active(bool active)
 	{
@@ -290,8 +292,8 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void on_create_empty_map_click()
     {
-        global_instance.Instance._crash_mole_grid_manager.set_max_width(int.Parse(_text_width.text));
-        global_instance.Instance._crash_mole_grid_manager.set_max_height(int.Parse(_text_height.text));
+		global_instance.Instance._crash_mole_grid_manager.set_max_width(EditMap_.GetWidth());
+		global_instance.Instance._crash_mole_grid_manager.set_max_height(EditMap_.GetHeight());
         update_game_type(game_type.edit);
     }
 
@@ -304,15 +306,15 @@ public class ngui_edit_manager : MonoBehaviour {
         set_game_btns_state(false);
     }
 
-    public void show_create_btns()
-    {
-        set_create_btns_state(true);
-    }
+   // public void show_create_btns()
+   // {
+   //     set_create_btns_state(true);
+   // }
 
-    public void hide_create_btns()
-    {
-        set_create_btns_state(false);
-    }
+    //public void hide_create_btns()
+   // {
+    //    set_create_btns_state(false);
+   // }
     void show_game_btns()
     {
         set_game_btns_state(true);
@@ -495,9 +497,12 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void HideAlluis()
     {
+		/*
         _edit_obj_btns.SetActive(false);
         _edit_obj_create_btns.SetActive(false);
         _edit_obj_draw_btns.SetActive(false);
+        */
+		EditMap_.gameObject.SetActive (false);
         _game_obj_btns.SetActive(false);
         _edit_type_obj_btns.SetActive(false);
         _game_end.gameObject.SetActive(false);
@@ -508,7 +513,7 @@ public class ngui_edit_manager : MonoBehaviour {
         global_instance.Instance._crash_mole_grid_manager.clear_edit_crash_mole_grid();
         global_instance.Instance._crash_manager.clear();
     }
-
+	/*
     public int get_scrollbar_value(GameObject obj, int min, int max)
     {
         Scrollbar bar_temp = obj.GetComponent<Scrollbar>();
@@ -529,13 +534,14 @@ public class ngui_edit_manager : MonoBehaviour {
         int number_height = get_scrollbar_value(obj, (int)map_def.map_def_min_height, (int)map_def.map_def_max_height);
         _text_height.text = number_height.ToString();
     }
+*/
 
-    public void change_to_edit_state()
-    {
-        hide_edit_btn();
-        hide_game_btns();
-        show_create_btns();
-    }
+   // public void change_to_edit_state()
+   // {
+     //   hide_edit_btn();
+    //    hide_game_btns();
+     //   show_create_btns();
+    //}
 
     public void HideStateButton()
     {
@@ -614,12 +620,13 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void update_game_type(game_type type)
     {
-        
-        _edit_obj_btns.SetActive(false);
+		set_edit_btns_state (false);
+
+        //_edit_obj_btns.SetActive(false);
         _game_obj_btns.SetActive(false);
         _game_end.gameObject.SetActive(false);
          gamestate_btn(type);
-        ClearFradeText();
+		EditMap_.ClearFradeText();
         //hide_game_btns();
         //hide_edit_btn();
         //hide_create_btns();
@@ -627,17 +634,22 @@ public class ngui_edit_manager : MonoBehaviour {
         {
             case game_type.create:
                 {
-                    _edit_obj_btns.SetActive(true);
-                    _edit_obj_create_btns.SetActive(true);
-                    _edit_obj_draw_btns.SetActive(false);
-					_ui_section_gold.gameObject.SetActive (false);
+					set_edit_btns_state (false);
+					set_edit_create_btns_active (true);
+                    //_edit_obj_btns.SetActive(true);
+                    //_edit_obj_create_btns.SetActive(true);
+                    //_edit_obj_draw_btns.SetActive(false);
+					//_ui_section_gold.gameObject.SetActive (false);
                 }
                 break;
             case game_type.edit:
                 {
-                    _edit_obj_btns.SetActive(true);
-                    _edit_obj_create_btns.SetActive(false);
-                    _edit_obj_draw_btns.SetActive(true);
+					set_edit_btns_state (true);
+					set_edit_create_btns_active (false);
+
+                    //_edit_obj_btns.SetActive(true);
+                    //_edit_obj_create_btns.SetActive(false);
+                    //_edit_obj_draw_btns.SetActive(true);
 					_ui_section_gold.gameObject.SetActive (true);
                     show_edit_btn();
                 }
@@ -697,7 +709,7 @@ public class ngui_edit_manager : MonoBehaviour {
     {
 
     }
-
+	/*
     public void DestroyFrade(FradeText entry)
     {
         _frade_texts.Remove(entry);
@@ -712,5 +724,6 @@ public class ngui_edit_manager : MonoBehaviour {
         }
         _frade_texts.Clear();
     }
+    */
 
 }

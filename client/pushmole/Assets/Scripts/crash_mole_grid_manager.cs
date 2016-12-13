@@ -40,7 +40,7 @@ public class MapData
                     {
                         for (int temp_y = begin_y; temp_y < begin_y + grid; temp_y++)
                         {
-                            Color co = global_instance.Instance._ngui_edit_manager.get_color_by_group(group);
+                            Color co = global_instance.Instance.get_color_by_group(group);
                             tex.SetPixel(temp_x, temp_y, co);
                         }
                     }                  

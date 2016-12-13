@@ -4,7 +4,7 @@ using System.Collections;
 
 public class FradeText : MonoBehaviour {
 	public Text _title;
-    protected ngui_edit_manager _parent;
+	protected UIEditMap _parent;
     protected long _start_time;
 
 	// Use this for initialization
@@ -22,7 +22,7 @@ public class FradeText : MonoBehaviour {
 	//	FadeOpenMenu (this.gameObject);
 	}
 
-    public void setParent(ngui_edit_manager parent)
+	public void setParent(UIEditMap parent)
     {
         _parent = parent;
     }

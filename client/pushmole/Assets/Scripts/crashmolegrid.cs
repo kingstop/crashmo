@@ -170,7 +170,7 @@ public class crashmolegrid : MonoBehaviour
     {
         if (i != 10)
         {
-            set_color(global_instance.Instance._ngui_edit_manager.get_color_by_group(i));
+            set_color(global_instance.Instance.get_color_by_group(i));
             set_is_flag(false);
         }
         else
