@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/mole_net/proto-net/ProtoReader.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ngui_edit_manager.cs">
     <Files>
       <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="257" Column="71" />
       <File FileName="Assets/Scripts/crashmolegrid.cs" Line="173" Column="42" />
-      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="523" Column="34" />
+      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="629" Column="1" />
       <File FileName="Assets/Scripts/ColorBoard.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
       <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="537" Column="2" />
@@ -22,10 +22,10 @@
       <File FileName="Assets/Scripts/RankMapManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MainPanel.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/RewardEntry.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="197" Column="53" />
       <File FileName="Assets/Scripts/MainPanelTitleButtonItem.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/UIGameEnd.cs" Line="26" Column="73" />
-      <File FileName="Assets/Scripts/UIEditMap.cs" Line="70" Column="24" />
+      <File FileName="Assets/Scripts/UIEditMap.cs" Line="142" Column="68" />
       <File FileName="Assets/Scripts/color_button.cs" Line="12" Column="25" />
       <File FileName="Assets/Scripts/on_scrollbar_change.cs" Line="1" Column="1" />
     </Files>
@@ -33,11 +33,7 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="pushmole" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True" selected="True">
-              <Node name="mole_net" expanded="True">
-                <Node name="proto-net" expanded="True" />
-              </Node>
-            </Node>
+            <Node name="Assembly-CSharp" expanded="True" />
           </Node>
         </State>
       </Pad>
