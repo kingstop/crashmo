@@ -621,7 +621,7 @@ public class ngui_edit_manager : MonoBehaviour {
     public void update_game_type(game_type type)
     {
 		set_edit_btns_state (false);
-
+        EditMap_.gameObject.SetActive(false);
         //_edit_obj_btns.SetActive(false);
         _game_obj_btns.SetActive(false);
         _game_end.gameObject.SetActive(false);
@@ -634,7 +634,8 @@ public class ngui_edit_manager : MonoBehaviour {
         {
             case game_type.create:
                 {
-					set_edit_btns_state (false);
+                    EditMap_.gameObject.SetActive(true);
+                    set_edit_btns_state (false);
 					set_edit_create_btns_active (true);
                     //_edit_obj_btns.SetActive(true);
                     //_edit_obj_create_btns.SetActive(true);
@@ -644,7 +645,8 @@ public class ngui_edit_manager : MonoBehaviour {
                 break;
             case game_type.edit:
                 {
-					set_edit_btns_state (true);
+                    EditMap_.gameObject.SetActive(true);
+                    set_edit_btns_state (true);
 					set_edit_create_btns_active (false);
 
                     //_edit_obj_btns.SetActive(true);
@@ -663,7 +665,6 @@ public class ngui_edit_manager : MonoBehaviour {
                     Camera.main.transform.position = vec;
                     Camera.main.fieldOfView = 34;
                     show_game_btns();
-
                     global_instance.Instance._crash_manager.init();
                 }
                 break;
