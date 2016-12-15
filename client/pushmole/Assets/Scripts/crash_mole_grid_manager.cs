@@ -105,7 +105,6 @@ public class MapData
 
 public class crash_mole_grid_manager : MonoBehaviour {
     GameObject _source_crash_mole_obj;
-    GameObject _source_map_mole_obj;
     crashmolegrid[,] _crashmolegrids;
     ArrayList _objlist = new ArrayList();
     protected game_type _current_type;
@@ -140,7 +139,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
     void Awake()
     {
         _source_crash_mole_obj = Resources.Load<GameObject>("prefab/mole_object");
-        _source_map_mole_obj = Resources.Load<GameObject>("prefab/map");
+       // _source_map_mole_obj = Resources.Load<GameObject>("prefab/map");
         global_instance.Instance._crash_mole_grid_manager = this;
     }
     public void update_game_type(game_type type)

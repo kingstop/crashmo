@@ -14,7 +14,24 @@ public class UIGameEnd : MonoBehaviour {
     protected enResult _en;
     // Use this for initialization
     void Start () {
-	
+			
+		global_instance.Instance._ngui_edit_manager.HideAllUIBut(this.gameObject);
+		switch (global_instance.Instance._global_game_type) 
+		{
+			case global_game_type.global_game_type_game:
+			{
+				objEdit_.SetActive (false);
+				objGame_.SetActive (true);
+			}
+			break;
+
+			case global_game_type.global_game_type_edit:
+			{
+				objEdit_.SetActive (true);
+				objGame_.SetActive (false);
+			}
+			break;
+		}
 	}
 	
 	// Update is called once per frame
@@ -57,13 +74,14 @@ public class UIGameEnd : MonoBehaviour {
 
 	public void OnSaveClick()
 	{
-
-
+		this.gameObject.SetActive (false);
+		global_instance.Instance._ngui_edit_manager.on_save_btn_click ();
 	}
 
 	public void OnModifyClick()
 	{
-
+		this.gameObject.SetActive (false);
+		global_instance.Instance._ngui_edit_manager.update_game_type (game_type.edit);
 	}
 
 	public void OnGiveUpClick()

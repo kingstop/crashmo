@@ -47,15 +47,15 @@ public class UIEditMap : MonoBehaviour {
 		DrawBtnsObj_.SetActive (b);
 		if (b) 
 		{
-			if (global_instance.Instance._player.isadmin () == true) 
+			if (global_instance.Instance._player.isadmin () == false) 
 			{
 				PrepareSaveBtn_.gameObject.SetActive (false);
 				SaveBtn_.gameObject.SetActive (true);
 			}
 			else 
 			{
-				PrepareSaveBtn_.gameObject.SetActive (false);
-				SaveBtn_.gameObject.SetActive (true);
+				PrepareSaveBtn_.gameObject.SetActive (true);
+				SaveBtn_.gameObject.SetActive (false);
 			}
 
 		}
@@ -144,7 +144,7 @@ public class UIEditMap : MonoBehaviour {
 
 	public void OnPrepareSaveClick()
 	{
-
+		global_instance.Instance._ngui_edit_manager.update_game_type (game_type.game);
 	}
 
 	public void OnBackClick()

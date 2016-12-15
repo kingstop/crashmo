@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic; 
 public enum global_game_type
 {
+	global_game_type_no,
     global_game_type_edit,
     global_game_type_game
 }
@@ -10,30 +11,27 @@ public enum global_game_type
 public class global_instance
 {
      private static global_instance instance;
-
-	private Dictionary<int, Color> _group_color = new Dictionary<int,Color>();
+	 private Dictionary<int, Color> _group_color = new Dictionary<int,Color>();
      private global_instance() {
          _crash_manager = new crash_manager();
          _player = new CrashPlayer();
          _client_session = new client_session();
-
-
 		_group_color.Add(0, new Color((float)120/255, (float)56/255, (float)56/255));
-
 		_group_color.Add(1, new Color((float)170/255, (float)170/255, (float)255/255));
 		_group_color.Add(2, new Color((float)246/255, (float)152/255, (float)152/255));
 		_group_color.Add(3, new Color((float)154/255, (float)61/255, (float)154/255));
-
 		_group_color.Add(4, new Color((float)90/255, (float)174/255, (float)174/255));
 		_group_color.Add(5, new Color((float)255/255, (float)245/255, (float)71/255));
 		_group_color.Add(6, new Color((float)180/255, (float)116/255, (float)116/255));
-
 		_group_color.Add(7, new Color((float)219/255, (float)0/255, (float)0/255));
 		_group_color.Add(8, new Color((float)5/255, (float)72/255, (float)246/255));
 		_group_color.Add(9, new Color((float)0 / 255, (float)0 / 255, (float)0 / 255));
 		_group_color.Add(10, new Color((float)255 / 255, (float)255 / 255, (float)255 / 255));
 		_group_color.Add(11, new Color((float)255 / 255, (float)255 / 255, (float)255 / 255));
+
      }
+
+
 	public Dictionary<int, Color> getGroupColors()
 	{
 		return _group_color;
@@ -98,6 +96,7 @@ public class global_instance
     public global_game_type _global_game_type = global_game_type.global_game_type_game;
 	public OfficilMapManager _officilMapManager = new OfficilMapManager ();
 	public RankMapManager _rankMapManager = new RankMapManager ();
+
 
 
 }

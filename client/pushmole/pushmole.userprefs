@@ -1,33 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ngui_edit_manager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SaveMapPanel.cs">
     <Files>
-      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="257" Column="71" />
-      <File FileName="Assets/Scripts/crashmolegrid.cs" Line="173" Column="42" />
-      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="629" Column="1" />
-      <File FileName="Assets/Scripts/ColorBoard.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="142" Column="10" />
+      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="384" Column="26" />
       <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="537" Column="2" />
-      <File FileName="Assets/Scripts/game_btn_down.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/FradeText.cs" Line="25" Column="33" />
-      <File FileName="Assets/Scripts/global_instance.cs" Line="42" Column="9" />
-      <File FileName="Assets/Scripts/button_event_handler.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/creature.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/client_session.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ChooseItemEntry.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/crashmole.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/OfficilMapManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/message/crashmo_msg.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/U3dSocketClient.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RankMapManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MainPanel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RewardEntry.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="197" Column="53" />
-      <File FileName="Assets/Scripts/MainPanelTitleButtonItem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIGameEnd.cs" Line="26" Column="73" />
-      <File FileName="Assets/Scripts/UIEditMap.cs" Line="142" Column="68" />
-      <File FileName="Assets/Scripts/color_button.cs" Line="12" Column="25" />
-      <File FileName="Assets/Scripts/on_scrollbar_change.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UIEditMap.cs" Line="47" Column="28" />
+      <File FileName="Assets/mole_net/message/common_msg.cs" Line="14" Column="54" />
+      <File FileName="Assets/Scripts/global_instance.cs" Line="31" Column="3" />
+      <File FileName="Assets/Scripts/MainPanel.cs" Line="109" Column="10" />
+      <File FileName="Assets/Scripts/UIGameEnd.cs" Line="22" Column="5" />
+      <File FileName="Assets/Scripts/crashmole.cs" Line="994" Column="1" />
+      <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="92" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -58,6 +42,7 @@
       <Breakpoint enabled="false" file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/mole_net/SocketClient.cs" line="237" column="1" />
       <Breakpoint enabled="false" file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/mole_net/U3dSocketClient.cs" line="167" column="1" />
       <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/crashmole.cs" line="1014" column="29" />
+      <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/UIEditMap.cs" line="50" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
