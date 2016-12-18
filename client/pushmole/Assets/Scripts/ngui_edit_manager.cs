@@ -378,6 +378,7 @@ public class ngui_edit_manager : MonoBehaviour {
         _game_obj_btns.SetActive(false);
         _edit_type_obj_btns.SetActive(false);
         _game_end.gameObject.SetActive(false);
+		_sectionEditPanel.gameObject.SetActive (false);
     }
 
 
@@ -403,6 +404,11 @@ public class ngui_edit_manager : MonoBehaviour {
 		if (_game_end.gameObject != obj) 
 		{
 			_game_end.gameObject.SetActive (false);
+		}
+
+		if (_sectionEditPanel.gameObject != obj) 
+		{
+			_sectionEditPanel.gameObject.SetActive (false);
 		}
 	}
 
@@ -494,6 +500,7 @@ public class ngui_edit_manager : MonoBehaviour {
         _game_end.gameObject.SetActive(false);
          gamestate_btn(type);
 		EditMap_.ClearFradeText();
+		_sectionEditPanel.gameObject.SetActive (false);
 
         switch (type)
         {

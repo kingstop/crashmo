@@ -1,38 +1,21 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SaveMapPanel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/NGUI/Scripts/Editor/UIAtlasMaker.cs">
     <Files>
-      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="142" Column="10" />
-      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="384" Column="26" />
-      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="537" Column="2" />
-      <File FileName="Assets/Scripts/UIEditMap.cs" Line="47" Column="28" />
-      <File FileName="Assets/mole_net/message/common_msg.cs" Line="14" Column="54" />
-      <File FileName="Assets/Scripts/global_instance.cs" Line="31" Column="3" />
-      <File FileName="Assets/Scripts/MainPanel.cs" Line="109" Column="10" />
-      <File FileName="Assets/Scripts/UIGameEnd.cs" Line="22" Column="5" />
-      <File FileName="Assets/Scripts/crashmole.cs" Line="994" Column="1" />
-      <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="92" Column="10" />
+      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="1" Column="1" />
+      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UIEditMap.cs" Line="1" Column="1" />
+      <File FileName="Assets/mole_net/message/common_msg.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/global_instance.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MainPanel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UIGameEnd.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/crashmole.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/creature.cs" Line="210" Column="32" />
+      <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets/NGUI/Scripts/Editor/UIAtlasMaker.cs" Line="25" Column="3" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="pushmole" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>global_instance.Instance._crash_manager.getGameState()</Value>
-          <Value>gameState.game_playing</Value>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State name="__root__">
-          <Node name="pushmole" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

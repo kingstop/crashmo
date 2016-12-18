@@ -48,7 +48,7 @@ public class MainPanel : MonoBehaviour
 	private int _section_id;
     MainPanel()
     {
-        _current_page = page_type.page_type_official;
+		_current_page = page_type.page_type_self_complete;
     }
 
 	public int GetChapterID()
@@ -234,7 +234,7 @@ public class MainPanel : MonoBehaviour
         temp_.set_info(entry);
         temp.SetTexture(temp_.CreateTexture());
         temp.gameObject.SetActive(true);
-        temp.transform.parent = _items_container.transform;
+		temp.transform.SetParent(_items_container.transform);
         _items.Add(temp);
         if (self)
         {
@@ -257,11 +257,14 @@ public class MainPanel : MonoBehaviour
     {
         _current_map_index = 0;
         ClearItems();
+		_edit_section_obj_button.SetActive(false);
+
         switch (page)
         {
             case page_type.page_type_self_complete:
                 {
                     EnterSelfComplete();
+
                 }
                 break;
             case page_type.page_type_self_incomplete:
@@ -278,8 +281,12 @@ public class MainPanel : MonoBehaviour
                 {
                     _officil_page_type = offcil_page_type.offcil_page_type_section;
                     SelfButtonChange(false);
+					
                     _Back_obj_button.SetActive(false);
-                    _edit_section_obj_button.SetActive(true);
+					if (global_instance.Instance._player.isadmin ()) 
+					{
+						_edit_section_obj_button.SetActive(true);
+					}                    
 					Dictionary<int, string> officil_section_names = global_instance.Instance._officilMapManager.getChapterNames();
                     foreach (KeyValuePair<int, string> key_temp in officil_section_names)
                     {
@@ -390,7 +397,7 @@ public class MainPanel : MonoBehaviour
                 _Back_obj_button.SetActive(true);
                 foreach (ChooseItemEntry entry_temp in _officil_items)
                 {
-                    entry_temp.transform.parent = null;
+					entry_temp.transform.SetParent(null);
                     Destroy(entry_temp.gameObject);
                 }               
                 _officil_items.Clear();

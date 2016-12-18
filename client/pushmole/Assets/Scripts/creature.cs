@@ -27,6 +27,7 @@ public class creature : MonoBehaviour
     public float _current_fall_speed = 0;
     public bool _is_in_falldown = false;
     public List<crashmolegrid> _alpha_grids = new List<crashmolegrid>();
+	public float _col_size = 0.25f;
     public creature()
     {
       
@@ -200,6 +201,110 @@ public class creature : MonoBehaviour
     }
 
     
+	public bool checkDir(dir_move dir, float dis)
+	{
+		Vector3 vec = get_position ();
+		Vector3 vec_1 = new Vector3 ();
+		Vector3 vec_2 = new Vector3 ();
+		Vector3 vec_3 = new Vector3 ();
+		Vector3 vec_4 = new Vector3 ();
+
+		switch (dir) 
+		{
+		case dir_move.down:
+			{
+				dis += _col_size;
+				vec_1.x = vec.x + _col_size;
+				vec_2.x = vec.x - _col_size;
+				vec_3.z = vec.z + _col_size;
+				vec_4.z = vec.z - _col_size;
+				vec_1.y -= dis;	
+				vec_2.y -= dis;	
+				vec_3.y -= dis;	
+				vec_4.y -= dis;	
+			}
+			break;
+		case dir_move.up:
+			{
+				dis += _col_size;
+				vec_1.x = vec.x + _col_size;
+				vec_2.x = vec.x - _col_size;
+				vec_3.z = vec.z + _col_size;
+				vec_4.z = vec.z - _col_size;
+				vec_1.y += dis;	
+				vec_2.y += dis;	
+				vec_3.y += dis;	
+				vec_4.y += dis;	
+
+			}
+			break;
+		case dir_move.front:
+			{
+				dis += _col_size;
+				vec_1.x = vec.x + _col_size;
+				vec_2.x = vec.x - _col_size;
+				vec_3.y = vec.y + _col_size;
+				vec_4.y = vec.y - _col_size;
+				vec_1.z -= dis;	
+				vec_2.z -= dis;	
+				vec_3.z -= dis;	
+				vec_4.z -= dis;
+			}
+			break;
+		case dir_move.back:
+			{
+				dis += _col_size;
+				vec_1.x = vec.x + _col_size;
+				vec_2.x = vec.x - _col_size;
+				vec_3.y = vec.y + _col_size;
+				vec_4.y = vec.y - _col_size;
+				vec_1.z += dis;	
+				vec_2.z += dis;	
+				vec_3.z += dis;	
+				vec_4.z += dis;
+			}
+			break;
+		case dir_move.left:
+			{
+				dis += _col_size;
+				vec_1.z = vec.x + _col_size;
+				vec_2.z = vec.x - _col_size;
+				vec_3.y = vec.y + _col_size;
+				vec_4.y = vec.y - _col_size;
+				vec_1.x -= dis;	
+				vec_2.x -= dis;	
+				vec_3.x -= dis;	
+				vec_4.x -= dis;
+			}
+			break;
+		case dir_move.right:
+			{
+				dis += _col_size;
+				vec_1.z = vec.x + _col_size;
+				vec_2.z = vec.x - _col_size;
+				vec_3.y = vec.y + _col_size;
+				vec_4.y = vec.y - _col_size;
+				vec_1.x += dis;	
+				vec_2.x += dis;	
+				vec_3.x += dis;	
+				vec_4.x += dis;
+
+			}
+			break;
+
+		}
+
+		bool block = false;
+		if (global_instance.Instance._crash_manager.is_block (vec_1) ||
+		   global_instance.Instance._crash_manager.is_block (vec_2) ||
+		   global_instance.Instance._crash_manager.is_block (vec_3) ||
+		   global_instance.Instance._crash_manager.is_block (vec_4)) 
+		{
+			block = true;
+		}
+		return block;
+	}
+
     public void UpdateHistory()
     {
         if(global_instance.Instance._crash_manager._record._open_record)

@@ -1034,6 +1034,22 @@ public class crash_manager
         int grid = (int)(temp / _grid_distance);
         return grid;
     }
+
+	public crash_pos transform_to_map(Vector3 vec)
+	{
+		crash_pos entry_pos = new crash_pos ();
+		entry_pos._x = transform_to_map (vec.x);
+		entry_pos._y = transform_to_map (vec.y);
+		entry_pos._z = transform_to_map (vec.z);
+		return entry_pos;
+	}
+
+
+	public bool is_block(Vector3 vec)
+	{
+		return is_block (vec.x, vec.y, vec.z);
+	}
+
     public bool is_block(float tempx, float tempy, float tempz)
     {
         crash_pos pos = new crash_pos();
