@@ -1,21 +1,47 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/NGUI/Scripts/Editor/UIAtlasMaker.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ngui_edit_manager.cs">
     <Files>
-      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIEditMap.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="384" Column="5" />
+      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="309" Column="1" />
+      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="549" Column="6" />
+      <File FileName="Assets/Scripts/UIEditMap.cs" Line="142" Column="114" />
       <File FileName="Assets/mole_net/message/common_msg.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/global_instance.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MainPanel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIGameEnd.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/crashmole.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/creature.cs" Line="210" Column="32" />
+      <File FileName="Assets/Scripts/global_instance.cs" Line="75" Column="5" />
+      <File FileName="Assets/Scripts/MainPanel.cs" Line="211" Column="10" />
+      <File FileName="Assets/Scripts/UIGameEnd.cs" Line="89" Column="50" />
+      <File FileName="Assets/Scripts/crashmole.cs" Line="943" Column="30" />
+      <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="130" Column="61" />
+      <File FileName="Assets/Scripts/creature.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets/NGUI/Scripts/Editor/UIAtlasMaker.cs" Line="25" Column="3" />
+      <File FileName="Assets/NGUI/Scripts/Editor/UIAtlasMaker.cs" Line="1" Column="1" />
+      <File FileName="Assets/mole_net/U3dSocketClient.cs" Line="1" Column="1" />
+      <File FileName="Assets/mole_net/SocketServer.cs" Line="1" Column="1" />
+      <File FileName="Assets/mole_net/SocketClient.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/crashmolegrid.cs" Line="70" Column="26" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="pushmole" expanded="True" selected="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="mole_net" expanded="True">
+                <Node name="proto-net" expanded="True" />
+              </Node>
+              <Node name="Scripts" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="pushmole" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -26,6 +52,8 @@
       <Breakpoint enabled="false" file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/mole_net/U3dSocketClient.cs" line="167" column="1" />
       <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/crashmole.cs" line="1014" column="29" />
       <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/UIEditMap.cs" line="50" column="1" />
+      <Breakpoint file="/Users/apple/Desktop/work/work/crashmo/client/pushmole/Assets/Scripts/crash_mole_grid_manager.cs" line="301" column="1" />
+      <Breakpoint file="/Users/apple/Desktop/work/work/crashmo/client/pushmole/Assets/Scripts/UIEditMap.cs" line="144" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

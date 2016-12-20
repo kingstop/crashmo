@@ -287,15 +287,17 @@ public class crash_mole
     }
     protected bool is_self(int x, int z, int y)
     {
-        if(x >= 0 && x <= (int)map_def.map_def_max_width && y >= 0 && y <= (int)map_def.map_def_min_height)
-        {
-            if(_crash_manager._crash_moles[x, z, y]._crash_mole == this)
-            {
-                return true;
-            }
-            return false;
-        }
-        return false;
+		bool ret = false;
+		if (x >= 0 && x <= (int)map_def.map_def_max_width && y >= 0 && y <= (int)map_def.map_def_max_height) {
+			if (_crash_manager._crash_moles [x, z, y]._crash_mole == this) {
+				ret = true;
+			}
+
+		}
+		else {
+			ret = false;
+		}
+		return ret;
     }
     public List<crash_base_obj> _crash_objs = new List<crash_base_obj>();
 
@@ -944,6 +946,7 @@ public class crash_manager
                             _creature.set_position(pos._x + 0.45f, pos._y + 0.2f, pos._z + 0.5f);
                             target_mole.add_crash_obj(_obj_creature);
                             _lock_mole.Add(target_mole);
+							global_instance.Instance._ngui_edit_manager.CatchButtonUpdate (true);
                         }
                     }
                 }
@@ -966,6 +969,7 @@ public class crash_manager
                             }
 
                         }
+						global_instance.Instance._ngui_edit_manager.CatchButtonUpdate (false);
                         _freezen_creature = false;
                         if (his == false)
                         {
@@ -1449,7 +1453,7 @@ public class crash_manager
         _camera_dir = camera_dir.front;
         _want_camera_dir = want_move_dir.no;
         _creature.gameObject.SetActive(true);
-        _creature.set_position(8, 2, 3);
+        _creature.set_position(22, 2, 3);
 
         _camera_dir = camera_dir.front;
         _want_camera_dir = want_move_dir.no;

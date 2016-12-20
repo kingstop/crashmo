@@ -256,16 +256,33 @@ public class ngui_edit_manager : MonoBehaviour {
                 if (_catch[i] == entry)
                 {
                     temp_ = i;
-                    _catch[i].gameObject.SetActive(false);
+                    //_catch[i].gameObject.SetActive(false);
                 }
                 else
                 {
-                    _catch[i].gameObject.SetActive(true);
+                    //_catch[i].gameObject.SetActive(true);
                 }
             }
             global_instance.Instance._crash_manager.catch_click(temp_);
         } 
     }
+
+	public void CatchButtonUpdate(bool freezen)
+	{
+		if (freezen == false) 
+		{
+			_catch [0].gameObject.SetActive (false);
+			_catch [1].gameObject.SetActive (true);
+		} 
+		else 
+		{
+			_catch [0].gameObject.SetActive (true);
+			_catch [1].gameObject.SetActive (false);
+
+		}
+
+	}
+
     public void btn_up(Button entry)
     {
         if(game_catch_action() && _input_keyboard == false)

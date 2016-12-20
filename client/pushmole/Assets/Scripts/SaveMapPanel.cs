@@ -126,7 +126,7 @@ public class SaveMapPanel : MonoBehaviour {
 
     public void onOKClick()
     {
-        MapData temp_data = global_instance.Instance._crash_mole_grid_manager.save_crash_mole_grid();
+		MapData temp_data = global_instance.Instance.GetMapData();
         message.CrashMapData mapdata = temp_data.get_info();
         message.CrashPlayerInfo msginfo = global_instance.Instance._player.GetInfo();
         bool have_map_name = false;

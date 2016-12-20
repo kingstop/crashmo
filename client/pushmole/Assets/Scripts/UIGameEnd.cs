@@ -86,11 +86,11 @@ public class UIGameEnd : MonoBehaviour {
 
 	public void OnGiveUpClick()
 	{
-
+		global_instance.Instance._ngui_edit_manager.BackToMainPanel ();
 	}
 
 	public void OnCompleteClick()
 	{
-
+		global_instance.Instance._ngui_edit_manager.BackToMainPanel ();
 	}
 }
