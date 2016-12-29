@@ -702,30 +702,30 @@ public class crash_manager
     public Vector3 get_map_camera_pos(camera_dir dir)
     {
         Vector3 vc = _creature.get_position();
-        vc.y += 1.21f;
+        vc.y += 7.21f;
         switch (dir)
         {
             case camera_dir.front:
                 {
-                    vc.z -= (20 + 4.48f);
+                    vc.z -= (10 + 4.48f);
                     vc.x -= 0.5f;
                 }
                 break;
             case camera_dir.back:
                 {
-                    vc.z += (20 + 4.48f);
+                    vc.z += (10 + 4.48f);
                     vc.x += 0.5f;
                 }
                 break;
             case camera_dir.right:
                 {
-                    vc.x += (20 + 4.48f);
+                    vc.x += (10 + 4.48f);
                     vc.z -= 0.5f;
                 }
                 break;
             case camera_dir.left:
                 {
-                    vc.x -= (20 + 4.48f);
+                    vc.x -= (10 + 4.48f);
                 }
                 break;
         }

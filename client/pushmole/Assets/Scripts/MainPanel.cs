@@ -248,6 +248,20 @@ public class MainPanel : MonoBehaviour
 
     void Awake()
     {
+		RectTransform parentRectTranform = _items_container.GetComponentInParent<RectTransform> ();
+		RectTransform[] cur = _items_container.GetComponents<RectTransform> ();
+		if (cur.Length != 0) 
+		{
+			cur [0] = parentRectTranform;
+		}
+
+		parentRectTranform = _officil_items_container.GetComponentInParent<RectTransform> ();
+		if (cur.Length != 0) 
+		{
+			cur [0] = parentRectTranform;
+		}
+
+		cur = _officil_items_container.GetComponents<RectTransform> ();
         _source_item = Resources.Load<GameObject>("prefab/Button_item");
         _current_page = page_type.page_type_official;
         EnterPage(page_type.page_type_self_complete);
@@ -324,6 +338,7 @@ public class MainPanel : MonoBehaviour
 
     void Start()
     {
+		
 
 
     }
