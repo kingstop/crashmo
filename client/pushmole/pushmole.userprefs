@@ -1,16 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/crashmole.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TaskEditPanel.cs">
     <Files>
       <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="272" Column="10" />
+      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="537" Column="2" />
       <File FileName="Assets/Scripts/UIEditMap.cs" Line="1" Column="1" />
       <File FileName="Assets/mole_net/message/common_msg.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/global_instance.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MainPanel.cs" Line="277" Column="10" />
+      <File FileName="Assets/Scripts/MainPanel.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/UIGameEnd.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/crashmole.cs" Line="723" Column="34" />
+      <File FileName="Assets/Scripts/crashmole.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/creature.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
@@ -19,6 +19,9 @@
       <File FileName="Assets/mole_net/SocketServer.cs" Line="1" Column="1" />
       <File FileName="Assets/mole_net/SocketClient.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/crashmolegrid.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TaskConditionEntry.cs" Line="11" Column="22" />
+      <File FileName="Assets/Scripts/DropdownReward.cs" Line="14" Column="35" />
+      <File FileName="Assets/Scripts/TaskEditPanel.cs" Line="10" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

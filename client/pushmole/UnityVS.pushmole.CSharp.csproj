@@ -224,6 +224,7 @@
     <Compile Include="Assets\Scripts\ChooseItemEntry.cs" />
     <Compile Include="Assets\Scripts\ColorBoard.cs" />
     <Compile Include="Assets\Scripts\CrashPlayer.cs" />
+    <Compile Include="Assets\Scripts\DropdownReward.cs" />
     <Compile Include="Assets\Scripts\FradeText.cs" />
     <Compile Include="Assets\Scripts\MainCameraLine.cs" />
     <Compile Include="Assets\Scripts\MainPanel.cs" />
@@ -234,6 +235,8 @@
     <Compile Include="Assets\Scripts\SaveMapPanel.cs" />
     <Compile Include="Assets\Scripts\SaveMapTitleButton.cs" />
     <Compile Include="Assets\Scripts\SectionEditPanel.cs" />
+    <Compile Include="Assets\Scripts\TaskConditionEntry.cs" />
+    <Compile Include="Assets\Scripts\TaskEditPanel.cs" />
     <Compile Include="Assets\Scripts\UIEditMap.cs" />
     <Compile Include="Assets\Scripts\UIGameEnd.cs" />
     <Compile Include="Assets\Scripts\UISectionGiftGold.cs" />

@@ -54,6 +54,7 @@ public class ngui_edit_manager : MonoBehaviour {
     public UIGameEnd _game_end;
     public GameObject _point_text_position_obj;
     public UISectionGiftGold _ui_section_gold;
+	public TaskEditPanel _task_edit_panel;
 	public UIEditMap EditMap_;
     protected EditType _EditType;
 
