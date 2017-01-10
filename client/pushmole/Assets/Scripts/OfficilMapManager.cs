@@ -7,6 +7,25 @@ public class OfficilMapManager
     protected Dictionary<int, Dictionary<int, message.CrashMapData>> _officilMap = new Dictionary<int, Dictionary<int, message.CrashMapData>>();
 	protected List<int> _chapter_ids = new List<int> ();
 	protected Dictionary<int, string> _officil_chapter_names = new Dictionary<int, string>();
+
+    public void ClearAll()
+    {
+        _officilMap.Clear();
+        _chapter_ids.Clear();
+        _officil_chapter_names.Clear();
+    }
+
+    public void ClearChapter(int chapter_id)
+    {
+        if(_officilMap.ContainsKey(chapter_id))
+        {
+            _officilMap[chapter_id].Clear();
+        }        
+    }
+    public void ReloadAll()
+    {
+
+    }
 	public List<message.CrashMapData> getChapterMaps(int chapter)
 	{
 		List<message.CrashMapData> temp = new List<message.CrashMapData>();
@@ -50,6 +69,7 @@ public class OfficilMapManager
 			message.MsgC2SOfficeMapReq MsgReq = new message.MsgC2SOfficeMapReq ();
 			MsgReq.chapter_id = _chapter_ids [0];
 			MsgReq.section_id = -1;
+            MsgReq.map_count = 5;
 			global_instance.Instance._net_client.send (msg);
 		}
 		else
@@ -150,8 +170,14 @@ public class OfficilMapManager
 
 	protected void endOfficilMapLoad()
 	{
+        if(global_instance.Instance._in_login)
+        {
+            global_instance.Instance._ngui_edit_manager._login_obj.SetActive(false);
+            global_instance.Instance._ngui_edit_manager.show_main_panel();
+        }
+        global_instance.Instance._in_login = false;
 
-	}
+    }
 
 
 

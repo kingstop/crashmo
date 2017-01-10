@@ -113,6 +113,7 @@ message MsgS2COfficeStatusACK
 	repeated int32 chapter_id = 1;
 }
 
+
 message MsgC2SOfficeMapReq
 {
 	required int32 chapter_id = 1;

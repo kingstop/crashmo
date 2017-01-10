@@ -77,11 +77,15 @@ public class global_instance
         return _map_data;
     }
 
+
+    
+
 	public long getTime()
 	{
 		TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
 		return Convert.ToInt64 (ts.TotalSeconds);
 	}
+
 
     public Color _current_color;
     public int _current_group;
@@ -96,6 +100,7 @@ public class global_instance
     public global_game_type _global_game_type = global_game_type.global_game_type_game;
 	public OfficilMapManager _officilMapManager = new OfficilMapManager ();
 	public RankMapManager _rankMapManager = new RankMapManager ();
+    public bool _in_login = false;
 
 
 

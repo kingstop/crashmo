@@ -247,6 +247,7 @@ void Session::parseReqOfficilMap(google::protobuf::Message* p)
 	OFFICILMAPLIST::const_iterator it_const = (*officilmap).find(chapter_id);
 	if (it_const != officilmap->end())
 	{
+		msgACK.set_section_count(it_const->second.size());
 		const std::map<int, message::CrashMapData>& map_entry = it_const->second;
 		msgACK.set_section_count(map_entry.size());
 
