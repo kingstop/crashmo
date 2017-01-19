@@ -122,7 +122,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 	std::string temp_sql_replace;
 	sprintf(sql, "delete from player_map where `account`=%llu;", acc_temp);
 	temp_sql_replace += sql;
-	temp_sql_replace += "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`) values";
+	temp_sql_replace += "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`, `gold`) values";
 	int count = 0;
 	std::string temp_data;
 	for (int i = 0; i < temp_size; i ++, count ++)
@@ -136,9 +136,9 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
 
-		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
+		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
 			Data.mapname().c_str(), temp_data.c_str(),
-			create_time.c_str(), 1);
+			create_time.c_str(), 1, Data.gold());
 		temp_sql_replace += sql;
 	}
 
@@ -158,8 +158,8 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		std::string create_time = get_time(Data.create_time());
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
-		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
-			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0);
+		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
+			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0, Data.gold());
 		temp_sql_replace += sql;
 	}
 	if (need_save)
@@ -195,6 +195,7 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 		info->set_map_width(row["map_width"]);
 		info->set_map_height(row["map_height"]);
 		info->set_map_count(row["map_count"]);
+		info->set_gold(row["gold"]);
 		std::string group_str =	row["group_count"].c_str();
 		if (group_str.empty() == false)
 		{
@@ -251,8 +252,9 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 				map_data->set_number(0);
 				map_data->set_section(0);
 				map_data->set_creatername(row_map["creater_name"].c_str());
-				
+				map_data->set_gold(row_map["gold"]);				
 				map_data->set_create_time(row_map["UNIX_TIMESTAMP(`create_time`)"]);
+				
 				message::CrashmoMapBaseData * baseinfo = map_data->mutable_data();
 				std::string data_temp = row_map["map_data"].c_str();
 				baseinfo->ParseFromString(base64_decode(data_temp));
