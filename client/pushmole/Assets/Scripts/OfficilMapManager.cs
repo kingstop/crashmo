@@ -83,6 +83,12 @@ public class OfficilMapManager
 	{
 		int chapter_id = msg.chapter_id;
 		int session_id = 0;
+
+        if(_officilMap.ContainsKey(chapter_id) == false)
+        {
+            _officilMap.Add(chapter_id, new Dictionary<int, message.CrashMapData>());
+        }
+
 		if (_officilMap.ContainsKey (chapter_id) == true) 
 		{
 			foreach (message.CrashMapData entry in msg.maps) 
