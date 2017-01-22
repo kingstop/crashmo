@@ -53,12 +53,13 @@ public class OfficilMapManager
 	{
 		message.MsgC2SOfficeStatusReq msg = new message.MsgC2SOfficeStatusReq ();	
 		global_instance.Instance._net_client.send (msg);
-	}
+        _officilMap.Clear();
+        _chapter_ids.Clear();
+    }
 
 	public void parseOfficeStatus(message.MsgS2COfficeStatusACK msg)
 	{
-		_chapter_ids.Clear ();
-		_officilMap.Clear ();
+
 		foreach (int secion_id in msg.chapter_id) 
 		{
 			_chapter_ids.Add (secion_id);
@@ -70,7 +71,7 @@ public class OfficilMapManager
 			MsgReq.chapter_id = _chapter_ids [0];
 			MsgReq.section_id = -1;
             MsgReq.map_count = 5;
-			global_instance.Instance._net_client.send (msg);
+			global_instance.Instance._net_client.send (MsgReq);
 		}
 		else
 		{
@@ -128,7 +129,7 @@ public class OfficilMapManager
 				message.MsgC2SOfficeMapReq MsgReq = new message.MsgC2SOfficeMapReq ();
 				MsgReq.chapter_id = req_chapter_id;
 				MsgReq.section_id = req_section_id;
-				global_instance.Instance._net_client.send (msg);
+				global_instance.Instance._net_client.send (MsgReq);
 			}
 		}
 	}

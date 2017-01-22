@@ -22,7 +22,9 @@ public class client_session
         _MessageFun.Add("CrashmoClientInit", CrashmoClientInit);
         _MessageFun.Add("MsgSaveMapACK", SaveMap);
         _MessageFun.Add("MsgDelMapACK", DelMap);
-        _MessageFun.Add("MsgModifySectionNameACK", ModifySectionName);     
+        _MessageFun.Add("MsgModifySectionNameACK", ModifySectionName);
+        _MessageFun.Add("MsgS2COfficeStatusACK", ParseOfficeStatus);
+        _MessageFun.Add("MsgS2COfficeMapACK", ParseOfficeMapACK);
     }
 
     ~client_session()
@@ -30,6 +32,20 @@ public class client_session
 
     }
 
+    public bool ParseOfficeMapACK(System.IO.MemoryStream stream)
+    {
+        MsgS2COfficeMapACK msg = ProtoBuf.Serializer.Deserialize<MsgS2COfficeMapACK>(stream);
+        global_instance.Instance._officilMapManager.parseOfficeChaper(msg);
+        return true;
+    }
+
+    public bool ParseOfficeStatus(System.IO.MemoryStream stream)
+    {
+        MsgS2COfficeStatusACK msg = ProtoBuf.Serializer.Deserialize<MsgS2COfficeStatusACK>(stream);
+        global_instance.Instance._officilMapManager.parseOfficeStatus(msg);
+        return true;
+
+    }
     public bool CrashmoClientInit(System.IO.MemoryStream stream)
     {
         CrashmoClientInit msg = ProtoBuf.Serializer.Deserialize<CrashmoClientInit>(stream);

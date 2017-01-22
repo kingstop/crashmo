@@ -36,6 +36,7 @@ void OfficilMapManager::init(DBQuery* p)
 			temp_map.set_create_time(row["UNIX_TIMESTAMP(`create_time`)"]);
 			temp_map.set_number(row["section"]);
 			temp_map.set_section(row["number"]);
+			temp_map.set_gold(row["gold"]);
 			OFFICILMAPLIST::iterator it = _officilmap.find(temp_map.section());
 			if (it == _officilmap.end())
 			{
