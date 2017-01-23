@@ -98,12 +98,12 @@ namespace message
       get { return _Section; }
       set { _Section = value; }
     }
-    private int _number;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"number", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int number
+    private int _Chapter;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"Chapter", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Chapter
     {
-      get { return _number; }
-      set { _number = value; }
+      get { return _Chapter; }
+      set { _Chapter = value; }
     }
     private ulong _create_time;
     [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"create_time", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -250,12 +250,12 @@ namespace message
       get { return _account; }
       set { _account = value; }
     }
-    private int _pass_point;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"pass_point", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int pass_point
+    private int _pass_chapter;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"pass_chapter", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int pass_chapter
     {
-      get { return _pass_point; }
-      set { _pass_point = value; }
+      get { return _pass_chapter; }
+      set { _pass_chapter = value; }
     }
     private int _pass_section;
     [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"pass_section", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

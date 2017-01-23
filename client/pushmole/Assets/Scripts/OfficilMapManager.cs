@@ -145,9 +145,9 @@ public class OfficilMapManager
 		if (_officilMap.ContainsKey (map.Section) == false) 
 		{
 			Dictionary<int, message.CrashMapData> dic_maps = new Dictionary<int, message.CrashMapData> ();
-			_officilMap [map.Section] = dic_maps;
+			_officilMap [map.Chapter] = dic_maps;
 		}
-		_officilMap [map.Section] [map.number] = map;
+		_officilMap [map.Chapter] [map.Section] = map;
 	}
 
 	public void delMap(string name)

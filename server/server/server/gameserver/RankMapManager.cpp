@@ -65,8 +65,8 @@ void RankMapManager::Init(DBQuery* p)
 		std::string str_data = row["map_data"].c_str();
 		data_base->ParseFromString(base64_decode(str_data));
 		rank_map_entry->info_.set_create_time(row["UNIX_TIMESTAMP(`create_time`)"]);
-		rank_map_entry->info_.set_number(row["section"]);
-		rank_map_entry->info_.set_section(row["number"]);
+		rank_map_entry->info_.set_chapter(row["chapter"]);
+		rank_map_entry->info_.set_section(row["section"]);
 		rank_map_entry->publish_time_ = row["UNIX_TIMESTAMP(`publish_time`)"];
 		rank_map_entry->challenge_times_ = row["challenge_times"];
 		rank_map_entry->failed_of_challenge_times_ = row["failed_of_challenge_times"];

@@ -367,12 +367,12 @@ class CrashMapData : public ::google::protobuf::Message {
   ::google::protobuf::int32 section() const;
   void set_section(::google::protobuf::int32 value);
 
-  // required int32 number = 5;
-  bool has_number() const;
-  void clear_number();
-  static const int kNumberFieldNumber = 5;
-  ::google::protobuf::int32 number() const;
-  void set_number(::google::protobuf::int32 value);
+  // required int32 Chapter = 5;
+  bool has_chapter() const;
+  void clear_chapter();
+  static const int kChapterFieldNumber = 5;
+  ::google::protobuf::int32 chapter() const;
+  void set_chapter(::google::protobuf::int32 value);
 
   // required uint64 create_time = 6;
   bool has_create_time() const;
@@ -398,8 +398,8 @@ class CrashMapData : public ::google::protobuf::Message {
   inline void clear_has_creatername();
   inline void set_has_section();
   inline void clear_has_section();
-  inline void set_has_number();
-  inline void clear_has_number();
+  inline void set_has_chapter();
+  inline void clear_has_chapter();
   inline void set_has_create_time();
   inline void clear_has_create_time();
   inline void set_has_gold();
@@ -415,7 +415,7 @@ class CrashMapData : public ::google::protobuf::Message {
   ::google::protobuf::internal::ArenaStringPtr mapname_;
   ::google::protobuf::internal::ArenaStringPtr creatername_;
   ::google::protobuf::int32 section_;
-  ::google::protobuf::int32 number_;
+  ::google::protobuf::int32 chapter_;
   ::google::protobuf::uint64 create_time_;
   ::google::protobuf::int32 gold_;
   friend void  protobuf_AddDesc_common_2eproto();
@@ -879,12 +879,12 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::uint64 account() const;
   void set_account(::google::protobuf::uint64 value);
 
-  // required int32 pass_point = 2;
-  bool has_pass_point() const;
-  void clear_pass_point();
-  static const int kPassPointFieldNumber = 2;
-  ::google::protobuf::int32 pass_point() const;
-  void set_pass_point(::google::protobuf::int32 value);
+  // required int32 pass_chapter = 2;
+  bool has_pass_chapter() const;
+  void clear_pass_chapter();
+  static const int kPassChapterFieldNumber = 2;
+  ::google::protobuf::int32 pass_chapter() const;
+  void set_pass_chapter(::google::protobuf::int32 value);
 
   // required int32 pass_section = 4;
   bool has_pass_section() const;
@@ -980,8 +980,8 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
  private:
   inline void set_has_account();
   inline void clear_has_account();
-  inline void set_has_pass_point();
-  inline void clear_has_pass_point();
+  inline void set_has_pass_chapter();
+  inline void clear_has_pass_chapter();
   inline void set_has_pass_section();
   inline void clear_has_pass_section();
   inline void set_has_name();
@@ -1004,7 +1004,7 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::uint64 account_;
-  ::google::protobuf::int32 pass_point_;
+  ::google::protobuf::int32 pass_chapter_;
   ::google::protobuf::int32 pass_section_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > incompletemap_;
@@ -1343,28 +1343,28 @@ inline void CrashMapData::set_section(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:message.CrashMapData.Section)
 }
 
-// required int32 number = 5;
-inline bool CrashMapData::has_number() const {
+// required int32 Chapter = 5;
+inline bool CrashMapData::has_chapter() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void CrashMapData::set_has_number() {
+inline void CrashMapData::set_has_chapter() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void CrashMapData::clear_has_number() {
+inline void CrashMapData::clear_has_chapter() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void CrashMapData::clear_number() {
-  number_ = 0;
-  clear_has_number();
+inline void CrashMapData::clear_chapter() {
+  chapter_ = 0;
+  clear_has_chapter();
 }
-inline ::google::protobuf::int32 CrashMapData::number() const {
-  // @@protoc_insertion_point(field_get:message.CrashMapData.number)
-  return number_;
+inline ::google::protobuf::int32 CrashMapData::chapter() const {
+  // @@protoc_insertion_point(field_get:message.CrashMapData.Chapter)
+  return chapter_;
 }
-inline void CrashMapData::set_number(::google::protobuf::int32 value) {
-  set_has_number();
-  number_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashMapData.number)
+inline void CrashMapData::set_chapter(::google::protobuf::int32 value) {
+  set_has_chapter();
+  chapter_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashMapData.Chapter)
 }
 
 // required uint64 create_time = 6;
@@ -1826,28 +1826,28 @@ inline void CrashPlayerInfo::set_account(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.account)
 }
 
-// required int32 pass_point = 2;
-inline bool CrashPlayerInfo::has_pass_point() const {
+// required int32 pass_chapter = 2;
+inline bool CrashPlayerInfo::has_pass_chapter() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void CrashPlayerInfo::set_has_pass_point() {
+inline void CrashPlayerInfo::set_has_pass_chapter() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void CrashPlayerInfo::clear_has_pass_point() {
+inline void CrashPlayerInfo::clear_has_pass_chapter() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void CrashPlayerInfo::clear_pass_point() {
-  pass_point_ = 0;
-  clear_has_pass_point();
+inline void CrashPlayerInfo::clear_pass_chapter() {
+  pass_chapter_ = 0;
+  clear_has_pass_chapter();
 }
-inline ::google::protobuf::int32 CrashPlayerInfo::pass_point() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.pass_point)
-  return pass_point_;
+inline ::google::protobuf::int32 CrashPlayerInfo::pass_chapter() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.pass_chapter)
+  return pass_chapter_;
 }
-inline void CrashPlayerInfo::set_pass_point(::google::protobuf::int32 value) {
-  set_has_pass_point();
-  pass_point_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.pass_point)
+inline void CrashPlayerInfo::set_pass_chapter(::google::protobuf::int32 value) {
+  set_has_pass_chapter();
+  pass_chapter_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.pass_chapter)
 }
 
 // required int32 pass_section = 4;

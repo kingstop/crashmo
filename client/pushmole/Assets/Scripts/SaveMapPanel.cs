@@ -170,7 +170,7 @@ public class SaveMapPanel : MonoBehaviour {
                     {
                         msg.save_type = message.MapType.OfficeMap;
                         mapdata.Section = int.Parse(_chapter_text.text);
-						mapdata.number = int.Parse(_section_text.text);
+						mapdata.Chapter = int.Parse(_section_text.text);
                     }
                     break;
             }

@@ -19,7 +19,7 @@ message CrashMapData
 	required string MapName = 2;
 	required string CreaterName = 3;
 	required int32 Section = 4;
-	required int32 number = 5;
+	required int32 Chapter = 5;
 	required uint64 create_time = 6;
 	required int32 gold = 7;
 }
@@ -53,7 +53,7 @@ message intPair
 message CrashPlayerInfo
 {
 	required uint64 account = 1;
-	required int32 pass_point = 2;
+	required int32 pass_chapter = 2;
 	required int32 pass_section = 4;
 	required string name = 5;
 	repeated CrashMapData IncompleteMap = 6;

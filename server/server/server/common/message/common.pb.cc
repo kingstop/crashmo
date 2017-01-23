@@ -90,7 +90,7 @@ void protobuf_AssignDesc_common_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, mapname_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, creatername_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, section_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, number_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, chapter_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, create_time_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, gold_),
   };
@@ -162,7 +162,7 @@ void protobuf_AssignDesc_common_2eproto() {
   CrashPlayerInfo_descriptor_ = file->message_type(6);
   static const int CrashPlayerInfo_offsets_[12] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, account_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, pass_point_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, pass_chapter_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, pass_section_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, incompletemap_),
@@ -243,27 +243,27 @@ void protobuf_AddDesc_common_2eproto() {
     "\004data\030\001 \003(\005\"m\n\022CrashmoMapBaseData\022\r\n\005wid"
     "th\030\001 \002(\005\022\016\n\006height\030\002 \002(\005\022%\n\010map_data\030\003 \003"
     "(\0132\023.message.int32array\022\021\n\tmap_index\030\005 \002"
-    "(\004\"\243\001\n\014CrashMapData\022)\n\004Data\030\001 \002(\0132\033.mess"
+    "(\004\"\244\001\n\014CrashMapData\022)\n\004Data\030\001 \002(\0132\033.mess"
     "age.CrashmoMapBaseData\022\017\n\007MapName\030\002 \002(\t\022"
-    "\023\n\013CreaterName\030\003 \002(\t\022\017\n\007Section\030\004 \002(\005\022\016\n"
-    "\006number\030\005 \002(\005\022\023\n\013create_time\030\006 \002(\004\022\014\n\004go"
-    "ld\030\007 \002(\005\"L\n\020RankMapBlogEntry\022\013\n\003acc\030\001 \002("
-    "\004\022\014\n\004name\030\002 \002(\t\022\017\n\007sugges_\030\003 \002(\t\022\014\n\004time"
-    "\030\004 \002(\005\"\321\001\n\025CrashPlayerPublishMap\022\'\n\010cras"
-    "hmap\030\001 \002(\0132\025.message.CrashMapData\022\024\n\014pub"
-    "lish_time\030\002 \002(\004\022\027\n\017challenge_times\030\003 \002(\005"
-    "\022!\n\031failed_of_challenge_times\030\004 \002(\005\022\020\n\010m"
-    "ap_rank\030\005 \002(\005\022+\n\010map_blog\030\006 \003(\0132\031.messag"
-    "e.RankMapBlogEntry\"-\n\007intPair\022\020\n\010number_"
-    "1\030\001 \002(\005\022\020\n\010number_2\030\002 \002(\005\"\262\002\n\017CrashPlaye"
-    "rInfo\022\017\n\007account\030\001 \002(\004\022\022\n\npass_point\030\002 \002"
-    "(\005\022\024\n\014pass_section\030\004 \002(\005\022\014\n\004name\030\005 \002(\t\022,"
-    "\n\rIncompleteMap\030\006 \003(\0132\025.message.CrashMap"
-    "Data\022*\n\013CompleteMap\030\007 \003(\0132\025.message.Cras"
-    "hMapData\022\017\n\007isadmin\030\010 \002(\010\022#\n\tresources\030\t"
-    " \003(\0132\020.message.intPair\022\021\n\tmap_width\030\n \002("
-    "\005\022\022\n\nmap_height\030\013 \002(\005\022\021\n\tmap_count\030\014 \002(\005"
-    "\022\014\n\004gold\030\r \002(\005", 974);
+    "\023\n\013CreaterName\030\003 \002(\t\022\017\n\007Section\030\004 \002(\005\022\017\n"
+    "\007Chapter\030\005 \002(\005\022\023\n\013create_time\030\006 \002(\004\022\014\n\004g"
+    "old\030\007 \002(\005\"L\n\020RankMapBlogEntry\022\013\n\003acc\030\001 \002"
+    "(\004\022\014\n\004name\030\002 \002(\t\022\017\n\007sugges_\030\003 \002(\t\022\014\n\004tim"
+    "e\030\004 \002(\005\"\321\001\n\025CrashPlayerPublishMap\022\'\n\010cra"
+    "shmap\030\001 \002(\0132\025.message.CrashMapData\022\024\n\014pu"
+    "blish_time\030\002 \002(\004\022\027\n\017challenge_times\030\003 \002("
+    "\005\022!\n\031failed_of_challenge_times\030\004 \002(\005\022\020\n\010"
+    "map_rank\030\005 \002(\005\022+\n\010map_blog\030\006 \003(\0132\031.messa"
+    "ge.RankMapBlogEntry\"-\n\007intPair\022\020\n\010number"
+    "_1\030\001 \002(\005\022\020\n\010number_2\030\002 \002(\005\"\264\002\n\017CrashPlay"
+    "erInfo\022\017\n\007account\030\001 \002(\004\022\024\n\014pass_chapter\030"
+    "\002 \002(\005\022\024\n\014pass_section\030\004 \002(\005\022\014\n\004name\030\005 \002("
+    "\t\022,\n\rIncompleteMap\030\006 \003(\0132\025.message.Crash"
+    "MapData\022*\n\013CompleteMap\030\007 \003(\0132\025.message.C"
+    "rashMapData\022\017\n\007isadmin\030\010 \002(\010\022#\n\tresource"
+    "s\030\t \003(\0132\020.message.intPair\022\021\n\tmap_width\030\n"
+    " \002(\005\022\022\n\nmap_height\030\013 \002(\005\022\021\n\tmap_count\030\014 "
+    "\002(\005\022\014\n\004gold\030\r \002(\005", 977);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   int32array::default_instance_ = new int32array();
@@ -1069,7 +1069,7 @@ const int CrashMapData::kDataFieldNumber;
 const int CrashMapData::kMapNameFieldNumber;
 const int CrashMapData::kCreaterNameFieldNumber;
 const int CrashMapData::kSectionFieldNumber;
-const int CrashMapData::kNumberFieldNumber;
+const int CrashMapData::kChapterFieldNumber;
 const int CrashMapData::kCreateTimeFieldNumber;
 const int CrashMapData::kGoldFieldNumber;
 #endif  // !_MSC_VER
@@ -1099,7 +1099,7 @@ void CrashMapData::SharedCtor() {
   mapname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   creatername_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   section_ = 0;
-  number_ = 0;
+  chapter_ = 0;
   create_time_ = GOOGLE_ULONGLONG(0);
   gold_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1241,18 +1241,18 @@ bool CrashMapData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(40)) goto parse_number;
+        if (input->ExpectTag(40)) goto parse_Chapter;
         break;
       }
 
-      // required int32 number = 5;
+      // required int32 Chapter = 5;
       case 5: {
         if (tag == 40) {
-         parse_number:
+         parse_Chapter:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &number_)));
-          set_has_number();
+                 input, &chapter_)));
+          set_has_chapter();
         } else {
           goto handle_unusual;
         }
@@ -1346,9 +1346,9 @@ void CrashMapData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->section(), output);
   }
 
-  // required int32 number = 5;
-  if (has_number()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->number(), output);
+  // required int32 Chapter = 5;
+  if (has_chapter()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->chapter(), output);
   }
 
   // required uint64 create_time = 6;
@@ -1405,9 +1405,9 @@ void CrashMapData::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->section(), target);
   }
 
-  // required int32 number = 5;
-  if (has_number()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->number(), target);
+  // required int32 Chapter = 5;
+  if (has_chapter()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->chapter(), target);
   }
 
   // required uint64 create_time = 6;
@@ -1459,11 +1459,11 @@ int CrashMapData::RequiredFieldsByteSizeFallback() const {
         this->section());
   }
 
-  if (has_number()) {
-    // required int32 number = 5;
+  if (has_chapter()) {
+    // required int32 Chapter = 5;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->number());
+        this->chapter());
   }
 
   if (has_create_time()) {
@@ -1506,10 +1506,10 @@ int CrashMapData::ByteSize() const {
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->section());
 
-    // required int32 number = 5;
+    // required int32 Chapter = 5;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->number());
+        this->chapter());
 
     // required uint64 create_time = 6;
     total_size += 1 +
@@ -1564,8 +1564,8 @@ void CrashMapData::MergeFrom(const CrashMapData& from) {
     if (from.has_section()) {
       set_section(from.section());
     }
-    if (from.has_number()) {
-      set_number(from.number());
+    if (from.has_chapter()) {
+      set_chapter(from.chapter());
     }
     if (from.has_create_time()) {
       set_create_time(from.create_time());
@@ -1609,7 +1609,7 @@ void CrashMapData::InternalSwap(CrashMapData* other) {
   mapname_.Swap(&other->mapname_);
   creatername_.Swap(&other->creatername_);
   std::swap(section_, other->section_);
-  std::swap(number_, other->number_);
+  std::swap(chapter_, other->chapter_);
   std::swap(create_time_, other->create_time_);
   std::swap(gold_, other->gold_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
@@ -1801,28 +1801,28 @@ void CrashMapData::InternalSwap(CrashMapData* other) {
   // @@protoc_insertion_point(field_set:message.CrashMapData.Section)
 }
 
-// required int32 number = 5;
- bool CrashMapData::has_number() const {
+// required int32 Chapter = 5;
+ bool CrashMapData::has_chapter() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
- void CrashMapData::set_has_number() {
+ void CrashMapData::set_has_chapter() {
   _has_bits_[0] |= 0x00000010u;
 }
- void CrashMapData::clear_has_number() {
+ void CrashMapData::clear_has_chapter() {
   _has_bits_[0] &= ~0x00000010u;
 }
- void CrashMapData::clear_number() {
-  number_ = 0;
-  clear_has_number();
+ void CrashMapData::clear_chapter() {
+  chapter_ = 0;
+  clear_has_chapter();
 }
- ::google::protobuf::int32 CrashMapData::number() const {
-  // @@protoc_insertion_point(field_get:message.CrashMapData.number)
-  return number_;
+ ::google::protobuf::int32 CrashMapData::chapter() const {
+  // @@protoc_insertion_point(field_get:message.CrashMapData.Chapter)
+  return chapter_;
 }
- void CrashMapData::set_number(::google::protobuf::int32 value) {
-  set_has_number();
-  number_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashMapData.number)
+ void CrashMapData::set_chapter(::google::protobuf::int32 value) {
+  set_has_chapter();
+  chapter_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashMapData.Chapter)
 }
 
 // required uint64 create_time = 6;
@@ -3460,7 +3460,7 @@ void intPair::InternalSwap(intPair* other) {
 
 #ifndef _MSC_VER
 const int CrashPlayerInfo::kAccountFieldNumber;
-const int CrashPlayerInfo::kPassPointFieldNumber;
+const int CrashPlayerInfo::kPassChapterFieldNumber;
 const int CrashPlayerInfo::kPassSectionFieldNumber;
 const int CrashPlayerInfo::kNameFieldNumber;
 const int CrashPlayerInfo::kIncompleteMapFieldNumber;
@@ -3494,7 +3494,7 @@ void CrashPlayerInfo::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   account_ = GOOGLE_ULONGLONG(0);
-  pass_point_ = 0;
+  pass_chapter_ = 0;
   pass_section_ = 0;
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   isadmin_ = false;
@@ -3591,18 +3591,18 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_pass_point;
+        if (input->ExpectTag(16)) goto parse_pass_chapter;
         break;
       }
 
-      // required int32 pass_point = 2;
+      // required int32 pass_chapter = 2;
       case 2: {
         if (tag == 16) {
-         parse_pass_point:
+         parse_pass_chapter:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &pass_point_)));
-          set_has_pass_point();
+                 input, &pass_chapter_)));
+          set_has_pass_chapter();
         } else {
           goto handle_unusual;
         }
@@ -3789,9 +3789,9 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->account(), output);
   }
 
-  // required int32 pass_point = 2;
-  if (has_pass_point()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->pass_point(), output);
+  // required int32 pass_chapter = 2;
+  if (has_pass_chapter()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->pass_chapter(), output);
   }
 
   // required int32 pass_section = 4;
@@ -3867,9 +3867,9 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->account(), target);
   }
 
-  // required int32 pass_point = 2;
-  if (has_pass_point()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->pass_point(), target);
+  // required int32 pass_chapter = 2;
+  if (has_pass_chapter()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->pass_chapter(), target);
   }
 
   // required int32 pass_section = 4;
@@ -3952,11 +3952,11 @@ int CrashPlayerInfo::RequiredFieldsByteSizeFallback() const {
         this->account());
   }
 
-  if (has_pass_point()) {
-    // required int32 pass_point = 2;
+  if (has_pass_chapter()) {
+    // required int32 pass_chapter = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->pass_point());
+        this->pass_chapter());
   }
 
   if (has_pass_section()) {
@@ -4017,10 +4017,10 @@ int CrashPlayerInfo::ByteSize() const {
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->account());
 
-    // required int32 pass_point = 2;
+    // required int32 pass_chapter = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->pass_point());
+        this->pass_chapter());
 
     // required int32 pass_section = 4;
     total_size += 1 +
@@ -4114,8 +4114,8 @@ void CrashPlayerInfo::MergeFrom(const CrashPlayerInfo& from) {
     if (from.has_account()) {
       set_account(from.account());
     }
-    if (from.has_pass_point()) {
-      set_pass_point(from.pass_point());
+    if (from.has_pass_chapter()) {
+      set_pass_chapter(from.pass_chapter());
     }
     if (from.has_pass_section()) {
       set_pass_section(from.pass_section());
@@ -4174,7 +4174,7 @@ void CrashPlayerInfo::Swap(CrashPlayerInfo* other) {
 }
 void CrashPlayerInfo::InternalSwap(CrashPlayerInfo* other) {
   std::swap(account_, other->account_);
-  std::swap(pass_point_, other->pass_point_);
+  std::swap(pass_chapter_, other->pass_chapter_);
   std::swap(pass_section_, other->pass_section_);
   name_.Swap(&other->name_);
   incompletemap_.UnsafeArenaSwap(&other->incompletemap_);
@@ -4225,28 +4225,28 @@ void CrashPlayerInfo::InternalSwap(CrashPlayerInfo* other) {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.account)
 }
 
-// required int32 pass_point = 2;
- bool CrashPlayerInfo::has_pass_point() const {
+// required int32 pass_chapter = 2;
+ bool CrashPlayerInfo::has_pass_chapter() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
- void CrashPlayerInfo::set_has_pass_point() {
+ void CrashPlayerInfo::set_has_pass_chapter() {
   _has_bits_[0] |= 0x00000002u;
 }
- void CrashPlayerInfo::clear_has_pass_point() {
+ void CrashPlayerInfo::clear_has_pass_chapter() {
   _has_bits_[0] &= ~0x00000002u;
 }
- void CrashPlayerInfo::clear_pass_point() {
-  pass_point_ = 0;
-  clear_has_pass_point();
+ void CrashPlayerInfo::clear_pass_chapter() {
+  pass_chapter_ = 0;
+  clear_has_pass_chapter();
 }
- ::google::protobuf::int32 CrashPlayerInfo::pass_point() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.pass_point)
-  return pass_point_;
+ ::google::protobuf::int32 CrashPlayerInfo::pass_chapter() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.pass_chapter)
+  return pass_chapter_;
 }
- void CrashPlayerInfo::set_pass_point(::google::protobuf::int32 value) {
-  set_has_pass_point();
-  pass_point_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.pass_point)
+ void CrashPlayerInfo::set_pass_chapter(::google::protobuf::int32 value) {
+  set_has_pass_chapter();
+  pass_chapter_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.pass_chapter)
 }
 
 // required int32 pass_section = 4;

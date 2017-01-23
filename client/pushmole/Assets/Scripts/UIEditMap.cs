@@ -49,13 +49,13 @@ public class UIEditMap : MonoBehaviour {
 		{
 			if (global_instance.Instance._player.isadmin () == false) 
 			{
-				PrepareSaveBtn_.gameObject.SetActive (false);
-				SaveBtn_.gameObject.SetActive (true);
+				PrepareSaveBtn_.gameObject.SetActive (true);
+				SaveBtn_.gameObject.SetActive (false);
 			}
 			else 
 			{
-				PrepareSaveBtn_.gameObject.SetActive (true);
-				SaveBtn_.gameObject.SetActive (false);
+				PrepareSaveBtn_.gameObject.SetActive (false);
+				SaveBtn_.gameObject.SetActive (true);
 			}
 
 		}
@@ -146,7 +146,8 @@ public class UIEditMap : MonoBehaviour {
 
 	public void OnPrepareSaveClick()
 	{
-		global_instance.Instance._ngui_edit_manager.update_game_type (game_type.game);
+        global_instance.Instance.SetMapData(global_instance.Instance._crash_mole_grid_manager.save_crash_mole_grid());
+        global_instance.Instance._ngui_edit_manager.update_game_type (game_type.game);
 	}
 
 	public void OnBackClick()

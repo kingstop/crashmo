@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pushmole.CSharp.Plugins", "pushmole.CSharp.Plugins.csproj", "{1BECA5D4-DA86-E119-50CB-5A0CF2A6004F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pushmole.CSharp", "pushmole.CSharp.csproj", "{648C73AC-73C2-CDE2-6DC2-D6735A51A788}"

@@ -17,7 +17,7 @@ public class MapData
     public int[,] groups_;
     public string map_name_;
     public string create_name_;
-    public int number_;
+    public int chapter_;
     public int section_;
     public ulong map_index_;
     protected Dictionary<int, int> _resorces = new Dictionary<int, int>();
@@ -57,7 +57,7 @@ public class MapData
         message.CrashMapData Data = new message.CrashMapData();
         Data.CreaterName = create_name_;
         Data.create_time = create_time_;
-        Data.number = number_;
+        Data.Chapter = chapter_;
         Data.Section = section_;
         Data.Data = new message.CrashmoMapBaseData();
         Data.Data.height = height_;
@@ -84,7 +84,7 @@ public class MapData
     {
         create_name_ = Data.CreaterName;
         create_time_ = Data.create_time;
-        number_ = Data.number;
+        chapter_ = Data.Chapter;
         section_ = Data.Section;
         height_ = Data.Data.height;
         width_ = Data.Data.width;
