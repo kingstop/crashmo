@@ -111,7 +111,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
   CrashmoClientInit_descriptor_ = file->message_type(1);
   static const int CrashmoClientInit_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashmoClientInit, info_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashmoClientInit, sections_names_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashmoClientInit, chapter_names_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashmoClientInit, resources_config_max_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashmoClientInit, map_width_config_max_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashmoClientInit, map_height_config_max_),
@@ -527,52 +527,52 @@ void protobuf_AddDesc_crashmo_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\rcrashmo.proto\022\007message\032\014common.proto\"="
     "\n\021MsgIntStringProto\022\023\n\013intger_temp\030\001 \002(\005"
-    "\022\023\n\013string_temp\030\002 \002(\t\"\363\001\n\021CrashmoClientI"
+    "\022\023\n\013string_temp\030\002 \002(\t\"\362\001\n\021CrashmoClientI"
     "nit\022&\n\004info\030\001 \002(\0132\030.message.CrashPlayerI"
-    "nfo\0222\n\016sections_names\030\002 \003(\0132\032.message.Ms"
-    "gIntStringProto\022.\n\024resources_config_max\030"
-    "\003 \003(\0132\020.message.intPair\022\034\n\024map_width_con"
-    "fig_max\030\004 \002(\005\022\035\n\025map_height_config_max\030\005"
-    " \002(\005\022\025\n\rmap_count_max\030\006 \002(\005\"c\n\rMsgSaveMa"
-    "pReq\022\"\n\003map\030\001 \002(\0132\025.message.CrashMapData"
-    "\022.\n\tsave_type\030\002 \002(\0162\020.message.MapType:\tO"
-    "fficeMap\" \n\014MsgDelMapReq\022\020\n\010map_name\030\001 \002"
-    "(\t\"\204\001\n\014MsgDelMapACK\022\020\n\010map_name\030\001 \002(\t\022-\n"
-    "\010map_type\030\002 \002(\0162\020.message.MapType:\tOffic"
-    "eMap\0223\n\005error\030\003 \002(\0162\024.message.ServerErro"
-    "r:\016ServerError_NO\"\252\001\n\rMsgSaveMapACK\022\020\n\010m"
-    "ap_name\030\001 \002(\t\022.\n\tsave_type\030\002 \002(\0162\020.messa"
-    "ge.MapType:\tOfficeMap\022\"\n\003map\030\003 \002(\0132\025.mes"
-    "sage.CrashMapData\0223\n\005error\030\004 \002(\0162\024.messa"
-    "ge.ServerError:\016ServerError_NO\" \n\020MsgOff"
-    "icilMapReq\022\014\n\004page\030\001 \002(\005\"E\n\020MsgOfficilMa"
-    "pACK\022\014\n\004page\030\001 \002(\005\022#\n\004maps\030\002 \003(\0132\025.messa"
-    "ge.CrashMapData\"@\n\027MsgModifySectionNameR"
-    "eq\022\017\n\007section\030\001 \002(\005\022\024\n\014section_name\030\002 \002("
-    "\t\"@\n\027MsgModifySectionNameACK\022\017\n\007section\030"
-    "\001 \002(\005\022\024\n\014section_name\030\002 \002(\t\"\023\n\021MsgSectio"
-    "nNameReq\"A\n\021MsgSectionNameACK\022,\n\010section"
-    "s\030\001 \003(\0132\032.message.MsgIntStringProto\":\n\020M"
-    "sgS2CNotifyPing\022\022\n\ntime_stamp\030\001 \002(\003\022\022\n\np"
-    "ing_count\030\002 \002(\005\"\027\n\025MsgC2SOfficeStatusReq"
-    "\"+\n\025MsgS2COfficeStatusACK\022\022\n\nchapter_id\030"
-    "\001 \003(\005\"O\n\022MsgC2SOfficeMapReq\022\022\n\nchapter_i"
-    "d\030\001 \002(\005\022\022\n\nsection_id\030\002 \002(\005\022\021\n\tmap_count"
-    "\030\003 \002(\005\"x\n\022MsgS2COfficeMapACK\022\022\n\nchapter_"
-    "id\030\001 \002(\005\022\022\n\nsection_id\030\002 \002(\005\022#\n\004maps\030\003 \003"
-    "(\0132\025.message.CrashMapData\022\025\n\rsection_cou"
-    "nt\030\004 \002(\005\"M\n\020MsgC2SRankMapReq\022\022\n\nrank_beg"
-    "in\030\001 \002(\005\022\022\n\ntime_stamp\030\002 \002(\003\022\021\n\tmap_coun"
-    "t\030\003 \002(\005\"~\n\020MsgS2CRankMapACK\022,\n\004maps\030\001 \003("
-    "\0132\036.message.CrashPlayerPublishMap\022\020\n\010end"
-    "_rank\030\002 \002(\005\022\022\n\ntime_stamp\030\003 \002(\003\022\026\n\016rank_"
-    "map_count\030\004 \002(\005\"0\n\032MsgS2CRankMapRefreshN"
-    "otify\022\022\n\ntime_stamp\030\001 \002(\003*\177\n\013ServerError"
-    "\022\022\n\016ServerError_NO\020\000\022\026\n\022ServerError_Unkn"
-    "ow\020\001\022\034\n\030ServerError_HaveSameName\020\002\022&\n\"Se"
-    "rverError_NotFoundMapNameWhenDel\020\003*<\n\007Ma"
-    "pType\022\r\n\tOfficeMap\020\001\022\021\n\rImcompleteMap\020\002\022"
-    "\017\n\013CompleteMap\020\003", 1896);
+    "nfo\0221\n\rchapter_names\030\002 \003(\0132\032.message.Msg"
+    "IntStringProto\022.\n\024resources_config_max\030\003"
+    " \003(\0132\020.message.intPair\022\034\n\024map_width_conf"
+    "ig_max\030\004 \002(\005\022\035\n\025map_height_config_max\030\005 "
+    "\002(\005\022\025\n\rmap_count_max\030\006 \002(\005\"c\n\rMsgSaveMap"
+    "Req\022\"\n\003map\030\001 \002(\0132\025.message.CrashMapData\022"
+    ".\n\tsave_type\030\002 \002(\0162\020.message.MapType:\tOf"
+    "ficeMap\" \n\014MsgDelMapReq\022\020\n\010map_name\030\001 \002("
+    "\t\"\204\001\n\014MsgDelMapACK\022\020\n\010map_name\030\001 \002(\t\022-\n\010"
+    "map_type\030\002 \002(\0162\020.message.MapType:\tOffice"
+    "Map\0223\n\005error\030\003 \002(\0162\024.message.ServerError"
+    ":\016ServerError_NO\"\252\001\n\rMsgSaveMapACK\022\020\n\010ma"
+    "p_name\030\001 \002(\t\022.\n\tsave_type\030\002 \002(\0162\020.messag"
+    "e.MapType:\tOfficeMap\022\"\n\003map\030\003 \002(\0132\025.mess"
+    "age.CrashMapData\0223\n\005error\030\004 \002(\0162\024.messag"
+    "e.ServerError:\016ServerError_NO\" \n\020MsgOffi"
+    "cilMapReq\022\014\n\004page\030\001 \002(\005\"E\n\020MsgOfficilMap"
+    "ACK\022\014\n\004page\030\001 \002(\005\022#\n\004maps\030\002 \003(\0132\025.messag"
+    "e.CrashMapData\"@\n\027MsgModifySectionNameRe"
+    "q\022\017\n\007section\030\001 \002(\005\022\024\n\014section_name\030\002 \002(\t"
+    "\"@\n\027MsgModifySectionNameACK\022\017\n\007section\030\001"
+    " \002(\005\022\024\n\014section_name\030\002 \002(\t\"\023\n\021MsgSection"
+    "NameReq\"A\n\021MsgSectionNameACK\022,\n\010sections"
+    "\030\001 \003(\0132\032.message.MsgIntStringProto\":\n\020Ms"
+    "gS2CNotifyPing\022\022\n\ntime_stamp\030\001 \002(\003\022\022\n\npi"
+    "ng_count\030\002 \002(\005\"\027\n\025MsgC2SOfficeStatusReq\""
+    "+\n\025MsgS2COfficeStatusACK\022\022\n\nchapter_id\030\001"
+    " \003(\005\"O\n\022MsgC2SOfficeMapReq\022\022\n\nchapter_id"
+    "\030\001 \002(\005\022\022\n\nsection_id\030\002 \002(\005\022\021\n\tmap_count\030"
+    "\003 \002(\005\"x\n\022MsgS2COfficeMapACK\022\022\n\nchapter_i"
+    "d\030\001 \002(\005\022\022\n\nsection_id\030\002 \002(\005\022#\n\004maps\030\003 \003("
+    "\0132\025.message.CrashMapData\022\025\n\rsection_coun"
+    "t\030\004 \002(\005\"M\n\020MsgC2SRankMapReq\022\022\n\nrank_begi"
+    "n\030\001 \002(\005\022\022\n\ntime_stamp\030\002 \002(\003\022\021\n\tmap_count"
+    "\030\003 \002(\005\"~\n\020MsgS2CRankMapACK\022,\n\004maps\030\001 \003(\013"
+    "2\036.message.CrashPlayerPublishMap\022\020\n\010end_"
+    "rank\030\002 \002(\005\022\022\n\ntime_stamp\030\003 \002(\003\022\026\n\016rank_m"
+    "ap_count\030\004 \002(\005\"0\n\032MsgS2CRankMapRefreshNo"
+    "tify\022\022\n\ntime_stamp\030\001 \002(\003*\177\n\013ServerError\022"
+    "\022\n\016ServerError_NO\020\000\022\026\n\022ServerError_Unkno"
+    "w\020\001\022\034\n\030ServerError_HaveSameName\020\002\022&\n\"Ser"
+    "verError_NotFoundMapNameWhenDel\020\003*<\n\007Map"
+    "Type\022\r\n\tOfficeMap\020\001\022\021\n\rImcompleteMap\020\002\022\017"
+    "\n\013CompleteMap\020\003", 1895);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "crashmo.proto", &protobuf_RegisterTypes);
   MsgIntStringProto::default_instance_ = new MsgIntStringProto();
@@ -1061,7 +1061,7 @@ void MsgIntStringProto::InternalSwap(MsgIntStringProto* other) {
 
 #ifndef _MSC_VER
 const int CrashmoClientInit::kInfoFieldNumber;
-const int CrashmoClientInit::kSectionsNamesFieldNumber;
+const int CrashmoClientInit::kChapterNamesFieldNumber;
 const int CrashmoClientInit::kResourcesConfigMaxFieldNumber;
 const int CrashmoClientInit::kMapWidthConfigMaxFieldNumber;
 const int CrashmoClientInit::kMapHeightConfigMaxFieldNumber;
@@ -1150,7 +1150,7 @@ void CrashmoClientInit::Clear() {
 #undef ZR_HELPER_
 #undef ZR_
 
-  sections_names_.Clear();
+  chapter_names_.Clear();
   resources_config_max_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1176,20 +1176,20 @@ bool CrashmoClientInit::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_sections_names;
+        if (input->ExpectTag(18)) goto parse_chapter_names;
         break;
       }
 
-      // repeated .message.MsgIntStringProto sections_names = 2;
+      // repeated .message.MsgIntStringProto chapter_names = 2;
       case 2: {
         if (tag == 18) {
-         parse_sections_names:
+         parse_chapter_names:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_sections_names()));
+                input, add_chapter_names()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_sections_names;
+        if (input->ExpectTag(18)) goto parse_chapter_names;
         if (input->ExpectTag(26)) goto parse_resources_config_max;
         break;
       }
@@ -1284,10 +1284,10 @@ void CrashmoClientInit::SerializeWithCachedSizes(
       1, *this->info_, output);
   }
 
-  // repeated .message.MsgIntStringProto sections_names = 2;
-  for (unsigned int i = 0, n = this->sections_names_size(); i < n; i++) {
+  // repeated .message.MsgIntStringProto chapter_names = 2;
+  for (unsigned int i = 0, n = this->chapter_names_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->sections_names(i), output);
+      2, this->chapter_names(i), output);
   }
 
   // repeated .message.intPair resources_config_max = 3;
@@ -1328,11 +1328,11 @@ void CrashmoClientInit::SerializeWithCachedSizes(
         1, *this->info_, target);
   }
 
-  // repeated .message.MsgIntStringProto sections_names = 2;
-  for (unsigned int i = 0, n = this->sections_names_size(); i < n; i++) {
+  // repeated .message.MsgIntStringProto chapter_names = 2;
+  for (unsigned int i = 0, n = this->chapter_names_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->sections_names(i), target);
+        2, this->chapter_names(i), target);
   }
 
   // repeated .message.intPair resources_config_max = 3;
@@ -1425,12 +1425,12 @@ int CrashmoClientInit::ByteSize() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  // repeated .message.MsgIntStringProto sections_names = 2;
-  total_size += 1 * this->sections_names_size();
-  for (int i = 0; i < this->sections_names_size(); i++) {
+  // repeated .message.MsgIntStringProto chapter_names = 2;
+  total_size += 1 * this->chapter_names_size();
+  for (int i = 0; i < this->chapter_names_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->sections_names(i));
+        this->chapter_names(i));
   }
 
   // repeated .message.intPair resources_config_max = 3;
@@ -1466,7 +1466,7 @@ void CrashmoClientInit::MergeFrom(const ::google::protobuf::Message& from) {
 
 void CrashmoClientInit::MergeFrom(const CrashmoClientInit& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  sections_names_.MergeFrom(from.sections_names_);
+  chapter_names_.MergeFrom(from.chapter_names_);
   resources_config_max_.MergeFrom(from.resources_config_max_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_info()) {
@@ -1505,7 +1505,7 @@ bool CrashmoClientInit::IsInitialized() const {
   if (has_info()) {
     if (!this->info_->IsInitialized()) return false;
   }
-  if (!::google::protobuf::internal::AllAreInitialized(this->sections_names())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->chapter_names())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->resources_config_max())) return false;
   return true;
 }
@@ -1516,7 +1516,7 @@ void CrashmoClientInit::Swap(CrashmoClientInit* other) {
 }
 void CrashmoClientInit::InternalSwap(CrashmoClientInit* other) {
   std::swap(info_, other->info_);
-  sections_names_.UnsafeArenaSwap(&other->sections_names_);
+  chapter_names_.UnsafeArenaSwap(&other->chapter_names_);
   resources_config_max_.UnsafeArenaSwap(&other->resources_config_max_);
   std::swap(map_width_config_max_, other->map_width_config_max_);
   std::swap(map_height_config_max_, other->map_height_config_max_);
@@ -1580,34 +1580,34 @@ void CrashmoClientInit::InternalSwap(CrashmoClientInit* other) {
   // @@protoc_insertion_point(field_set_allocated:message.CrashmoClientInit.info)
 }
 
-// repeated .message.MsgIntStringProto sections_names = 2;
- int CrashmoClientInit::sections_names_size() const {
-  return sections_names_.size();
+// repeated .message.MsgIntStringProto chapter_names = 2;
+ int CrashmoClientInit::chapter_names_size() const {
+  return chapter_names_.size();
 }
- void CrashmoClientInit::clear_sections_names() {
-  sections_names_.Clear();
+ void CrashmoClientInit::clear_chapter_names() {
+  chapter_names_.Clear();
 }
- const ::message::MsgIntStringProto& CrashmoClientInit::sections_names(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.sections_names)
-  return sections_names_.Get(index);
+ const ::message::MsgIntStringProto& CrashmoClientInit::chapter_names(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.chapter_names)
+  return chapter_names_.Get(index);
 }
- ::message::MsgIntStringProto* CrashmoClientInit::mutable_sections_names(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashmoClientInit.sections_names)
-  return sections_names_.Mutable(index);
+ ::message::MsgIntStringProto* CrashmoClientInit::mutable_chapter_names(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashmoClientInit.chapter_names)
+  return chapter_names_.Mutable(index);
 }
- ::message::MsgIntStringProto* CrashmoClientInit::add_sections_names() {
-  // @@protoc_insertion_point(field_add:message.CrashmoClientInit.sections_names)
-  return sections_names_.Add();
+ ::message::MsgIntStringProto* CrashmoClientInit::add_chapter_names() {
+  // @@protoc_insertion_point(field_add:message.CrashmoClientInit.chapter_names)
+  return chapter_names_.Add();
 }
  const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
-CrashmoClientInit::sections_names() const {
-  // @@protoc_insertion_point(field_list:message.CrashmoClientInit.sections_names)
-  return sections_names_;
+CrashmoClientInit::chapter_names() const {
+  // @@protoc_insertion_point(field_list:message.CrashmoClientInit.chapter_names)
+  return chapter_names_;
 }
  ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
-CrashmoClientInit::mutable_sections_names() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashmoClientInit.sections_names)
-  return &sections_names_;
+CrashmoClientInit::mutable_chapter_names() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashmoClientInit.chapter_names)
+  return &chapter_names_;
 }
 
 // repeated .message.intPair resources_config_max = 3;

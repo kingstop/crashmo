@@ -19,7 +19,7 @@ message MsgIntStringProto
 message CrashmoClientInit
 {
 	required CrashPlayerInfo info = 1;
-	repeated MsgIntStringProto sections_names = 2;
+	repeated MsgIntStringProto chapter_names = 2;
 	repeated intPair resources_config_max = 3;
 	required int32 map_width_config_max = 4;
 	required int32 map_height_config_max = 5;

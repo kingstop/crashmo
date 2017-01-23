@@ -47,11 +47,11 @@ namespace message
       get { return _info; }
       set { _info = value; }
     }
-    private readonly global::System.Collections.Generic.List<message.MsgIntStringProto> _sections_names = new global::System.Collections.Generic.List<message.MsgIntStringProto>();
-    [global::ProtoBuf.ProtoMember(2, Name=@"sections_names", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<message.MsgIntStringProto> sections_names
+    private readonly global::System.Collections.Generic.List<message.MsgIntStringProto> _chapter_names = new global::System.Collections.Generic.List<message.MsgIntStringProto>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"chapter_names", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.MsgIntStringProto> chapter_names
     {
-      get { return _sections_names; }
+      get { return _chapter_names; }
     }
   
     private readonly global::System.Collections.Generic.List<message.intPair> _resources_config_max = new global::System.Collections.Generic.List<message.intPair>();

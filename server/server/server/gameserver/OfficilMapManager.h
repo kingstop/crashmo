@@ -1,6 +1,6 @@
 #pragma once
 typedef std::map<int, std::map<int, message::CrashMapData> > OFFICILMAPLIST;
-typedef std::map<int, std::string> SECTIONSNAMES;
+typedef std::map<int, std::string> CHAPTERSNAMES;
 class OfficilMapManager : public EventableObject
 {
 public:
@@ -12,14 +12,14 @@ public:
 	const OFFICILMAPLIST* getOfficilMap();
 	void saveMapOfficilMap(const message::CrashMapData* map_data, CrashPlayer* p);
 	void modifySectionName(int section, const char* name, CrashPlayer* player);
-	const SECTIONSNAMES& getSectionNames();
+	const CHAPTERSNAMES& getSectionNames();
 protected:
 	void saveOfficilMap();
 
 
 protected:
 	OFFICILMAPLIST _officilmap;
-	SECTIONSNAMES _sections_names;
+	CHAPTERSNAMES _chapter_names;
 
 };
 

@@ -128,8 +128,8 @@ void Session::parseGetSectionNameReq(google::protobuf::Message* p)
 	if (_player != NULL)
 	{
 		message::MsgSectionNameACK msg;
-		SECTIONSNAMES sections = gOfficilMapManager.getSectionNames();
-		SECTIONSNAMES::iterator it = sections.begin();
+		CHAPTERSNAMES sections = gOfficilMapManager.getSectionNames();
+		CHAPTERSNAMES::iterator it = sections.begin();
 		for (; it != sections.end(); ++ it)
 		{
 			message::MsgIntStringProto* proto = msg.add_sections();
@@ -180,11 +180,11 @@ void Session::parseDelMap(google::protobuf::Message* p)
 void Session::CreateCrashMoClientInit()
 {
 	message::CrashmoClientInit msg;
-	const SECTIONSNAMES sessionNames = gOfficilMapManager.getSectionNames();
-	SECTIONSNAMES::const_iterator it = sessionNames.begin();
+	const CHAPTERSNAMES sessionNames = gOfficilMapManager.getSectionNames();
+	CHAPTERSNAMES::const_iterator it = sessionNames.begin();
 	for (; it != sessionNames.end(); ++it)
 	{
-		message::MsgIntStringProto* pair_temp = msg.add_sections_names();
+		message::MsgIntStringProto* pair_temp = msg.add_chapter_names();
 		pair_temp->set_intger_temp(it->first);
 		pair_temp->set_string_temp(it->second.c_str());
 	}

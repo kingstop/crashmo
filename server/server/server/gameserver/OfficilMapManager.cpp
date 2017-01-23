@@ -54,7 +54,7 @@ void OfficilMapManager::init(DBQuery* p)
 		for (int i = 0; i < count; i ++)
 		{
 			DBRow row = sResult[i];
-			_sections_names[row["section_id"]] = row["section_name"].c_str();
+			_chapter_names[row["chapter_id"]] = row["section_name"].c_str();
 		}
 	}
 
@@ -93,7 +93,7 @@ void OfficilMapManager::modifySectionName(int section, const char* name, CrashPl
 	msg.set_section_name(name);
 	std::string name_temp;
 	name_temp = name;
-	_sections_names[section] = name_temp;
+	_chapter_names[section] = name_temp;
 	player->sendPBMessage(&msg);
 }
 
@@ -153,8 +153,8 @@ void OfficilMapManager::saveOfficilMap()
 
 	max_save_count = 10;
 	sql_head = "replace into `offical_section_names`(`chapter_id`,`chapter_name`)values";
-	SECTIONSNAMES::iterator it_session = _sections_names.begin();
-	for (; it_session != _sections_names.end(); ++ it_session)
+	CHAPTERSNAMES::iterator it_session = _chapter_names.begin();
+	for (; it_session != _chapter_names.end(); ++ it_session)
 	{
 		if (current_count != 0)
 		{
@@ -210,7 +210,7 @@ void OfficilMapManager::saveMapOfficilMap(const message::CrashMapData* map_data,
 	p->sendPBMessage(&msgACK);
 }
 
-const SECTIONSNAMES& OfficilMapManager::getSectionNames()
+const CHAPTERSNAMES& OfficilMapManager::getSectionNames()
 {
-	return _sections_names;
+	return _chapter_names;
 }

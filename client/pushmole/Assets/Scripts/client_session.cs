@@ -50,7 +50,7 @@ public class client_session
     {
         CrashmoClientInit msg = ProtoBuf.Serializer.Deserialize<CrashmoClientInit>(stream);
         global_instance.Instance._player.SetInfo(msg.info);
-        foreach(message.MsgIntStringProto key_pair in msg.sections_names)
+        foreach(message.MsgIntStringProto key_pair in msg.chapter_names)
         {
 			global_instance.Instance._officilMapManager.addChapterName(key_pair.intger_temp, key_pair.string_temp);
         }

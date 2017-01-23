@@ -282,17 +282,17 @@ class CrashmoClientInit : public ::google::protobuf::Message {
   ::message::CrashPlayerInfo* release_info();
   void set_allocated_info(::message::CrashPlayerInfo* info);
 
-  // repeated .message.MsgIntStringProto sections_names = 2;
-  int sections_names_size() const;
-  void clear_sections_names();
-  static const int kSectionsNamesFieldNumber = 2;
-  const ::message::MsgIntStringProto& sections_names(int index) const;
-  ::message::MsgIntStringProto* mutable_sections_names(int index);
-  ::message::MsgIntStringProto* add_sections_names();
+  // repeated .message.MsgIntStringProto chapter_names = 2;
+  int chapter_names_size() const;
+  void clear_chapter_names();
+  static const int kChapterNamesFieldNumber = 2;
+  const ::message::MsgIntStringProto& chapter_names(int index) const;
+  ::message::MsgIntStringProto* mutable_chapter_names(int index);
+  ::message::MsgIntStringProto* add_chapter_names();
   const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
-      sections_names() const;
+      chapter_names() const;
   ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
-      mutable_sections_names();
+      mutable_chapter_names();
 
   // repeated .message.intPair resources_config_max = 3;
   int resources_config_max_size() const;
@@ -345,7 +345,7 @@ class CrashmoClientInit : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::message::CrashPlayerInfo* info_;
-  ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto > sections_names_;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto > chapter_names_;
   ::google::protobuf::RepeatedPtrField< ::message::intPair > resources_config_max_;
   ::google::protobuf::int32 map_width_config_max_;
   ::google::protobuf::int32 map_height_config_max_;
@@ -2345,34 +2345,34 @@ inline void CrashmoClientInit::set_allocated_info(::message::CrashPlayerInfo* in
   // @@protoc_insertion_point(field_set_allocated:message.CrashmoClientInit.info)
 }
 
-// repeated .message.MsgIntStringProto sections_names = 2;
-inline int CrashmoClientInit::sections_names_size() const {
-  return sections_names_.size();
+// repeated .message.MsgIntStringProto chapter_names = 2;
+inline int CrashmoClientInit::chapter_names_size() const {
+  return chapter_names_.size();
 }
-inline void CrashmoClientInit::clear_sections_names() {
-  sections_names_.Clear();
+inline void CrashmoClientInit::clear_chapter_names() {
+  chapter_names_.Clear();
 }
-inline const ::message::MsgIntStringProto& CrashmoClientInit::sections_names(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.sections_names)
-  return sections_names_.Get(index);
+inline const ::message::MsgIntStringProto& CrashmoClientInit::chapter_names(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.chapter_names)
+  return chapter_names_.Get(index);
 }
-inline ::message::MsgIntStringProto* CrashmoClientInit::mutable_sections_names(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashmoClientInit.sections_names)
-  return sections_names_.Mutable(index);
+inline ::message::MsgIntStringProto* CrashmoClientInit::mutable_chapter_names(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashmoClientInit.chapter_names)
+  return chapter_names_.Mutable(index);
 }
-inline ::message::MsgIntStringProto* CrashmoClientInit::add_sections_names() {
-  // @@protoc_insertion_point(field_add:message.CrashmoClientInit.sections_names)
-  return sections_names_.Add();
+inline ::message::MsgIntStringProto* CrashmoClientInit::add_chapter_names() {
+  // @@protoc_insertion_point(field_add:message.CrashmoClientInit.chapter_names)
+  return chapter_names_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
-CrashmoClientInit::sections_names() const {
-  // @@protoc_insertion_point(field_list:message.CrashmoClientInit.sections_names)
-  return sections_names_;
+CrashmoClientInit::chapter_names() const {
+  // @@protoc_insertion_point(field_list:message.CrashmoClientInit.chapter_names)
+  return chapter_names_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
-CrashmoClientInit::mutable_sections_names() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashmoClientInit.sections_names)
-  return &sections_names_;
+CrashmoClientInit::mutable_chapter_names() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashmoClientInit.chapter_names)
+  return &chapter_names_;
 }
 
 // repeated .message.intPair resources_config_max = 3;
