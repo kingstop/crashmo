@@ -56,7 +56,7 @@ UserLoginSession::UserLoginSession(void) : tcp_session( *net_global::get_io_serv
 {
 	m_accid = 0;
 	_proto_user_ptr = this;
-	_base64 = true;
+	_base64 = false;
 }
 
 UserLoginSession::~UserLoginSession(void)

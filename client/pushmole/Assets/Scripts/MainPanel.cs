@@ -173,14 +173,14 @@ public class MainPanel : MonoBehaviour
     {
         foreach (ChooseItemEntry entry in _items)
         {
-            entry.transform.parent = null;
+            entry.transform.SetParent(null);
             Destroy(entry.gameObject);
         }
         _items.Clear();
 
         foreach(ChooseItemEntry entry in _officil_items)
         {
-            entry.transform.parent = null;
+            entry.transform.SetParent(null);
             Destroy(entry.gameObject);
             
         }
@@ -242,7 +242,7 @@ public class MainPanel : MonoBehaviour
         }
         else
         {
-            temp._map_index = (ulong)entry.number;
+            temp._map_index = (ulong)entry.Section;
         }
     }
 
@@ -308,7 +308,7 @@ public class MainPanel : MonoBehaviour
                         temp._txt_1.text = key_temp.Key.ToString();
                         temp._txt_2.text = key_temp.Value;
                         temp._map_index = (ulong)key_temp.Key;
-                        temp.transform.parent = _officil_items_container.transform;
+                        temp.transform.SetParent(_officil_items_container.transform);
                         temp.gameObject.SetActive(true);
                         _officil_items.Add(temp);
                     }

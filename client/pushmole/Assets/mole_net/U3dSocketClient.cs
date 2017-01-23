@@ -126,7 +126,7 @@ public class u3dclient
         Array.Copy(mem.GetBuffer(), bytes, length);
         UInt32 pb_flag = 0;
         UInt16 mask = 0;
-        mask = 1 << 2;
+        //mask = 1 << 2;
         UInt32 crc32 = 0;
         //crc32 = (UInt32)CRC32.GetCRC32(bytes);
         UInt32 source_base64_length = sizeof(UInt32) + sizeof(UInt32) + name_length + length;
@@ -157,9 +157,11 @@ public class u3dclient
         char[] base64_out = new char[char_base64_out_length];
         int base64_length = Convert.ToBase64CharArray(base64_buff, 0, (int)write_pos, base64_out, 0);
         string base64_str = new string(base64_out, 0, base64_length);
+
+
         //Debug.Log("base64[" + base64_str + "]");
 
-        byte[] body_bytes = System.Text.Encoding.UTF8.GetBytes(base64_out, 0, base64_length);
+        byte[] body_bytes = base64_buff; // System.Text.Encoding.UTF8.GetBytes(base64_out, 0, base64_length);
 
         body_length = (UInt32)body_bytes.Length;
         max_length = head_length + body_length;
@@ -187,9 +189,9 @@ public class u3dclient
     {
         //string str_base64 = System.Text.Encoding.UTF8.GetString(bytes);
         //System.Text.Encoding.Default.GetChars(bytes);
-        char[] base64_chars = System.Text.Encoding.Default.GetChars(ArguBytes);
+        //char[] base64_chars = System.Text.Encoding.Default.GetChars(ArguBytes);
 
-        byte[] bytes = Convert.FromBase64CharArray(base64_chars,0, base64_chars.Length);
+        byte[] bytes = ArguBytes;// Convert.FromBase64CharArray(base64_chars,0, base64_chars.Length);
         //bytes = Convert.FromBase64String(str_base64);
         UInt32 max_length = (UInt32)bytes.Length;
         UInt32 ptr = 0;
