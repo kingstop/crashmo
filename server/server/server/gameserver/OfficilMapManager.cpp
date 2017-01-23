@@ -54,7 +54,7 @@ void OfficilMapManager::init(DBQuery* p)
 		for (int i = 0; i < count; i ++)
 		{
 			DBRow row = sResult[i];
-			_chapter_names[row["chapter_id"]] = row["section_name"].c_str();
+			_chapter_names[row["chapter_id"]] = row["chapter_name"].c_str();
 		}
 	}
 
