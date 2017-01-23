@@ -67,19 +67,19 @@ void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
 	char sql[4096];
 	message::CrashMapData* map_temp = msg->mutable_data();
 	std::string str_sql;
-	sprintf(sql, "delete from offical_map where map_section=%d and map_section=%d;", map_temp->section(), map_temp->number());	
+	sprintf(sql, "delete from offical_map where map_chapter=%d and map_section=%d;", map_temp->chapter(), map_temp->section());
 	std::string temp_sql_replace;
 	temp_sql_replace += sql;
 	temp_sql_replace += "replace into offical_map(`account`, `creater_name`, `map_name`, `map_data`, `create_time`, `section`, `number`) values";
 	std::string temp_data;
 	temp_data = map_temp->data().SerializeAsString();
-	int temp_number = map_temp->number();
+	int temp_number = map_temp->section();
 	std::string create_time = get_time(map_temp->create_time());
 	sprintf(sql, "(%d, '%s', '%s', '%s', '%s', %d, %d)",0, map_temp->creatername().c_str(),
 		map_temp->mapname().c_str(), 
 		base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size()).c_str(), 
 		create_time.c_str(), 
-		map_temp->section(), 
+		map_temp->chapter(), 
 		temp_number);
 	temp_sql_replace += sql;
 	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, temp_sql_replace.c_str(), 0, NULL, _SAVE_OFFICIL_MAP_);
@@ -105,10 +105,10 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		sprintf(sz_resource, "%d,%d", it->number_1(), it->number_2());
 		resource_str += sz_resource;
 	}
-	sprintf(sql, "replace into `character`(`account`, `pass_point`, `pass_section`,\
+	sprintf(sql, "replace into `character`(`account`, `pass_chapter`, `pass_section`,\
 		 `name`, `isadmin`, `map_width`,\
 		 `map_height`, `map_count`, `group_count`, `gold`) values (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s', %d)",
-		acc_temp, playerInfo->pass_point(), playerInfo->pass_section(), playerInfo->name().c_str(), (int)playerInfo->isadmin(),
+		acc_temp, playerInfo->pass_chapter(), playerInfo->pass_section(), playerInfo->name().c_str(), (int)playerInfo->isadmin(),
 		playerInfo->map_width(), playerInfo->map_height(), playerInfo->map_count(), resource_str.c_str(), playerInfo->gold());
 	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, &parms, NULL, _QUERY_SAVE_PLAYER_);
 	int temp_size = playerInfo->completemap_size();
@@ -189,7 +189,7 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 		message::CrashPlayerInfo* info = msg.mutable_data();
 		info->set_account(row["account"]);
 		info->set_name(row["name"].c_str());
-		info->set_pass_point(row["pass_point"]);
+		info->set_pass_chapter(row["pass_chapter"]);
 		info->set_pass_section(row["pass_section"]);
 		int is_admin = row["isadmin"];
 		info->set_map_width(row["map_width"]);
@@ -249,7 +249,7 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 					map_data = info->add_incompletemap();
 				}
 				map_data->set_mapname(row_map["map_name"].c_str());
-				map_data->set_number(0);
+				map_data->set_chapter(0);
 				map_data->set_section(0);
 				map_data->set_creatername(row_map["creater_name"].c_str());
 				map_data->set_gold(row_map["gold"]);				
