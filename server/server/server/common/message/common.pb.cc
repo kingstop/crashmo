@@ -41,6 +41,17 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CrashPlayerInfo_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CrashPlayerInfo_reflection_ = NULL;
+const ::google::protobuf::Descriptor* TaskConditionTypeConfig_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  TaskConditionTypeConfig_reflection_ = NULL;
+const ::google::protobuf::Descriptor* TaskRewardConfig_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  TaskRewardConfig_reflection_ = NULL;
+const ::google::protobuf::Descriptor* TaskInfoConfig_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  TaskInfoConfig_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* ConditionType_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* ResourceType_descriptor_ = NULL;
 
 }  // namespace
 
@@ -185,6 +196,63 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(CrashPlayerInfo),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, _internal_metadata_),
       -1);
+  TaskConditionTypeConfig_descriptor_ = file->message_type(7);
+  static const int TaskConditionTypeConfig_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskConditionTypeConfig, condition_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskConditionTypeConfig, argu_1_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskConditionTypeConfig, argu_2_),
+  };
+  TaskConditionTypeConfig_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      TaskConditionTypeConfig_descriptor_,
+      TaskConditionTypeConfig::default_instance_,
+      TaskConditionTypeConfig_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskConditionTypeConfig, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(TaskConditionTypeConfig),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskConditionTypeConfig, _internal_metadata_),
+      -1);
+  TaskRewardConfig_descriptor_ = file->message_type(8);
+  static const int TaskRewardConfig_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskRewardConfig, resource_type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskRewardConfig, count_),
+  };
+  TaskRewardConfig_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      TaskRewardConfig_descriptor_,
+      TaskRewardConfig::default_instance_,
+      TaskRewardConfig_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskRewardConfig, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(TaskRewardConfig),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskRewardConfig, _internal_metadata_),
+      -1);
+  TaskInfoConfig_descriptor_ = file->message_type(9);
+  static const int TaskInfoConfig_offsets_[8] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, task_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, describe_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, conditions_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, rewards_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, required_pass_chapter_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, required_pass_section_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, required_complete_task_count_),
+  };
+  TaskInfoConfig_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      TaskInfoConfig_descriptor_,
+      TaskInfoConfig::default_instance_,
+      TaskInfoConfig_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(TaskInfoConfig),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, _internal_metadata_),
+      -1);
+  ConditionType_descriptor_ = file->enum_type(0);
+  ResourceType_descriptor_ = file->enum_type(1);
 }
 
 namespace {
@@ -211,6 +279,12 @@ void protobuf_RegisterTypes(const ::std::string&) {
       intPair_descriptor_, &intPair::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CrashPlayerInfo_descriptor_, &CrashPlayerInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      TaskConditionTypeConfig_descriptor_, &TaskConditionTypeConfig::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      TaskRewardConfig_descriptor_, &TaskRewardConfig::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      TaskInfoConfig_descriptor_, &TaskInfoConfig::default_instance());
 }
 
 }  // namespace
@@ -230,6 +304,12 @@ void protobuf_ShutdownFile_common_2eproto() {
   delete intPair_reflection_;
   delete CrashPlayerInfo::default_instance_;
   delete CrashPlayerInfo_reflection_;
+  delete TaskConditionTypeConfig::default_instance_;
+  delete TaskConditionTypeConfig_reflection_;
+  delete TaskRewardConfig::default_instance_;
+  delete TaskRewardConfig_reflection_;
+  delete TaskInfoConfig::default_instance_;
+  delete TaskInfoConfig_reflection_;
 }
 
 void protobuf_AddDesc_common_2eproto() {
@@ -263,7 +343,31 @@ void protobuf_AddDesc_common_2eproto() {
     "rashMapData\022\017\n\007isadmin\030\010 \002(\010\022#\n\tresource"
     "s\030\t \003(\0132\020.message.intPair\022\021\n\tmap_width\030\n"
     " \002(\005\022\022\n\nmap_height\030\013 \002(\005\022\021\n\tmap_count\030\014 "
-    "\002(\005\022\014\n\004gold\030\r \002(\005", 977);
+    "\002(\005\022\014\n\004gold\030\r \002(\005\"x\n\027TaskConditionTypeCo"
+    "nfig\022=\n\tcondition\030\001 \002(\0162\026.message.Condit"
+    "ionType:\022ConditionType_NULL\022\016\n\006argu_1\030\002 "
+    "\002(\005\022\016\n\006argu_2\030\003 \002(\005\"b\n\020TaskRewardConfig\022"
+    "\?\n\rresource_type\030\001 \002(\0162\025.message.Resourc"
+    "eType:\021ResourceType_NULL\022\r\n\005count\030\002 \002(\005\""
+    "\215\002\n\016TaskInfoConfig\022\017\n\007task_id\030\001 \002(\005\022\014\n\004n"
+    "ame\030\002 \002(\t\022\020\n\010describe\030\003 \002(\t\0224\n\ncondition"
+    "s\030\004 \003(\0132 .message.TaskConditionTypeConfi"
+    "g\022*\n\007rewards\030\005 \003(\0132\031.message.TaskRewardC"
+    "onfig\022 \n\030required_pass_chapter_id\030\006 \002(\005\022"
+    " \n\030required_pass_section_id\030\007 \002(\005\022$\n\034req"
+    "uired_complete_task_count\030\010 \002(\005*\277\001\n\rCond"
+    "itionType\022\026\n\022ConditionType_NULL\020\000\022!\n\035Con"
+    "ditionType_PassOfficilGame\020\001\022\035\n\031Conditio"
+    "nType_LimitedTime\020\002\022\035\n\031ConditionType_Lim"
+    "itedStep\020\003\022\036\n\032ConditionType_PassUserGame"
+    "\020\004\022\025\n\021ConditionType_Max\020\005*\212\002\n\014ResourceTy"
+    "pe\022\025\n\021ResourceType_NULL\020\000\022\022\n\016ResourceTyp"
+    "e_0\020\001\022\022\n\016ResourceType_1\020\002\022\022\n\016ResourceTyp"
+    "e_2\020\003\022\022\n\016ResourceType_3\020\004\022\022\n\016ResourceTyp"
+    "e_4\020\005\022\022\n\016ResourceType_5\020\006\022\022\n\016ResourceTyp"
+    "e_6\020\007\022\022\n\016ResourceType_7\020\010\022\025\n\021ResourceTyp"
+    "e_gold\020\t\022\026\n\022ResourceType_jewel\020\n\022\024\n\020Reso"
+    "urceType_Max\020\013", 1934);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   int32array::default_instance_ = new int32array();
@@ -273,6 +377,9 @@ void protobuf_AddDesc_common_2eproto() {
   CrashPlayerPublishMap::default_instance_ = new CrashPlayerPublishMap();
   intPair::default_instance_ = new intPair();
   CrashPlayerInfo::default_instance_ = new CrashPlayerInfo();
+  TaskConditionTypeConfig::default_instance_ = new TaskConditionTypeConfig();
+  TaskRewardConfig::default_instance_ = new TaskRewardConfig();
+  TaskInfoConfig::default_instance_ = new TaskInfoConfig();
   int32array::default_instance_->InitAsDefaultInstance();
   CrashmoMapBaseData::default_instance_->InitAsDefaultInstance();
   CrashMapData::default_instance_->InitAsDefaultInstance();
@@ -280,6 +387,9 @@ void protobuf_AddDesc_common_2eproto() {
   CrashPlayerPublishMap::default_instance_->InitAsDefaultInstance();
   intPair::default_instance_->InitAsDefaultInstance();
   CrashPlayerInfo::default_instance_->InitAsDefaultInstance();
+  TaskConditionTypeConfig::default_instance_->InitAsDefaultInstance();
+  TaskRewardConfig::default_instance_->InitAsDefaultInstance();
+  TaskInfoConfig::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_common_2eproto);
 }
 
@@ -289,6 +399,48 @@ struct StaticDescriptorInitializer_common_2eproto {
     protobuf_AddDesc_common_2eproto();
   }
 } static_descriptor_initializer_common_2eproto_;
+const ::google::protobuf::EnumDescriptor* ConditionType_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ConditionType_descriptor_;
+}
+bool ConditionType_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* ResourceType_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ResourceType_descriptor_;
+}
+bool ResourceType_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 namespace {
 
@@ -4534,6 +4686,1650 @@ CrashPlayerInfo::mutable_resources() {
   set_has_gold();
   gold_ = value;
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.gold)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int TaskConditionTypeConfig::kConditionFieldNumber;
+const int TaskConditionTypeConfig::kArgu1FieldNumber;
+const int TaskConditionTypeConfig::kArgu2FieldNumber;
+#endif  // !_MSC_VER
+
+TaskConditionTypeConfig::TaskConditionTypeConfig()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.TaskConditionTypeConfig)
+}
+
+void TaskConditionTypeConfig::InitAsDefaultInstance() {
+}
+
+TaskConditionTypeConfig::TaskConditionTypeConfig(const TaskConditionTypeConfig& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.TaskConditionTypeConfig)
+}
+
+void TaskConditionTypeConfig::SharedCtor() {
+  _cached_size_ = 0;
+  condition_ = 0;
+  argu_1_ = 0;
+  argu_2_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+TaskConditionTypeConfig::~TaskConditionTypeConfig() {
+  // @@protoc_insertion_point(destructor:message.TaskConditionTypeConfig)
+  SharedDtor();
+}
+
+void TaskConditionTypeConfig::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void TaskConditionTypeConfig::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* TaskConditionTypeConfig::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return TaskConditionTypeConfig_descriptor_;
+}
+
+const TaskConditionTypeConfig& TaskConditionTypeConfig::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_common_2eproto();
+  return *default_instance_;
+}
+
+TaskConditionTypeConfig* TaskConditionTypeConfig::default_instance_ = NULL;
+
+TaskConditionTypeConfig* TaskConditionTypeConfig::New(::google::protobuf::Arena* arena) const {
+  TaskConditionTypeConfig* n = new TaskConditionTypeConfig;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void TaskConditionTypeConfig::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<TaskConditionTypeConfig*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(condition_, argu_2_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool TaskConditionTypeConfig::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.TaskConditionTypeConfig)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .message.ConditionType condition = 1 [default = ConditionType_NULL];
+      case 1: {
+        if (tag == 8) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::message::ConditionType_IsValid(value)) {
+            set_condition(static_cast< ::message::ConditionType >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_argu_1;
+        break;
+      }
+
+      // required int32 argu_1 = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_argu_1:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &argu_1_)));
+          set_has_argu_1();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_argu_2;
+        break;
+      }
+
+      // required int32 argu_2 = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_argu_2:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &argu_2_)));
+          set_has_argu_2();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.TaskConditionTypeConfig)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.TaskConditionTypeConfig)
+  return false;
+#undef DO_
+}
+
+void TaskConditionTypeConfig::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.TaskConditionTypeConfig)
+  // required .message.ConditionType condition = 1 [default = ConditionType_NULL];
+  if (has_condition()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->condition(), output);
+  }
+
+  // required int32 argu_1 = 2;
+  if (has_argu_1()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->argu_1(), output);
+  }
+
+  // required int32 argu_2 = 3;
+  if (has_argu_2()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->argu_2(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.TaskConditionTypeConfig)
+}
+
+::google::protobuf::uint8* TaskConditionTypeConfig::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.TaskConditionTypeConfig)
+  // required .message.ConditionType condition = 1 [default = ConditionType_NULL];
+  if (has_condition()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->condition(), target);
+  }
+
+  // required int32 argu_1 = 2;
+  if (has_argu_1()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->argu_1(), target);
+  }
+
+  // required int32 argu_2 = 3;
+  if (has_argu_2()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->argu_2(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.TaskConditionTypeConfig)
+  return target;
+}
+
+int TaskConditionTypeConfig::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_condition()) {
+    // required .message.ConditionType condition = 1 [default = ConditionType_NULL];
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->condition());
+  }
+
+  if (has_argu_1()) {
+    // required int32 argu_1 = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->argu_1());
+  }
+
+  if (has_argu_2()) {
+    // required int32 argu_2 = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->argu_2());
+  }
+
+  return total_size;
+}
+int TaskConditionTypeConfig::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+    // required .message.ConditionType condition = 1 [default = ConditionType_NULL];
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->condition());
+
+    // required int32 argu_1 = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->argu_1());
+
+    // required int32 argu_2 = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->argu_2());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void TaskConditionTypeConfig::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const TaskConditionTypeConfig* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const TaskConditionTypeConfig*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void TaskConditionTypeConfig::MergeFrom(const TaskConditionTypeConfig& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_condition()) {
+      set_condition(from.condition());
+    }
+    if (from.has_argu_1()) {
+      set_argu_1(from.argu_1());
+    }
+    if (from.has_argu_2()) {
+      set_argu_2(from.argu_2());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void TaskConditionTypeConfig::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TaskConditionTypeConfig::CopyFrom(const TaskConditionTypeConfig& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TaskConditionTypeConfig::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+
+  return true;
+}
+
+void TaskConditionTypeConfig::Swap(TaskConditionTypeConfig* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TaskConditionTypeConfig::InternalSwap(TaskConditionTypeConfig* other) {
+  std::swap(condition_, other->condition_);
+  std::swap(argu_1_, other->argu_1_);
+  std::swap(argu_2_, other->argu_2_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata TaskConditionTypeConfig::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = TaskConditionTypeConfig_descriptor_;
+  metadata.reflection = TaskConditionTypeConfig_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// TaskConditionTypeConfig
+
+// required .message.ConditionType condition = 1 [default = ConditionType_NULL];
+ bool TaskConditionTypeConfig::has_condition() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void TaskConditionTypeConfig::set_has_condition() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void TaskConditionTypeConfig::clear_has_condition() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void TaskConditionTypeConfig::clear_condition() {
+  condition_ = 0;
+  clear_has_condition();
+}
+ ::message::ConditionType TaskConditionTypeConfig::condition() const {
+  // @@protoc_insertion_point(field_get:message.TaskConditionTypeConfig.condition)
+  return static_cast< ::message::ConditionType >(condition_);
+}
+ void TaskConditionTypeConfig::set_condition(::message::ConditionType value) {
+  assert(::message::ConditionType_IsValid(value));
+  set_has_condition();
+  condition_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskConditionTypeConfig.condition)
+}
+
+// required int32 argu_1 = 2;
+ bool TaskConditionTypeConfig::has_argu_1() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void TaskConditionTypeConfig::set_has_argu_1() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void TaskConditionTypeConfig::clear_has_argu_1() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void TaskConditionTypeConfig::clear_argu_1() {
+  argu_1_ = 0;
+  clear_has_argu_1();
+}
+ ::google::protobuf::int32 TaskConditionTypeConfig::argu_1() const {
+  // @@protoc_insertion_point(field_get:message.TaskConditionTypeConfig.argu_1)
+  return argu_1_;
+}
+ void TaskConditionTypeConfig::set_argu_1(::google::protobuf::int32 value) {
+  set_has_argu_1();
+  argu_1_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskConditionTypeConfig.argu_1)
+}
+
+// required int32 argu_2 = 3;
+ bool TaskConditionTypeConfig::has_argu_2() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+ void TaskConditionTypeConfig::set_has_argu_2() {
+  _has_bits_[0] |= 0x00000004u;
+}
+ void TaskConditionTypeConfig::clear_has_argu_2() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+ void TaskConditionTypeConfig::clear_argu_2() {
+  argu_2_ = 0;
+  clear_has_argu_2();
+}
+ ::google::protobuf::int32 TaskConditionTypeConfig::argu_2() const {
+  // @@protoc_insertion_point(field_get:message.TaskConditionTypeConfig.argu_2)
+  return argu_2_;
+}
+ void TaskConditionTypeConfig::set_argu_2(::google::protobuf::int32 value) {
+  set_has_argu_2();
+  argu_2_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskConditionTypeConfig.argu_2)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int TaskRewardConfig::kResourceTypeFieldNumber;
+const int TaskRewardConfig::kCountFieldNumber;
+#endif  // !_MSC_VER
+
+TaskRewardConfig::TaskRewardConfig()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.TaskRewardConfig)
+}
+
+void TaskRewardConfig::InitAsDefaultInstance() {
+}
+
+TaskRewardConfig::TaskRewardConfig(const TaskRewardConfig& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.TaskRewardConfig)
+}
+
+void TaskRewardConfig::SharedCtor() {
+  _cached_size_ = 0;
+  resource_type_ = 0;
+  count_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+TaskRewardConfig::~TaskRewardConfig() {
+  // @@protoc_insertion_point(destructor:message.TaskRewardConfig)
+  SharedDtor();
+}
+
+void TaskRewardConfig::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void TaskRewardConfig::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* TaskRewardConfig::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return TaskRewardConfig_descriptor_;
+}
+
+const TaskRewardConfig& TaskRewardConfig::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_common_2eproto();
+  return *default_instance_;
+}
+
+TaskRewardConfig* TaskRewardConfig::default_instance_ = NULL;
+
+TaskRewardConfig* TaskRewardConfig::New(::google::protobuf::Arena* arena) const {
+  TaskRewardConfig* n = new TaskRewardConfig;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void TaskRewardConfig::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<TaskRewardConfig*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(resource_type_, count_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool TaskRewardConfig::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.TaskRewardConfig)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .message.ResourceType resource_type = 1 [default = ResourceType_NULL];
+      case 1: {
+        if (tag == 8) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::message::ResourceType_IsValid(value)) {
+            set_resource_type(static_cast< ::message::ResourceType >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_count;
+        break;
+      }
+
+      // required int32 count = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_count:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &count_)));
+          set_has_count();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.TaskRewardConfig)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.TaskRewardConfig)
+  return false;
+#undef DO_
+}
+
+void TaskRewardConfig::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.TaskRewardConfig)
+  // required .message.ResourceType resource_type = 1 [default = ResourceType_NULL];
+  if (has_resource_type()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->resource_type(), output);
+  }
+
+  // required int32 count = 2;
+  if (has_count()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->count(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.TaskRewardConfig)
+}
+
+::google::protobuf::uint8* TaskRewardConfig::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.TaskRewardConfig)
+  // required .message.ResourceType resource_type = 1 [default = ResourceType_NULL];
+  if (has_resource_type()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->resource_type(), target);
+  }
+
+  // required int32 count = 2;
+  if (has_count()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->count(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.TaskRewardConfig)
+  return target;
+}
+
+int TaskRewardConfig::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_resource_type()) {
+    // required .message.ResourceType resource_type = 1 [default = ResourceType_NULL];
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->resource_type());
+  }
+
+  if (has_count()) {
+    // required int32 count = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->count());
+  }
+
+  return total_size;
+}
+int TaskRewardConfig::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required .message.ResourceType resource_type = 1 [default = ResourceType_NULL];
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->resource_type());
+
+    // required int32 count = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->count());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void TaskRewardConfig::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const TaskRewardConfig* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const TaskRewardConfig*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void TaskRewardConfig::MergeFrom(const TaskRewardConfig& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_resource_type()) {
+      set_resource_type(from.resource_type());
+    }
+    if (from.has_count()) {
+      set_count(from.count());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void TaskRewardConfig::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TaskRewardConfig::CopyFrom(const TaskRewardConfig& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TaskRewardConfig::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void TaskRewardConfig::Swap(TaskRewardConfig* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TaskRewardConfig::InternalSwap(TaskRewardConfig* other) {
+  std::swap(resource_type_, other->resource_type_);
+  std::swap(count_, other->count_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata TaskRewardConfig::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = TaskRewardConfig_descriptor_;
+  metadata.reflection = TaskRewardConfig_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// TaskRewardConfig
+
+// required .message.ResourceType resource_type = 1 [default = ResourceType_NULL];
+ bool TaskRewardConfig::has_resource_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void TaskRewardConfig::set_has_resource_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void TaskRewardConfig::clear_has_resource_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void TaskRewardConfig::clear_resource_type() {
+  resource_type_ = 0;
+  clear_has_resource_type();
+}
+ ::message::ResourceType TaskRewardConfig::resource_type() const {
+  // @@protoc_insertion_point(field_get:message.TaskRewardConfig.resource_type)
+  return static_cast< ::message::ResourceType >(resource_type_);
+}
+ void TaskRewardConfig::set_resource_type(::message::ResourceType value) {
+  assert(::message::ResourceType_IsValid(value));
+  set_has_resource_type();
+  resource_type_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskRewardConfig.resource_type)
+}
+
+// required int32 count = 2;
+ bool TaskRewardConfig::has_count() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void TaskRewardConfig::set_has_count() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void TaskRewardConfig::clear_has_count() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void TaskRewardConfig::clear_count() {
+  count_ = 0;
+  clear_has_count();
+}
+ ::google::protobuf::int32 TaskRewardConfig::count() const {
+  // @@protoc_insertion_point(field_get:message.TaskRewardConfig.count)
+  return count_;
+}
+ void TaskRewardConfig::set_count(::google::protobuf::int32 value) {
+  set_has_count();
+  count_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskRewardConfig.count)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int TaskInfoConfig::kTaskIdFieldNumber;
+const int TaskInfoConfig::kNameFieldNumber;
+const int TaskInfoConfig::kDescribeFieldNumber;
+const int TaskInfoConfig::kConditionsFieldNumber;
+const int TaskInfoConfig::kRewardsFieldNumber;
+const int TaskInfoConfig::kRequiredPassChapterIdFieldNumber;
+const int TaskInfoConfig::kRequiredPassSectionIdFieldNumber;
+const int TaskInfoConfig::kRequiredCompleteTaskCountFieldNumber;
+#endif  // !_MSC_VER
+
+TaskInfoConfig::TaskInfoConfig()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.TaskInfoConfig)
+}
+
+void TaskInfoConfig::InitAsDefaultInstance() {
+}
+
+TaskInfoConfig::TaskInfoConfig(const TaskInfoConfig& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.TaskInfoConfig)
+}
+
+void TaskInfoConfig::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  task_id_ = 0;
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  describe_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  required_pass_chapter_id_ = 0;
+  required_pass_section_id_ = 0;
+  required_complete_task_count_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+TaskInfoConfig::~TaskInfoConfig() {
+  // @@protoc_insertion_point(destructor:message.TaskInfoConfig)
+  SharedDtor();
+}
+
+void TaskInfoConfig::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  describe_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void TaskInfoConfig::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* TaskInfoConfig::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return TaskInfoConfig_descriptor_;
+}
+
+const TaskInfoConfig& TaskInfoConfig::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_common_2eproto();
+  return *default_instance_;
+}
+
+TaskInfoConfig* TaskInfoConfig::default_instance_ = NULL;
+
+TaskInfoConfig* TaskInfoConfig::New(::google::protobuf::Arena* arena) const {
+  TaskInfoConfig* n = new TaskInfoConfig;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void TaskInfoConfig::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<TaskInfoConfig*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  if (_has_bits_[0 / 32] & 231) {
+    ZR_(task_id_, required_pass_chapter_id_);
+    ZR_(required_pass_section_id_, required_complete_task_count_);
+    if (has_name()) {
+      name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    if (has_describe()) {
+      describe_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+  }
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  conditions_.Clear();
+  rewards_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool TaskInfoConfig::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.TaskInfoConfig)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 task_id = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &task_id_)));
+          set_has_task_id();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_name;
+        break;
+      }
+
+      // required string name = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.TaskInfoConfig.name");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_describe;
+        break;
+      }
+
+      // required string describe = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_describe:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_describe()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->describe().data(), this->describe().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.TaskInfoConfig.describe");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_conditions;
+        break;
+      }
+
+      // repeated .message.TaskConditionTypeConfig conditions = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_conditions:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_conditions()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_conditions;
+        if (input->ExpectTag(42)) goto parse_rewards;
+        break;
+      }
+
+      // repeated .message.TaskRewardConfig rewards = 5;
+      case 5: {
+        if (tag == 42) {
+         parse_rewards:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_rewards()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_rewards;
+        if (input->ExpectTag(48)) goto parse_required_pass_chapter_id;
+        break;
+      }
+
+      // required int32 required_pass_chapter_id = 6;
+      case 6: {
+        if (tag == 48) {
+         parse_required_pass_chapter_id:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &required_pass_chapter_id_)));
+          set_has_required_pass_chapter_id();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(56)) goto parse_required_pass_section_id;
+        break;
+      }
+
+      // required int32 required_pass_section_id = 7;
+      case 7: {
+        if (tag == 56) {
+         parse_required_pass_section_id:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &required_pass_section_id_)));
+          set_has_required_pass_section_id();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(64)) goto parse_required_complete_task_count;
+        break;
+      }
+
+      // required int32 required_complete_task_count = 8;
+      case 8: {
+        if (tag == 64) {
+         parse_required_complete_task_count:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &required_complete_task_count_)));
+          set_has_required_complete_task_count();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.TaskInfoConfig)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.TaskInfoConfig)
+  return false;
+#undef DO_
+}
+
+void TaskInfoConfig::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.TaskInfoConfig)
+  // required int32 task_id = 1;
+  if (has_task_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->task_id(), output);
+  }
+
+  // required string name = 2;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.TaskInfoConfig.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->name(), output);
+  }
+
+  // required string describe = 3;
+  if (has_describe()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->describe().data(), this->describe().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.TaskInfoConfig.describe");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->describe(), output);
+  }
+
+  // repeated .message.TaskConditionTypeConfig conditions = 4;
+  for (unsigned int i = 0, n = this->conditions_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, this->conditions(i), output);
+  }
+
+  // repeated .message.TaskRewardConfig rewards = 5;
+  for (unsigned int i = 0, n = this->rewards_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, this->rewards(i), output);
+  }
+
+  // required int32 required_pass_chapter_id = 6;
+  if (has_required_pass_chapter_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->required_pass_chapter_id(), output);
+  }
+
+  // required int32 required_pass_section_id = 7;
+  if (has_required_pass_section_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->required_pass_section_id(), output);
+  }
+
+  // required int32 required_complete_task_count = 8;
+  if (has_required_complete_task_count()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->required_complete_task_count(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.TaskInfoConfig)
+}
+
+::google::protobuf::uint8* TaskInfoConfig::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.TaskInfoConfig)
+  // required int32 task_id = 1;
+  if (has_task_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->task_id(), target);
+  }
+
+  // required string name = 2;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.TaskInfoConfig.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->name(), target);
+  }
+
+  // required string describe = 3;
+  if (has_describe()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->describe().data(), this->describe().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.TaskInfoConfig.describe");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->describe(), target);
+  }
+
+  // repeated .message.TaskConditionTypeConfig conditions = 4;
+  for (unsigned int i = 0, n = this->conditions_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        4, this->conditions(i), target);
+  }
+
+  // repeated .message.TaskRewardConfig rewards = 5;
+  for (unsigned int i = 0, n = this->rewards_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        5, this->rewards(i), target);
+  }
+
+  // required int32 required_pass_chapter_id = 6;
+  if (has_required_pass_chapter_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->required_pass_chapter_id(), target);
+  }
+
+  // required int32 required_pass_section_id = 7;
+  if (has_required_pass_section_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->required_pass_section_id(), target);
+  }
+
+  // required int32 required_complete_task_count = 8;
+  if (has_required_complete_task_count()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->required_complete_task_count(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.TaskInfoConfig)
+  return target;
+}
+
+int TaskInfoConfig::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_task_id()) {
+    // required int32 task_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->task_id());
+  }
+
+  if (has_name()) {
+    // required string name = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  if (has_describe()) {
+    // required string describe = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->describe());
+  }
+
+  if (has_required_pass_chapter_id()) {
+    // required int32 required_pass_chapter_id = 6;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->required_pass_chapter_id());
+  }
+
+  if (has_required_pass_section_id()) {
+    // required int32 required_pass_section_id = 7;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->required_pass_section_id());
+  }
+
+  if (has_required_complete_task_count()) {
+    // required int32 required_complete_task_count = 8;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->required_complete_task_count());
+  }
+
+  return total_size;
+}
+int TaskInfoConfig::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x000000e7) ^ 0x000000e7) == 0) {  // All required fields are present.
+    // required int32 task_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->task_id());
+
+    // required string name = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+
+    // required string describe = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->describe());
+
+    // required int32 required_pass_chapter_id = 6;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->required_pass_chapter_id());
+
+    // required int32 required_pass_section_id = 7;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->required_pass_section_id());
+
+    // required int32 required_complete_task_count = 8;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->required_complete_task_count());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  // repeated .message.TaskConditionTypeConfig conditions = 4;
+  total_size += 1 * this->conditions_size();
+  for (int i = 0; i < this->conditions_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->conditions(i));
+  }
+
+  // repeated .message.TaskRewardConfig rewards = 5;
+  total_size += 1 * this->rewards_size();
+  for (int i = 0; i < this->rewards_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->rewards(i));
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void TaskInfoConfig::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const TaskInfoConfig* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const TaskInfoConfig*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void TaskInfoConfig::MergeFrom(const TaskInfoConfig& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  conditions_.MergeFrom(from.conditions_);
+  rewards_.MergeFrom(from.rewards_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_task_id()) {
+      set_task_id(from.task_id());
+    }
+    if (from.has_name()) {
+      set_has_name();
+      name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+    }
+    if (from.has_describe()) {
+      set_has_describe();
+      describe_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.describe_);
+    }
+    if (from.has_required_pass_chapter_id()) {
+      set_required_pass_chapter_id(from.required_pass_chapter_id());
+    }
+    if (from.has_required_pass_section_id()) {
+      set_required_pass_section_id(from.required_pass_section_id());
+    }
+    if (from.has_required_complete_task_count()) {
+      set_required_complete_task_count(from.required_complete_task_count());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void TaskInfoConfig::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TaskInfoConfig::CopyFrom(const TaskInfoConfig& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TaskInfoConfig::IsInitialized() const {
+  if ((_has_bits_[0] & 0x000000e7) != 0x000000e7) return false;
+
+  if (!::google::protobuf::internal::AllAreInitialized(this->conditions())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->rewards())) return false;
+  return true;
+}
+
+void TaskInfoConfig::Swap(TaskInfoConfig* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TaskInfoConfig::InternalSwap(TaskInfoConfig* other) {
+  std::swap(task_id_, other->task_id_);
+  name_.Swap(&other->name_);
+  describe_.Swap(&other->describe_);
+  conditions_.UnsafeArenaSwap(&other->conditions_);
+  rewards_.UnsafeArenaSwap(&other->rewards_);
+  std::swap(required_pass_chapter_id_, other->required_pass_chapter_id_);
+  std::swap(required_pass_section_id_, other->required_pass_section_id_);
+  std::swap(required_complete_task_count_, other->required_complete_task_count_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata TaskInfoConfig::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = TaskInfoConfig_descriptor_;
+  metadata.reflection = TaskInfoConfig_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// TaskInfoConfig
+
+// required int32 task_id = 1;
+ bool TaskInfoConfig::has_task_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void TaskInfoConfig::set_has_task_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void TaskInfoConfig::clear_has_task_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void TaskInfoConfig::clear_task_id() {
+  task_id_ = 0;
+  clear_has_task_id();
+}
+ ::google::protobuf::int32 TaskInfoConfig::task_id() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.task_id)
+  return task_id_;
+}
+ void TaskInfoConfig::set_task_id(::google::protobuf::int32 value) {
+  set_has_task_id();
+  task_id_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.task_id)
+}
+
+// required string name = 2;
+ bool TaskInfoConfig::has_name() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void TaskInfoConfig::set_has_name() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void TaskInfoConfig::clear_has_name() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void TaskInfoConfig::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_name();
+}
+ const ::std::string& TaskInfoConfig::name() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TaskInfoConfig::set_name(const ::std::string& value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.name)
+}
+ void TaskInfoConfig::set_name(const char* value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.TaskInfoConfig.name)
+}
+ void TaskInfoConfig::set_name(const char* value, size_t size) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.TaskInfoConfig.name)
+}
+ ::std::string* TaskInfoConfig::mutable_name() {
+  set_has_name();
+  // @@protoc_insertion_point(field_mutable:message.TaskInfoConfig.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* TaskInfoConfig::release_name() {
+  clear_has_name();
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TaskInfoConfig::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    set_has_name();
+  } else {
+    clear_has_name();
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:message.TaskInfoConfig.name)
+}
+
+// required string describe = 3;
+ bool TaskInfoConfig::has_describe() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+ void TaskInfoConfig::set_has_describe() {
+  _has_bits_[0] |= 0x00000004u;
+}
+ void TaskInfoConfig::clear_has_describe() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+ void TaskInfoConfig::clear_describe() {
+  describe_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_describe();
+}
+ const ::std::string& TaskInfoConfig::describe() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.describe)
+  return describe_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TaskInfoConfig::set_describe(const ::std::string& value) {
+  set_has_describe();
+  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.describe)
+}
+ void TaskInfoConfig::set_describe(const char* value) {
+  set_has_describe();
+  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.TaskInfoConfig.describe)
+}
+ void TaskInfoConfig::set_describe(const char* value, size_t size) {
+  set_has_describe();
+  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.TaskInfoConfig.describe)
+}
+ ::std::string* TaskInfoConfig::mutable_describe() {
+  set_has_describe();
+  // @@protoc_insertion_point(field_mutable:message.TaskInfoConfig.describe)
+  return describe_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* TaskInfoConfig::release_describe() {
+  clear_has_describe();
+  return describe_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TaskInfoConfig::set_allocated_describe(::std::string* describe) {
+  if (describe != NULL) {
+    set_has_describe();
+  } else {
+    clear_has_describe();
+  }
+  describe_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), describe);
+  // @@protoc_insertion_point(field_set_allocated:message.TaskInfoConfig.describe)
+}
+
+// repeated .message.TaskConditionTypeConfig conditions = 4;
+ int TaskInfoConfig::conditions_size() const {
+  return conditions_.size();
+}
+ void TaskInfoConfig::clear_conditions() {
+  conditions_.Clear();
+}
+ const ::message::TaskConditionTypeConfig& TaskInfoConfig::conditions(int index) const {
+  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.conditions)
+  return conditions_.Get(index);
+}
+ ::message::TaskConditionTypeConfig* TaskInfoConfig::mutable_conditions(int index) {
+  // @@protoc_insertion_point(field_mutable:message.TaskInfoConfig.conditions)
+  return conditions_.Mutable(index);
+}
+ ::message::TaskConditionTypeConfig* TaskInfoConfig::add_conditions() {
+  // @@protoc_insertion_point(field_add:message.TaskInfoConfig.conditions)
+  return conditions_.Add();
+}
+ const ::google::protobuf::RepeatedPtrField< ::message::TaskConditionTypeConfig >&
+TaskInfoConfig::conditions() const {
+  // @@protoc_insertion_point(field_list:message.TaskInfoConfig.conditions)
+  return conditions_;
+}
+ ::google::protobuf::RepeatedPtrField< ::message::TaskConditionTypeConfig >*
+TaskInfoConfig::mutable_conditions() {
+  // @@protoc_insertion_point(field_mutable_list:message.TaskInfoConfig.conditions)
+  return &conditions_;
+}
+
+// repeated .message.TaskRewardConfig rewards = 5;
+ int TaskInfoConfig::rewards_size() const {
+  return rewards_.size();
+}
+ void TaskInfoConfig::clear_rewards() {
+  rewards_.Clear();
+}
+ const ::message::TaskRewardConfig& TaskInfoConfig::rewards(int index) const {
+  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.rewards)
+  return rewards_.Get(index);
+}
+ ::message::TaskRewardConfig* TaskInfoConfig::mutable_rewards(int index) {
+  // @@protoc_insertion_point(field_mutable:message.TaskInfoConfig.rewards)
+  return rewards_.Mutable(index);
+}
+ ::message::TaskRewardConfig* TaskInfoConfig::add_rewards() {
+  // @@protoc_insertion_point(field_add:message.TaskInfoConfig.rewards)
+  return rewards_.Add();
+}
+ const ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >&
+TaskInfoConfig::rewards() const {
+  // @@protoc_insertion_point(field_list:message.TaskInfoConfig.rewards)
+  return rewards_;
+}
+ ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >*
+TaskInfoConfig::mutable_rewards() {
+  // @@protoc_insertion_point(field_mutable_list:message.TaskInfoConfig.rewards)
+  return &rewards_;
+}
+
+// required int32 required_pass_chapter_id = 6;
+ bool TaskInfoConfig::has_required_pass_chapter_id() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+ void TaskInfoConfig::set_has_required_pass_chapter_id() {
+  _has_bits_[0] |= 0x00000020u;
+}
+ void TaskInfoConfig::clear_has_required_pass_chapter_id() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+ void TaskInfoConfig::clear_required_pass_chapter_id() {
+  required_pass_chapter_id_ = 0;
+  clear_has_required_pass_chapter_id();
+}
+ ::google::protobuf::int32 TaskInfoConfig::required_pass_chapter_id() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.required_pass_chapter_id)
+  return required_pass_chapter_id_;
+}
+ void TaskInfoConfig::set_required_pass_chapter_id(::google::protobuf::int32 value) {
+  set_has_required_pass_chapter_id();
+  required_pass_chapter_id_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.required_pass_chapter_id)
+}
+
+// required int32 required_pass_section_id = 7;
+ bool TaskInfoConfig::has_required_pass_section_id() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+ void TaskInfoConfig::set_has_required_pass_section_id() {
+  _has_bits_[0] |= 0x00000040u;
+}
+ void TaskInfoConfig::clear_has_required_pass_section_id() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+ void TaskInfoConfig::clear_required_pass_section_id() {
+  required_pass_section_id_ = 0;
+  clear_has_required_pass_section_id();
+}
+ ::google::protobuf::int32 TaskInfoConfig::required_pass_section_id() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.required_pass_section_id)
+  return required_pass_section_id_;
+}
+ void TaskInfoConfig::set_required_pass_section_id(::google::protobuf::int32 value) {
+  set_has_required_pass_section_id();
+  required_pass_section_id_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.required_pass_section_id)
+}
+
+// required int32 required_complete_task_count = 8;
+ bool TaskInfoConfig::has_required_complete_task_count() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+ void TaskInfoConfig::set_has_required_complete_task_count() {
+  _has_bits_[0] |= 0x00000080u;
+}
+ void TaskInfoConfig::clear_has_required_complete_task_count() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+ void TaskInfoConfig::clear_required_complete_task_count() {
+  required_complete_task_count_ = 0;
+  clear_has_required_complete_task_count();
+}
+ ::google::protobuf::int32 TaskInfoConfig::required_complete_task_count() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.required_complete_task_count)
+  return required_complete_task_count_;
+}
+ void TaskInfoConfig::set_required_complete_task_count(::google::protobuf::int32 value) {
+  set_has_required_complete_task_count();
+  required_complete_task_count_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.required_complete_task_count)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

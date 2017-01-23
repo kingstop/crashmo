@@ -66,4 +66,54 @@ message CrashPlayerInfo
 	required int32 gold = 13;
 }
 
+enum ConditionType
+{
+	ConditionType_NULL = 0;
+	ConditionType_PassOfficilGame = 1;
+	ConditionType_LimitedTime = 2;
+	ConditionType_LimitedStep = 3;
+	ConditionType_PassUserGame = 4;	
+	ConditionType_Max = 5;	
+}
 
+enum ResourceType
+{
+	ResourceType_NULL = 0;
+	ResourceType_0 = 1;
+	ResourceType_1 = 2;
+	ResourceType_2 = 3;
+	ResourceType_3 = 4;
+	ResourceType_4 = 5;
+	ResourceType_5 = 6;
+	ResourceType_6 = 7;
+	ResourceType_7 = 8;
+	ResourceType_gold = 9;
+	ResourceType_jewel = 10;
+	ResourceType_Max = 11;
+}
+
+message TaskConditionTypeConfig
+{
+	required ConditionType condition = 1[default = ConditionType_NULL];
+	required int32 argu_1 = 2;
+	required int32 argu_2 = 3;
+}
+
+message TaskRewardConfig
+{
+	required ResourceType resource_type = 1[default = ResourceType_NULL];
+	required int32 count = 2;
+}
+
+message TaskInfoConfig
+{
+	required int32 task_id = 1;
+	required string name = 2;
+	required string describe = 3;
+	repeated TaskConditionTypeConfig conditions = 4;
+	repeated TaskRewardConfig rewards = 5;
+	required int32 required_pass_chapter_id = 6;
+	required int32 required_pass_section_id = 7;
+	required int32 required_complete_task_count = 8;
+	
+}

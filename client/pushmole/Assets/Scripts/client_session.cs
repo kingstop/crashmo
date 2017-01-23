@@ -48,6 +48,7 @@ public class client_session
     }
     public bool CrashmoClientInit(System.IO.MemoryStream stream)
     {
+       
         CrashmoClientInit msg = ProtoBuf.Serializer.Deserialize<CrashmoClientInit>(stream);
         global_instance.Instance._player.SetInfo(msg.info);
         foreach(message.MsgIntStringProto key_pair in msg.chapter_names)

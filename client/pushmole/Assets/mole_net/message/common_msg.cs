@@ -332,4 +332,189 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TaskConditionTypeConfig")]
+  public partial class TaskConditionTypeConfig : global::ProtoBuf.IExtensible
+  {
+    public TaskConditionTypeConfig() {}
+    
+    private message.ConditionType _condition;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"condition", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public message.ConditionType condition
+    {
+      get { return _condition; }
+      set { _condition = value; }
+    }
+    private int _argu_1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"argu_1", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int argu_1
+    {
+      get { return _argu_1; }
+      set { _argu_1 = value; }
+    }
+    private int _argu_2;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"argu_2", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int argu_2
+    {
+      get { return _argu_2; }
+      set { _argu_2 = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TaskRewardConfig")]
+  public partial class TaskRewardConfig : global::ProtoBuf.IExtensible
+  {
+    public TaskRewardConfig() {}
+    
+    private message.ResourceType _resource_type;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"resource_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public message.ResourceType resource_type
+    {
+      get { return _resource_type; }
+      set { _resource_type = value; }
+    }
+    private int _count;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int count
+    {
+      get { return _count; }
+      set { _count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TaskInfoConfig")]
+  public partial class TaskInfoConfig : global::ProtoBuf.IExtensible
+  {
+    public TaskInfoConfig() {}
+    
+    private int _task_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"task_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int task_id
+    {
+      get { return _task_id; }
+      set { _task_id = value; }
+    }
+    private string _name;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string name
+    {
+      get { return _name; }
+      set { _name = value; }
+    }
+    private string _describe;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"describe", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string describe
+    {
+      get { return _describe; }
+      set { _describe = value; }
+    }
+    private readonly global::System.Collections.Generic.List<message.TaskConditionTypeConfig> _conditions = new global::System.Collections.Generic.List<message.TaskConditionTypeConfig>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"conditions", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.TaskConditionTypeConfig> conditions
+    {
+      get { return _conditions; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<message.TaskRewardConfig> _rewards = new global::System.Collections.Generic.List<message.TaskRewardConfig>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"rewards", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.TaskRewardConfig> rewards
+    {
+      get { return _rewards; }
+    }
+  
+    private int _required_pass_chapter_id;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"required_pass_chapter_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int required_pass_chapter_id
+    {
+      get { return _required_pass_chapter_id; }
+      set { _required_pass_chapter_id = value; }
+    }
+    private int _required_pass_section_id;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"required_pass_section_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int required_pass_section_id
+    {
+      get { return _required_pass_section_id; }
+      set { _required_pass_section_id = value; }
+    }
+    private int _required_complete_task_count;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"required_complete_task_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int required_complete_task_count
+    {
+      get { return _required_complete_task_count; }
+      set { _required_complete_task_count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ConditionType")]
+    public enum ConditionType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ConditionType_NULL", Value=0)]
+      ConditionType_NULL = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ConditionType_PassOfficilGame", Value=1)]
+      ConditionType_PassOfficilGame = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ConditionType_LimitedTime", Value=2)]
+      ConditionType_LimitedTime = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ConditionType_LimitedStep", Value=3)]
+      ConditionType_LimitedStep = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ConditionType_PassUserGame", Value=4)]
+      ConditionType_PassUserGame = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ConditionType_Max", Value=5)]
+      ConditionType_Max = 5
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ResourceType")]
+    public enum ResourceType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_NULL", Value=0)]
+      ResourceType_NULL = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_0", Value=1)]
+      ResourceType_0 = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_1", Value=2)]
+      ResourceType_1 = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_2", Value=3)]
+      ResourceType_2 = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_3", Value=4)]
+      ResourceType_3 = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_4", Value=5)]
+      ResourceType_4 = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_5", Value=6)]
+      ResourceType_5 = 6,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_6", Value=7)]
+      ResourceType_6 = 7,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_7", Value=8)]
+      ResourceType_7 = 8,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_gold", Value=9)]
+      ResourceType_gold = 9,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_jewel", Value=10)]
+      ResourceType_jewel = 10,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResourceType_Max", Value=11)]
+      ResourceType_Max = 11
+    }
+  
 }

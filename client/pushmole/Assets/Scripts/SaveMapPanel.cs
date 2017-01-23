@@ -169,8 +169,8 @@ public class SaveMapPanel : MonoBehaviour {
                 case SaveMapTitleType.Admin:
                     {
                         msg.save_type = message.MapType.OfficeMap;
-                        mapdata.Section = int.Parse(_chapter_text.text);
-						mapdata.Chapter = int.Parse(_section_text.text);
+                        mapdata.Section = int.Parse(_section_text.text); 
+						mapdata.Chapter = int.Parse(_chapter_text.text);
                     }
                     break;
             }
