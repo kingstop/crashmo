@@ -12,7 +12,7 @@ CrashPlayer::CrashPlayer(Session* session):_session(session)
 CrashPlayer::CrashPlayer(Session* session, account_type acc) : _session(session)
 {
 	_info.set_name("name");
-	_info.set_pass_point(0);
+	_info.set_pass_chapter(0);
 	_info.set_pass_section(0);	
 	_info.set_isadmin(true);
 	_info.set_account(acc);
