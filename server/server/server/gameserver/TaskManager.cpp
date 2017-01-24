@@ -51,7 +51,7 @@ void TaskManager::LoadConfig(DBQuery* p)
 		entry.set_required_pass_chapter_id(row["required_chapter_id"]);
 		entry.set_required_pass_section_id(row["required_section_id"]);
 		entry.set_required_complete_task_count(row["required_complete_count"]);
-		for (size_t j = 1; j <= 3; j++)
+		for (int j = 1; j <= 3; j++)
 		{
 			message::TaskConditionTypeConfig* conditionConfig = entry.add_conditions();
 			message::TaskRewardConfig* rewardConfig = entry.add_rewards();
