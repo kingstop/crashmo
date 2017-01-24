@@ -49,7 +49,7 @@ void DBQuestManager::queryInfo(account_type a, tran_id_type t, u16 gs)
 //
 //}
 
-void DBQuestManager::saveOfficilObjs(const char* szsql)
+void DBQuestManager::worldDatabaseSql(const char* szsql)
 {
 	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, szsql, 0, NULL, _SAVE_OFFICIL_MAP_);
 }

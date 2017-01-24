@@ -58,6 +58,10 @@ class MsgS2COfficeMapACK;
 class MsgC2SRankMapReq;
 class MsgS2CRankMapACK;
 class MsgS2CRankMapRefreshNotify;
+class MsgC2SReqLoadTaskConfigs;
+class MsgS2CLoadTaskConfigsACK;
+class MsgC2SReqModifyTaskInfo;
+class MsgS2CModifyTaskInfoACK;
 
 enum ServerError {
   ServerError_NO = 0,
@@ -2213,6 +2217,392 @@ class MsgS2CRankMapRefreshNotify : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static MsgS2CRankMapRefreshNotify* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class MsgC2SReqLoadTaskConfigs : public ::google::protobuf::Message {
+ public:
+  MsgC2SReqLoadTaskConfigs();
+  virtual ~MsgC2SReqLoadTaskConfigs();
+
+  MsgC2SReqLoadTaskConfigs(const MsgC2SReqLoadTaskConfigs& from);
+
+  inline MsgC2SReqLoadTaskConfigs& operator=(const MsgC2SReqLoadTaskConfigs& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgC2SReqLoadTaskConfigs& default_instance();
+
+  void Swap(MsgC2SReqLoadTaskConfigs* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgC2SReqLoadTaskConfigs* New() const { return New(NULL); }
+
+  MsgC2SReqLoadTaskConfigs* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgC2SReqLoadTaskConfigs& from);
+  void MergeFrom(const MsgC2SReqLoadTaskConfigs& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgC2SReqLoadTaskConfigs* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 begin_id = 1;
+  bool has_begin_id() const;
+  void clear_begin_id();
+  static const int kBeginIdFieldNumber = 1;
+  ::google::protobuf::int32 begin_id() const;
+  void set_begin_id(::google::protobuf::int32 value);
+
+  // required int32 load_count = 2;
+  bool has_load_count() const;
+  void clear_load_count();
+  static const int kLoadCountFieldNumber = 2;
+  ::google::protobuf::int32 load_count() const;
+  void set_load_count(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:message.MsgC2SReqLoadTaskConfigs)
+ private:
+  inline void set_has_begin_id();
+  inline void clear_has_begin_id();
+  inline void set_has_load_count();
+  inline void clear_has_load_count();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 begin_id_;
+  ::google::protobuf::int32 load_count_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgC2SReqLoadTaskConfigs* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgS2CLoadTaskConfigsACK : public ::google::protobuf::Message {
+ public:
+  MsgS2CLoadTaskConfigsACK();
+  virtual ~MsgS2CLoadTaskConfigsACK();
+
+  MsgS2CLoadTaskConfigsACK(const MsgS2CLoadTaskConfigsACK& from);
+
+  inline MsgS2CLoadTaskConfigsACK& operator=(const MsgS2CLoadTaskConfigsACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgS2CLoadTaskConfigsACK& default_instance();
+
+  void Swap(MsgS2CLoadTaskConfigsACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgS2CLoadTaskConfigsACK* New() const { return New(NULL); }
+
+  MsgS2CLoadTaskConfigsACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgS2CLoadTaskConfigsACK& from);
+  void MergeFrom(const MsgS2CLoadTaskConfigsACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgS2CLoadTaskConfigsACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .message.TaskInfoConfig task_configs = 1;
+  int task_configs_size() const;
+  void clear_task_configs();
+  static const int kTaskConfigsFieldNumber = 1;
+  const ::message::TaskInfoConfig& task_configs(int index) const;
+  ::message::TaskInfoConfig* mutable_task_configs(int index);
+  ::message::TaskInfoConfig* add_task_configs();
+  const ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >&
+      task_configs() const;
+  ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >*
+      mutable_task_configs();
+
+  // required int32 total_task_count = 2;
+  bool has_total_task_count() const;
+  void clear_total_task_count();
+  static const int kTotalTaskCountFieldNumber = 2;
+  ::google::protobuf::int32 total_task_count() const;
+  void set_total_task_count(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:message.MsgS2CLoadTaskConfigsACK)
+ private:
+  inline void set_has_total_task_count();
+  inline void clear_has_total_task_count();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig > task_configs_;
+  ::google::protobuf::int32 total_task_count_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgS2CLoadTaskConfigsACK* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgC2SReqModifyTaskInfo : public ::google::protobuf::Message {
+ public:
+  MsgC2SReqModifyTaskInfo();
+  virtual ~MsgC2SReqModifyTaskInfo();
+
+  MsgC2SReqModifyTaskInfo(const MsgC2SReqModifyTaskInfo& from);
+
+  inline MsgC2SReqModifyTaskInfo& operator=(const MsgC2SReqModifyTaskInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgC2SReqModifyTaskInfo& default_instance();
+
+  void Swap(MsgC2SReqModifyTaskInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgC2SReqModifyTaskInfo* New() const { return New(NULL); }
+
+  MsgC2SReqModifyTaskInfo* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgC2SReqModifyTaskInfo& from);
+  void MergeFrom(const MsgC2SReqModifyTaskInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgC2SReqModifyTaskInfo* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .message.TaskInfoConfig info = 1;
+  bool has_info() const;
+  void clear_info();
+  static const int kInfoFieldNumber = 1;
+  const ::message::TaskInfoConfig& info() const;
+  ::message::TaskInfoConfig* mutable_info();
+  ::message::TaskInfoConfig* release_info();
+  void set_allocated_info(::message::TaskInfoConfig* info);
+
+  // @@protoc_insertion_point(class_scope:message.MsgC2SReqModifyTaskInfo)
+ private:
+  inline void set_has_info();
+  inline void clear_has_info();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::message::TaskInfoConfig* info_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgC2SReqModifyTaskInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgS2CModifyTaskInfoACK : public ::google::protobuf::Message {
+ public:
+  MsgS2CModifyTaskInfoACK();
+  virtual ~MsgS2CModifyTaskInfoACK();
+
+  MsgS2CModifyTaskInfoACK(const MsgS2CModifyTaskInfoACK& from);
+
+  inline MsgS2CModifyTaskInfoACK& operator=(const MsgS2CModifyTaskInfoACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgS2CModifyTaskInfoACK& default_instance();
+
+  void Swap(MsgS2CModifyTaskInfoACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgS2CModifyTaskInfoACK* New() const { return New(NULL); }
+
+  MsgS2CModifyTaskInfoACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgS2CModifyTaskInfoACK& from);
+  void MergeFrom(const MsgS2CModifyTaskInfoACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgS2CModifyTaskInfoACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .message.TaskInfoConfig info = 1;
+  bool has_info() const;
+  void clear_info();
+  static const int kInfoFieldNumber = 1;
+  const ::message::TaskInfoConfig& info() const;
+  ::message::TaskInfoConfig* mutable_info();
+  ::message::TaskInfoConfig* release_info();
+  void set_allocated_info(::message::TaskInfoConfig* info);
+
+  // @@protoc_insertion_point(class_scope:message.MsgS2CModifyTaskInfoACK)
+ private:
+  inline void set_has_info();
+  inline void clear_has_info();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::message::TaskInfoConfig* info_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgS2CModifyTaskInfoACK* default_instance_;
+};
 // ===================================================================
 
 
@@ -3629,6 +4019,210 @@ inline void MsgS2CRankMapRefreshNotify::set_time_stamp(::google::protobuf::int64
   set_has_time_stamp();
   time_stamp_ = value;
   // @@protoc_insertion_point(field_set:message.MsgS2CRankMapRefreshNotify.time_stamp)
+}
+
+// -------------------------------------------------------------------
+
+// MsgC2SReqLoadTaskConfigs
+
+// required int32 begin_id = 1;
+inline bool MsgC2SReqLoadTaskConfigs::has_begin_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgC2SReqLoadTaskConfigs::set_has_begin_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgC2SReqLoadTaskConfigs::clear_has_begin_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgC2SReqLoadTaskConfigs::clear_begin_id() {
+  begin_id_ = 0;
+  clear_has_begin_id();
+}
+inline ::google::protobuf::int32 MsgC2SReqLoadTaskConfigs::begin_id() const {
+  // @@protoc_insertion_point(field_get:message.MsgC2SReqLoadTaskConfigs.begin_id)
+  return begin_id_;
+}
+inline void MsgC2SReqLoadTaskConfigs::set_begin_id(::google::protobuf::int32 value) {
+  set_has_begin_id();
+  begin_id_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgC2SReqLoadTaskConfigs.begin_id)
+}
+
+// required int32 load_count = 2;
+inline bool MsgC2SReqLoadTaskConfigs::has_load_count() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgC2SReqLoadTaskConfigs::set_has_load_count() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgC2SReqLoadTaskConfigs::clear_has_load_count() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgC2SReqLoadTaskConfigs::clear_load_count() {
+  load_count_ = 0;
+  clear_has_load_count();
+}
+inline ::google::protobuf::int32 MsgC2SReqLoadTaskConfigs::load_count() const {
+  // @@protoc_insertion_point(field_get:message.MsgC2SReqLoadTaskConfigs.load_count)
+  return load_count_;
+}
+inline void MsgC2SReqLoadTaskConfigs::set_load_count(::google::protobuf::int32 value) {
+  set_has_load_count();
+  load_count_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgC2SReqLoadTaskConfigs.load_count)
+}
+
+// -------------------------------------------------------------------
+
+// MsgS2CLoadTaskConfigsACK
+
+// repeated .message.TaskInfoConfig task_configs = 1;
+inline int MsgS2CLoadTaskConfigsACK::task_configs_size() const {
+  return task_configs_.size();
+}
+inline void MsgS2CLoadTaskConfigsACK::clear_task_configs() {
+  task_configs_.Clear();
+}
+inline const ::message::TaskInfoConfig& MsgS2CLoadTaskConfigsACK::task_configs(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CLoadTaskConfigsACK.task_configs)
+  return task_configs_.Get(index);
+}
+inline ::message::TaskInfoConfig* MsgS2CLoadTaskConfigsACK::mutable_task_configs(int index) {
+  // @@protoc_insertion_point(field_mutable:message.MsgS2CLoadTaskConfigsACK.task_configs)
+  return task_configs_.Mutable(index);
+}
+inline ::message::TaskInfoConfig* MsgS2CLoadTaskConfigsACK::add_task_configs() {
+  // @@protoc_insertion_point(field_add:message.MsgS2CLoadTaskConfigsACK.task_configs)
+  return task_configs_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >&
+MsgS2CLoadTaskConfigsACK::task_configs() const {
+  // @@protoc_insertion_point(field_list:message.MsgS2CLoadTaskConfigsACK.task_configs)
+  return task_configs_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >*
+MsgS2CLoadTaskConfigsACK::mutable_task_configs() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgS2CLoadTaskConfigsACK.task_configs)
+  return &task_configs_;
+}
+
+// required int32 total_task_count = 2;
+inline bool MsgS2CLoadTaskConfigsACK::has_total_task_count() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgS2CLoadTaskConfigsACK::set_has_total_task_count() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgS2CLoadTaskConfigsACK::clear_has_total_task_count() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgS2CLoadTaskConfigsACK::clear_total_task_count() {
+  total_task_count_ = 0;
+  clear_has_total_task_count();
+}
+inline ::google::protobuf::int32 MsgS2CLoadTaskConfigsACK::total_task_count() const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CLoadTaskConfigsACK.total_task_count)
+  return total_task_count_;
+}
+inline void MsgS2CLoadTaskConfigsACK::set_total_task_count(::google::protobuf::int32 value) {
+  set_has_total_task_count();
+  total_task_count_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgS2CLoadTaskConfigsACK.total_task_count)
+}
+
+// -------------------------------------------------------------------
+
+// MsgC2SReqModifyTaskInfo
+
+// required .message.TaskInfoConfig info = 1;
+inline bool MsgC2SReqModifyTaskInfo::has_info() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgC2SReqModifyTaskInfo::set_has_info() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgC2SReqModifyTaskInfo::clear_has_info() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgC2SReqModifyTaskInfo::clear_info() {
+  if (info_ != NULL) info_->::message::TaskInfoConfig::Clear();
+  clear_has_info();
+}
+inline const ::message::TaskInfoConfig& MsgC2SReqModifyTaskInfo::info() const {
+  // @@protoc_insertion_point(field_get:message.MsgC2SReqModifyTaskInfo.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+inline ::message::TaskInfoConfig* MsgC2SReqModifyTaskInfo::mutable_info() {
+  set_has_info();
+  if (info_ == NULL) {
+    info_ = new ::message::TaskInfoConfig;
+  }
+  // @@protoc_insertion_point(field_mutable:message.MsgC2SReqModifyTaskInfo.info)
+  return info_;
+}
+inline ::message::TaskInfoConfig* MsgC2SReqModifyTaskInfo::release_info() {
+  clear_has_info();
+  ::message::TaskInfoConfig* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+inline void MsgC2SReqModifyTaskInfo::set_allocated_info(::message::TaskInfoConfig* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    set_has_info();
+  } else {
+    clear_has_info();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.MsgC2SReqModifyTaskInfo.info)
+}
+
+// -------------------------------------------------------------------
+
+// MsgS2CModifyTaskInfoACK
+
+// required .message.TaskInfoConfig info = 1;
+inline bool MsgS2CModifyTaskInfoACK::has_info() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgS2CModifyTaskInfoACK::set_has_info() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgS2CModifyTaskInfoACK::clear_has_info() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgS2CModifyTaskInfoACK::clear_info() {
+  if (info_ != NULL) info_->::message::TaskInfoConfig::Clear();
+  clear_has_info();
+}
+inline const ::message::TaskInfoConfig& MsgS2CModifyTaskInfoACK::info() const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CModifyTaskInfoACK.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+inline ::message::TaskInfoConfig* MsgS2CModifyTaskInfoACK::mutable_info() {
+  set_has_info();
+  if (info_ == NULL) {
+    info_ = new ::message::TaskInfoConfig;
+  }
+  // @@protoc_insertion_point(field_mutable:message.MsgS2CModifyTaskInfoACK.info)
+  return info_;
+}
+inline ::message::TaskInfoConfig* MsgS2CModifyTaskInfoACK::release_info() {
+  clear_has_info();
+  ::message::TaskInfoConfig* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+inline void MsgS2CModifyTaskInfoACK::set_allocated_info(::message::TaskInfoConfig* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    set_has_info();
+  } else {
+    clear_has_info();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.MsgS2CModifyTaskInfoACK.info)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

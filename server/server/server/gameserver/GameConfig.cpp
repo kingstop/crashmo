@@ -16,7 +16,7 @@ GameConfig::~GameConfig()
 void GameConfig::LoadGameConfig(DBQuery* p)
 {
 
-	gOfficilMapManager.init(p);
+	//gOfficilMapManager.init(p);
 	
 	p->reset();
 	DBQuery& query = *p;

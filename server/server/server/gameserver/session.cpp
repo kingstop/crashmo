@@ -34,6 +34,9 @@ void Session::registerPBCall()
 	registerCBFun(PROTOCO_NAME(message::MsgC2SRankMapReq), &Session::parseReqRankMap);
 	registerCBFun(PROTOCO_NAME(message::MsgC2SOfficeMapReq), &Session::parseReqOfficilMap);
 	registerCBFun(PROTOCO_NAME(message::MsgC2SOfficeStatusReq), &Session::parseReqOfficilStatus);
+	registerCBFun(PROTOCO_NAME(message::MsgC2SReqLoadTaskConfigs), &Session::parseReqLoadTaskConfigs);
+	registerCBFun(PROTOCO_NAME(message::MsgC2SReqModifyTaskInfo), &Session::parseReqModifyTaskInfo);
+	
 }
 
 void Session::parsePBMessage(google::protobuf::Message* p)
@@ -137,8 +140,40 @@ void Session::parseGetSectionNameReq(google::protobuf::Message* p)
 			proto->set_string_temp(it->second.c_str());
 		}
 		sendPBMessage(&msg);
-
 	}
+}
+
+void Session::parseReqLoadTaskConfigs(google::protobuf::Message* p)
+{
+
+	message::MsgC2SReqLoadTaskConfigs* msg = (message::MsgC2SReqLoadTaskConfigs*)p;
+	const TaskManager::TASKCONFIGS* task_configs = gTaskManager.GetTaskConfigs();
+	message::MsgS2CLoadTaskConfigsACK msgACK;
+	msgACK.set_total_task_count(task_configs->size());
+	int begin_id = msg->begin_id();
+	int count = msg->load_count();
+	TaskManager::TASKCONFIGS::const_iterator it = task_configs->begin();
+	for (; it != task_configs->end(); ++ it)
+	{
+		const message::TaskInfoConfig& info = it->second;
+		if (info.task_id() <= begin_id)
+		{
+			continue;
+		}		
+		message::TaskInfoConfig* entry = msgACK.add_task_configs();
+		entry->CopyFrom(info);
+	}
+	sendPBMessage(&msgACK);
+
+
+}
+void Session::parseReqModifyTaskInfo(google::protobuf::Message* p)
+{
+	message::MsgC2SReqModifyTaskInfo* msg = (message::MsgC2SReqModifyTaskInfo*)p;
+	gTaskManager.AddTask(msg->info());
+	message::MsgS2CModifyTaskInfoACK msgACK;
+	msgACK.mutable_info()->CopyFrom(msg->info());
+	sendPBMessage(&msgACK);
 }
 
 void Session::parseModifySectionName(google::protobuf::Message* p)

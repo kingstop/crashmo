@@ -45,6 +45,7 @@ class CharacterDataACK;
 class ReqSaveCharacterData;
 class ReqSaveOfficilMap;
 class ReqSaveOfficilSectionNames;
+class gs2dbWorldDatabaseSql;
 
 // ===================================================================
 
@@ -787,6 +788,100 @@ class ReqSaveOfficilSectionNames : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static ReqSaveOfficilSectionNames* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class gs2dbWorldDatabaseSql : public ::google::protobuf::Message {
+ public:
+  gs2dbWorldDatabaseSql();
+  virtual ~gs2dbWorldDatabaseSql();
+
+  gs2dbWorldDatabaseSql(const gs2dbWorldDatabaseSql& from);
+
+  inline gs2dbWorldDatabaseSql& operator=(const gs2dbWorldDatabaseSql& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const gs2dbWorldDatabaseSql& default_instance();
+
+  void Swap(gs2dbWorldDatabaseSql* other);
+
+  // implements Message ----------------------------------------------
+
+  inline gs2dbWorldDatabaseSql* New() const { return New(NULL); }
+
+  gs2dbWorldDatabaseSql* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const gs2dbWorldDatabaseSql& from);
+  void MergeFrom(const gs2dbWorldDatabaseSql& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(gs2dbWorldDatabaseSql* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string sql = 1;
+  bool has_sql() const;
+  void clear_sql();
+  static const int kSqlFieldNumber = 1;
+  const ::std::string& sql() const;
+  void set_sql(const ::std::string& value);
+  void set_sql(const char* value);
+  void set_sql(const char* value, size_t size);
+  ::std::string* mutable_sql();
+  ::std::string* release_sql();
+  void set_allocated_sql(::std::string* sql);
+
+  // @@protoc_insertion_point(class_scope:message.gs2dbWorldDatabaseSql)
+ private:
+  inline void set_has_sql();
+  inline void clear_has_sql();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr sql_;
+  friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
+
+  void InitAsDefaultInstance();
+  static gs2dbWorldDatabaseSql* default_instance_;
+};
 // ===================================================================
 
 
@@ -1152,6 +1247,63 @@ inline void ReqSaveOfficilSectionNames::set_allocated_sql(::std::string* sql) {
   }
   sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
   // @@protoc_insertion_point(field_set_allocated:message.ReqSaveOfficilSectionNames.sql)
+}
+
+// -------------------------------------------------------------------
+
+// gs2dbWorldDatabaseSql
+
+// required string sql = 1;
+inline bool gs2dbWorldDatabaseSql::has_sql() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void gs2dbWorldDatabaseSql::set_has_sql() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void gs2dbWorldDatabaseSql::clear_has_sql() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void gs2dbWorldDatabaseSql::clear_sql() {
+  sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_sql();
+}
+inline const ::std::string& gs2dbWorldDatabaseSql::sql() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbWorldDatabaseSql.sql)
+  return sql_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void gs2dbWorldDatabaseSql::set_sql(const ::std::string& value) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.gs2dbWorldDatabaseSql.sql)
+}
+inline void gs2dbWorldDatabaseSql::set_sql(const char* value) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.gs2dbWorldDatabaseSql.sql)
+}
+inline void gs2dbWorldDatabaseSql::set_sql(const char* value, size_t size) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.gs2dbWorldDatabaseSql.sql)
+}
+inline ::std::string* gs2dbWorldDatabaseSql::mutable_sql() {
+  set_has_sql();
+  // @@protoc_insertion_point(field_mutable:message.gs2dbWorldDatabaseSql.sql)
+  return sql_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* gs2dbWorldDatabaseSql::release_sql() {
+  clear_has_sql();
+  return sql_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void gs2dbWorldDatabaseSql::set_allocated_sql(::std::string* sql) {
+  if (sql != NULL) {
+    set_has_sql();
+  } else {
+    clear_has_sql();
+  }
+  sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
+  // @@protoc_insertion_point(field_set_allocated:message.gs2dbWorldDatabaseSql.sql)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

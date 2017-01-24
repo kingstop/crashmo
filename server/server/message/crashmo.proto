@@ -148,3 +148,28 @@ message MsgS2CRankMapRefreshNotify
 {
 	required int64 time_stamp = 1;	
 }
+
+message MsgC2SReqLoadTaskConfigs
+{
+	required int32 begin_id = 1;
+	required int32 load_count = 2;
+}
+
+message MsgS2CLoadTaskConfigsACK
+{
+	repeated TaskInfoConfig task_configs = 1;
+	required int32 total_task_count = 2;
+}
+
+message MsgC2SReqModifyTaskInfo
+{
+	required TaskInfoConfig info = 1;
+}
+
+message MsgS2CModifyTaskInfoACK
+{
+	required TaskInfoConfig info = 1;
+}
+
+
+

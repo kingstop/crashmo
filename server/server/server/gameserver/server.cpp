@@ -198,6 +198,8 @@ bool GameServer::initDataFromCharacterDB(DBQuery* p, const void* data)
 bool GameServer::initDataFromWorldDB(DBQuery* p, const void* data)
 {
 	gOfficilMapManager.init(p);
+	gGameConfig.LoadGameConfig(p);
+	gTaskManager.LoadConfig(p);
 	return true;
 }
 

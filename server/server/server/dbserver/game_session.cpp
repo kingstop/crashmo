@@ -48,6 +48,12 @@ void GameSession::parseSaveOfficilMapReq(google::protobuf::Message* p, pb_flag_t
 	gDBQuestMgr.saveOfficilMap(msg);
 }
 
+void GameSession::parseWorldDatabaseSql(google::protobuf::Message* p, pb_flag_type flag)
+{
+	message::gs2dbWorldDatabaseSql* msg = (message::gs2dbWorldDatabaseSql*)p;
+	gDBQuestMgr.worldDatabaseSql(msg->sql().c_str());
+
+}
 
 void GameSession::parseReqSaveCharacterData(google::protobuf::Message* p, pb_flag_type flag)
 {
@@ -77,14 +83,14 @@ void GameSession::initPBModule()
 void GameSession::parseSaveOfficilMapsReq(google::protobuf::Message* p, pb_flag_type flag)
 {
 	message::ReqSaveOfficilMap* msg = (message::ReqSaveOfficilMap*) p;
-	gDBQuestMgr.saveOfficilObjs(msg->sql().c_str());
+	gDBQuestMgr.worldDatabaseSql(msg->sql().c_str());
 
 }
 
 void GameSession::parseSaveSectionNamesReq(google::protobuf::Message* p, pb_flag_type flag)
 {
 	message::ReqSaveOfficilSectionNames* msg = (message::ReqSaveOfficilSectionNames*)p;
-	gDBQuestMgr.saveOfficilObjs(msg->sql().c_str());
+	gDBQuestMgr.worldDatabaseSql(msg->sql().c_str());
 
 }
 

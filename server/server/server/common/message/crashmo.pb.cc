@@ -80,6 +80,18 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* MsgS2CRankMapRefreshNotify_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgS2CRankMapRefreshNotify_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgC2SReqLoadTaskConfigs_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgC2SReqLoadTaskConfigs_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgS2CLoadTaskConfigsACK_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgS2CLoadTaskConfigsACK_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgC2SReqModifyTaskInfo_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgC2SReqModifyTaskInfo_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgS2CModifyTaskInfoACK_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgS2CModifyTaskInfoACK_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* ServerError_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* MapType_descriptor_ = NULL;
 
@@ -416,6 +428,68 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CRankMapRefreshNotify),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CRankMapRefreshNotify, _internal_metadata_),
       -1);
+  MsgC2SReqLoadTaskConfigs_descriptor_ = file->message_type(20);
+  static const int MsgC2SReqLoadTaskConfigs_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqLoadTaskConfigs, begin_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqLoadTaskConfigs, load_count_),
+  };
+  MsgC2SReqLoadTaskConfigs_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgC2SReqLoadTaskConfigs_descriptor_,
+      MsgC2SReqLoadTaskConfigs::default_instance_,
+      MsgC2SReqLoadTaskConfigs_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqLoadTaskConfigs, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgC2SReqLoadTaskConfigs),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqLoadTaskConfigs, _internal_metadata_),
+      -1);
+  MsgS2CLoadTaskConfigsACK_descriptor_ = file->message_type(21);
+  static const int MsgS2CLoadTaskConfigsACK_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CLoadTaskConfigsACK, task_configs_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CLoadTaskConfigsACK, total_task_count_),
+  };
+  MsgS2CLoadTaskConfigsACK_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgS2CLoadTaskConfigsACK_descriptor_,
+      MsgS2CLoadTaskConfigsACK::default_instance_,
+      MsgS2CLoadTaskConfigsACK_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CLoadTaskConfigsACK, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgS2CLoadTaskConfigsACK),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CLoadTaskConfigsACK, _internal_metadata_),
+      -1);
+  MsgC2SReqModifyTaskInfo_descriptor_ = file->message_type(22);
+  static const int MsgC2SReqModifyTaskInfo_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqModifyTaskInfo, info_),
+  };
+  MsgC2SReqModifyTaskInfo_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgC2SReqModifyTaskInfo_descriptor_,
+      MsgC2SReqModifyTaskInfo::default_instance_,
+      MsgC2SReqModifyTaskInfo_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqModifyTaskInfo, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgC2SReqModifyTaskInfo),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqModifyTaskInfo, _internal_metadata_),
+      -1);
+  MsgS2CModifyTaskInfoACK_descriptor_ = file->message_type(23);
+  static const int MsgS2CModifyTaskInfoACK_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CModifyTaskInfoACK, info_),
+  };
+  MsgS2CModifyTaskInfoACK_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgS2CModifyTaskInfoACK_descriptor_,
+      MsgS2CModifyTaskInfoACK::default_instance_,
+      MsgS2CModifyTaskInfoACK_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CModifyTaskInfoACK, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgS2CModifyTaskInfoACK),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CModifyTaskInfoACK, _internal_metadata_),
+      -1);
   ServerError_descriptor_ = file->enum_type(0);
   MapType_descriptor_ = file->enum_type(1);
 }
@@ -470,6 +544,14 @@ void protobuf_RegisterTypes(const ::std::string&) {
       MsgS2CRankMapACK_descriptor_, &MsgS2CRankMapACK::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       MsgS2CRankMapRefreshNotify_descriptor_, &MsgS2CRankMapRefreshNotify::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgC2SReqLoadTaskConfigs_descriptor_, &MsgC2SReqLoadTaskConfigs::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgS2CLoadTaskConfigsACK_descriptor_, &MsgS2CLoadTaskConfigsACK::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgC2SReqModifyTaskInfo_descriptor_, &MsgC2SReqModifyTaskInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgS2CModifyTaskInfoACK_descriptor_, &MsgS2CModifyTaskInfoACK::default_instance());
 }
 
 }  // namespace
@@ -515,6 +597,14 @@ void protobuf_ShutdownFile_crashmo_2eproto() {
   delete MsgS2CRankMapACK_reflection_;
   delete MsgS2CRankMapRefreshNotify::default_instance_;
   delete MsgS2CRankMapRefreshNotify_reflection_;
+  delete MsgC2SReqLoadTaskConfigs::default_instance_;
+  delete MsgC2SReqLoadTaskConfigs_reflection_;
+  delete MsgS2CLoadTaskConfigsACK::default_instance_;
+  delete MsgS2CLoadTaskConfigsACK_reflection_;
+  delete MsgC2SReqModifyTaskInfo::default_instance_;
+  delete MsgC2SReqModifyTaskInfo_reflection_;
+  delete MsgS2CModifyTaskInfoACK::default_instance_;
+  delete MsgS2CModifyTaskInfoACK_reflection_;
 }
 
 void protobuf_AddDesc_crashmo_2eproto() {
@@ -567,12 +657,19 @@ void protobuf_AddDesc_crashmo_2eproto() {
     "2\036.message.CrashPlayerPublishMap\022\020\n\010end_"
     "rank\030\002 \002(\005\022\022\n\ntime_stamp\030\003 \002(\003\022\026\n\016rank_m"
     "ap_count\030\004 \002(\005\"0\n\032MsgS2CRankMapRefreshNo"
-    "tify\022\022\n\ntime_stamp\030\001 \002(\003*\177\n\013ServerError\022"
-    "\022\n\016ServerError_NO\020\000\022\026\n\022ServerError_Unkno"
-    "w\020\001\022\034\n\030ServerError_HaveSameName\020\002\022&\n\"Ser"
-    "verError_NotFoundMapNameWhenDel\020\003*<\n\007Map"
-    "Type\022\r\n\tOfficeMap\020\001\022\021\n\rImcompleteMap\020\002\022\017"
-    "\n\013CompleteMap\020\003", 1895);
+    "tify\022\022\n\ntime_stamp\030\001 \002(\003\"@\n\030MsgC2SReqLoa"
+    "dTaskConfigs\022\020\n\010begin_id\030\001 \002(\005\022\022\n\nload_c"
+    "ount\030\002 \002(\005\"c\n\030MsgS2CLoadTaskConfigsACK\022-"
+    "\n\014task_configs\030\001 \003(\0132\027.message.TaskInfoC"
+    "onfig\022\030\n\020total_task_count\030\002 \002(\005\"@\n\027MsgC2"
+    "SReqModifyTaskInfo\022%\n\004info\030\001 \002(\0132\027.messa"
+    "ge.TaskInfoConfig\"@\n\027MsgS2CModifyTaskInf"
+    "oACK\022%\n\004info\030\001 \002(\0132\027.message.TaskInfoCon"
+    "fig*\177\n\013ServerError\022\022\n\016ServerError_NO\020\000\022\026"
+    "\n\022ServerError_Unknow\020\001\022\034\n\030ServerError_Ha"
+    "veSameName\020\002\022&\n\"ServerError_NotFoundMapN"
+    "ameWhenDel\020\003*<\n\007MapType\022\r\n\tOfficeMap\020\001\022\021"
+    "\n\rImcompleteMap\020\002\022\017\n\013CompleteMap\020\003", 2194);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "crashmo.proto", &protobuf_RegisterTypes);
   MsgIntStringProto::default_instance_ = new MsgIntStringProto();
@@ -595,6 +692,10 @@ void protobuf_AddDesc_crashmo_2eproto() {
   MsgC2SRankMapReq::default_instance_ = new MsgC2SRankMapReq();
   MsgS2CRankMapACK::default_instance_ = new MsgS2CRankMapACK();
   MsgS2CRankMapRefreshNotify::default_instance_ = new MsgS2CRankMapRefreshNotify();
+  MsgC2SReqLoadTaskConfigs::default_instance_ = new MsgC2SReqLoadTaskConfigs();
+  MsgS2CLoadTaskConfigsACK::default_instance_ = new MsgS2CLoadTaskConfigsACK();
+  MsgC2SReqModifyTaskInfo::default_instance_ = new MsgC2SReqModifyTaskInfo();
+  MsgS2CModifyTaskInfoACK::default_instance_ = new MsgS2CModifyTaskInfoACK();
   MsgIntStringProto::default_instance_->InitAsDefaultInstance();
   CrashmoClientInit::default_instance_->InitAsDefaultInstance();
   MsgSaveMapReq::default_instance_->InitAsDefaultInstance();
@@ -615,6 +716,10 @@ void protobuf_AddDesc_crashmo_2eproto() {
   MsgC2SRankMapReq::default_instance_->InitAsDefaultInstance();
   MsgS2CRankMapACK::default_instance_->InitAsDefaultInstance();
   MsgS2CRankMapRefreshNotify::default_instance_->InitAsDefaultInstance();
+  MsgC2SReqLoadTaskConfigs::default_instance_->InitAsDefaultInstance();
+  MsgS2CLoadTaskConfigsACK::default_instance_->InitAsDefaultInstance();
+  MsgC2SReqModifyTaskInfo::default_instance_->InitAsDefaultInstance();
+  MsgS2CModifyTaskInfoACK::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_crashmo_2eproto);
 }
 
@@ -8149,6 +8254,1261 @@ void MsgS2CRankMapRefreshNotify::InternalSwap(MsgS2CRankMapRefreshNotify* other)
   set_has_time_stamp();
   time_stamp_ = value;
   // @@protoc_insertion_point(field_set:message.MsgS2CRankMapRefreshNotify.time_stamp)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MsgC2SReqLoadTaskConfigs::kBeginIdFieldNumber;
+const int MsgC2SReqLoadTaskConfigs::kLoadCountFieldNumber;
+#endif  // !_MSC_VER
+
+MsgC2SReqLoadTaskConfigs::MsgC2SReqLoadTaskConfigs()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgC2SReqLoadTaskConfigs)
+}
+
+void MsgC2SReqLoadTaskConfigs::InitAsDefaultInstance() {
+}
+
+MsgC2SReqLoadTaskConfigs::MsgC2SReqLoadTaskConfigs(const MsgC2SReqLoadTaskConfigs& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgC2SReqLoadTaskConfigs)
+}
+
+void MsgC2SReqLoadTaskConfigs::SharedCtor() {
+  _cached_size_ = 0;
+  begin_id_ = 0;
+  load_count_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgC2SReqLoadTaskConfigs::~MsgC2SReqLoadTaskConfigs() {
+  // @@protoc_insertion_point(destructor:message.MsgC2SReqLoadTaskConfigs)
+  SharedDtor();
+}
+
+void MsgC2SReqLoadTaskConfigs::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void MsgC2SReqLoadTaskConfigs::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgC2SReqLoadTaskConfigs::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgC2SReqLoadTaskConfigs_descriptor_;
+}
+
+const MsgC2SReqLoadTaskConfigs& MsgC2SReqLoadTaskConfigs::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_crashmo_2eproto();
+  return *default_instance_;
+}
+
+MsgC2SReqLoadTaskConfigs* MsgC2SReqLoadTaskConfigs::default_instance_ = NULL;
+
+MsgC2SReqLoadTaskConfigs* MsgC2SReqLoadTaskConfigs::New(::google::protobuf::Arena* arena) const {
+  MsgC2SReqLoadTaskConfigs* n = new MsgC2SReqLoadTaskConfigs;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgC2SReqLoadTaskConfigs::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MsgC2SReqLoadTaskConfigs*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(begin_id_, load_count_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgC2SReqLoadTaskConfigs::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgC2SReqLoadTaskConfigs)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 begin_id = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &begin_id_)));
+          set_has_begin_id();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_load_count;
+        break;
+      }
+
+      // required int32 load_count = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_load_count:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &load_count_)));
+          set_has_load_count();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgC2SReqLoadTaskConfigs)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgC2SReqLoadTaskConfigs)
+  return false;
+#undef DO_
+}
+
+void MsgC2SReqLoadTaskConfigs::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgC2SReqLoadTaskConfigs)
+  // required int32 begin_id = 1;
+  if (has_begin_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->begin_id(), output);
+  }
+
+  // required int32 load_count = 2;
+  if (has_load_count()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->load_count(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgC2SReqLoadTaskConfigs)
+}
+
+::google::protobuf::uint8* MsgC2SReqLoadTaskConfigs::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgC2SReqLoadTaskConfigs)
+  // required int32 begin_id = 1;
+  if (has_begin_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->begin_id(), target);
+  }
+
+  // required int32 load_count = 2;
+  if (has_load_count()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->load_count(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgC2SReqLoadTaskConfigs)
+  return target;
+}
+
+int MsgC2SReqLoadTaskConfigs::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_begin_id()) {
+    // required int32 begin_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->begin_id());
+  }
+
+  if (has_load_count()) {
+    // required int32 load_count = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->load_count());
+  }
+
+  return total_size;
+}
+int MsgC2SReqLoadTaskConfigs::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required int32 begin_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->begin_id());
+
+    // required int32 load_count = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->load_count());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgC2SReqLoadTaskConfigs::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgC2SReqLoadTaskConfigs* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgC2SReqLoadTaskConfigs*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgC2SReqLoadTaskConfigs::MergeFrom(const MsgC2SReqLoadTaskConfigs& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_begin_id()) {
+      set_begin_id(from.begin_id());
+    }
+    if (from.has_load_count()) {
+      set_load_count(from.load_count());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgC2SReqLoadTaskConfigs::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgC2SReqLoadTaskConfigs::CopyFrom(const MsgC2SReqLoadTaskConfigs& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgC2SReqLoadTaskConfigs::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void MsgC2SReqLoadTaskConfigs::Swap(MsgC2SReqLoadTaskConfigs* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgC2SReqLoadTaskConfigs::InternalSwap(MsgC2SReqLoadTaskConfigs* other) {
+  std::swap(begin_id_, other->begin_id_);
+  std::swap(load_count_, other->load_count_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgC2SReqLoadTaskConfigs::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgC2SReqLoadTaskConfigs_descriptor_;
+  metadata.reflection = MsgC2SReqLoadTaskConfigs_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgC2SReqLoadTaskConfigs
+
+// required int32 begin_id = 1;
+ bool MsgC2SReqLoadTaskConfigs::has_begin_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void MsgC2SReqLoadTaskConfigs::set_has_begin_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void MsgC2SReqLoadTaskConfigs::clear_has_begin_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void MsgC2SReqLoadTaskConfigs::clear_begin_id() {
+  begin_id_ = 0;
+  clear_has_begin_id();
+}
+ ::google::protobuf::int32 MsgC2SReqLoadTaskConfigs::begin_id() const {
+  // @@protoc_insertion_point(field_get:message.MsgC2SReqLoadTaskConfigs.begin_id)
+  return begin_id_;
+}
+ void MsgC2SReqLoadTaskConfigs::set_begin_id(::google::protobuf::int32 value) {
+  set_has_begin_id();
+  begin_id_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgC2SReqLoadTaskConfigs.begin_id)
+}
+
+// required int32 load_count = 2;
+ bool MsgC2SReqLoadTaskConfigs::has_load_count() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void MsgC2SReqLoadTaskConfigs::set_has_load_count() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void MsgC2SReqLoadTaskConfigs::clear_has_load_count() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void MsgC2SReqLoadTaskConfigs::clear_load_count() {
+  load_count_ = 0;
+  clear_has_load_count();
+}
+ ::google::protobuf::int32 MsgC2SReqLoadTaskConfigs::load_count() const {
+  // @@protoc_insertion_point(field_get:message.MsgC2SReqLoadTaskConfigs.load_count)
+  return load_count_;
+}
+ void MsgC2SReqLoadTaskConfigs::set_load_count(::google::protobuf::int32 value) {
+  set_has_load_count();
+  load_count_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgC2SReqLoadTaskConfigs.load_count)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MsgS2CLoadTaskConfigsACK::kTaskConfigsFieldNumber;
+const int MsgS2CLoadTaskConfigsACK::kTotalTaskCountFieldNumber;
+#endif  // !_MSC_VER
+
+MsgS2CLoadTaskConfigsACK::MsgS2CLoadTaskConfigsACK()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgS2CLoadTaskConfigsACK)
+}
+
+void MsgS2CLoadTaskConfigsACK::InitAsDefaultInstance() {
+}
+
+MsgS2CLoadTaskConfigsACK::MsgS2CLoadTaskConfigsACK(const MsgS2CLoadTaskConfigsACK& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgS2CLoadTaskConfigsACK)
+}
+
+void MsgS2CLoadTaskConfigsACK::SharedCtor() {
+  _cached_size_ = 0;
+  total_task_count_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgS2CLoadTaskConfigsACK::~MsgS2CLoadTaskConfigsACK() {
+  // @@protoc_insertion_point(destructor:message.MsgS2CLoadTaskConfigsACK)
+  SharedDtor();
+}
+
+void MsgS2CLoadTaskConfigsACK::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void MsgS2CLoadTaskConfigsACK::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgS2CLoadTaskConfigsACK::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgS2CLoadTaskConfigsACK_descriptor_;
+}
+
+const MsgS2CLoadTaskConfigsACK& MsgS2CLoadTaskConfigsACK::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_crashmo_2eproto();
+  return *default_instance_;
+}
+
+MsgS2CLoadTaskConfigsACK* MsgS2CLoadTaskConfigsACK::default_instance_ = NULL;
+
+MsgS2CLoadTaskConfigsACK* MsgS2CLoadTaskConfigsACK::New(::google::protobuf::Arena* arena) const {
+  MsgS2CLoadTaskConfigsACK* n = new MsgS2CLoadTaskConfigsACK;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgS2CLoadTaskConfigsACK::Clear() {
+  total_task_count_ = 0;
+  task_configs_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgS2CLoadTaskConfigsACK::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgS2CLoadTaskConfigsACK)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .message.TaskInfoConfig task_configs = 1;
+      case 1: {
+        if (tag == 10) {
+         parse_task_configs:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_task_configs()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(10)) goto parse_task_configs;
+        if (input->ExpectTag(16)) goto parse_total_task_count;
+        break;
+      }
+
+      // required int32 total_task_count = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_total_task_count:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &total_task_count_)));
+          set_has_total_task_count();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgS2CLoadTaskConfigsACK)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgS2CLoadTaskConfigsACK)
+  return false;
+#undef DO_
+}
+
+void MsgS2CLoadTaskConfigsACK::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgS2CLoadTaskConfigsACK)
+  // repeated .message.TaskInfoConfig task_configs = 1;
+  for (unsigned int i = 0, n = this->task_configs_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->task_configs(i), output);
+  }
+
+  // required int32 total_task_count = 2;
+  if (has_total_task_count()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->total_task_count(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgS2CLoadTaskConfigsACK)
+}
+
+::google::protobuf::uint8* MsgS2CLoadTaskConfigsACK::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgS2CLoadTaskConfigsACK)
+  // repeated .message.TaskInfoConfig task_configs = 1;
+  for (unsigned int i = 0, n = this->task_configs_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->task_configs(i), target);
+  }
+
+  // required int32 total_task_count = 2;
+  if (has_total_task_count()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->total_task_count(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgS2CLoadTaskConfigsACK)
+  return target;
+}
+
+int MsgS2CLoadTaskConfigsACK::ByteSize() const {
+  int total_size = 0;
+
+  // required int32 total_task_count = 2;
+  if (has_total_task_count()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->total_task_count());
+  }
+  // repeated .message.TaskInfoConfig task_configs = 1;
+  total_size += 1 * this->task_configs_size();
+  for (int i = 0; i < this->task_configs_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->task_configs(i));
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgS2CLoadTaskConfigsACK::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgS2CLoadTaskConfigsACK* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgS2CLoadTaskConfigsACK*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgS2CLoadTaskConfigsACK::MergeFrom(const MsgS2CLoadTaskConfigsACK& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  task_configs_.MergeFrom(from.task_configs_);
+  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (from.has_total_task_count()) {
+      set_total_task_count(from.total_task_count());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgS2CLoadTaskConfigsACK::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgS2CLoadTaskConfigsACK::CopyFrom(const MsgS2CLoadTaskConfigsACK& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgS2CLoadTaskConfigsACK::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000002) != 0x00000002) return false;
+
+  if (!::google::protobuf::internal::AllAreInitialized(this->task_configs())) return false;
+  return true;
+}
+
+void MsgS2CLoadTaskConfigsACK::Swap(MsgS2CLoadTaskConfigsACK* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgS2CLoadTaskConfigsACK::InternalSwap(MsgS2CLoadTaskConfigsACK* other) {
+  task_configs_.UnsafeArenaSwap(&other->task_configs_);
+  std::swap(total_task_count_, other->total_task_count_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgS2CLoadTaskConfigsACK::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgS2CLoadTaskConfigsACK_descriptor_;
+  metadata.reflection = MsgS2CLoadTaskConfigsACK_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgS2CLoadTaskConfigsACK
+
+// repeated .message.TaskInfoConfig task_configs = 1;
+ int MsgS2CLoadTaskConfigsACK::task_configs_size() const {
+  return task_configs_.size();
+}
+ void MsgS2CLoadTaskConfigsACK::clear_task_configs() {
+  task_configs_.Clear();
+}
+ const ::message::TaskInfoConfig& MsgS2CLoadTaskConfigsACK::task_configs(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CLoadTaskConfigsACK.task_configs)
+  return task_configs_.Get(index);
+}
+ ::message::TaskInfoConfig* MsgS2CLoadTaskConfigsACK::mutable_task_configs(int index) {
+  // @@protoc_insertion_point(field_mutable:message.MsgS2CLoadTaskConfigsACK.task_configs)
+  return task_configs_.Mutable(index);
+}
+ ::message::TaskInfoConfig* MsgS2CLoadTaskConfigsACK::add_task_configs() {
+  // @@protoc_insertion_point(field_add:message.MsgS2CLoadTaskConfigsACK.task_configs)
+  return task_configs_.Add();
+}
+ const ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >&
+MsgS2CLoadTaskConfigsACK::task_configs() const {
+  // @@protoc_insertion_point(field_list:message.MsgS2CLoadTaskConfigsACK.task_configs)
+  return task_configs_;
+}
+ ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >*
+MsgS2CLoadTaskConfigsACK::mutable_task_configs() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgS2CLoadTaskConfigsACK.task_configs)
+  return &task_configs_;
+}
+
+// required int32 total_task_count = 2;
+ bool MsgS2CLoadTaskConfigsACK::has_total_task_count() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void MsgS2CLoadTaskConfigsACK::set_has_total_task_count() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void MsgS2CLoadTaskConfigsACK::clear_has_total_task_count() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void MsgS2CLoadTaskConfigsACK::clear_total_task_count() {
+  total_task_count_ = 0;
+  clear_has_total_task_count();
+}
+ ::google::protobuf::int32 MsgS2CLoadTaskConfigsACK::total_task_count() const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CLoadTaskConfigsACK.total_task_count)
+  return total_task_count_;
+}
+ void MsgS2CLoadTaskConfigsACK::set_total_task_count(::google::protobuf::int32 value) {
+  set_has_total_task_count();
+  total_task_count_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgS2CLoadTaskConfigsACK.total_task_count)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MsgC2SReqModifyTaskInfo::kInfoFieldNumber;
+#endif  // !_MSC_VER
+
+MsgC2SReqModifyTaskInfo::MsgC2SReqModifyTaskInfo()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgC2SReqModifyTaskInfo)
+}
+
+void MsgC2SReqModifyTaskInfo::InitAsDefaultInstance() {
+  info_ = const_cast< ::message::TaskInfoConfig*>(&::message::TaskInfoConfig::default_instance());
+}
+
+MsgC2SReqModifyTaskInfo::MsgC2SReqModifyTaskInfo(const MsgC2SReqModifyTaskInfo& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgC2SReqModifyTaskInfo)
+}
+
+void MsgC2SReqModifyTaskInfo::SharedCtor() {
+  _cached_size_ = 0;
+  info_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgC2SReqModifyTaskInfo::~MsgC2SReqModifyTaskInfo() {
+  // @@protoc_insertion_point(destructor:message.MsgC2SReqModifyTaskInfo)
+  SharedDtor();
+}
+
+void MsgC2SReqModifyTaskInfo::SharedDtor() {
+  if (this != default_instance_) {
+    delete info_;
+  }
+}
+
+void MsgC2SReqModifyTaskInfo::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgC2SReqModifyTaskInfo::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgC2SReqModifyTaskInfo_descriptor_;
+}
+
+const MsgC2SReqModifyTaskInfo& MsgC2SReqModifyTaskInfo::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_crashmo_2eproto();
+  return *default_instance_;
+}
+
+MsgC2SReqModifyTaskInfo* MsgC2SReqModifyTaskInfo::default_instance_ = NULL;
+
+MsgC2SReqModifyTaskInfo* MsgC2SReqModifyTaskInfo::New(::google::protobuf::Arena* arena) const {
+  MsgC2SReqModifyTaskInfo* n = new MsgC2SReqModifyTaskInfo;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgC2SReqModifyTaskInfo::Clear() {
+  if (has_info()) {
+    if (info_ != NULL) info_->::message::TaskInfoConfig::Clear();
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgC2SReqModifyTaskInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgC2SReqModifyTaskInfo)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .message.TaskInfoConfig info = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_info()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgC2SReqModifyTaskInfo)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgC2SReqModifyTaskInfo)
+  return false;
+#undef DO_
+}
+
+void MsgC2SReqModifyTaskInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgC2SReqModifyTaskInfo)
+  // required .message.TaskInfoConfig info = 1;
+  if (has_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->info_, output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgC2SReqModifyTaskInfo)
+}
+
+::google::protobuf::uint8* MsgC2SReqModifyTaskInfo::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgC2SReqModifyTaskInfo)
+  // required .message.TaskInfoConfig info = 1;
+  if (has_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, *this->info_, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgC2SReqModifyTaskInfo)
+  return target;
+}
+
+int MsgC2SReqModifyTaskInfo::ByteSize() const {
+  int total_size = 0;
+
+  // required .message.TaskInfoConfig info = 1;
+  if (has_info()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->info_);
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgC2SReqModifyTaskInfo::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgC2SReqModifyTaskInfo* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgC2SReqModifyTaskInfo*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgC2SReqModifyTaskInfo::MergeFrom(const MsgC2SReqModifyTaskInfo& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_info()) {
+      mutable_info()->::message::TaskInfoConfig::MergeFrom(from.info());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgC2SReqModifyTaskInfo::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgC2SReqModifyTaskInfo::CopyFrom(const MsgC2SReqModifyTaskInfo& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgC2SReqModifyTaskInfo::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  if (has_info()) {
+    if (!this->info_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void MsgC2SReqModifyTaskInfo::Swap(MsgC2SReqModifyTaskInfo* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgC2SReqModifyTaskInfo::InternalSwap(MsgC2SReqModifyTaskInfo* other) {
+  std::swap(info_, other->info_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgC2SReqModifyTaskInfo::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgC2SReqModifyTaskInfo_descriptor_;
+  metadata.reflection = MsgC2SReqModifyTaskInfo_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgC2SReqModifyTaskInfo
+
+// required .message.TaskInfoConfig info = 1;
+ bool MsgC2SReqModifyTaskInfo::has_info() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void MsgC2SReqModifyTaskInfo::set_has_info() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void MsgC2SReqModifyTaskInfo::clear_has_info() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void MsgC2SReqModifyTaskInfo::clear_info() {
+  if (info_ != NULL) info_->::message::TaskInfoConfig::Clear();
+  clear_has_info();
+}
+ const ::message::TaskInfoConfig& MsgC2SReqModifyTaskInfo::info() const {
+  // @@protoc_insertion_point(field_get:message.MsgC2SReqModifyTaskInfo.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+ ::message::TaskInfoConfig* MsgC2SReqModifyTaskInfo::mutable_info() {
+  set_has_info();
+  if (info_ == NULL) {
+    info_ = new ::message::TaskInfoConfig;
+  }
+  // @@protoc_insertion_point(field_mutable:message.MsgC2SReqModifyTaskInfo.info)
+  return info_;
+}
+ ::message::TaskInfoConfig* MsgC2SReqModifyTaskInfo::release_info() {
+  clear_has_info();
+  ::message::TaskInfoConfig* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+ void MsgC2SReqModifyTaskInfo::set_allocated_info(::message::TaskInfoConfig* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    set_has_info();
+  } else {
+    clear_has_info();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.MsgC2SReqModifyTaskInfo.info)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MsgS2CModifyTaskInfoACK::kInfoFieldNumber;
+#endif  // !_MSC_VER
+
+MsgS2CModifyTaskInfoACK::MsgS2CModifyTaskInfoACK()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgS2CModifyTaskInfoACK)
+}
+
+void MsgS2CModifyTaskInfoACK::InitAsDefaultInstance() {
+  info_ = const_cast< ::message::TaskInfoConfig*>(&::message::TaskInfoConfig::default_instance());
+}
+
+MsgS2CModifyTaskInfoACK::MsgS2CModifyTaskInfoACK(const MsgS2CModifyTaskInfoACK& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgS2CModifyTaskInfoACK)
+}
+
+void MsgS2CModifyTaskInfoACK::SharedCtor() {
+  _cached_size_ = 0;
+  info_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgS2CModifyTaskInfoACK::~MsgS2CModifyTaskInfoACK() {
+  // @@protoc_insertion_point(destructor:message.MsgS2CModifyTaskInfoACK)
+  SharedDtor();
+}
+
+void MsgS2CModifyTaskInfoACK::SharedDtor() {
+  if (this != default_instance_) {
+    delete info_;
+  }
+}
+
+void MsgS2CModifyTaskInfoACK::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgS2CModifyTaskInfoACK::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgS2CModifyTaskInfoACK_descriptor_;
+}
+
+const MsgS2CModifyTaskInfoACK& MsgS2CModifyTaskInfoACK::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_crashmo_2eproto();
+  return *default_instance_;
+}
+
+MsgS2CModifyTaskInfoACK* MsgS2CModifyTaskInfoACK::default_instance_ = NULL;
+
+MsgS2CModifyTaskInfoACK* MsgS2CModifyTaskInfoACK::New(::google::protobuf::Arena* arena) const {
+  MsgS2CModifyTaskInfoACK* n = new MsgS2CModifyTaskInfoACK;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgS2CModifyTaskInfoACK::Clear() {
+  if (has_info()) {
+    if (info_ != NULL) info_->::message::TaskInfoConfig::Clear();
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgS2CModifyTaskInfoACK::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgS2CModifyTaskInfoACK)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .message.TaskInfoConfig info = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_info()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgS2CModifyTaskInfoACK)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgS2CModifyTaskInfoACK)
+  return false;
+#undef DO_
+}
+
+void MsgS2CModifyTaskInfoACK::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgS2CModifyTaskInfoACK)
+  // required .message.TaskInfoConfig info = 1;
+  if (has_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->info_, output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgS2CModifyTaskInfoACK)
+}
+
+::google::protobuf::uint8* MsgS2CModifyTaskInfoACK::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgS2CModifyTaskInfoACK)
+  // required .message.TaskInfoConfig info = 1;
+  if (has_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, *this->info_, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgS2CModifyTaskInfoACK)
+  return target;
+}
+
+int MsgS2CModifyTaskInfoACK::ByteSize() const {
+  int total_size = 0;
+
+  // required .message.TaskInfoConfig info = 1;
+  if (has_info()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->info_);
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgS2CModifyTaskInfoACK::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgS2CModifyTaskInfoACK* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgS2CModifyTaskInfoACK*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgS2CModifyTaskInfoACK::MergeFrom(const MsgS2CModifyTaskInfoACK& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_info()) {
+      mutable_info()->::message::TaskInfoConfig::MergeFrom(from.info());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgS2CModifyTaskInfoACK::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgS2CModifyTaskInfoACK::CopyFrom(const MsgS2CModifyTaskInfoACK& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgS2CModifyTaskInfoACK::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  if (has_info()) {
+    if (!this->info_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void MsgS2CModifyTaskInfoACK::Swap(MsgS2CModifyTaskInfoACK* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgS2CModifyTaskInfoACK::InternalSwap(MsgS2CModifyTaskInfoACK* other) {
+  std::swap(info_, other->info_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgS2CModifyTaskInfoACK::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgS2CModifyTaskInfoACK_descriptor_;
+  metadata.reflection = MsgS2CModifyTaskInfoACK_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgS2CModifyTaskInfoACK
+
+// required .message.TaskInfoConfig info = 1;
+ bool MsgS2CModifyTaskInfoACK::has_info() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void MsgS2CModifyTaskInfoACK::set_has_info() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void MsgS2CModifyTaskInfoACK::clear_has_info() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void MsgS2CModifyTaskInfoACK::clear_info() {
+  if (info_ != NULL) info_->::message::TaskInfoConfig::Clear();
+  clear_has_info();
+}
+ const ::message::TaskInfoConfig& MsgS2CModifyTaskInfoACK::info() const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CModifyTaskInfoACK.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+ ::message::TaskInfoConfig* MsgS2CModifyTaskInfoACK::mutable_info() {
+  set_has_info();
+  if (info_ == NULL) {
+    info_ = new ::message::TaskInfoConfig;
+  }
+  // @@protoc_insertion_point(field_mutable:message.MsgS2CModifyTaskInfoACK.info)
+  return info_;
+}
+ ::message::TaskInfoConfig* MsgS2CModifyTaskInfoACK::release_info() {
+  clear_has_info();
+  ::message::TaskInfoConfig* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+ void MsgS2CModifyTaskInfoACK::set_allocated_info(::message::TaskInfoConfig* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    set_has_info();
+  } else {
+    clear_has_info();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.MsgS2CModifyTaskInfoACK.info)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

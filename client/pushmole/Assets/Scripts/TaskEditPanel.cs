@@ -8,9 +8,12 @@ public class TaskEditPanel : MonoBehaviour {
 	public InputField describe_;
 	public TaskConditionEntry[] drop_down_condition_entrys_;
 	public DropdownReward[] drop_down_rewards_;
+    public InputField required_chapter_id_;
+    public InputField required_section_id_;
+    public InputField required_complete_count_;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	
 	}
 	

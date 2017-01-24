@@ -32,6 +32,7 @@
 #include "OfficilMapManager.h"
 #include "GameConfig.h"
 #include "RankMapManager.h"
+#include "TaskManager.h"
 std::string Utf8ToGBK(const char* strUtf8);
 std::string GBKToUtf8(const char* strGBK);
 
@@ -42,7 +43,8 @@ enum EventTypes
 	EVENT_SAVE_OFFICIL_DATA_,
 	EVENT_DAILY_RANK_,
 	EVENT_DELETE_PLAYER_,
-	EVENT_NEWS_
+	EVENT_NEWS_,
+	EVENT_SAVE_TASK
 };
 struct FuGameFather
 {
@@ -62,6 +64,7 @@ struct FuGameFather
 	CrashPlayerManager sPlayerManager;
 	OfficilMapManager sOfficilMapManager;
 	RankMapManager    sRankMapManager;
+	TaskManager       sTaskManager;
 	//NoneCharacterManager sNoneCharacterManager;
 };
 
@@ -79,6 +82,7 @@ extern FuGameFather* gFuGameFather;
 #define gOfficilMapManager  gFuGameFather->sOfficilMapManager
 #define gGameConfig			gFuGameFather->sGameConfig
 #define gRankMapManager     gFuGameFather->sRankMapManager
+#define gTaskManager        gFuGameFather->sTaskManager
 
 //#define gCharacterManager   gFuGameFather->sNoneCharacterManager
 //#define gGameConfig			gFuGameFather->sGameConfig

@@ -15,6 +15,7 @@ public:
 	void parseDelOfficilMapReq(google::protobuf::Message* p, pb_flag_type flag);
 	void parseSaveOfficilMapsReq(google::protobuf::Message* p, pb_flag_type flag);
 	void parseSaveSectionNamesReq(google::protobuf::Message* p, pb_flag_type flag);
+	void parseWorldDatabaseSql(google::protobuf::Message* p, pb_flag_type flag);
 	u16  getGameId() const{return m_game_id;}
 public:
 	virtual void proc_message( const message_t& msg );
