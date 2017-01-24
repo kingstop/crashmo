@@ -54,12 +54,11 @@ void DBQuestManager::worldDatabaseSql(const char* szsql)
 	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, szsql, 0, NULL, _SAVE_OFFICIL_MAP_);
 }
 
-void DBQuestManager::delOfficilMap(int section, int number)
+void DBQuestManager::delOfficilMap(int chapter, int section)
 {
 	char sql[512];
-	sprintf(sql, "delete from offical_map where map_section=%d and map_section=%d", section, number);
+	sprintf(sql, "delete from offical_map where chapter=%d and section=%d", chapter, section);
 	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, 0, NULL, _DELETE_OFFICIL_MAP_);
-
 }
 
 void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
@@ -70,7 +69,7 @@ void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
 	sprintf(sql, "delete from offical_map where map_chapter=%d and map_section=%d;", map_temp->chapter(), map_temp->section());
 	std::string temp_sql_replace;
 	temp_sql_replace += sql;
-	temp_sql_replace += "replace into offical_map(`account`, `creater_name`, `map_name`, `map_data`, `create_time`, `section`, `number`) values";
+	temp_sql_replace += "replace into offical_map(`account`, `creater_name`, `map_name`, `map_data`, `create_time`, `chapter`, `section`) values";
 	std::string temp_data;
 	temp_data = map_temp->data().SerializeAsString();
 	int temp_number = map_temp->section();

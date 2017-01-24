@@ -30,8 +30,10 @@ void GameConfig::LoadGameConfig(DBQuery* p)
 		DBRow row = result[i];
 		message::CrashMapData entry;
 		entry.set_mapname(row["map_name"].c_str());
-		entry.set_chapter(row["map_chapter"]);
-		entry.set_section(row["map_section"]);
+		entry.set_chapter(row["chapter"]);
+		entry.set_section(row["section"]);
+		entry.set_gold(row["gold"]);
+		entry.set_creatername(row["creater_name"].c_str());
 		message::CrashmoMapBaseData* data = entry.mutable_data();
 		std::string sql_map_data = row["map_data"].c_str();
 		data->ParseFromString(sql_map_data);

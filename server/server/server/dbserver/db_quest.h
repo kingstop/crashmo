@@ -11,7 +11,7 @@ public:
 	void worldDatabaseSql(const char* szsql);
 	//void saveOfficilMap(message::MsgSaveOfficilMapReq* msg, tran_id_type t);
 	//void officilMapReq(message::MsgOfficilMapReq* msg, tran_id_type t);
-	void delOfficilMap(int section, int number);
+	void delOfficilMap(int chapter, int section);
 protected:
 	void dbDoQueryCharacter(DBQuery* p, const void* d);
 	void dbCallQueryCharacter(const void* d, bool s);
