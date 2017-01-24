@@ -56,6 +56,10 @@ public class client_session
 			global_instance.Instance._officilMapManager.addChapterName(key_pair.intger_temp, key_pair.string_temp);
         }
         global_instance.Instance._officilMapManager.LoadSections();
+        if(global_instance.Instance._player.isadmin())
+        {
+            global_instance.Instance._taskManager.LoadTask();
+        }        
         //global_instance.Instance._ngui_edit_manager._login_obj.SetActive(false);
         //global_instance.Instance._ngui_edit_manager.show_main_panel();
         return true;

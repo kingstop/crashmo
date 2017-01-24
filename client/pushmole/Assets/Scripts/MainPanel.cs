@@ -32,6 +32,7 @@ public class MainPanel : MonoBehaviour
     public GameObject _create_obj_button;
     public GameObject _edit_obj_button;
     public GameObject _Back_obj_button;
+    public GameObject _edit_task_obj;
     public GameObject _edit_section_obj_button;
     public Button[] _title_button;
     public int _page_count;
@@ -109,11 +110,17 @@ public class MainPanel : MonoBehaviour
         }
     }
     public void CreateClick()
-    {
-        
+    {        
         global_instance.Instance._ngui_edit_manager.update_game_type(game_type.create);
         this.gameObject.SetActive(false);
 		global_instance.Instance._global_game_type = global_game_type.global_game_type_edit;
+    }
+
+    public void OnTaskEditClick()
+    {
+        global_instance.Instance._ngui_edit_manager._task_edit_panel.gameObject.SetActive(true);
+        this.gameObject.SetActive(false);
+
     }
 
     message.CrashMapData GetCurrentSelectMapData()
@@ -339,8 +346,14 @@ public class MainPanel : MonoBehaviour
     void Start()
     {
 		
-
-
+        if(global_instance.Instance._player.isadmin())
+        {
+            _edit_task_obj.SetActive(true);
+        }
+        else
+        {
+            _edit_task_obj.SetActive(false);
+        }        
     }
 
     void OnEnable()

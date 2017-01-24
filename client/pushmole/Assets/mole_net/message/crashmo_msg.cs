@@ -519,6 +519,88 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SReqLoadTaskConfigs")]
+  public partial class MsgC2SReqLoadTaskConfigs : global::ProtoBuf.IExtensible
+  {
+    public MsgC2SReqLoadTaskConfigs() {}
+    
+    private int _begin_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"begin_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int begin_id
+    {
+      get { return _begin_id; }
+      set { _begin_id = value; }
+    }
+    private int _load_count;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"load_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int load_count
+    {
+      get { return _load_count; }
+      set { _load_count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CLoadTaskConfigsACK")]
+  public partial class MsgS2CLoadTaskConfigsACK : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CLoadTaskConfigsACK() {}
+    
+    private readonly global::System.Collections.Generic.List<message.TaskInfoConfig> _task_configs = new global::System.Collections.Generic.List<message.TaskInfoConfig>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"task_configs", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.TaskInfoConfig> task_configs
+    {
+      get { return _task_configs; }
+    }
+  
+    private int _total_task_count;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"total_task_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int total_task_count
+    {
+      get { return _total_task_count; }
+      set { _total_task_count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SReqModifyTaskInfo")]
+  public partial class MsgC2SReqModifyTaskInfo : global::ProtoBuf.IExtensible
+  {
+    public MsgC2SReqModifyTaskInfo() {}
+    
+    private message.TaskInfoConfig _info;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"info", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public message.TaskInfoConfig info
+    {
+      get { return _info; }
+      set { _info = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CModifyTaskInfoACK")]
+  public partial class MsgS2CModifyTaskInfoACK : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CModifyTaskInfoACK() {}
+    
+    private message.TaskInfoConfig _info;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"info", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public message.TaskInfoConfig info
+    {
+      get { return _info; }
+      set { _info = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"ServerError")]
     public enum ServerError
     {

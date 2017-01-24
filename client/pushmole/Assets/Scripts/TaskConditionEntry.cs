@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 
 public class TaskConditionEntry : MonoBehaviour {
@@ -9,6 +10,14 @@ public class TaskConditionEntry : MonoBehaviour {
 	public InputField argument_2_;
 	public Text text_1_;
 	public Text text_2_;
+    void Awake()
+    {
+        List<string> str_list = new List<string>();
+        
+        dropdown_.ClearOptions();
+        
+        //dropdown_.AddOptions()
+    }
 	// Use this for initialization
 	void Start () {
 	

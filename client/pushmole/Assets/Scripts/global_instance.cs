@@ -100,6 +100,7 @@ public class global_instance
     public global_game_type _global_game_type = global_game_type.global_game_type_game;
 	public OfficilMapManager _officilMapManager = new OfficilMapManager ();
 	public RankMapManager _rankMapManager = new RankMapManager ();
+    public TaskManager _taskManager = new TaskManager();
     public bool _in_login = false;
 
 
