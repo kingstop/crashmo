@@ -25,12 +25,20 @@ public class client_session
         _MessageFun.Add("MsgModifySectionNameACK", ModifySectionName);
         _MessageFun.Add("MsgS2COfficeStatusACK", ParseOfficeStatus);
         _MessageFun.Add("MsgS2COfficeMapACK", ParseOfficeMapACK);
+		_MessageFun.Add ("MsgS2CLoadTaskConfigsACK", parseLoadTaskConfigsACK);
     }
 
     ~client_session()
     {
 
     }
+
+	public bool parseLoadTaskConfigsACK(System.IO.MemoryStream stream)
+	{
+		MsgS2CLoadTaskConfigsACK msg = ProtoBuf.Serializer.Deserialize<MsgS2CLoadTaskConfigsACK>(stream);
+		global_instance.Instance._taskManager.ParseLoadTask (msg);
+		return true;
+	}
 
     public bool ParseOfficeMapACK(System.IO.MemoryStream stream)
     {

@@ -132,6 +132,12 @@ public class TaskEditPanel : MonoBehaviour {
 		
 	}
 
+	public void onBackClick()
+	{
+		global_instance.Instance._ngui_edit_manager._task_edit_panel.gameObject.SetActive (false);
+		global_instance.Instance._ngui_edit_manager._main_panel.gameObject.SetActive (true);
+	}
+
 	public void OnSaveClick()
 	{
 		message.TaskInfoConfig cur_info = GetInfo ();
