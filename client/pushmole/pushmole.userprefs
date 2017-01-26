@@ -1,27 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/mole_net/proto-net/ProtoReader.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/mole_net/U3dSocketClient.cs">
     <Files>
-      <File FileName="Assets/Scripts/ngui_edit_manager.cs" Line="57" Column="40" />
-      <File FileName="Assets/Scripts/crash_mole_grid_manager.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="537" Column="2" />
-      <File FileName="Assets/Scripts/UIEditMap.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/message/common_msg.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/global_instance.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MainPanel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIGameEnd.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/crashmole.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SaveMapPanel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/creature.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CrashPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets/NGUI/Scripts/Editor/UIAtlasMaker.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/U3dSocketClient.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/SocketServer.cs" Line="1" Column="1" />
-      <File FileName="Assets/mole_net/SocketClient.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/crashmolegrid.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TaskConditionEntry.cs" Line="11" Column="22" />
-      <File FileName="Assets/Scripts/DropdownReward.cs" Line="14" Column="35" />
-      <File FileName="Assets/Scripts/TaskEditPanel.cs" Line="30" Column="3" />
+      <File FileName="Assets/Scripts/TaskConditionEntry.cs" Line="44" Column="23" />
+      <File FileName="Assets/Scripts/DropdownReward.cs" Line="43" Column="33" />
+      <File FileName="Assets/Scripts/TaskEditPanel.cs" Line="147" Column="6" />
+      <File FileName="Assets/Scripts/RewardEntry.cs" Line="1" Column="1" />
+      <File FileName="Assets/mole_net/proto-net/ProtoReader.cs" Line="537" Column="2" />
+      <File FileName="Assets/Scripts/task_item_entry.cs" Line="22" Column="6" />
+      <File FileName="Assets/mole_net/U3dSocketClient.cs" Line="214" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -35,6 +23,7 @@
       <Breakpoint file="/Users/apple/Desktop/未命名文件夹/work/crashmo/client/pushmole/Assets/Scripts/UIEditMap.cs" line="50" column="1" />
       <Breakpoint file="/Users/apple/Desktop/work/work/crashmo/client/pushmole/Assets/Scripts/crash_mole_grid_manager.cs" line="301" column="1" />
       <Breakpoint file="/Users/apple/Desktop/work/work/crashmo/client/pushmole/Assets/Scripts/UIEditMap.cs" line="144" column="1" />
+      <Breakpoint file="/Users/apple/Desktop/work/work/crashmo/client/pushmole/Assets/Scripts/TaskEditPanel.cs" line="67" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

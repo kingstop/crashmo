@@ -198,6 +198,7 @@
      <Compile Include="Assets\Scripts\SectionEditPanel.cs" />
      <Compile Include="Assets\Scripts\TaskConditionEntry.cs" />
      <Compile Include="Assets\Scripts\TaskEditPanel.cs" />
+     <Compile Include="Assets\Scripts\TaskManager.cs" />
      <Compile Include="Assets\Scripts\UIEditMap.cs" />
      <Compile Include="Assets\Scripts\UIGameEnd.cs" />
      <Compile Include="Assets\Scripts\UISectionGiftGold.cs" />
@@ -218,6 +219,7 @@
      <Compile Include="Assets\Scripts\on_Collision_stay.cs" />
      <Compile Include="Assets\Scripts\on_scrollbar_change.cs" />
      <Compile Include="Assets\Scripts\plant_ctrl.cs" />
+     <Compile Include="Assets\Scripts\task_item_entry.cs" />
      <Compile Include="Assets\ScrollView\ScrollViewAdjust.cs" />
      <Compile Include="Assets\ScrollView\ScrollViewHarizonAdjust.cs" />
      <Compile Include="Assets\ScrollView\ScrollViewVerticalAdjust.cs" />

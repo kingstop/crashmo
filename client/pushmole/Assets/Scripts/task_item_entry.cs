@@ -20,7 +20,7 @@ public class task_item_entry : MonoBehaviour {
 
     public void OnClick()
     {
-
+		_parent.OnTaskItemClick (this);
     }
 	// Use this for initialization
 	void Start () {
