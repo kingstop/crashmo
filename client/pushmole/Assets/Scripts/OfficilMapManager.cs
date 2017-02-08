@@ -142,7 +142,7 @@ public class OfficilMapManager
 
 	public void addMap(message.CrashMapData map)
 	{
-		if (_officilMap.ContainsKey (map.Section) == false) 
+		if (_officilMap.ContainsKey (map.Chapter) == false) 
 		{
 			Dictionary<int, message.CrashMapData> dic_maps = new Dictionary<int, message.CrashMapData> ();
 			_officilMap [map.Chapter] = dic_maps;

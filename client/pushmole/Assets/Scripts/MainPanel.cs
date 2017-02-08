@@ -232,8 +232,7 @@ public class MainPanel : MonoBehaviour
     void addItem(CrashMapData entry, bool self = true)
     {
         ChooseItemEntry temp = CreateItemEntry();
-        temp._txt_1.text = entry.MapName;
-        temp._txt_2.text = entry.CreaterName;
+
         System.DateTime time = new System.DateTime(1970, 1, 1).ToLocalTime().AddSeconds(entry.create_time);
         temp._txt_3.text = time.ToString();
         
@@ -246,9 +245,13 @@ public class MainPanel : MonoBehaviour
         if (self)
         {
             temp._map_index = entry.Data.map_index;
+			temp._txt_1.text = entry.MapName;
+			temp._txt_2.text = entry.CreaterName;
         }
         else
         {
+			temp._txt_1.text = entry.Section.ToString();
+			temp._txt_2.text = entry.MapName;
             temp._map_index = (ulong)entry.Section;
         }
     }

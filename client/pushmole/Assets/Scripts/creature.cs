@@ -77,7 +77,11 @@ public class creature : MonoBehaviour
         {
             return;
         }
-        _jump_speed = 0.6f;
+		if (_is_in_falldown == false) 
+		{
+			_jump_speed = 0.6f;
+		}
+        
     }
     public void set_position(float x, float y, float z)
     {
