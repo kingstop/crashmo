@@ -76,12 +76,7 @@ Session::Session(tran_id_type t, account_type a, u16 gate)
 
 Session::~Session()
 {
-	//if (_character!= NULL)
-	//{
-	//	_character->set_session(NULL);
-	//}
-	//gGSGirlsStorage.remove_online_girl(_girl);
-  //  delete _girl;
+
 }
 
 

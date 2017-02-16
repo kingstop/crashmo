@@ -37,19 +37,14 @@ public:
 	void parseReqModifyTaskInfo(google::protobuf::Message* p);
 	void parseModifySectionName(google::protobuf::Message* p);
 	void parseGetSectionNameReq(google::protobuf::Message* p);
-
 protected:
 	void CreateCrashMoClientInit();
-	//Player* getPlayer(){return m_pkOwer;}
 protected:
 	tran_id_type m_tranid;
 	account_type m_account;
 	u16 m_gate;
 	u8  m_state;
 	CrashPlayer * _player;
-	//NoneCharacter* _character;
-	//girl* _girl;
-	// Player* m_pkOwer;
 private:
 };
 #endif
