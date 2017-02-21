@@ -601,6 +601,109 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SReqAddMapBolg")]
+  public partial class MsgC2SReqAddMapBolg : global::ProtoBuf.IExtensible
+  {
+    public MsgC2SReqAddMapBolg() {}
+    
+    private message.RankMapBlogEntry _info;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"info", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public message.RankMapBlogEntry info
+    {
+      get { return _info; }
+      set { _info = value; }
+    }
+    private message.MapType _type;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public message.MapType type
+    {
+      get { return _type; }
+      set { _type = value; }
+    }
+    private long _map_index;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"map_index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long map_index
+    {
+      get { return _map_index; }
+      set { _map_index = value; }
+    }
+    private int _chapter_id;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"chapter_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int chapter_id
+    {
+      get { return _chapter_id; }
+      set { _chapter_id = value; }
+    }
+    private int _section_id;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"section_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int section_id
+    {
+      get { return _section_id; }
+      set { _section_id = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CMapBolgACK")]
+  public partial class MsgS2CMapBolgACK : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CMapBolgACK() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC3SReqEnterOfficilMap")]
+  public partial class MsgC3SReqEnterOfficilMap : global::ProtoBuf.IExtensible
+  {
+    public MsgC3SReqEnterOfficilMap() {}
+    
+    private uint _chapter_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"chapter_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint chapter_id
+    {
+      get { return _chapter_id; }
+      set { _chapter_id = value; }
+    }
+    private uint _section_id;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"section_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint section_id
+    {
+      get { return _section_id; }
+      set { _section_id = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CEnterOfficilMapACK")]
+  public partial class MsgS2CEnterOfficilMapACK : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CEnterOfficilMapACK() {}
+    
+    private uint _chapter_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"chapter_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint chapter_id
+    {
+      get { return _chapter_id; }
+      set { _chapter_id = value; }
+    }
+    private uint _section_id;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"section_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint section_id
+    {
+      get { return _section_id; }
+      set { _section_id = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"ServerError")]
     public enum ServerError
     {
