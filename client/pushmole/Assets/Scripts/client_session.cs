@@ -26,6 +26,7 @@ public class client_session
         _MessageFun.Add("MsgS2COfficeStatusACK", ParseOfficeStatus);
         _MessageFun.Add("MsgS2COfficeMapACK", ParseOfficeMapACK);
 		_MessageFun.Add ("MsgS2CLoadTaskConfigsACK", parseLoadTaskConfigsACK);
+		_MessageFun.Add ("MsgS2CEnterOfficilMapACK", parseReqEnterOfficilMapACK);
     }
 
     ~client_session()
@@ -54,6 +55,28 @@ public class client_session
         return true;
 
     }
+
+	public bool parseReqEnterOfficilMapACK(System.IO.MemoryStream stream)
+	{
+		MsgS2CEnterOfficilMapACK msg = ProtoBuf.Serializer.Deserialize<MsgS2CEnterOfficilMapACK>(stream);
+		int chapter_id = msg.chapter_id;
+		int section_id = msg.section_id;
+		CrashMapData MapDataTemp = global_instance.Instance._officilMapManager.getOfficilMap(chapter_id, section_id);
+		if (MapDataTemp != null) 
+		{	
+			MapData temp = new MapData();
+			temp.set_info(MapDataTemp);
+			global_instance.Instance.SetMapData(temp);
+			global_instance.Instance._crash_mole_grid_manager.set_max_height(temp.height_);
+			global_instance.Instance._crash_mole_grid_manager.set_max_width(temp.width_);
+			global_instance.Instance._ngui_edit_manager._main_panel.gameObject.SetActive(false);
+			global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
+			global_instance.Instance._global_game_type = global_game_type.global_game_type_game;
+		}
+
+
+	}
+
     public bool CrashmoClientInit(System.IO.MemoryStream stream)
     {
        
