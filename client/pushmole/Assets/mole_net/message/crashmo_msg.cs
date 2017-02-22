@@ -656,10 +656,10 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC3SReqEnterOfficilMap")]
-  public partial class MsgC3SReqEnterOfficilMap : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SReqEnterOfficilMap")]
+  public partial class MsgC2SReqEnterOfficilMap : global::ProtoBuf.IExtensible
   {
-    public MsgC3SReqEnterOfficilMap() {}
+    public MsgC2SReqEnterOfficilMap() {}
     
     private uint _chapter_id;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"chapter_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -704,6 +704,110 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SReqPassOfficilMap")]
+  public partial class MsgC2SReqPassOfficilMap : global::ProtoBuf.IExtensible
+  {
+    public MsgC2SReqPassOfficilMap() {}
+    
+    private uint _chapter_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"chapter_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint chapter_id
+    {
+      get { return _chapter_id; }
+      set { _chapter_id = value; }
+    }
+    private uint _section_id;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"section_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint section_id
+    {
+      get { return _section_id; }
+      set { _section_id = value; }
+    }
+    private uint _use_time;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"use_time", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint use_time
+    {
+      get { return _use_time; }
+      set { _use_time = value; }
+    }
+    private uint _use_step;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"use_step", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint use_step
+    {
+      get { return _use_step; }
+      set { _use_step = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CPassOfficilMapACK")]
+  public partial class MsgS2CPassOfficilMapACK : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CPassOfficilMapACK() {}
+    
+    private uint _chapter_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"chapter_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint chapter_id
+    {
+      get { return _chapter_id; }
+      set { _chapter_id = value; }
+    }
+    private uint _section_id;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"section_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint section_id
+    {
+      get { return _section_id; }
+      set { _section_id = value; }
+    }
+    private uint _add_gold;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"add_gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint add_gold
+    {
+      get { return _add_gold; }
+      set { _add_gold = value; }
+    }
+    private readonly global::System.Collections.Generic.List<message.intPair> _add_resource = new global::System.Collections.Generic.List<message.intPair>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"add_resource", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.intPair> add_resource
+    {
+      get { return _add_resource; }
+    }
+  
+    private uint _current_gold;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"current_gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint current_gold
+    {
+      get { return _current_gold; }
+      set { _current_gold = value; }
+    }
+    private readonly global::System.Collections.Generic.List<message.intPair> _current_resource = new global::System.Collections.Generic.List<message.intPair>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"current_resource", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.intPair> current_resource
+    {
+      get { return _current_resource; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<int> _complete_task_id = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"complete_task_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> complete_task_id
+    {
+      get { return _complete_task_id; }
+    }
+  
+    private message.ServerError _error;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public message.ServerError error
+    {
+      get { return _error; }
+      set { _error = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"ServerError")]
     public enum ServerError
     {
@@ -718,7 +822,13 @@ namespace message
       ServerError_HaveSameName = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ServerError_NotFoundMapNameWhenDel", Value=3)]
-      ServerError_NotFoundMapNameWhenDel = 3
+      ServerError_NotFoundMapNameWhenDel = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ServerError_PassOfficilMapFailedTheMapIsLock", Value=4)]
+      ServerError_PassOfficilMapFailedTheMapIsLock = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ServerError_PassOfficilMapFailedTheMapNotFound", Value=5)]
+      ServerError_PassOfficilMapFailedTheMapNotFound = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"MapType")]

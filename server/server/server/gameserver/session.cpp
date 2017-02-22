@@ -140,7 +140,6 @@ void Session::parseGetSectionNameReq(google::protobuf::Message* p)
 
 void Session::parseReqLoadTaskConfigs(google::protobuf::Message* p)
 {
-
 	message::MsgC2SReqLoadTaskConfigs* msg = (message::MsgC2SReqLoadTaskConfigs*)p;
 	const TaskManager::TASKCONFIGS* task_configs = gTaskManager.GetTaskConfigs();
 	message::MsgS2CLoadTaskConfigsACK msgACK;
@@ -159,9 +158,20 @@ void Session::parseReqLoadTaskConfigs(google::protobuf::Message* p)
 		entry->CopyFrom(info);
 	}
 	sendPBMessage(&msgACK);
+}
 
+void Session::parseEnterOfficilGame(google::protobuf::Message* p)
+{
+	message::MsgC2SReqEnterOfficilMap* msg = (message::MsgC2SReqEnterOfficilMap*)p;
 
 }
+
+void Session::parsePassOfficilGame(google::protobuf::Message* p)
+{
+	message::MsgC2SReqPassOfficilMap* msg = (message::MsgC2SReqPassOfficilMap*)p;
+
+}
+
 void Session::parseReqModifyTaskInfo(google::protobuf::Message* p)
 {
 	message::MsgC2SReqModifyTaskInfo* msg = (message::MsgC2SReqModifyTaskInfo*)p;

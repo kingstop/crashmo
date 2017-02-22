@@ -29,6 +29,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CrashMapData_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CrashMapData_reflection_ = NULL;
+const ::google::protobuf::Descriptor* TaskInfo_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  TaskInfo_reflection_ = NULL;
 const ::google::protobuf::Descriptor* RankMapBlogEntry_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   RankMapBlogEntry_reflection_ = NULL;
@@ -116,7 +119,25 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(CrashMapData),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, _internal_metadata_),
       -1);
-  RankMapBlogEntry_descriptor_ = file->message_type(3);
+  TaskInfo_descriptor_ = file->message_type(3);
+  static const int TaskInfo_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, task_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, argu_1_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, argu_2_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, argu_3_),
+  };
+  TaskInfo_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      TaskInfo_descriptor_,
+      TaskInfo::default_instance_,
+      TaskInfo_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(TaskInfo),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, _internal_metadata_),
+      -1);
+  RankMapBlogEntry_descriptor_ = file->message_type(4);
   static const int RankMapBlogEntry_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankMapBlogEntry, acc_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankMapBlogEntry, name_),
@@ -134,7 +155,7 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(RankMapBlogEntry),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankMapBlogEntry, _internal_metadata_),
       -1);
-  CrashPlayerPublishMap_descriptor_ = file->message_type(4);
+  CrashPlayerPublishMap_descriptor_ = file->message_type(5);
   static const int CrashPlayerPublishMap_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, crashmap_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, publish_time_),
@@ -154,7 +175,7 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(CrashPlayerPublishMap),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, _internal_metadata_),
       -1);
-  intPair_descriptor_ = file->message_type(5);
+  intPair_descriptor_ = file->message_type(6);
   static const int intPair_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, number_1_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, number_2_),
@@ -170,11 +191,10 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(intPair),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, _internal_metadata_),
       -1);
-  CrashPlayerInfo_descriptor_ = file->message_type(6);
+  CrashPlayerInfo_descriptor_ = file->message_type(7);
   static const int CrashPlayerInfo_offsets_[12] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, account_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, pass_chapter_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, pass_section_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, passed_record_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, incompletemap_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, completemap_),
@@ -184,6 +204,7 @@ void protobuf_AssignDesc_common_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, map_height_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, map_count_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, gold_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, current_task_),
   };
   CrashPlayerInfo_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -196,7 +217,7 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(CrashPlayerInfo),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, _internal_metadata_),
       -1);
-  TaskConditionTypeConfig_descriptor_ = file->message_type(7);
+  TaskConditionTypeConfig_descriptor_ = file->message_type(8);
   static const int TaskConditionTypeConfig_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskConditionTypeConfig, condition_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskConditionTypeConfig, argu_1_),
@@ -213,7 +234,7 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(TaskConditionTypeConfig),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskConditionTypeConfig, _internal_metadata_),
       -1);
-  TaskRewardConfig_descriptor_ = file->message_type(8);
+  TaskRewardConfig_descriptor_ = file->message_type(9);
   static const int TaskRewardConfig_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskRewardConfig, resource_type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskRewardConfig, count_),
@@ -229,7 +250,7 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(TaskRewardConfig),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskRewardConfig, _internal_metadata_),
       -1);
-  TaskInfoConfig_descriptor_ = file->message_type(9);
+  TaskInfoConfig_descriptor_ = file->message_type(10);
   static const int TaskInfoConfig_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, task_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, name_),
@@ -272,6 +293,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CrashMapData_descriptor_, &CrashMapData::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      TaskInfo_descriptor_, &TaskInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       RankMapBlogEntry_descriptor_, &RankMapBlogEntry::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CrashPlayerPublishMap_descriptor_, &CrashPlayerPublishMap::default_instance());
@@ -296,6 +319,8 @@ void protobuf_ShutdownFile_common_2eproto() {
   delete CrashmoMapBaseData_reflection_;
   delete CrashMapData::default_instance_;
   delete CrashMapData_reflection_;
+  delete TaskInfo::default_instance_;
+  delete TaskInfo_reflection_;
   delete RankMapBlogEntry::default_instance_;
   delete RankMapBlogEntry_reflection_;
   delete CrashPlayerPublishMap::default_instance_;
@@ -327,52 +352,56 @@ void protobuf_AddDesc_common_2eproto() {
     "age.CrashmoMapBaseData\022\017\n\007MapName\030\002 \002(\t\022"
     "\023\n\013CreaterName\030\003 \002(\t\022\017\n\007Section\030\004 \002(\005\022\017\n"
     "\007Chapter\030\005 \002(\005\022\023\n\013create_time\030\006 \002(\004\022\014\n\004g"
-    "old\030\007 \002(\005\"L\n\020RankMapBlogEntry\022\013\n\003acc\030\001 \002"
-    "(\004\022\014\n\004name\030\002 \002(\t\022\017\n\007sugges_\030\003 \002(\t\022\014\n\004tim"
-    "e\030\004 \002(\005\"\321\001\n\025CrashPlayerPublishMap\022\'\n\010cra"
-    "shmap\030\001 \002(\0132\025.message.CrashMapData\022\024\n\014pu"
-    "blish_time\030\002 \002(\004\022\027\n\017challenge_times\030\003 \002("
-    "\005\022!\n\031failed_of_challenge_times\030\004 \002(\005\022\020\n\010"
-    "map_rank\030\005 \002(\005\022+\n\010map_blog\030\006 \003(\0132\031.messa"
-    "ge.RankMapBlogEntry\"-\n\007intPair\022\020\n\010number"
-    "_1\030\001 \002(\005\022\020\n\010number_2\030\002 \002(\005\"\264\002\n\017CrashPlay"
-    "erInfo\022\017\n\007account\030\001 \002(\004\022\024\n\014pass_chapter\030"
-    "\002 \002(\005\022\024\n\014pass_section\030\004 \002(\005\022\014\n\004name\030\005 \002("
-    "\t\022,\n\rIncompleteMap\030\006 \003(\0132\025.message.Crash"
-    "MapData\022*\n\013CompleteMap\030\007 \003(\0132\025.message.C"
-    "rashMapData\022\017\n\007isadmin\030\010 \002(\010\022#\n\tresource"
-    "s\030\t \003(\0132\020.message.intPair\022\021\n\tmap_width\030\n"
-    " \002(\005\022\022\n\nmap_height\030\013 \002(\005\022\021\n\tmap_count\030\014 "
-    "\002(\005\022\014\n\004gold\030\r \002(\005\"x\n\027TaskConditionTypeCo"
-    "nfig\022=\n\tcondition\030\001 \002(\0162\026.message.Condit"
-    "ionType:\022ConditionType_NULL\022\016\n\006argu_1\030\002 "
-    "\002(\005\022\016\n\006argu_2\030\003 \002(\005\"b\n\020TaskRewardConfig\022"
-    "\?\n\rresource_type\030\001 \002(\0162\025.message.Resourc"
-    "eType:\021ResourceType_NULL\022\r\n\005count\030\002 \002(\005\""
-    "\215\002\n\016TaskInfoConfig\022\017\n\007task_id\030\001 \002(\005\022\014\n\004n"
-    "ame\030\002 \002(\t\022\020\n\010describe\030\003 \002(\t\0224\n\ncondition"
-    "s\030\004 \003(\0132 .message.TaskConditionTypeConfi"
-    "g\022*\n\007rewards\030\005 \003(\0132\031.message.TaskRewardC"
-    "onfig\022 \n\030required_pass_chapter_id\030\006 \002(\005\022"
-    " \n\030required_pass_section_id\030\007 \002(\005\022$\n\034req"
-    "uired_complete_task_count\030\010 \002(\005*\277\001\n\rCond"
-    "itionType\022\026\n\022ConditionType_NULL\020\000\022!\n\035Con"
-    "ditionType_PassOfficilGame\020\001\022\035\n\031Conditio"
-    "nType_LimitedTime\020\002\022\035\n\031ConditionType_Lim"
-    "itedStep\020\003\022\036\n\032ConditionType_PassUserGame"
-    "\020\004\022\025\n\021ConditionType_Max\020\005*\212\002\n\014ResourceTy"
-    "pe\022\025\n\021ResourceType_NULL\020\000\022\022\n\016ResourceTyp"
-    "e_0\020\001\022\022\n\016ResourceType_1\020\002\022\022\n\016ResourceTyp"
-    "e_2\020\003\022\022\n\016ResourceType_3\020\004\022\022\n\016ResourceTyp"
-    "e_4\020\005\022\022\n\016ResourceType_5\020\006\022\022\n\016ResourceTyp"
-    "e_6\020\007\022\022\n\016ResourceType_7\020\010\022\025\n\021ResourceTyp"
-    "e_gold\020\t\022\026\n\022ResourceType_jewel\020\n\022\024\n\020Reso"
-    "urceType_Max\020\013", 1934);
+    "old\030\007 \002(\005\"K\n\010TaskInfo\022\017\n\007task_id\030\001 \002(\005\022\016"
+    "\n\006argu_1\030\002 \002(\005\022\016\n\006argu_2\030\003 \002(\005\022\016\n\006argu_3"
+    "\030\004 \002(\005\"L\n\020RankMapBlogEntry\022\013\n\003acc\030\001 \002(\004\022"
+    "\014\n\004name\030\002 \002(\t\022\017\n\007sugges_\030\003 \002(\t\022\014\n\004time\030\004"
+    " \002(\005\"\321\001\n\025CrashPlayerPublishMap\022\'\n\010crashm"
+    "ap\030\001 \002(\0132\025.message.CrashMapData\022\024\n\014publi"
+    "sh_time\030\002 \002(\004\022\027\n\017challenge_times\030\003 \002(\005\022!"
+    "\n\031failed_of_challenge_times\030\004 \002(\005\022\020\n\010map"
+    "_rank\030\005 \002(\005\022+\n\010map_blog\030\006 \003(\0132\031.message."
+    "RankMapBlogEntry\"-\n\007intPair\022\020\n\010number_1\030"
+    "\001 \002(\005\022\020\n\010number_2\030\002 \002(\005\"\332\002\n\017CrashPlayerI"
+    "nfo\022\017\n\007account\030\001 \002(\004\022\'\n\rpassed_record\030\002 "
+    "\003(\0132\020.message.intPair\022\014\n\004name\030\003 \002(\t\022,\n\rI"
+    "ncompleteMap\030\004 \003(\0132\025.message.CrashMapDat"
+    "a\022*\n\013CompleteMap\030\005 \003(\0132\025.message.CrashMa"
+    "pData\022\017\n\007isadmin\030\006 \002(\010\022#\n\tresources\030\007 \003("
+    "\0132\020.message.intPair\022\021\n\tmap_width\030\010 \002(\005\022\022"
+    "\n\nmap_height\030\t \002(\005\022\021\n\tmap_count\030\n \002(\005\022\014\n"
+    "\004gold\030\013 \002(\005\022\'\n\014current_task\030\014 \003(\0132\021.mess"
+    "age.TaskInfo\"x\n\027TaskConditionTypeConfig\022"
+    "=\n\tcondition\030\001 \002(\0162\026.message.ConditionTy"
+    "pe:\022ConditionType_NULL\022\016\n\006argu_1\030\002 \002(\005\022\016"
+    "\n\006argu_2\030\003 \002(\005\"b\n\020TaskRewardConfig\022\?\n\rre"
+    "source_type\030\001 \002(\0162\025.message.ResourceType"
+    ":\021ResourceType_NULL\022\r\n\005count\030\002 \002(\005\"\215\002\n\016T"
+    "askInfoConfig\022\017\n\007task_id\030\001 \002(\005\022\014\n\004name\030\002"
+    " \002(\t\022\020\n\010describe\030\003 \002(\t\0224\n\nconditions\030\004 \003"
+    "(\0132 .message.TaskConditionTypeConfig\022*\n\007"
+    "rewards\030\005 \003(\0132\031.message.TaskRewardConfig"
+    "\022 \n\030required_pass_chapter_id\030\006 \002(\005\022 \n\030re"
+    "quired_pass_section_id\030\007 \002(\005\022$\n\034required"
+    "_complete_task_count\030\010 \002(\005*\277\001\n\rCondition"
+    "Type\022\026\n\022ConditionType_NULL\020\000\022!\n\035Conditio"
+    "nType_PassOfficilGame\020\001\022\035\n\031ConditionType"
+    "_LimitedTime\020\002\022\035\n\031ConditionType_LimitedS"
+    "tep\020\003\022\036\n\032ConditionType_PassUserGame\020\004\022\025\n"
+    "\021ConditionType_Max\020\005*\212\002\n\014ResourceType\022\025\n"
+    "\021ResourceType_NULL\020\000\022\022\n\016ResourceType_0\020\001"
+    "\022\022\n\016ResourceType_1\020\002\022\022\n\016ResourceType_2\020\003"
+    "\022\022\n\016ResourceType_3\020\004\022\022\n\016ResourceType_4\020\005"
+    "\022\022\n\016ResourceType_5\020\006\022\022\n\016ResourceType_6\020\007"
+    "\022\022\n\016ResourceType_7\020\010\022\025\n\021ResourceType_gol"
+    "d\020\t\022\026\n\022ResourceType_jewel\020\n\022\024\n\020ResourceT"
+    "ype_Max\020\013", 2049);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   int32array::default_instance_ = new int32array();
   CrashmoMapBaseData::default_instance_ = new CrashmoMapBaseData();
   CrashMapData::default_instance_ = new CrashMapData();
+  TaskInfo::default_instance_ = new TaskInfo();
   RankMapBlogEntry::default_instance_ = new RankMapBlogEntry();
   CrashPlayerPublishMap::default_instance_ = new CrashPlayerPublishMap();
   intPair::default_instance_ = new intPair();
@@ -383,6 +412,7 @@ void protobuf_AddDesc_common_2eproto() {
   int32array::default_instance_->InitAsDefaultInstance();
   CrashmoMapBaseData::default_instance_->InitAsDefaultInstance();
   CrashMapData::default_instance_->InitAsDefaultInstance();
+  TaskInfo::default_instance_->InitAsDefaultInstance();
   RankMapBlogEntry::default_instance_->InitAsDefaultInstance();
   CrashPlayerPublishMap::default_instance_->InitAsDefaultInstance();
   intPair::default_instance_->InitAsDefaultInstance();
@@ -2030,6 +2060,493 @@ void CrashMapData::InternalSwap(CrashMapData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int TaskInfo::kTaskIdFieldNumber;
+const int TaskInfo::kArgu1FieldNumber;
+const int TaskInfo::kArgu2FieldNumber;
+const int TaskInfo::kArgu3FieldNumber;
+#endif  // !_MSC_VER
+
+TaskInfo::TaskInfo()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.TaskInfo)
+}
+
+void TaskInfo::InitAsDefaultInstance() {
+}
+
+TaskInfo::TaskInfo(const TaskInfo& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.TaskInfo)
+}
+
+void TaskInfo::SharedCtor() {
+  _cached_size_ = 0;
+  task_id_ = 0;
+  argu_1_ = 0;
+  argu_2_ = 0;
+  argu_3_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+TaskInfo::~TaskInfo() {
+  // @@protoc_insertion_point(destructor:message.TaskInfo)
+  SharedDtor();
+}
+
+void TaskInfo::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void TaskInfo::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* TaskInfo::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return TaskInfo_descriptor_;
+}
+
+const TaskInfo& TaskInfo::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_common_2eproto();
+  return *default_instance_;
+}
+
+TaskInfo* TaskInfo::default_instance_ = NULL;
+
+TaskInfo* TaskInfo::New(::google::protobuf::Arena* arena) const {
+  TaskInfo* n = new TaskInfo;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void TaskInfo::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<TaskInfo*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(task_id_, argu_3_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool TaskInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.TaskInfo)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 task_id = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &task_id_)));
+          set_has_task_id();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_argu_1;
+        break;
+      }
+
+      // required int32 argu_1 = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_argu_1:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &argu_1_)));
+          set_has_argu_1();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_argu_2;
+        break;
+      }
+
+      // required int32 argu_2 = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_argu_2:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &argu_2_)));
+          set_has_argu_2();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_argu_3;
+        break;
+      }
+
+      // required int32 argu_3 = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_argu_3:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &argu_3_)));
+          set_has_argu_3();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.TaskInfo)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.TaskInfo)
+  return false;
+#undef DO_
+}
+
+void TaskInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.TaskInfo)
+  // required int32 task_id = 1;
+  if (has_task_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->task_id(), output);
+  }
+
+  // required int32 argu_1 = 2;
+  if (has_argu_1()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->argu_1(), output);
+  }
+
+  // required int32 argu_2 = 3;
+  if (has_argu_2()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->argu_2(), output);
+  }
+
+  // required int32 argu_3 = 4;
+  if (has_argu_3()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->argu_3(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.TaskInfo)
+}
+
+::google::protobuf::uint8* TaskInfo::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.TaskInfo)
+  // required int32 task_id = 1;
+  if (has_task_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->task_id(), target);
+  }
+
+  // required int32 argu_1 = 2;
+  if (has_argu_1()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->argu_1(), target);
+  }
+
+  // required int32 argu_2 = 3;
+  if (has_argu_2()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->argu_2(), target);
+  }
+
+  // required int32 argu_3 = 4;
+  if (has_argu_3()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->argu_3(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.TaskInfo)
+  return target;
+}
+
+int TaskInfo::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_task_id()) {
+    // required int32 task_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->task_id());
+  }
+
+  if (has_argu_1()) {
+    // required int32 argu_1 = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->argu_1());
+  }
+
+  if (has_argu_2()) {
+    // required int32 argu_2 = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->argu_2());
+  }
+
+  if (has_argu_3()) {
+    // required int32 argu_3 = 4;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->argu_3());
+  }
+
+  return total_size;
+}
+int TaskInfo::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+    // required int32 task_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->task_id());
+
+    // required int32 argu_1 = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->argu_1());
+
+    // required int32 argu_2 = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->argu_2());
+
+    // required int32 argu_3 = 4;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->argu_3());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void TaskInfo::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const TaskInfo* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const TaskInfo*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void TaskInfo::MergeFrom(const TaskInfo& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_task_id()) {
+      set_task_id(from.task_id());
+    }
+    if (from.has_argu_1()) {
+      set_argu_1(from.argu_1());
+    }
+    if (from.has_argu_2()) {
+      set_argu_2(from.argu_2());
+    }
+    if (from.has_argu_3()) {
+      set_argu_3(from.argu_3());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void TaskInfo::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TaskInfo::CopyFrom(const TaskInfo& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TaskInfo::IsInitialized() const {
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+
+  return true;
+}
+
+void TaskInfo::Swap(TaskInfo* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TaskInfo::InternalSwap(TaskInfo* other) {
+  std::swap(task_id_, other->task_id_);
+  std::swap(argu_1_, other->argu_1_);
+  std::swap(argu_2_, other->argu_2_);
+  std::swap(argu_3_, other->argu_3_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata TaskInfo::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = TaskInfo_descriptor_;
+  metadata.reflection = TaskInfo_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// TaskInfo
+
+// required int32 task_id = 1;
+ bool TaskInfo::has_task_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void TaskInfo::set_has_task_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void TaskInfo::clear_has_task_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void TaskInfo::clear_task_id() {
+  task_id_ = 0;
+  clear_has_task_id();
+}
+ ::google::protobuf::int32 TaskInfo::task_id() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfo.task_id)
+  return task_id_;
+}
+ void TaskInfo::set_task_id(::google::protobuf::int32 value) {
+  set_has_task_id();
+  task_id_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfo.task_id)
+}
+
+// required int32 argu_1 = 2;
+ bool TaskInfo::has_argu_1() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void TaskInfo::set_has_argu_1() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void TaskInfo::clear_has_argu_1() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void TaskInfo::clear_argu_1() {
+  argu_1_ = 0;
+  clear_has_argu_1();
+}
+ ::google::protobuf::int32 TaskInfo::argu_1() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfo.argu_1)
+  return argu_1_;
+}
+ void TaskInfo::set_argu_1(::google::protobuf::int32 value) {
+  set_has_argu_1();
+  argu_1_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfo.argu_1)
+}
+
+// required int32 argu_2 = 3;
+ bool TaskInfo::has_argu_2() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+ void TaskInfo::set_has_argu_2() {
+  _has_bits_[0] |= 0x00000004u;
+}
+ void TaskInfo::clear_has_argu_2() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+ void TaskInfo::clear_argu_2() {
+  argu_2_ = 0;
+  clear_has_argu_2();
+}
+ ::google::protobuf::int32 TaskInfo::argu_2() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfo.argu_2)
+  return argu_2_;
+}
+ void TaskInfo::set_argu_2(::google::protobuf::int32 value) {
+  set_has_argu_2();
+  argu_2_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfo.argu_2)
+}
+
+// required int32 argu_3 = 4;
+ bool TaskInfo::has_argu_3() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+ void TaskInfo::set_has_argu_3() {
+  _has_bits_[0] |= 0x00000008u;
+}
+ void TaskInfo::clear_has_argu_3() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+ void TaskInfo::clear_argu_3() {
+  argu_3_ = 0;
+  clear_has_argu_3();
+}
+ ::google::protobuf::int32 TaskInfo::argu_3() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfo.argu_3)
+  return argu_3_;
+}
+ void TaskInfo::set_argu_3(::google::protobuf::int32 value) {
+  set_has_argu_3();
+  argu_3_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfo.argu_3)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int RankMapBlogEntry::kAccFieldNumber;
 const int RankMapBlogEntry::kNameFieldNumber;
 const int RankMapBlogEntry::kSuggesFieldNumber;
@@ -3612,8 +4129,7 @@ void intPair::InternalSwap(intPair* other) {
 
 #ifndef _MSC_VER
 const int CrashPlayerInfo::kAccountFieldNumber;
-const int CrashPlayerInfo::kPassChapterFieldNumber;
-const int CrashPlayerInfo::kPassSectionFieldNumber;
+const int CrashPlayerInfo::kPassedRecordFieldNumber;
 const int CrashPlayerInfo::kNameFieldNumber;
 const int CrashPlayerInfo::kIncompleteMapFieldNumber;
 const int CrashPlayerInfo::kCompleteMapFieldNumber;
@@ -3623,6 +4139,7 @@ const int CrashPlayerInfo::kMapWidthFieldNumber;
 const int CrashPlayerInfo::kMapHeightFieldNumber;
 const int CrashPlayerInfo::kMapCountFieldNumber;
 const int CrashPlayerInfo::kGoldFieldNumber;
+const int CrashPlayerInfo::kCurrentTaskFieldNumber;
 #endif  // !_MSC_VER
 
 CrashPlayerInfo::CrashPlayerInfo()
@@ -3646,8 +4163,6 @@ void CrashPlayerInfo::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   account_ = GOOGLE_ULONGLONG(0);
-  pass_chapter_ = 0;
-  pass_section_ = 0;
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   isadmin_ = false;
   map_width_ = 0;
@@ -3702,21 +4217,26 @@ void CrashPlayerInfo::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  if (_has_bits_[0 / 32] & 79) {
-    ZR_(account_, pass_section_);
+  if (_has_bits_[0 / 32] & 165) {
+    ZR_(isadmin_, map_width_);
+    account_ = GOOGLE_ULONGLONG(0);
     if (has_name()) {
       name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
-    isadmin_ = false;
   }
-  ZR_(map_width_, gold_);
+  if (_has_bits_[8 / 32] & 1792) {
+    ZR_(map_height_, map_count_);
+    gold_ = 0;
+  }
 
 #undef ZR_HELPER_
 #undef ZR_
 
+  passed_record_.Clear();
   incompletemap_.Clear();
   completemap_.Clear();
   resources_.Clear();
+  current_task_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->Clear();
@@ -3743,43 +4263,27 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_pass_chapter;
+        if (input->ExpectTag(18)) goto parse_passed_record;
         break;
       }
 
-      // required int32 pass_chapter = 2;
+      // repeated .message.intPair passed_record = 2;
       case 2: {
-        if (tag == 16) {
-         parse_pass_chapter:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &pass_chapter_)));
-          set_has_pass_chapter();
+        if (tag == 18) {
+         parse_passed_record:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_passed_record()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(32)) goto parse_pass_section;
+        if (input->ExpectTag(18)) goto parse_passed_record;
+        if (input->ExpectTag(26)) goto parse_name;
         break;
       }
 
-      // required int32 pass_section = 4;
-      case 4: {
-        if (tag == 32) {
-         parse_pass_section:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &pass_section_)));
-          set_has_pass_section();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(42)) goto parse_name;
-        break;
-      }
-
-      // required string name = 5;
-      case 5: {
-        if (tag == 42) {
+      // required string name = 3;
+      case 3: {
+        if (tag == 26) {
          parse_name:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_name()));
@@ -3790,41 +4294,41 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_IncompleteMap;
+        if (input->ExpectTag(34)) goto parse_IncompleteMap;
         break;
       }
 
-      // repeated .message.CrashMapData IncompleteMap = 6;
-      case 6: {
-        if (tag == 50) {
+      // repeated .message.CrashMapData IncompleteMap = 4;
+      case 4: {
+        if (tag == 34) {
          parse_IncompleteMap:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                 input, add_incompletemap()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_IncompleteMap;
-        if (input->ExpectTag(58)) goto parse_CompleteMap;
+        if (input->ExpectTag(34)) goto parse_IncompleteMap;
+        if (input->ExpectTag(42)) goto parse_CompleteMap;
         break;
       }
 
-      // repeated .message.CrashMapData CompleteMap = 7;
-      case 7: {
-        if (tag == 58) {
+      // repeated .message.CrashMapData CompleteMap = 5;
+      case 5: {
+        if (tag == 42) {
          parse_CompleteMap:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                 input, add_completemap()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_CompleteMap;
-        if (input->ExpectTag(64)) goto parse_isadmin;
+        if (input->ExpectTag(42)) goto parse_CompleteMap;
+        if (input->ExpectTag(48)) goto parse_isadmin;
         break;
       }
 
-      // required bool isadmin = 8;
-      case 8: {
-        if (tag == 64) {
+      // required bool isadmin = 6;
+      case 6: {
+        if (tag == 48) {
          parse_isadmin:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -3833,27 +4337,27 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_resources;
+        if (input->ExpectTag(58)) goto parse_resources;
         break;
       }
 
-      // repeated .message.intPair resources = 9;
-      case 9: {
-        if (tag == 74) {
+      // repeated .message.intPair resources = 7;
+      case 7: {
+        if (tag == 58) {
          parse_resources:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                 input, add_resources()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_resources;
-        if (input->ExpectTag(80)) goto parse_map_width;
+        if (input->ExpectTag(58)) goto parse_resources;
+        if (input->ExpectTag(64)) goto parse_map_width;
         break;
       }
 
-      // required int32 map_width = 10;
-      case 10: {
-        if (tag == 80) {
+      // required int32 map_width = 8;
+      case 8: {
+        if (tag == 64) {
          parse_map_width:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3862,13 +4366,13 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(88)) goto parse_map_height;
+        if (input->ExpectTag(72)) goto parse_map_height;
         break;
       }
 
-      // required int32 map_height = 11;
-      case 11: {
-        if (tag == 88) {
+      // required int32 map_height = 9;
+      case 9: {
+        if (tag == 72) {
          parse_map_height:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3877,13 +4381,13 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(96)) goto parse_map_count;
+        if (input->ExpectTag(80)) goto parse_map_count;
         break;
       }
 
-      // required int32 map_count = 12;
-      case 12: {
-        if (tag == 96) {
+      // required int32 map_count = 10;
+      case 10: {
+        if (tag == 80) {
          parse_map_count:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3892,13 +4396,13 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(104)) goto parse_gold;
+        if (input->ExpectTag(88)) goto parse_gold;
         break;
       }
 
-      // required int32 gold = 13;
-      case 13: {
-        if (tag == 104) {
+      // required int32 gold = 11;
+      case 11: {
+        if (tag == 88) {
          parse_gold:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3907,6 +4411,20 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(98)) goto parse_current_task;
+        break;
+      }
+
+      // repeated .message.TaskInfo current_task = 12;
+      case 12: {
+        if (tag == 98) {
+         parse_current_task:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_current_task()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(98)) goto parse_current_task;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -3941,67 +4459,69 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->account(), output);
   }
 
-  // required int32 pass_chapter = 2;
-  if (has_pass_chapter()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->pass_chapter(), output);
+  // repeated .message.intPair passed_record = 2;
+  for (unsigned int i = 0, n = this->passed_record_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->passed_record(i), output);
   }
 
-  // required int32 pass_section = 4;
-  if (has_pass_section()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->pass_section(), output);
-  }
-
-  // required string name = 5;
+  // required string name = 3;
   if (has_name()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->name().data(), this->name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "message.CrashPlayerInfo.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->name(), output);
+      3, this->name(), output);
   }
 
-  // repeated .message.CrashMapData IncompleteMap = 6;
+  // repeated .message.CrashMapData IncompleteMap = 4;
   for (unsigned int i = 0, n = this->incompletemap_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->incompletemap(i), output);
+      4, this->incompletemap(i), output);
   }
 
-  // repeated .message.CrashMapData CompleteMap = 7;
+  // repeated .message.CrashMapData CompleteMap = 5;
   for (unsigned int i = 0, n = this->completemap_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, this->completemap(i), output);
+      5, this->completemap(i), output);
   }
 
-  // required bool isadmin = 8;
+  // required bool isadmin = 6;
   if (has_isadmin()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->isadmin(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->isadmin(), output);
   }
 
-  // repeated .message.intPair resources = 9;
+  // repeated .message.intPair resources = 7;
   for (unsigned int i = 0, n = this->resources_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      9, this->resources(i), output);
+      7, this->resources(i), output);
   }
 
-  // required int32 map_width = 10;
+  // required int32 map_width = 8;
   if (has_map_width()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->map_width(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->map_width(), output);
   }
 
-  // required int32 map_height = 11;
+  // required int32 map_height = 9;
   if (has_map_height()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->map_height(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->map_height(), output);
   }
 
-  // required int32 map_count = 12;
+  // required int32 map_count = 10;
   if (has_map_count()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->map_count(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->map_count(), output);
   }
 
-  // required int32 gold = 13;
+  // required int32 gold = 11;
   if (has_gold()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(13, this->gold(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->gold(), output);
+  }
+
+  // repeated .message.TaskInfo current_task = 12;
+  for (unsigned int i = 0, n = this->current_task_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      12, this->current_task(i), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4019,17 +4539,14 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->account(), target);
   }
 
-  // required int32 pass_chapter = 2;
-  if (has_pass_chapter()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->pass_chapter(), target);
+  // repeated .message.intPair passed_record = 2;
+  for (unsigned int i = 0, n = this->passed_record_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->passed_record(i), target);
   }
 
-  // required int32 pass_section = 4;
-  if (has_pass_section()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->pass_section(), target);
-  }
-
-  // required string name = 5;
+  // required string name = 3;
   if (has_name()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->name().data(), this->name().length(),
@@ -4037,53 +4554,60 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
       "message.CrashPlayerInfo.name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->name(), target);
+        3, this->name(), target);
   }
 
-  // repeated .message.CrashMapData IncompleteMap = 6;
+  // repeated .message.CrashMapData IncompleteMap = 4;
   for (unsigned int i = 0, n = this->incompletemap_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        6, this->incompletemap(i), target);
+        4, this->incompletemap(i), target);
   }
 
-  // repeated .message.CrashMapData CompleteMap = 7;
+  // repeated .message.CrashMapData CompleteMap = 5;
   for (unsigned int i = 0, n = this->completemap_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        7, this->completemap(i), target);
+        5, this->completemap(i), target);
   }
 
-  // required bool isadmin = 8;
+  // required bool isadmin = 6;
   if (has_isadmin()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->isadmin(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->isadmin(), target);
   }
 
-  // repeated .message.intPair resources = 9;
+  // repeated .message.intPair resources = 7;
   for (unsigned int i = 0, n = this->resources_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        9, this->resources(i), target);
+        7, this->resources(i), target);
   }
 
-  // required int32 map_width = 10;
+  // required int32 map_width = 8;
   if (has_map_width()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->map_width(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->map_width(), target);
   }
 
-  // required int32 map_height = 11;
+  // required int32 map_height = 9;
   if (has_map_height()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->map_height(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->map_height(), target);
   }
 
-  // required int32 map_count = 12;
+  // required int32 map_count = 10;
   if (has_map_count()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->map_count(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->map_count(), target);
   }
 
-  // required int32 gold = 13;
+  // required int32 gold = 11;
   if (has_gold()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(13, this->gold(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->gold(), target);
+  }
+
+  // repeated .message.TaskInfo current_task = 12;
+  for (unsigned int i = 0, n = this->current_task_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        12, this->current_task(i), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4104,55 +4628,41 @@ int CrashPlayerInfo::RequiredFieldsByteSizeFallback() const {
         this->account());
   }
 
-  if (has_pass_chapter()) {
-    // required int32 pass_chapter = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->pass_chapter());
-  }
-
-  if (has_pass_section()) {
-    // required int32 pass_section = 4;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->pass_section());
-  }
-
   if (has_name()) {
-    // required string name = 5;
+    // required string name = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->name());
   }
 
   if (has_isadmin()) {
-    // required bool isadmin = 8;
+    // required bool isadmin = 6;
     total_size += 1 + 1;
   }
 
   if (has_map_width()) {
-    // required int32 map_width = 10;
+    // required int32 map_width = 8;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->map_width());
   }
 
   if (has_map_height()) {
-    // required int32 map_height = 11;
+    // required int32 map_height = 9;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->map_height());
   }
 
   if (has_map_count()) {
-    // required int32 map_count = 12;
+    // required int32 map_count = 10;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->map_count());
   }
 
   if (has_gold()) {
-    // required int32 gold = 13;
+    // required int32 gold = 11;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->gold());
@@ -4163,46 +4673,36 @@ int CrashPlayerInfo::RequiredFieldsByteSizeFallback() const {
 int CrashPlayerInfo::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000f4f) ^ 0x00000f4f) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x000007a5) ^ 0x000007a5) == 0) {  // All required fields are present.
     // required uint64 account = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->account());
 
-    // required int32 pass_chapter = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->pass_chapter());
-
-    // required int32 pass_section = 4;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->pass_section());
-
-    // required string name = 5;
+    // required string name = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->name());
 
-    // required bool isadmin = 8;
+    // required bool isadmin = 6;
     total_size += 1 + 1;
 
-    // required int32 map_width = 10;
+    // required int32 map_width = 8;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->map_width());
 
-    // required int32 map_height = 11;
+    // required int32 map_height = 9;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->map_height());
 
-    // required int32 map_count = 12;
+    // required int32 map_count = 10;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->map_count());
 
-    // required int32 gold = 13;
+    // required int32 gold = 11;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->gold());
@@ -4210,7 +4710,15 @@ int CrashPlayerInfo::ByteSize() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  // repeated .message.CrashMapData IncompleteMap = 6;
+  // repeated .message.intPair passed_record = 2;
+  total_size += 1 * this->passed_record_size();
+  for (int i = 0; i < this->passed_record_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->passed_record(i));
+  }
+
+  // repeated .message.CrashMapData IncompleteMap = 4;
   total_size += 1 * this->incompletemap_size();
   for (int i = 0; i < this->incompletemap_size(); i++) {
     total_size +=
@@ -4218,7 +4726,7 @@ int CrashPlayerInfo::ByteSize() const {
         this->incompletemap(i));
   }
 
-  // repeated .message.CrashMapData CompleteMap = 7;
+  // repeated .message.CrashMapData CompleteMap = 5;
   total_size += 1 * this->completemap_size();
   for (int i = 0; i < this->completemap_size(); i++) {
     total_size +=
@@ -4226,12 +4734,20 @@ int CrashPlayerInfo::ByteSize() const {
         this->completemap(i));
   }
 
-  // repeated .message.intPair resources = 9;
+  // repeated .message.intPair resources = 7;
   total_size += 1 * this->resources_size();
   for (int i = 0; i < this->resources_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         this->resources(i));
+  }
+
+  // repeated .message.TaskInfo current_task = 12;
+  total_size += 1 * this->current_task_size();
+  for (int i = 0; i < this->current_task_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->current_task(i));
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4259,18 +4775,14 @@ void CrashPlayerInfo::MergeFrom(const ::google::protobuf::Message& from) {
 
 void CrashPlayerInfo::MergeFrom(const CrashPlayerInfo& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  passed_record_.MergeFrom(from.passed_record_);
   incompletemap_.MergeFrom(from.incompletemap_);
   completemap_.MergeFrom(from.completemap_);
   resources_.MergeFrom(from.resources_);
+  current_task_.MergeFrom(from.current_task_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_account()) {
       set_account(from.account());
-    }
-    if (from.has_pass_chapter()) {
-      set_pass_chapter(from.pass_chapter());
-    }
-    if (from.has_pass_section()) {
-      set_pass_section(from.pass_section());
     }
     if (from.has_name()) {
       set_has_name();
@@ -4279,11 +4791,11 @@ void CrashPlayerInfo::MergeFrom(const CrashPlayerInfo& from) {
     if (from.has_isadmin()) {
       set_isadmin(from.isadmin());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_map_width()) {
       set_map_width(from.map_width());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_map_height()) {
       set_map_height(from.map_height());
     }
@@ -4312,11 +4824,13 @@ void CrashPlayerInfo::CopyFrom(const CrashPlayerInfo& from) {
 }
 
 bool CrashPlayerInfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000f4f) != 0x00000f4f) return false;
+  if ((_has_bits_[0] & 0x000007a5) != 0x000007a5) return false;
 
+  if (!::google::protobuf::internal::AllAreInitialized(this->passed_record())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->incompletemap())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->completemap())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->resources())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->current_task())) return false;
   return true;
 }
 
@@ -4326,8 +4840,7 @@ void CrashPlayerInfo::Swap(CrashPlayerInfo* other) {
 }
 void CrashPlayerInfo::InternalSwap(CrashPlayerInfo* other) {
   std::swap(account_, other->account_);
-  std::swap(pass_chapter_, other->pass_chapter_);
-  std::swap(pass_section_, other->pass_section_);
+  passed_record_.UnsafeArenaSwap(&other->passed_record_);
   name_.Swap(&other->name_);
   incompletemap_.UnsafeArenaSwap(&other->incompletemap_);
   completemap_.UnsafeArenaSwap(&other->completemap_);
@@ -4337,6 +4850,7 @@ void CrashPlayerInfo::InternalSwap(CrashPlayerInfo* other) {
   std::swap(map_height_, other->map_height_);
   std::swap(map_count_, other->map_count_);
   std::swap(gold_, other->gold_);
+  current_task_.UnsafeArenaSwap(&other->current_task_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -4377,63 +4891,45 @@ void CrashPlayerInfo::InternalSwap(CrashPlayerInfo* other) {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.account)
 }
 
-// required int32 pass_chapter = 2;
- bool CrashPlayerInfo::has_pass_chapter() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+// repeated .message.intPair passed_record = 2;
+ int CrashPlayerInfo::passed_record_size() const {
+  return passed_record_.size();
 }
- void CrashPlayerInfo::set_has_pass_chapter() {
-  _has_bits_[0] |= 0x00000002u;
+ void CrashPlayerInfo::clear_passed_record() {
+  passed_record_.Clear();
 }
- void CrashPlayerInfo::clear_has_pass_chapter() {
-  _has_bits_[0] &= ~0x00000002u;
+ const ::message::intPair& CrashPlayerInfo::passed_record(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.passed_record)
+  return passed_record_.Get(index);
 }
- void CrashPlayerInfo::clear_pass_chapter() {
-  pass_chapter_ = 0;
-  clear_has_pass_chapter();
+ ::message::intPair* CrashPlayerInfo::mutable_passed_record(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.passed_record)
+  return passed_record_.Mutable(index);
 }
- ::google::protobuf::int32 CrashPlayerInfo::pass_chapter() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.pass_chapter)
-  return pass_chapter_;
+ ::message::intPair* CrashPlayerInfo::add_passed_record() {
+  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.passed_record)
+  return passed_record_.Add();
 }
- void CrashPlayerInfo::set_pass_chapter(::google::protobuf::int32 value) {
-  set_has_pass_chapter();
-  pass_chapter_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.pass_chapter)
+ const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
+CrashPlayerInfo::passed_record() const {
+  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.passed_record)
+  return passed_record_;
+}
+ ::google::protobuf::RepeatedPtrField< ::message::intPair >*
+CrashPlayerInfo::mutable_passed_record() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.passed_record)
+  return &passed_record_;
 }
 
-// required int32 pass_section = 4;
- bool CrashPlayerInfo::has_pass_section() const {
+// required string name = 3;
+ bool CrashPlayerInfo::has_name() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
- void CrashPlayerInfo::set_has_pass_section() {
+ void CrashPlayerInfo::set_has_name() {
   _has_bits_[0] |= 0x00000004u;
 }
- void CrashPlayerInfo::clear_has_pass_section() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void CrashPlayerInfo::clear_pass_section() {
-  pass_section_ = 0;
-  clear_has_pass_section();
-}
- ::google::protobuf::int32 CrashPlayerInfo::pass_section() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.pass_section)
-  return pass_section_;
-}
- void CrashPlayerInfo::set_pass_section(::google::protobuf::int32 value) {
-  set_has_pass_section();
-  pass_section_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.pass_section)
-}
-
-// required string name = 5;
- bool CrashPlayerInfo::has_name() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void CrashPlayerInfo::set_has_name() {
-  _has_bits_[0] |= 0x00000008u;
-}
  void CrashPlayerInfo::clear_has_name() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
  void CrashPlayerInfo::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -4478,7 +4974,7 @@ void CrashPlayerInfo::InternalSwap(CrashPlayerInfo* other) {
   // @@protoc_insertion_point(field_set_allocated:message.CrashPlayerInfo.name)
 }
 
-// repeated .message.CrashMapData IncompleteMap = 6;
+// repeated .message.CrashMapData IncompleteMap = 4;
  int CrashPlayerInfo::incompletemap_size() const {
   return incompletemap_.size();
 }
@@ -4508,7 +5004,7 @@ CrashPlayerInfo::mutable_incompletemap() {
   return &incompletemap_;
 }
 
-// repeated .message.CrashMapData CompleteMap = 7;
+// repeated .message.CrashMapData CompleteMap = 5;
  int CrashPlayerInfo::completemap_size() const {
   return completemap_.size();
 }
@@ -4538,15 +5034,15 @@ CrashPlayerInfo::mutable_completemap() {
   return &completemap_;
 }
 
-// required bool isadmin = 8;
+// required bool isadmin = 6;
  bool CrashPlayerInfo::has_isadmin() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
  void CrashPlayerInfo::set_has_isadmin() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
  void CrashPlayerInfo::clear_has_isadmin() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
  void CrashPlayerInfo::clear_isadmin() {
   isadmin_ = false;
@@ -4562,7 +5058,7 @@ CrashPlayerInfo::mutable_completemap() {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.isadmin)
 }
 
-// repeated .message.intPair resources = 9;
+// repeated .message.intPair resources = 7;
  int CrashPlayerInfo::resources_size() const {
   return resources_.size();
 }
@@ -4592,15 +5088,15 @@ CrashPlayerInfo::mutable_resources() {
   return &resources_;
 }
 
-// required int32 map_width = 10;
+// required int32 map_width = 8;
  bool CrashPlayerInfo::has_map_width() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
  void CrashPlayerInfo::set_has_map_width() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
  void CrashPlayerInfo::clear_has_map_width() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
  void CrashPlayerInfo::clear_map_width() {
   map_width_ = 0;
@@ -4616,15 +5112,15 @@ CrashPlayerInfo::mutable_resources() {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_width)
 }
 
-// required int32 map_height = 11;
+// required int32 map_height = 9;
  bool CrashPlayerInfo::has_map_height() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
  void CrashPlayerInfo::set_has_map_height() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
  void CrashPlayerInfo::clear_has_map_height() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
  void CrashPlayerInfo::clear_map_height() {
   map_height_ = 0;
@@ -4640,15 +5136,15 @@ CrashPlayerInfo::mutable_resources() {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_height)
 }
 
-// required int32 map_count = 12;
+// required int32 map_count = 10;
  bool CrashPlayerInfo::has_map_count() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
  void CrashPlayerInfo::set_has_map_count() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
  void CrashPlayerInfo::clear_has_map_count() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
  void CrashPlayerInfo::clear_map_count() {
   map_count_ = 0;
@@ -4664,15 +5160,15 @@ CrashPlayerInfo::mutable_resources() {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_count)
 }
 
-// required int32 gold = 13;
+// required int32 gold = 11;
  bool CrashPlayerInfo::has_gold() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
  void CrashPlayerInfo::set_has_gold() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
  void CrashPlayerInfo::clear_has_gold() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
  void CrashPlayerInfo::clear_gold() {
   gold_ = 0;
@@ -4686,6 +5182,36 @@ CrashPlayerInfo::mutable_resources() {
   set_has_gold();
   gold_ = value;
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.gold)
+}
+
+// repeated .message.TaskInfo current_task = 12;
+ int CrashPlayerInfo::current_task_size() const {
+  return current_task_.size();
+}
+ void CrashPlayerInfo::clear_current_task() {
+  current_task_.Clear();
+}
+ const ::message::TaskInfo& CrashPlayerInfo::current_task(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.current_task)
+  return current_task_.Get(index);
+}
+ ::message::TaskInfo* CrashPlayerInfo::mutable_current_task(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.current_task)
+  return current_task_.Mutable(index);
+}
+ ::message::TaskInfo* CrashPlayerInfo::add_current_task() {
+  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.current_task)
+  return current_task_.Add();
+}
+ const ::google::protobuf::RepeatedPtrField< ::message::TaskInfo >&
+CrashPlayerInfo::current_task() const {
+  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.current_task)
+  return current_task_;
+}
+ ::google::protobuf::RepeatedPtrField< ::message::TaskInfo >*
+CrashPlayerInfo::mutable_current_task() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.current_task)
+  return &current_task_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

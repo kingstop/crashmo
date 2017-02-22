@@ -10,6 +10,7 @@ public:
 	void init(DBQuery* p);
 	void getOfficilMap(CrashPlayer* p, int page);
 	const OFFICILMAPLIST* getOfficilMap();
+	const message::CrashMapData* getOfficilMap(int chapter_id, int section_id);
 	void saveMapOfficilMap(const message::CrashMapData* map_data, CrashPlayer* p);
 	void modifySectionName(int section, const char* name, CrashPlayer* player);
 	const CHAPTERSNAMES& getSectionNames();

@@ -12,8 +12,8 @@ CrashPlayer::CrashPlayer(Session* session):_session(session)
 CrashPlayer::CrashPlayer(Session* session, account_type acc) : _session(session)
 {
 	_info.set_name("name");
-	_info.set_pass_chapter(0);
-	_info.set_pass_section(0);	
+	//_info.set_pass_chapter(0);
+	//_info.set_pass_section(0);	
 	_info.set_isadmin(true);
 	_info.set_account(acc);
 	_ping_count = 0;
@@ -40,7 +40,117 @@ void CrashPlayer::LoadConfig()
 	_info.set_map_count(config->config_count_);
 	_info.set_map_width(config->config_width_);
 	_info.set_map_height(config->config_heigth_);
+}
 
+void CrashPlayer::PassOfficilMap(int chapter_id, int section_id, int use_step, int use_time)
+{
+	message::ServerError error = message::ServerError_PassOfficilMapFailedTheMapIsLock;
+	bool first_pass = false;
+	int length = _info.passed_record_size();
+	message::MsgS2CPassOfficilMapACK msg;
+	int add_gold = 0;
+	
+
+	const message::CrashMapData* MapData = gOfficilMapManager.getOfficilMap(chapter_id, section_id);
+	if (MapData != NULL)
+	{
+		for (size_t i = 0; i < length; i++)
+		{
+			message::intPair* pair_entry = _info.mutable_passed_record(i);
+
+			if (pair_entry->number_1() == chapter_id)
+			{
+				error = message::ServerError_NO;
+				int temp = pair_entry->number_2() + 1;
+				if (section_id > temp)
+				{
+					error = message::ServerError_PassOfficilMapFailedTheMapIsLock;
+				}
+				else if (temp == section_id)
+				{
+					first_pass = true;
+					pair_entry->set_number_2(temp);
+				}
+				else
+				{
+
+				}
+				break;
+			}
+		}
+
+		
+		if (error == message::ServerError_NO)
+		{
+			if (first_pass)
+			{
+				add_gold = MapData->gold();
+			}
+
+			google::protobuf::RepeatedPtrField< ::message::TaskInfo >* map_task = _info.mutable_current_task();
+			google::protobuf::RepeatedPtrField< ::message::TaskInfo >::iterator it_task = map_task->begin();
+			for (; it_task != map_task->end(); ++ it_task)
+			{
+				message::TaskInfo& entry = (*it_task);
+				int task_id = entry.task_id();
+				const message::TaskInfoConfig*  task_config = gTaskManager.GetTaskConfig(task_id);
+				if (task_config != NULL)
+				{
+					int length = task_config->conditions_size();
+					for (size_t i = 0; i < length; i++)
+					{
+						const message::TaskConditionTypeConfig& config =  task_config->conditions(i);
+						switch (config.condition())
+						{
+						case message::ConditionType_PassOfficilGame:
+						{
+							if (config.argu_1() == chapter_id && config.argu_2() == section_id)
+							{
+
+							}
+							
+						}
+						break;
+						case message::ConditionType_LimitedTime:
+						{
+
+						}
+						break;
+						case message::ConditionType_LimitedStep:
+						{
+
+						}
+						break;
+						case message::ConditionType_PassUserGame:
+						{
+
+						}
+						break;
+						default:
+							break;
+						}
+
+					}
+				}
+
+			}
+		}
+	}
+	else
+	{
+		error = message::ServerError_PassOfficilMapFailedTheMapNotFound;
+	}
+
+	msg.set_chapter_id(chapter_id);
+	msg.set_section_id(section_id);
+	msg.set_error(error);
+	msg.set_add_gold(add_gold);
+	msg.set_current_gold(_info.gold());
+	length = _info.resources_size();
+	for (size_t i = 0; i < length; i++)
+	{
+		msg.add_add_resource()->CopyFrom(_info.resources(i));
+	}
 }
 
 void CrashPlayer::SetInfo(message::CrashPlayerInfo info)

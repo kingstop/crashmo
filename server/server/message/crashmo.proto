@@ -7,6 +7,8 @@ enum ServerError
 	ServerError_Unknow = 1;
 	ServerError_HaveSameName = 2;
 	ServerError_NotFoundMapNameWhenDel = 3;
+	ServerError_PassOfficilMapFailedTheMapIsLock = 4;
+	ServerError_PassOfficilMapFailedTheMapNotFound = 5;
 	
 }
 
@@ -186,7 +188,7 @@ message MsgS2CMapBolgACK
 
 }
 
-message MsgC3SReqEnterOfficilMap
+message MsgC2SReqEnterOfficilMap
 {
 	required uint32 chapter_id = 1;
 	required uint32 section_id = 2;
@@ -198,4 +200,25 @@ message MsgS2CEnterOfficilMapACK
 {
 	required uint32 chapter_id = 1;
 	required uint32 section_id = 2;
+}
+
+message MsgC2SReqPassOfficilMap
+{
+	required uint32 chapter_id = 1;
+	required uint32 section_id = 2;
+	required uint32 use_time = 3;
+	required uint32 use_step = 4;
+}
+
+
+message MsgS2CPassOfficilMapACK
+{
+	required uint32 chapter_id = 1;
+	required uint32 section_id = 2;
+	required uint32 add_gold = 3;
+	repeated intPair add_resource = 4;
+	required uint32 current_gold = 5;
+	repeated intPair current_resource = 6;
+	repeated int32 complete_task_id = 7;
+	required ServerError error = 8 [default = ServerError_NO];
 }

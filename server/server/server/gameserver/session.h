@@ -37,6 +37,8 @@ public:
 	void parseReqModifyTaskInfo(google::protobuf::Message* p);
 	void parseModifySectionName(google::protobuf::Message* p);
 	void parseGetSectionNameReq(google::protobuf::Message* p);
+	void parseEnterOfficilGame(google::protobuf::Message* p);
+	void parsePassOfficilGame(google::protobuf::Message* p);
 protected:
 	void CreateCrashMoClientInit();
 protected:

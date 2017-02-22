@@ -124,6 +124,44 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TaskInfo")]
+  public partial class TaskInfo : global::ProtoBuf.IExtensible
+  {
+    public TaskInfo() {}
+    
+    private int _task_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"task_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int task_id
+    {
+      get { return _task_id; }
+      set { _task_id = value; }
+    }
+    private int _argu_1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"argu_1", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int argu_1
+    {
+      get { return _argu_1; }
+      set { _argu_1 = value; }
+    }
+    private int _argu_2;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"argu_2", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int argu_2
+    {
+      get { return _argu_2; }
+      set { _argu_2 = value; }
+    }
+    private int _argu_3;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"argu_3", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int argu_3
+    {
+      get { return _argu_3; }
+      set { _argu_3 = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RankMapBlogEntry")]
   public partial class RankMapBlogEntry : global::ProtoBuf.IExtensible
   {
@@ -250,83 +288,83 @@ namespace message
       get { return _account; }
       set { _account = value; }
     }
-    private int _pass_chapter;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"pass_chapter", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int pass_chapter
+    private readonly global::System.Collections.Generic.List<message.intPair> _passed_record = new global::System.Collections.Generic.List<message.intPair>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"passed_record", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.intPair> passed_record
     {
-      get { return _pass_chapter; }
-      set { _pass_chapter = value; }
+      get { return _passed_record; }
     }
-    private int _pass_section;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"pass_section", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int pass_section
-    {
-      get { return _pass_section; }
-      set { _pass_section = value; }
-    }
+  
     private string _name;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string name
     {
       get { return _name; }
       set { _name = value; }
     }
     private readonly global::System.Collections.Generic.List<message.CrashMapData> _IncompleteMap = new global::System.Collections.Generic.List<message.CrashMapData>();
-    [global::ProtoBuf.ProtoMember(6, Name=@"IncompleteMap", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(4, Name=@"IncompleteMap", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<message.CrashMapData> IncompleteMap
     {
       get { return _IncompleteMap; }
     }
   
     private readonly global::System.Collections.Generic.List<message.CrashMapData> _CompleteMap = new global::System.Collections.Generic.List<message.CrashMapData>();
-    [global::ProtoBuf.ProtoMember(7, Name=@"CompleteMap", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(5, Name=@"CompleteMap", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<message.CrashMapData> CompleteMap
     {
       get { return _CompleteMap; }
     }
   
     private bool _isadmin;
-    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"isadmin", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"isadmin", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool isadmin
     {
       get { return _isadmin; }
       set { _isadmin = value; }
     }
     private readonly global::System.Collections.Generic.List<message.intPair> _resources = new global::System.Collections.Generic.List<message.intPair>();
-    [global::ProtoBuf.ProtoMember(9, Name=@"resources", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(7, Name=@"resources", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<message.intPair> resources
     {
       get { return _resources; }
     }
   
     private int _map_width;
-    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"map_width", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"map_width", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int map_width
     {
       get { return _map_width; }
       set { _map_width = value; }
     }
     private int _map_height;
-    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"map_height", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"map_height", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int map_height
     {
       get { return _map_height; }
       set { _map_height = value; }
     }
     private int _map_count;
-    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"map_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"map_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int map_count
     {
       get { return _map_count; }
       set { _map_count = value; }
     }
     private int _gold;
-    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int gold
     {
       get { return _gold; }
       set { _gold = value; }
     }
+    private readonly global::System.Collections.Generic.List<message.TaskInfo> _current_task = new global::System.Collections.Generic.List<message.TaskInfo>();
+    [global::ProtoBuf.ProtoMember(12, Name=@"current_task", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.TaskInfo> current_task
+    {
+      get { return _current_task; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

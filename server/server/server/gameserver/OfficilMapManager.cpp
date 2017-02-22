@@ -214,3 +214,18 @@ const CHAPTERSNAMES& OfficilMapManager::getSectionNames()
 {
 	return _chapter_names;
 }
+
+const message::CrashMapData* OfficilMapManager::getOfficilMap(int chapter_id, int section_id)
+{
+	message::CrashMapData* entry = NULL;
+	OFFICILMAPLIST::iterator it = _officilmap.find(chapter_id);
+	if (it != _officilmap.end())
+	{
+		std::map<int, message::CrashMapData>::iterator it_section = it->second.find(section_id);
+		if (it_section != it->second.end())
+		{
+			entry = &it_section->second;
+		}
+	}
+	return entry;
+}

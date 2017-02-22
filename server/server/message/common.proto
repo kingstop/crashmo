@@ -24,7 +24,14 @@ message CrashMapData
 	required int32 gold = 7;
 }
 
-
+message TaskInfo
+{
+	required int32 task_id = 1;
+	required int32 argu_1 = 2;
+	required int32 argu_2 = 3;
+	required int32 argu_3 = 4;
+	
+}
 
 message RankMapBlogEntry
 {
@@ -53,17 +60,17 @@ message intPair
 message CrashPlayerInfo
 {
 	required uint64 account = 1;
-	required int32 pass_chapter = 2;
-	required int32 pass_section = 4;
-	required string name = 5;
-	repeated CrashMapData IncompleteMap = 6;
-	repeated CrashMapData CompleteMap = 7;
-	required bool isadmin = 8;
-	repeated intPair resources = 9;
-	required int32 map_width = 10;
-	required int32 map_height = 11;	
-	required int32 map_count = 12;
-	required int32 gold = 13;
+	repeated intPair passed_record = 2;
+	required string name = 3;
+	repeated CrashMapData IncompleteMap = 4;
+	repeated CrashMapData CompleteMap = 5;
+	required bool isadmin = 6;
+	repeated intPair resources = 7;
+	required int32 map_width = 8;
+	required int32 map_height = 9;	
+	required int32 map_count = 10;
+	required int32 gold = 11;
+	repeated TaskInfo current_task = 12;
 }
 
 enum ConditionType
@@ -114,6 +121,6 @@ message TaskInfoConfig
 	repeated TaskRewardConfig rewards = 5;
 	required int32 required_pass_chapter_id = 6;
 	required int32 required_pass_section_id = 7;
-	required int32 required_complete_task_count = 8;
-	
+	required int32 required_complete_task_count = 8;	
 }
+

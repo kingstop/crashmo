@@ -10,6 +10,7 @@ public:
 	void AddTask(const message::TaskInfoConfig& info);
 	bool DelTask(int task_id);
 	const TASKCONFIGS* GetTaskConfigs();
+	const message::TaskInfoConfig* GetTaskConfig(int id);
 	void Save();
 public:
 	TaskManager();

@@ -107,7 +107,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 	sprintf(sql, "replace into `character`(`account`, `pass_chapter`, `pass_section`,\
 		 `name`, `isadmin`, `map_width`,\
 		 `map_height`, `map_count`, `group_count`, `gold`) values (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s', %d)",
-		acc_temp, playerInfo->pass_chapter(), playerInfo->pass_section(), playerInfo->name().c_str(), (int)playerInfo->isadmin(),
+		acc_temp, 0, 0, playerInfo->name().c_str(), (int)playerInfo->isadmin(),
 		playerInfo->map_width(), playerInfo->map_height(), playerInfo->map_count(), resource_str.c_str(), playerInfo->gold());
 	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, &parms, NULL, _QUERY_SAVE_PLAYER_);
 	int temp_size = playerInfo->completemap_size();
@@ -188,8 +188,8 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 		message::CrashPlayerInfo* info = msg.mutable_data();
 		info->set_account(row["account"]);
 		info->set_name(row["name"].c_str());
-		info->set_pass_chapter(row["pass_chapter"]);
-		info->set_pass_section(row["pass_section"]);
+		//info->set_pass_chapter(row["pass_chapter"]);
+		//info->set_pass_section(row["pass_section"]);
 		int is_admin = row["isadmin"];
 		info->set_map_width(row["map_width"]);
 		info->set_map_height(row["map_height"]);

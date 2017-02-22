@@ -77,6 +77,16 @@ void TaskManager::LoadConfig(DBQuery* p)
 		gEventMgr.addEvent(this, &TaskManager::Save, EVENT_SAVE_TASK, _SAVE_TASK_TIME_, -1, 0);
 	}
 }
+const message::TaskInfoConfig* TaskManager::GetTaskConfig(int id)
+{
+	message::TaskInfoConfig* entry = NULL;
+	TASKCONFIGS::iterator it = _task_configs.find(id);
+	if (it != _task_configs.end())
+	{
+		entry = &it->second;
+	}
+	return entry;
+}
 
 void TaskManager::Save()
 {

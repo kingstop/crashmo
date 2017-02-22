@@ -40,6 +40,7 @@ void protobuf_ShutdownFile_common_2eproto();
 class int32array;
 class CrashmoMapBaseData;
 class CrashMapData;
+class TaskInfo;
 class RankMapBlogEntry;
 class CrashPlayerPublishMap;
 class intPair;
@@ -480,6 +481,128 @@ class CrashMapData : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static CrashMapData* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TaskInfo : public ::google::protobuf::Message {
+ public:
+  TaskInfo();
+  virtual ~TaskInfo();
+
+  TaskInfo(const TaskInfo& from);
+
+  inline TaskInfo& operator=(const TaskInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TaskInfo& default_instance();
+
+  void Swap(TaskInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  inline TaskInfo* New() const { return New(NULL); }
+
+  TaskInfo* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TaskInfo& from);
+  void MergeFrom(const TaskInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(TaskInfo* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 task_id = 1;
+  bool has_task_id() const;
+  void clear_task_id();
+  static const int kTaskIdFieldNumber = 1;
+  ::google::protobuf::int32 task_id() const;
+  void set_task_id(::google::protobuf::int32 value);
+
+  // required int32 argu_1 = 2;
+  bool has_argu_1() const;
+  void clear_argu_1();
+  static const int kArgu1FieldNumber = 2;
+  ::google::protobuf::int32 argu_1() const;
+  void set_argu_1(::google::protobuf::int32 value);
+
+  // required int32 argu_2 = 3;
+  bool has_argu_2() const;
+  void clear_argu_2();
+  static const int kArgu2FieldNumber = 3;
+  ::google::protobuf::int32 argu_2() const;
+  void set_argu_2(::google::protobuf::int32 value);
+
+  // required int32 argu_3 = 4;
+  bool has_argu_3() const;
+  void clear_argu_3();
+  static const int kArgu3FieldNumber = 4;
+  ::google::protobuf::int32 argu_3() const;
+  void set_argu_3(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:message.TaskInfo)
+ private:
+  inline void set_has_task_id();
+  inline void clear_has_task_id();
+  inline void set_has_argu_1();
+  inline void clear_has_argu_1();
+  inline void set_has_argu_2();
+  inline void clear_has_argu_2();
+  inline void set_has_argu_3();
+  inline void clear_has_argu_3();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 task_id_;
+  ::google::protobuf::int32 argu_1_;
+  ::google::protobuf::int32 argu_2_;
+  ::google::protobuf::int32 argu_3_;
+  friend void  protobuf_AddDesc_common_2eproto();
+  friend void protobuf_AssignDesc_common_2eproto();
+  friend void protobuf_ShutdownFile_common_2eproto();
+
+  void InitAsDefaultInstance();
+  static TaskInfo* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -935,24 +1058,22 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::uint64 account() const;
   void set_account(::google::protobuf::uint64 value);
 
-  // required int32 pass_chapter = 2;
-  bool has_pass_chapter() const;
-  void clear_pass_chapter();
-  static const int kPassChapterFieldNumber = 2;
-  ::google::protobuf::int32 pass_chapter() const;
-  void set_pass_chapter(::google::protobuf::int32 value);
+  // repeated .message.intPair passed_record = 2;
+  int passed_record_size() const;
+  void clear_passed_record();
+  static const int kPassedRecordFieldNumber = 2;
+  const ::message::intPair& passed_record(int index) const;
+  ::message::intPair* mutable_passed_record(int index);
+  ::message::intPair* add_passed_record();
+  const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
+      passed_record() const;
+  ::google::protobuf::RepeatedPtrField< ::message::intPair >*
+      mutable_passed_record();
 
-  // required int32 pass_section = 4;
-  bool has_pass_section() const;
-  void clear_pass_section();
-  static const int kPassSectionFieldNumber = 4;
-  ::google::protobuf::int32 pass_section() const;
-  void set_pass_section(::google::protobuf::int32 value);
-
-  // required string name = 5;
+  // required string name = 3;
   bool has_name() const;
   void clear_name();
-  static const int kNameFieldNumber = 5;
+  static const int kNameFieldNumber = 3;
   const ::std::string& name() const;
   void set_name(const ::std::string& value);
   void set_name(const char* value);
@@ -961,10 +1082,10 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // repeated .message.CrashMapData IncompleteMap = 6;
+  // repeated .message.CrashMapData IncompleteMap = 4;
   int incompletemap_size() const;
   void clear_incompletemap();
-  static const int kIncompleteMapFieldNumber = 6;
+  static const int kIncompleteMapFieldNumber = 4;
   const ::message::CrashMapData& incompletemap(int index) const;
   ::message::CrashMapData* mutable_incompletemap(int index);
   ::message::CrashMapData* add_incompletemap();
@@ -973,10 +1094,10 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
       mutable_incompletemap();
 
-  // repeated .message.CrashMapData CompleteMap = 7;
+  // repeated .message.CrashMapData CompleteMap = 5;
   int completemap_size() const;
   void clear_completemap();
-  static const int kCompleteMapFieldNumber = 7;
+  static const int kCompleteMapFieldNumber = 5;
   const ::message::CrashMapData& completemap(int index) const;
   ::message::CrashMapData* mutable_completemap(int index);
   ::message::CrashMapData* add_completemap();
@@ -985,17 +1106,17 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
       mutable_completemap();
 
-  // required bool isadmin = 8;
+  // required bool isadmin = 6;
   bool has_isadmin() const;
   void clear_isadmin();
-  static const int kIsadminFieldNumber = 8;
+  static const int kIsadminFieldNumber = 6;
   bool isadmin() const;
   void set_isadmin(bool value);
 
-  // repeated .message.intPair resources = 9;
+  // repeated .message.intPair resources = 7;
   int resources_size() const;
   void clear_resources();
-  static const int kResourcesFieldNumber = 9;
+  static const int kResourcesFieldNumber = 7;
   const ::message::intPair& resources(int index) const;
   ::message::intPair* mutable_resources(int index);
   ::message::intPair* add_resources();
@@ -1004,42 +1125,50 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::intPair >*
       mutable_resources();
 
-  // required int32 map_width = 10;
+  // required int32 map_width = 8;
   bool has_map_width() const;
   void clear_map_width();
-  static const int kMapWidthFieldNumber = 10;
+  static const int kMapWidthFieldNumber = 8;
   ::google::protobuf::int32 map_width() const;
   void set_map_width(::google::protobuf::int32 value);
 
-  // required int32 map_height = 11;
+  // required int32 map_height = 9;
   bool has_map_height() const;
   void clear_map_height();
-  static const int kMapHeightFieldNumber = 11;
+  static const int kMapHeightFieldNumber = 9;
   ::google::protobuf::int32 map_height() const;
   void set_map_height(::google::protobuf::int32 value);
 
-  // required int32 map_count = 12;
+  // required int32 map_count = 10;
   bool has_map_count() const;
   void clear_map_count();
-  static const int kMapCountFieldNumber = 12;
+  static const int kMapCountFieldNumber = 10;
   ::google::protobuf::int32 map_count() const;
   void set_map_count(::google::protobuf::int32 value);
 
-  // required int32 gold = 13;
+  // required int32 gold = 11;
   bool has_gold() const;
   void clear_gold();
-  static const int kGoldFieldNumber = 13;
+  static const int kGoldFieldNumber = 11;
   ::google::protobuf::int32 gold() const;
   void set_gold(::google::protobuf::int32 value);
+
+  // repeated .message.TaskInfo current_task = 12;
+  int current_task_size() const;
+  void clear_current_task();
+  static const int kCurrentTaskFieldNumber = 12;
+  const ::message::TaskInfo& current_task(int index) const;
+  ::message::TaskInfo* mutable_current_task(int index);
+  ::message::TaskInfo* add_current_task();
+  const ::google::protobuf::RepeatedPtrField< ::message::TaskInfo >&
+      current_task() const;
+  ::google::protobuf::RepeatedPtrField< ::message::TaskInfo >*
+      mutable_current_task();
 
   // @@protoc_insertion_point(class_scope:message.CrashPlayerInfo)
  private:
   inline void set_has_account();
   inline void clear_has_account();
-  inline void set_has_pass_chapter();
-  inline void clear_has_pass_chapter();
-  inline void set_has_pass_section();
-  inline void clear_has_pass_section();
   inline void set_has_name();
   inline void clear_has_name();
   inline void set_has_isadmin();
@@ -1060,8 +1189,7 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::uint64 account_;
-  ::google::protobuf::int32 pass_chapter_;
-  ::google::protobuf::int32 pass_section_;
+  ::google::protobuf::RepeatedPtrField< ::message::intPair > passed_record_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > incompletemap_;
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > completemap_;
@@ -1070,6 +1198,7 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::int32 map_width_;
   ::google::protobuf::int32 map_height_;
   ::google::protobuf::int32 map_count_;
+  ::google::protobuf::RepeatedPtrField< ::message::TaskInfo > current_task_;
   ::google::protobuf::int32 gold_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
@@ -1865,6 +1994,106 @@ inline void CrashMapData::set_gold(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
+// TaskInfo
+
+// required int32 task_id = 1;
+inline bool TaskInfo::has_task_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TaskInfo::set_has_task_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TaskInfo::clear_has_task_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TaskInfo::clear_task_id() {
+  task_id_ = 0;
+  clear_has_task_id();
+}
+inline ::google::protobuf::int32 TaskInfo::task_id() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfo.task_id)
+  return task_id_;
+}
+inline void TaskInfo::set_task_id(::google::protobuf::int32 value) {
+  set_has_task_id();
+  task_id_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfo.task_id)
+}
+
+// required int32 argu_1 = 2;
+inline bool TaskInfo::has_argu_1() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TaskInfo::set_has_argu_1() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TaskInfo::clear_has_argu_1() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TaskInfo::clear_argu_1() {
+  argu_1_ = 0;
+  clear_has_argu_1();
+}
+inline ::google::protobuf::int32 TaskInfo::argu_1() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfo.argu_1)
+  return argu_1_;
+}
+inline void TaskInfo::set_argu_1(::google::protobuf::int32 value) {
+  set_has_argu_1();
+  argu_1_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfo.argu_1)
+}
+
+// required int32 argu_2 = 3;
+inline bool TaskInfo::has_argu_2() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void TaskInfo::set_has_argu_2() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void TaskInfo::clear_has_argu_2() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void TaskInfo::clear_argu_2() {
+  argu_2_ = 0;
+  clear_has_argu_2();
+}
+inline ::google::protobuf::int32 TaskInfo::argu_2() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfo.argu_2)
+  return argu_2_;
+}
+inline void TaskInfo::set_argu_2(::google::protobuf::int32 value) {
+  set_has_argu_2();
+  argu_2_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfo.argu_2)
+}
+
+// required int32 argu_3 = 4;
+inline bool TaskInfo::has_argu_3() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void TaskInfo::set_has_argu_3() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void TaskInfo::clear_has_argu_3() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void TaskInfo::clear_argu_3() {
+  argu_3_ = 0;
+  clear_has_argu_3();
+}
+inline ::google::protobuf::int32 TaskInfo::argu_3() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfo.argu_3)
+  return argu_3_;
+}
+inline void TaskInfo::set_argu_3(::google::protobuf::int32 value) {
+  set_has_argu_3();
+  argu_3_ = value;
+  // @@protoc_insertion_point(field_set:message.TaskInfo.argu_3)
+}
+
+// -------------------------------------------------------------------
+
 // RankMapBlogEntry
 
 // required uint64 acc = 1;
@@ -2274,63 +2503,45 @@ inline void CrashPlayerInfo::set_account(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.account)
 }
 
-// required int32 pass_chapter = 2;
-inline bool CrashPlayerInfo::has_pass_chapter() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+// repeated .message.intPair passed_record = 2;
+inline int CrashPlayerInfo::passed_record_size() const {
+  return passed_record_.size();
 }
-inline void CrashPlayerInfo::set_has_pass_chapter() {
-  _has_bits_[0] |= 0x00000002u;
+inline void CrashPlayerInfo::clear_passed_record() {
+  passed_record_.Clear();
 }
-inline void CrashPlayerInfo::clear_has_pass_chapter() {
-  _has_bits_[0] &= ~0x00000002u;
+inline const ::message::intPair& CrashPlayerInfo::passed_record(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.passed_record)
+  return passed_record_.Get(index);
 }
-inline void CrashPlayerInfo::clear_pass_chapter() {
-  pass_chapter_ = 0;
-  clear_has_pass_chapter();
+inline ::message::intPair* CrashPlayerInfo::mutable_passed_record(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.passed_record)
+  return passed_record_.Mutable(index);
 }
-inline ::google::protobuf::int32 CrashPlayerInfo::pass_chapter() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.pass_chapter)
-  return pass_chapter_;
+inline ::message::intPair* CrashPlayerInfo::add_passed_record() {
+  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.passed_record)
+  return passed_record_.Add();
 }
-inline void CrashPlayerInfo::set_pass_chapter(::google::protobuf::int32 value) {
-  set_has_pass_chapter();
-  pass_chapter_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.pass_chapter)
+inline const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
+CrashPlayerInfo::passed_record() const {
+  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.passed_record)
+  return passed_record_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::intPair >*
+CrashPlayerInfo::mutable_passed_record() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.passed_record)
+  return &passed_record_;
 }
 
-// required int32 pass_section = 4;
-inline bool CrashPlayerInfo::has_pass_section() const {
+// required string name = 3;
+inline bool CrashPlayerInfo::has_name() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void CrashPlayerInfo::set_has_pass_section() {
+inline void CrashPlayerInfo::set_has_name() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void CrashPlayerInfo::clear_has_pass_section() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void CrashPlayerInfo::clear_pass_section() {
-  pass_section_ = 0;
-  clear_has_pass_section();
-}
-inline ::google::protobuf::int32 CrashPlayerInfo::pass_section() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.pass_section)
-  return pass_section_;
-}
-inline void CrashPlayerInfo::set_pass_section(::google::protobuf::int32 value) {
-  set_has_pass_section();
-  pass_section_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.pass_section)
-}
-
-// required string name = 5;
-inline bool CrashPlayerInfo::has_name() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void CrashPlayerInfo::set_has_name() {
-  _has_bits_[0] |= 0x00000008u;
-}
 inline void CrashPlayerInfo::clear_has_name() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void CrashPlayerInfo::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -2375,7 +2586,7 @@ inline void CrashPlayerInfo::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:message.CrashPlayerInfo.name)
 }
 
-// repeated .message.CrashMapData IncompleteMap = 6;
+// repeated .message.CrashMapData IncompleteMap = 4;
 inline int CrashPlayerInfo::incompletemap_size() const {
   return incompletemap_.size();
 }
@@ -2405,7 +2616,7 @@ CrashPlayerInfo::mutable_incompletemap() {
   return &incompletemap_;
 }
 
-// repeated .message.CrashMapData CompleteMap = 7;
+// repeated .message.CrashMapData CompleteMap = 5;
 inline int CrashPlayerInfo::completemap_size() const {
   return completemap_.size();
 }
@@ -2435,15 +2646,15 @@ CrashPlayerInfo::mutable_completemap() {
   return &completemap_;
 }
 
-// required bool isadmin = 8;
+// required bool isadmin = 6;
 inline bool CrashPlayerInfo::has_isadmin() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void CrashPlayerInfo::set_has_isadmin() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void CrashPlayerInfo::clear_has_isadmin() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void CrashPlayerInfo::clear_isadmin() {
   isadmin_ = false;
@@ -2459,7 +2670,7 @@ inline void CrashPlayerInfo::set_isadmin(bool value) {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.isadmin)
 }
 
-// repeated .message.intPair resources = 9;
+// repeated .message.intPair resources = 7;
 inline int CrashPlayerInfo::resources_size() const {
   return resources_.size();
 }
@@ -2489,15 +2700,15 @@ CrashPlayerInfo::mutable_resources() {
   return &resources_;
 }
 
-// required int32 map_width = 10;
+// required int32 map_width = 8;
 inline bool CrashPlayerInfo::has_map_width() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void CrashPlayerInfo::set_has_map_width() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void CrashPlayerInfo::clear_has_map_width() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void CrashPlayerInfo::clear_map_width() {
   map_width_ = 0;
@@ -2513,15 +2724,15 @@ inline void CrashPlayerInfo::set_map_width(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_width)
 }
 
-// required int32 map_height = 11;
+// required int32 map_height = 9;
 inline bool CrashPlayerInfo::has_map_height() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void CrashPlayerInfo::set_has_map_height() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void CrashPlayerInfo::clear_has_map_height() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void CrashPlayerInfo::clear_map_height() {
   map_height_ = 0;
@@ -2537,15 +2748,15 @@ inline void CrashPlayerInfo::set_map_height(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_height)
 }
 
-// required int32 map_count = 12;
+// required int32 map_count = 10;
 inline bool CrashPlayerInfo::has_map_count() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void CrashPlayerInfo::set_has_map_count() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void CrashPlayerInfo::clear_has_map_count() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void CrashPlayerInfo::clear_map_count() {
   map_count_ = 0;
@@ -2561,15 +2772,15 @@ inline void CrashPlayerInfo::set_map_count(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_count)
 }
 
-// required int32 gold = 13;
+// required int32 gold = 11;
 inline bool CrashPlayerInfo::has_gold() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void CrashPlayerInfo::set_has_gold() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void CrashPlayerInfo::clear_has_gold() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void CrashPlayerInfo::clear_gold() {
   gold_ = 0;
@@ -2583,6 +2794,36 @@ inline void CrashPlayerInfo::set_gold(::google::protobuf::int32 value) {
   set_has_gold();
   gold_ = value;
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.gold)
+}
+
+// repeated .message.TaskInfo current_task = 12;
+inline int CrashPlayerInfo::current_task_size() const {
+  return current_task_.size();
+}
+inline void CrashPlayerInfo::clear_current_task() {
+  current_task_.Clear();
+}
+inline const ::message::TaskInfo& CrashPlayerInfo::current_task(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.current_task)
+  return current_task_.Get(index);
+}
+inline ::message::TaskInfo* CrashPlayerInfo::mutable_current_task(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.current_task)
+  return current_task_.Mutable(index);
+}
+inline ::message::TaskInfo* CrashPlayerInfo::add_current_task() {
+  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.current_task)
+  return current_task_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::TaskInfo >&
+CrashPlayerInfo::current_task() const {
+  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.current_task)
+  return current_task_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::TaskInfo >*
+CrashPlayerInfo::mutable_current_task() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.current_task)
+  return &current_task_;
 }
 
 // -------------------------------------------------------------------
