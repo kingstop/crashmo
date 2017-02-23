@@ -107,6 +107,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* MsgC2SReqPassOfficilMap_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgC2SReqPassOfficilMap_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgTaskReward_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgTaskReward_reflection_ = NULL;
 const ::google::protobuf::Descriptor* MsgS2CPassOfficilMapACK_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgS2CPassOfficilMapACK_reflection_ = NULL;
@@ -591,7 +594,23 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SReqPassOfficilMap),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqPassOfficilMap, _internal_metadata_),
       -1);
-  MsgS2CPassOfficilMapACK_descriptor_ = file->message_type(29);
+  MsgTaskReward_descriptor_ = file->message_type(29);
+  static const int MsgTaskReward_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgTaskReward, task_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgTaskReward, rewards_),
+  };
+  MsgTaskReward_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgTaskReward_descriptor_,
+      MsgTaskReward::default_instance_,
+      MsgTaskReward_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgTaskReward, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgTaskReward),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgTaskReward, _internal_metadata_),
+      -1);
+  MsgS2CPassOfficilMapACK_descriptor_ = file->message_type(30);
   static const int MsgS2CPassOfficilMapACK_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, chapter_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, section_id_),
@@ -599,7 +618,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, add_resource_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, current_gold_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, current_resource_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, complete_task_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, complete_task_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, error_),
   };
   MsgS2CPassOfficilMapACK_reflection_ =
@@ -686,6 +705,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       MsgC2SReqPassOfficilMap_descriptor_, &MsgC2SReqPassOfficilMap::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgTaskReward_descriptor_, &MsgTaskReward::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       MsgS2CPassOfficilMapACK_descriptor_, &MsgS2CPassOfficilMapACK::default_instance());
 }
 
@@ -750,6 +771,8 @@ void protobuf_ShutdownFile_crashmo_2eproto() {
   delete MsgS2CEnterOfficilMapACK_reflection_;
   delete MsgC2SReqPassOfficilMap::default_instance_;
   delete MsgC2SReqPassOfficilMap_reflection_;
+  delete MsgTaskReward::default_instance_;
+  delete MsgTaskReward_reflection_;
   delete MsgS2CPassOfficilMapACK::default_instance_;
   delete MsgS2CPassOfficilMapACK_reflection_;
 }
@@ -822,21 +845,24 @@ void protobuf_AddDesc_crashmo_2eproto() {
     "MapACK\022\022\n\nchapter_id\030\001 \002(\r\022\022\n\nsection_id"
     "\030\002 \002(\r\"e\n\027MsgC2SReqPassOfficilMap\022\022\n\ncha"
     "pter_id\030\001 \002(\r\022\022\n\nsection_id\030\002 \002(\r\022\020\n\010use"
-    "_time\030\003 \002(\r\022\020\n\010use_step\030\004 \002(\r\"\214\002\n\027MsgS2C"
-    "PassOfficilMapACK\022\022\n\nchapter_id\030\001 \002(\r\022\022\n"
-    "\nsection_id\030\002 \002(\r\022\020\n\010add_gold\030\003 \002(\r\022&\n\014a"
-    "dd_resource\030\004 \003(\0132\020.message.intPair\022\024\n\014c"
-    "urrent_gold\030\005 \002(\r\022*\n\020current_resource\030\006 "
-    "\003(\0132\020.message.intPair\022\030\n\020complete_task_i"
-    "d\030\007 \003(\005\0223\n\005error\030\010 \002(\0162\024.message.ServerE"
-    "rror:\016ServerError_NO*\345\001\n\013ServerError\022\022\n\016"
-    "ServerError_NO\020\000\022\026\n\022ServerError_Unknow\020\001"
-    "\022\034\n\030ServerError_HaveSameName\020\002\022&\n\"Server"
-    "Error_NotFoundMapNameWhenDel\020\003\0220\n,Server"
-    "Error_PassOfficilMapFailedTheMapIsLock\020\004"
-    "\0222\n.ServerError_PassOfficilMapFailedTheM"
-    "apNotFound\020\005*<\n\007MapType\022\r\n\tOfficeMap\020\001\022\021"
-    "\n\rImcompleteMap\020\002\022\017\n\013CompleteMap\020\003", 2994);
+    "_time\030\003 \002(\r\022\020\n\010use_step\030\004 \002(\r\"L\n\rMsgTask"
+    "Reward\022\017\n\007task_id\030\001 \002(\r\022*\n\007rewards\030\002 \003(\013"
+    "2\031.message.TaskRewardConfig\"\241\002\n\027MsgS2CPa"
+    "ssOfficilMapACK\022\022\n\nchapter_id\030\001 \002(\r\022\022\n\ns"
+    "ection_id\030\002 \002(\r\022\020\n\010add_gold\030\003 \002(\r\022&\n\014add"
+    "_resource\030\004 \003(\0132\020.message.intPair\022\024\n\014cur"
+    "rent_gold\030\005 \002(\r\022*\n\020current_resource\030\006 \003("
+    "\0132\020.message.intPair\022-\n\rcomplete_task\030\007 \003"
+    "(\0132\026.message.MsgTaskReward\0223\n\005error\030\010 \002("
+    "\0162\024.message.ServerError:\016ServerError_NO*"
+    "\345\001\n\013ServerError\022\022\n\016ServerError_NO\020\000\022\026\n\022S"
+    "erverError_Unknow\020\001\022\034\n\030ServerError_HaveS"
+    "ameName\020\002\022&\n\"ServerError_NotFoundMapName"
+    "WhenDel\020\003\0220\n,ServerError_PassOfficilMapF"
+    "ailedTheMapIsLock\020\004\0222\n.ServerError_PassO"
+    "fficilMapFailedTheMapNotFound\020\005*<\n\007MapTy"
+    "pe\022\r\n\tOfficeMap\020\001\022\021\n\rImcompleteMap\020\002\022\017\n\013"
+    "CompleteMap\020\003", 3093);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "crashmo.proto", &protobuf_RegisterTypes);
   MsgIntStringProto::default_instance_ = new MsgIntStringProto();
@@ -868,6 +894,7 @@ void protobuf_AddDesc_crashmo_2eproto() {
   MsgC2SReqEnterOfficilMap::default_instance_ = new MsgC2SReqEnterOfficilMap();
   MsgS2CEnterOfficilMapACK::default_instance_ = new MsgS2CEnterOfficilMapACK();
   MsgC2SReqPassOfficilMap::default_instance_ = new MsgC2SReqPassOfficilMap();
+  MsgTaskReward::default_instance_ = new MsgTaskReward();
   MsgS2CPassOfficilMapACK::default_instance_ = new MsgS2CPassOfficilMapACK();
   MsgIntStringProto::default_instance_->InitAsDefaultInstance();
   CrashmoClientInit::default_instance_->InitAsDefaultInstance();
@@ -898,6 +925,7 @@ void protobuf_AddDesc_crashmo_2eproto() {
   MsgC2SReqEnterOfficilMap::default_instance_->InitAsDefaultInstance();
   MsgS2CEnterOfficilMapACK::default_instance_->InitAsDefaultInstance();
   MsgC2SReqPassOfficilMap::default_instance_->InitAsDefaultInstance();
+  MsgTaskReward::default_instance_->InitAsDefaultInstance();
   MsgS2CPassOfficilMapACK::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_crashmo_2eproto);
 }
@@ -11671,13 +11699,342 @@ void MsgC2SReqPassOfficilMap::InternalSwap(MsgC2SReqPassOfficilMap* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int MsgTaskReward::kTaskIdFieldNumber;
+const int MsgTaskReward::kRewardsFieldNumber;
+#endif  // !_MSC_VER
+
+MsgTaskReward::MsgTaskReward()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgTaskReward)
+}
+
+void MsgTaskReward::InitAsDefaultInstance() {
+}
+
+MsgTaskReward::MsgTaskReward(const MsgTaskReward& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgTaskReward)
+}
+
+void MsgTaskReward::SharedCtor() {
+  _cached_size_ = 0;
+  task_id_ = 0u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgTaskReward::~MsgTaskReward() {
+  // @@protoc_insertion_point(destructor:message.MsgTaskReward)
+  SharedDtor();
+}
+
+void MsgTaskReward::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void MsgTaskReward::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgTaskReward::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgTaskReward_descriptor_;
+}
+
+const MsgTaskReward& MsgTaskReward::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_crashmo_2eproto();
+  return *default_instance_;
+}
+
+MsgTaskReward* MsgTaskReward::default_instance_ = NULL;
+
+MsgTaskReward* MsgTaskReward::New(::google::protobuf::Arena* arena) const {
+  MsgTaskReward* n = new MsgTaskReward;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgTaskReward::Clear() {
+  task_id_ = 0u;
+  rewards_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgTaskReward::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgTaskReward)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required uint32 task_id = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &task_id_)));
+          set_has_task_id();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_rewards;
+        break;
+      }
+
+      // repeated .message.TaskRewardConfig rewards = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_rewards:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_rewards()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_rewards;
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgTaskReward)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgTaskReward)
+  return false;
+#undef DO_
+}
+
+void MsgTaskReward::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgTaskReward)
+  // required uint32 task_id = 1;
+  if (has_task_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->task_id(), output);
+  }
+
+  // repeated .message.TaskRewardConfig rewards = 2;
+  for (unsigned int i = 0, n = this->rewards_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->rewards(i), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgTaskReward)
+}
+
+::google::protobuf::uint8* MsgTaskReward::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgTaskReward)
+  // required uint32 task_id = 1;
+  if (has_task_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->task_id(), target);
+  }
+
+  // repeated .message.TaskRewardConfig rewards = 2;
+  for (unsigned int i = 0, n = this->rewards_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->rewards(i), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgTaskReward)
+  return target;
+}
+
+int MsgTaskReward::ByteSize() const {
+  int total_size = 0;
+
+  // required uint32 task_id = 1;
+  if (has_task_id()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->task_id());
+  }
+  // repeated .message.TaskRewardConfig rewards = 2;
+  total_size += 1 * this->rewards_size();
+  for (int i = 0; i < this->rewards_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->rewards(i));
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgTaskReward::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgTaskReward* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgTaskReward*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgTaskReward::MergeFrom(const MsgTaskReward& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  rewards_.MergeFrom(from.rewards_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_task_id()) {
+      set_task_id(from.task_id());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgTaskReward::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgTaskReward::CopyFrom(const MsgTaskReward& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgTaskReward::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  if (!::google::protobuf::internal::AllAreInitialized(this->rewards())) return false;
+  return true;
+}
+
+void MsgTaskReward::Swap(MsgTaskReward* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgTaskReward::InternalSwap(MsgTaskReward* other) {
+  std::swap(task_id_, other->task_id_);
+  rewards_.UnsafeArenaSwap(&other->rewards_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgTaskReward::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgTaskReward_descriptor_;
+  metadata.reflection = MsgTaskReward_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgTaskReward
+
+// required uint32 task_id = 1;
+ bool MsgTaskReward::has_task_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void MsgTaskReward::set_has_task_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void MsgTaskReward::clear_has_task_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void MsgTaskReward::clear_task_id() {
+  task_id_ = 0u;
+  clear_has_task_id();
+}
+ ::google::protobuf::uint32 MsgTaskReward::task_id() const {
+  // @@protoc_insertion_point(field_get:message.MsgTaskReward.task_id)
+  return task_id_;
+}
+ void MsgTaskReward::set_task_id(::google::protobuf::uint32 value) {
+  set_has_task_id();
+  task_id_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgTaskReward.task_id)
+}
+
+// repeated .message.TaskRewardConfig rewards = 2;
+ int MsgTaskReward::rewards_size() const {
+  return rewards_.size();
+}
+ void MsgTaskReward::clear_rewards() {
+  rewards_.Clear();
+}
+ const ::message::TaskRewardConfig& MsgTaskReward::rewards(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgTaskReward.rewards)
+  return rewards_.Get(index);
+}
+ ::message::TaskRewardConfig* MsgTaskReward::mutable_rewards(int index) {
+  // @@protoc_insertion_point(field_mutable:message.MsgTaskReward.rewards)
+  return rewards_.Mutable(index);
+}
+ ::message::TaskRewardConfig* MsgTaskReward::add_rewards() {
+  // @@protoc_insertion_point(field_add:message.MsgTaskReward.rewards)
+  return rewards_.Add();
+}
+ const ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >&
+MsgTaskReward::rewards() const {
+  // @@protoc_insertion_point(field_list:message.MsgTaskReward.rewards)
+  return rewards_;
+}
+ ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >*
+MsgTaskReward::mutable_rewards() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgTaskReward.rewards)
+  return &rewards_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int MsgS2CPassOfficilMapACK::kChapterIdFieldNumber;
 const int MsgS2CPassOfficilMapACK::kSectionIdFieldNumber;
 const int MsgS2CPassOfficilMapACK::kAddGoldFieldNumber;
 const int MsgS2CPassOfficilMapACK::kAddResourceFieldNumber;
 const int MsgS2CPassOfficilMapACK::kCurrentGoldFieldNumber;
 const int MsgS2CPassOfficilMapACK::kCurrentResourceFieldNumber;
-const int MsgS2CPassOfficilMapACK::kCompleteTaskIdFieldNumber;
+const int MsgS2CPassOfficilMapACK::kCompleteTaskFieldNumber;
 const int MsgS2CPassOfficilMapACK::kErrorFieldNumber;
 #endif  // !_MSC_VER
 
@@ -11763,7 +12120,7 @@ void MsgS2CPassOfficilMapACK::Clear() {
 
   add_resource_.Clear();
   current_resource_.Clear();
-  complete_task_id_.Clear();
+  complete_task_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->Clear();
@@ -11863,25 +12220,20 @@ bool MsgS2CPassOfficilMapACK::MergePartialFromCodedStream(
           goto handle_unusual;
         }
         if (input->ExpectTag(50)) goto parse_current_resource;
-        if (input->ExpectTag(56)) goto parse_complete_task_id;
+        if (input->ExpectTag(58)) goto parse_complete_task;
         break;
       }
 
-      // repeated int32 complete_task_id = 7;
+      // repeated .message.MsgTaskReward complete_task = 7;
       case 7: {
-        if (tag == 56) {
-         parse_complete_task_id:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 1, 56, input, this->mutable_complete_task_id())));
-        } else if (tag == 58) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, this->mutable_complete_task_id())));
+        if (tag == 58) {
+         parse_complete_task:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_complete_task()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(56)) goto parse_complete_task_id;
+        if (input->ExpectTag(58)) goto parse_complete_task;
         if (input->ExpectTag(64)) goto parse_error;
         break;
       }
@@ -11963,10 +12315,10 @@ void MsgS2CPassOfficilMapACK::SerializeWithCachedSizes(
       6, this->current_resource(i), output);
   }
 
-  // repeated int32 complete_task_id = 7;
-  for (int i = 0; i < this->complete_task_id_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(
-      7, this->complete_task_id(i), output);
+  // repeated .message.MsgTaskReward complete_task = 7;
+  for (unsigned int i = 0, n = this->complete_task_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->complete_task(i), output);
   }
 
   // required .message.ServerError error = 8 [default = ServerError_NO];
@@ -12019,10 +12371,11 @@ void MsgS2CPassOfficilMapACK::SerializeWithCachedSizes(
         6, this->current_resource(i), target);
   }
 
-  // repeated int32 complete_task_id = 7;
-  for (int i = 0; i < this->complete_task_id_size(); i++) {
+  // repeated .message.MsgTaskReward complete_task = 7;
+  for (unsigned int i = 0, n = this->complete_task_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteInt32ToArray(7, this->complete_task_id(i), target);
+      WriteMessageNoVirtualToArray(
+        7, this->complete_task(i), target);
   }
 
   // required .message.ServerError error = 8 [default = ServerError_NO];
@@ -12125,14 +12478,12 @@ int MsgS2CPassOfficilMapACK::ByteSize() const {
         this->current_resource(i));
   }
 
-  // repeated int32 complete_task_id = 7;
-  {
-    int data_size = 0;
-    for (int i = 0; i < this->complete_task_id_size(); i++) {
-      data_size += ::google::protobuf::internal::WireFormatLite::
-        Int32Size(this->complete_task_id(i));
-    }
-    total_size += 1 * this->complete_task_id_size() + data_size;
+  // repeated .message.MsgTaskReward complete_task = 7;
+  total_size += 1 * this->complete_task_size();
+  for (int i = 0; i < this->complete_task_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->complete_task(i));
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -12162,7 +12513,7 @@ void MsgS2CPassOfficilMapACK::MergeFrom(const MsgS2CPassOfficilMapACK& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   add_resource_.MergeFrom(from.add_resource_);
   current_resource_.MergeFrom(from.current_resource_);
-  complete_task_id_.MergeFrom(from.complete_task_id_);
+  complete_task_.MergeFrom(from.complete_task_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_chapter_id()) {
       set_chapter_id(from.chapter_id());
@@ -12202,6 +12553,7 @@ bool MsgS2CPassOfficilMapACK::IsInitialized() const {
 
   if (!::google::protobuf::internal::AllAreInitialized(this->add_resource())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->current_resource())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->complete_task())) return false;
   return true;
 }
 
@@ -12216,7 +12568,7 @@ void MsgS2CPassOfficilMapACK::InternalSwap(MsgS2CPassOfficilMapACK* other) {
   add_resource_.UnsafeArenaSwap(&other->add_resource_);
   std::swap(current_gold_, other->current_gold_);
   current_resource_.UnsafeArenaSwap(&other->current_resource_);
-  complete_task_id_.UnsafeArenaSwap(&other->complete_task_id_);
+  complete_task_.UnsafeArenaSwap(&other->complete_task_);
   std::swap(error_, other->error_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -12390,34 +12742,34 @@ MsgS2CPassOfficilMapACK::mutable_current_resource() {
   return &current_resource_;
 }
 
-// repeated int32 complete_task_id = 7;
- int MsgS2CPassOfficilMapACK::complete_task_id_size() const {
-  return complete_task_id_.size();
+// repeated .message.MsgTaskReward complete_task = 7;
+ int MsgS2CPassOfficilMapACK::complete_task_size() const {
+  return complete_task_.size();
 }
- void MsgS2CPassOfficilMapACK::clear_complete_task_id() {
-  complete_task_id_.Clear();
+ void MsgS2CPassOfficilMapACK::clear_complete_task() {
+  complete_task_.Clear();
 }
- ::google::protobuf::int32 MsgS2CPassOfficilMapACK::complete_task_id(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPassOfficilMapACK.complete_task_id)
-  return complete_task_id_.Get(index);
+ const ::message::MsgTaskReward& MsgS2CPassOfficilMapACK::complete_task(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CPassOfficilMapACK.complete_task)
+  return complete_task_.Get(index);
 }
- void MsgS2CPassOfficilMapACK::set_complete_task_id(int index, ::google::protobuf::int32 value) {
-  complete_task_id_.Set(index, value);
-  // @@protoc_insertion_point(field_set:message.MsgS2CPassOfficilMapACK.complete_task_id)
+ ::message::MsgTaskReward* MsgS2CPassOfficilMapACK::mutable_complete_task(int index) {
+  // @@protoc_insertion_point(field_mutable:message.MsgS2CPassOfficilMapACK.complete_task)
+  return complete_task_.Mutable(index);
 }
- void MsgS2CPassOfficilMapACK::add_complete_task_id(::google::protobuf::int32 value) {
-  complete_task_id_.Add(value);
-  // @@protoc_insertion_point(field_add:message.MsgS2CPassOfficilMapACK.complete_task_id)
+ ::message::MsgTaskReward* MsgS2CPassOfficilMapACK::add_complete_task() {
+  // @@protoc_insertion_point(field_add:message.MsgS2CPassOfficilMapACK.complete_task)
+  return complete_task_.Add();
 }
- const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-MsgS2CPassOfficilMapACK::complete_task_id() const {
-  // @@protoc_insertion_point(field_list:message.MsgS2CPassOfficilMapACK.complete_task_id)
-  return complete_task_id_;
+ const ::google::protobuf::RepeatedPtrField< ::message::MsgTaskReward >&
+MsgS2CPassOfficilMapACK::complete_task() const {
+  // @@protoc_insertion_point(field_list:message.MsgS2CPassOfficilMapACK.complete_task)
+  return complete_task_;
 }
- ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-MsgS2CPassOfficilMapACK::mutable_complete_task_id() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgS2CPassOfficilMapACK.complete_task_id)
-  return &complete_task_id_;
+ ::google::protobuf::RepeatedPtrField< ::message::MsgTaskReward >*
+MsgS2CPassOfficilMapACK::mutable_complete_task() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgS2CPassOfficilMapACK.complete_task)
+  return &complete_task_;
 }
 
 // required .message.ServerError error = 8 [default = ServerError_NO];

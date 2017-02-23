@@ -1165,6 +1165,20 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::TaskInfo >*
       mutable_current_task();
 
+  // required int32 complete_task_count = 13;
+  bool has_complete_task_count() const;
+  void clear_complete_task_count();
+  static const int kCompleteTaskCountFieldNumber = 13;
+  ::google::protobuf::int32 complete_task_count() const;
+  void set_complete_task_count(::google::protobuf::int32 value);
+
+  // required int32 jewel = 14;
+  bool has_jewel() const;
+  void clear_jewel();
+  static const int kJewelFieldNumber = 14;
+  ::google::protobuf::int32 jewel() const;
+  void set_jewel(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:message.CrashPlayerInfo)
  private:
   inline void set_has_account();
@@ -1181,6 +1195,10 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   inline void clear_has_map_count();
   inline void set_has_gold();
   inline void clear_has_gold();
+  inline void set_has_complete_task_count();
+  inline void clear_has_complete_task_count();
+  inline void set_has_jewel();
+  inline void clear_has_jewel();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -1200,6 +1218,8 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::int32 map_count_;
   ::google::protobuf::RepeatedPtrField< ::message::TaskInfo > current_task_;
   ::google::protobuf::int32 gold_;
+  ::google::protobuf::int32 complete_task_count_;
+  ::google::protobuf::int32 jewel_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
   friend void protobuf_ShutdownFile_common_2eproto();
@@ -2824,6 +2844,54 @@ inline ::google::protobuf::RepeatedPtrField< ::message::TaskInfo >*
 CrashPlayerInfo::mutable_current_task() {
   // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.current_task)
   return &current_task_;
+}
+
+// required int32 complete_task_count = 13;
+inline bool CrashPlayerInfo::has_complete_task_count() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void CrashPlayerInfo::set_has_complete_task_count() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void CrashPlayerInfo::clear_has_complete_task_count() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void CrashPlayerInfo::clear_complete_task_count() {
+  complete_task_count_ = 0;
+  clear_has_complete_task_count();
+}
+inline ::google::protobuf::int32 CrashPlayerInfo::complete_task_count() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.complete_task_count)
+  return complete_task_count_;
+}
+inline void CrashPlayerInfo::set_complete_task_count(::google::protobuf::int32 value) {
+  set_has_complete_task_count();
+  complete_task_count_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.complete_task_count)
+}
+
+// required int32 jewel = 14;
+inline bool CrashPlayerInfo::has_jewel() const {
+  return (_has_bits_[0] & 0x00002000u) != 0;
+}
+inline void CrashPlayerInfo::set_has_jewel() {
+  _has_bits_[0] |= 0x00002000u;
+}
+inline void CrashPlayerInfo::clear_has_jewel() {
+  _has_bits_[0] &= ~0x00002000u;
+}
+inline void CrashPlayerInfo::clear_jewel() {
+  jewel_ = 0;
+  clear_has_jewel();
+}
+inline ::google::protobuf::int32 CrashPlayerInfo::jewel() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.jewel)
+  return jewel_;
+}
+inline void CrashPlayerInfo::set_jewel(::google::protobuf::int32 value) {
+  set_has_jewel();
+  jewel_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.jewel)
 }
 
 // -------------------------------------------------------------------

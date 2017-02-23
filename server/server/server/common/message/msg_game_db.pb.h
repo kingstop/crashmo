@@ -45,6 +45,7 @@ class CharacterDataACK;
 class ReqSaveCharacterData;
 class ReqSaveOfficilMap;
 class ReqSaveOfficilSectionNames;
+class ReqSaveCharacterDBSql;
 class gs2dbWorldDatabaseSql;
 
 // ===================================================================
@@ -790,6 +791,100 @@ class ReqSaveOfficilSectionNames : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class ReqSaveCharacterDBSql : public ::google::protobuf::Message {
+ public:
+  ReqSaveCharacterDBSql();
+  virtual ~ReqSaveCharacterDBSql();
+
+  ReqSaveCharacterDBSql(const ReqSaveCharacterDBSql& from);
+
+  inline ReqSaveCharacterDBSql& operator=(const ReqSaveCharacterDBSql& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ReqSaveCharacterDBSql& default_instance();
+
+  void Swap(ReqSaveCharacterDBSql* other);
+
+  // implements Message ----------------------------------------------
+
+  inline ReqSaveCharacterDBSql* New() const { return New(NULL); }
+
+  ReqSaveCharacterDBSql* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ReqSaveCharacterDBSql& from);
+  void MergeFrom(const ReqSaveCharacterDBSql& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(ReqSaveCharacterDBSql* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string sql = 1;
+  bool has_sql() const;
+  void clear_sql();
+  static const int kSqlFieldNumber = 1;
+  const ::std::string& sql() const;
+  void set_sql(const ::std::string& value);
+  void set_sql(const char* value);
+  void set_sql(const char* value, size_t size);
+  ::std::string* mutable_sql();
+  ::std::string* release_sql();
+  void set_allocated_sql(::std::string* sql);
+
+  // @@protoc_insertion_point(class_scope:message.ReqSaveCharacterDBSql)
+ private:
+  inline void set_has_sql();
+  inline void clear_has_sql();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr sql_;
+  friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
+
+  void InitAsDefaultInstance();
+  static ReqSaveCharacterDBSql* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class gs2dbWorldDatabaseSql : public ::google::protobuf::Message {
  public:
   gs2dbWorldDatabaseSql();
@@ -1247,6 +1342,63 @@ inline void ReqSaveOfficilSectionNames::set_allocated_sql(::std::string* sql) {
   }
   sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
   // @@protoc_insertion_point(field_set_allocated:message.ReqSaveOfficilSectionNames.sql)
+}
+
+// -------------------------------------------------------------------
+
+// ReqSaveCharacterDBSql
+
+// required string sql = 1;
+inline bool ReqSaveCharacterDBSql::has_sql() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ReqSaveCharacterDBSql::set_has_sql() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ReqSaveCharacterDBSql::clear_has_sql() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ReqSaveCharacterDBSql::clear_sql() {
+  sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_sql();
+}
+inline const ::std::string& ReqSaveCharacterDBSql::sql() const {
+  // @@protoc_insertion_point(field_get:message.ReqSaveCharacterDBSql.sql)
+  return sql_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ReqSaveCharacterDBSql::set_sql(const ::std::string& value) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.ReqSaveCharacterDBSql.sql)
+}
+inline void ReqSaveCharacterDBSql::set_sql(const char* value) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.ReqSaveCharacterDBSql.sql)
+}
+inline void ReqSaveCharacterDBSql::set_sql(const char* value, size_t size) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.ReqSaveCharacterDBSql.sql)
+}
+inline ::std::string* ReqSaveCharacterDBSql::mutable_sql() {
+  set_has_sql();
+  // @@protoc_insertion_point(field_mutable:message.ReqSaveCharacterDBSql.sql)
+  return sql_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ReqSaveCharacterDBSql::release_sql() {
+  clear_has_sql();
+  return sql_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ReqSaveCharacterDBSql::set_allocated_sql(::std::string* sql) {
+  if (sql != NULL) {
+    set_has_sql();
+  } else {
+    clear_has_sql();
+  }
+  sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
+  // @@protoc_insertion_point(field_set_allocated:message.ReqSaveCharacterDBSql.sql)
 }
 
 // -------------------------------------------------------------------

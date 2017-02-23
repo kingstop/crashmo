@@ -742,6 +742,30 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgTaskReward")]
+  public partial class MsgTaskReward : global::ProtoBuf.IExtensible
+  {
+    public MsgTaskReward() {}
+    
+    private uint _task_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"task_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint task_id
+    {
+      get { return _task_id; }
+      set { _task_id = value; }
+    }
+    private readonly global::System.Collections.Generic.List<message.TaskRewardConfig> _rewards = new global::System.Collections.Generic.List<message.TaskRewardConfig>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"rewards", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.TaskRewardConfig> rewards
+    {
+      get { return _rewards; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CPassOfficilMapACK")]
   public partial class MsgS2CPassOfficilMapACK : global::ProtoBuf.IExtensible
   {
@@ -789,11 +813,11 @@ namespace message
       get { return _current_resource; }
     }
   
-    private readonly global::System.Collections.Generic.List<int> _complete_task_id = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(7, Name=@"complete_task_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> complete_task_id
+    private readonly global::System.Collections.Generic.List<message.MsgTaskReward> _complete_task = new global::System.Collections.Generic.List<message.MsgTaskReward>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"complete_task", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.MsgTaskReward> complete_task
     {
-      get { return _complete_task_id; }
+      get { return _complete_task; }
     }
   
     private message.ServerError _error;

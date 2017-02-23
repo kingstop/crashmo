@@ -49,6 +49,10 @@ void DBQuestManager::queryInfo(account_type a, tran_id_type t, u16 gs)
 //
 //}
 
+void DBQuestManager::CharacterDatabaseSql(const char* szsql)
+{
+	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, szsql, 0, NULL, _QUERY_SAVE_PLAYER_);
+}
 void DBQuestManager::worldDatabaseSql(const char* szsql)
 {
 	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, szsql, 0, NULL, _SAVE_OFFICIL_MAP_);

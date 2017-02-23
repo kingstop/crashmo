@@ -49,8 +49,9 @@ void CrashPlayer::PassOfficilMap(int chapter_id, int section_id, int use_step, i
 	int length = _info.passed_record_size();
 	message::MsgS2CPassOfficilMapACK msg;
 	int add_gold = 0;
+	int add_jewel = 0;
 	
-
+	std::vector<u32> vc_task_ids;
 	const message::CrashMapData* MapData = gOfficilMapManager.getOfficilMap(chapter_id, section_id);
 	if (MapData != NULL)
 	{
@@ -94,6 +95,7 @@ void CrashPlayer::PassOfficilMap(int chapter_id, int section_id, int use_step, i
 				message::TaskInfo& entry = (*it_task);
 				int task_id = entry.task_id();
 				const message::TaskInfoConfig*  task_config = gTaskManager.GetTaskConfig(task_id);
+				bool ret = true;
 				if (task_config != NULL)
 				{
 					int length = task_config->conditions_size();
@@ -108,22 +110,36 @@ void CrashPlayer::PassOfficilMap(int chapter_id, int section_id, int use_step, i
 							{
 
 							}
+							else
+							{
+								ret = false;
+								break;
+							}
 							
 						}
 						break;
 						case message::ConditionType_LimitedTime:
 						{
-
+							if (use_time > config.argu_1())
+							{
+								ret = false;
+								break;
+							}
 						}
 						break;
 						case message::ConditionType_LimitedStep:
 						{
-
+							if (use_step > config.argu_1())
+							{
+								ret = false;
+								break;
+							}
 						}
 						break;
 						case message::ConditionType_PassUserGame:
 						{
-
+							ret = false;
+							break;
 						}
 						break;
 						default:
@@ -132,13 +148,82 @@ void CrashPlayer::PassOfficilMap(int chapter_id, int section_id, int use_step, i
 
 					}
 				}
-
+				vc_task_ids.push_back(task_id);
+				
+				
 			}
 		}
 	}
 	else
 	{
 		error = message::ServerError_PassOfficilMapFailedTheMapNotFound;
+	}
+
+	if (error == message::ServerError_NO)
+	{
+		length = vc_task_ids.size();
+		for (size_t i = 0; i < length; i++)
+		{
+			int task_id = vc_task_ids[i];
+			int complete_count = _info.complete_task_count();
+			complete_count += 1;
+			_info.set_complete_task_count(complete_count);
+			gTaskManager.GetTaskConfig(task_id);
+			const message::TaskInfoConfig*  task_config = gTaskManager.GetTaskConfig(task_id);
+			if (task_config != NULL)
+			{
+				message::MsgTaskReward* reward = msg.add_complete_task();
+				reward->set_task_id(task_id);
+				int reward_length = task_config->rewards_size();
+				for (size_t j = 0; j < reward_length; j++)
+				{
+					const message::TaskRewardConfig reward_config = task_config->rewards(j);										
+					reward->add_rewards()->CopyFrom(reward_config);
+					if (reward_config.resource_type() >= message::ResourceType_0 && reward_config.resource_type() <= message::ResourceType_7)
+					{
+						bool found = false;
+						int resource_type = reward_config.resource_type() - message::ResourceType_0;
+						int resource_length = _info.resources_size();
+						for (size_t b = 0; b < resource_length; b++)
+						{
+							message::intPair* pair_entry = _info.mutable_resources(b);
+							if (pair_entry->number_1() == resource_type)
+							{
+								int temp_number = pair_entry->number_2() + reward_config.count();
+								pair_entry->set_number_2(temp_number);
+								found = true;
+								break;
+							}
+						}
+						if (found == false)
+						{
+							message::intPair* pair_entry = _info.add_resources();
+							pair_entry->set_number_1(resource_type);
+							pair_entry->set_number_2(reward_config.count());
+						}
+					}
+					else 
+					{
+						if (reward_config.resource_type() == message::ResourceType_gold)
+						{
+							int temp_gold = _info.gold() + reward_config.count();
+							_info.set_gold(temp_gold);
+						}
+						else if (reward_config.resource_type() == message::ResourceType_jewel)
+						{
+							int temp_jewel = _info.jewel() + reward_config.count();
+							_info.set_jewel(temp_jewel);
+						}
+						else
+						{
+
+						}
+					}
+				}
+			}
+
+			
+		}
 	}
 
 	msg.set_chapter_id(chapter_id);
@@ -151,6 +236,7 @@ void CrashPlayer::PassOfficilMap(int chapter_id, int section_id, int use_step, i
 	{
 		msg.add_add_resource()->CopyFrom(_info.resources(i));
 	}
+	sendPBMessage(&msg);
 }
 
 void CrashPlayer::SetInfo(message::CrashPlayerInfo info)
@@ -211,11 +297,123 @@ Session* CrashPlayer::GetSession()
 
 void CrashPlayer::SaveCrashInfo()
 {
-	message::ReqSaveCharacterData msg;
-	message::CrashPlayerInfo* pl_data =  msg.mutable_data();
-	pl_data->CopyFrom(_info);
 
-	gGSDBClient.sendPBMessage(&msg, _session->getTranId());
+
+	//message::ReqSaveCharacterData msg;
+
+	char temp_sz[5012];
+	message::ReqSaveCharacterDBSql msg;
+	
+	account_type acc_temp = _info.account();
+	char sql[4096];
+	DBQParms parms;
+	google::protobuf::RepeatedPtrField< ::message::intPair >* resources = _info.mutable_resources();
+	google::protobuf::RepeatedPtrField< ::message::intPair >::const_iterator it = resources->begin();
+	std::string resource_str;
+	char sz_resource[256];
+	std::string officil_game_record;
+	int length = _info.passed_record_size();
+	char sz_record[256];
+	for (size_t i = 0; i < length; i++)
+	{
+		if (i != 0)
+		{
+			officil_game_record += ";";
+		}
+		const message::intPair entry = _info.passed_record(i);
+		sprintf(sz_record, "%d,%d", entry.number_1(), entry.number_2());
+		officil_game_record += sz_record;
+	}
+
+	char sz_task[256];
+	std::string current_task;
+
+	length = _info.current_task_size();
+	for (size_t i = 0; i < length; i++)
+	{
+		if (i != 0)
+		{
+			current_task += ";";
+		}
+		const message::TaskInfo entry = _info.current_task(i);
+
+		sprintf(sz_task, "%d,%d,%d", entry.argu_1(), entry.argu_2(), entry.argu_3());
+		current_task += sz_task;
+	}
+	for (; it != resources->end(); it++)
+	{
+		if (resource_str.empty() == false)
+		{
+			resource_str += ";";
+		}
+		sprintf(sz_resource, "%d,%d", it->number_1(), it->number_2());
+		resource_str += sz_resource;
+	}
+	sprintf(sql, "replace into `character`(`account`, `pass_chapter`, `pass_section`,\
+		 `name`, `isadmin`, `map_width`,\
+		 `map_height`, `map_count`, `group_count`, `gold`) values (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s', %d)",
+		acc_temp, 0, 0, _info.name().c_str(), (int)_info.isadmin(),
+		_info.map_width(), _info.map_height(), _info.map_count(), resource_str.c_str(), _info.gold());
+	msg.set_sql(sql);
+	sendPBMessage(&msg);
+	
+	int temp_size = _info.completemap_size();
+
+	bool need_save = false;
+	if (temp_size > 0)
+	{
+		need_save = true;
+	}
+
+	std::string temp_sql_replace;
+	sprintf(sql, "delete from player_map where `account`=%llu;", acc_temp);
+	temp_sql_replace += sql;
+	temp_sql_replace += "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`, `gold`) values";
+	int count = 0;
+	std::string temp_data;
+	for (int i = 0; i < temp_size; i++, count++)
+	{
+		if (count != 0)
+		{
+			temp_sql_replace += ",";
+		}
+		const message::CrashMapData Data = _info.completemap(i);
+		std::string create_time = get_time(Data.create_time());
+		temp_data = Data.data().SerializeAsString();
+		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_sz, sizeof(temp_sz));
+
+		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
+			Data.mapname().c_str(), temp_data.c_str(),
+			create_time.c_str(), 1, Data.gold());
+		temp_sql_replace += sql;
+	}
+
+	temp_size = _info.incompletemap_size();
+	if (temp_size > 0)
+	{
+		need_save = true;
+	}
+
+	for (int i = 0; i < temp_size; i++, count++)
+	{
+		if (count != 0)
+		{
+			temp_sql_replace += ",";
+		}
+		const message::CrashMapData Data = _info.incompletemap(i);
+		std::string create_time = get_time(Data.create_time());
+		temp_data = Data.data().SerializeAsString();
+		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_sz, sizeof(temp_sz));
+		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
+			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0, Data.gold());
+		temp_sql_replace += sql;
+	}
+	if (need_save)
+	{
+		msg.set_sql(temp_sql_replace);
+		sendPBMessage(&msg);
+	}
+	//gGSDBClient.sendPBMessage(&msg, _session->getTranId());
 }
 
 

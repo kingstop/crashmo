@@ -210,6 +210,11 @@ message MsgC2SReqPassOfficilMap
 	required uint32 use_step = 4;
 }
 
+message MsgTaskReward
+{
+	required uint32 task_id = 1;
+	repeated TaskRewardConfig rewards = 2;
+}
 
 message MsgS2CPassOfficilMapACK
 {
@@ -219,6 +224,6 @@ message MsgS2CPassOfficilMapACK
 	repeated intPair add_resource = 4;
 	required uint32 current_gold = 5;
 	repeated intPair current_resource = 6;
-	repeated int32 complete_task_id = 7;
+	repeated MsgTaskReward complete_task = 7;
 	required ServerError error = 8 [default = ServerError_NO];
 }

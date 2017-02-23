@@ -71,6 +71,8 @@ message CrashPlayerInfo
 	required int32 map_count = 10;
 	required int32 gold = 11;
 	repeated TaskInfo current_task = 12;
+	required int32 complete_task_count = 13;
+	required int32 jewel = 14;
 }
 
 enum ConditionType

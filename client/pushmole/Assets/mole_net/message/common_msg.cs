@@ -365,6 +365,20 @@ namespace message
       get { return _current_task; }
     }
   
+    private int _complete_task_count;
+    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"complete_task_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int complete_task_count
+    {
+      get { return _complete_task_count; }
+      set { _complete_task_count = value; }
+    }
+    private int _jewel;
+    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"jewel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int jewel
+    {
+      get { return _jewel; }
+      set { _jewel = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

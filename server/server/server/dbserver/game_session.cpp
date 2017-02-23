@@ -67,6 +67,12 @@ void GameSession::parseDelOfficilMapReq(google::protobuf::Message* p, pb_flag_ty
 	gDBQuestMgr.delOfficilMap(msg->section(), msg->number());
 }
 
+void GameSession::parseReqSaveCharacterDBSql(google::protobuf::Message* p, pb_flag_type flag)
+{
+	message::ReqSaveCharacterDBSql* msg = (message::ReqSaveCharacterDBSql*)p;
+	gDBQuestMgr.CharacterDatabaseSql(msg->sql().c_str());
+}
+
 void GameSession::initPBModule()
 {
 	ProtocMsgBase<GameSession>::registerSDFun(&GameSession::send_message, &GameSession::parseGameMsg);
@@ -77,6 +83,7 @@ void GameSession::initPBModule()
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ReqSaveCharacterData), &GameSession::parseReqSaveCharacterData);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ReqSaveOfficilMap), &GameSession::parseSaveOfficilMapsReq);
 	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ReqSaveOfficilSectionNames), &GameSession::parseSaveSectionNamesReq);
+	ProtocMsgBase<GameSession>::registerCBFun(PROTOCO_NAME(message::ReqSaveCharacterDBSql), &GameSession::parseReqSaveCharacterDBSql);
 }
 
 

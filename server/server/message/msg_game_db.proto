@@ -40,6 +40,11 @@ message ReqSaveOfficilSectionNames
 	required string sql = 1;
 }
 
+message ReqSaveCharacterDBSql
+{
+	required string sql = 1;
+}
+
 message gs2dbWorldDatabaseSql
 {
 	required string sql = 1;

@@ -44,6 +44,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* ReqSaveOfficilSectionNames_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ReqSaveOfficilSectionNames_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ReqSaveCharacterDBSql_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ReqSaveCharacterDBSql_reflection_ = NULL;
 const ::google::protobuf::Descriptor* gs2dbWorldDatabaseSql_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   gs2dbWorldDatabaseSql_reflection_ = NULL;
@@ -178,7 +181,22 @@ void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto() {
       sizeof(ReqSaveOfficilSectionNames),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveOfficilSectionNames, _internal_metadata_),
       -1);
-  gs2dbWorldDatabaseSql_descriptor_ = file->message_type(8);
+  ReqSaveCharacterDBSql_descriptor_ = file->message_type(8);
+  static const int ReqSaveCharacterDBSql_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveCharacterDBSql, sql_),
+  };
+  ReqSaveCharacterDBSql_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      ReqSaveCharacterDBSql_descriptor_,
+      ReqSaveCharacterDBSql::default_instance_,
+      ReqSaveCharacterDBSql_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveCharacterDBSql, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(ReqSaveCharacterDBSql),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ReqSaveCharacterDBSql, _internal_metadata_),
+      -1);
+  gs2dbWorldDatabaseSql_descriptor_ = file->message_type(9);
   static const int gs2dbWorldDatabaseSql_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(gs2dbWorldDatabaseSql, sql_),
   };
@@ -222,6 +240,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       ReqSaveOfficilSectionNames_descriptor_, &ReqSaveOfficilSectionNames::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      ReqSaveCharacterDBSql_descriptor_, &ReqSaveCharacterDBSql::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       gs2dbWorldDatabaseSql_descriptor_, &gs2dbWorldDatabaseSql::default_instance());
 }
 
@@ -244,6 +264,8 @@ void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto() {
   delete ReqSaveOfficilMap_reflection_;
   delete ReqSaveOfficilSectionNames::default_instance_;
   delete ReqSaveOfficilSectionNames_reflection_;
+  delete ReqSaveCharacterDBSql::default_instance_;
+  delete ReqSaveCharacterDBSql_reflection_;
   delete gs2dbWorldDatabaseSql::default_instance_;
   delete gs2dbWorldDatabaseSql_reflection_;
 }
@@ -267,8 +289,9 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
     "cterData\022&\n\004data\030\001 \002(\0132\030.message.CrashPl"
     "ayerInfo\" \n\021ReqSaveOfficilMap\022\013\n\003sql\030\001 \002"
     "(\t\")\n\032ReqSaveOfficilSectionNames\022\013\n\003sql\030"
-    "\001 \002(\t\"$\n\025gs2dbWorldDatabaseSql\022\013\n\003sql\030\001 "
-    "\002(\t", 483);
+    "\001 \002(\t\"$\n\025ReqSaveCharacterDBSql\022\013\n\003sql\030\001 "
+    "\002(\t\"$\n\025gs2dbWorldDatabaseSql\022\013\n\003sql\030\001 \002("
+    "\t", 521);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg_game_db.proto", &protobuf_RegisterTypes);
   ApplyCharacterDataReq::default_instance_ = new ApplyCharacterDataReq();
@@ -279,6 +302,7 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
   ReqSaveCharacterData::default_instance_ = new ReqSaveCharacterData();
   ReqSaveOfficilMap::default_instance_ = new ReqSaveOfficilMap();
   ReqSaveOfficilSectionNames::default_instance_ = new ReqSaveOfficilSectionNames();
+  ReqSaveCharacterDBSql::default_instance_ = new ReqSaveCharacterDBSql();
   gs2dbWorldDatabaseSql::default_instance_ = new gs2dbWorldDatabaseSql();
   ApplyCharacterDataReq::default_instance_->InitAsDefaultInstance();
   NeedCreateCharacter::default_instance_->InitAsDefaultInstance();
@@ -288,6 +312,7 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
   ReqSaveCharacterData::default_instance_->InitAsDefaultInstance();
   ReqSaveOfficilMap::default_instance_->InitAsDefaultInstance();
   ReqSaveOfficilSectionNames::default_instance_->InitAsDefaultInstance();
+  ReqSaveCharacterDBSql::default_instance_->InitAsDefaultInstance();
   gs2dbWorldDatabaseSql::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto);
 }
@@ -2646,6 +2671,312 @@ void ReqSaveOfficilSectionNames::InternalSwap(ReqSaveOfficilSectionNames* other)
   }
   sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
   // @@protoc_insertion_point(field_set_allocated:message.ReqSaveOfficilSectionNames.sql)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ReqSaveCharacterDBSql::kSqlFieldNumber;
+#endif  // !_MSC_VER
+
+ReqSaveCharacterDBSql::ReqSaveCharacterDBSql()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.ReqSaveCharacterDBSql)
+}
+
+void ReqSaveCharacterDBSql::InitAsDefaultInstance() {
+}
+
+ReqSaveCharacterDBSql::ReqSaveCharacterDBSql(const ReqSaveCharacterDBSql& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.ReqSaveCharacterDBSql)
+}
+
+void ReqSaveCharacterDBSql::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  sql_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ReqSaveCharacterDBSql::~ReqSaveCharacterDBSql() {
+  // @@protoc_insertion_point(destructor:message.ReqSaveCharacterDBSql)
+  SharedDtor();
+}
+
+void ReqSaveCharacterDBSql::SharedDtor() {
+  sql_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void ReqSaveCharacterDBSql::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ReqSaveCharacterDBSql::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ReqSaveCharacterDBSql_descriptor_;
+}
+
+const ReqSaveCharacterDBSql& ReqSaveCharacterDBSql::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
+  return *default_instance_;
+}
+
+ReqSaveCharacterDBSql* ReqSaveCharacterDBSql::default_instance_ = NULL;
+
+ReqSaveCharacterDBSql* ReqSaveCharacterDBSql::New(::google::protobuf::Arena* arena) const {
+  ReqSaveCharacterDBSql* n = new ReqSaveCharacterDBSql;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ReqSaveCharacterDBSql::Clear() {
+  if (has_sql()) {
+    sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool ReqSaveCharacterDBSql::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.ReqSaveCharacterDBSql)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string sql = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_sql()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->sql().data(), this->sql().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.ReqSaveCharacterDBSql.sql");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.ReqSaveCharacterDBSql)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.ReqSaveCharacterDBSql)
+  return false;
+#undef DO_
+}
+
+void ReqSaveCharacterDBSql::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.ReqSaveCharacterDBSql)
+  // required string sql = 1;
+  if (has_sql()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sql().data(), this->sql().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.ReqSaveCharacterDBSql.sql");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->sql(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.ReqSaveCharacterDBSql)
+}
+
+::google::protobuf::uint8* ReqSaveCharacterDBSql::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.ReqSaveCharacterDBSql)
+  // required string sql = 1;
+  if (has_sql()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sql().data(), this->sql().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.ReqSaveCharacterDBSql.sql");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->sql(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.ReqSaveCharacterDBSql)
+  return target;
+}
+
+int ReqSaveCharacterDBSql::ByteSize() const {
+  int total_size = 0;
+
+  // required string sql = 1;
+  if (has_sql()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->sql());
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ReqSaveCharacterDBSql::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const ReqSaveCharacterDBSql* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ReqSaveCharacterDBSql*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ReqSaveCharacterDBSql::MergeFrom(const ReqSaveCharacterDBSql& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_sql()) {
+      set_has_sql();
+      sql_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.sql_);
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void ReqSaveCharacterDBSql::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ReqSaveCharacterDBSql::CopyFrom(const ReqSaveCharacterDBSql& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ReqSaveCharacterDBSql::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void ReqSaveCharacterDBSql::Swap(ReqSaveCharacterDBSql* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ReqSaveCharacterDBSql::InternalSwap(ReqSaveCharacterDBSql* other) {
+  sql_.Swap(&other->sql_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ReqSaveCharacterDBSql::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ReqSaveCharacterDBSql_descriptor_;
+  metadata.reflection = ReqSaveCharacterDBSql_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ReqSaveCharacterDBSql
+
+// required string sql = 1;
+ bool ReqSaveCharacterDBSql::has_sql() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void ReqSaveCharacterDBSql::set_has_sql() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void ReqSaveCharacterDBSql::clear_has_sql() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void ReqSaveCharacterDBSql::clear_sql() {
+  sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_sql();
+}
+ const ::std::string& ReqSaveCharacterDBSql::sql() const {
+  // @@protoc_insertion_point(field_get:message.ReqSaveCharacterDBSql.sql)
+  return sql_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqSaveCharacterDBSql::set_sql(const ::std::string& value) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.ReqSaveCharacterDBSql.sql)
+}
+ void ReqSaveCharacterDBSql::set_sql(const char* value) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.ReqSaveCharacterDBSql.sql)
+}
+ void ReqSaveCharacterDBSql::set_sql(const char* value, size_t size) {
+  set_has_sql();
+  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.ReqSaveCharacterDBSql.sql)
+}
+ ::std::string* ReqSaveCharacterDBSql::mutable_sql() {
+  set_has_sql();
+  // @@protoc_insertion_point(field_mutable:message.ReqSaveCharacterDBSql.sql)
+  return sql_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* ReqSaveCharacterDBSql::release_sql() {
+  clear_has_sql();
+  return sql_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqSaveCharacterDBSql::set_allocated_sql(::std::string* sql) {
+  if (sql != NULL) {
+    set_has_sql();
+  } else {
+    clear_has_sql();
+  }
+  sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
+  // @@protoc_insertion_point(field_set_allocated:message.ReqSaveCharacterDBSql.sql)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
