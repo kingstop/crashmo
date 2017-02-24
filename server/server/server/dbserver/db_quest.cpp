@@ -181,7 +181,7 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 	DBQuery& query = *p;
 	DBQParms parms;
 	char sql[256];
-	sprintf(sql, "select * from `character` where `account` = %llu", pkParm->account_);
+	sprintf(sql, "select * , UNIX_TIMESTAMP(`last_accept_task_time`) from `character` where `account` = %llu", pkParm->account_);
 	query << sql;
 	query.parse();
 	SDBResult sResult = query.store(parms);
@@ -199,11 +199,55 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 		info->set_map_height(row["map_height"]);
 		info->set_map_count(row["map_count"]);
 		info->set_gold(row["gold"]);
+		info->set_jewel(row["jewel"]);
+		info->set_complete_task_count(row["complate_task_count"]);		
+		info->set_last_accept_task_time(row["UNIX_TIMESTAMP(`last_accept_task_time`)"]);
+		std::vector<std::string> vcStr1;
+		std::vector<std::string> vcStr2;
+		std::string task = row["task"].c_str();
+		std::string officil_game_record = row["officil_game_record"].c_str();
+		if (officil_game_record.empty() == false)
+		{
+			SplitStringA(officil_game_record, ";", vcStr1);
+			int size_str_split_count = vcStr1.size();
+			for (size_t i = 0; i < size_str_split_count; i++)
+			{
+				SplitStringA(vcStr1[i], ",", vcStr2);
+				if (vcStr2.size() == 2)
+				{
+					message::intPair* pair_entry = info->add_passed_record();
+					int number_1 = atoi(vcStr2[0].c_str());
+					int number_2 = atoi(vcStr2[1].c_str());
+					pair_entry->set_number_1(number_1);
+					pair_entry->set_number_2(number_2);
+				}
+			}
+		}
+
+		if (task.empty() == false)
+		{
+			SplitStringA(task, ";", vcStr1);
+			int size_str_split_count = vcStr1.size();
+			for (size_t i = 0; i < size_str_split_count; i++)
+			{
+				SplitStringA(vcStr1[i], ",", vcStr2);
+				if (vcStr2.size() == 4)
+				{
+					message::TaskInfo* entry = info->add_current_task();
+					int task_id = atoi(vcStr2[0].c_str());
+					int number_1 = atoi(vcStr2[1].c_str());
+					int number_2 = atoi(vcStr2[2].c_str());
+					int number_3 = atoi(vcStr2[3].c_str());
+					entry->set_task_id(task_id);
+					entry->set_argu_1(number_1);
+					entry->set_argu_2(number_2);
+					entry->set_argu_3(number_3);
+				}
+			}
+		}
 		std::string group_str =	row["group_count"].c_str();
 		if (group_str.empty() == false)
 		{
-			std::vector<std::string> vcStr1;
-			std::vector<std::string> vcStr2;
 			SplitStringA(group_str, ";", vcStr1);
 			int size_str_split_count = vcStr1.size();
 			for (size_t i = 0; i < size_str_split_count; i++)

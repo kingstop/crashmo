@@ -1179,6 +1179,13 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::int32 jewel() const;
   void set_jewel(::google::protobuf::int32 value);
 
+  // required uint64 last_accept_task_time = 15;
+  bool has_last_accept_task_time() const;
+  void clear_last_accept_task_time();
+  static const int kLastAcceptTaskTimeFieldNumber = 15;
+  ::google::protobuf::uint64 last_accept_task_time() const;
+  void set_last_accept_task_time(::google::protobuf::uint64 value);
+
   // @@protoc_insertion_point(class_scope:message.CrashPlayerInfo)
  private:
   inline void set_has_account();
@@ -1199,6 +1206,8 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   inline void clear_has_complete_task_count();
   inline void set_has_jewel();
   inline void clear_has_jewel();
+  inline void set_has_last_accept_task_time();
+  inline void clear_has_last_accept_task_time();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -1219,6 +1228,7 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::TaskInfo > current_task_;
   ::google::protobuf::int32 gold_;
   ::google::protobuf::int32 complete_task_count_;
+  ::google::protobuf::uint64 last_accept_task_time_;
   ::google::protobuf::int32 jewel_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
@@ -2892,6 +2902,30 @@ inline void CrashPlayerInfo::set_jewel(::google::protobuf::int32 value) {
   set_has_jewel();
   jewel_ = value;
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.jewel)
+}
+
+// required uint64 last_accept_task_time = 15;
+inline bool CrashPlayerInfo::has_last_accept_task_time() const {
+  return (_has_bits_[0] & 0x00004000u) != 0;
+}
+inline void CrashPlayerInfo::set_has_last_accept_task_time() {
+  _has_bits_[0] |= 0x00004000u;
+}
+inline void CrashPlayerInfo::clear_has_last_accept_task_time() {
+  _has_bits_[0] &= ~0x00004000u;
+}
+inline void CrashPlayerInfo::clear_last_accept_task_time() {
+  last_accept_task_time_ = GOOGLE_ULONGLONG(0);
+  clear_has_last_accept_task_time();
+}
+inline ::google::protobuf::uint64 CrashPlayerInfo::last_accept_task_time() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.last_accept_task_time)
+  return last_accept_task_time_;
+}
+inline void CrashPlayerInfo::set_last_accept_task_time(::google::protobuf::uint64 value) {
+  set_has_last_accept_task_time();
+  last_accept_task_time_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.last_accept_task_time)
 }
 
 // -------------------------------------------------------------------

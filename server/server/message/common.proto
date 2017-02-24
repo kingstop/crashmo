@@ -73,6 +73,7 @@ message CrashPlayerInfo
 	repeated TaskInfo current_task = 12;
 	required int32 complete_task_count = 13;
 	required int32 jewel = 14;
+	required uint64 last_accept_task_time = 15;
 }
 
 enum ConditionType

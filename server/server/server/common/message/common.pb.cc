@@ -192,7 +192,7 @@ void protobuf_AssignDesc_common_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(intPair, _internal_metadata_),
       -1);
   CrashPlayerInfo_descriptor_ = file->message_type(7);
-  static const int CrashPlayerInfo_offsets_[14] = {
+  static const int CrashPlayerInfo_offsets_[15] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, account_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, passed_record_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, name_),
@@ -207,6 +207,7 @@ void protobuf_AssignDesc_common_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, current_task_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, complete_task_count_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, jewel_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerInfo, last_accept_task_time_),
   };
   CrashPlayerInfo_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -364,7 +365,7 @@ void protobuf_AddDesc_common_2eproto() {
     "\n\031failed_of_challenge_times\030\004 \002(\005\022\020\n\010map"
     "_rank\030\005 \002(\005\022+\n\010map_blog\030\006 \003(\0132\031.message."
     "RankMapBlogEntry\"-\n\007intPair\022\020\n\010number_1\030"
-    "\001 \002(\005\022\020\n\010number_2\030\002 \002(\005\"\206\003\n\017CrashPlayerI"
+    "\001 \002(\005\022\020\n\010number_2\030\002 \002(\005\"\245\003\n\017CrashPlayerI"
     "nfo\022\017\n\007account\030\001 \002(\004\022\'\n\rpassed_record\030\002 "
     "\003(\0132\020.message.intPair\022\014\n\004name\030\003 \002(\t\022,\n\rI"
     "ncompleteMap\030\004 \003(\0132\025.message.CrashMapDat"
@@ -374,31 +375,32 @@ void protobuf_AddDesc_common_2eproto() {
     "\n\nmap_height\030\t \002(\005\022\021\n\tmap_count\030\n \002(\005\022\014\n"
     "\004gold\030\013 \002(\005\022\'\n\014current_task\030\014 \003(\0132\021.mess"
     "age.TaskInfo\022\033\n\023complete_task_count\030\r \002("
-    "\005\022\r\n\005jewel\030\016 \002(\005\"x\n\027TaskConditionTypeCon"
-    "fig\022=\n\tcondition\030\001 \002(\0162\026.message.Conditi"
-    "onType:\022ConditionType_NULL\022\016\n\006argu_1\030\002 \002"
-    "(\005\022\016\n\006argu_2\030\003 \002(\005\"b\n\020TaskRewardConfig\022\?"
-    "\n\rresource_type\030\001 \002(\0162\025.message.Resource"
-    "Type:\021ResourceType_NULL\022\r\n\005count\030\002 \002(\005\"\215"
-    "\002\n\016TaskInfoConfig\022\017\n\007task_id\030\001 \002(\005\022\014\n\004na"
-    "me\030\002 \002(\t\022\020\n\010describe\030\003 \002(\t\0224\n\nconditions"
-    "\030\004 \003(\0132 .message.TaskConditionTypeConfig"
-    "\022*\n\007rewards\030\005 \003(\0132\031.message.TaskRewardCo"
-    "nfig\022 \n\030required_pass_chapter_id\030\006 \002(\005\022 "
-    "\n\030required_pass_section_id\030\007 \002(\005\022$\n\034requ"
-    "ired_complete_task_count\030\010 \002(\005*\277\001\n\rCondi"
-    "tionType\022\026\n\022ConditionType_NULL\020\000\022!\n\035Cond"
-    "itionType_PassOfficilGame\020\001\022\035\n\031Condition"
-    "Type_LimitedTime\020\002\022\035\n\031ConditionType_Limi"
-    "tedStep\020\003\022\036\n\032ConditionType_PassUserGame\020"
-    "\004\022\025\n\021ConditionType_Max\020\005*\212\002\n\014ResourceTyp"
-    "e\022\025\n\021ResourceType_NULL\020\000\022\022\n\016ResourceType"
-    "_0\020\001\022\022\n\016ResourceType_1\020\002\022\022\n\016ResourceType"
-    "_2\020\003\022\022\n\016ResourceType_3\020\004\022\022\n\016ResourceType"
-    "_4\020\005\022\022\n\016ResourceType_5\020\006\022\022\n\016ResourceType"
-    "_6\020\007\022\022\n\016ResourceType_7\020\010\022\025\n\021ResourceType"
-    "_gold\020\t\022\026\n\022ResourceType_jewel\020\n\022\024\n\020Resou"
-    "rceType_Max\020\013", 2093);
+    "\005\022\r\n\005jewel\030\016 \002(\005\022\035\n\025last_accept_task_tim"
+    "e\030\017 \002(\004\"x\n\027TaskConditionTypeConfig\022=\n\tco"
+    "ndition\030\001 \002(\0162\026.message.ConditionType:\022C"
+    "onditionType_NULL\022\016\n\006argu_1\030\002 \002(\005\022\016\n\006arg"
+    "u_2\030\003 \002(\005\"b\n\020TaskRewardConfig\022\?\n\rresourc"
+    "e_type\030\001 \002(\0162\025.message.ResourceType:\021Res"
+    "ourceType_NULL\022\r\n\005count\030\002 \002(\005\"\215\002\n\016TaskIn"
+    "foConfig\022\017\n\007task_id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022"
+    "\020\n\010describe\030\003 \002(\t\0224\n\nconditions\030\004 \003(\0132 ."
+    "message.TaskConditionTypeConfig\022*\n\007rewar"
+    "ds\030\005 \003(\0132\031.message.TaskRewardConfig\022 \n\030r"
+    "equired_pass_chapter_id\030\006 \002(\005\022 \n\030require"
+    "d_pass_section_id\030\007 \002(\005\022$\n\034required_comp"
+    "lete_task_count\030\010 \002(\005*\277\001\n\rConditionType\022"
+    "\026\n\022ConditionType_NULL\020\000\022!\n\035ConditionType"
+    "_PassOfficilGame\020\001\022\035\n\031ConditionType_Limi"
+    "tedTime\020\002\022\035\n\031ConditionType_LimitedStep\020\003"
+    "\022\036\n\032ConditionType_PassUserGame\020\004\022\025\n\021Cond"
+    "itionType_Max\020\005*\212\002\n\014ResourceType\022\025\n\021Reso"
+    "urceType_NULL\020\000\022\022\n\016ResourceType_0\020\001\022\022\n\016R"
+    "esourceType_1\020\002\022\022\n\016ResourceType_2\020\003\022\022\n\016R"
+    "esourceType_3\020\004\022\022\n\016ResourceType_4\020\005\022\022\n\016R"
+    "esourceType_5\020\006\022\022\n\016ResourceType_6\020\007\022\022\n\016R"
+    "esourceType_7\020\010\022\025\n\021ResourceType_gold\020\t\022\026"
+    "\n\022ResourceType_jewel\020\n\022\024\n\020ResourceType_M"
+    "ax\020\013", 2124);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   int32array::default_instance_ = new int32array();
@@ -4145,6 +4147,7 @@ const int CrashPlayerInfo::kGoldFieldNumber;
 const int CrashPlayerInfo::kCurrentTaskFieldNumber;
 const int CrashPlayerInfo::kCompleteTaskCountFieldNumber;
 const int CrashPlayerInfo::kJewelFieldNumber;
+const int CrashPlayerInfo::kLastAcceptTaskTimeFieldNumber;
 #endif  // !_MSC_VER
 
 CrashPlayerInfo::CrashPlayerInfo()
@@ -4176,6 +4179,7 @@ void CrashPlayerInfo::SharedCtor() {
   gold_ = 0;
   complete_task_count_ = 0;
   jewel_ = 0;
+  last_accept_task_time_ = GOOGLE_ULONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -4231,7 +4235,7 @@ void CrashPlayerInfo::Clear() {
       name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
   }
-  if (_has_bits_[8 / 32] & 14080) {
+  if (_has_bits_[8 / 32] & 30464) {
     ZR_(map_height_, map_count_);
     ZR_(gold_, jewel_);
   }
@@ -4462,6 +4466,21 @@ bool CrashPlayerInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(120)) goto parse_last_accept_task_time;
+        break;
+      }
+
+      // required uint64 last_accept_task_time = 15;
+      case 15: {
+        if (tag == 120) {
+         parse_last_accept_task_time:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &last_accept_task_time_)));
+          set_has_last_accept_task_time();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -4571,6 +4590,11 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(14, this->jewel(), output);
   }
 
+  // required uint64 last_accept_task_time = 15;
+  if (has_last_accept_task_time()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(15, this->last_accept_task_time(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -4667,6 +4691,11 @@ void CrashPlayerInfo::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(14, this->jewel(), target);
   }
 
+  // required uint64 last_accept_task_time = 15;
+  if (has_last_accept_task_time()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(15, this->last_accept_task_time(), target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -4739,12 +4768,19 @@ int CrashPlayerInfo::RequiredFieldsByteSizeFallback() const {
         this->jewel());
   }
 
+  if (has_last_accept_task_time()) {
+    // required uint64 last_accept_task_time = 15;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->last_accept_task_time());
+  }
+
   return total_size;
 }
 int CrashPlayerInfo::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x000037a5) ^ 0x000037a5) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x000077a5) ^ 0x000077a5) == 0) {  // All required fields are present.
     // required uint64 account = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
@@ -4787,6 +4823,11 @@ int CrashPlayerInfo::ByteSize() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->jewel());
+
+    // required uint64 last_accept_task_time = 15;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->last_accept_task_time());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -4892,6 +4933,9 @@ void CrashPlayerInfo::MergeFrom(const CrashPlayerInfo& from) {
     if (from.has_jewel()) {
       set_jewel(from.jewel());
     }
+    if (from.has_last_accept_task_time()) {
+      set_last_accept_task_time(from.last_accept_task_time());
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -4911,7 +4955,7 @@ void CrashPlayerInfo::CopyFrom(const CrashPlayerInfo& from) {
 }
 
 bool CrashPlayerInfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x000037a5) != 0x000037a5) return false;
+  if ((_has_bits_[0] & 0x000077a5) != 0x000077a5) return false;
 
   if (!::google::protobuf::internal::AllAreInitialized(this->passed_record())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->incompletemap())) return false;
@@ -4940,6 +4984,7 @@ void CrashPlayerInfo::InternalSwap(CrashPlayerInfo* other) {
   current_task_.UnsafeArenaSwap(&other->current_task_);
   std::swap(complete_task_count_, other->complete_task_count_);
   std::swap(jewel_, other->jewel_);
+  std::swap(last_accept_task_time_, other->last_accept_task_time_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -5349,6 +5394,30 @@ CrashPlayerInfo::mutable_current_task() {
   set_has_jewel();
   jewel_ = value;
   // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.jewel)
+}
+
+// required uint64 last_accept_task_time = 15;
+ bool CrashPlayerInfo::has_last_accept_task_time() const {
+  return (_has_bits_[0] & 0x00004000u) != 0;
+}
+ void CrashPlayerInfo::set_has_last_accept_task_time() {
+  _has_bits_[0] |= 0x00004000u;
+}
+ void CrashPlayerInfo::clear_has_last_accept_task_time() {
+  _has_bits_[0] &= ~0x00004000u;
+}
+ void CrashPlayerInfo::clear_last_accept_task_time() {
+  last_accept_task_time_ = GOOGLE_ULONGLONG(0);
+  clear_has_last_accept_task_time();
+}
+ ::google::protobuf::uint64 CrashPlayerInfo::last_accept_task_time() const {
+  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.last_accept_task_time)
+  return last_accept_task_time_;
+}
+ void CrashPlayerInfo::set_last_accept_task_time(::google::protobuf::uint64 value) {
+  set_has_last_accept_task_time();
+  last_accept_task_time_ = value;
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.last_accept_task_time)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
