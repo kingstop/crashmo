@@ -12,6 +12,7 @@ struct MapConfig
 	int gold_;
 	std::map<int, int> group_config_count_;
 	std::map<int, int> group_config_max_count_;
+	int day_refrash_time_;
 };
 
 class GameConfig
@@ -24,8 +25,6 @@ public:
 public:
 	void LoadGameConfig(DBQuery* p);
 	const MapConfig* getMapConfig();
-	
-
 protected:
 	OFFICIAL_MAP _offcial_map;
 	MapConfig _map_config;

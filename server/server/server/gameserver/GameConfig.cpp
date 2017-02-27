@@ -58,6 +58,8 @@ void GameConfig::LoadGameConfig(DBQuery* p)
 		_map_config.config_heigth_max_ =  row["map_config_max_height"];
 		_map_config.config_count_max_ =  row["map_config_max_count"];
 		_map_config.gold_ = row["gold"];
+		_map_config.day_refrash_time_ =  row["day_refrash_config_time"];
+		
 	}
 
 	query.reset();
@@ -80,3 +82,4 @@ const MapConfig* GameConfig::getMapConfig()
 {
 	return &_map_config;
 }
+

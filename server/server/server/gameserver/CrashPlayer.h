@@ -20,6 +20,7 @@ public:
 	void DelMap(message::MsgDelMapReq* msg);
 	void sendPBMessage(google::protobuf::Message* p);	
 	void LoadConfig();
+	void DayUpdate();
 	account_type getAccount();
 public:
 	void PassOfficilMap(int chapter_id, int section_id, int use_step, int use_time);

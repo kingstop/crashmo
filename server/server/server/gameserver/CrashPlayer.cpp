@@ -526,6 +526,43 @@ void CrashPlayer::DelMap(message::MsgDelMapReq* msg)
 	sendPBMessage(&msgACK);
 }
 
+void CrashPlayer::DayUpdate()
+{
+	if (_info.current_task_size() < 3)
+	{
+		const TaskManager::TASKCONFIGS*  task_configs = gTaskManager.GetTaskConfigs();
+		TaskManager::TASKCONFIGS::const_iterator it = task_configs->begin();
+		for (; it != task_configs->end(); ++ it)
+		{
+			const message::TaskInfoConfig& entry = it->second;
+			int required_pass_chapter_id = entry.required_pass_chapter_id();
+			int required_pass_section_id = entry.required_pass_section_id();
+			bool can_accept = true;
+			if (required_pass_chapter_id != 0 && required_pass_section_id != 0)
+			{
+				can_accept = false;
+				int pass_record_length = _info.passed_record_size();
+				for (size_t i = 0; i < pass_record_length; i++)
+				{
+					message::intPair pair = _info.passed_record(i);
+					if (pair.number_1() == required_pass_chapter_id)
+					{
+						if (pair.number_1() > pair.number_2())
+						{
+							can_accept = true;
+						}
+						break;
+					}
+
+				}
+			}
+
+		}
+
+	}
+	
+}
+
 void CrashPlayer::SaveMap(message::MsgSaveMapReq* msg)
 {
 	message::MsgSaveMapACK msgACK;
