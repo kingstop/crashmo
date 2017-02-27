@@ -36,7 +36,8 @@ void Session::registerPBCall()
 	registerCBFun(PROTOCO_NAME(message::MsgC2SOfficeStatusReq), &Session::parseReqOfficilStatus);
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqLoadTaskConfigs), &Session::parseReqLoadTaskConfigs);
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqModifyTaskInfo), &Session::parseReqModifyTaskInfo);
-	
+	registerCBFun(PROTOCO_NAME(message::MsgC2SReqPassOfficilMap), &Session::parsePassOfficilGame);
+
 }
 
 void Session::parsePBMessage(google::protobuf::Message* p)
@@ -169,6 +170,10 @@ void Session::parseEnterOfficilGame(google::protobuf::Message* p)
 void Session::parsePassOfficilGame(google::protobuf::Message* p)
 {
 	message::MsgC2SReqPassOfficilMap* msg = (message::MsgC2SReqPassOfficilMap*)p;
+	if (_player)
+	{
+		_player->PassOfficilMap(msg->chapter_id(), msg->section_id(), msg->use_step(), msg->use_time());
+	}
 
 }
 
