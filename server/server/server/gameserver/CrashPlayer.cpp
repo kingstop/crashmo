@@ -12,8 +12,7 @@ CrashPlayer::CrashPlayer(Session* session):_session(session)
 CrashPlayer::CrashPlayer(Session* session, account_type acc) : _session(session)
 {
 	_info.set_name("name");
-	//_info.set_pass_chapter(0);
-	//_info.set_pass_section(0);	
+
 	_info.set_isadmin(true);
 	_info.set_account(acc);
 	_ping_count = 0;
@@ -578,6 +577,7 @@ void CrashPlayer::DayUpdate()
 					task_info->set_argu_2(0);
 					task_info->set_argu_3(0);
 					task_info->set_describe(entry.describe().c_str());
+					task_info->set_name(entry.name().c_str());
 					message::MsgS2CNewTaskNotify msgACK;
 					msgACK.mutable_info()->CopyFrom(*task_info);
 					sendPBMessage(&msgACK);

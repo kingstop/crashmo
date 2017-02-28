@@ -832,6 +832,23 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CNewTaskNotify")]
+  public partial class MsgS2CNewTaskNotify : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CNewTaskNotify() {}
+    
+    private message.TaskInfo _info;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"info", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public message.TaskInfo info
+    {
+      get { return _info; }
+      set { _info = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"ServerError")]
     public enum ServerError
     {

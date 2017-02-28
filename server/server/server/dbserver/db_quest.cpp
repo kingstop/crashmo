@@ -116,6 +116,7 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 	gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, &parms, NULL, _QUERY_SAVE_PLAYER_);
 	int temp_size = playerInfo->completemap_size();
 	
+
 	bool need_save = false;
 	if (temp_size > 0)
 	{

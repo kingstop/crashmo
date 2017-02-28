@@ -588,6 +588,18 @@ class TaskInfo : public ::google::protobuf::Message {
   ::std::string* release_describe();
   void set_allocated_describe(::std::string* describe);
 
+  // required string name = 6;
+  bool has_name() const;
+  void clear_name();
+  static const int kNameFieldNumber = 6;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
   // @@protoc_insertion_point(class_scope:message.TaskInfo)
  private:
   inline void set_has_task_id();
@@ -600,6 +612,8 @@ class TaskInfo : public ::google::protobuf::Message {
   inline void clear_has_argu_3();
   inline void set_has_describe();
   inline void clear_has_describe();
+  inline void set_has_name();
+  inline void clear_has_name();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -612,6 +626,7 @@ class TaskInfo : public ::google::protobuf::Message {
   ::google::protobuf::int32 argu_2_;
   ::google::protobuf::int32 argu_3_;
   ::google::protobuf::internal::ArenaStringPtr describe_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
   friend void protobuf_ShutdownFile_common_2eproto();
@@ -2188,6 +2203,59 @@ inline void TaskInfo::set_allocated_describe(::std::string* describe) {
   }
   describe_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), describe);
   // @@protoc_insertion_point(field_set_allocated:message.TaskInfo.describe)
+}
+
+// required string name = 6;
+inline bool TaskInfo::has_name() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void TaskInfo::set_has_name() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void TaskInfo::clear_has_name() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void TaskInfo::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_name();
+}
+inline const ::std::string& TaskInfo::name() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfo.name)
+  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TaskInfo::set_name(const ::std::string& value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.TaskInfo.name)
+}
+inline void TaskInfo::set_name(const char* value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.TaskInfo.name)
+}
+inline void TaskInfo::set_name(const char* value, size_t size) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.TaskInfo.name)
+}
+inline ::std::string* TaskInfo::mutable_name() {
+  set_has_name();
+  // @@protoc_insertion_point(field_mutable:message.TaskInfo.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TaskInfo::release_name() {
+  clear_has_name();
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TaskInfo::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    set_has_name();
+  } else {
+    clear_has_name();
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:message.TaskInfo.name)
 }
 
 // -------------------------------------------------------------------

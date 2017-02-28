@@ -36,6 +36,11 @@ public class CrashPlayer
     }
     */
 
+    public void AddTask(TaskInfo info)
+    {
+        _info.current_task.Add(info);
+    }
+
     public void del_map(string name)
     {
         bool find_temp = false;

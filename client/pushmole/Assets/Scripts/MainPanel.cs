@@ -88,14 +88,7 @@ public class MainPanel : MonoBehaviour
     {
         global_instance.Instance._global_game_type = global_game_type.global_game_type_game;
         message.CrashMapData MapDataTemp = null;
-		if (_current_page == page_type.page_type_official) 
-		{
-			message.MsgC3SReqEnterOfficilMap msg;
-			msg.chapter_id = _chapter_id;
-			msg.section_id = (int)_current_map_index;
-			global_instance.Instance._client_session.send (msg);
-		}
-		/*
+
         if (_current_page == page_type.page_type_official)
         {
 			
@@ -117,7 +110,7 @@ public class MainPanel : MonoBehaviour
             global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
 			global_instance.Instance._global_game_type = global_game_type.global_game_type_game;
         }
-        */
+        
     }
     public void CreateClick()
     {        
