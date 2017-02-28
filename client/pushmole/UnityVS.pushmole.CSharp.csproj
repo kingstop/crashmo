@@ -226,6 +226,7 @@
     <Compile Include="Assets\Scripts\CrashPlayer.cs" />
     <Compile Include="Assets\Scripts\DropdownReward.cs" />
     <Compile Include="Assets\Scripts\FradeText.cs" />
+    <Compile Include="Assets\Scripts\GameBtnsCtrl.cs" />
     <Compile Include="Assets\Scripts\MainCameraLine.cs" />
     <Compile Include="Assets\Scripts\MainPanel.cs" />
     <Compile Include="Assets\Scripts\MainPanelTitleButtonItem.cs" />

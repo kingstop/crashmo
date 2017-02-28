@@ -40,13 +40,14 @@ public class button_event_handler : MonoBehaviour
 
     public void OnButtonDown(Button entry)
     {
-        global_instance.Instance._ngui_edit_manager.btn_down(entry);
+		
+		global_instance.Instance._ngui_edit_manager._game_btns.btn_down(entry);
 
     }
 
     public void OnButtonUp(Button entry)
     {
-        global_instance.Instance._ngui_edit_manager.btn_up(entry);
+		global_instance.Instance._ngui_edit_manager._game_btns.btn_up(entry);
     }
 
 

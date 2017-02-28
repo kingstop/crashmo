@@ -28,12 +28,12 @@ public class ngui_edit_manager : MonoBehaviour {
     public Button[] _Buttons_sliced_game_type;
     public Button[] _Buttons_simple_game_type;
     public Color _current_color;
-    public Button[] _game_btns;
-    public Button[] _dir_btn;
-    public Button[] _catch;
+    //public Button[] _game_btns;
+    //public Button[] _dir_btn;
+    //public Button[] _catch;
     public Button _open_create_btn;
     public Button _create_ok_btn;
-    public bool[] _dir_btn_down = new bool[4];
+    //public bool[] _dir_btn_down = new bool[4];
     public GameObject _edit_scrollbar;
 
     public crashmolegrid _flag_grid;
@@ -41,8 +41,8 @@ public class ngui_edit_manager : MonoBehaviour {
     public SaveMapPanel _SaveMapPanel;
     public SectionEditPanel _sectionEditPanel;
     public GameObject _login_obj;
-
-    public GameObject _game_obj_btns;
+	public GameBtnsCtrl _game_btns;
+    //public GameObject _game_obj_btns;
 	public GameObject _edit_type_obj_btns;
 	public Image _map_image;
     public Camera _camera_map;
@@ -136,19 +136,7 @@ public class ngui_edit_manager : MonoBehaviour {
         Debug.Log(str);
     }
 
-    void set_game_btns_state(bool show)
-    {
-        foreach (Button entry in _game_btns)
-        {
-            entry.gameObject.SetActive(show);
-        }
 
-        int length = _dir_btn_down.Length;
-        for (int i = 0; i < length; i++)
-        {
-            _dir_btn_down[i] = show;
-        }
-    }
 
     public void on_login_btn_click()
     {
@@ -198,15 +186,7 @@ public class ngui_edit_manager : MonoBehaviour {
     {
 
     }
-    void hide_game_btns()
-    {
-        set_game_btns_state(false);
-    }
 
-    void show_game_btns()
-    {
-        set_game_btns_state(true);
-    }
     protected bool game_catch_action()
     {
         if (global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game
@@ -217,88 +197,8 @@ public class ngui_edit_manager : MonoBehaviour {
 
         return false;
     }
-    public void click_jump()
-    {
-        if (game_catch_action() && _input_keyboard == false)
-        {
-            global_instance.Instance._crash_manager.creature_jump();
-        }
-            
-    }
-    public void btn_down(Button entry)
-    {
-        if (game_catch_action() && _input_keyboard == false)
-        {
-            int length = _dir_btn.Length;
-            for(int i = 0; i < length; i ++)
-            {
-                if(_dir_btn[i] == entry)
-                {
-                    _dir_btn_down[i] = true;                
-                }
-                else
-                {
-                    _dir_btn_down[i] = false;                
-                }       
-            }
-            global_instance.Instance._crash_manager.update_dir_btn();
-        }
 
-    }
 
-    public void catch_btn_down(Button entry)
-    {
-        if (game_catch_action() && _input_keyboard == false)
-        {
-            int count = _catch.Length;
-            int temp_ = 0;
-            for (int i = 0; i < count; i++)
-            {
-                if (_catch[i] == entry)
-                {
-                    temp_ = i;
-                    //_catch[i].gameObject.SetActive(false);
-                }
-                else
-                {
-                    //_catch[i].gameObject.SetActive(true);
-                }
-            }
-            global_instance.Instance._crash_manager.catch_click(temp_);
-        } 
-    }
-
-	public void CatchButtonUpdate(bool freezen)
-	{
-		if (freezen == false) 
-		{
-			_catch [0].gameObject.SetActive (false);
-			_catch [1].gameObject.SetActive (true);
-		} 
-		else 
-		{
-			_catch [0].gameObject.SetActive (true);
-			_catch [1].gameObject.SetActive (false);
-
-		}
-
-	}
-
-    public void btn_up(Button entry)
-    {
-        if(game_catch_action() && _input_keyboard == false)
-        {
-            int length = _dir_btn.Length;
-            for (int i = 0; i < length; i++)
-            {
-                if (_dir_btn[i] == entry)
-                {
-                    _dir_btn_down[i] = false;
-                }
-            }
-            global_instance.Instance._crash_manager.update_dir_btn();
-        }
-    }
 
 	// Use this for initialization
 	void Start () {        
@@ -321,7 +221,7 @@ public class ngui_edit_manager : MonoBehaviour {
                 break;
             case game_type.game:
                 {
-                    UpdateKeyboard();
+					_game_btns.UpdateKeyboard();
                     global_instance.Instance._crash_manager.update();
                 }
                 break;
@@ -329,59 +229,7 @@ public class ngui_edit_manager : MonoBehaviour {
         global_instance.Instance._net_client.update();
 	}
 
-    void UpdateKeyboard()
-    {
-		if(game_catch_action() && _input_keyboard == true)
-        {
-            int length = _dir_btn_down.Length;
-            for (int i = 0; i < length; i++)
-            {
-                _dir_btn_down[i] = false;
-            }
 
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                _dir_btn_down[(int)dir_move.back] = true;
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                _dir_btn_down[(int)dir_move.front] = true;
-            }
-            else if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                _dir_btn_down[(int)dir_move.left] = true;
-            }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                _dir_btn_down[(int)dir_move.right] = true;
-            }
-            global_instance.Instance._crash_manager.update_dir_btn();
-            bool jump_down = false;
-            if (Input.GetKey(KeyCode.Space))
-            {
-                jump_down = true;
-            }
-
-            if (_jump_click == true && jump_down == false)
-            {
-                _jump_click = false;
-            }
-            else if (_jump_click == false && jump_down == true)
-            {
-                _jump_click = true;
-                global_instance.Instance._crash_manager.creature_jump();
-            }
-
-            int b_ret = 0;
-            if(Input.GetKey(KeyCode.H))
-            {
-                b_ret = 1;
-            }
-            global_instance.Instance._crash_manager.catch_click(b_ret);
-        }
-    }
-
-    private bool _jump_click = false;
     public void BackToMainPanel()
     {
 		HideAllUI();
@@ -393,7 +241,8 @@ public class ngui_edit_manager : MonoBehaviour {
     {
 
 		EditMap_.gameObject.SetActive (false);
-        _game_obj_btns.SetActive(false);
+		_game_btns.gameObject.SetActive (false);
+        
         _edit_type_obj_btns.SetActive(false);
         _game_end.gameObject.SetActive(false);
 		_sectionEditPanel.gameObject.SetActive (false);
@@ -408,9 +257,9 @@ public class ngui_edit_manager : MonoBehaviour {
 		}
 
 
-		if (_game_obj_btns != obj) 
+		if (_game_btns.gameObject != obj) 
 		{
-			_game_obj_btns.SetActive (false);
+			_game_btns.gameObject.SetActive (false);
 		}
 
 
@@ -484,37 +333,12 @@ public class ngui_edit_manager : MonoBehaviour {
         }
     }
 
-    public void OnRecordClick()
-    {
-        if(global_instance.Instance._global_game_type == global_game_type.global_game_type_game && global_instance.Instance._crash_manager.getGameState() == gameState.game_playing)
-        {
-			crashmo_record_type current_type = global_instance.Instance._crash_manager._record.get_open_type ();
-			if (current_type == crashmo_record_type.record_open || current_type == crashmo_record_type.record_ready_for_open) {
-				global_instance.Instance._crash_manager._record.ready_for_record_closed ();
-			} else {
-				global_instance.Instance._crash_manager._record.ready_for_record_open ();	
-			}
-
-			if (global_instance.Instance._crash_manager._need_play_animation == false) 
-			{
-				if (global_instance.Instance._crash_manager._creature._is_in_falldown == false) 
-				{
-					if (global_instance.Instance._crash_manager.need_fall_update () == false) {
-						global_instance.Instance._crash_manager._record.try_to_next_state ();
-                        
-					}
-
-				}
-			}
-
-        }
-
-    }
+ 
 
     public void update_game_type(game_type type)
     {
         EditMap_.gameObject.SetActive(false);
-        _game_obj_btns.SetActive(false);
+		_game_btns.gameObject.SetActive (false);
         _game_end.gameObject.SetActive(false);
          gamestate_btn(type);
 		EditMap_.ClearFradeText();
@@ -540,13 +364,13 @@ public class ngui_edit_manager : MonoBehaviour {
                 break;
             case game_type.game:
                 {
-                    _game_obj_btns.SetActive(true);
+					_game_btns.gameObject.SetActive (false);
                     Vector3 vec = new Vector3(7.5f, 1.73f, -2.7f);
                     Vector3 vec_rot = new Vector3(11f, 0, 0);
                     Camera.main.transform.Rotate(vec_rot);
                     Camera.main.transform.position = vec;
                     Camera.main.fieldOfView = 34;
-                    show_game_btns();
+                    
                     global_instance.Instance._crash_manager.init();
                 }
                 break;
@@ -576,17 +400,7 @@ public class ngui_edit_manager : MonoBehaviour {
             
         }
     }
-
-
-    public void on_button_click_camera_left()
-    {
-        global_instance.Instance._crash_manager.move_camera_left();
-    }
-
-    public void on_button_click_camera_right()
-    {
-        global_instance.Instance._crash_manager.move_camera_right();
-    }
+		
 
     public void on_buttion_click(GameObject obj)
     {

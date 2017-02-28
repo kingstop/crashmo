@@ -854,7 +854,7 @@ public class crash_manager
         bool no_key_down = true;
         for (int i = 0; i < 4; i ++ )
         {
-            if(global_instance.Instance._ngui_edit_manager._dir_btn_down[i])
+			if(global_instance.Instance._ngui_edit_manager._game_btns._dir_button_down[i])
             {
                 no_key_down = false;
                 if(_dir_btn_down[i] == false)
@@ -946,7 +946,7 @@ public class crash_manager
                             _creature.set_position(pos._x + 0.45f, pos._y + 0.2f, pos._z + 0.5f);
                             target_mole.add_crash_obj(_obj_creature);
                             _lock_mole.Add(target_mole);
-							global_instance.Instance._ngui_edit_manager.CatchButtonUpdate (true);
+							global_instance.Instance._ngui_edit_manager._game_btns.CatchButtonUpdate (true);
                         }
                     }
                 }
@@ -969,7 +969,7 @@ public class crash_manager
                             }
 
                         }
-						global_instance.Instance._ngui_edit_manager.CatchButtonUpdate (false);
+						global_instance.Instance._ngui_edit_manager._game_btns.CatchButtonUpdate (false);
                         _freezen_creature = false;
                         if (his == false)
                         {
