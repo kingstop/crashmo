@@ -42,6 +42,7 @@ public class client_session
     {
         MsgS2CNewTaskNotify msg = ProtoBuf.Serializer.Deserialize<MsgS2CNewTaskNotify>(stream);
         
+        
         return true;
     }
     public bool parseMsgS2CPassOfficilMapACK(System.IO.MemoryStream stream)

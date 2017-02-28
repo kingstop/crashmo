@@ -51,8 +51,8 @@ public class OfficilMapManager
 
 	public void LoadSections ()
 	{
-		message.MsgC2SOfficeStatusReq msg = new message.MsgC2SOfficeStatusReq ();	
-		global_instance.Instance._net_client.send (msg);
+		message.MsgC2SOfficeStatusReq msg = new message.MsgC2SOfficeStatusReq();	
+		global_instance.Instance._net_client.send(msg);
         _officilMap.Clear();
         _chapter_ids.Clear();
     }
