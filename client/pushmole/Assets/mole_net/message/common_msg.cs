@@ -157,6 +157,13 @@ namespace message
       get { return _argu_3; }
       set { _argu_3 = value; }
     }
+    private string _describe;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"describe", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string describe
+    {
+      get { return _describe; }
+      set { _describe = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -378,6 +385,13 @@ namespace message
     {
       get { return _jewel; }
       set { _jewel = value; }
+    }
+    private ulong _last_accept_task_time;
+    [global::ProtoBuf.ProtoMember(15, IsRequired = true, Name=@"last_accept_task_time", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong last_accept_task_time
+    {
+      get { return _last_accept_task_time; }
+      set { _last_accept_task_time = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

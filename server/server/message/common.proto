@@ -30,6 +30,7 @@ message TaskInfo
 	required int32 argu_1 = 2;
 	required int32 argu_2 = 3;
 	required int32 argu_3 = 4;
+	required string describe = 5;
 	
 }
 

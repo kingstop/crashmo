@@ -113,6 +113,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* MsgS2CPassOfficilMapACK_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgS2CPassOfficilMapACK_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgS2CNewTaskNotify_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgS2CNewTaskNotify_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* ServerError_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* MapType_descriptor_ = NULL;
 
@@ -632,6 +635,21 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CPassOfficilMapACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, _internal_metadata_),
       -1);
+  MsgS2CNewTaskNotify_descriptor_ = file->message_type(31);
+  static const int MsgS2CNewTaskNotify_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNewTaskNotify, info_),
+  };
+  MsgS2CNewTaskNotify_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgS2CNewTaskNotify_descriptor_,
+      MsgS2CNewTaskNotify::default_instance_,
+      MsgS2CNewTaskNotify_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNewTaskNotify, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgS2CNewTaskNotify),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNewTaskNotify, _internal_metadata_),
+      -1);
   ServerError_descriptor_ = file->enum_type(0);
   MapType_descriptor_ = file->enum_type(1);
 }
@@ -708,6 +726,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
       MsgTaskReward_descriptor_, &MsgTaskReward::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       MsgS2CPassOfficilMapACK_descriptor_, &MsgS2CPassOfficilMapACK::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgS2CNewTaskNotify_descriptor_, &MsgS2CNewTaskNotify::default_instance());
 }
 
 }  // namespace
@@ -775,6 +795,8 @@ void protobuf_ShutdownFile_crashmo_2eproto() {
   delete MsgTaskReward_reflection_;
   delete MsgS2CPassOfficilMapACK::default_instance_;
   delete MsgS2CPassOfficilMapACK_reflection_;
+  delete MsgS2CNewTaskNotify::default_instance_;
+  delete MsgS2CNewTaskNotify_reflection_;
 }
 
 void protobuf_AddDesc_crashmo_2eproto() {
@@ -854,15 +876,16 @@ void protobuf_AddDesc_crashmo_2eproto() {
     "rent_gold\030\005 \002(\r\022*\n\020current_resource\030\006 \003("
     "\0132\020.message.intPair\022-\n\rcomplete_task\030\007 \003"
     "(\0132\026.message.MsgTaskReward\0223\n\005error\030\010 \002("
-    "\0162\024.message.ServerError:\016ServerError_NO*"
-    "\345\001\n\013ServerError\022\022\n\016ServerError_NO\020\000\022\026\n\022S"
-    "erverError_Unknow\020\001\022\034\n\030ServerError_HaveS"
-    "ameName\020\002\022&\n\"ServerError_NotFoundMapName"
-    "WhenDel\020\003\0220\n,ServerError_PassOfficilMapF"
-    "ailedTheMapIsLock\020\004\0222\n.ServerError_PassO"
-    "fficilMapFailedTheMapNotFound\020\005*<\n\007MapTy"
-    "pe\022\r\n\tOfficeMap\020\001\022\021\n\rImcompleteMap\020\002\022\017\n\013"
-    "CompleteMap\020\003", 3093);
+    "\0162\024.message.ServerError:\016ServerError_NO\""
+    "6\n\023MsgS2CNewTaskNotify\022\037\n\004info\030\001 \002(\0132\021.m"
+    "essage.TaskInfo*\345\001\n\013ServerError\022\022\n\016Serve"
+    "rError_NO\020\000\022\026\n\022ServerError_Unknow\020\001\022\034\n\030S"
+    "erverError_HaveSameName\020\002\022&\n\"ServerError"
+    "_NotFoundMapNameWhenDel\020\003\0220\n,ServerError"
+    "_PassOfficilMapFailedTheMapIsLock\020\004\0222\n.S"
+    "erverError_PassOfficilMapFailedTheMapNot"
+    "Found\020\005*<\n\007MapType\022\r\n\tOfficeMap\020\001\022\021\n\rImc"
+    "ompleteMap\020\002\022\017\n\013CompleteMap\020\003", 3149);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "crashmo.proto", &protobuf_RegisterTypes);
   MsgIntStringProto::default_instance_ = new MsgIntStringProto();
@@ -896,6 +919,7 @@ void protobuf_AddDesc_crashmo_2eproto() {
   MsgC2SReqPassOfficilMap::default_instance_ = new MsgC2SReqPassOfficilMap();
   MsgTaskReward::default_instance_ = new MsgTaskReward();
   MsgS2CPassOfficilMapACK::default_instance_ = new MsgS2CPassOfficilMapACK();
+  MsgS2CNewTaskNotify::default_instance_ = new MsgS2CNewTaskNotify();
   MsgIntStringProto::default_instance_->InitAsDefaultInstance();
   CrashmoClientInit::default_instance_->InitAsDefaultInstance();
   MsgSaveMapReq::default_instance_->InitAsDefaultInstance();
@@ -927,6 +951,7 @@ void protobuf_AddDesc_crashmo_2eproto() {
   MsgC2SReqPassOfficilMap::default_instance_->InitAsDefaultInstance();
   MsgTaskReward::default_instance_->InitAsDefaultInstance();
   MsgS2CPassOfficilMapACK::default_instance_->InitAsDefaultInstance();
+  MsgS2CNewTaskNotify::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_crashmo_2eproto);
 }
 
@@ -12795,6 +12820,292 @@ MsgS2CPassOfficilMapACK::mutable_complete_task() {
   set_has_error();
   error_ = value;
   // @@protoc_insertion_point(field_set:message.MsgS2CPassOfficilMapACK.error)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MsgS2CNewTaskNotify::kInfoFieldNumber;
+#endif  // !_MSC_VER
+
+MsgS2CNewTaskNotify::MsgS2CNewTaskNotify()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgS2CNewTaskNotify)
+}
+
+void MsgS2CNewTaskNotify::InitAsDefaultInstance() {
+  info_ = const_cast< ::message::TaskInfo*>(&::message::TaskInfo::default_instance());
+}
+
+MsgS2CNewTaskNotify::MsgS2CNewTaskNotify(const MsgS2CNewTaskNotify& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgS2CNewTaskNotify)
+}
+
+void MsgS2CNewTaskNotify::SharedCtor() {
+  _cached_size_ = 0;
+  info_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgS2CNewTaskNotify::~MsgS2CNewTaskNotify() {
+  // @@protoc_insertion_point(destructor:message.MsgS2CNewTaskNotify)
+  SharedDtor();
+}
+
+void MsgS2CNewTaskNotify::SharedDtor() {
+  if (this != default_instance_) {
+    delete info_;
+  }
+}
+
+void MsgS2CNewTaskNotify::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgS2CNewTaskNotify::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgS2CNewTaskNotify_descriptor_;
+}
+
+const MsgS2CNewTaskNotify& MsgS2CNewTaskNotify::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_crashmo_2eproto();
+  return *default_instance_;
+}
+
+MsgS2CNewTaskNotify* MsgS2CNewTaskNotify::default_instance_ = NULL;
+
+MsgS2CNewTaskNotify* MsgS2CNewTaskNotify::New(::google::protobuf::Arena* arena) const {
+  MsgS2CNewTaskNotify* n = new MsgS2CNewTaskNotify;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgS2CNewTaskNotify::Clear() {
+  if (has_info()) {
+    if (info_ != NULL) info_->::message::TaskInfo::Clear();
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgS2CNewTaskNotify::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgS2CNewTaskNotify)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .message.TaskInfo info = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_info()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgS2CNewTaskNotify)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgS2CNewTaskNotify)
+  return false;
+#undef DO_
+}
+
+void MsgS2CNewTaskNotify::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgS2CNewTaskNotify)
+  // required .message.TaskInfo info = 1;
+  if (has_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->info_, output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgS2CNewTaskNotify)
+}
+
+::google::protobuf::uint8* MsgS2CNewTaskNotify::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgS2CNewTaskNotify)
+  // required .message.TaskInfo info = 1;
+  if (has_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, *this->info_, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgS2CNewTaskNotify)
+  return target;
+}
+
+int MsgS2CNewTaskNotify::ByteSize() const {
+  int total_size = 0;
+
+  // required .message.TaskInfo info = 1;
+  if (has_info()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->info_);
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgS2CNewTaskNotify::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgS2CNewTaskNotify* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgS2CNewTaskNotify*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgS2CNewTaskNotify::MergeFrom(const MsgS2CNewTaskNotify& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_info()) {
+      mutable_info()->::message::TaskInfo::MergeFrom(from.info());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgS2CNewTaskNotify::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgS2CNewTaskNotify::CopyFrom(const MsgS2CNewTaskNotify& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgS2CNewTaskNotify::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  if (has_info()) {
+    if (!this->info_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void MsgS2CNewTaskNotify::Swap(MsgS2CNewTaskNotify* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgS2CNewTaskNotify::InternalSwap(MsgS2CNewTaskNotify* other) {
+  std::swap(info_, other->info_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgS2CNewTaskNotify::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgS2CNewTaskNotify_descriptor_;
+  metadata.reflection = MsgS2CNewTaskNotify_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgS2CNewTaskNotify
+
+// required .message.TaskInfo info = 1;
+ bool MsgS2CNewTaskNotify::has_info() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+ void MsgS2CNewTaskNotify::set_has_info() {
+  _has_bits_[0] |= 0x00000001u;
+}
+ void MsgS2CNewTaskNotify::clear_has_info() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+ void MsgS2CNewTaskNotify::clear_info() {
+  if (info_ != NULL) info_->::message::TaskInfo::Clear();
+  clear_has_info();
+}
+ const ::message::TaskInfo& MsgS2CNewTaskNotify::info() const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CNewTaskNotify.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+ ::message::TaskInfo* MsgS2CNewTaskNotify::mutable_info() {
+  set_has_info();
+  if (info_ == NULL) {
+    info_ = new ::message::TaskInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:message.MsgS2CNewTaskNotify.info)
+  return info_;
+}
+ ::message::TaskInfo* MsgS2CNewTaskNotify::release_info() {
+  clear_has_info();
+  ::message::TaskInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+ void MsgS2CNewTaskNotify::set_allocated_info(::message::TaskInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    set_has_info();
+  } else {
+    clear_has_info();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.MsgS2CNewTaskNotify.info)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -246,7 +246,9 @@ void Session::CreateCrashMoClientInit()
 	}
 	message::CrashPlayerInfo* info = msg.mutable_info();
 	info->CopyFrom(_player->GetInfo());
+	
 	sendPBMessage(&msg);
+	_player->OnLogin();
 }
 
 void Session::createInfo()

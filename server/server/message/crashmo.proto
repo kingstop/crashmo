@@ -227,3 +227,7 @@ message MsgS2CPassOfficilMapACK
 	repeated MsgTaskReward complete_task = 7;
 	required ServerError error = 8 [default = ServerError_NO];
 }
+message MsgS2CNewTaskNotify
+{
+	required TaskInfo info = 1;
+}

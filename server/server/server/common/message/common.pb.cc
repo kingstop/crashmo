@@ -120,11 +120,12 @@ void protobuf_AssignDesc_common_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, _internal_metadata_),
       -1);
   TaskInfo_descriptor_ = file->message_type(3);
-  static const int TaskInfo_offsets_[4] = {
+  static const int TaskInfo_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, task_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, argu_1_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, argu_2_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, argu_3_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfo, describe_),
   };
   TaskInfo_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -355,52 +356,52 @@ void protobuf_AddDesc_common_2eproto() {
     "age.CrashmoMapBaseData\022\017\n\007MapName\030\002 \002(\t\022"
     "\023\n\013CreaterName\030\003 \002(\t\022\017\n\007Section\030\004 \002(\005\022\017\n"
     "\007Chapter\030\005 \002(\005\022\023\n\013create_time\030\006 \002(\004\022\014\n\004g"
-    "old\030\007 \002(\005\"K\n\010TaskInfo\022\017\n\007task_id\030\001 \002(\005\022\016"
+    "old\030\007 \002(\005\"]\n\010TaskInfo\022\017\n\007task_id\030\001 \002(\005\022\016"
     "\n\006argu_1\030\002 \002(\005\022\016\n\006argu_2\030\003 \002(\005\022\016\n\006argu_3"
-    "\030\004 \002(\005\"L\n\020RankMapBlogEntry\022\013\n\003acc\030\001 \002(\004\022"
-    "\014\n\004name\030\002 \002(\t\022\017\n\007sugges_\030\003 \002(\t\022\014\n\004time\030\004"
-    " \002(\005\"\321\001\n\025CrashPlayerPublishMap\022\'\n\010crashm"
-    "ap\030\001 \002(\0132\025.message.CrashMapData\022\024\n\014publi"
-    "sh_time\030\002 \002(\004\022\027\n\017challenge_times\030\003 \002(\005\022!"
-    "\n\031failed_of_challenge_times\030\004 \002(\005\022\020\n\010map"
-    "_rank\030\005 \002(\005\022+\n\010map_blog\030\006 \003(\0132\031.message."
-    "RankMapBlogEntry\"-\n\007intPair\022\020\n\010number_1\030"
-    "\001 \002(\005\022\020\n\010number_2\030\002 \002(\005\"\245\003\n\017CrashPlayerI"
-    "nfo\022\017\n\007account\030\001 \002(\004\022\'\n\rpassed_record\030\002 "
-    "\003(\0132\020.message.intPair\022\014\n\004name\030\003 \002(\t\022,\n\rI"
-    "ncompleteMap\030\004 \003(\0132\025.message.CrashMapDat"
-    "a\022*\n\013CompleteMap\030\005 \003(\0132\025.message.CrashMa"
-    "pData\022\017\n\007isadmin\030\006 \002(\010\022#\n\tresources\030\007 \003("
-    "\0132\020.message.intPair\022\021\n\tmap_width\030\010 \002(\005\022\022"
-    "\n\nmap_height\030\t \002(\005\022\021\n\tmap_count\030\n \002(\005\022\014\n"
-    "\004gold\030\013 \002(\005\022\'\n\014current_task\030\014 \003(\0132\021.mess"
-    "age.TaskInfo\022\033\n\023complete_task_count\030\r \002("
-    "\005\022\r\n\005jewel\030\016 \002(\005\022\035\n\025last_accept_task_tim"
-    "e\030\017 \002(\004\"x\n\027TaskConditionTypeConfig\022=\n\tco"
-    "ndition\030\001 \002(\0162\026.message.ConditionType:\022C"
-    "onditionType_NULL\022\016\n\006argu_1\030\002 \002(\005\022\016\n\006arg"
-    "u_2\030\003 \002(\005\"b\n\020TaskRewardConfig\022\?\n\rresourc"
-    "e_type\030\001 \002(\0162\025.message.ResourceType:\021Res"
-    "ourceType_NULL\022\r\n\005count\030\002 \002(\005\"\215\002\n\016TaskIn"
-    "foConfig\022\017\n\007task_id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022"
-    "\020\n\010describe\030\003 \002(\t\0224\n\nconditions\030\004 \003(\0132 ."
-    "message.TaskConditionTypeConfig\022*\n\007rewar"
-    "ds\030\005 \003(\0132\031.message.TaskRewardConfig\022 \n\030r"
-    "equired_pass_chapter_id\030\006 \002(\005\022 \n\030require"
-    "d_pass_section_id\030\007 \002(\005\022$\n\034required_comp"
-    "lete_task_count\030\010 \002(\005*\277\001\n\rConditionType\022"
-    "\026\n\022ConditionType_NULL\020\000\022!\n\035ConditionType"
-    "_PassOfficilGame\020\001\022\035\n\031ConditionType_Limi"
-    "tedTime\020\002\022\035\n\031ConditionType_LimitedStep\020\003"
-    "\022\036\n\032ConditionType_PassUserGame\020\004\022\025\n\021Cond"
-    "itionType_Max\020\005*\212\002\n\014ResourceType\022\025\n\021Reso"
-    "urceType_NULL\020\000\022\022\n\016ResourceType_0\020\001\022\022\n\016R"
-    "esourceType_1\020\002\022\022\n\016ResourceType_2\020\003\022\022\n\016R"
-    "esourceType_3\020\004\022\022\n\016ResourceType_4\020\005\022\022\n\016R"
-    "esourceType_5\020\006\022\022\n\016ResourceType_6\020\007\022\022\n\016R"
-    "esourceType_7\020\010\022\025\n\021ResourceType_gold\020\t\022\026"
-    "\n\022ResourceType_jewel\020\n\022\024\n\020ResourceType_M"
-    "ax\020\013", 2124);
+    "\030\004 \002(\005\022\020\n\010describe\030\005 \002(\t\"L\n\020RankMapBlogE"
+    "ntry\022\013\n\003acc\030\001 \002(\004\022\014\n\004name\030\002 \002(\t\022\017\n\007sugge"
+    "s_\030\003 \002(\t\022\014\n\004time\030\004 \002(\005\"\321\001\n\025CrashPlayerPu"
+    "blishMap\022\'\n\010crashmap\030\001 \002(\0132\025.message.Cra"
+    "shMapData\022\024\n\014publish_time\030\002 \002(\004\022\027\n\017chall"
+    "enge_times\030\003 \002(\005\022!\n\031failed_of_challenge_"
+    "times\030\004 \002(\005\022\020\n\010map_rank\030\005 \002(\005\022+\n\010map_blo"
+    "g\030\006 \003(\0132\031.message.RankMapBlogEntry\"-\n\007in"
+    "tPair\022\020\n\010number_1\030\001 \002(\005\022\020\n\010number_2\030\002 \002("
+    "\005\"\245\003\n\017CrashPlayerInfo\022\017\n\007account\030\001 \002(\004\022\'"
+    "\n\rpassed_record\030\002 \003(\0132\020.message.intPair\022"
+    "\014\n\004name\030\003 \002(\t\022,\n\rIncompleteMap\030\004 \003(\0132\025.m"
+    "essage.CrashMapData\022*\n\013CompleteMap\030\005 \003(\013"
+    "2\025.message.CrashMapData\022\017\n\007isadmin\030\006 \002(\010"
+    "\022#\n\tresources\030\007 \003(\0132\020.message.intPair\022\021\n"
+    "\tmap_width\030\010 \002(\005\022\022\n\nmap_height\030\t \002(\005\022\021\n\t"
+    "map_count\030\n \002(\005\022\014\n\004gold\030\013 \002(\005\022\'\n\014current"
+    "_task\030\014 \003(\0132\021.message.TaskInfo\022\033\n\023comple"
+    "te_task_count\030\r \002(\005\022\r\n\005jewel\030\016 \002(\005\022\035\n\025la"
+    "st_accept_task_time\030\017 \002(\004\"x\n\027TaskConditi"
+    "onTypeConfig\022=\n\tcondition\030\001 \002(\0162\026.messag"
+    "e.ConditionType:\022ConditionType_NULL\022\016\n\006a"
+    "rgu_1\030\002 \002(\005\022\016\n\006argu_2\030\003 \002(\005\"b\n\020TaskRewar"
+    "dConfig\022\?\n\rresource_type\030\001 \002(\0162\025.message"
+    ".ResourceType:\021ResourceType_NULL\022\r\n\005coun"
+    "t\030\002 \002(\005\"\215\002\n\016TaskInfoConfig\022\017\n\007task_id\030\001 "
+    "\002(\005\022\014\n\004name\030\002 \002(\t\022\020\n\010describe\030\003 \002(\t\0224\n\nc"
+    "onditions\030\004 \003(\0132 .message.TaskConditionT"
+    "ypeConfig\022*\n\007rewards\030\005 \003(\0132\031.message.Tas"
+    "kRewardConfig\022 \n\030required_pass_chapter_i"
+    "d\030\006 \002(\005\022 \n\030required_pass_section_id\030\007 \002("
+    "\005\022$\n\034required_complete_task_count\030\010 \002(\005*"
+    "\277\001\n\rConditionType\022\026\n\022ConditionType_NULL\020"
+    "\000\022!\n\035ConditionType_PassOfficilGame\020\001\022\035\n\031"
+    "ConditionType_LimitedTime\020\002\022\035\n\031Condition"
+    "Type_LimitedStep\020\003\022\036\n\032ConditionType_Pass"
+    "UserGame\020\004\022\025\n\021ConditionType_Max\020\005*\212\002\n\014Re"
+    "sourceType\022\025\n\021ResourceType_NULL\020\000\022\022\n\016Res"
+    "ourceType_0\020\001\022\022\n\016ResourceType_1\020\002\022\022\n\016Res"
+    "ourceType_2\020\003\022\022\n\016ResourceType_3\020\004\022\022\n\016Res"
+    "ourceType_4\020\005\022\022\n\016ResourceType_5\020\006\022\022\n\016Res"
+    "ourceType_6\020\007\022\022\n\016ResourceType_7\020\010\022\025\n\021Res"
+    "ourceType_gold\020\t\022\026\n\022ResourceType_jewel\020\n"
+    "\022\024\n\020ResourceType_Max\020\013", 2142);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   int32array::default_instance_ = new int32array();
@@ -2069,6 +2070,7 @@ const int TaskInfo::kTaskIdFieldNumber;
 const int TaskInfo::kArgu1FieldNumber;
 const int TaskInfo::kArgu2FieldNumber;
 const int TaskInfo::kArgu3FieldNumber;
+const int TaskInfo::kDescribeFieldNumber;
 #endif  // !_MSC_VER
 
 TaskInfo::TaskInfo()
@@ -2089,11 +2091,13 @@ TaskInfo::TaskInfo(const TaskInfo& from)
 }
 
 void TaskInfo::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   task_id_ = 0;
   argu_1_ = 0;
   argu_2_ = 0;
   argu_3_ = 0;
+  describe_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2103,6 +2107,7 @@ TaskInfo::~TaskInfo() {
 }
 
 void TaskInfo::SharedDtor() {
+  describe_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -2141,7 +2146,12 @@ void TaskInfo::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(task_id_, argu_3_);
+  if (_has_bits_[0 / 32] & 31) {
+    ZR_(task_id_, argu_3_);
+    if (has_describe()) {
+      describe_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+  }
 
 #undef ZR_HELPER_
 #undef ZR_
@@ -2217,6 +2227,23 @@ bool TaskInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(42)) goto parse_describe;
+        break;
+      }
+
+      // required string describe = 5;
+      case 5: {
+        if (tag == 42) {
+         parse_describe:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_describe()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->describe().data(), this->describe().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.TaskInfo.describe");
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -2266,6 +2293,16 @@ void TaskInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->argu_3(), output);
   }
 
+  // required string describe = 5;
+  if (has_describe()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->describe().data(), this->describe().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.TaskInfo.describe");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      5, this->describe(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -2294,6 +2331,17 @@ void TaskInfo::SerializeWithCachedSizes(
   // required int32 argu_3 = 4;
   if (has_argu_3()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->argu_3(), target);
+  }
+
+  // required string describe = 5;
+  if (has_describe()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->describe().data(), this->describe().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.TaskInfo.describe");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->describe(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2335,12 +2383,19 @@ int TaskInfo::RequiredFieldsByteSizeFallback() const {
         this->argu_3());
   }
 
+  if (has_describe()) {
+    // required string describe = 5;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->describe());
+  }
+
   return total_size;
 }
 int TaskInfo::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000001f) ^ 0x0000001f) == 0) {  // All required fields are present.
     // required int32 task_id = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -2360,6 +2415,11 @@ int TaskInfo::ByteSize() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->argu_3());
+
+    // required string describe = 5;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->describe());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -2402,6 +2462,10 @@ void TaskInfo::MergeFrom(const TaskInfo& from) {
     if (from.has_argu_3()) {
       set_argu_3(from.argu_3());
     }
+    if (from.has_describe()) {
+      set_has_describe();
+      describe_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.describe_);
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -2421,7 +2485,7 @@ void TaskInfo::CopyFrom(const TaskInfo& from) {
 }
 
 bool TaskInfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
 
   return true;
 }
@@ -2435,6 +2499,7 @@ void TaskInfo::InternalSwap(TaskInfo* other) {
   std::swap(argu_1_, other->argu_1_);
   std::swap(argu_2_, other->argu_2_);
   std::swap(argu_3_, other->argu_3_);
+  describe_.Swap(&other->describe_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -2545,6 +2610,59 @@ void TaskInfo::InternalSwap(TaskInfo* other) {
   set_has_argu_3();
   argu_3_ = value;
   // @@protoc_insertion_point(field_set:message.TaskInfo.argu_3)
+}
+
+// required string describe = 5;
+ bool TaskInfo::has_describe() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+ void TaskInfo::set_has_describe() {
+  _has_bits_[0] |= 0x00000010u;
+}
+ void TaskInfo::clear_has_describe() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+ void TaskInfo::clear_describe() {
+  describe_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_describe();
+}
+ const ::std::string& TaskInfo::describe() const {
+  // @@protoc_insertion_point(field_get:message.TaskInfo.describe)
+  return describe_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TaskInfo::set_describe(const ::std::string& value) {
+  set_has_describe();
+  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.TaskInfo.describe)
+}
+ void TaskInfo::set_describe(const char* value) {
+  set_has_describe();
+  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.TaskInfo.describe)
+}
+ void TaskInfo::set_describe(const char* value, size_t size) {
+  set_has_describe();
+  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.TaskInfo.describe)
+}
+ ::std::string* TaskInfo::mutable_describe() {
+  set_has_describe();
+  // @@protoc_insertion_point(field_mutable:message.TaskInfo.describe)
+  return describe_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* TaskInfo::release_describe() {
+  clear_has_describe();
+  return describe_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void TaskInfo::set_allocated_describe(::std::string* describe) {
+  if (describe != NULL) {
+    set_has_describe();
+  } else {
+    clear_has_describe();
+  }
+  describe_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), describe);
+  // @@protoc_insertion_point(field_set_allocated:message.TaskInfo.describe)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

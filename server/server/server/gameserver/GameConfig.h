@@ -25,6 +25,7 @@ public:
 public:
 	void LoadGameConfig(DBQuery* p);
 	const MapConfig* getMapConfig();
+	bool isInToday(u32 time);
 protected:
 	OFFICIAL_MAP _offcial_map;
 	MapConfig _map_config;

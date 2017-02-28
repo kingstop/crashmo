@@ -42,6 +42,11 @@ void CrashPlayer::LoadConfig()
 	_info.set_map_height(config->config_heigth_);
 }
 
+void CrashPlayer::OnLogin()
+{
+	DayUpdate();
+}
+
 void CrashPlayer::PassOfficilMap(int chapter_id, int section_id, int use_step, int use_time)
 {
 	message::ServerError error = message::ServerError_PassOfficilMapFailedTheMapIsLock;
@@ -435,7 +440,7 @@ void CrashPlayer::StartSave()
 	StopDeleteClock();
 	if (gEventMgr.hasEvent(this, EVENT_SAVE_PLAYER_DATA_) == false)
 	{
-		gEventMgr.addEvent(this,&CrashPlayer::SaveCrashInfo, EVENT_SAVE_PLAYER_DATA_, _SAVE_PLAYER_TIME_, 99999999, 0);
+		gEventMgr.addEvent(this,&CrashPlayer::SaveCrashInfo, EVENT_SAVE_PLAYER_DATA_, _SAVE_PLAYER_TIME_, -1, 0);
 	}
 }
 
@@ -528,39 +533,60 @@ void CrashPlayer::DelMap(message::MsgDelMapReq* msg)
 
 void CrashPlayer::DayUpdate()
 {
-	if (_info.current_task_size() < 3)
+	if (gGameConfig.isInToday(_info.last_accept_task_time()) == false)
 	{
-		const TaskManager::TASKCONFIGS*  task_configs = gTaskManager.GetTaskConfigs();
-		TaskManager::TASKCONFIGS::const_iterator it = task_configs->begin();
-		for (; it != task_configs->end(); ++ it)
+		if (_info.current_task_size() < 3)
 		{
-			const message::TaskInfoConfig& entry = it->second;
-			int required_pass_chapter_id = entry.required_pass_chapter_id();
-			int required_pass_section_id = entry.required_pass_section_id();
-			bool can_accept = true;
-			if (required_pass_chapter_id != 0 && required_pass_section_id != 0)
+			const TaskManager::TASKCONFIGS*  task_configs = gTaskManager.GetTaskConfigs();
+			TaskManager::TASKCONFIGS::const_iterator it = task_configs->begin();
+			for (; it != task_configs->end(); ++it)
 			{
-				can_accept = false;
-				int pass_record_length = _info.passed_record_size();
-				for (size_t i = 0; i < pass_record_length; i++)
+				const message::TaskInfoConfig& entry = it->second;
+				int required_pass_chapter_id = entry.required_pass_chapter_id();
+				int required_pass_section_id = entry.required_pass_section_id();
+				bool can_accept = true;
+				if (required_pass_chapter_id != 0 && required_pass_section_id != 0)
 				{
-					message::intPair pair = _info.passed_record(i);
-					if (pair.number_1() == required_pass_chapter_id)
+					can_accept = false;
+					int pass_record_length = _info.passed_record_size();
+					for (size_t i = 0; i < pass_record_length; i++)
 					{
-						if (pair.number_1() > pair.number_2())
+						message::intPair pair = _info.passed_record(i);
+						if (pair.number_1() == required_pass_chapter_id)
 						{
-							can_accept = true;
+							if (pair.number_1() > pair.number_2())
+							{
+								can_accept = true;
+							}
+							break;
 						}
-						break;
 					}
+				}
 
+				if (can_accept)
+				{
+					if (_info.complete_task_count() < entry.required_complete_task_count())
+					{
+						can_accept = false;
+					}
+				}
+				if (can_accept)
+				{
+					message::TaskInfo* task_info = _info.add_current_task();
+					task_info->set_task_id(entry.task_id());
+					task_info->set_argu_1(0);
+					task_info->set_argu_2(0);
+					task_info->set_argu_3(0);
+					task_info->set_describe(entry.describe().c_str());
+					message::MsgS2CNewTaskNotify msgACK;
+					msgACK.mutable_info()->CopyFrom(*task_info);
+					sendPBMessage(&msgACK);
+					_info.set_last_accept_task_time(g_server_time);
+					break;
 				}
 			}
-
 		}
-
 	}
-	
 }
 
 void CrashPlayer::SaveMap(message::MsgSaveMapReq* msg)

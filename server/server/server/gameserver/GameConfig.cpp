@@ -83,3 +83,26 @@ const MapConfig* GameConfig::getMapConfig()
 	return &_map_config;
 }
 
+
+bool GameConfig::isInToday(u32 time)
+{
+	//std::string time_str;
+	//std::string time_cur;
+	//build_unix_time_to_string(time, time_str);
+	//build_unix_time_to_string(g_server_time, time_cur);
+	//Mylog::log_server(LOG_INFO, "server time[%s]  time1[%s]!", time_str.c_str(), time_cur.c_str());
+	int day_offset_time = _map_config.day_refrash_time_ * 60 * 60;
+	time_t _t1 = (time_t)g_server_time;
+	tm* p1 = localtime(&_t1);
+	p1->tm_min = 0;
+	p1->tm_sec = 0;
+	p1->tm_hour = _map_config.day_refrash_time_;
+	time_t today_refresh_time = mktime(p1); //utf Ê±¼ä²î
+	time_t Tomorrow_refresh_time = today_refresh_time + (24 * 60 * 60);
+	bool ret = false;
+	if (time < Tomorrow_refresh_time && time >= today_refresh_time)
+	{
+		ret = true;
+	}
+	return ret;
+}

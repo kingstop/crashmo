@@ -69,6 +69,7 @@ class MsgS2CEnterOfficilMapACK;
 class MsgC2SReqPassOfficilMap;
 class MsgTaskReward;
 class MsgS2CPassOfficilMapACK;
+class MsgS2CNewTaskNotify;
 
 enum ServerError {
   ServerError_NO = 0,
@@ -3424,6 +3425,97 @@ class MsgS2CPassOfficilMapACK : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static MsgS2CPassOfficilMapACK* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class MsgS2CNewTaskNotify : public ::google::protobuf::Message {
+ public:
+  MsgS2CNewTaskNotify();
+  virtual ~MsgS2CNewTaskNotify();
+
+  MsgS2CNewTaskNotify(const MsgS2CNewTaskNotify& from);
+
+  inline MsgS2CNewTaskNotify& operator=(const MsgS2CNewTaskNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgS2CNewTaskNotify& default_instance();
+
+  void Swap(MsgS2CNewTaskNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgS2CNewTaskNotify* New() const { return New(NULL); }
+
+  MsgS2CNewTaskNotify* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgS2CNewTaskNotify& from);
+  void MergeFrom(const MsgS2CNewTaskNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgS2CNewTaskNotify* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .message.TaskInfo info = 1;
+  bool has_info() const;
+  void clear_info();
+  static const int kInfoFieldNumber = 1;
+  const ::message::TaskInfo& info() const;
+  ::message::TaskInfo* mutable_info();
+  ::message::TaskInfo* release_info();
+  void set_allocated_info(::message::TaskInfo* info);
+
+  // @@protoc_insertion_point(class_scope:message.MsgS2CNewTaskNotify)
+ private:
+  inline void set_has_info();
+  inline void clear_has_info();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::message::TaskInfo* info_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgS2CNewTaskNotify* default_instance_;
+};
 // ===================================================================
 
 
@@ -5669,6 +5761,53 @@ inline void MsgS2CPassOfficilMapACK::set_error(::message::ServerError value) {
   set_has_error();
   error_ = value;
   // @@protoc_insertion_point(field_set:message.MsgS2CPassOfficilMapACK.error)
+}
+
+// -------------------------------------------------------------------
+
+// MsgS2CNewTaskNotify
+
+// required .message.TaskInfo info = 1;
+inline bool MsgS2CNewTaskNotify::has_info() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgS2CNewTaskNotify::set_has_info() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgS2CNewTaskNotify::clear_has_info() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgS2CNewTaskNotify::clear_info() {
+  if (info_ != NULL) info_->::message::TaskInfo::Clear();
+  clear_has_info();
+}
+inline const ::message::TaskInfo& MsgS2CNewTaskNotify::info() const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CNewTaskNotify.info)
+  return info_ != NULL ? *info_ : *default_instance_->info_;
+}
+inline ::message::TaskInfo* MsgS2CNewTaskNotify::mutable_info() {
+  set_has_info();
+  if (info_ == NULL) {
+    info_ = new ::message::TaskInfo;
+  }
+  // @@protoc_insertion_point(field_mutable:message.MsgS2CNewTaskNotify.info)
+  return info_;
+}
+inline ::message::TaskInfo* MsgS2CNewTaskNotify::release_info() {
+  clear_has_info();
+  ::message::TaskInfo* temp = info_;
+  info_ = NULL;
+  return temp;
+}
+inline void MsgS2CNewTaskNotify::set_allocated_info(::message::TaskInfo* info) {
+  delete info_;
+  info_ = info;
+  if (info) {
+    set_has_info();
+  } else {
+    clear_has_info();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.MsgS2CNewTaskNotify.info)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
