@@ -375,14 +375,27 @@ void CrashPlayer::SaveCrashInfo()
 	std::string temp_sql_replace;
 	sprintf(sql, "delete from player_map where `account`=%llu;", acc_temp);
 	temp_sql_replace += sql;
-	temp_sql_replace += "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`, `gold`) values";
+	msg.set_sql(temp_sql_replace);
+	sendPBMessage(&msg);
 	int count = 0;
 	std::string temp_data;
+	temp_sql_replace.clear();
 	for (int i = 0; i < temp_size; i++, count++)
 	{
+		if (count > 5)
+		{
+			count = 0;
+			msg.set_sql(temp_sql_replace);
+			sendPBMessage(&msg);
+		}
+
 		if (count != 0)
 		{
 			temp_sql_replace += ",";
+		}
+		else
+		{
+			temp_sql_replace = "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`, `gold`) values";
 		}
 		const message::CrashMapData Data = _info.completemap(i);
 		std::string create_time;
@@ -395,20 +408,32 @@ void CrashPlayer::SaveCrashInfo()
 			Data.mapname().c_str(), temp_data.c_str(),
 			create_time.c_str(), 1, Data.gold());
 		temp_sql_replace += sql;
-	}
 
-	temp_size = _info.incompletemap_size();
-	if (temp_size > 0)
+	}
+	if (temp_sql_replace.empty() == false)
 	{
-		need_save = true;
+		msg.set_sql(temp_sql_replace);
+		sendPBMessage(&msg);
 	}
 
+	temp_sql_replace.clear();
 	int in_complete_map_size = _info.incompletemap_size();
 	for (int i = 0; i < in_complete_map_size; i++, count++)
 	{
+		if (count > 5)
+		{
+			count = 0;
+			msg.set_sql(temp_sql_replace);
+			sendPBMessage(&msg);
+		}
+
 		if (count != 0)
 		{
 			temp_sql_replace += ",";
+		}
+		else
+		{
+			temp_sql_replace = "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`, `gold`) values";
 		}
 		const message::CrashMapData Data = _info.incompletemap(i);
 		std::string create_time;
@@ -421,7 +446,7 @@ void CrashPlayer::SaveCrashInfo()
 			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0, Data.gold());
 		temp_sql_replace += sql;
 	}
-	if (need_save)
+	if (temp_sql_replace.empty() == false)
 	{
 		msg.set_sql(temp_sql_replace);
 		sendPBMessage(&msg);
