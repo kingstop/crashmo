@@ -9,7 +9,6 @@
 #include <iostream>
 #include <sstream>
 #include <boost/version.hpp>
-#include <time.h>
 
 #ifdef WIN32
 #include <process.h>
@@ -602,7 +601,12 @@ void convert_unix_time( unsigned int t, int* outyear, int* outmonth, int* outday
 	time_t _t = t;
 
 	tm p;
+
+#ifdef _WIN32
 	localtime_s(&p,&_t);
+#else
+	localtime_r(&p, &_t);
+#endif
 
 	*outyear = p.tm_year + 1900;
 
@@ -614,7 +618,7 @@ void convert_unix_time( unsigned int t, int* outyear, int* outmonth, int* outday
 
 	*outminute = p.tm_min;
 
-	*outsecond = p.tm_sec;
+	*outsecond = ptm_sec;
 
 }
 
