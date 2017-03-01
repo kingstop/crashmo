@@ -356,7 +356,7 @@ void CrashPlayer::SaveCrashInfo()
 	std::string last_accept_task_time;
 	u32 entry_time = _info.last_accept_task_time();
 	build_unix_time_to_string(entry_time, last_accept_task_time);
-	sprintf(sql, "replace into `character`(`account`, `pass_chapter`, `pass_section`,`name`, `isadmin`, `map_width`, `map_height`, `map_count`, `group_count`, `gold`,`jewel`, `task`, `complete_task_count`,`officil_game_record`, `last_accept_task_time`) values (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s', %d£¬ %d, '%s', %d, '%s', '%s')",
+	sprintf(sql, "replace into `character`(`account`, `pass_chapter`, `pass_section`,`name`, `isadmin`, `map_width`, `map_height`, `map_count`, `group_count`, `gold`,`jewel`, `task`, `complete_task_count`,`officil_game_record`, `last_accept_task_time`) values (%I64u, %d, %d, '%s', %d, %d, %d, %d, '%s', %d£¬ %d, '%s', %d, '%s', '%s')",
 		acc_temp, 0, 0, _info.name().c_str(), (int)_info.isadmin(),
 		_info.map_width(), _info.map_height(), _info.map_count(), resource_str.c_str(), _info.gold(),
 		_info.jewel(), current_task.c_str(), _info.complete_task_count(), officil_game_record.c_str(), last_accept_task_time.c_str());
@@ -372,7 +372,7 @@ void CrashPlayer::SaveCrashInfo()
 	}
 
 	std::string temp_sql_replace;
-	sprintf(sql, "delete from player_map where `account`=%llu;", acc_temp);
+	sprintf(sql, "delete from player_map where `account`=%I64u;", acc_temp);
 	temp_sql_replace += sql;
 	temp_sql_replace += "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`, `gold`) values";
 	int count = 0;
@@ -390,7 +390,7 @@ void CrashPlayer::SaveCrashInfo()
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_sz, sizeof(temp_sz));
 
-		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
+		sprintf(sql, "(%I64u, %I64u, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
 			Data.mapname().c_str(), temp_data.c_str(),
 			create_time.c_str(), 1, Data.gold());
 		temp_sql_replace += sql;
@@ -416,7 +416,7 @@ void CrashPlayer::SaveCrashInfo()
 
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_sz, sizeof(temp_sz));
-		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
+		sprintf(sql, "(%I64u, %I64u, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
 			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0, Data.gold());
 		temp_sql_replace += sql;
 	}
