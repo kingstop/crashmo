@@ -310,7 +310,7 @@ void CrashPlayer::SaveCrashInfo()
 	
 	account_type acc_temp = _info.account();
 	char sql[4096];
-	DBQParms parms;
+	//DBQParms parms;
 	google::protobuf::RepeatedPtrField< ::message::intPair >* resources = _info.mutable_resources();
 	google::protobuf::RepeatedPtrField< ::message::intPair >::const_iterator it = resources->begin();
 	std::string resource_str;
