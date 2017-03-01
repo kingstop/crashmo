@@ -399,7 +399,8 @@ void CrashPlayer::SaveCrashInfo()
 		need_save = true;
 	}
 
-	for (int i = 0; i < temp_size; i++, count++)
+	int in_complete_map_size = _info.incompletemap_size();
+	for (int i = 0; i < in_complete_map_size; i++, count++)
 	{
 		if (count != 0)
 		{
