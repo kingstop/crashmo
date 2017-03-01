@@ -9,6 +9,7 @@
 #include <iostream>
 #include <sstream>
 #include <boost/version.hpp>
+#include <time.h>
 
 #ifdef WIN32
 #include <process.h>
