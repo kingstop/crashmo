@@ -600,19 +600,20 @@ void convert_unix_time( unsigned int t, int* outyear, int* outmonth, int* outday
 
 	time_t _t = t;
 
-	tm* p = localtime( &_t );
+	tm p;
+	localtime_s(&p,&_t);
 
-	*outyear = p->tm_year + 1900;
+	*outyear = p.tm_year + 1900;
 
-	*outmonth = p->tm_mon + 1;
+	*outmonth = p.tm_mon + 1;
 
-	*outday = p->tm_mday;
+	*outday = p.tm_mday;
 
-	*outhour = p->tm_hour;
+	*outhour = p.tm_hour;
 
-	*outminute = p->tm_min;
+	*outminute = p.tm_min;
 
-	*outsecond = p->tm_sec;
+	*outsecond = p.tm_sec;
 
 }
 
