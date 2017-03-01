@@ -370,7 +370,8 @@ public class ngui_edit_manager : MonoBehaviour {
                     Camera.main.transform.Rotate(vec_rot);
                     Camera.main.transform.position = vec;
                     Camera.main.fieldOfView = 34;
-                    
+                    _game_btns.gameObject.SetActive(true);
+
                     global_instance.Instance._crash_manager.init();
                 }
                 break;
