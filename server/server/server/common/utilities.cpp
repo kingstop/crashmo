@@ -605,7 +605,7 @@ void convert_unix_time( unsigned int t, int* outyear, int* outmonth, int* outday
 #ifdef _WIN32
 	p = localtime(&_t);
 #else
-	localtime_r(p, &_t);
+	localtime_r(&_t, p);
 #endif
 
 	*outyear = p->tm_year + 1900;
