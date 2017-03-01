@@ -600,25 +600,25 @@ void convert_unix_time( unsigned int t, int* outyear, int* outmonth, int* outday
 
 	time_t _t = t;
 
-	tm p;
+	tm* p;
 
 #ifdef _WIN32
-	localtime_s(&p,&_t);
+	p = localtime(&_t);
 #else
-	localtime_r(&p, &_t);
+	localtime_r(p, &_t);
 #endif
 
-	*outyear = p.tm_year + 1900;
+	*outyear = p->tm_year + 1900;
 
-	*outmonth = p.tm_mon + 1;
+	*outmonth = p->tm_mon + 1;
 
-	*outday = p.tm_mday;
+	*outday = p->tm_mday;
 
-	*outhour = p.tm_hour;
+	*outhour = p->tm_hour;
 
-	*outminute = p.tm_min;
+	*outminute = p->tm_min;
 
-	*outsecond = ptm_sec;
+	*outsecond = p->tm_sec;
 
 }
 
