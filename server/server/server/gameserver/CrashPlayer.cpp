@@ -383,7 +383,9 @@ void CrashPlayer::SaveCrashInfo()
 			temp_sql_replace += ",";
 		}
 		const message::CrashMapData Data = _info.completemap(i);
-		std::string create_time = get_time(Data.create_time());
+		std::string create_time;
+		u32 temp_time = Data.create_time();
+		build_unix_time_to_string(temp_time, create_time);
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_sz, sizeof(temp_sz));
 
@@ -407,7 +409,10 @@ void CrashPlayer::SaveCrashInfo()
 			temp_sql_replace += ",";
 		}
 		const message::CrashMapData Data = _info.incompletemap(i);
-		std::string create_time = get_time(Data.create_time());
+		std::string create_time;
+		u32 temp_time = Data.create_time();
+		build_unix_time_to_string(temp_time, create_time);
+
 		temp_data = Data.data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_sz, sizeof(temp_sz));
 		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
