@@ -382,11 +382,12 @@ void CrashPlayer::SaveCrashInfo()
 	temp_sql_replace.clear();
 	for (int i = 0; i < temp_size; i++, count++)
 	{
-		if (count > 5)
+		if (count > 1)
 		{
 			count = 0;
 			msg.set_sql(temp_sql_replace);
 			sendPBMessage(&msg);
+			temp_sql_replace.clear();
 		}
 
 		if (count != 0)

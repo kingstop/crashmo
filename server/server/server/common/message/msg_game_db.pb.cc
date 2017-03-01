@@ -290,7 +290,7 @@ void protobuf_AddDesc_msg_5fgame_5fdb_2eproto() {
     "ayerInfo\" \n\021ReqSaveOfficilMap\022\013\n\003sql\030\001 \002"
     "(\t\")\n\032ReqSaveOfficilSectionNames\022\013\n\003sql\030"
     "\001 \002(\t\"$\n\025ReqSaveCharacterDBSql\022\013\n\003sql\030\001 "
-    "\002(\014\"$\n\025gs2dbWorldDatabaseSql\022\013\n\003sql\030\001 \002("
+    "\002(\t\"$\n\025gs2dbWorldDatabaseSql\022\013\n\003sql\030\001 \002("
     "\t", 521);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg_game_db.proto", &protobuf_RegisterTypes);
@@ -2761,11 +2761,15 @@ bool ReqSaveCharacterDBSql::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required bytes sql = 1;
+      // required string sql = 1;
       case 1: {
         if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_sql()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->sql().data(), this->sql().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.ReqSaveCharacterDBSql.sql");
         } else {
           goto handle_unusual;
         }
@@ -2798,9 +2802,13 @@ failure:
 void ReqSaveCharacterDBSql::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:message.ReqSaveCharacterDBSql)
-  // required bytes sql = 1;
+  // required string sql = 1;
   if (has_sql()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sql().data(), this->sql().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.ReqSaveCharacterDBSql.sql");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->sql(), output);
   }
 
@@ -2814,10 +2822,14 @@ void ReqSaveCharacterDBSql::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ReqSaveCharacterDBSql::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:message.ReqSaveCharacterDBSql)
-  // required bytes sql = 1;
+  // required string sql = 1;
   if (has_sql()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->sql().data(), this->sql().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.ReqSaveCharacterDBSql.sql");
     target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->sql(), target);
   }
 
@@ -2832,10 +2844,10 @@ void ReqSaveCharacterDBSql::SerializeWithCachedSizes(
 int ReqSaveCharacterDBSql::ByteSize() const {
   int total_size = 0;
 
-  // required bytes sql = 1;
+  // required string sql = 1;
   if (has_sql()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
+      ::google::protobuf::internal::WireFormatLite::StringSize(
         this->sql());
   }
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2914,7 +2926,7 @@ void ReqSaveCharacterDBSql::InternalSwap(ReqSaveCharacterDBSql* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ReqSaveCharacterDBSql
 
-// required bytes sql = 1;
+// required string sql = 1;
  bool ReqSaveCharacterDBSql::has_sql() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2942,7 +2954,7 @@ void ReqSaveCharacterDBSql::InternalSwap(ReqSaveCharacterDBSql* other) {
   sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:message.ReqSaveCharacterDBSql.sql)
 }
- void ReqSaveCharacterDBSql::set_sql(const void* value, size_t size) {
+ void ReqSaveCharacterDBSql::set_sql(const char* value, size_t size) {
   set_has_sql();
   sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
