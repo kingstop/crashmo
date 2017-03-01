@@ -855,14 +855,14 @@ class ReqSaveCharacterDBSql : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string sql = 1;
+  // required bytes sql = 1;
   bool has_sql() const;
   void clear_sql();
   static const int kSqlFieldNumber = 1;
   const ::std::string& sql() const;
   void set_sql(const ::std::string& value);
   void set_sql(const char* value);
-  void set_sql(const char* value, size_t size);
+  void set_sql(const void* value, size_t size);
   ::std::string* mutable_sql();
   ::std::string* release_sql();
   void set_allocated_sql(::std::string* sql);
@@ -1348,7 +1348,7 @@ inline void ReqSaveOfficilSectionNames::set_allocated_sql(::std::string* sql) {
 
 // ReqSaveCharacterDBSql
 
-// required string sql = 1;
+// required bytes sql = 1;
 inline bool ReqSaveCharacterDBSql::has_sql() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1376,7 +1376,7 @@ inline void ReqSaveCharacterDBSql::set_sql(const char* value) {
   sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:message.ReqSaveCharacterDBSql.sql)
 }
-inline void ReqSaveCharacterDBSql::set_sql(const char* value, size_t size) {
+inline void ReqSaveCharacterDBSql::set_sql(const void* value, size_t size) {
   set_has_sql();
   sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));

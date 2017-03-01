@@ -42,7 +42,7 @@ message ReqSaveOfficilSectionNames
 
 message ReqSaveCharacterDBSql
 {
-	required string sql = 1;
+	required bytes sql = 1;
 }
 
 message gs2dbWorldDatabaseSql
