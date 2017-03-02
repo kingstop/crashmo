@@ -3,15 +3,20 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GameBtnsCtrl : MonoBehaviour {
-	public Button[] _game_btns;
+	
 	public Button[] _dir_btns;
 	public Button[] _catch_btns;
 	public bool[] _dir_button_down;
 	public bool _input_keyboard;
-	// Use this for initialization
-	void Start () {
-	
-	}
+    public GameObject _obj_map_big;
+    public GameObject _obj_map_small;
+    public long _last_mouse_down_time;
+    public Vector3 _last_mouse_down_pos;
+
+    // Use this for initialization
+    void Start () {
+        ButtonState(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -181,25 +186,73 @@ public class GameBtnsCtrl : MonoBehaviour {
 				{
 					if (global_instance.Instance._crash_manager.need_fall_update () == false) {
 						global_instance.Instance._crash_manager._record.try_to_next_state ();
-
 					}
 
 				}
 			}
 
 		}
-
 	}
-	public void OnBigMapClick()
+
+    public void OnGUI()
+    {
+        if(Event.current.type == EventType.mouseDown)
+        {
+            OnMouseDown();
+        }
+        else if(Event.current.type == EventType.mouseUp)
+        {
+            OnMouseUp();
+        }
+    }
+    public long getTimeStamp()
+    {
+        long cur_time =(System.DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
+        return cur_time;
+    }
+    public void OnMouseDown()
+    {
+        _last_mouse_down_time = getTimeStamp();
+        _last_mouse_down_pos = Input.mousePosition;
+        //Debug.Log("mouse down position[" + _last_mouse_down_pos + "] time [ " + _last_mouse_down_time + "]");
+    }
+    public void OnMouseUp()
+    {
+        long time_cur = getTimeStamp();
+        Vector3 cur_pos = Input.mousePosition;
+        long offset_x = (long)(_last_mouse_down_pos.x - cur_pos.x);
+        long offset_time = time_cur - _last_mouse_down_time;
+        if(offset_time < 3)
+        {
+            if(offset_x > 100)
+            {
+                global_instance.Instance._crash_manager.move_camera_left();
+            }
+            else if(offset_x < -100)
+            {
+                global_instance.Instance._crash_manager.move_camera_right();
+            }
+        }
+        //Debug.Log("mouse up position[" + _last_mouse_down_pos + "] time [ " + _last_mouse_down_time + "]");
+    }
+    public void OnBigMapClick()
 	{
+        ButtonState(true);
+    }
 
-	}
+    public void ButtonState(bool big)
+    {
+        _obj_map_big.SetActive(big);
+        _obj_map_small.SetActive(!big);
+        global_instance.Instance._ngui_edit_manager._camera_map.gameObject.SetActive(!big);
+        global_instance.Instance._ngui_edit_manager._camera_map_big.gameObject.SetActive(big);
+    }
 
 	public void OnSmallMapClick()
 	{
-
-	}
-	public void on_button_click_camera_left()
+        ButtonState(false);
+    }
+    public void on_button_click_camera_left()
 	{
 		global_instance.Instance._crash_manager.move_camera_left();
 	}

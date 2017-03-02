@@ -690,6 +690,9 @@ public class crash_manager
             Camera.main.transform.eulerAngles = current_camera_roation;
             global_instance.Instance._ngui_edit_manager._camera_map.transform.position = map_current_camera_pos;
             global_instance.Instance._ngui_edit_manager._camera_map.transform.eulerAngles = current_camera_roation;
+            global_instance.Instance._ngui_edit_manager._camera_map_big.transform.position = map_current_camera_pos;
+            global_instance.Instance._ngui_edit_manager._camera_map_big.transform.eulerAngles = current_camera_roation;
+           
             if (_move_count == need_count)
             {
                 _want_camera_dir = want_move_dir.no;
@@ -1462,6 +1465,8 @@ public class crash_manager
 
         global_instance.Instance._ngui_edit_manager._camera_map.transform.position = get_map_camera_pos(_camera_dir);
         global_instance.Instance._ngui_edit_manager._camera_map.transform.eulerAngles = get_camera_rotation(_camera_dir);
+        global_instance.Instance._ngui_edit_manager._camera_map_big.transform.position = get_map_camera_pos(_camera_dir);
+        global_instance.Instance._ngui_edit_manager._camera_map_big.transform.eulerAngles = get_camera_rotation(_camera_dir);
 
         for (int i = 0 ;i < 4; i ++)
         {

@@ -218,7 +218,8 @@ namespace common.Sockets
 		{
             byte[] read_buffer = null;
 			bool bDequeue = true;
-			if (_lastbuffer != null) 
+           // Console.WriteLine("Error:SocketClient: Got Exception while ParseMessage");
+            if (_lastbuffer != null) 
 			{
 				if (_lastbuffer.Length != 0) 
 				{
@@ -230,7 +231,9 @@ namespace common.Sockets
 					Array.Copy(temp_buffer, 0, read_buffer, _lastbuffer.Length, cur_total_length);
 					_lastbuffer = null;
 					bDequeue = false;
-				}
+                    UnityEngine.Debug.Log("have last buff");
+                   // Console.WriteLine("Error:SocketClient: Got Exception while ParseMessage");
+                }
 
 			}
 
