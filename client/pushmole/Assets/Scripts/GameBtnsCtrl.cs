@@ -11,6 +11,9 @@ public class GameBtnsCtrl : MonoBehaviour {
     public GameObject _obj_map_big;
     public GameObject _obj_map_small;
     public long _last_mouse_down_time;
+    public long _last_mouse_drag_time;
+    public long _drag_begin_time;
+    public float _drag_offset_x;
     public Vector3 _last_mouse_down_pos;
 
     // Use this for initialization
@@ -204,6 +207,31 @@ public class GameBtnsCtrl : MonoBehaviour {
         {
             OnMouseUp();
         }
+
+        if(Event.current.type == EventType.MouseDrag)
+        {
+            //if(Input.touches.Length == 1)
+            {
+                long cur_time = getTimeStamp();
+                long diff = cur_time - _last_mouse_drag_time;
+
+                if (diff > 3 )
+                {
+                    _last_mouse_drag_time = getTimeStamp();
+                    _last_mouse_down_pos = Input.mousePosition;
+                    _drag_begin_time = _last_mouse_drag_time;
+                    _drag_offset_x = 0;
+
+                }
+                else
+                {
+                    Vector3 cur_pos = Input.mousePosition;
+                    _drag_offset_x += (cur_pos.x - _last_mouse_down_pos.x);
+                    _last_mouse_drag_time = getTimeStamp();
+                }
+            }
+            
+        }
     }
     public long getTimeStamp()
     {
@@ -212,27 +240,31 @@ public class GameBtnsCtrl : MonoBehaviour {
     }
     public void OnMouseDown()
     {
-        _last_mouse_down_time = getTimeStamp();
-        _last_mouse_down_pos = Input.mousePosition;
+        //_last_mouse_down_time = getTimeStamp();
+        //_last_mouse_down_pos = Input.mousePosition;
         //Debug.Log("mouse down position[" + _last_mouse_down_pos + "] time [ " + _last_mouse_down_time + "]");
     }
     public void OnMouseUp()
     {
-        long time_cur = getTimeStamp();
-        Vector3 cur_pos = Input.mousePosition;
-        long offset_x = (long)(_last_mouse_down_pos.x - cur_pos.x);
-        long offset_time = time_cur - _last_mouse_down_time;
-        if(offset_time < 3)
+        if(Input.touches.Length == 0)
         {
-            if(offset_x > 100)
+            long time_cur = getTimeStamp();
+            long offset_time = time_cur - _drag_begin_time;
+            if (offset_time < 3)
             {
-                global_instance.Instance._crash_manager.move_camera_left();
+                if (_drag_offset_x > 100)
+                {
+                    global_instance.Instance._crash_manager.move_camera_left();
+                }
+                else if (_drag_offset_x < -100)
+                {
+                    global_instance.Instance._crash_manager.move_camera_right();
+                }
             }
-            else if(offset_x < -100)
-            {
-                global_instance.Instance._crash_manager.move_camera_right();
-            }
+            _last_mouse_drag_time = 0;
+            _drag_begin_time = 0;
         }
+
         //Debug.Log("mouse up position[" + _last_mouse_down_pos + "] time [ " + _last_mouse_down_time + "]");
     }
     public void OnBigMapClick()
