@@ -426,6 +426,7 @@ namespace common.Sockets
 		/// <param name="iPort"> The Port to connect to </param>
 		public void Connect(String ipAddress, int port)
 		{
+            Disconnect();
             try
             {
                 if (this.networkStream == null)
@@ -468,21 +469,30 @@ namespace common.Sockets
 		{
 			if(m_Connected == true)
 			{
-				// Close down the connection
-				if (this.networkStream != null)
-					this.networkStream.Close();
-				if (this.tcpClient != null)
-					this.tcpClient.Close();
-				if (this.clientSocket != null)
-					this.clientSocket.Close();
-			
-				// Clean up the connection state
-				this.networkStream = null;
-				this.tcpClient     = null;
-				this.clientSocket  = null;
+                // Close down the connection
+                // Close down the connection
+                if (this.networkStream != null)
+                    this.networkStream.Close();
+                if (this.tcpClient != null)
+                    this.tcpClient.Close();
+                if (this.clientSocket != null)
+                    this.clientSocket.Close();
 
-				this.m_Connected = false;
-			}
+                if (_buffer_queue != null)
+                    _buffer_queue.Clear();
+                _lastbuffer = null;
+
+                if (messageQueue != null)
+                    messageQueue.Clear();
+
+                // Clean up the connection state
+                this.networkStream = null;
+                this.tcpClient = null;
+                this.clientSocket = null;
+
+                this.m_Connected = false;
+
+            }
 		}
 
 		/// <summary>

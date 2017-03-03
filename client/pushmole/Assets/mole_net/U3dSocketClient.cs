@@ -29,10 +29,10 @@ public class u3dclient
     {
 
 
-
-        register_function();
         socket_client = new SocketClient(1048576, 1048576, 131072, null, new MessageHandler(MessageClient),
             new CloseHandler(CloseClient), new ErrorHandler(ErrorClient), new ConnectHandler(on_connect));
+        register_function();
+
     }
     public static u3dclient Instance
     {
@@ -80,6 +80,7 @@ public class u3dclient
 
     public void connect()
     {
+
         //socket_client.Connect("192.168.0.106", 30004);// 内网IP
         socket_client.Connect("114.55.116.251", 20002);// 外网IP 114.55.116.251 Port 30004
         //socket_client.Connect("114.55.116.251", 41005);// 外网IP 114.55.116.251 Port 41005
