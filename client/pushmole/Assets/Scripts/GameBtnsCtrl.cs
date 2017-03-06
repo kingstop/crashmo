@@ -77,11 +77,9 @@ public class GameBtnsCtrl : MonoBehaviour {
 				if (_catch_btns[i] == entry)
 				{
 					temp_ = i;
-					//_catch[i].gameObject.SetActive(false);
 				}
 				else
 				{
-					//_catch[i].gameObject.SetActive(true);
 				}
 			}
 			global_instance.Instance._crash_manager.catch_click(temp_);
@@ -108,14 +106,13 @@ public class GameBtnsCtrl : MonoBehaviour {
 	{
 		if (freezen == false) 
 		{
-			_catch_btns [0].gameObject.SetActive (false);
-			_catch_btns [1].gameObject.SetActive (true);
+			_catch_btns[0].gameObject.SetActive (false);
+			_catch_btns[1].gameObject.SetActive (true);
 		} 
 		else 
 		{
-			_catch_btns [0].gameObject.SetActive (true);
-			_catch_btns [1].gameObject.SetActive (false);
-
+			_catch_btns[0].gameObject.SetActive (true);
+			_catch_btns[1].gameObject.SetActive (false);
 		}
 
 	}

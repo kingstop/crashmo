@@ -193,8 +193,6 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 		message::CrashPlayerInfo* info = msg.mutable_data();
 		info->set_account(row["account"]);
 		info->set_name(row["name"].c_str());
-		//info->set_pass_chapter(row["pass_chapter"]);
-		//info->set_pass_section(row["pass_section"]);
 		int is_admin = row["isadmin"];
 		info->set_map_width(row["map_width"]);
 		info->set_map_height(row["map_height"]);

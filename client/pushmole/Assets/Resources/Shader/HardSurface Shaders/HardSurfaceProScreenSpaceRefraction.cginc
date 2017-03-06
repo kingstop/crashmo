@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 //Hard Surface Shader Package, Written for the Unity engine by Bruno Rime: http://www.behance.net/brunorime brunorime@gmail.com
 #ifndef HARD_SURFACE_PRO_SCREEN_SPACE_REFRACTION_INCLUDED
 #define HARD_SURFACE_PRO_SCREEN_SPACE_REFRACTION_INCLUDED
@@ -30,7 +32,7 @@ struct v2f
                     v2f o;
 					
 					o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
-					o.vertworldpos = mul(_Object2World, v.vertex).xyz;
+					o.vertworldpos = mul(unity_ObjectToWorld, v.vertex).xyz;
 					
 					o.uv_BumpMap = TRANSFORM_TEX( v.texcoord, _BumpMap );
 					
