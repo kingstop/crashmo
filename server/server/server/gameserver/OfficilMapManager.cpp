@@ -37,7 +37,7 @@ void OfficilMapManager::init(DBQuery* p)
 			temp_map.set_chapter(row["chapter"]);
 			temp_map.set_section(row["section"]);
 			temp_map.set_gold(row["gold"]);
-			OFFICILMAPLIST::iterator it = _officilmap.find(temp_map.section());
+			OFFICILMAPLIST::iterator it = _officilmap.find(temp_map.chapter());
 			if (it == _officilmap.end())
 			{
 				std::map<int, message::CrashMapData> map_temp;				
