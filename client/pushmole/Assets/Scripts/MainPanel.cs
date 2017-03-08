@@ -131,18 +131,10 @@ public class MainPanel : MonoBehaviour
         CrashMapData MapData = null;
         if (_current_map_index != 0)
         {
-            foreach (CrashMapData entry in global_instance.Instance._player.GetInfo().CompleteMap)
-            {
-                if (entry.Data.map_index == _current_map_index)
-                {
-                    MapData = entry;
-                    break;
-                }
-            }
 
-            if (MapData == null)
+            if(_current_page == page_type.page_type_self_incomplete || _current_page == page_type.page_type_self_complete)
             {
-                foreach (CrashMapData entry in global_instance.Instance._player.GetInfo().IncompleteMap)
+                foreach (CrashMapData entry in global_instance.Instance._player.GetInfo().CompleteMap)
                 {
                     if (entry.Data.map_index == _current_map_index)
                     {
@@ -150,8 +142,24 @@ public class MainPanel : MonoBehaviour
                         break;
                     }
                 }
-            }
 
+                if (MapData == null)
+                {
+                    foreach (CrashMapData entry in global_instance.Instance._player.GetInfo().IncompleteMap)
+                    {
+                        if (entry.Data.map_index == _current_map_index)
+                        {
+                            MapData = entry;
+                            break;
+                        }
+                    }
+                }
+            }
+            else if(_current_page == page_type.page_type_official)
+            {
+                MapData = global_instance.Instance._officilMapManager.getOfficilMap(_chapter_id, (int)_current_map_index);
+            }
+            
         }
         return MapData;
     }
