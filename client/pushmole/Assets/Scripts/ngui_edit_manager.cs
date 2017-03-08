@@ -78,6 +78,8 @@ public class ngui_edit_manager : MonoBehaviour {
 		return _main_panel.getSection ();
 	}
 
+
+
 	public page_type getPageType()
 	{
 		return _main_panel.getPageType();

@@ -15,34 +15,16 @@ public class SaveMapPanel : MonoBehaviour {
 	public GameObject _input_section_obj;
 	public InputField _input_chapter;
 	public InputField _input_section;
+    public InputField _input_name;
     // Use this for initialization
     public Text _map_name;
     public Text _chapter_text;
     public Text _section_text;
     public Text _txt_msg;
 
-	void Start () {
-	
-		bool is_admin = false;
-
-		if (global_instance.Instance._player.isadmin ()) 
-		{
-			is_admin = true;
-		}
-
-		foreach (Button entry in _btns) 
-		{
-			entry.gameObject.SetActive (is_admin);
-		}
-
-		if (is_admin == true && global_instance.Instance._ngui_edit_manager.getPageType() == page_type.page_type_official) 
-		{
-			_input_chapter.text = global_instance.Instance._ngui_edit_manager.GetChapterID ().ToString ();
-			_input_section.text = global_instance.Instance._ngui_edit_manager.getSection ().ToString ();
-		}
+	void Start () {	
 			
 	}
-	
 	// Update is called once per frame
 	void Update () {	
 	}
@@ -107,13 +89,20 @@ public class SaveMapPanel : MonoBehaviour {
         if(global_instance.Instance._player.isadmin() == true)        
         {
             _admin_obj.SetActive(true);
+            if (global_instance.Instance._ngui_edit_manager.getPageType() == page_type.page_type_official)
+            {
+                _input_chapter.text = global_instance.Instance._ngui_edit_manager.GetChapterID().ToString();
+                _input_section.text = global_instance.Instance._ngui_edit_manager.getSection().ToString();
+                
+            }
             UpdateTitleType(_enMapType);
+
         }
         else
         {
             _admin_obj.SetActive(false);
         }
-
+        _input_name.text = global_instance.Instance.GetMapData().map_name_;
         ButtonEnable(true);
         global_instance.Instance._can_set_group = false;
     }
@@ -121,6 +110,16 @@ public class SaveMapPanel : MonoBehaviour {
 
     void OnDisable()
     {
+        bool is_admin = false;
+        if (global_instance.Instance._player.isadmin())
+        {
+            is_admin = true;
+        }
+        foreach (Button entry in _btns)
+        {
+            entry.gameObject.SetActive(is_admin);
+        }
+
         global_instance.Instance._can_set_group = true;
     }
 

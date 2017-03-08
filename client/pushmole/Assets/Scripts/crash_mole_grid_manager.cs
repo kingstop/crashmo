@@ -20,6 +20,7 @@ public class MapData
     public int chapter_;
     public int section_;
     public ulong map_index_;
+    public int gold_;
     protected Dictionary<int, int> _resorces = new Dictionary<int, int>();
     
     public Texture2D CreateTexture()
@@ -63,6 +64,8 @@ public class MapData
         Data.Data.height = height_;
         Data.Data.width = width_;
         Data.Data.map_index = map_index_;
+        Data.MapName = map_name_;
+        Data.gold = gold_;
         if(groups_ != null)
         {
             for(int y = 0; y < height_; y ++)
@@ -89,8 +92,10 @@ public class MapData
         height_ = Data.Data.height;
         width_ = Data.Data.width;
         map_index_ = Data.Data.map_index;
+        gold_ = Data.gold;        
         groups_ = new int[width_, height_];
-        for(int y = 0; y < Data.Data.map_data.Count; y ++)
+        map_name_ = Data.MapName;
+        for (int y = 0; y < Data.Data.map_data.Count; y ++)
         {
            message.int32array list_int32 =  Data.Data.map_data[y];
             for(int x = 0; x < list_int32.data.Count; x ++)

@@ -84,22 +84,22 @@ public class MainPanel : MonoBehaviour
         _current_page = (page_type)index;
     }
 
-    public void PlayClick()
+    public void OnUpdateMapInfo()
     {
         global_instance.Instance._global_game_type = global_game_type.global_game_type_game;
         message.CrashMapData MapDataTemp = null;
 
         if (_current_page == page_type.page_type_official)
         {
-			
-			MapDataTemp = global_instance.Instance._officilMapManager.getOfficilMap(_chapter_id, (int)_current_map_index);
+
+            MapDataTemp = global_instance.Instance._officilMapManager.getOfficilMap(_chapter_id, (int)_current_map_index);
         }
         else
         {
             MapDataTemp = GetCurrentSelectMapData();
         }
-        
-        if(MapDataTemp != null)
+
+        if (MapDataTemp != null)
         {
             MapData temp = new MapData();
             temp.set_info(MapDataTemp);
@@ -107,10 +107,14 @@ public class MainPanel : MonoBehaviour
             global_instance.Instance._crash_mole_grid_manager.set_max_height(temp.height_);
             global_instance.Instance._crash_mole_grid_manager.set_max_width(temp.width_);
             global_instance.Instance._ngui_edit_manager._main_panel.gameObject.SetActive(false);
-            global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
-			global_instance.Instance._global_game_type = global_game_type.global_game_type_game;
         }
-        
+
+    }
+    public void PlayClick()
+    {
+        OnUpdateMapInfo();
+        global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
+        global_instance.Instance._global_game_type = global_game_type.global_game_type_game;
     }
     public void CreateClick()
     {        
@@ -165,10 +169,7 @@ public class MainPanel : MonoBehaviour
     }
     public void EditClick()
     {
-        message.CrashMapData MapDataTemp = GetCurrentSelectMapData();
-        MapData temp = new MapData();
-        temp.set_info(MapDataTemp);
-        global_instance.Instance.SetMapData(temp);
+        OnUpdateMapInfo();
         global_instance.Instance._global_game_type = global_game_type.global_game_type_edit;
         global_instance.Instance._ngui_edit_manager.update_game_type(game_type.edit);
         this.gameObject.SetActive(false);

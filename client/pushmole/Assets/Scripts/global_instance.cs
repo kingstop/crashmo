@@ -56,6 +56,7 @@ public class global_instance
     public void SetMapData(MapData temp)
     {
         _map_data = temp;
+        global_instance.instance._ngui_edit_manager._ui_section_gold.SetGoldCount(_map_data.gold_);
     }
 
     public void ClearMapData()
@@ -77,7 +78,7 @@ public class global_instance
         return _map_data;
     }
 
-
+  
     
 
 	public long getTime()
