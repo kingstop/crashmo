@@ -357,7 +357,7 @@ void CrashPlayer::SaveCrashInfo()
 		resource_str += sz_resource;
 	}
 	sprintf(sql, "replace into `character`(`account`, `pass_chapter`, `pass_section`,`name`, `isadmin`, `map_width`, `map_height`, `map_count`, `group_count`, `gold`,`jewel`, `task`, `complete_task_count`,`officil_game_record`, `last_accept_task_time`) values\
-	 (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s', %d£¬ %d, '%s', %d, '%s', '%s')",
+	 (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s', %d, %d, '%s', %d, '%s', '%s')",
 		acc_temp, 0, 0, _info.name().c_str(), (int)_info.isadmin(),
 		_info.map_width(), _info.map_height(), _info.map_count(), resource_str.c_str(), _info.gold(),
 		_info.jewel(), current_task.c_str(), _info.complete_task_count(), officil_game_record.c_str(), last_accept_task_time.c_str());
