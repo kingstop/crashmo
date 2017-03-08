@@ -626,36 +626,38 @@ void CrashPlayer::SaveMap(message::MsgSaveMapReq* msg)
 	msgACK.set_map_name(msg->map().mapname());
 	msgACK.set_save_type(msg->save_type());
 	msgACK.set_error(message::ServerError_NO);
-
+	message::CrashMapData* temp = NULL;
+	switch (msg->save_type())
+	{
+	case  message::ImcompleteMap:
+		temp = _info.add_incompletemap();
+		break;
+	case  message::CompleteMap:
+		temp = _info.add_completemap();
+		break;
+	default:
+		break;
+	}
+	if (temp != NULL)
+	{
+		temp->CopyFrom(msg->map());
+		message::CrashMapData* temp_map = msgACK.mutable_map();
+		temp_map->CopyFrom(msg->map());
+	}
+	else
+	{
+		msgACK.set_error(message::ServerError_Unknow);
+	}
+	/*
 	if (havemapname(msg->map().mapname().c_str()) == false)
 	{
-		message::CrashMapData* temp = NULL;
-		switch (msg->save_type())
-		{
-		case  message::ImcompleteMap:
-			temp = _info.add_incompletemap();
-			break;
-		case  message::CompleteMap:
-			temp = _info.add_completemap();
-			break;
-		default:
-			break;
-		}
-		if (temp != NULL)
-		{
-			temp->CopyFrom(msg->map());
-			message::CrashMapData* temp_map = msgACK.mutable_map();
-			temp_map->CopyFrom(msg->map());
-		}
-		else
-		{
-			msgACK.set_error(message::ServerError_Unknow);
-		}
+
 	}
 	else
 	{
 		msgACK.set_error(message::ServerError_HaveSameName);
 	}
+	*/
 	sendPBMessage(&msgACK);	
 }
 
