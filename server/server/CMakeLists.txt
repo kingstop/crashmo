@@ -29,6 +29,11 @@ INCLUDE_DIRECTORIES(
 
 LINK_DIRECTORIES( 
     ${PROJECT_SOURCE_DIR}/lib 
+    ${PROJECT_SOURCE_DIR}/../../../external_lib/boost_1_60/
+    ${PROJECT_SOURCE_DIR}/../../../external_lib/google/  
+    ${PROJECT_SOURCE_DIR}/../../../external_lib/json/  
+    ${PROJECT_SOURCE_DIR}/../../../external_lib/log4cplus_1_2_0/  
+    ${PROJECT_SOURCE_DIR}/../../../external_lib/mysql/  
     /usr/local/lib 
     /usr/lib 
 ) 
