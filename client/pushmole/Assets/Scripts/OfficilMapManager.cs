@@ -2,12 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
+using System.IO;
+using UnityEngine;
+
 public class OfficilMapManager
 {
     protected Dictionary<int, Dictionary<int, message.CrashMapData>> _officilMap = new Dictionary<int, Dictionary<int, message.CrashMapData>>();
 	protected List<int> _chapter_ids = new List<int> ();
 	protected Dictionary<int, string> _officil_chapter_names = new Dictionary<int, string>();
-
+    void LoadBinMap(byte[] bytes)
+    {
+        System.IO.MemoryStream mem = new System.IO.MemoryStream();
+        mem.Write(bytes, 0, bytes.Length);
+        message.CrashMapData CrashMap = ProtoBuf.Serializer.Deserialize<message.CrashMapData>(mem);
+        if(_officilMap.ContainsKey(CrashMap.Chapter) == false)
+        {
+            _officilMap[CrashMap.Chapter] = new Dictionary<int, message.CrashMapData>(); 
+        }
+        _officilMap[CrashMap.Chapter][CrashMap.Section] = CrashMap;        
+    }
     public void ClearAll()
     {
         _officilMap.Clear();
@@ -15,6 +29,62 @@ public class OfficilMapManager
         _officil_chapter_names.Clear();
     }
 
+    public void LoadFromLocal()
+    {
+        _officilMap.Clear();
+        ArrayList array_list =  global_instance.Instance._file_helper.LoadFile(Application.persistentDataPath, "MapName.txt");
+        if(array_list.Count != 0)
+        {
+            string map_names = (string)array_list[0];
+            string[] map_name_array = map_names.Split(' ');
+            foreach(string entry in map_name_array)
+            {               
+                global_instance.Instance._file_helper.Loadbin(Application.persistentDataPath, entry + ".assetbundle", LoadBinMap);
+            }
+        }
+    }
+    public void SaveOfficilMap()
+    {
+        DelOfficilMap();
+        string str_names = "";
+        string name_map;
+        foreach(KeyValuePair< int, Dictionary < int, message.CrashMapData >> entry_chapter_key_pair in _officilMap)
+        {
+            Dictionary<int, message.CrashMapData> entry_chapter = entry_chapter_key_pair.Value;
+            foreach (KeyValuePair<int, message.CrashMapData> entry_pair in entry_chapter)
+            {
+                if(str_names != "")
+                {
+                    str_names += " ";
+                }
+                message.CrashMapData map = entry_pair.Value;
+                int chapter_id = map.Chapter;
+                int section = map.Section;
+                name_map = chapter_id.ToString() + "-" + section.ToString();
+                str_names += name_map;
+                System.IO.MemoryStream mem = new System.IO.MemoryStream();
+                ProtoBuf.Serializer.Serialize<global::ProtoBuf.IExtensible>(mem, map);
+                byte[] bytes =  mem.ToArray();
+                global_instance.Instance._file_helper.CreateModelFile(Application.persistentDataPath, name_map + ".assetbundle", bytes, bytes.Length);
+            }
+        }
+        //DeleteFile(Application.persistentDataPath, "MapName.txt");
+        global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, "MapName.txt", str_names);
+    }
+    public void DelOfficilMap()
+    {
+        ArrayList entry_array = global_instance.Instance._file_helper.LoadFile(Application.persistentDataPath, "MapName.txt");
+        if (entry_array.Count != 0)
+        {
+            string all_file_name = (string)entry_array[0];
+            string[] string_array = all_file_name.Split(' ');
+            foreach (string entry in string_array)
+            {
+                global_instance.Instance._file_helper.DeleteFile(Application.persistentDataPath, entry + ".assetbundle");                
+            }
+        }
+        global_instance.Instance._file_helper.DeleteFile(Application.persistentDataPath, "MapName.txt");
+    }
     public void ClearChapter(int chapter_id)
     {
         if(_officilMap.ContainsKey(chapter_id))

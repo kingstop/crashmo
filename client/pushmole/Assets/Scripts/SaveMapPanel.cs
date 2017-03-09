@@ -59,6 +59,7 @@ public class SaveMapPanel : MonoBehaviour {
                 }
                 break;
         }
+        _enMapType = type;
     }
 
     public void OnTitleButtonClick(GameObject click)
@@ -73,7 +74,7 @@ public class SaveMapPanel : MonoBehaviour {
             }                
         }
         UpdateTitleType(type);
-        _enMapType = type;
+        
     }
 
     void ButtonEnable(bool b)
@@ -95,12 +96,20 @@ public class SaveMapPanel : MonoBehaviour {
                 _input_section.text = global_instance.Instance._ngui_edit_manager.getSection().ToString();
                 
             }
-            UpdateTitleType(_enMapType);
+            
 
         }
         else
         {
             _admin_obj.SetActive(false);
+        }
+        if(global_instance.Instance._ngui_edit_manager.getPageType() == page_type.page_type_official && global_instance.Instance._player.isadmin())
+        {
+            UpdateTitleType(SaveMapTitleType.Admin);
+        }
+        else
+        {
+            UpdateTitleType(SaveMapTitleType.Customer);
         }
         _input_name.text = global_instance.Instance.GetMapData().map_name_;
         ButtonEnable(true);

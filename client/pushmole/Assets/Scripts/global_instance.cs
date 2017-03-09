@@ -103,7 +103,7 @@ public class global_instance
 	public RankMapManager _rankMapManager = new RankMapManager ();
     public TaskManager _taskManager = new TaskManager();
     public bool _in_login = false;
-
+    public FileHelper _file_helper;
 
 
 }

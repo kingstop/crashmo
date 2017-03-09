@@ -63,9 +63,13 @@ public class ngui_edit_manager : MonoBehaviour {
     {
         _EditType = EditType.EditPlayer;
         global_instance.Instance._ngui_edit_manager = this;
-
+        global_instance.Instance._officilMapManager.LoadFromLocal();
         global_instance.Instance._net_client = new u3dclient();
         _input_keyboard = false;	
+    }
+    public void SaveOfficilMap()
+    {
+        global_instance.Instance._officilMapManager.SaveOfficilMap();
     }
 
 
