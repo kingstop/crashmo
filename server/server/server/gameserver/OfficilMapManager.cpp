@@ -139,7 +139,7 @@ void OfficilMapManager::saveOfficilMap()
 			std::string create_time = get_time(temp_map.create_time());
 			temp_data = temp_map.data().SerializeAsString();
 			temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
-			sprintf(sztemp, "(%lu,'%s','%s','%s','%s',%d, %d, %d, %lu)", acc, temp_map.creatername().c_str(), temp_map.mapname().c_str(),
+			sprintf(sztemp, "(%lu,'%s','%s','%s','%s',%d, %d, %d, %llu)", acc, temp_map.creatername().c_str(), temp_map.mapname().c_str(),
 				temp_data.c_str(), create_time.c_str(), temp_map.chapter(),temp_map.section(), temp_map.gold(), map_index);
 			sql_excute += sztemp;			
 			if (current_count > max_save_count)
