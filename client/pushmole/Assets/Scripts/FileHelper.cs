@@ -162,7 +162,7 @@ public class FileHelper : MonoBehaviour {
         s = "file://" + _path + "/" + name;
 #endif
 
-        WWW www = new WWW(_path);
+        WWW www = new WWW(s);
 
         yield return www;
 

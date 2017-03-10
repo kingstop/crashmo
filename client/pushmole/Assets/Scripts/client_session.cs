@@ -88,7 +88,8 @@ public class client_session
 			global_instance.Instance._officilMapManager.addChapterName(key_pair.intger_temp, key_pair.string_temp);
         }
         global_instance.Instance._officilMapManager.LoadSections();
-        if(global_instance.Instance._player.isadmin())
+        global_instance.Instance._officilMapManager.LoadFromLocal();
+        if (global_instance.Instance._player.isadmin())
         {
             global_instance.Instance._taskManager.LoadTask();
         }        

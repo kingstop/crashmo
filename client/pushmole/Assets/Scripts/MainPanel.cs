@@ -52,6 +52,7 @@ public class MainPanel : MonoBehaviour
 		_current_page = page_type.page_type_self_complete;
     }
 
+    
 	public int GetChapterID()
 	{
 		return _chapter_id;
@@ -127,7 +128,11 @@ public class MainPanel : MonoBehaviour
     {
         global_instance.Instance._ngui_edit_manager._task_edit_panel.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
+    }
 
+    public void OnSaveClick()
+    {
+        global_instance.Instance._officilMapManager.SaveOfficilMap();
     }
 
     message.CrashMapData GetCurrentSelectMapData()
@@ -368,7 +373,9 @@ public class MainPanel : MonoBehaviour
         else
         {
             _edit_task_obj.SetActive(false);
-        }        
+        }
+
+        
     }
 
     void OnEnable()
