@@ -109,10 +109,14 @@ message MsgC2SOfficeStatusReq
 {
 	 
 }
-
+message MsgChapterStatus
+{
+	required int32 chapter_id = 1;
+	repeated uint64 map_indexs = 2;
+}
 message MsgS2COfficeStatusACK
 {
-	repeated int32 chapter_id = 1;
+	repeated MsgChapterStatus chapter_status = 1;
 }
 
 
@@ -121,14 +125,13 @@ message MsgC2SOfficeMapReq
 	required int32 chapter_id = 1;
 	required int32 section_id = 2;
 	required int32 map_count = 3;
+	repeated uint64 map_indexs = 4;
 }
 
 message MsgS2COfficeMapACK
 {
 	required int32 chapter_id = 1;
-	required int32 section_id = 2;
 	repeated CrashMapData maps = 3;
-	required int32 section_count = 4;
 }
 
 message MsgC2SRankMapReq

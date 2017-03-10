@@ -14,13 +14,14 @@ public:
 	void saveMapOfficilMap(const message::CrashMapData* map_data, CrashPlayer* p);
 	void modifySectionName(int section, const char* name, CrashPlayer* player);
 	const CHAPTERSNAMES& getSectionNames();
+
 protected:
 	void saveOfficilMap();
-
-
+	u64 generateMapIndex();
 protected:
 	OFFICILMAPLIST _officilmap;
 	CHAPTERSNAMES _chapter_names;
+	u64 _index_map;
 
 };
 

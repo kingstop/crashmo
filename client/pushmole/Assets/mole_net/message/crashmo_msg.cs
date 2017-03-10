@@ -347,16 +347,40 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgChapterStatus")]
+  public partial class MsgChapterStatus : global::ProtoBuf.IExtensible
+  {
+    public MsgChapterStatus() {}
+    
+    private int _chapter_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"chapter_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int chapter_id
+    {
+      get { return _chapter_id; }
+      set { _chapter_id = value; }
+    }
+    private readonly global::System.Collections.Generic.List<ulong> _map_indexs = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"map_indexs", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> map_indexs
+    {
+      get { return _map_indexs; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2COfficeStatusACK")]
   public partial class MsgS2COfficeStatusACK : global::ProtoBuf.IExtensible
   {
     public MsgS2COfficeStatusACK() {}
     
-    private readonly global::System.Collections.Generic.List<int> _chapter_id = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"chapter_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> chapter_id
+    private readonly global::System.Collections.Generic.List<message.MsgChapterStatus> _chapter_status = new global::System.Collections.Generic.List<message.MsgChapterStatus>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"chapter_status", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.MsgChapterStatus> chapter_status
     {
-      get { return _chapter_id; }
+      get { return _chapter_status; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;
@@ -390,6 +414,13 @@ namespace message
       get { return _map_count; }
       set { _map_count = value; }
     }
+    private readonly global::System.Collections.Generic.List<ulong> _map_indexs = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"map_indexs", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> map_indexs
+    {
+      get { return _map_indexs; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -407,13 +438,6 @@ namespace message
       get { return _chapter_id; }
       set { _chapter_id = value; }
     }
-    private int _section_id;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"section_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int section_id
-    {
-      get { return _section_id; }
-      set { _section_id = value; }
-    }
     private readonly global::System.Collections.Generic.List<message.CrashMapData> _maps = new global::System.Collections.Generic.List<message.CrashMapData>();
     [global::ProtoBuf.ProtoMember(3, Name=@"maps", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<message.CrashMapData> maps
@@ -421,13 +445,6 @@ namespace message
       get { return _maps; }
     }
   
-    private int _section_count;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"section_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int section_count
-    {
-      get { return _section_count; }
-      set { _section_count = value; }
-    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

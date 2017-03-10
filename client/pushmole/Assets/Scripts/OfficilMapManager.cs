@@ -157,19 +157,69 @@ public class OfficilMapManager
         _chapter_ids.Clear();
     }
 
+    List<ulong> GetChapterMapIndex(int chapter_id)
+    {
+        List<ulong> entry_list = new List<ulong>();
+        if (_officilMap.ContainsKey(chapter_id) == true)
+        {
+            Dictionary<int, message.CrashMapData> chapter_sections = _officilMap[chapter_id];
+            foreach (KeyValuePair<int, message.CrashMapData> entry in chapter_sections)
+            {
+                entry_list.Add(entry.Value.Data.map_index);
+            }            
+        }
+        return entry_list;
+    }
+    
 	public void parseOfficeStatus(message.MsgS2COfficeStatusACK msg)
 	{
+        List<int> no_sections = new List<int>();
+        foreach (message.MsgChapterStatus entry in msg.chapter_status)
+        {
+            _chapter_ids.Add(entry.chapter_id);            
+            if(_officilMap.ContainsKey(entry.chapter_id) == true)
+            {
+                foreach(KeyValuePair<int , message.CrashMapData> self_map_entry in _officilMap[entry.chapter_id])
+                {
+                    bool need_remove = true;
+                    message.CrashMapData temp_map = self_map_entry.Value;
+                    ulong map_index = temp_map.Data.map_index;
+                    foreach(ulong server_map_index in entry.map_indexs)
+                    {
+                        if(server_map_index == map_index)
+                        {
+                            need_remove = false;
+                            break;
+                        }
+                    }
+                    if(need_remove)
+                    {
+                        no_sections.Add(temp_map.Section);
+                    }
+                }
+                foreach(int remove_section_id in no_sections)
+                {
+                    _officilMap[entry.chapter_id].Remove(remove_section_id);
+                }                
+            }            
+        }
+  //      msg.chapter_status
 
-		foreach (int secion_id in msg.chapter_id) 
-		{
-			_chapter_ids.Add (secion_id);
-		}
+		//foreach (int secion_id in msg.chapter_id) 
+		//{
+		//	_chapter_ids.Add (secion_id);
+		//}
 
 		if (_chapter_ids.Count != 0) 
 		{
 			message.MsgC2SOfficeMapReq MsgReq = new message.MsgC2SOfficeMapReq ();
 			MsgReq.chapter_id = _chapter_ids [0];
-			MsgReq.section_id = -1;
+            List<ulong> map_indexs = GetChapterMapIndex(MsgReq.chapter_id);
+            foreach(ulong map_index in map_indexs)
+            {
+                MsgReq.map_indexs.Add(map_index);
+            }
+            MsgReq.section_id = -1;
             MsgReq.map_count = 5;
 			global_instance.Instance._net_client.send (MsgReq);
 		}
@@ -199,7 +249,7 @@ public class OfficilMapManager
 		}
 		int req_chapter_id = -1;
 		int req_section_id = -1;
-		if (msg.section_count == _officilMap [chapter_id].Count) 
+		if (msg.maps.Count == 0) 
 		{
 			bool next_chapter_id = false;
 			foreach (int chapter_id_entry in _chapter_ids) 
@@ -235,7 +285,12 @@ public class OfficilMapManager
 				message.MsgC2SOfficeMapReq MsgReq = new message.MsgC2SOfficeMapReq ();
 				MsgReq.chapter_id = req_chapter_id;
 				MsgReq.section_id = req_section_id;
-				global_instance.Instance._net_client.send (MsgReq);
+                List<ulong> map_indexs = GetChapterMapIndex(req_chapter_id);
+                foreach (ulong map_index in map_indexs)
+                {
+                    MsgReq.map_indexs.Add(map_index);
+                }
+                global_instance.Instance._net_client.send (MsgReq);
 			}
 		}
 	}

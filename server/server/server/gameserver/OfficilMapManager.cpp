@@ -7,6 +7,7 @@
 #define _SAVE_OFFICIL_TIME_  (20 * _TIME_SECOND_MSEL_)
 OfficilMapManager::OfficilMapManager()
 {
+	_index_map = 0;
 }
 
 
@@ -14,6 +15,11 @@ OfficilMapManager::~OfficilMapManager()
 {
 }
 
+u64 OfficilMapManager::generateMapIndex()
+{
+	_index_map++;
+	return _index_map;
+}
 
 void OfficilMapManager::init(DBQuery* p)
 {
@@ -37,6 +43,12 @@ void OfficilMapManager::init(DBQuery* p)
 			temp_map.set_chapter(row["chapter"]);
 			temp_map.set_section(row["section"]);
 			temp_map.set_gold(row["gold"]);
+			u64 map_index = row["index_map"];
+			if (map_index > _index_map)
+			{
+				_index_map = map_index;
+			}
+			data_base->set_map_index(map_index);			
 			OFFICILMAPLIST::iterator it = _officilmap.find(temp_map.chapter());
 			if (it == _officilmap.end())
 			{
@@ -101,7 +113,7 @@ void OfficilMapManager::modifySectionName(int section, const char* name, CrashPl
 void OfficilMapManager::saveOfficilMap()
 {
 	char sztemp[4096];
-	std::string sql_head = "replace into `offical_map`(`account`,`creater_name`,`map_name`,`map_data`,`create_time`,`chapter`,`section`, `gold`) values";
+	std::string sql_head = "replace into `offical_map`(`account`,`creater_name`,`map_name`,`map_data`,`create_time`,`chapter`,`section`, `gold`, `index_map`) values";
 	std::string sql_excute;
 	int current_count = 0;
 	int max_save_count = 5;
@@ -122,13 +134,13 @@ void OfficilMapManager::saveOfficilMap()
 			current_count++;
 			message::CrashMapData temp_map = it_temp->second;
 			long acc = temp_map.chapter() * 100000 + temp_map.section();
-			
+			u64 map_index = temp_map.mutable_data()->map_index();
 			std::string temp_data;
 			std::string create_time = get_time(temp_map.create_time());
 			temp_data = temp_map.data().SerializeAsString();
 			temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
-			sprintf(sztemp, "(%lu,'%s','%s','%s','%s',%d, %d, %d)", acc, temp_map.creatername().c_str(), temp_map.mapname().c_str(),
-				temp_data.c_str(), create_time.c_str(), temp_map.chapter(),temp_map.section(), temp_map.gold());
+			sprintf(sztemp, "(%lu,'%s','%s','%s','%s',%d, %d, %d, %lu)", acc, temp_map.creatername().c_str(), temp_map.mapname().c_str(),
+				temp_data.c_str(), create_time.c_str(), temp_map.chapter(),temp_map.section(), temp_map.gold(), map_index);
 			sql_excute += sztemp;			
 			if (current_count > max_save_count)
 			{
@@ -200,7 +212,10 @@ void OfficilMapManager::saveMapOfficilMap(const message::CrashMapData* map_data,
 
 	message::CrashMapData entry;
 	entry.CopyFrom(*map_data);
+	u64 cur_map_index = generateMapIndex();
+	entry.mutable_data()->set_map_index(cur_map_index);
 	_officilmap[map_data->chapter()][map_data->section()] = entry;
+
 	message::MsgSaveMapACK msgACK;
 	msgACK.set_map_name(map_data->mapname().c_str());
 	msgACK.set_save_type(message::OfficeMap);

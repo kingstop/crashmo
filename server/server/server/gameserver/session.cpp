@@ -273,7 +273,13 @@ void Session::parseReqOfficilStatus(google::protobuf::Message* p)
 	OFFICILMAPLIST::const_iterator it_const = officilmap->begin();
 	for (; it_const != officilmap->end(); ++ it_const)
 	{
-		msgACK.add_chapter_id(it_const->first);		
+		message::MsgChapterStatus* entry = msgACK.add_chapter_status();
+		entry->set_chapter_id(it_const->first);
+		std::map<int, message::CrashMapData>::const_iterator it_section_const = it_const->second.begin();
+		for (; it_section_const != it_const->second.end(); ++ it_section_const)
+		{
+			entry->add_map_indexs(it_section_const->second.data().map_index());
+		}
 	}
 	sendPBMessage(&msgACK);
 }
@@ -287,34 +293,40 @@ void Session::parseReqOfficilMap(google::protobuf::Message* p)
 	int current_count = 0;
 
 	message::MsgS2COfficeMapACK msgACK;
-	msgACK.set_section_count(0);
+	//msgACK.set_section_count(0);
 	msgACK.set_chapter_id(chapter_id);
-	msgACK.set_section_id(0);
+	//msgACK.set_section_id(0);
 	const OFFICILMAPLIST* officilmap = gOfficilMapManager.getOfficilMap();
 	OFFICILMAPLIST::const_iterator it_const = (*officilmap).find(chapter_id);
 	if (it_const != officilmap->end())
 	{
-		msgACK.set_section_count(it_const->second.size());
+		//msgACK.set_section_count(it_const->second.size());
 		const std::map<int, message::CrashMapData>& map_entry = it_const->second;
-		msgACK.set_section_count(map_entry.size());
-
+		//msgACK.set_section_count(map_entry.size());
 		std::map<int, message::CrashMapData>::const_iterator it_section = map_entry.begin();
 		for (; it_section != map_entry.end(); ++ it_section)
 		{
-			if (it_section->first <= section_id)
+			const message::CrashMapData& crash_map_entry = it_section->second;
+			bool have_already_load = false;
+			int indexs_size = msg->map_indexs_size();
+			for (int map_i = 0; map_i < indexs_size; map_i ++)
+			{
+				u64 temp_index = msg->map_indexs(map_i);
+				if (crash_map_entry.data().map_index() == temp_index)
+				{
+					have_already_load = true;
+					break;
+				}				
+			}
+			if (have_already_load == true)
 			{
 				continue;
 			}
-			else
+			message::CrashMapData* mapEntry = msgACK.add_maps();
+			mapEntry->CopyFrom(it_section->second);			
+			if (current_count >= map_count)
 			{
-				current_count++;
-				message::CrashMapData* mapEntry = msgACK.add_maps();
-				mapEntry->CopyFrom(it_section->second);
-				msgACK.set_section_id(it_section->first);
-				if (current_count >= map_count)
-				{
-					break;
-				}
+				break;
 			}
 		}
 	}

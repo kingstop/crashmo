@@ -52,6 +52,7 @@ class MsgSectionNameReq;
 class MsgSectionNameACK;
 class MsgS2CNotifyPing;
 class MsgC2SOfficeStatusReq;
+class MsgChapterStatus;
 class MsgS2COfficeStatusACK;
 class MsgC2SOfficeMapReq;
 class MsgS2COfficeMapACK;
@@ -1574,6 +1575,108 @@ class MsgC2SOfficeStatusReq : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class MsgChapterStatus : public ::google::protobuf::Message {
+ public:
+  MsgChapterStatus();
+  virtual ~MsgChapterStatus();
+
+  MsgChapterStatus(const MsgChapterStatus& from);
+
+  inline MsgChapterStatus& operator=(const MsgChapterStatus& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgChapterStatus& default_instance();
+
+  void Swap(MsgChapterStatus* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgChapterStatus* New() const { return New(NULL); }
+
+  MsgChapterStatus* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgChapterStatus& from);
+  void MergeFrom(const MsgChapterStatus& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgChapterStatus* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 chapter_id = 1;
+  bool has_chapter_id() const;
+  void clear_chapter_id();
+  static const int kChapterIdFieldNumber = 1;
+  ::google::protobuf::int32 chapter_id() const;
+  void set_chapter_id(::google::protobuf::int32 value);
+
+  // repeated uint64 map_indexs = 2;
+  int map_indexs_size() const;
+  void clear_map_indexs();
+  static const int kMapIndexsFieldNumber = 2;
+  ::google::protobuf::uint64 map_indexs(int index) const;
+  void set_map_indexs(int index, ::google::protobuf::uint64 value);
+  void add_map_indexs(::google::protobuf::uint64 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+      map_indexs() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+      mutable_map_indexs();
+
+  // @@protoc_insertion_point(class_scope:message.MsgChapterStatus)
+ private:
+  inline void set_has_chapter_id();
+  inline void clear_has_chapter_id();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > map_indexs_;
+  ::google::protobuf::int32 chapter_id_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgChapterStatus* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class MsgS2COfficeStatusACK : public ::google::protobuf::Message {
  public:
   MsgS2COfficeStatusACK();
@@ -1638,17 +1741,17 @@ class MsgS2COfficeStatusACK : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated int32 chapter_id = 1;
-  int chapter_id_size() const;
-  void clear_chapter_id();
-  static const int kChapterIdFieldNumber = 1;
-  ::google::protobuf::int32 chapter_id(int index) const;
-  void set_chapter_id(int index, ::google::protobuf::int32 value);
-  void add_chapter_id(::google::protobuf::int32 value);
-  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-      chapter_id() const;
-  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-      mutable_chapter_id();
+  // repeated .message.MsgChapterStatus chapter_status = 1;
+  int chapter_status_size() const;
+  void clear_chapter_status();
+  static const int kChapterStatusFieldNumber = 1;
+  const ::message::MsgChapterStatus& chapter_status(int index) const;
+  ::message::MsgChapterStatus* mutable_chapter_status(int index);
+  ::message::MsgChapterStatus* add_chapter_status();
+  const ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus >&
+      chapter_status() const;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus >*
+      mutable_chapter_status();
 
   // @@protoc_insertion_point(class_scope:message.MsgS2COfficeStatusACK)
  private:
@@ -1656,7 +1759,7 @@ class MsgS2COfficeStatusACK : public ::google::protobuf::Message {
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > chapter_id_;
+  ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus > chapter_status_;
   friend void  protobuf_AddDesc_crashmo_2eproto();
   friend void protobuf_AssignDesc_crashmo_2eproto();
   friend void protobuf_ShutdownFile_crashmo_2eproto();
@@ -1751,6 +1854,18 @@ class MsgC2SOfficeMapReq : public ::google::protobuf::Message {
   ::google::protobuf::int32 map_count() const;
   void set_map_count(::google::protobuf::int32 value);
 
+  // repeated uint64 map_indexs = 4;
+  int map_indexs_size() const;
+  void clear_map_indexs();
+  static const int kMapIndexsFieldNumber = 4;
+  ::google::protobuf::uint64 map_indexs(int index) const;
+  void set_map_indexs(int index, ::google::protobuf::uint64 value);
+  void add_map_indexs(::google::protobuf::uint64 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+      map_indexs() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+      mutable_map_indexs();
+
   // @@protoc_insertion_point(class_scope:message.MsgC2SOfficeMapReq)
  private:
   inline void set_has_chapter_id();
@@ -1768,6 +1883,7 @@ class MsgC2SOfficeMapReq : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::google::protobuf::int32 chapter_id_;
   ::google::protobuf::int32 section_id_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > map_indexs_;
   ::google::protobuf::int32 map_count_;
   friend void  protobuf_AddDesc_crashmo_2eproto();
   friend void protobuf_AssignDesc_crashmo_2eproto();
@@ -1849,13 +1965,6 @@ class MsgS2COfficeMapACK : public ::google::protobuf::Message {
   ::google::protobuf::int32 chapter_id() const;
   void set_chapter_id(::google::protobuf::int32 value);
 
-  // required int32 section_id = 2;
-  bool has_section_id() const;
-  void clear_section_id();
-  static const int kSectionIdFieldNumber = 2;
-  ::google::protobuf::int32 section_id() const;
-  void set_section_id(::google::protobuf::int32 value);
-
   // repeated .message.CrashMapData maps = 3;
   int maps_size() const;
   void clear_maps();
@@ -1868,32 +1977,16 @@ class MsgS2COfficeMapACK : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
       mutable_maps();
 
-  // required int32 section_count = 4;
-  bool has_section_count() const;
-  void clear_section_count();
-  static const int kSectionCountFieldNumber = 4;
-  ::google::protobuf::int32 section_count() const;
-  void set_section_count(::google::protobuf::int32 value);
-
   // @@protoc_insertion_point(class_scope:message.MsgS2COfficeMapACK)
  private:
   inline void set_has_chapter_id();
   inline void clear_has_chapter_id();
-  inline void set_has_section_id();
-  inline void clear_has_section_id();
-  inline void set_has_section_count();
-  inline void clear_has_section_count();
-
-  // helper for ByteSize()
-  int RequiredFieldsByteSizeFallback() const;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::int32 chapter_id_;
-  ::google::protobuf::int32 section_id_;
   ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > maps_;
-  ::google::protobuf::int32 section_count_;
+  ::google::protobuf::int32 chapter_id_;
   friend void  protobuf_AddDesc_crashmo_2eproto();
   friend void protobuf_AssignDesc_crashmo_2eproto();
   friend void protobuf_ShutdownFile_crashmo_2eproto();
@@ -4510,36 +4603,94 @@ inline void MsgS2CNotifyPing::set_ping_count(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
-// MsgS2COfficeStatusACK
+// MsgChapterStatus
 
-// repeated int32 chapter_id = 1;
-inline int MsgS2COfficeStatusACK::chapter_id_size() const {
-  return chapter_id_.size();
+// required int32 chapter_id = 1;
+inline bool MsgChapterStatus::has_chapter_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgS2COfficeStatusACK::clear_chapter_id() {
-  chapter_id_.Clear();
+inline void MsgChapterStatus::set_has_chapter_id() {
+  _has_bits_[0] |= 0x00000001u;
 }
-inline ::google::protobuf::int32 MsgS2COfficeStatusACK::chapter_id(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgS2COfficeStatusACK.chapter_id)
-  return chapter_id_.Get(index);
+inline void MsgChapterStatus::clear_has_chapter_id() {
+  _has_bits_[0] &= ~0x00000001u;
 }
-inline void MsgS2COfficeStatusACK::set_chapter_id(int index, ::google::protobuf::int32 value) {
-  chapter_id_.Set(index, value);
-  // @@protoc_insertion_point(field_set:message.MsgS2COfficeStatusACK.chapter_id)
+inline void MsgChapterStatus::clear_chapter_id() {
+  chapter_id_ = 0;
+  clear_has_chapter_id();
 }
-inline void MsgS2COfficeStatusACK::add_chapter_id(::google::protobuf::int32 value) {
-  chapter_id_.Add(value);
-  // @@protoc_insertion_point(field_add:message.MsgS2COfficeStatusACK.chapter_id)
-}
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-MsgS2COfficeStatusACK::chapter_id() const {
-  // @@protoc_insertion_point(field_list:message.MsgS2COfficeStatusACK.chapter_id)
+inline ::google::protobuf::int32 MsgChapterStatus::chapter_id() const {
+  // @@protoc_insertion_point(field_get:message.MsgChapterStatus.chapter_id)
   return chapter_id_;
 }
-inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-MsgS2COfficeStatusACK::mutable_chapter_id() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgS2COfficeStatusACK.chapter_id)
-  return &chapter_id_;
+inline void MsgChapterStatus::set_chapter_id(::google::protobuf::int32 value) {
+  set_has_chapter_id();
+  chapter_id_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgChapterStatus.chapter_id)
+}
+
+// repeated uint64 map_indexs = 2;
+inline int MsgChapterStatus::map_indexs_size() const {
+  return map_indexs_.size();
+}
+inline void MsgChapterStatus::clear_map_indexs() {
+  map_indexs_.Clear();
+}
+inline ::google::protobuf::uint64 MsgChapterStatus::map_indexs(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgChapterStatus.map_indexs)
+  return map_indexs_.Get(index);
+}
+inline void MsgChapterStatus::set_map_indexs(int index, ::google::protobuf::uint64 value) {
+  map_indexs_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.MsgChapterStatus.map_indexs)
+}
+inline void MsgChapterStatus::add_map_indexs(::google::protobuf::uint64 value) {
+  map_indexs_.Add(value);
+  // @@protoc_insertion_point(field_add:message.MsgChapterStatus.map_indexs)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+MsgChapterStatus::map_indexs() const {
+  // @@protoc_insertion_point(field_list:message.MsgChapterStatus.map_indexs)
+  return map_indexs_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+MsgChapterStatus::mutable_map_indexs() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgChapterStatus.map_indexs)
+  return &map_indexs_;
+}
+
+// -------------------------------------------------------------------
+
+// MsgS2COfficeStatusACK
+
+// repeated .message.MsgChapterStatus chapter_status = 1;
+inline int MsgS2COfficeStatusACK::chapter_status_size() const {
+  return chapter_status_.size();
+}
+inline void MsgS2COfficeStatusACK::clear_chapter_status() {
+  chapter_status_.Clear();
+}
+inline const ::message::MsgChapterStatus& MsgS2COfficeStatusACK::chapter_status(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgS2COfficeStatusACK.chapter_status)
+  return chapter_status_.Get(index);
+}
+inline ::message::MsgChapterStatus* MsgS2COfficeStatusACK::mutable_chapter_status(int index) {
+  // @@protoc_insertion_point(field_mutable:message.MsgS2COfficeStatusACK.chapter_status)
+  return chapter_status_.Mutable(index);
+}
+inline ::message::MsgChapterStatus* MsgS2COfficeStatusACK::add_chapter_status() {
+  // @@protoc_insertion_point(field_add:message.MsgS2COfficeStatusACK.chapter_status)
+  return chapter_status_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus >&
+MsgS2COfficeStatusACK::chapter_status() const {
+  // @@protoc_insertion_point(field_list:message.MsgS2COfficeStatusACK.chapter_status)
+  return chapter_status_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus >*
+MsgS2COfficeStatusACK::mutable_chapter_status() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgS2COfficeStatusACK.chapter_status)
+  return &chapter_status_;
 }
 
 // -------------------------------------------------------------------
@@ -4618,6 +4769,36 @@ inline void MsgC2SOfficeMapReq::set_map_count(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:message.MsgC2SOfficeMapReq.map_count)
 }
 
+// repeated uint64 map_indexs = 4;
+inline int MsgC2SOfficeMapReq::map_indexs_size() const {
+  return map_indexs_.size();
+}
+inline void MsgC2SOfficeMapReq::clear_map_indexs() {
+  map_indexs_.Clear();
+}
+inline ::google::protobuf::uint64 MsgC2SOfficeMapReq::map_indexs(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgC2SOfficeMapReq.map_indexs)
+  return map_indexs_.Get(index);
+}
+inline void MsgC2SOfficeMapReq::set_map_indexs(int index, ::google::protobuf::uint64 value) {
+  map_indexs_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.MsgC2SOfficeMapReq.map_indexs)
+}
+inline void MsgC2SOfficeMapReq::add_map_indexs(::google::protobuf::uint64 value) {
+  map_indexs_.Add(value);
+  // @@protoc_insertion_point(field_add:message.MsgC2SOfficeMapReq.map_indexs)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+MsgC2SOfficeMapReq::map_indexs() const {
+  // @@protoc_insertion_point(field_list:message.MsgC2SOfficeMapReq.map_indexs)
+  return map_indexs_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+MsgC2SOfficeMapReq::mutable_map_indexs() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgC2SOfficeMapReq.map_indexs)
+  return &map_indexs_;
+}
+
 // -------------------------------------------------------------------
 
 // MsgS2COfficeMapACK
@@ -4644,30 +4825,6 @@ inline void MsgS2COfficeMapACK::set_chapter_id(::google::protobuf::int32 value) 
   set_has_chapter_id();
   chapter_id_ = value;
   // @@protoc_insertion_point(field_set:message.MsgS2COfficeMapACK.chapter_id)
-}
-
-// required int32 section_id = 2;
-inline bool MsgS2COfficeMapACK::has_section_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgS2COfficeMapACK::set_has_section_id() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void MsgS2COfficeMapACK::clear_has_section_id() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void MsgS2COfficeMapACK::clear_section_id() {
-  section_id_ = 0;
-  clear_has_section_id();
-}
-inline ::google::protobuf::int32 MsgS2COfficeMapACK::section_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2COfficeMapACK.section_id)
-  return section_id_;
-}
-inline void MsgS2COfficeMapACK::set_section_id(::google::protobuf::int32 value) {
-  set_has_section_id();
-  section_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2COfficeMapACK.section_id)
 }
 
 // repeated .message.CrashMapData maps = 3;
@@ -4698,30 +4855,6 @@ inline ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
 MsgS2COfficeMapACK::mutable_maps() {
   // @@protoc_insertion_point(field_mutable_list:message.MsgS2COfficeMapACK.maps)
   return &maps_;
-}
-
-// required int32 section_count = 4;
-inline bool MsgS2COfficeMapACK::has_section_count() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void MsgS2COfficeMapACK::set_has_section_count() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void MsgS2COfficeMapACK::clear_has_section_count() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void MsgS2COfficeMapACK::clear_section_count() {
-  section_count_ = 0;
-  clear_has_section_count();
-}
-inline ::google::protobuf::int32 MsgS2COfficeMapACK::section_count() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2COfficeMapACK.section_count)
-  return section_count_;
-}
-inline void MsgS2COfficeMapACK::set_section_count(::google::protobuf::int32 value) {
-  set_has_section_count();
-  section_count_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2COfficeMapACK.section_count)
 }
 
 // -------------------------------------------------------------------
