@@ -13,7 +13,17 @@ public class OfficilMapManager
 	protected Dictionary<int, string> _officil_chapter_names = new Dictionary<int, string>();
     protected List<KeyValuePair<int, int>> _new_map = new List<KeyValuePair<int, int>>();
     protected List<KeyValuePair<int, int>> _remove_map = new List<KeyValuePair<int, int>>();
-
+    public static byte[] Stream2Bytes(Stream stream)
+    {
+        if (stream.CanSeek) // stream.Length 已确定
+        {
+            byte[] bytes = new byte[stream.Length];
+            stream.Read(bytes, 0, bytes.Length);
+            stream.Seek(0, SeekOrigin.Begin);
+            return bytes;
+        }
+        return null;
+    }
     public void ClearAll()
     {
         _officilMap.Clear();
@@ -44,6 +54,7 @@ public class OfficilMapManager
                         byte[] body = Convert.FromBase64String(body_str);
                         System.IO.MemoryStream mem = new System.IO.MemoryStream();
                         mem.Write(body, 0, body.Length);
+                        mem.Position = 0;
                         message.CrashMapData CrashMap = ProtoBuf.Serializer.Deserialize<message.CrashMapData>(mem);
                         if (_officilMap.ContainsKey(CrashMap.Chapter) == false)
                         {
@@ -89,8 +100,11 @@ public class OfficilMapManager
                     name_map = chapter_id.ToString() + "-" + section.ToString();
                     str_names += name_map;
                     System.IO.MemoryStream mem = new System.IO.MemoryStream();
-                    ProtoBuf.Serializer.Serialize<global::ProtoBuf.IExtensible>(mem, map);
-                    byte[] bytes = mem.ToArray();
+                    ProtoBuf.Serializer.Serialize<message.CrashMapData>(mem, map);
+                    mem.Position = 0;
+                    message.CrashMapData data_1 = ProtoBuf.Serializer.Deserialize<message.CrashMapData>(mem);
+                    mem.Position = 0;
+                    byte[] bytes = Stream2Bytes(mem);
                     string temp_base64 = Convert.ToBase64String(bytes);
                     global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, name_map + "map.txt", temp_base64);
                 }                
@@ -120,8 +134,9 @@ public class OfficilMapManager
                 name_map = chapter_id.ToString() + "-" + section.ToString();
                 str_names += name_map;
                 System.IO.MemoryStream mem = new System.IO.MemoryStream();
+              
                 ProtoBuf.Serializer.Serialize<global::ProtoBuf.IExtensible>(mem, map);
-                byte[] bytes =  mem.ToArray();
+                byte[] bytes = Stream2Bytes(mem);
                 UInt32 char_base64_out_length = (UInt32)bytes.Length * 2;
                 //char[] base64_out = new char[char_base64_out_length];
                 
