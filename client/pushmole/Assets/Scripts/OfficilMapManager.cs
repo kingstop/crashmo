@@ -11,17 +11,9 @@ public class OfficilMapManager
     protected Dictionary<int, Dictionary<int, message.CrashMapData>> _officilMap = new Dictionary<int, Dictionary<int, message.CrashMapData>>();
 	protected List<int> _chapter_ids = new List<int> ();
 	protected Dictionary<int, string> _officil_chapter_names = new Dictionary<int, string>();
-    void LoadBinMap(byte[] bytes)
-    {
-        System.IO.MemoryStream mem = new System.IO.MemoryStream();
-        mem.Write(bytes, 0, bytes.Length);
-        message.CrashMapData CrashMap = ProtoBuf.Serializer.Deserialize<message.CrashMapData>(mem);
-        if(_officilMap.ContainsKey(CrashMap.Chapter) == false)
-        {
-            _officilMap[CrashMap.Chapter] = new Dictionary<int, message.CrashMapData>(); 
-        }
-        _officilMap[CrashMap.Chapter][CrashMap.Section] = CrashMap;        
-    }
+    protected List<KeyValuePair<int, int>> _new_map = new List<KeyValuePair<int, int>>();
+    protected List<KeyValuePair<int, int>> _remove_map = new List<KeyValuePair<int, int>>();
+
     public void ClearAll()
     {
         _officilMap.Clear();
@@ -64,6 +56,49 @@ public class OfficilMapManager
                 }
             }
         }
+    }
+
+    public void UpdateLocalMap()
+    {
+        string name_map;
+        foreach (KeyValuePair<int, int> entry_remove in _remove_map)
+        {
+            name_map = entry_remove.Key.ToString() + "-" + entry_remove.Value.ToString();
+            global_instance.Instance._file_helper.DeleteFile(Application.persistentDataPath, name_map + "map.txt");
+        }
+        global_instance.Instance._file_helper.DeleteFile(Application.persistentDataPath, "MapName.txt");
+        _remove_map.Clear();
+        string str_names = "";
+        name_map = "";
+        foreach (KeyValuePair<int, Dictionary<int, message.CrashMapData>> entry_chapter_key_pair in _officilMap)
+        {
+            Dictionary<int, message.CrashMapData> entry_chapter = entry_chapter_key_pair.Value;
+            foreach (KeyValuePair<int, message.CrashMapData> entry_pair in entry_chapter)
+            {
+                if (str_names != "")
+                {
+                    str_names += " ";
+                }
+                message.CrashMapData map = entry_pair.Value;
+                KeyValuePair<int, int> pair_entry_new = new KeyValuePair<int, int>(map.Chapter, map.Section);
+
+                if(_new_map.Contains(pair_entry_new))
+                {
+                    int chapter_id = map.Chapter;
+                    int section = map.Section;
+                    name_map = chapter_id.ToString() + "-" + section.ToString();
+                    str_names += name_map;
+                    System.IO.MemoryStream mem = new System.IO.MemoryStream();
+                    ProtoBuf.Serializer.Serialize<global::ProtoBuf.IExtensible>(mem, map);
+                    byte[] bytes = mem.ToArray();
+                    string temp_base64 = Convert.ToBase64String(bytes);
+                    global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, name_map + "map.txt", temp_base64);
+                }                
+            }
+        }
+        _new_map.Clear();
+        global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, "MapName.txt", str_names);
+
     }
     public void SaveOfficilMap()
     {
@@ -199,6 +234,8 @@ public class OfficilMapManager
                 }
                 foreach(int remove_section_id in no_sections)
                 {
+                    KeyValuePair<int, int> pair_entry = new KeyValuePair<int, int>(entry.chapter_id, remove_section_id);
+                    _remove_map.Add(pair_entry);
                     _officilMap[entry.chapter_id].Remove(remove_section_id);
                 }                
             }            
@@ -243,9 +280,11 @@ public class OfficilMapManager
 		{
 			foreach (message.CrashMapData entry in msg.maps) 
 			{
-				_officilMap[chapter_id][entry.Section] = entry;	
+				_officilMap[chapter_id][entry.Section] = entry;                
 				session_id = entry.Section;
-			}
+                KeyValuePair<int, int> entry_pair = new KeyValuePair<int, int>(chapter_id, session_id);
+                _new_map.Add(entry_pair);
+            }
 		}
 		int req_chapter_id = -1;
 		int req_section_id = -1;
@@ -332,7 +371,8 @@ public class OfficilMapManager
 
 	protected void endOfficilMapLoad()
 	{
-        if(global_instance.Instance._in_login)
+        UpdateLocalMap();
+        if (global_instance.Instance._in_login)
         {
             global_instance.Instance._ngui_edit_manager._login_obj.SetActive(false);
             global_instance.Instance._ngui_edit_manager.show_main_panel();
