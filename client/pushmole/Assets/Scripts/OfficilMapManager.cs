@@ -81,34 +81,22 @@ public class OfficilMapManager
         _remove_map.Clear();
         string str_names = "";
         name_map = "";
-        foreach (KeyValuePair<int, Dictionary<int, message.CrashMapData>> entry_chapter_key_pair in _officilMap)
-        {
-            Dictionary<int, message.CrashMapData> entry_chapter = entry_chapter_key_pair.Value;
-            foreach (KeyValuePair<int, message.CrashMapData> entry_pair in entry_chapter)
-            {
-                if (str_names != "")
-                {
-                    str_names += " ";
-                }
-                message.CrashMapData map = entry_pair.Value;
-                KeyValuePair<int, int> pair_entry_new = new KeyValuePair<int, int>(map.Chapter, map.Section);
 
-                if(_new_map.Contains(pair_entry_new))
-                {
-                    int chapter_id = map.Chapter;
-                    int section = map.Section;
-                    name_map = chapter_id.ToString() + "-" + section.ToString();
-                    str_names += name_map;
-                    System.IO.MemoryStream mem = new System.IO.MemoryStream();
-                    ProtoBuf.Serializer.Serialize<message.CrashMapData>(mem, map);
-                    mem.Position = 0;
-                    message.CrashMapData data_1 = ProtoBuf.Serializer.Deserialize<message.CrashMapData>(mem);
-                    mem.Position = 0;
-                    byte[] bytes = Stream2Bytes(mem);
-                    string temp_base64 = Convert.ToBase64String(bytes);
-                    global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, name_map + "map.txt", temp_base64);
-                }                
-            }
+        foreach(KeyValuePair<int, int> pair_entry in _new_map)
+        {
+            message.CrashMapData map = _officilMap[pair_entry.Key][pair_entry.Value];
+            int chapter_id = map.Chapter;
+            int section = map.Section;
+            name_map = chapter_id.ToString() + "-" + section.ToString();
+            str_names += name_map;
+            System.IO.MemoryStream mem = new System.IO.MemoryStream();
+            ProtoBuf.Serializer.Serialize<message.CrashMapData>(mem, map);
+            mem.Position = 0;
+            message.CrashMapData data_1 = ProtoBuf.Serializer.Deserialize<message.CrashMapData>(mem);
+            mem.Position = 0;
+            byte[] bytes = Stream2Bytes(mem);
+            string temp_base64 = Convert.ToBase64String(bytes);
+            global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, name_map + "map.txt", temp_base64);
         }
         _new_map.Clear();
         global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, "MapName.txt", str_names);
