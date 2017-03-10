@@ -41,7 +41,7 @@ public class OfficilMapManager
                 string[] map_name_array = map_names.Split(' ');
                 foreach (string entry in map_name_array)
                 {
-                    ArrayList temp_list = global_instance.Instance._file_helper.LoadFile(Application.persistentDataPath, entry + ".txt");
+                    ArrayList temp_list = global_instance.Instance._file_helper.LoadFile(Application.persistentDataPath, entry + "map.txt");
                     if(temp_list != null)
                     {
                         string body_str = "";
@@ -91,7 +91,7 @@ public class OfficilMapManager
                 //char[] base64_out = new char[char_base64_out_length];
                 
                 string temp_base64 = Convert.ToBase64String(bytes);
-                global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, name_map + ".txt", temp_base64);
+                global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, name_map + "map.txt", temp_base64);
                 //global_instance.Instance._file_helper.CreateModelFile(Application.persistentDataPath, name_map + ".assetbundle", bytes, bytes.Length);
             }
         }
@@ -109,7 +109,7 @@ public class OfficilMapManager
                 string[] string_array = all_file_name.Split(' ');
                 foreach (string entry in string_array)
                 {
-                    global_instance.Instance._file_helper.DeleteFile(Application.persistentDataPath, entry + ".assetbundle");
+                    global_instance.Instance._file_helper.DeleteFile(Application.persistentDataPath, entry + "map.txt");
                 }
             }
             global_instance.Instance._file_helper.DeleteFile(Application.persistentDataPath, "MapName.txt");
