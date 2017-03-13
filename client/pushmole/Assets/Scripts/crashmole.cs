@@ -560,6 +560,7 @@ public class crash_manager
     GameObject _source_flag_mole_obj;
     protected ArrayList _Game_objs = new ArrayList();
     public int _use_count = 0;
+    public long _begin_time = 0;
     public bool[] _dir_btn_down = new bool[4];
     public creature _creature = null;
     public GameObject _creaatuee_obj = null;
@@ -587,6 +588,8 @@ public class crash_manager
         _crash_objs = new crash_obj_addr[_max_x, _max_z, _max_y];
         _crash_moles = new crash_mole_addr[_max_x, _max_z, _max_y];
         _grid_distance = (float)1;
+        _use_count = 0;
+        _begin_time = 0;
         for (int x = 0; x < (int)_max_x; x++)
         {
             for (int y = 0; y < (int)_max_y; y++)
@@ -907,7 +910,13 @@ public class crash_manager
     }
     public void move_lock_mole(dir_move dir)
     {
-        move_list(_lock_mole, dir);
+        if(_need_play_animation == true)
+        {
+            _use_count++;
+            move_list(_lock_mole, dir);
+            
+        }
+        
     }    
     protected void _catch_click(int i, bool his)
     {
@@ -999,7 +1008,14 @@ public class crash_manager
     {
 		_creature.set_state (creature_state.idle);
 		_game_state = gameState.game_end;
-        global_instance.Instance._ngui_edit_manager.game_win();        
+        global_instance.Instance._ngui_edit_manager.game_win();
+        message.MsgC2SReqPassOfficilMap msg = new message.MsgC2SReqPassOfficilMap();
+        long cur_time = global_instance.Instance.getTime();
+        msg.use_step = (uint)_use_count;
+        msg.use_time = (uint) (cur_time - _begin_time);
+        msg.chapter_id = (uint)global_instance.Instance.GetMapData().chapter_;
+        msg.section_id = (uint)global_instance.Instance.GetMapData().section_;
+        global_instance.Instance._net_client.send(msg);        
     }
     public void update()
     {
@@ -1705,7 +1721,9 @@ public class crash_manager
 			if (temp == false && _need_play_animation == false && _crash_moles_list.Count != 0) 
 			{
 				_game_state = gameState.game_playing;
-			}
+                _use_count = 0;
+                _begin_time = global_instance.Instance.getTime();
+            }
 			if (temp) 
 			{
 				_record.try_to_next_state ();
@@ -1767,7 +1785,6 @@ public class crash_manager
         {
             return false;
         }
-        _use_count++;
         int min_move_y = (int)crash_define.max_y;
         foreach (crash_base_obj entry in mole._crash_objs)
         {

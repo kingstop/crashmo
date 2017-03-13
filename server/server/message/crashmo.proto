@@ -217,6 +217,7 @@ message MsgTaskReward
 {
 	required uint32 task_id = 1;
 	repeated TaskRewardConfig rewards = 2;
+	required string task_name = 3;
 }
 
 message MsgS2CPassOfficilMapACK

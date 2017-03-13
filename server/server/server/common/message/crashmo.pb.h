@@ -3330,15 +3330,33 @@ class MsgTaskReward : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >*
       mutable_rewards();
 
+  // required string task_name = 3;
+  bool has_task_name() const;
+  void clear_task_name();
+  static const int kTaskNameFieldNumber = 3;
+  const ::std::string& task_name() const;
+  void set_task_name(const ::std::string& value);
+  void set_task_name(const char* value);
+  void set_task_name(const char* value, size_t size);
+  ::std::string* mutable_task_name();
+  ::std::string* release_task_name();
+  void set_allocated_task_name(::std::string* task_name);
+
   // @@protoc_insertion_point(class_scope:message.MsgTaskReward)
  private:
   inline void set_has_task_id();
   inline void clear_has_task_id();
+  inline void set_has_task_name();
+  inline void clear_has_task_name();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig > rewards_;
+  ::google::protobuf::internal::ArenaStringPtr task_name_;
   ::google::protobuf::uint32 task_id_;
   friend void  protobuf_AddDesc_crashmo_2eproto();
   friend void protobuf_AssignDesc_crashmo_2eproto();
@@ -5679,6 +5697,59 @@ inline ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >*
 MsgTaskReward::mutable_rewards() {
   // @@protoc_insertion_point(field_mutable_list:message.MsgTaskReward.rewards)
   return &rewards_;
+}
+
+// required string task_name = 3;
+inline bool MsgTaskReward::has_task_name() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MsgTaskReward::set_has_task_name() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MsgTaskReward::clear_has_task_name() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MsgTaskReward::clear_task_name() {
+  task_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_task_name();
+}
+inline const ::std::string& MsgTaskReward::task_name() const {
+  // @@protoc_insertion_point(field_get:message.MsgTaskReward.task_name)
+  return task_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgTaskReward::set_task_name(const ::std::string& value) {
+  set_has_task_name();
+  task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.MsgTaskReward.task_name)
+}
+inline void MsgTaskReward::set_task_name(const char* value) {
+  set_has_task_name();
+  task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.MsgTaskReward.task_name)
+}
+inline void MsgTaskReward::set_task_name(const char* value, size_t size) {
+  set_has_task_name();
+  task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.MsgTaskReward.task_name)
+}
+inline ::std::string* MsgTaskReward::mutable_task_name() {
+  set_has_task_name();
+  // @@protoc_insertion_point(field_mutable:message.MsgTaskReward.task_name)
+  return task_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MsgTaskReward::release_task_name() {
+  clear_has_task_name();
+  return task_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgTaskReward::set_allocated_task_name(::std::string* task_name) {
+  if (task_name != NULL) {
+    set_has_task_name();
+  } else {
+    clear_has_task_name();
+  }
+  task_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), task_name);
+  // @@protoc_insertion_point(field_set_allocated:message.MsgTaskReward.task_name)
 }
 
 // -------------------------------------------------------------------

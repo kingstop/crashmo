@@ -179,6 +179,7 @@ void CrashPlayer::PassOfficilMap(int chapter_id, int section_id, int use_step, i
 				message::MsgTaskReward* reward = msg.add_complete_task();
 				reward->set_task_id(task_id);
 				int reward_length = task_config->rewards_size();
+				reward->set_task_name(task_config->name().c_str());
 				for (size_t j = 0; j < reward_length; j++)
 				{
 					const message::TaskRewardConfig reward_config = task_config->rewards(j);										

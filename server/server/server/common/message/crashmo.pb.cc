@@ -616,9 +616,10 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqPassOfficilMap, _internal_metadata_),
       -1);
   MsgTaskReward_descriptor_ = file->message_type(30);
-  static const int MsgTaskReward_offsets_[2] = {
+  static const int MsgTaskReward_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgTaskReward, task_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgTaskReward, rewards_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgTaskReward, task_name_),
   };
   MsgTaskReward_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -891,25 +892,25 @@ void protobuf_AddDesc_crashmo_2eproto() {
     "apter_id\030\001 \002(\r\022\022\n\nsection_id\030\002 \002(\r\"e\n\027Ms"
     "gC2SReqPassOfficilMap\022\022\n\nchapter_id\030\001 \002("
     "\r\022\022\n\nsection_id\030\002 \002(\r\022\020\n\010use_time\030\003 \002(\r\022"
-    "\020\n\010use_step\030\004 \002(\r\"L\n\rMsgTaskReward\022\017\n\007ta"
+    "\020\n\010use_step\030\004 \002(\r\"_\n\rMsgTaskReward\022\017\n\007ta"
     "sk_id\030\001 \002(\r\022*\n\007rewards\030\002 \003(\0132\031.message.T"
-    "askRewardConfig\"\241\002\n\027MsgS2CPassOfficilMap"
-    "ACK\022\022\n\nchapter_id\030\001 \002(\r\022\022\n\nsection_id\030\002 "
-    "\002(\r\022\020\n\010add_gold\030\003 \002(\r\022&\n\014add_resource\030\004 "
-    "\003(\0132\020.message.intPair\022\024\n\014current_gold\030\005 "
-    "\002(\r\022*\n\020current_resource\030\006 \003(\0132\020.message."
-    "intPair\022-\n\rcomplete_task\030\007 \003(\0132\026.message"
-    ".MsgTaskReward\0223\n\005error\030\010 \002(\0162\024.message."
-    "ServerError:\016ServerError_NO\"6\n\023MsgS2CNew"
-    "TaskNotify\022\037\n\004info\030\001 \002(\0132\021.message.TaskI"
-    "nfo*\345\001\n\013ServerError\022\022\n\016ServerError_NO\020\000\022"
-    "\026\n\022ServerError_Unknow\020\001\022\034\n\030ServerError_H"
-    "aveSameName\020\002\022&\n\"ServerError_NotFoundMap"
-    "NameWhenDel\020\003\0220\n,ServerError_PassOfficil"
-    "MapFailedTheMapIsLock\020\004\0222\n.ServerError_P"
-    "assOfficilMapFailedTheMapNotFound\020\005*<\n\007M"
-    "apType\022\r\n\tOfficeMap\020\001\022\021\n\rImcompleteMap\020\002"
-    "\022\017\n\013CompleteMap\020\003", 3217);
+    "askRewardConfig\022\021\n\ttask_name\030\003 \002(\t\"\241\002\n\027M"
+    "sgS2CPassOfficilMapACK\022\022\n\nchapter_id\030\001 \002"
+    "(\r\022\022\n\nsection_id\030\002 \002(\r\022\020\n\010add_gold\030\003 \002(\r"
+    "\022&\n\014add_resource\030\004 \003(\0132\020.message.intPair"
+    "\022\024\n\014current_gold\030\005 \002(\r\022*\n\020current_resour"
+    "ce\030\006 \003(\0132\020.message.intPair\022-\n\rcomplete_t"
+    "ask\030\007 \003(\0132\026.message.MsgTaskReward\0223\n\005err"
+    "or\030\010 \002(\0162\024.message.ServerError:\016ServerEr"
+    "ror_NO\"6\n\023MsgS2CNewTaskNotify\022\037\n\004info\030\001 "
+    "\002(\0132\021.message.TaskInfo*\345\001\n\013ServerError\022\022"
+    "\n\016ServerError_NO\020\000\022\026\n\022ServerError_Unknow"
+    "\020\001\022\034\n\030ServerError_HaveSameName\020\002\022&\n\"Serv"
+    "erError_NotFoundMapNameWhenDel\020\003\0220\n,Serv"
+    "erError_PassOfficilMapFailedTheMapIsLock"
+    "\020\004\0222\n.ServerError_PassOfficilMapFailedTh"
+    "eMapNotFound\020\005*<\n\007MapType\022\r\n\tOfficeMap\020\001"
+    "\022\021\n\rImcompleteMap\020\002\022\017\n\013CompleteMap\020\003", 3236);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "crashmo.proto", &protobuf_RegisterTypes);
   MsgIntStringProto::default_instance_ = new MsgIntStringProto();
@@ -11995,6 +11996,7 @@ void MsgC2SReqPassOfficilMap::InternalSwap(MsgC2SReqPassOfficilMap* other) {
 #ifndef _MSC_VER
 const int MsgTaskReward::kTaskIdFieldNumber;
 const int MsgTaskReward::kRewardsFieldNumber;
+const int MsgTaskReward::kTaskNameFieldNumber;
 #endif  // !_MSC_VER
 
 MsgTaskReward::MsgTaskReward()
@@ -12015,8 +12017,10 @@ MsgTaskReward::MsgTaskReward(const MsgTaskReward& from)
 }
 
 void MsgTaskReward::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   task_id_ = 0u;
+  task_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -12026,6 +12030,7 @@ MsgTaskReward::~MsgTaskReward() {
 }
 
 void MsgTaskReward::SharedDtor() {
+  task_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -12056,7 +12061,12 @@ MsgTaskReward* MsgTaskReward::New(::google::protobuf::Arena* arena) const {
 }
 
 void MsgTaskReward::Clear() {
-  task_id_ = 0u;
+  if (_has_bits_[0 / 32] & 5) {
+    task_id_ = 0u;
+    if (has_task_name()) {
+      task_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+  }
   rewards_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
@@ -12098,6 +12108,23 @@ bool MsgTaskReward::MergePartialFromCodedStream(
           goto handle_unusual;
         }
         if (input->ExpectTag(18)) goto parse_rewards;
+        if (input->ExpectTag(26)) goto parse_task_name;
+        break;
+      }
+
+      // required string task_name = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_task_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_task_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->task_name().data(), this->task_name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "message.MsgTaskReward.task_name");
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -12138,6 +12165,16 @@ void MsgTaskReward::SerializeWithCachedSizes(
       2, this->rewards(i), output);
   }
 
+  // required string task_name = 3;
+  if (has_task_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->task_name().data(), this->task_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.MsgTaskReward.task_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->task_name(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -12160,6 +12197,17 @@ void MsgTaskReward::SerializeWithCachedSizes(
         2, this->rewards(i), target);
   }
 
+  // required string task_name = 3;
+  if (has_task_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->task_name().data(), this->task_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "message.MsgTaskReward.task_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->task_name(), target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -12168,14 +12216,41 @@ void MsgTaskReward::SerializeWithCachedSizes(
   return target;
 }
 
-int MsgTaskReward::ByteSize() const {
+int MsgTaskReward::RequiredFieldsByteSizeFallback() const {
   int total_size = 0;
 
-  // required uint32 task_id = 1;
   if (has_task_id()) {
+    // required uint32 task_id = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->task_id());
+  }
+
+  if (has_task_name()) {
+    // required string task_name = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->task_name());
+  }
+
+  return total_size;
+}
+int MsgTaskReward::ByteSize() const {
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000005) ^ 0x00000005) == 0) {  // All required fields are present.
+    // required uint32 task_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->task_id());
+
+    // required string task_name = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->task_name());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
   }
   // repeated .message.TaskRewardConfig rewards = 2;
   total_size += 1 * this->rewards_size();
@@ -12215,6 +12290,10 @@ void MsgTaskReward::MergeFrom(const MsgTaskReward& from) {
     if (from.has_task_id()) {
       set_task_id(from.task_id());
     }
+    if (from.has_task_name()) {
+      set_has_task_name();
+      task_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.task_name_);
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -12234,7 +12313,7 @@ void MsgTaskReward::CopyFrom(const MsgTaskReward& from) {
 }
 
 bool MsgTaskReward::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
 
   if (!::google::protobuf::internal::AllAreInitialized(this->rewards())) return false;
   return true;
@@ -12247,6 +12326,7 @@ void MsgTaskReward::Swap(MsgTaskReward* other) {
 void MsgTaskReward::InternalSwap(MsgTaskReward* other) {
   std::swap(task_id_, other->task_id_);
   rewards_.UnsafeArenaSwap(&other->rewards_);
+  task_name_.Swap(&other->task_name_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -12315,6 +12395,59 @@ MsgTaskReward::rewards() const {
 MsgTaskReward::mutable_rewards() {
   // @@protoc_insertion_point(field_mutable_list:message.MsgTaskReward.rewards)
   return &rewards_;
+}
+
+// required string task_name = 3;
+ bool MsgTaskReward::has_task_name() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+ void MsgTaskReward::set_has_task_name() {
+  _has_bits_[0] |= 0x00000004u;
+}
+ void MsgTaskReward::clear_has_task_name() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+ void MsgTaskReward::clear_task_name() {
+  task_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_task_name();
+}
+ const ::std::string& MsgTaskReward::task_name() const {
+  // @@protoc_insertion_point(field_get:message.MsgTaskReward.task_name)
+  return task_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void MsgTaskReward::set_task_name(const ::std::string& value) {
+  set_has_task_name();
+  task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:message.MsgTaskReward.task_name)
+}
+ void MsgTaskReward::set_task_name(const char* value) {
+  set_has_task_name();
+  task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:message.MsgTaskReward.task_name)
+}
+ void MsgTaskReward::set_task_name(const char* value, size_t size) {
+  set_has_task_name();
+  task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:message.MsgTaskReward.task_name)
+}
+ ::std::string* MsgTaskReward::mutable_task_name() {
+  set_has_task_name();
+  // @@protoc_insertion_point(field_mutable:message.MsgTaskReward.task_name)
+  return task_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* MsgTaskReward::release_task_name() {
+  clear_has_task_name();
+  return task_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void MsgTaskReward::set_allocated_task_name(::std::string* task_name) {
+  if (task_name != NULL) {
+    set_has_task_name();
+  } else {
+    clear_has_task_name();
+  }
+  task_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), task_name);
+  // @@protoc_insertion_point(field_set_allocated:message.MsgTaskReward.task_name)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

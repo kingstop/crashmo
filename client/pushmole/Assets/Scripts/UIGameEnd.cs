@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 public enum enResult
 {
     win,
@@ -7,8 +8,10 @@ public enum enResult
 }
 public class UIGameEnd : MonoBehaviour {
     public RewardEntry[] rewardEntrys_;
+    public TaskRewards taskRewards_;
 	public GameObject objEdit_;
 	public GameObject objGame_;
+    protected List<message.MsgTaskReward> _task_rewards = new List<message.MsgTaskReward>();
 
     protected int _current_count = 0;
     protected enResult _en;
@@ -38,6 +41,17 @@ public class UIGameEnd : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void ClearTaskRewards()
+    {
+        _task_rewards.Clear();
+    }
+
+    public void AddTaskRewards(message.MsgTaskReward task_reward_entry)
+    {
+        _task_rewards.Add(task_reward_entry);
+        
+    }
     public void AddRewardCount(int group, int count)
     {
         rewardEntrys_[_current_count].setColor(global_instance.Instance.get_color_by_group(group));

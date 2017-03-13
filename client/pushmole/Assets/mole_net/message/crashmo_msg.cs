@@ -778,6 +778,13 @@ namespace message
       get { return _rewards; }
     }
   
+    private string _task_name;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"task_name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string task_name
+    {
+      get { return _task_name; }
+      set { _task_name = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

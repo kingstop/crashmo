@@ -47,11 +47,13 @@ public class client_session
     }
     public bool parseMsgS2CPassOfficilMapACK(System.IO.MemoryStream stream)
     {
+        global_instance.Instance._ngui_edit_manager._game_end.clear();
         MsgS2CPassOfficilMapACK msg = ProtoBuf.Serializer.Deserialize<MsgS2CPassOfficilMapACK>(stream);
-
-
+        foreach(message.MsgTaskReward entry in msg.complete_task)
+        {
+            global_instance.Instance._ngui_edit_manager._game_end.AddTaskRewards(entry);
+        }        
         return true;
-
     }
 
     public bool parseLoadTaskConfigsACK(System.IO.MemoryStream stream)
@@ -75,6 +77,7 @@ public class client_session
         return true;
 
     }
+
 
 
 
