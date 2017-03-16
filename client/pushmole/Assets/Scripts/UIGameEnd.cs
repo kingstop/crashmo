@@ -12,33 +12,34 @@ public class UIGameEnd : MonoBehaviour {
 	public GameObject objEdit_;
 	public GameObject objGame_;
     protected List<message.MsgTaskReward> _task_rewards = new List<message.MsgTaskReward>();
-
     protected int _current_count = 0;
     protected enResult _en;
     // Use this for initialization
-    void Start () {
-			
-		global_instance.Instance._ngui_edit_manager.HideAllUIBut(this.gameObject);
-		switch (global_instance.Instance._global_game_type) 
-		{
-			case global_game_type.global_game_type_game:
-			{
-				objEdit_.SetActive (false);
-				objGame_.SetActive (true);
-			}
-			break;
-
-			case global_game_type.global_game_type_edit:
-			{
-				objEdit_.SetActive (true);
-				objGame_.SetActive (false);
-			}
-			break;
-		}
+    void Start () {			
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void OnEnable()
+    {
+        global_instance.Instance._ngui_edit_manager.HideAllUIBut(this.gameObject);
+        switch (global_instance.Instance._global_game_type)
+        {
+            case global_game_type.global_game_type_game:
+                {
+                    objEdit_.SetActive(false);
+                    objGame_.SetActive(true);
+                }
+                break;
+            case global_game_type.global_game_type_edit:
+                {
+                    objEdit_.SetActive(true);
+                    objGame_.SetActive(false);
+                }
+                break;
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 
