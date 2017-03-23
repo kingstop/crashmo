@@ -93,11 +93,8 @@ public class SaveMapPanel : MonoBehaviour {
             if (global_instance.Instance._ngui_edit_manager.getPageType() == page_type.page_type_official)
             {
                 _input_chapter.text = global_instance.Instance._ngui_edit_manager.GetChapterID().ToString();
-                _input_section.text = global_instance.Instance._ngui_edit_manager.getSection().ToString();
-                
-            }
-            
-
+                _input_section.text = global_instance.Instance._ngui_edit_manager.getSection().ToString();                
+            }           
         }
         else
         {
