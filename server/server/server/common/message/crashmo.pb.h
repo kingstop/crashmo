@@ -71,6 +71,8 @@ class MsgC2SReqPassOfficilMap;
 class MsgTaskReward;
 class MsgS2CPassOfficilMapACK;
 class MsgS2CNewTaskNotify;
+class MsgC2SPlayerPublishMap;
+class MsgS2CPlayerPublishMap;
 
 enum ServerError {
   ServerError_NO = 0,
@@ -3627,6 +3629,188 @@ class MsgS2CNewTaskNotify : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static MsgS2CNewTaskNotify* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class MsgC2SPlayerPublishMap : public ::google::protobuf::Message {
+ public:
+  MsgC2SPlayerPublishMap();
+  virtual ~MsgC2SPlayerPublishMap();
+
+  MsgC2SPlayerPublishMap(const MsgC2SPlayerPublishMap& from);
+
+  inline MsgC2SPlayerPublishMap& operator=(const MsgC2SPlayerPublishMap& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgC2SPlayerPublishMap& default_instance();
+
+  void Swap(MsgC2SPlayerPublishMap* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgC2SPlayerPublishMap* New() const { return New(NULL); }
+
+  MsgC2SPlayerPublishMap* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgC2SPlayerPublishMap& from);
+  void MergeFrom(const MsgC2SPlayerPublishMap& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgC2SPlayerPublishMap* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .message.CrashMapData map = 1;
+  bool has_map() const;
+  void clear_map();
+  static const int kMapFieldNumber = 1;
+  const ::message::CrashMapData& map() const;
+  ::message::CrashMapData* mutable_map();
+  ::message::CrashMapData* release_map();
+  void set_allocated_map(::message::CrashMapData* map);
+
+  // @@protoc_insertion_point(class_scope:message.MsgC2SPlayerPublishMap)
+ private:
+  inline void set_has_map();
+  inline void clear_has_map();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::message::CrashMapData* map_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgC2SPlayerPublishMap* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgS2CPlayerPublishMap : public ::google::protobuf::Message {
+ public:
+  MsgS2CPlayerPublishMap();
+  virtual ~MsgS2CPlayerPublishMap();
+
+  MsgS2CPlayerPublishMap(const MsgS2CPlayerPublishMap& from);
+
+  inline MsgS2CPlayerPublishMap& operator=(const MsgS2CPlayerPublishMap& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgS2CPlayerPublishMap& default_instance();
+
+  void Swap(MsgS2CPlayerPublishMap* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgS2CPlayerPublishMap* New() const { return New(NULL); }
+
+  MsgS2CPlayerPublishMap* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgS2CPlayerPublishMap& from);
+  void MergeFrom(const MsgS2CPlayerPublishMap& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgS2CPlayerPublishMap* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .message.CrashPlayerPublishMap map = 2;
+  bool has_map() const;
+  void clear_map();
+  static const int kMapFieldNumber = 2;
+  const ::message::CrashPlayerPublishMap& map() const;
+  ::message::CrashPlayerPublishMap* mutable_map();
+  ::message::CrashPlayerPublishMap* release_map();
+  void set_allocated_map(::message::CrashPlayerPublishMap* map);
+
+  // @@protoc_insertion_point(class_scope:message.MsgS2CPlayerPublishMap)
+ private:
+  inline void set_has_map();
+  inline void clear_has_map();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::message::CrashPlayerPublishMap* map_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgS2CPlayerPublishMap* default_instance_;
+};
 // ===================================================================
 
 
@@ -6012,6 +6196,100 @@ inline void MsgS2CNewTaskNotify::set_allocated_info(::message::TaskInfo* info) {
     clear_has_info();
   }
   // @@protoc_insertion_point(field_set_allocated:message.MsgS2CNewTaskNotify.info)
+}
+
+// -------------------------------------------------------------------
+
+// MsgC2SPlayerPublishMap
+
+// required .message.CrashMapData map = 1;
+inline bool MsgC2SPlayerPublishMap::has_map() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgC2SPlayerPublishMap::set_has_map() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgC2SPlayerPublishMap::clear_has_map() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgC2SPlayerPublishMap::clear_map() {
+  if (map_ != NULL) map_->::message::CrashMapData::Clear();
+  clear_has_map();
+}
+inline const ::message::CrashMapData& MsgC2SPlayerPublishMap::map() const {
+  // @@protoc_insertion_point(field_get:message.MsgC2SPlayerPublishMap.map)
+  return map_ != NULL ? *map_ : *default_instance_->map_;
+}
+inline ::message::CrashMapData* MsgC2SPlayerPublishMap::mutable_map() {
+  set_has_map();
+  if (map_ == NULL) {
+    map_ = new ::message::CrashMapData;
+  }
+  // @@protoc_insertion_point(field_mutable:message.MsgC2SPlayerPublishMap.map)
+  return map_;
+}
+inline ::message::CrashMapData* MsgC2SPlayerPublishMap::release_map() {
+  clear_has_map();
+  ::message::CrashMapData* temp = map_;
+  map_ = NULL;
+  return temp;
+}
+inline void MsgC2SPlayerPublishMap::set_allocated_map(::message::CrashMapData* map) {
+  delete map_;
+  map_ = map;
+  if (map) {
+    set_has_map();
+  } else {
+    clear_has_map();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.MsgC2SPlayerPublishMap.map)
+}
+
+// -------------------------------------------------------------------
+
+// MsgS2CPlayerPublishMap
+
+// required .message.CrashPlayerPublishMap map = 2;
+inline bool MsgS2CPlayerPublishMap::has_map() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgS2CPlayerPublishMap::set_has_map() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgS2CPlayerPublishMap::clear_has_map() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgS2CPlayerPublishMap::clear_map() {
+  if (map_ != NULL) map_->::message::CrashPlayerPublishMap::Clear();
+  clear_has_map();
+}
+inline const ::message::CrashPlayerPublishMap& MsgS2CPlayerPublishMap::map() const {
+  // @@protoc_insertion_point(field_get:message.MsgS2CPlayerPublishMap.map)
+  return map_ != NULL ? *map_ : *default_instance_->map_;
+}
+inline ::message::CrashPlayerPublishMap* MsgS2CPlayerPublishMap::mutable_map() {
+  set_has_map();
+  if (map_ == NULL) {
+    map_ = new ::message::CrashPlayerPublishMap;
+  }
+  // @@protoc_insertion_point(field_mutable:message.MsgS2CPlayerPublishMap.map)
+  return map_;
+}
+inline ::message::CrashPlayerPublishMap* MsgS2CPlayerPublishMap::release_map() {
+  clear_has_map();
+  ::message::CrashPlayerPublishMap* temp = map_;
+  map_ = NULL;
+  return temp;
+}
+inline void MsgS2CPlayerPublishMap::set_allocated_map(::message::CrashPlayerPublishMap* map) {
+  delete map_;
+  map_ = map;
+  if (map) {
+    set_has_map();
+  } else {
+    clear_has_map();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.MsgS2CPlayerPublishMap.map)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

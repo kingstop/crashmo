@@ -18,6 +18,7 @@ public:
 	void StopDeleteClock();
 	void SaveMap(message::MsgSaveMapReq* msg);
 	void DelMap(message::MsgDelMapReq* msg);
+	void reqMsgAddBlogMap(const message::MsgC2SReqAddMapBolg* msg);
 	void sendPBMessage(google::protobuf::Message* p);	
 	void LoadConfig();
 	void DayUpdate();

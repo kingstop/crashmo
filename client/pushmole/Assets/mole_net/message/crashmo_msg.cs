@@ -873,6 +873,40 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SPlayerPublishMap")]
+  public partial class MsgC2SPlayerPublishMap : global::ProtoBuf.IExtensible
+  {
+    public MsgC2SPlayerPublishMap() {}
+    
+    private message.CrashMapData _map;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public message.CrashMapData map
+    {
+      get { return _map; }
+      set { _map = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CPlayerPublishMap")]
+  public partial class MsgS2CPlayerPublishMap : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CPlayerPublishMap() {}
+    
+    private message.CrashPlayerPublishMap _map;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public message.CrashPlayerPublishMap map
+    {
+      get { return _map; }
+      set { _map = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"ServerError")]
     public enum ServerError
     {

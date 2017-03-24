@@ -52,9 +52,18 @@ public class client_session
         foreach(message.MsgTaskReward entry in msg.complete_task)
         {
             global_instance.Instance._ngui_edit_manager._game_end.AddTaskRewards(entry);
-        }        
+        }
+        global_instance.Instance._ngui_edit_manager._game_end.taskRewards_.SetGold((int)msg.add_gold);
+        foreach(message.intPair entry in msg.add_resource)
+        {
+            global_instance.Instance._ngui_edit_manager._game_end.AddRewardCount(entry.number_1, entry.number_2);
+        }
+        global_instance.Instance._ngui_edit_manager.game_win();
+
         return true;
     }
+
+    
 
     public bool parseLoadTaskConfigsACK(System.IO.MemoryStream stream)
 	{
@@ -201,7 +210,6 @@ public class client_session
         {
             while (_msg_queue.Count != 0)
             {
-
                 msgtg msg = (msgtg)_msg_queue.Dequeue();
                 if (_MessageFun.ContainsKey(msg.name_))
                 {

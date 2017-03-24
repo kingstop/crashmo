@@ -46,6 +46,12 @@ void CrashPlayer::OnLogin()
 	DayUpdate();
 }
 
+void CrashPlayer::reqMsgAddBlogMap(const message::MsgC2SReqAddMapBolg* msg)
+{
+	int chapter_id = msg->chapter_id();
+	int section_id = msg->section_id();
+}
+
 void CrashPlayer::PassOfficilMap(int chapter_id, int section_id, int use_step, int use_time)
 {
 	message::ServerError error = message::ServerError_PassOfficilMapFailedTheMapIsLock;

@@ -1008,7 +1008,7 @@ public class crash_manager
     {
 		_creature.set_state (creature_state.idle);
 		_game_state = gameState.game_end;
-        global_instance.Instance._ngui_edit_manager.game_win();
+        
         message.MsgC2SReqPassOfficilMap msg = new message.MsgC2SReqPassOfficilMap();
         long cur_time = global_instance.Instance.getTime();
         msg.use_step = (uint)_use_count;

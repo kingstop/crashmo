@@ -177,6 +177,15 @@ void Session::parsePassOfficilGame(google::protobuf::Message* p)
 
 }
 
+void Session::parseAddGameBlog(google::protobuf::Message* p)
+{
+	message::MsgC2SReqAddMapBolg* msg = (message::MsgC2SReqAddMapBolg*)p;
+	if (_player)
+	{
+
+	}
+}
+
 void Session::parseReqModifyTaskInfo(google::protobuf::Message* p)
 {
 	message::MsgC2SReqModifyTaskInfo* msg = (message::MsgC2SReqModifyTaskInfo*)p;
