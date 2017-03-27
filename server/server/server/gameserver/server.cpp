@@ -183,6 +183,18 @@ bool GameServer::initDataFromDatabase(DBQuery* p, const void* data)
 		Mylog::log_server(LOG_ERROR, "start character db service failed!");
 	}    
 
+
+	parms.clear();
+	query.reset();	
+	query << "SELECT *, UNIX_TIMESTAMP(`server_open_time`) FROM `server_global_config`";
+	query.parse();
+	const SDBResult& r = query.store();
+	if (r.num_rows() > 0)
+	{
+		DBRow row = r[0];
+		u64 server_open_time = row["UNIX_TIMESTAMP(`server_open_time`)"];
+		gGameConfig.SetServerOpenTime(server_open_time);		
+	}
     return true;
 }
 

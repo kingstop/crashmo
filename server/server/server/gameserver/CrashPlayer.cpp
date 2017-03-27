@@ -627,6 +627,25 @@ void CrashPlayer::DayUpdate()
 	}
 }
 
+void CrashPlayer::ReqPublishMap(const message::MsgC2SReqPlayerPublishMap* msg)
+{
+	u64 passed_time = g_server_time - _info.last_publish_map_time();
+	u64 need_passed_time = gGameConfig.getMapConfig()->publish_map_cd * 60 * 60;
+	if (need_passed_time > passed_time)
+	{
+		message::MsgServerErrorNotify msg;
+		msg.set_error(message::ServerError_FailedToPublishMapTheTimeIsInCD);
+		sendPBMessage(&msg);
+	}
+	else
+	{
+		gRankMapManager.PublishMap(msg, this);
+		_info.set_last_publish_map_time(g_server_time);
+	}
+}
+
+
+
 void CrashPlayer::SaveMap(message::MsgSaveMapReq* msg)
 {
 	message::MsgSaveMapACK msgACK;

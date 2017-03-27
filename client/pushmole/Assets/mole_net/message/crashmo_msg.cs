@@ -35,6 +35,23 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgServerErrorNotify")]
+  public partial class MsgServerErrorNotify : global::ProtoBuf.IExtensible
+  {
+    public MsgServerErrorNotify() {}
+    
+    private message.ServerError _error;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public message.ServerError error
+    {
+      get { return _error; }
+      set { _error = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CrashmoClientInit")]
   public partial class CrashmoClientInit : global::ProtoBuf.IExtensible
   {
@@ -873,10 +890,10 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SPlayerPublishMap")]
-  public partial class MsgC2SPlayerPublishMap : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SReqPlayerPublishMap")]
+  public partial class MsgC2SReqPlayerPublishMap : global::ProtoBuf.IExtensible
   {
-    public MsgC2SPlayerPublishMap() {}
+    public MsgC2SReqPlayerPublishMap() {}
     
     private message.CrashMapData _map;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -890,18 +907,73 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CPlayerPublishMap")]
-  public partial class MsgS2CPlayerPublishMap : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CPlayerPublishMapACK")]
+  public partial class MsgS2CPlayerPublishMapACK : global::ProtoBuf.IExtensible
   {
-    public MsgS2CPlayerPublishMap() {}
+    public MsgS2CPlayerPublishMapACK() {}
     
     private message.CrashPlayerPublishMap _map;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public message.CrashPlayerPublishMap map
     {
       get { return _map; }
       set { _map = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgC2SReqPublishMapList")]
+  public partial class MsgC2SReqPublishMapList : global::ProtoBuf.IExtensible
+  {
+    public MsgC2SReqPublishMapList() {}
+    
+    private ulong _begin_map_index;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"begin_map_index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong begin_map_index
+    {
+      get { return _begin_map_index; }
+      set { _begin_map_index = value; }
+    }
+    private int _req_count;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"req_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int req_count
+    {
+      get { return _req_count; }
+      set { _req_count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgS2CPublishMapListACK")]
+  public partial class MsgS2CPublishMapListACK : global::ProtoBuf.IExtensible
+  {
+    public MsgS2CPublishMapListACK() {}
+    
+    private ulong _end_map_index;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"end_map_index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong end_map_index
+    {
+      get { return _end_map_index; }
+      set { _end_map_index = value; }
+    }
+    private int _req_count;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"req_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int req_count
+    {
+      get { return _req_count; }
+      set { _req_count = value; }
+    }
+    private readonly global::System.Collections.Generic.List<message.CrashPlayerPublishMap> _maps = new global::System.Collections.Generic.List<message.CrashPlayerPublishMap>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"maps", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.CrashPlayerPublishMap> maps
+    {
+      get { return _maps; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -927,7 +999,10 @@ namespace message
       ServerError_PassOfficilMapFailedTheMapIsLock = 4,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ServerError_PassOfficilMapFailedTheMapNotFound", Value=5)]
-      ServerError_PassOfficilMapFailedTheMapNotFound = 5
+      ServerError_PassOfficilMapFailedTheMapNotFound = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ServerError_FailedToPublishMapTheTimeIsInCD", Value=6)]
+      ServerError_FailedToPublishMapTheTimeIsInCD = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"MapType")]

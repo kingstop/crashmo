@@ -9,6 +9,7 @@ enum ServerError
 	ServerError_NotFoundMapNameWhenDel = 3;
 	ServerError_PassOfficilMapFailedTheMapIsLock = 4;
 	ServerError_PassOfficilMapFailedTheMapNotFound = 5;
+	ServerError_FailedToPublishMapTheTimeIsInCD = 6;
 	
 }
 
@@ -16,6 +17,11 @@ message MsgIntStringProto
 {
 	required int32 intger_temp = 1;
 	required string string_temp = 2;
+}
+
+message MsgServerErrorNotify
+{
+	required ServerError error = 1 [default = ServerError_NO];
 }
 
 message CrashmoClientInit
@@ -237,12 +243,25 @@ message MsgS2CNewTaskNotify
 	required TaskInfo info = 1;
 }
 
-message MsgC2SPlayerPublishMap
+message MsgC2SReqPlayerPublishMap
 {
 	required CrashMapData map = 1;
 }
 
-message MsgS2CPlayerPublishMap
+message MsgS2CPlayerPublishMapACK
 {
-	required CrashPlayerPublishMap map = 2;
+	required CrashPlayerPublishMap map = 1;
+}
+message MsgC2SReqPublishMapList
+{
+	required uint64 begin_map_index = 1;
+	required int32 req_count = 2;
+}
+
+message MsgS2CPublishMapListACK
+{
+	required uint64 end_map_index = 1;
+	required int32 req_count = 2;
+	repeated CrashPlayerPublishMap maps = 3;
+
 }

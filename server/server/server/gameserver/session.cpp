@@ -174,7 +174,16 @@ void Session::parsePassOfficilGame(google::protobuf::Message* p)
 	{
 		_player->PassOfficilMap(msg->chapter_id(), msg->section_id(), msg->use_step(), msg->use_time());
 	}
+}
 
+void Session::parseReqPlayerPublishMap(google::protobuf::Message* p)
+{
+	message::MsgC2SReqPlayerPublishMap* msg = (message::MsgC2SReqPlayerPublishMap*)p;
+	if (_player)
+	{
+		int passed_day = gGameConfig.GetServerOpenPassedTime(g_server_time);
+		
+	}
 }
 
 void Session::parseAddGameBlog(google::protobuf::Message* p)
@@ -203,6 +212,11 @@ void Session::parseModifySectionName(google::protobuf::Message* p)
 		gOfficilMapManager.modifySectionName(msg->section(), msg->section_name().c_str(), _player);
 	}
 	
+}
+
+void Session::parseReqPublishMapList(google::protobuf::Message* p)
+{
+
 }
 
 void Session::parseSaveMap(google::protobuf::Message* p)

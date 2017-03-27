@@ -76,6 +76,7 @@ message CrashPlayerInfo
 	required int32 complete_task_count = 13;
 	required int32 jewel = 14;
 	required uint64 last_accept_task_time = 15;
+	required uint64 last_publish_map_time = 16;
 }
 
 enum ConditionType

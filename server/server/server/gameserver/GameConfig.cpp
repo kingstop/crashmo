@@ -13,6 +13,13 @@ GameConfig::~GameConfig()
 
 
 }
+
+
+void GameConfig::SetServerOpenTime(u64 time)
+{
+	_server_open_time = time;
+}
+
 void GameConfig::LoadGameConfig(DBQuery* p)
 {
 
@@ -59,7 +66,7 @@ void GameConfig::LoadGameConfig(DBQuery* p)
 		_map_config.config_count_max_ =  row["map_config_max_count"];
 		_map_config.gold_ = row["gold"];
 		_map_config.day_refrash_time_ =  row["day_refrash_config_time"];
-		
+		_map_config.publish_map_cd = row["player_publish_map_cd"];
 	}
 
 	query.reset();
@@ -81,6 +88,21 @@ void GameConfig::LoadGameConfig(DBQuery* p)
 const MapConfig* GameConfig::getMapConfig()
 {
 	return &_map_config;
+}
+
+
+int GameConfig::GetServerOpenPassedTime(u32 time)
+{
+	time_t _t1 = (time_t)_server_open_time;
+	tm* p1 = localtime(&_t1);
+	p1->tm_min = 0;
+	p1->tm_sec = 0;
+	p1->tm_hour = 0;
+	time_t today_refresh_time = mktime(p1); //utf Ê±¼ä²î
+	s64 time_diff = time - today_refresh_time;
+	int passed_day = 0;
+	passed_day = (time_diff / (24 * 60 * 60));
+	return passed_day;
 }
 
 

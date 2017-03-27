@@ -13,6 +13,7 @@ struct MapConfig
 	std::map<int, int> group_config_count_;
 	std::map<int, int> group_config_max_count_;
 	int day_refrash_time_;
+	int publish_map_cd;
 };
 
 class GameConfig
@@ -26,7 +27,10 @@ public:
 	void LoadGameConfig(DBQuery* p);
 	const MapConfig* getMapConfig();
 	bool isInToday(u32 time);
+	int GetServerOpenPassedTime(u32 time);
+	void SetServerOpenTime(u64 time);
 protected:
 	OFFICIAL_MAP _offcial_map;
 	MapConfig _map_config;
+	u64 _server_open_time;
 };

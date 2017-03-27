@@ -400,6 +400,13 @@ namespace message
       get { return _last_accept_task_time; }
       set { _last_accept_task_time = value; }
     }
+    private ulong _last_publish_map_time;
+    [global::ProtoBuf.ProtoMember(16, IsRequired = true, Name=@"last_publish_map_time", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong last_publish_map_time
+    {
+      get { return _last_publish_map_time; }
+      set { _last_publish_map_time = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -40,6 +40,9 @@ public:
 	void parseEnterOfficilGame(google::protobuf::Message* p);
 	void parsePassOfficilGame(google::protobuf::Message* p);
 	void parseAddGameBlog(google::protobuf::Message* p);
+	void parseReqPlayerPublishMap(google::protobuf::Message* p);
+	void parseReqPublishMapList(google::protobuf::Message* p);
+
 protected:
 	void CreateCrashMoClientInit();
 protected:

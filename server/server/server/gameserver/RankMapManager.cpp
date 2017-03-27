@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "RankMapManager.h"
 #include "base64_encode.h"
+#include "CrashPlayer.h"
 static inline bool my_greater(RankMapTg* a, RankMapTg* b)
 {
 	bool ret = false;
@@ -132,4 +133,89 @@ void RankMapManager::SortMap()
 	}
 	_sort_time_stamp = g_server_time;
 	PrepareNextSort();
+}
+
+
+void RankMapManager::ReqPublishMapList(const message::MsgC2SReqPublishMapList* msg, Session* p)
+{
+	int req_count = msg->req_count();
+	message::MsgS2CPublishMapListACK msgACK;
+	msgACK.set_end_map_index(0);
+	msgACK.set_req_count(req_count);
+
+	if (req_count != 0)
+	{
+		int current_count = 0;
+		u64 map_begin_index = msg->begin_map_index();
+		bool begin = false;
+		if (map_begin_index == 0)
+		{
+			begin = true;
+		}
+		bool end = false;
+		NEW_PUBLISH_MAP::reverse_iterator it = _new_maps.rbegin();
+		for (; it != _new_maps.rend(); ++ it)
+		{
+			const std::vector<message::CrashPlayerPublishMap* >& day_publish_map = it->second;
+
+			std::vector<message::CrashPlayerPublishMap* >::const_reverse_iterator  it_map = day_publish_map.rbegin();
+			for (; it_map != day_publish_map.rend(); ++ it_map)
+			{
+				const message::CrashPlayerPublishMap* publish_map = (*it_map);
+				u64 current_map_index = publish_map->crashmap().data().map_index();
+				
+				if (begin)
+				{
+					if (current_count < req_count)
+					{
+						message::CrashPlayerPublishMap* new_map = msgACK.add_maps();
+						new_map->CopyFrom(*publish_map);
+						//add_map->CopyFrom()
+						
+						msgACK.set_end_map_index(current_map_index);
+					}
+					else
+					{
+						end = true;
+						break;
+					}
+				}
+
+				if (begin == false)
+				{
+					if (map_begin_index == current_map_index)
+					{
+						begin = true;
+					}
+				}
+			}
+			if (end)
+			{
+				break;
+			}
+		}
+	}
+}
+
+void RankMapManager::PublishMap(const message::MsgC2SReqPlayerPublishMap* msg, CrashPlayer* p)
+{
+	int passed_time = gGameConfig.GetServerOpenPassedTime(g_server_time);
+	std::map<s32, std::vector<message::CrashPlayerPublishMap*>>::iterator it = _new_maps.find(passed_time);
+
+	if (it == _new_maps.end())
+	{
+		std::vector<message::CrashPlayerPublishMap*> temp;
+		_new_maps[passed_time] = temp;
+	}
+
+	message::CrashPlayerPublishMap* PublishMapData = new message::CrashPlayerPublishMap();
+	PublishMapData->mutable_crashmap()->CopyFrom(msg->map());
+	PublishMapData->set_challenge_times(0);
+	PublishMapData->set_failed_of_challenge_times(0);
+	PublishMapData->set_map_rank(0);
+	PublishMapData->set_publish_time(g_server_time);
+	_new_maps[passed_time].push_back(PublishMapData);
+	message::MsgS2CPlayerPublishMapACK msgACK;
+	msgACK.mutable_map()->CopyFrom(*PublishMapData);
+	p->sendPBMessage(&msgACK);
 }
