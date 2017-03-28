@@ -316,16 +316,16 @@ namespace message
       get { return _name; }
       set { _name = value; }
     }
-    private readonly global::System.Collections.Generic.List<message.CrashMapData> _IncompleteMap = new global::System.Collections.Generic.List<message.CrashMapData>();
-    [global::ProtoBuf.ProtoMember(4, Name=@"IncompleteMap", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<message.CrashMapData> IncompleteMap
+    private readonly global::System.Collections.Generic.List<ulong> _IncompleteMap = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"IncompleteMap", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> IncompleteMap
     {
       get { return _IncompleteMap; }
     }
   
-    private readonly global::System.Collections.Generic.List<message.CrashMapData> _CompleteMap = new global::System.Collections.Generic.List<message.CrashMapData>();
-    [global::ProtoBuf.ProtoMember(5, Name=@"CompleteMap", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<message.CrashMapData> CompleteMap
+    private readonly global::System.Collections.Generic.List<ulong> _CompleteMap = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"CompleteMap", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> CompleteMap
     {
       get { return _CompleteMap; }
     }

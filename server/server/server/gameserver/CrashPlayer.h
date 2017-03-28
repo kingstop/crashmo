@@ -28,7 +28,7 @@ public:
 public:
 	void PassOfficilMap(int chapter_id, int section_id, int use_step, int use_time);
 protected:
-	bool havemapname(const char* mapname);
+	//bool havemapname(const char* mapname);
 	void Destroy();
 	void SendPing();
 

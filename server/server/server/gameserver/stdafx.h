@@ -33,6 +33,7 @@
 #include "GameConfig.h"
 #include "RankMapManager.h"
 #include "TaskManager.h"
+#include "CrashMapManager.h"
 std::string Utf8ToGBK(const char* strUtf8);
 std::string GBKToUtf8(const char* strGBK);
 
@@ -66,6 +67,8 @@ struct FuGameFather
 	OfficilMapManager sOfficilMapManager;
 	RankMapManager    sRankMapManager;
 	TaskManager       sTaskManager;
+	CrashMapManager   sCrashMapManager;
+	
 	//NoneCharacterManager sNoneCharacterManager;
 };
 
@@ -84,7 +87,7 @@ extern FuGameFather* gFuGameFather;
 #define gGameConfig			gFuGameFather->sGameConfig
 #define gRankMapManager     gFuGameFather->sRankMapManager
 #define gTaskManager        gFuGameFather->sTaskManager
-
+#define gCrashMapManager    gFuGameFather->sCrashMapManager
 //#define gCharacterManager   gFuGameFather->sNoneCharacterManager
 //#define gGameConfig			gFuGameFather->sGameConfig
 enum

@@ -637,27 +637,22 @@ class MsgDelMapReq : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string map_name = 1;
-  bool has_map_name() const;
-  void clear_map_name();
-  static const int kMapNameFieldNumber = 1;
-  const ::std::string& map_name() const;
-  void set_map_name(const ::std::string& value);
-  void set_map_name(const char* value);
-  void set_map_name(const char* value, size_t size);
-  ::std::string* mutable_map_name();
-  ::std::string* release_map_name();
-  void set_allocated_map_name(::std::string* map_name);
+  // required uint64 map_index = 1;
+  bool has_map_index() const;
+  void clear_map_index();
+  static const int kMapIndexFieldNumber = 1;
+  ::google::protobuf::uint64 map_index() const;
+  void set_map_index(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgDelMapReq)
  private:
-  inline void set_has_map_name();
-  inline void clear_has_map_name();
+  inline void set_has_map_index();
+  inline void clear_has_map_index();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr map_name_;
+  ::google::protobuf::uint64 map_index_;
   friend void  protobuf_AddDesc_crashmo_2eproto();
   friend void protobuf_AssignDesc_crashmo_2eproto();
   friend void protobuf_ShutdownFile_crashmo_2eproto();
@@ -731,17 +726,12 @@ class MsgDelMapACK : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string map_name = 1;
-  bool has_map_name() const;
-  void clear_map_name();
-  static const int kMapNameFieldNumber = 1;
-  const ::std::string& map_name() const;
-  void set_map_name(const ::std::string& value);
-  void set_map_name(const char* value);
-  void set_map_name(const char* value, size_t size);
-  ::std::string* mutable_map_name();
-  ::std::string* release_map_name();
-  void set_allocated_map_name(::std::string* map_name);
+  // required uint64 map_index = 1;
+  bool has_map_index() const;
+  void clear_map_index();
+  static const int kMapIndexFieldNumber = 1;
+  ::google::protobuf::uint64 map_index() const;
+  void set_map_index(::google::protobuf::uint64 value);
 
   // required .message.MapType map_type = 2 [default = OfficeMap];
   bool has_map_type() const;
@@ -759,8 +749,8 @@ class MsgDelMapACK : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:message.MsgDelMapACK)
  private:
-  inline void set_has_map_name();
-  inline void clear_has_map_name();
+  inline void set_has_map_index();
+  inline void clear_has_map_index();
   inline void set_has_map_type();
   inline void clear_has_map_type();
   inline void set_has_error();
@@ -772,7 +762,7 @@ class MsgDelMapACK : public ::google::protobuf::Message {
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr map_name_;
+  ::google::protobuf::uint64 map_index_;
   int map_type_;
   int error_;
   friend void  protobuf_AddDesc_crashmo_2eproto();
@@ -848,17 +838,12 @@ class MsgSaveMapACK : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string map_name = 1;
-  bool has_map_name() const;
-  void clear_map_name();
-  static const int kMapNameFieldNumber = 1;
-  const ::std::string& map_name() const;
-  void set_map_name(const ::std::string& value);
-  void set_map_name(const char* value);
-  void set_map_name(const char* value, size_t size);
-  ::std::string* mutable_map_name();
-  ::std::string* release_map_name();
-  void set_allocated_map_name(::std::string* map_name);
+  // required uint64 map_index = 1;
+  bool has_map_index() const;
+  void clear_map_index();
+  static const int kMapIndexFieldNumber = 1;
+  ::google::protobuf::uint64 map_index() const;
+  void set_map_index(::google::protobuf::uint64 value);
 
   // required .message.MapType save_type = 2 [default = OfficeMap];
   bool has_save_type() const;
@@ -885,8 +870,8 @@ class MsgSaveMapACK : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:message.MsgSaveMapACK)
  private:
-  inline void set_has_map_name();
-  inline void clear_has_map_name();
+  inline void set_has_map_index();
+  inline void clear_has_map_index();
   inline void set_has_save_type();
   inline void clear_has_save_type();
   inline void set_has_map();
@@ -900,7 +885,7 @@ class MsgSaveMapACK : public ::google::protobuf::Message {
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr map_name_;
+  ::google::protobuf::uint64 map_index_;
   ::message::CrashMapData* map_;
   int save_type_;
   int error_;
@@ -4490,114 +4475,56 @@ inline void MsgSaveMapReq::set_save_type(::message::MapType value) {
 
 // MsgDelMapReq
 
-// required string map_name = 1;
-inline bool MsgDelMapReq::has_map_name() const {
+// required uint64 map_index = 1;
+inline bool MsgDelMapReq::has_map_index() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgDelMapReq::set_has_map_name() {
+inline void MsgDelMapReq::set_has_map_index() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgDelMapReq::clear_has_map_name() {
+inline void MsgDelMapReq::clear_has_map_index() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void MsgDelMapReq::clear_map_name() {
-  map_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_map_name();
+inline void MsgDelMapReq::clear_map_index() {
+  map_index_ = GOOGLE_ULONGLONG(0);
+  clear_has_map_index();
 }
-inline const ::std::string& MsgDelMapReq::map_name() const {
-  // @@protoc_insertion_point(field_get:message.MsgDelMapReq.map_name)
-  return map_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline ::google::protobuf::uint64 MsgDelMapReq::map_index() const {
+  // @@protoc_insertion_point(field_get:message.MsgDelMapReq.map_index)
+  return map_index_;
 }
-inline void MsgDelMapReq::set_map_name(const ::std::string& value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgDelMapReq.map_name)
-}
-inline void MsgDelMapReq::set_map_name(const char* value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgDelMapReq.map_name)
-}
-inline void MsgDelMapReq::set_map_name(const char* value, size_t size) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgDelMapReq.map_name)
-}
-inline ::std::string* MsgDelMapReq::mutable_map_name() {
-  set_has_map_name();
-  // @@protoc_insertion_point(field_mutable:message.MsgDelMapReq.map_name)
-  return map_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* MsgDelMapReq::release_map_name() {
-  clear_has_map_name();
-  return map_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void MsgDelMapReq::set_allocated_map_name(::std::string* map_name) {
-  if (map_name != NULL) {
-    set_has_map_name();
-  } else {
-    clear_has_map_name();
-  }
-  map_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), map_name);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgDelMapReq.map_name)
+inline void MsgDelMapReq::set_map_index(::google::protobuf::uint64 value) {
+  set_has_map_index();
+  map_index_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgDelMapReq.map_index)
 }
 
 // -------------------------------------------------------------------
 
 // MsgDelMapACK
 
-// required string map_name = 1;
-inline bool MsgDelMapACK::has_map_name() const {
+// required uint64 map_index = 1;
+inline bool MsgDelMapACK::has_map_index() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgDelMapACK::set_has_map_name() {
+inline void MsgDelMapACK::set_has_map_index() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgDelMapACK::clear_has_map_name() {
+inline void MsgDelMapACK::clear_has_map_index() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void MsgDelMapACK::clear_map_name() {
-  map_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_map_name();
+inline void MsgDelMapACK::clear_map_index() {
+  map_index_ = GOOGLE_ULONGLONG(0);
+  clear_has_map_index();
 }
-inline const ::std::string& MsgDelMapACK::map_name() const {
-  // @@protoc_insertion_point(field_get:message.MsgDelMapACK.map_name)
-  return map_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline ::google::protobuf::uint64 MsgDelMapACK::map_index() const {
+  // @@protoc_insertion_point(field_get:message.MsgDelMapACK.map_index)
+  return map_index_;
 }
-inline void MsgDelMapACK::set_map_name(const ::std::string& value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgDelMapACK.map_name)
-}
-inline void MsgDelMapACK::set_map_name(const char* value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgDelMapACK.map_name)
-}
-inline void MsgDelMapACK::set_map_name(const char* value, size_t size) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgDelMapACK.map_name)
-}
-inline ::std::string* MsgDelMapACK::mutable_map_name() {
-  set_has_map_name();
-  // @@protoc_insertion_point(field_mutable:message.MsgDelMapACK.map_name)
-  return map_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* MsgDelMapACK::release_map_name() {
-  clear_has_map_name();
-  return map_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void MsgDelMapACK::set_allocated_map_name(::std::string* map_name) {
-  if (map_name != NULL) {
-    set_has_map_name();
-  } else {
-    clear_has_map_name();
-  }
-  map_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), map_name);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgDelMapACK.map_name)
+inline void MsgDelMapACK::set_map_index(::google::protobuf::uint64 value) {
+  set_has_map_index();
+  map_index_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgDelMapACK.map_index)
 }
 
 // required .message.MapType map_type = 2 [default = OfficeMap];
@@ -4654,57 +4581,28 @@ inline void MsgDelMapACK::set_error(::message::ServerError value) {
 
 // MsgSaveMapACK
 
-// required string map_name = 1;
-inline bool MsgSaveMapACK::has_map_name() const {
+// required uint64 map_index = 1;
+inline bool MsgSaveMapACK::has_map_index() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgSaveMapACK::set_has_map_name() {
+inline void MsgSaveMapACK::set_has_map_index() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgSaveMapACK::clear_has_map_name() {
+inline void MsgSaveMapACK::clear_has_map_index() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void MsgSaveMapACK::clear_map_name() {
-  map_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_map_name();
+inline void MsgSaveMapACK::clear_map_index() {
+  map_index_ = GOOGLE_ULONGLONG(0);
+  clear_has_map_index();
 }
-inline const ::std::string& MsgSaveMapACK::map_name() const {
-  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.map_name)
-  return map_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline ::google::protobuf::uint64 MsgSaveMapACK::map_index() const {
+  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.map_index)
+  return map_index_;
 }
-inline void MsgSaveMapACK::set_map_name(const ::std::string& value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.map_name)
-}
-inline void MsgSaveMapACK::set_map_name(const char* value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgSaveMapACK.map_name)
-}
-inline void MsgSaveMapACK::set_map_name(const char* value, size_t size) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgSaveMapACK.map_name)
-}
-inline ::std::string* MsgSaveMapACK::mutable_map_name() {
-  set_has_map_name();
-  // @@protoc_insertion_point(field_mutable:message.MsgSaveMapACK.map_name)
-  return map_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* MsgSaveMapACK::release_map_name() {
-  clear_has_map_name();
-  return map_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void MsgSaveMapACK::set_allocated_map_name(::std::string* map_name) {
-  if (map_name != NULL) {
-    set_has_map_name();
-  } else {
-    clear_has_map_name();
-  }
-  map_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), map_name);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgSaveMapACK.map_name)
+inline void MsgSaveMapACK::set_map_index(::google::protobuf::uint64 value) {
+  set_has_map_index();
+  map_index_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.map_index)
 }
 
 // required .message.MapType save_type = 2 [default = OfficeMap];

@@ -363,102 +363,40 @@ void CrashPlayer::SaveCrashInfo()
 		sprintf(sz_resource, "%d,%d", it->number_1(), it->number_2());
 		resource_str += sz_resource;
 	}
-	sprintf(sql, "replace into `character`(`account`, `pass_chapter`, `pass_section`,`name`, `isadmin`, `map_width`, `map_height`, `map_count`, `group_count`, `gold`,`jewel`, `task`, `complete_task_count`,`officil_game_record`, `last_accept_task_time`) values\
+	std::string complete_map_index;
+	length = _info.completemap_size();
+	char sz_index[256];
+	for (size_t i = 0; i < length; i++)
+	{
+		if (i != 0)
+		{
+			complete_map_index += ",";
+		}
+		u64 map_index = _info.completemap(i);
+		sprintf(sz_index, "llu", map_index);
+		complete_map_index += sz_index;
+	}
+	std::string incomplete_map_index;
+	length = _info.incompletemap_size();
+	for (size_t i = 0; i < length; i++)
+	{
+		if (i != 0)
+		{
+			incomplete_map_index += ",";
+		}
+		u64 map_index = _info.incompletemap(i);
+		sprintf(sz_index, "llu", map_index);
+		incomplete_map_index += sz_index;
+	}
+
+	sprintf(sql, "replace into `character`(`account`, `pass_chapter`, `pass_section`,`name`, `isadmin`, `map_width`, `map_height`, `map_count`, `group_count`, `gold`,`jewel`, `task`, `complete_task_count`,`officil_game_record`, `incomplete_map_index`, `complete_map_index`, `last_accept_task_time`) values\
 	 (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s', %d, %d, '%s', %d, '%s', '%s')",
 		acc_temp, 0, 0, _info.name().c_str(), (int)_info.isadmin(),
 		_info.map_width(), _info.map_height(), _info.map_count(), resource_str.c_str(), _info.gold(),
-		_info.jewel(), current_task.c_str(), _info.complete_task_count(), officil_game_record.c_str(), last_accept_task_time.c_str());
+		_info.jewel(), current_task.c_str(), _info.complete_task_count(), officil_game_record.c_str(), complete_map_index.c_str(), incomplete_map_index.c_str(), last_accept_task_time.c_str());
 	msg.set_sql(sql);
 	sendPBMessage(&msg);
 	
-	int temp_size = _info.completemap_size();
-
-	bool need_save = false;
-	if (temp_size > 0)
-	{
-		need_save = true;
-	}
-
-	std::string temp_sql_replace;
-	sprintf(sql, "delete from player_map where `account`=%llu;", acc_temp);
-	temp_sql_replace += sql;
-	msg.set_sql(temp_sql_replace);
-	sendPBMessage(&msg);
-	int count = 0;
-	std::string temp_data;
-	temp_sql_replace.clear();
-	for (int i = 0; i < temp_size; i++, count++)
-	{
-		if (count > 1)
-		{
-			count = 0;
-			msg.set_sql(temp_sql_replace);
-			sendPBMessage(&msg);
-			temp_sql_replace.clear();
-		}
-
-		if (count != 0)
-		{
-			temp_sql_replace += ",";
-		}
-		else
-		{
-			temp_sql_replace = "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`, `gold`) values";
-		}
-		const message::CrashMapData Data = _info.completemap(i);
-		std::string create_time;
-		u32 temp_time = Data.create_time();
-		build_unix_time_to_string(temp_time, create_time);
-		temp_data = Data.data().SerializeAsString();
-		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_sz, sizeof(temp_sz));
-
-		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )",  (u64 )Data.data().map_index(),(u64)acc_temp, Data.creatername().c_str(),
-			Data.mapname().c_str(), temp_data.c_str(),
-			create_time.c_str(), 1, Data.gold());
-		temp_sql_replace += sql;
-
-	}
-	if (temp_sql_replace.empty() == false)
-	{
-		msg.set_sql(temp_sql_replace);
-		sendPBMessage(&msg);
-	}
-
-	temp_sql_replace.clear();
-	int in_complete_map_size = _info.incompletemap_size();
-	for (int i = 0; i < in_complete_map_size; i++, count++)
-	{
-		if (count > 5)
-		{
-			count = 0;
-			msg.set_sql(temp_sql_replace);
-			sendPBMessage(&msg);
-		}
-
-		if (count != 0)
-		{
-			temp_sql_replace += ",";
-		}
-		else
-		{
-			temp_sql_replace = "replace into `player_map`(`index_map`, `account`, `creater_name`, `map_name`, `map_data`, `create_time`, `is_complete`, `gold`) values";
-		}
-		const message::CrashMapData Data = _info.incompletemap(i);
-		std::string create_time;
-		u32 temp_time = Data.create_time();
-		build_unix_time_to_string(temp_time, create_time);
-
-		temp_data = Data.data().SerializeAsString();
-		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_sz, sizeof(temp_sz));
-		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", (u64)Data.data().map_index(), (u64)acc_temp, Data.creatername().c_str(),
-			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0, Data.gold());
-		temp_sql_replace += sql;
-	}
-	if (temp_sql_replace.empty() == false)
-	{
-		msg.set_sql(temp_sql_replace);
-		sendPBMessage(&msg);
-	}
 	//gGSDBClient.sendPBMessage(&msg, _session->getTranId());
 }
 
@@ -488,33 +426,33 @@ void CrashPlayer::StopSave()
 		gEventMgr.removeEvents(this, EVENT_SAVE_PLAYER_DATA_);
 	}
 }
-
-bool CrashPlayer::havemapname(const char* mapname)
-{
-	int size_ar = _info.incompletemap_size();
-	std::string map_name;
-	for (int i = 0; i < size_ar; i++)
-	{
-		map_name = _info.incompletemap(i).mapname();
-		if (map_name == mapname)
-		{
-			return true;
-		}
-	}
-
-	size_ar = _info.completemap_size();
-	for (int i = 0; i < size_ar; i++)
-	{
-		map_name = _info.completemap(i).mapname();
-		if (map_name == mapname)
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
+//
+//bool CrashPlayer::havemapname(const char* mapname)
+//{
+//	int size_ar = _info.incompletemap_size();
+//	std::string map_name;
+//	for (int i = 0; i < size_ar; i++)
+//	{
+//		map_name = _info.incompletemap(i).mapname();
+//		if (map_name == mapname)
+//		{
+//			return true;
+//		}
+//	}
+//
+//	size_ar = _info.completemap_size();
+//	for (int i = 0; i < size_ar; i++)
+//	{
+//		map_name = _info.completemap(i).mapname();
+//		if (map_name == mapname)
+//		{
+//			return true;
+//		}
+//	}
+//
+//	return false;
+//}
+//
 
 void CrashPlayer::sendPBMessage(google::protobuf::Message* p)
 {
@@ -528,16 +466,19 @@ void CrashPlayer::DelMap(message::MsgDelMapReq* msg)
 {
 	message::MsgDelMapACK msgACK;
 	int size_ar = _info.incompletemap_size();
-	const char* mapname = msg->map_name().c_str();
-	msgACK.set_map_name(mapname);
+	u64 del_map_index = msg->map_index();
+	msgACK.set_map_index(del_map_index);
+	//msgACK.set_map_name(mapname);
 	std::string map_name;
 	bool del = false;
-	::google::protobuf::RepeatedPtrField< ::message::CrashMapData >* temp_list = _info.mutable_completemap();
-	::google::protobuf::RepeatedPtrField< ::message::CrashMapData >::iterator it = temp_list->begin();
+	
+	::google::protobuf::RepeatedField< ::google::protobuf::uint64 >* temp_list = _info.mutable_completemap();
+	::google::protobuf::RepeatedField< ::google::protobuf::uint64 >::iterator it = temp_list->begin();
 	message::MapType temp_type = message::CompleteMap;
 	for (it = temp_list->begin(); it != temp_list->end(); ++ it)
 	{
-		if (it->mapname() == mapname)
+
+		if ((*it) == del_map_index)
 		{
 			temp_type = message::CompleteMap;
 			temp_list->erase(it);
@@ -551,7 +492,7 @@ void CrashPlayer::DelMap(message::MsgDelMapReq* msg)
 		temp_list = _info.mutable_incompletemap();
 		for (it = temp_list->begin(); it != temp_list->end(); ++it)
 		{
-			if (it->mapname() == mapname)
+			if ((*it) == del_map_index)
 			{
 				temp_type = message::ImcompleteMap;
 				temp_list->erase(it);
@@ -561,10 +502,15 @@ void CrashPlayer::DelMap(message::MsgDelMapReq* msg)
 		}
 	}
 	msgACK.set_map_type(temp_type);
-	if (del == false)
+	if (del == true)
+	{
+		gCrashMapManager.DelCrashMap(del_map_index);
+	}
+	else
 	{
 		msgACK.set_error(message::ServerError_NotFoundMapNameWhenDel);
 	}
+	
 	sendPBMessage(&msgACK);
 }
 
@@ -649,17 +595,18 @@ void CrashPlayer::ReqPublishMap(const message::MsgC2SReqPlayerPublishMap* msg)
 void CrashPlayer::SaveMap(message::MsgSaveMapReq* msg)
 {
 	message::MsgSaveMapACK msgACK;
-	msgACK.set_map_name(msg->map().mapname());
+	
 	msgACK.set_save_type(msg->save_type());
 	msgACK.set_error(message::ServerError_NO);
-	message::CrashMapData* temp = NULL;
+	message::CrashMapData* temp = gCrashMapManager.CreateCrashMap(&msg->map());
+	u64 map_index = temp->data().map_index();
 	switch (msg->save_type())
 	{
 	case  message::ImcompleteMap:
-		temp = _info.add_incompletemap();
+		_info.add_incompletemap(map_index);		
 		break;
 	case  message::CompleteMap:
-		temp = _info.add_completemap();
+		_info.add_completemap(map_index);
 		break;
 	default:
 		break;

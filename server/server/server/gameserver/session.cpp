@@ -39,7 +39,7 @@ void Session::registerPBCall()
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqPassOfficilMap), &Session::parsePassOfficilGame);
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqPlayerPublishMap), &Session::parseReqPlayerPublishMap);
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqPublishMapList), &Session::parseReqPublishMapList);
-	registerCBFun(PROTOCO_NAME(message::MsgC2SReqAddMapBolg), &Session::parseAddGameBlog)
+	registerCBFun(PROTOCO_NAME(message::MsgC2SReqAddMapBolg), &Session::parseAddGameBlog);
 }
 
 void Session::parsePBMessage(google::protobuf::Message* p)
@@ -305,10 +305,10 @@ void Session::parseReqOfficilStatus(google::protobuf::Message* p)
 	{
 		message::MsgChapterStatus* entry = msgACK.add_chapter_status();
 		entry->set_chapter_id(it_const->first);
-		std::map<int, message::CrashMapData>::const_iterator it_section_const = it_const->second.begin();
+		std::map<int, u64>::const_iterator it_section_const = it_const->second.begin();
 		for (; it_section_const != it_const->second.end(); ++ it_section_const)
 		{
-			entry->add_map_indexs(it_section_const->second.data().map_index());
+			entry->add_map_indexs(it_section_const->second);
 		}
 	}
 	sendPBMessage(&msgACK);
@@ -331,32 +331,36 @@ void Session::parseReqOfficilMap(google::protobuf::Message* p)
 	if (it_const != officilmap->end())
 	{
 		//msgACK.set_section_count(it_const->second.size());
-		const std::map<int, message::CrashMapData>& map_entry = it_const->second;
+		const std::map<int, u64>& map_entry = it_const->second;
 		//msgACK.set_section_count(map_entry.size());
-		std::map<int, message::CrashMapData>::const_iterator it_section = map_entry.begin();
+		std::map<int, u64>::const_iterator it_section = map_entry.begin();
 		for (; it_section != map_entry.end(); ++ it_section)
 		{
-			const message::CrashMapData& crash_map_entry = it_section->second;
-			bool have_already_load = false;
-			int indexs_size = msg->map_indexs_size();
-			for (int map_i = 0; map_i < indexs_size; map_i ++)
+
+			const message::CrashMapData* crash_map_entry = gCrashMapManager.GetCrashMap(it_section->second);
+			if (crash_map_entry != NULL)
 			{
-				u64 temp_index = msg->map_indexs(map_i);
-				if (crash_map_entry.data().map_index() == temp_index)
+				bool have_already_load = false;
+				int indexs_size = msg->map_indexs_size();
+				for (int map_i = 0; map_i < indexs_size; map_i++)
 				{
-					have_already_load = true;
+					u64 temp_index = msg->map_indexs(map_i);
+					if (crash_map_entry->data().map_index() == temp_index)
+					{
+						have_already_load = true;
+						break;
+					}
+				}
+				if (have_already_load == true)
+				{
+					continue;
+				}
+				message::CrashMapData* mapEntry = msgACK.add_maps();
+				mapEntry->CopyFrom(*crash_map_entry);
+				if (current_count >= map_count)
+				{
 					break;
-				}				
-			}
-			if (have_already_load == true)
-			{
-				continue;
-			}
-			message::CrashMapData* mapEntry = msgACK.add_maps();
-			mapEntry->CopyFrom(it_section->second);			
-			if (current_count >= map_count)
-			{
-				break;
+				}
 			}
 		}
 	}

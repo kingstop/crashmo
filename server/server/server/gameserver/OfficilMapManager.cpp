@@ -7,7 +7,7 @@
 #define _SAVE_OFFICIL_TIME_  (20 * _TIME_SECOND_MSEL_)
 OfficilMapManager::OfficilMapManager()
 {
-	_index_map = 0;
+	
 }
 
 
@@ -17,8 +17,7 @@ OfficilMapManager::~OfficilMapManager()
 
 u64 OfficilMapManager::generateMapIndex()
 {
-	_index_map++;
-	return _index_map;
+	return gGameConfig.GenerateMapIndex();
 }
 
 void OfficilMapManager::init(DBQuery* p)
@@ -44,10 +43,6 @@ void OfficilMapManager::init(DBQuery* p)
 			temp_map.set_section(row["section"]);
 			temp_map.set_gold(row["gold"]);
 			u64 map_index = row["index_map"];
-			if (map_index > _index_map)
-			{
-				_index_map = map_index;
-			}
 			data_base->set_map_index(map_index);			
 			OFFICILMAPLIST::iterator it = _officilmap.find(temp_map.chapter());
 			if (it == _officilmap.end())
@@ -87,11 +82,13 @@ void OfficilMapManager::getOfficilMap(CrashPlayer* p, int page)
 	OFFICILMAPLIST::iterator it = _officilmap.find(page);
 	if (it != _officilmap.end())
 	{
-		std::map<int, message::CrashMapData>::iterator it_temp = it->second.begin();
+		std::map<int, u64>::iterator it_temp = it->second.begin();
 		for (; it_temp != it->second.end(); ++ it_temp)
 		{
+			u64 map_index = it_temp->second;
+			const message::CrashMapData* map_entry = gCrashMapManager.GetCrashMap(map_index);
 			message::CrashMapData* temp = msg.add_maps();
-			temp->CopyFrom(it_temp->second);
+			temp->CopyFrom(*map_entry);
 		}
 	}
 	p->sendPBMessage(&msg);
@@ -117,42 +114,42 @@ void OfficilMapManager::saveOfficilMap()
 	std::string sql_excute;
 	int current_count = 0;
 	int max_save_count = 5;
-	OFFICILMAPLIST::iterator it = _officilmap.begin();
-	for (; it != _officilmap.end(); ++ it)
-	{
-		std::map<int, message::CrashMapData>::iterator it_temp = it->second.begin();
-		for (; it_temp != it->second.end(); ++ it_temp)
-		{
-			if (current_count != 0)
-			{
-				sql_excute += ",";
-			}
-			else
-			{
-				sql_excute += sql_head;
-			}
-			current_count++;
-			message::CrashMapData temp_map = it_temp->second;
-			long acc = temp_map.chapter() * 100000 + temp_map.section();
-			u64 map_index = temp_map.mutable_data()->map_index();
-			std::string temp_data;
-			std::string create_time = get_time(temp_map.create_time());
-			temp_data = temp_map.data().SerializeAsString();
-			temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
-			sprintf(sztemp, "(%lu,'%s','%s','%s','%s',%d, %d, %d, %llu)", acc, temp_map.creatername().c_str(), temp_map.mapname().c_str(),
-				temp_data.c_str(), create_time.c_str(), temp_map.chapter(),temp_map.section(), temp_map.gold(), map_index);
-			sql_excute += sztemp;			
-			if (current_count > max_save_count)
-			{
-				message::ReqSaveOfficilMap msg;
-				msg.set_sql(sql_excute.c_str());
-				gGSDBClient.sendPBMessage(&msg,0);
-				current_count = 0;
-				sql_excute.clear();
-			}
+	//OFFICILMAPLIST::iterator it = _officilmap.begin();
+	//for (; it != _officilmap.end(); ++ it)
+	//{
+	//	std::map<int, message::CrashMapData>::iterator it_temp = it->second.begin();
+	//	for (; it_temp != it->second.end(); ++ it_temp)
+	//	{
+	//		if (current_count != 0)
+	//		{
+	//			sql_excute += ",";
+	//		}
+	//		else
+	//		{
+	//			sql_excute += sql_head;
+	//		}
+	//		current_count++;
+	//		message::CrashMapData temp_map = it_temp->second;
+	//		long acc = temp_map.chapter() * 100000 + temp_map.section();
+	//		u64 map_index = temp_map.mutable_data()->map_index();
+	//		std::string temp_data;
+	//		std::string create_time = get_time(temp_map.create_time());
+	//		temp_data = temp_map.data().SerializeAsString();
+	//		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
+	//		sprintf(sztemp, "(%lu,'%s','%s','%s','%s',%d, %d, %d, %llu)", acc, temp_map.creatername().c_str(), temp_map.mapname().c_str(),
+	//			temp_data.c_str(), create_time.c_str(), temp_map.chapter(),temp_map.section(), temp_map.gold(), map_index);
+	//		sql_excute += sztemp;			
+	//		if (current_count > max_save_count)
+	//		{
+	//			message::ReqSaveOfficilMap msg;
+	//			msg.set_sql(sql_excute.c_str());
+	//			gGSDBClient.sendPBMessage(&msg,0);
+	//			current_count = 0;
+	//			sql_excute.clear();
+	//		}
 
-		}
-	}
+	//	}
+	//}
 
 	if (sql_excute.empty() == false)
 	{
@@ -206,22 +203,24 @@ void OfficilMapManager::saveMapOfficilMap(const message::CrashMapData* map_data,
 	OFFICILMAPLIST::iterator it = _officilmap.find(map_data->section());
 	if (it != _officilmap.end())
 	{
-		std::map<int, message::CrashMapData> temp_map;
+		std::map<int, u64> temp_map;
 		_officilmap.insert(OFFICILMAPLIST::value_type(map_data->chapter(), temp_map));
 	}
 
-	message::CrashMapData entry;
-	entry.CopyFrom(*map_data);
-	u64 cur_map_index = generateMapIndex();
-	entry.mutable_data()->set_map_index(cur_map_index);
-	_officilmap[map_data->chapter()][map_data->section()] = entry;
+	std::map<int, u64>::iterator it_section = _officilmap[map_data->chapter()].find(map_data->section());
+	if (it_section != _officilmap[map_data->chapter()].end())
+	{
+		gCrashMapManager.DelCrashMap(it_section->second);
+	}
+	const message::CrashMapData* entry = gCrashMapManager.CreateCrashMap(map_data);	
+	_officilmap[map_data->chapter()][map_data->section()] = entry->data().map_index();
 
 	message::MsgSaveMapACK msgACK;
-	msgACK.set_map_name(map_data->mapname().c_str());
+	//msgACK.set_map_name(map_data->mapname().c_str());
 	msgACK.set_save_type(message::OfficeMap);
 	msgACK.set_error(message::ServerError_NO);
 	message::CrashMapData* map_temp = msgACK.mutable_map();
-	map_temp->CopyFrom(entry);
+	map_temp->CopyFrom(*entry);
 	p->sendPBMessage(&msgACK);
 }
 
@@ -232,15 +231,16 @@ const CHAPTERSNAMES& OfficilMapManager::getSectionNames()
 
 const message::CrashMapData* OfficilMapManager::getOfficilMap(int chapter_id, int section_id)
 {
-	message::CrashMapData* entry = NULL;
+	
 	OFFICILMAPLIST::iterator it = _officilmap.find(chapter_id);
 	if (it != _officilmap.end())
 	{
-		std::map<int, message::CrashMapData>::iterator it_section = it->second.find(section_id);
+		std::map<int, u64>::iterator it_section = it->second.find(section_id);
 		if (it_section != it->second.end())
 		{
-			entry = &it_section->second;
+			u64 map_index = it_section->second;
+			return gCrashMapManager.GetCrashMap(map_index);
 		}
 	}
-	return entry;
+	return NULL;	
 }

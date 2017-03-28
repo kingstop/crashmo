@@ -64,8 +64,8 @@ message CrashPlayerInfo
 	required uint64 account = 1;
 	repeated intPair passed_record = 2;
 	required string name = 3;
-	repeated CrashMapData IncompleteMap = 4;
-	repeated CrashMapData CompleteMap = 5;
+	repeated uint64 IncompleteMap = 4;
+	repeated uint64 CompleteMap = 5;
 	required bool isadmin = 6;
 	repeated intPair resources = 7;
 	required int32 map_width = 8;

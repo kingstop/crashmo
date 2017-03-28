@@ -1,6 +1,7 @@
 #pragma once
-typedef std::map<int, std::map<int, message::CrashMapData> > OFFICILMAPLIST;
+typedef std::map<int, std::map<int, u64> > OFFICILMAPLIST;
 typedef std::map<int, std::string> CHAPTERSNAMES;
+
 class OfficilMapManager : public EventableObject
 {
 public:
@@ -21,7 +22,7 @@ protected:
 protected:
 	OFFICILMAPLIST _officilmap;
 	CHAPTERSNAMES _chapter_names;
-	u64 _index_map;
+	
 
 };
 

@@ -29,8 +29,12 @@ public:
 	bool isInToday(u32 time);
 	int GetServerOpenPassedTime(u32 time);
 	void SetServerOpenTime(u64 time);
+	void SetMaxMapIndex(u64 index);
+	u64 GetMaxMapIndex();
+	u64 GenerateMapIndex();
 protected:
 	OFFICIAL_MAP _offcial_map;
 	MapConfig _map_config;
 	u64 _server_open_time;
+	u64 _current_max_map_index;
 };

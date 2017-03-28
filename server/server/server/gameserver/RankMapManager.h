@@ -17,7 +17,7 @@ struct RankMapTg
 		std::vector< message::RankMapBlogEntry>::iterator it = blogs_.begin();
 		for (; it != blogs_.end(); ++ it)
 		{
-			entry->add_map_blog()->CopyFrom(*it);
+			entry->mutable_crashmap()->add_map_blog()->CopyFrom(*it);
 		}
 		
 	}

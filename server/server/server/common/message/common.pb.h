@@ -1112,28 +1112,28 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // repeated .message.CrashMapData IncompleteMap = 4;
+  // repeated uint64 IncompleteMap = 4;
   int incompletemap_size() const;
   void clear_incompletemap();
   static const int kIncompleteMapFieldNumber = 4;
-  const ::message::CrashMapData& incompletemap(int index) const;
-  ::message::CrashMapData* mutable_incompletemap(int index);
-  ::message::CrashMapData* add_incompletemap();
-  const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+  ::google::protobuf::uint64 incompletemap(int index) const;
+  void set_incompletemap(int index, ::google::protobuf::uint64 value);
+  void add_incompletemap(::google::protobuf::uint64 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
       incompletemap() const;
-  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
       mutable_incompletemap();
 
-  // repeated .message.CrashMapData CompleteMap = 5;
+  // repeated uint64 CompleteMap = 5;
   int completemap_size() const;
   void clear_completemap();
   static const int kCompleteMapFieldNumber = 5;
-  const ::message::CrashMapData& completemap(int index) const;
-  ::message::CrashMapData* mutable_completemap(int index);
-  ::message::CrashMapData* add_completemap();
-  const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+  ::google::protobuf::uint64 completemap(int index) const;
+  void set_completemap(int index, ::google::protobuf::uint64 value);
+  void add_completemap(::google::protobuf::uint64 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
       completemap() const;
-  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
       mutable_completemap();
 
   // required bool isadmin = 6;
@@ -1257,8 +1257,8 @@ class CrashPlayerInfo : public ::google::protobuf::Message {
   ::google::protobuf::uint64 account_;
   ::google::protobuf::RepeatedPtrField< ::message::intPair > passed_record_;
   ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > incompletemap_;
-  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > completemap_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > incompletemap_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > completemap_;
   ::google::protobuf::RepeatedPtrField< ::message::intPair > resources_;
   bool isadmin_;
   ::google::protobuf::int32 map_width_;
@@ -2762,61 +2762,61 @@ inline void CrashPlayerInfo::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:message.CrashPlayerInfo.name)
 }
 
-// repeated .message.CrashMapData IncompleteMap = 4;
+// repeated uint64 IncompleteMap = 4;
 inline int CrashPlayerInfo::incompletemap_size() const {
   return incompletemap_.size();
 }
 inline void CrashPlayerInfo::clear_incompletemap() {
   incompletemap_.Clear();
 }
-inline const ::message::CrashMapData& CrashPlayerInfo::incompletemap(int index) const {
+inline ::google::protobuf::uint64 CrashPlayerInfo::incompletemap(int index) const {
   // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.IncompleteMap)
   return incompletemap_.Get(index);
 }
-inline ::message::CrashMapData* CrashPlayerInfo::mutable_incompletemap(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.IncompleteMap)
-  return incompletemap_.Mutable(index);
+inline void CrashPlayerInfo::set_incompletemap(int index, ::google::protobuf::uint64 value) {
+  incompletemap_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.IncompleteMap)
 }
-inline ::message::CrashMapData* CrashPlayerInfo::add_incompletemap() {
+inline void CrashPlayerInfo::add_incompletemap(::google::protobuf::uint64 value) {
+  incompletemap_.Add(value);
   // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.IncompleteMap)
-  return incompletemap_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
 CrashPlayerInfo::incompletemap() const {
   // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.IncompleteMap)
   return incompletemap_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
 CrashPlayerInfo::mutable_incompletemap() {
   // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.IncompleteMap)
   return &incompletemap_;
 }
 
-// repeated .message.CrashMapData CompleteMap = 5;
+// repeated uint64 CompleteMap = 5;
 inline int CrashPlayerInfo::completemap_size() const {
   return completemap_.size();
 }
 inline void CrashPlayerInfo::clear_completemap() {
   completemap_.Clear();
 }
-inline const ::message::CrashMapData& CrashPlayerInfo::completemap(int index) const {
+inline ::google::protobuf::uint64 CrashPlayerInfo::completemap(int index) const {
   // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.CompleteMap)
   return completemap_.Get(index);
 }
-inline ::message::CrashMapData* CrashPlayerInfo::mutable_completemap(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.CompleteMap)
-  return completemap_.Mutable(index);
+inline void CrashPlayerInfo::set_completemap(int index, ::google::protobuf::uint64 value) {
+  completemap_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.CompleteMap)
 }
-inline ::message::CrashMapData* CrashPlayerInfo::add_completemap() {
+inline void CrashPlayerInfo::add_completemap(::google::protobuf::uint64 value) {
+  completemap_.Add(value);
   // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.CompleteMap)
-  return completemap_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
 CrashPlayerInfo::completemap() const {
   // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.CompleteMap)
   return completemap_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
 CrashPlayerInfo::mutable_completemap() {
   // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.CompleteMap)
   return &completemap_;

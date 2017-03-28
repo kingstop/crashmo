@@ -215,7 +215,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       -1);
   MsgDelMapReq_descriptor_ = file->message_type(4);
   static const int MsgDelMapReq_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapReq, map_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapReq, map_index_),
   };
   MsgDelMapReq_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -230,7 +230,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       -1);
   MsgDelMapACK_descriptor_ = file->message_type(5);
   static const int MsgDelMapACK_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapACK, map_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapACK, map_index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapACK, map_type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapACK, error_),
   };
@@ -247,7 +247,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       -1);
   MsgSaveMapACK_descriptor_ = file->message_type(6);
   static const int MsgSaveMapACK_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, map_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, map_index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, save_type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, map_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, error_),
@@ -956,86 +956,86 @@ void protobuf_AddDesc_crashmo_2eproto() {
     "\022\025\n\rmap_count_max\030\006 \002(\005\"c\n\rMsgSaveMapReq"
     "\022\"\n\003map\030\001 \002(\0132\025.message.CrashMapData\022.\n\t"
     "save_type\030\002 \002(\0162\020.message.MapType:\tOffic"
-    "eMap\" \n\014MsgDelMapReq\022\020\n\010map_name\030\001 \002(\t\"\204"
-    "\001\n\014MsgDelMapACK\022\020\n\010map_name\030\001 \002(\t\022-\n\010map"
-    "_type\030\002 \002(\0162\020.message.MapType:\tOfficeMap"
-    "\0223\n\005error\030\003 \002(\0162\024.message.ServerError:\016S"
-    "erverError_NO\"\252\001\n\rMsgSaveMapACK\022\020\n\010map_n"
-    "ame\030\001 \002(\t\022.\n\tsave_type\030\002 \002(\0162\020.message.M"
-    "apType:\tOfficeMap\022\"\n\003map\030\003 \002(\0132\025.message"
-    ".CrashMapData\0223\n\005error\030\004 \002(\0162\024.message.S"
-    "erverError:\016ServerError_NO\" \n\020MsgOfficil"
-    "MapReq\022\014\n\004page\030\001 \002(\005\"E\n\020MsgOfficilMapACK"
-    "\022\014\n\004page\030\001 \002(\005\022#\n\004maps\030\002 \003(\0132\025.message.C"
-    "rashMapData\"@\n\027MsgModifySectionNameReq\022\017"
-    "\n\007section\030\001 \002(\005\022\024\n\014section_name\030\002 \002(\t\"@\n"
-    "\027MsgModifySectionNameACK\022\017\n\007section\030\001 \002("
-    "\005\022\024\n\014section_name\030\002 \002(\t\"\023\n\021MsgSectionNam"
-    "eReq\"A\n\021MsgSectionNameACK\022,\n\010sections\030\001 "
-    "\003(\0132\032.message.MsgIntStringProto\":\n\020MsgS2"
-    "CNotifyPing\022\022\n\ntime_stamp\030\001 \002(\003\022\022\n\nping_"
-    "count\030\002 \002(\005\"\027\n\025MsgC2SOfficeStatusReq\":\n\020"
-    "MsgChapterStatus\022\022\n\nchapter_id\030\001 \002(\005\022\022\n\n"
-    "map_indexs\030\002 \003(\004\"J\n\025MsgS2COfficeStatusAC"
-    "K\0221\n\016chapter_status\030\001 \003(\0132\031.message.MsgC"
-    "hapterStatus\"c\n\022MsgC2SOfficeMapReq\022\022\n\nch"
-    "apter_id\030\001 \002(\005\022\022\n\nsection_id\030\002 \002(\005\022\021\n\tma"
-    "p_count\030\003 \002(\005\022\022\n\nmap_indexs\030\004 \003(\004\"M\n\022Msg"
-    "S2COfficeMapACK\022\022\n\nchapter_id\030\001 \002(\005\022#\n\004m"
-    "aps\030\003 \003(\0132\025.message.CrashMapData\"M\n\020MsgC"
-    "2SRankMapReq\022\022\n\nrank_begin\030\001 \002(\005\022\022\n\ntime"
-    "_stamp\030\002 \002(\003\022\021\n\tmap_count\030\003 \002(\005\"~\n\020MsgS2"
-    "CRankMapACK\022,\n\004maps\030\001 \003(\0132\036.message.Cras"
-    "hPlayerPublishMap\022\020\n\010end_rank\030\002 \002(\005\022\022\n\nt"
-    "ime_stamp\030\003 \002(\003\022\026\n\016rank_map_count\030\004 \002(\005\""
-    "0\n\032MsgS2CRankMapRefreshNotify\022\022\n\ntime_st"
-    "amp\030\001 \002(\003\"@\n\030MsgC2SReqLoadTaskConfigs\022\020\n"
-    "\010begin_id\030\001 \002(\005\022\022\n\nload_count\030\002 \002(\005\"c\n\030M"
-    "sgS2CLoadTaskConfigsACK\022-\n\014task_configs\030"
-    "\001 \003(\0132\027.message.TaskInfoConfig\022\030\n\020total_"
-    "task_count\030\002 \002(\005\"@\n\027MsgC2SReqModifyTaskI"
-    "nfo\022%\n\004info\030\001 \002(\0132\027.message.TaskInfoConf"
-    "ig\"@\n\027MsgS2CModifyTaskInfoACK\022%\n\004info\030\001 "
-    "\002(\0132\027.message.TaskInfoConfig\"\244\001\n\023MsgC2SR"
-    "eqAddMapBolg\022\'\n\004info\030\001 \002(\0132\031.message.Ran"
-    "kMapBlogEntry\022)\n\004type\030\002 \002(\0162\020.message.Ma"
-    "pType:\tOfficeMap\022\021\n\tmap_index\030\003 \002(\003\022\022\n\nc"
-    "hapter_id\030\004 \002(\005\022\022\n\nsection_id\030\005 \002(\005\"\022\n\020M"
-    "sgS2CMapBolgACK\"B\n\030MsgC2SReqEnterOfficil"
-    "Map\022\022\n\nchapter_id\030\001 \002(\r\022\022\n\nsection_id\030\002 "
-    "\002(\r\"B\n\030MsgS2CEnterOfficilMapACK\022\022\n\nchapt"
-    "er_id\030\001 \002(\r\022\022\n\nsection_id\030\002 \002(\r\"e\n\027MsgC2"
-    "SReqPassOfficilMap\022\022\n\nchapter_id\030\001 \002(\r\022\022"
-    "\n\nsection_id\030\002 \002(\r\022\020\n\010use_time\030\003 \002(\r\022\020\n\010"
-    "use_step\030\004 \002(\r\"_\n\rMsgTaskReward\022\017\n\007task_"
-    "id\030\001 \002(\r\022*\n\007rewards\030\002 \003(\0132\031.message.Task"
-    "RewardConfig\022\021\n\ttask_name\030\003 \002(\t\"\241\002\n\027MsgS"
-    "2CPassOfficilMapACK\022\022\n\nchapter_id\030\001 \002(\r\022"
-    "\022\n\nsection_id\030\002 \002(\r\022\020\n\010add_gold\030\003 \002(\r\022&\n"
-    "\014add_resource\030\004 \003(\0132\020.message.intPair\022\024\n"
-    "\014current_gold\030\005 \002(\r\022*\n\020current_resource\030"
-    "\006 \003(\0132\020.message.intPair\022-\n\rcomplete_task"
-    "\030\007 \003(\0132\026.message.MsgTaskReward\0223\n\005error\030"
-    "\010 \002(\0162\024.message.ServerError:\016ServerError"
-    "_NO\"6\n\023MsgS2CNewTaskNotify\022\037\n\004info\030\001 \002(\013"
-    "2\021.message.TaskInfo\"\?\n\031MsgC2SReqPlayerPu"
-    "blishMap\022\"\n\003map\030\001 \002(\0132\025.message.CrashMap"
-    "Data\"H\n\031MsgS2CPlayerPublishMapACK\022+\n\003map"
-    "\030\001 \002(\0132\036.message.CrashPlayerPublishMap\"E"
-    "\n\027MsgC2SReqPublishMapList\022\027\n\017begin_map_i"
-    "ndex\030\001 \002(\004\022\021\n\treq_count\030\002 \002(\005\"q\n\027MsgS2CP"
-    "ublishMapListACK\022\025\n\rend_map_index\030\001 \002(\004\022"
-    "\021\n\treq_count\030\002 \002(\005\022,\n\004maps\030\003 \003(\0132\036.messa"
-    "ge.CrashPlayerPublishMap*\226\002\n\013ServerError"
-    "\022\022\n\016ServerError_NO\020\000\022\026\n\022ServerError_Unkn"
-    "ow\020\001\022\034\n\030ServerError_HaveSameName\020\002\022&\n\"Se"
-    "rverError_NotFoundMapNameWhenDel\020\003\0220\n,Se"
-    "rverError_PassOfficilMapFailedTheMapIsLo"
-    "ck\020\004\0222\n.ServerError_PassOfficilMapFailed"
-    "TheMapNotFound\020\005\022/\n+ServerError_FailedTo"
-    "PublishMapTheTimeIsInCD\020\006*<\n\007MapType\022\r\n\t"
-    "OfficeMap\020\001\022\021\n\rImcompleteMap\020\002\022\017\n\013Comple"
-    "teMap\020\003", 3687);
+    "eMap\"!\n\014MsgDelMapReq\022\021\n\tmap_index\030\001 \002(\004\""
+    "\205\001\n\014MsgDelMapACK\022\021\n\tmap_index\030\001 \002(\004\022-\n\010m"
+    "ap_type\030\002 \002(\0162\020.message.MapType:\tOfficeM"
+    "ap\0223\n\005error\030\003 \002(\0162\024.message.ServerError:"
+    "\016ServerError_NO\"\253\001\n\rMsgSaveMapACK\022\021\n\tmap"
+    "_index\030\001 \002(\004\022.\n\tsave_type\030\002 \002(\0162\020.messag"
+    "e.MapType:\tOfficeMap\022\"\n\003map\030\003 \002(\0132\025.mess"
+    "age.CrashMapData\0223\n\005error\030\004 \002(\0162\024.messag"
+    "e.ServerError:\016ServerError_NO\" \n\020MsgOffi"
+    "cilMapReq\022\014\n\004page\030\001 \002(\005\"E\n\020MsgOfficilMap"
+    "ACK\022\014\n\004page\030\001 \002(\005\022#\n\004maps\030\002 \003(\0132\025.messag"
+    "e.CrashMapData\"@\n\027MsgModifySectionNameRe"
+    "q\022\017\n\007section\030\001 \002(\005\022\024\n\014section_name\030\002 \002(\t"
+    "\"@\n\027MsgModifySectionNameACK\022\017\n\007section\030\001"
+    " \002(\005\022\024\n\014section_name\030\002 \002(\t\"\023\n\021MsgSection"
+    "NameReq\"A\n\021MsgSectionNameACK\022,\n\010sections"
+    "\030\001 \003(\0132\032.message.MsgIntStringProto\":\n\020Ms"
+    "gS2CNotifyPing\022\022\n\ntime_stamp\030\001 \002(\003\022\022\n\npi"
+    "ng_count\030\002 \002(\005\"\027\n\025MsgC2SOfficeStatusReq\""
+    ":\n\020MsgChapterStatus\022\022\n\nchapter_id\030\001 \002(\005\022"
+    "\022\n\nmap_indexs\030\002 \003(\004\"J\n\025MsgS2COfficeStatu"
+    "sACK\0221\n\016chapter_status\030\001 \003(\0132\031.message.M"
+    "sgChapterStatus\"c\n\022MsgC2SOfficeMapReq\022\022\n"
+    "\nchapter_id\030\001 \002(\005\022\022\n\nsection_id\030\002 \002(\005\022\021\n"
+    "\tmap_count\030\003 \002(\005\022\022\n\nmap_indexs\030\004 \003(\004\"M\n\022"
+    "MsgS2COfficeMapACK\022\022\n\nchapter_id\030\001 \002(\005\022#"
+    "\n\004maps\030\003 \003(\0132\025.message.CrashMapData\"M\n\020M"
+    "sgC2SRankMapReq\022\022\n\nrank_begin\030\001 \002(\005\022\022\n\nt"
+    "ime_stamp\030\002 \002(\003\022\021\n\tmap_count\030\003 \002(\005\"~\n\020Ms"
+    "gS2CRankMapACK\022,\n\004maps\030\001 \003(\0132\036.message.C"
+    "rashPlayerPublishMap\022\020\n\010end_rank\030\002 \002(\005\022\022"
+    "\n\ntime_stamp\030\003 \002(\003\022\026\n\016rank_map_count\030\004 \002"
+    "(\005\"0\n\032MsgS2CRankMapRefreshNotify\022\022\n\ntime"
+    "_stamp\030\001 \002(\003\"@\n\030MsgC2SReqLoadTaskConfigs"
+    "\022\020\n\010begin_id\030\001 \002(\005\022\022\n\nload_count\030\002 \002(\005\"c"
+    "\n\030MsgS2CLoadTaskConfigsACK\022-\n\014task_confi"
+    "gs\030\001 \003(\0132\027.message.TaskInfoConfig\022\030\n\020tot"
+    "al_task_count\030\002 \002(\005\"@\n\027MsgC2SReqModifyTa"
+    "skInfo\022%\n\004info\030\001 \002(\0132\027.message.TaskInfoC"
+    "onfig\"@\n\027MsgS2CModifyTaskInfoACK\022%\n\004info"
+    "\030\001 \002(\0132\027.message.TaskInfoConfig\"\244\001\n\023MsgC"
+    "2SReqAddMapBolg\022\'\n\004info\030\001 \002(\0132\031.message."
+    "RankMapBlogEntry\022)\n\004type\030\002 \002(\0162\020.message"
+    ".MapType:\tOfficeMap\022\021\n\tmap_index\030\003 \002(\003\022\022"
+    "\n\nchapter_id\030\004 \002(\005\022\022\n\nsection_id\030\005 \002(\005\"\022"
+    "\n\020MsgS2CMapBolgACK\"B\n\030MsgC2SReqEnterOffi"
+    "cilMap\022\022\n\nchapter_id\030\001 \002(\r\022\022\n\nsection_id"
+    "\030\002 \002(\r\"B\n\030MsgS2CEnterOfficilMapACK\022\022\n\nch"
+    "apter_id\030\001 \002(\r\022\022\n\nsection_id\030\002 \002(\r\"e\n\027Ms"
+    "gC2SReqPassOfficilMap\022\022\n\nchapter_id\030\001 \002("
+    "\r\022\022\n\nsection_id\030\002 \002(\r\022\020\n\010use_time\030\003 \002(\r\022"
+    "\020\n\010use_step\030\004 \002(\r\"_\n\rMsgTaskReward\022\017\n\007ta"
+    "sk_id\030\001 \002(\r\022*\n\007rewards\030\002 \003(\0132\031.message.T"
+    "askRewardConfig\022\021\n\ttask_name\030\003 \002(\t\"\241\002\n\027M"
+    "sgS2CPassOfficilMapACK\022\022\n\nchapter_id\030\001 \002"
+    "(\r\022\022\n\nsection_id\030\002 \002(\r\022\020\n\010add_gold\030\003 \002(\r"
+    "\022&\n\014add_resource\030\004 \003(\0132\020.message.intPair"
+    "\022\024\n\014current_gold\030\005 \002(\r\022*\n\020current_resour"
+    "ce\030\006 \003(\0132\020.message.intPair\022-\n\rcomplete_t"
+    "ask\030\007 \003(\0132\026.message.MsgTaskReward\0223\n\005err"
+    "or\030\010 \002(\0162\024.message.ServerError:\016ServerEr"
+    "ror_NO\"6\n\023MsgS2CNewTaskNotify\022\037\n\004info\030\001 "
+    "\002(\0132\021.message.TaskInfo\"\?\n\031MsgC2SReqPlaye"
+    "rPublishMap\022\"\n\003map\030\001 \002(\0132\025.message.Crash"
+    "MapData\"H\n\031MsgS2CPlayerPublishMapACK\022+\n\003"
+    "map\030\001 \002(\0132\036.message.CrashPlayerPublishMa"
+    "p\"E\n\027MsgC2SReqPublishMapList\022\027\n\017begin_ma"
+    "p_index\030\001 \002(\004\022\021\n\treq_count\030\002 \002(\005\"q\n\027MsgS"
+    "2CPublishMapListACK\022\025\n\rend_map_index\030\001 \002"
+    "(\004\022\021\n\treq_count\030\002 \002(\005\022,\n\004maps\030\003 \003(\0132\036.me"
+    "ssage.CrashPlayerPublishMap*\226\002\n\013ServerEr"
+    "ror\022\022\n\016ServerError_NO\020\000\022\026\n\022ServerError_U"
+    "nknow\020\001\022\034\n\030ServerError_HaveSameName\020\002\022&\n"
+    "\"ServerError_NotFoundMapNameWhenDel\020\003\0220\n"
+    ",ServerError_PassOfficilMapFailedTheMapI"
+    "sLock\020\004\0222\n.ServerError_PassOfficilMapFai"
+    "ledTheMapNotFound\020\005\022/\n+ServerError_Faile"
+    "dToPublishMapTheTimeIsInCD\020\006*<\n\007MapType\022"
+    "\r\n\tOfficeMap\020\001\022\021\n\rImcompleteMap\020\002\022\017\n\013Com"
+    "pleteMap\020\003", 3690);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "crashmo.proto", &protobuf_RegisterTypes);
   MsgIntStringProto::default_instance_ = new MsgIntStringProto();
@@ -2862,7 +2862,7 @@ void MsgSaveMapReq::InternalSwap(MsgSaveMapReq* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgDelMapReq::kMapNameFieldNumber;
+const int MsgDelMapReq::kMapIndexFieldNumber;
 #endif  // !_MSC_VER
 
 MsgDelMapReq::MsgDelMapReq()
@@ -2883,9 +2883,8 @@ MsgDelMapReq::MsgDelMapReq(const MsgDelMapReq& from)
 }
 
 void MsgDelMapReq::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  map_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  map_index_ = GOOGLE_ULONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2895,7 +2894,6 @@ MsgDelMapReq::~MsgDelMapReq() {
 }
 
 void MsgDelMapReq::SharedDtor() {
-  map_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -2926,9 +2924,7 @@ MsgDelMapReq* MsgDelMapReq::New(::google::protobuf::Arena* arena) const {
 }
 
 void MsgDelMapReq::Clear() {
-  if (has_map_name()) {
-    map_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  }
+  map_index_ = GOOGLE_ULONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->Clear();
@@ -2945,15 +2941,13 @@ bool MsgDelMapReq::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string map_name = 1;
+      // required uint64 map_index = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_map_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->map_name().data(), this->map_name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "message.MsgDelMapReq.map_name");
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &map_index_)));
+          set_has_map_index();
         } else {
           goto handle_unusual;
         }
@@ -2986,14 +2980,9 @@ failure:
 void MsgDelMapReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:message.MsgDelMapReq)
-  // required string map_name = 1;
-  if (has_map_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->map_name().data(), this->map_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "message.MsgDelMapReq.map_name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->map_name(), output);
+  // required uint64 map_index = 1;
+  if (has_map_index()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->map_index(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3006,15 +2995,9 @@ void MsgDelMapReq::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgDelMapReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:message.MsgDelMapReq)
-  // required string map_name = 1;
-  if (has_map_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->map_name().data(), this->map_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "message.MsgDelMapReq.map_name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->map_name(), target);
+  // required uint64 map_index = 1;
+  if (has_map_index()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->map_index(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3028,11 +3011,11 @@ void MsgDelMapReq::SerializeWithCachedSizes(
 int MsgDelMapReq::ByteSize() const {
   int total_size = 0;
 
-  // required string map_name = 1;
-  if (has_map_name()) {
+  // required uint64 map_index = 1;
+  if (has_map_index()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->map_name());
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->map_index());
   }
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
@@ -3060,9 +3043,8 @@ void MsgDelMapReq::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgDelMapReq::MergeFrom(const MsgDelMapReq& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_map_name()) {
-      set_has_map_name();
-      map_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.map_name_);
+    if (from.has_map_index()) {
+      set_map_index(from.map_index());
     }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
@@ -3093,7 +3075,7 @@ void MsgDelMapReq::Swap(MsgDelMapReq* other) {
   InternalSwap(other);
 }
 void MsgDelMapReq::InternalSwap(MsgDelMapReq* other) {
-  map_name_.Swap(&other->map_name_);
+  std::swap(map_index_, other->map_index_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -3110,57 +3092,28 @@ void MsgDelMapReq::InternalSwap(MsgDelMapReq* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgDelMapReq
 
-// required string map_name = 1;
- bool MsgDelMapReq::has_map_name() const {
+// required uint64 map_index = 1;
+ bool MsgDelMapReq::has_map_index() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
- void MsgDelMapReq::set_has_map_name() {
+ void MsgDelMapReq::set_has_map_index() {
   _has_bits_[0] |= 0x00000001u;
 }
- void MsgDelMapReq::clear_has_map_name() {
+ void MsgDelMapReq::clear_has_map_index() {
   _has_bits_[0] &= ~0x00000001u;
 }
- void MsgDelMapReq::clear_map_name() {
-  map_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_map_name();
+ void MsgDelMapReq::clear_map_index() {
+  map_index_ = GOOGLE_ULONGLONG(0);
+  clear_has_map_index();
 }
- const ::std::string& MsgDelMapReq::map_name() const {
-  // @@protoc_insertion_point(field_get:message.MsgDelMapReq.map_name)
-  return map_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+ ::google::protobuf::uint64 MsgDelMapReq::map_index() const {
+  // @@protoc_insertion_point(field_get:message.MsgDelMapReq.map_index)
+  return map_index_;
 }
- void MsgDelMapReq::set_map_name(const ::std::string& value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgDelMapReq.map_name)
-}
- void MsgDelMapReq::set_map_name(const char* value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgDelMapReq.map_name)
-}
- void MsgDelMapReq::set_map_name(const char* value, size_t size) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgDelMapReq.map_name)
-}
- ::std::string* MsgDelMapReq::mutable_map_name() {
-  set_has_map_name();
-  // @@protoc_insertion_point(field_mutable:message.MsgDelMapReq.map_name)
-  return map_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* MsgDelMapReq::release_map_name() {
-  clear_has_map_name();
-  return map_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgDelMapReq::set_allocated_map_name(::std::string* map_name) {
-  if (map_name != NULL) {
-    set_has_map_name();
-  } else {
-    clear_has_map_name();
-  }
-  map_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), map_name);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgDelMapReq.map_name)
+ void MsgDelMapReq::set_map_index(::google::protobuf::uint64 value) {
+  set_has_map_index();
+  map_index_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgDelMapReq.map_index)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -3168,7 +3121,7 @@ void MsgDelMapReq::InternalSwap(MsgDelMapReq* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgDelMapACK::kMapNameFieldNumber;
+const int MsgDelMapACK::kMapIndexFieldNumber;
 const int MsgDelMapACK::kMapTypeFieldNumber;
 const int MsgDelMapACK::kErrorFieldNumber;
 #endif  // !_MSC_VER
@@ -3191,9 +3144,8 @@ MsgDelMapACK::MsgDelMapACK(const MsgDelMapACK& from)
 }
 
 void MsgDelMapACK::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  map_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  map_index_ = GOOGLE_ULONGLONG(0);
   map_type_ = 1;
   error_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -3205,7 +3157,6 @@ MsgDelMapACK::~MsgDelMapACK() {
 }
 
 void MsgDelMapACK::SharedDtor() {
-  map_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -3237,9 +3188,7 @@ MsgDelMapACK* MsgDelMapACK::New(::google::protobuf::Arena* arena) const {
 
 void MsgDelMapACK::Clear() {
   if (_has_bits_[0 / 32] & 7) {
-    if (has_map_name()) {
-      map_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
+    map_index_ = GOOGLE_ULONGLONG(0);
     map_type_ = 1;
     error_ = 0;
   }
@@ -3259,15 +3208,13 @@ bool MsgDelMapACK::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string map_name = 1;
+      // required uint64 map_index = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_map_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->map_name().data(), this->map_name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "message.MsgDelMapACK.map_name");
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &map_index_)));
+          set_has_map_index();
         } else {
           goto handle_unusual;
         }
@@ -3340,14 +3287,9 @@ failure:
 void MsgDelMapACK::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:message.MsgDelMapACK)
-  // required string map_name = 1;
-  if (has_map_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->map_name().data(), this->map_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "message.MsgDelMapACK.map_name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->map_name(), output);
+  // required uint64 map_index = 1;
+  if (has_map_index()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->map_index(), output);
   }
 
   // required .message.MapType map_type = 2 [default = OfficeMap];
@@ -3372,15 +3314,9 @@ void MsgDelMapACK::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgDelMapACK::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:message.MsgDelMapACK)
-  // required string map_name = 1;
-  if (has_map_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->map_name().data(), this->map_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "message.MsgDelMapACK.map_name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->map_name(), target);
+  // required uint64 map_index = 1;
+  if (has_map_index()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->map_index(), target);
   }
 
   // required .message.MapType map_type = 2 [default = OfficeMap];
@@ -3406,11 +3342,11 @@ void MsgDelMapACK::SerializeWithCachedSizes(
 int MsgDelMapACK::RequiredFieldsByteSizeFallback() const {
   int total_size = 0;
 
-  if (has_map_name()) {
-    // required string map_name = 1;
+  if (has_map_index()) {
+    // required uint64 map_index = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->map_name());
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->map_index());
   }
 
   if (has_map_type()) {
@@ -3431,10 +3367,10 @@ int MsgDelMapACK::ByteSize() const {
   int total_size = 0;
 
   if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
-    // required string map_name = 1;
+    // required uint64 map_index = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->map_name());
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->map_index());
 
     // required .message.MapType map_type = 2 [default = OfficeMap];
     total_size += 1 +
@@ -3473,9 +3409,8 @@ void MsgDelMapACK::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgDelMapACK::MergeFrom(const MsgDelMapACK& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_map_name()) {
-      set_has_map_name();
-      map_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.map_name_);
+    if (from.has_map_index()) {
+      set_map_index(from.map_index());
     }
     if (from.has_map_type()) {
       set_map_type(from.map_type());
@@ -3512,7 +3447,7 @@ void MsgDelMapACK::Swap(MsgDelMapACK* other) {
   InternalSwap(other);
 }
 void MsgDelMapACK::InternalSwap(MsgDelMapACK* other) {
-  map_name_.Swap(&other->map_name_);
+  std::swap(map_index_, other->map_index_);
   std::swap(map_type_, other->map_type_);
   std::swap(error_, other->error_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
@@ -3531,57 +3466,28 @@ void MsgDelMapACK::InternalSwap(MsgDelMapACK* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgDelMapACK
 
-// required string map_name = 1;
- bool MsgDelMapACK::has_map_name() const {
+// required uint64 map_index = 1;
+ bool MsgDelMapACK::has_map_index() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
- void MsgDelMapACK::set_has_map_name() {
+ void MsgDelMapACK::set_has_map_index() {
   _has_bits_[0] |= 0x00000001u;
 }
- void MsgDelMapACK::clear_has_map_name() {
+ void MsgDelMapACK::clear_has_map_index() {
   _has_bits_[0] &= ~0x00000001u;
 }
- void MsgDelMapACK::clear_map_name() {
-  map_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_map_name();
+ void MsgDelMapACK::clear_map_index() {
+  map_index_ = GOOGLE_ULONGLONG(0);
+  clear_has_map_index();
 }
- const ::std::string& MsgDelMapACK::map_name() const {
-  // @@protoc_insertion_point(field_get:message.MsgDelMapACK.map_name)
-  return map_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+ ::google::protobuf::uint64 MsgDelMapACK::map_index() const {
+  // @@protoc_insertion_point(field_get:message.MsgDelMapACK.map_index)
+  return map_index_;
 }
- void MsgDelMapACK::set_map_name(const ::std::string& value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgDelMapACK.map_name)
-}
- void MsgDelMapACK::set_map_name(const char* value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgDelMapACK.map_name)
-}
- void MsgDelMapACK::set_map_name(const char* value, size_t size) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgDelMapACK.map_name)
-}
- ::std::string* MsgDelMapACK::mutable_map_name() {
-  set_has_map_name();
-  // @@protoc_insertion_point(field_mutable:message.MsgDelMapACK.map_name)
-  return map_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* MsgDelMapACK::release_map_name() {
-  clear_has_map_name();
-  return map_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgDelMapACK::set_allocated_map_name(::std::string* map_name) {
-  if (map_name != NULL) {
-    set_has_map_name();
-  } else {
-    clear_has_map_name();
-  }
-  map_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), map_name);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgDelMapACK.map_name)
+ void MsgDelMapACK::set_map_index(::google::protobuf::uint64 value) {
+  set_has_map_index();
+  map_index_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgDelMapACK.map_index)
 }
 
 // required .message.MapType map_type = 2 [default = OfficeMap];
@@ -3639,7 +3545,7 @@ void MsgDelMapACK::InternalSwap(MsgDelMapACK* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgSaveMapACK::kMapNameFieldNumber;
+const int MsgSaveMapACK::kMapIndexFieldNumber;
 const int MsgSaveMapACK::kSaveTypeFieldNumber;
 const int MsgSaveMapACK::kMapFieldNumber;
 const int MsgSaveMapACK::kErrorFieldNumber;
@@ -3664,9 +3570,8 @@ MsgSaveMapACK::MsgSaveMapACK(const MsgSaveMapACK& from)
 }
 
 void MsgSaveMapACK::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  map_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  map_index_ = GOOGLE_ULONGLONG(0);
   save_type_ = 1;
   map_ = NULL;
   error_ = 0;
@@ -3679,7 +3584,6 @@ MsgSaveMapACK::~MsgSaveMapACK() {
 }
 
 void MsgSaveMapACK::SharedDtor() {
-  map_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
     delete map_;
   }
@@ -3712,9 +3616,7 @@ MsgSaveMapACK* MsgSaveMapACK::New(::google::protobuf::Arena* arena) const {
 
 void MsgSaveMapACK::Clear() {
   if (_has_bits_[0 / 32] & 15) {
-    if (has_map_name()) {
-      map_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    }
+    map_index_ = GOOGLE_ULONGLONG(0);
     save_type_ = 1;
     if (has_map()) {
       if (map_ != NULL) map_->::message::CrashMapData::Clear();
@@ -3737,15 +3639,13 @@ bool MsgSaveMapACK::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string map_name = 1;
+      // required uint64 map_index = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_map_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->map_name().data(), this->map_name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "message.MsgSaveMapACK.map_name");
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &map_index_)));
+          set_has_map_index();
         } else {
           goto handle_unusual;
         }
@@ -3831,14 +3731,9 @@ failure:
 void MsgSaveMapACK::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:message.MsgSaveMapACK)
-  // required string map_name = 1;
-  if (has_map_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->map_name().data(), this->map_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "message.MsgSaveMapACK.map_name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->map_name(), output);
+  // required uint64 map_index = 1;
+  if (has_map_index()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->map_index(), output);
   }
 
   // required .message.MapType save_type = 2 [default = OfficeMap];
@@ -3869,15 +3764,9 @@ void MsgSaveMapACK::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgSaveMapACK::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:message.MsgSaveMapACK)
-  // required string map_name = 1;
-  if (has_map_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->map_name().data(), this->map_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "message.MsgSaveMapACK.map_name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->map_name(), target);
+  // required uint64 map_index = 1;
+  if (has_map_index()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->map_index(), target);
   }
 
   // required .message.MapType save_type = 2 [default = OfficeMap];
@@ -3910,11 +3799,11 @@ void MsgSaveMapACK::SerializeWithCachedSizes(
 int MsgSaveMapACK::RequiredFieldsByteSizeFallback() const {
   int total_size = 0;
 
-  if (has_map_name()) {
-    // required string map_name = 1;
+  if (has_map_index()) {
+    // required uint64 map_index = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->map_name());
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->map_index());
   }
 
   if (has_save_type()) {
@@ -3942,10 +3831,10 @@ int MsgSaveMapACK::ByteSize() const {
   int total_size = 0;
 
   if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
-    // required string map_name = 1;
+    // required uint64 map_index = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->map_name());
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->map_index());
 
     // required .message.MapType save_type = 2 [default = OfficeMap];
     total_size += 1 +
@@ -3989,9 +3878,8 @@ void MsgSaveMapACK::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgSaveMapACK::MergeFrom(const MsgSaveMapACK& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_map_name()) {
-      set_has_map_name();
-      map_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.map_name_);
+    if (from.has_map_index()) {
+      set_map_index(from.map_index());
     }
     if (from.has_save_type()) {
       set_save_type(from.save_type());
@@ -4034,7 +3922,7 @@ void MsgSaveMapACK::Swap(MsgSaveMapACK* other) {
   InternalSwap(other);
 }
 void MsgSaveMapACK::InternalSwap(MsgSaveMapACK* other) {
-  map_name_.Swap(&other->map_name_);
+  std::swap(map_index_, other->map_index_);
   std::swap(save_type_, other->save_type_);
   std::swap(map_, other->map_);
   std::swap(error_, other->error_);
@@ -4054,57 +3942,28 @@ void MsgSaveMapACK::InternalSwap(MsgSaveMapACK* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgSaveMapACK
 
-// required string map_name = 1;
- bool MsgSaveMapACK::has_map_name() const {
+// required uint64 map_index = 1;
+ bool MsgSaveMapACK::has_map_index() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
- void MsgSaveMapACK::set_has_map_name() {
+ void MsgSaveMapACK::set_has_map_index() {
   _has_bits_[0] |= 0x00000001u;
 }
- void MsgSaveMapACK::clear_has_map_name() {
+ void MsgSaveMapACK::clear_has_map_index() {
   _has_bits_[0] &= ~0x00000001u;
 }
- void MsgSaveMapACK::clear_map_name() {
-  map_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_map_name();
+ void MsgSaveMapACK::clear_map_index() {
+  map_index_ = GOOGLE_ULONGLONG(0);
+  clear_has_map_index();
 }
- const ::std::string& MsgSaveMapACK::map_name() const {
-  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.map_name)
-  return map_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+ ::google::protobuf::uint64 MsgSaveMapACK::map_index() const {
+  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.map_index)
+  return map_index_;
 }
- void MsgSaveMapACK::set_map_name(const ::std::string& value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.map_name)
-}
- void MsgSaveMapACK::set_map_name(const char* value) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgSaveMapACK.map_name)
-}
- void MsgSaveMapACK::set_map_name(const char* value, size_t size) {
-  set_has_map_name();
-  map_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgSaveMapACK.map_name)
-}
- ::std::string* MsgSaveMapACK::mutable_map_name() {
-  set_has_map_name();
-  // @@protoc_insertion_point(field_mutable:message.MsgSaveMapACK.map_name)
-  return map_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* MsgSaveMapACK::release_map_name() {
-  clear_has_map_name();
-  return map_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgSaveMapACK::set_allocated_map_name(::std::string* map_name) {
-  if (map_name != NULL) {
-    set_has_map_name();
-  } else {
-    clear_has_map_name();
-  }
-  map_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), map_name);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgSaveMapACK.map_name)
+ void MsgSaveMapACK::set_map_index(::google::protobuf::uint64 value) {
+  set_has_map_index();
+  map_index_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.map_index)
 }
 
 // required .message.MapType save_type = 2 [default = OfficeMap];

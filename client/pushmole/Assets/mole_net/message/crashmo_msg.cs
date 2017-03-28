@@ -133,12 +133,12 @@ namespace message
   {
     public MsgDelMapReq() {}
     
-    private string _map_name;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_name", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string map_name
+    private ulong _map_index;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong map_index
     {
-      get { return _map_name; }
-      set { _map_name = value; }
+      get { return _map_index; }
+      set { _map_index = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -150,12 +150,12 @@ namespace message
   {
     public MsgDelMapACK() {}
     
-    private string _map_name;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_name", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string map_name
+    private ulong _map_index;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong map_index
     {
-      get { return _map_name; }
-      set { _map_name = value; }
+      get { return _map_index; }
+      set { _map_index = value; }
     }
     private message.MapType _map_type;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"map_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -181,12 +181,12 @@ namespace message
   {
     public MsgSaveMapACK() {}
     
-    private string _map_name;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_name", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string map_name
+    private ulong _map_index;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong map_index
     {
-      get { return _map_name; }
-      set { _map_name = value; }
+      get { return _map_index; }
+      set { _map_index = value; }
     }
     private message.MapType _save_type;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"save_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

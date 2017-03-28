@@ -91,6 +91,23 @@ const MapConfig* GameConfig::getMapConfig()
 }
 
 
+void GameConfig::SetMaxMapIndex(u64 index)
+{
+	_current_max_map_index = index;
+}
+u64 GameConfig::GetMaxMapIndex()
+{
+	return _current_max_map_index;
+}
+
+u64 GameConfig::GenerateMapIndex()
+{
+	_current_max_map_index++;
+	return _current_max_map_index;
+
+}
+
+
 int GameConfig::GetServerOpenPassedTime(u32 time)
 {
 	time_t _t1 = (time_t)_server_open_time;
