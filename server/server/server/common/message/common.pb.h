@@ -445,6 +445,18 @@ class CrashMapData : public ::google::protobuf::Message {
   ::google::protobuf::int32 gold() const;
   void set_gold(::google::protobuf::int32 value);
 
+  // repeated .message.RankMapBlogEntry map_blog = 8;
+  int map_blog_size() const;
+  void clear_map_blog();
+  static const int kMapBlogFieldNumber = 8;
+  const ::message::RankMapBlogEntry& map_blog(int index) const;
+  ::message::RankMapBlogEntry* mutable_map_blog(int index);
+  ::message::RankMapBlogEntry* add_map_blog();
+  const ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >&
+      map_blog() const;
+  ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >*
+      mutable_map_blog();
+
   // @@protoc_insertion_point(class_scope:message.CrashMapData)
  private:
   inline void set_has_data();
@@ -474,6 +486,7 @@ class CrashMapData : public ::google::protobuf::Message {
   ::google::protobuf::int32 section_;
   ::google::protobuf::int32 chapter_;
   ::google::protobuf::uint64 create_time_;
+  ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry > map_blog_;
   ::google::protobuf::int32 gold_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
@@ -869,18 +882,6 @@ class CrashPlayerPublishMap : public ::google::protobuf::Message {
   ::google::protobuf::int32 map_rank() const;
   void set_map_rank(::google::protobuf::int32 value);
 
-  // repeated .message.RankMapBlogEntry map_blog = 6;
-  int map_blog_size() const;
-  void clear_map_blog();
-  static const int kMapBlogFieldNumber = 6;
-  const ::message::RankMapBlogEntry& map_blog(int index) const;
-  ::message::RankMapBlogEntry* mutable_map_blog(int index);
-  ::message::RankMapBlogEntry* add_map_blog();
-  const ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >&
-      map_blog() const;
-  ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >*
-      mutable_map_blog();
-
   // @@protoc_insertion_point(class_scope:message.CrashPlayerPublishMap)
  private:
   inline void set_has_crashmap();
@@ -904,7 +905,6 @@ class CrashPlayerPublishMap : public ::google::protobuf::Message {
   ::google::protobuf::uint64 publish_time_;
   ::google::protobuf::int32 challenge_times_;
   ::google::protobuf::int32 failed_of_challenge_times_;
-  ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry > map_blog_;
   ::google::protobuf::int32 map_rank_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
@@ -2062,6 +2062,36 @@ inline void CrashMapData::set_gold(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:message.CrashMapData.gold)
 }
 
+// repeated .message.RankMapBlogEntry map_blog = 8;
+inline int CrashMapData::map_blog_size() const {
+  return map_blog_.size();
+}
+inline void CrashMapData::clear_map_blog() {
+  map_blog_.Clear();
+}
+inline const ::message::RankMapBlogEntry& CrashMapData::map_blog(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashMapData.map_blog)
+  return map_blog_.Get(index);
+}
+inline ::message::RankMapBlogEntry* CrashMapData::mutable_map_blog(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashMapData.map_blog)
+  return map_blog_.Mutable(index);
+}
+inline ::message::RankMapBlogEntry* CrashMapData::add_map_blog() {
+  // @@protoc_insertion_point(field_add:message.CrashMapData.map_blog)
+  return map_blog_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >&
+CrashMapData::map_blog() const {
+  // @@protoc_insertion_point(field_list:message.CrashMapData.map_blog)
+  return map_blog_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >*
+CrashMapData::mutable_map_blog() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashMapData.map_blog)
+  return &map_blog_;
+}
+
 // -------------------------------------------------------------------
 
 // TaskInfo
@@ -2567,36 +2597,6 @@ inline void CrashPlayerPublishMap::set_map_rank(::google::protobuf::int32 value)
   set_has_map_rank();
   map_rank_ = value;
   // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.map_rank)
-}
-
-// repeated .message.RankMapBlogEntry map_blog = 6;
-inline int CrashPlayerPublishMap::map_blog_size() const {
-  return map_blog_.size();
-}
-inline void CrashPlayerPublishMap::clear_map_blog() {
-  map_blog_.Clear();
-}
-inline const ::message::RankMapBlogEntry& CrashPlayerPublishMap::map_blog(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.map_blog)
-  return map_blog_.Get(index);
-}
-inline ::message::RankMapBlogEntry* CrashPlayerPublishMap::mutable_map_blog(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashPlayerPublishMap.map_blog)
-  return map_blog_.Mutable(index);
-}
-inline ::message::RankMapBlogEntry* CrashPlayerPublishMap::add_map_blog() {
-  // @@protoc_insertion_point(field_add:message.CrashPlayerPublishMap.map_blog)
-  return map_blog_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >&
-CrashPlayerPublishMap::map_blog() const {
-  // @@protoc_insertion_point(field_list:message.CrashPlayerPublishMap.map_blog)
-  return map_blog_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >*
-CrashPlayerPublishMap::mutable_map_blog() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerPublishMap.map_blog)
-  return &map_blog_;
 }
 
 // -------------------------------------------------------------------

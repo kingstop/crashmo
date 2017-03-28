@@ -37,7 +37,9 @@ void Session::registerPBCall()
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqLoadTaskConfigs), &Session::parseReqLoadTaskConfigs);
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqModifyTaskInfo), &Session::parseReqModifyTaskInfo);
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqPassOfficilMap), &Session::parsePassOfficilGame);
-
+	registerCBFun(PROTOCO_NAME(message::MsgC2SReqPlayerPublishMap), &Session::parseReqPlayerPublishMap);
+	registerCBFun(PROTOCO_NAME(message::MsgC2SReqPublishMapList), &Session::parseReqPublishMapList);
+	registerCBFun(PROTOCO_NAME(message::MsgC2SReqAddMapBolg), &Session::parseAddGameBlog)
 }
 
 void Session::parsePBMessage(google::protobuf::Message* p)
@@ -216,7 +218,12 @@ void Session::parseModifySectionName(google::protobuf::Message* p)
 
 void Session::parseReqPublishMapList(google::protobuf::Message* p)
 {
+	if (_player != NULL)
+	{
+		message::MsgC2SReqPublishMapList* msg = (message::MsgC2SReqPublishMapList*)p;
+		gRankMapManager.ReqPublishMapList(msg, this);
 
+	}
 }
 
 void Session::parseSaveMap(google::protobuf::Message* p)

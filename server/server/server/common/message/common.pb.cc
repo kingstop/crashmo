@@ -99,7 +99,7 @@ void protobuf_AssignDesc_common_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashmoMapBaseData, _internal_metadata_),
       -1);
   CrashMapData_descriptor_ = file->message_type(2);
-  static const int CrashMapData_offsets_[7] = {
+  static const int CrashMapData_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, data_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, mapname_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, creatername_),
@@ -107,6 +107,7 @@ void protobuf_AssignDesc_common_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, chapter_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, create_time_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, gold_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashMapData, map_blog_),
   };
   CrashMapData_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -158,13 +159,12 @@ void protobuf_AssignDesc_common_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RankMapBlogEntry, _internal_metadata_),
       -1);
   CrashPlayerPublishMap_descriptor_ = file->message_type(5);
-  static const int CrashPlayerPublishMap_offsets_[6] = {
+  static const int CrashPlayerPublishMap_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, crashmap_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, publish_time_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, challenge_times_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, failed_of_challenge_times_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, map_rank_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashPlayerPublishMap, map_blog_),
   };
   CrashPlayerPublishMap_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -354,21 +354,21 @@ void protobuf_AddDesc_common_2eproto() {
     "\004data\030\001 \003(\005\"m\n\022CrashmoMapBaseData\022\r\n\005wid"
     "th\030\001 \002(\005\022\016\n\006height\030\002 \002(\005\022%\n\010map_data\030\003 \003"
     "(\0132\023.message.int32array\022\021\n\tmap_index\030\005 \002"
-    "(\004\"\244\001\n\014CrashMapData\022)\n\004Data\030\001 \002(\0132\033.mess"
+    "(\004\"\321\001\n\014CrashMapData\022)\n\004Data\030\001 \002(\0132\033.mess"
     "age.CrashmoMapBaseData\022\017\n\007MapName\030\002 \002(\t\022"
     "\023\n\013CreaterName\030\003 \002(\t\022\017\n\007Section\030\004 \002(\005\022\017\n"
     "\007Chapter\030\005 \002(\005\022\023\n\013create_time\030\006 \002(\004\022\014\n\004g"
-    "old\030\007 \002(\005\"k\n\010TaskInfo\022\017\n\007task_id\030\001 \002(\005\022\016"
-    "\n\006argu_1\030\002 \002(\005\022\016\n\006argu_2\030\003 \002(\005\022\016\n\006argu_3"
-    "\030\004 \002(\005\022\020\n\010describe\030\005 \002(\t\022\014\n\004name\030\006 \002(\t\"L"
-    "\n\020RankMapBlogEntry\022\013\n\003acc\030\001 \002(\004\022\014\n\004name\030"
-    "\002 \002(\t\022\017\n\007sugges_\030\003 \002(\t\022\014\n\004time\030\004 \002(\005\"\321\001\n"
-    "\025CrashPlayerPublishMap\022\'\n\010crashmap\030\001 \002(\013"
-    "2\025.message.CrashMapData\022\024\n\014publish_time\030"
-    "\002 \002(\004\022\027\n\017challenge_times\030\003 \002(\005\022!\n\031failed"
-    "_of_challenge_times\030\004 \002(\005\022\020\n\010map_rank\030\005 "
-    "\002(\005\022+\n\010map_blog\030\006 \003(\0132\031.message.RankMapB"
-    "logEntry\"-\n\007intPair\022\020\n\010number_1\030\001 \002(\005\022\020\n"
+    "old\030\007 \002(\005\022+\n\010map_blog\030\010 \003(\0132\031.message.Ra"
+    "nkMapBlogEntry\"k\n\010TaskInfo\022\017\n\007task_id\030\001 "
+    "\002(\005\022\016\n\006argu_1\030\002 \002(\005\022\016\n\006argu_2\030\003 \002(\005\022\016\n\006a"
+    "rgu_3\030\004 \002(\005\022\020\n\010describe\030\005 \002(\t\022\014\n\004name\030\006 "
+    "\002(\t\"L\n\020RankMapBlogEntry\022\013\n\003acc\030\001 \002(\004\022\014\n\004"
+    "name\030\002 \002(\t\022\017\n\007sugges_\030\003 \002(\t\022\014\n\004time\030\004 \002("
+    "\005\"\244\001\n\025CrashPlayerPublishMap\022\'\n\010crashmap\030"
+    "\001 \002(\0132\025.message.CrashMapData\022\024\n\014publish_"
+    "time\030\002 \002(\004\022\027\n\017challenge_times\030\003 \002(\005\022!\n\031f"
+    "ailed_of_challenge_times\030\004 \002(\005\022\020\n\010map_ra"
+    "nk\030\005 \002(\005\"-\n\007intPair\022\020\n\010number_1\030\001 \002(\005\022\020\n"
     "\010number_2\030\002 \002(\005\"\304\003\n\017CrashPlayerInfo\022\017\n\007a"
     "ccount\030\001 \002(\004\022\'\n\rpassed_record\030\002 \003(\0132\020.me"
     "ssage.intPair\022\014\n\004name\030\003 \002(\t\022,\n\rIncomplet"
@@ -1263,6 +1263,7 @@ const int CrashMapData::kSectionFieldNumber;
 const int CrashMapData::kChapterFieldNumber;
 const int CrashMapData::kCreateTimeFieldNumber;
 const int CrashMapData::kGoldFieldNumber;
+const int CrashMapData::kMapBlogFieldNumber;
 #endif  // !_MSC_VER
 
 CrashMapData::CrashMapData()
@@ -1344,7 +1345,7 @@ void CrashMapData::Clear() {
 } while (0)
 
   if (_has_bits_[0 / 32] & 127) {
-    ZR_(section_, gold_);
+    ZR_(section_, create_time_);
     if (has_data()) {
       if (data_ != NULL) data_->::message::CrashmoMapBaseData::Clear();
     }
@@ -1354,11 +1355,13 @@ void CrashMapData::Clear() {
     if (has_creatername()) {
       creatername_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
+    gold_ = 0;
   }
 
 #undef ZR_HELPER_
 #undef ZR_
 
+  map_blog_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->Clear();
@@ -1477,6 +1480,20 @@ bool CrashMapData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(66)) goto parse_map_blog;
+        break;
+      }
+
+      // repeated .message.RankMapBlogEntry map_blog = 8;
+      case 8: {
+        if (tag == 66) {
+         parse_map_blog:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_map_blog()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(66)) goto parse_map_blog;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1552,6 +1569,12 @@ void CrashMapData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->gold(), output);
   }
 
+  // repeated .message.RankMapBlogEntry map_blog = 8;
+  for (unsigned int i = 0, n = this->map_blog_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      8, this->map_blog(i), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1609,6 +1632,13 @@ void CrashMapData::SerializeWithCachedSizes(
   // required int32 gold = 7;
   if (has_gold()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->gold(), target);
+  }
+
+  // repeated .message.RankMapBlogEntry map_blog = 8;
+  for (unsigned int i = 0, n = this->map_blog_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        8, this->map_blog(i), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1715,6 +1745,14 @@ int CrashMapData::ByteSize() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
+  // repeated .message.RankMapBlogEntry map_blog = 8;
+  total_size += 1 * this->map_blog_size();
+  for (int i = 0; i < this->map_blog_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->map_blog(i));
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1740,6 +1778,7 @@ void CrashMapData::MergeFrom(const ::google::protobuf::Message& from) {
 
 void CrashMapData::MergeFrom(const CrashMapData& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  map_blog_.MergeFrom(from.map_blog_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_data()) {
       mutable_data()->::message::CrashmoMapBaseData::MergeFrom(from.data());
@@ -1788,6 +1827,7 @@ bool CrashMapData::IsInitialized() const {
   if (has_data()) {
     if (!this->data_->IsInitialized()) return false;
   }
+  if (!::google::protobuf::internal::AllAreInitialized(this->map_blog())) return false;
   return true;
 }
 
@@ -1803,6 +1843,7 @@ void CrashMapData::InternalSwap(CrashMapData* other) {
   std::swap(chapter_, other->chapter_);
   std::swap(create_time_, other->create_time_);
   std::swap(gold_, other->gold_);
+  map_blog_.UnsafeArenaSwap(&other->map_blog_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -2062,6 +2103,36 @@ void CrashMapData::InternalSwap(CrashMapData* other) {
   set_has_gold();
   gold_ = value;
   // @@protoc_insertion_point(field_set:message.CrashMapData.gold)
+}
+
+// repeated .message.RankMapBlogEntry map_blog = 8;
+ int CrashMapData::map_blog_size() const {
+  return map_blog_.size();
+}
+ void CrashMapData::clear_map_blog() {
+  map_blog_.Clear();
+}
+ const ::message::RankMapBlogEntry& CrashMapData::map_blog(int index) const {
+  // @@protoc_insertion_point(field_get:message.CrashMapData.map_blog)
+  return map_blog_.Get(index);
+}
+ ::message::RankMapBlogEntry* CrashMapData::mutable_map_blog(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CrashMapData.map_blog)
+  return map_blog_.Mutable(index);
+}
+ ::message::RankMapBlogEntry* CrashMapData::add_map_blog() {
+  // @@protoc_insertion_point(field_add:message.CrashMapData.map_blog)
+  return map_blog_.Add();
+}
+ const ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >&
+CrashMapData::map_blog() const {
+  // @@protoc_insertion_point(field_list:message.CrashMapData.map_blog)
+  return map_blog_;
+}
+ ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >*
+CrashMapData::mutable_map_blog() {
+  // @@protoc_insertion_point(field_mutable_list:message.CrashMapData.map_blog)
+  return &map_blog_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -3365,7 +3436,6 @@ const int CrashPlayerPublishMap::kPublishTimeFieldNumber;
 const int CrashPlayerPublishMap::kChallengeTimesFieldNumber;
 const int CrashPlayerPublishMap::kFailedOfChallengeTimesFieldNumber;
 const int CrashPlayerPublishMap::kMapRankFieldNumber;
-const int CrashPlayerPublishMap::kMapBlogFieldNumber;
 #endif  // !_MSC_VER
 
 CrashPlayerPublishMap::CrashPlayerPublishMap()
@@ -3442,17 +3512,15 @@ void CrashPlayerPublishMap::Clear() {
 } while (0)
 
   if (_has_bits_[0 / 32] & 31) {
-    ZR_(publish_time_, failed_of_challenge_times_);
+    ZR_(publish_time_, map_rank_);
     if (has_crashmap()) {
       if (crashmap_ != NULL) crashmap_->::message::CrashMapData::Clear();
     }
-    map_rank_ = 0;
   }
 
 #undef ZR_HELPER_
 #undef ZR_
 
-  map_blog_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->Clear();
@@ -3537,20 +3605,6 @@ bool CrashPlayerPublishMap::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_map_blog;
-        break;
-      }
-
-      // repeated .message.RankMapBlogEntry map_blog = 6;
-      case 6: {
-        if (tag == 50) {
-         parse_map_blog:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_map_blog()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(50)) goto parse_map_blog;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -3606,12 +3660,6 @@ void CrashPlayerPublishMap::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->map_rank(), output);
   }
 
-  // repeated .message.RankMapBlogEntry map_blog = 6;
-  for (unsigned int i = 0, n = this->map_blog_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->map_blog(i), output);
-  }
-
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -3647,13 +3695,6 @@ void CrashPlayerPublishMap::SerializeWithCachedSizes(
   // required int32 map_rank = 5;
   if (has_map_rank()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->map_rank(), target);
-  }
-
-  // repeated .message.RankMapBlogEntry map_blog = 6;
-  for (unsigned int i = 0, n = this->map_blog_size(); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        6, this->map_blog(i), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3736,14 +3777,6 @@ int CrashPlayerPublishMap::ByteSize() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  // repeated .message.RankMapBlogEntry map_blog = 6;
-  total_size += 1 * this->map_blog_size();
-  for (int i = 0; i < this->map_blog_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->map_blog(i));
-  }
-
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -3769,7 +3802,6 @@ void CrashPlayerPublishMap::MergeFrom(const ::google::protobuf::Message& from) {
 
 void CrashPlayerPublishMap::MergeFrom(const CrashPlayerPublishMap& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  map_blog_.MergeFrom(from.map_blog_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_crashmap()) {
       mutable_crashmap()->::message::CrashMapData::MergeFrom(from.crashmap());
@@ -3810,7 +3842,6 @@ bool CrashPlayerPublishMap::IsInitialized() const {
   if (has_crashmap()) {
     if (!this->crashmap_->IsInitialized()) return false;
   }
-  if (!::google::protobuf::internal::AllAreInitialized(this->map_blog())) return false;
   return true;
 }
 
@@ -3824,7 +3855,6 @@ void CrashPlayerPublishMap::InternalSwap(CrashPlayerPublishMap* other) {
   std::swap(challenge_times_, other->challenge_times_);
   std::swap(failed_of_challenge_times_, other->failed_of_challenge_times_);
   std::swap(map_rank_, other->map_rank_);
-  map_blog_.UnsafeArenaSwap(&other->map_blog_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -3978,36 +4008,6 @@ void CrashPlayerPublishMap::InternalSwap(CrashPlayerPublishMap* other) {
   set_has_map_rank();
   map_rank_ = value;
   // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.map_rank)
-}
-
-// repeated .message.RankMapBlogEntry map_blog = 6;
- int CrashPlayerPublishMap::map_blog_size() const {
-  return map_blog_.size();
-}
- void CrashPlayerPublishMap::clear_map_blog() {
-  map_blog_.Clear();
-}
- const ::message::RankMapBlogEntry& CrashPlayerPublishMap::map_blog(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.map_blog)
-  return map_blog_.Get(index);
-}
- ::message::RankMapBlogEntry* CrashPlayerPublishMap::mutable_map_blog(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashPlayerPublishMap.map_blog)
-  return map_blog_.Mutable(index);
-}
- ::message::RankMapBlogEntry* CrashPlayerPublishMap::add_map_blog() {
-  // @@protoc_insertion_point(field_add:message.CrashPlayerPublishMap.map_blog)
-  return map_blog_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >&
-CrashPlayerPublishMap::map_blog() const {
-  // @@protoc_insertion_point(field_list:message.CrashPlayerPublishMap.map_blog)
-  return map_blog_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >*
-CrashPlayerPublishMap::mutable_map_blog() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerPublishMap.map_blog)
-  return &map_blog_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

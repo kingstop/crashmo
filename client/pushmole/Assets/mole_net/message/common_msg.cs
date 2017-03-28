@@ -119,6 +119,13 @@ namespace message
       get { return _gold; }
       set { _gold = value; }
     }
+    private readonly global::System.Collections.Generic.List<message.RankMapBlogEntry> _map_blog = new global::System.Collections.Generic.List<message.RankMapBlogEntry>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"map_blog", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.RankMapBlogEntry> map_blog
+    {
+      get { return _map_blog; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -254,13 +261,6 @@ namespace message
       get { return _map_rank; }
       set { _map_rank = value; }
     }
-    private readonly global::System.Collections.Generic.List<message.RankMapBlogEntry> _map_blog = new global::System.Collections.Generic.List<message.RankMapBlogEntry>();
-    [global::ProtoBuf.ProtoMember(6, Name=@"map_blog", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<message.RankMapBlogEntry> map_blog
-    {
-      get { return _map_blog; }
-    }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

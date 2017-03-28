@@ -22,6 +22,7 @@ message CrashMapData
 	required int32 Chapter = 5;
 	required uint64 create_time = 6;
 	required int32 gold = 7;
+	repeated RankMapBlogEntry map_blog = 8;
 }
 
 message TaskInfo
@@ -49,8 +50,7 @@ message CrashPlayerPublishMap
 	required uint64 publish_time = 2;
 	required int32 challenge_times = 3;
 	required int32 failed_of_challenge_times = 4;
-	required int32 map_rank = 5;
-	repeated RankMapBlogEntry map_blog = 6;
+	required int32 map_rank = 5;	
 }
 
 message intPair
