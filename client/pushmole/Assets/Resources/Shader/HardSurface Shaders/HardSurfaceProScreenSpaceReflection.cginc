@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 //Hard Surface Shader Package, Written for the Unity engine by Bruno Rime: http://www.behance.net/brunorime brunorime@gmail.com
@@ -32,7 +34,7 @@ struct v2f
                 {
                     v2f o;
 					
-					o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+					o.pos = UnityObjectToClipPos (v.vertex);
 					o.vertworldpos = mul(unity_ObjectToWorld, v.vertex).xyz;
 					//o.viewDir.xzy = ObjSpaceViewDir(v.vertex);
 					
