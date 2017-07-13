@@ -181,29 +181,22 @@ namespace message
   {
     public MsgSaveMapACK() {}
     
-    private ulong _map_index;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public ulong map_index
-    {
-      get { return _map_index; }
-      set { _map_index = value; }
-    }
     private message.MapType _save_type;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"save_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"save_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public message.MapType save_type
     {
       get { return _save_type; }
       set { _save_type = value; }
     }
     private message.CrashMapData _map;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public message.CrashMapData map
     {
       get { return _map; }
       set { _map = value; }
     }
     private message.ServerError _error;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public message.ServerError error
     {
       get { return _error; }

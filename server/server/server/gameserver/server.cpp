@@ -203,7 +203,7 @@ bool GameServer::initDataFromCharacterDB(DBQuery* p, const void* data)
 	if (!p)
 	{
 		DBQuery& query = *p;
-		query << "select * from `crash_global`;";
+		query << "select max(index_map) from `player_map`;";
 		query.parse();
 		SDBResult sResult = query.store();
 		int count = sResult.size();
@@ -211,8 +211,11 @@ bool GameServer::initDataFromCharacterDB(DBQuery* p, const void* data)
 		{
 			DBRow row = sResult[0];
 
-			u64 max_map_index = row["current_map_index"];
-			gGameConfig.SetMaxMapIndex(max_map_index);
+			u64 max_map_index = row["index_map"];
+			if (gGameConfig.GetMaxMapIndex() < max_map_index)
+			{
+				gGameConfig.SetMaxMapIndex(max_map_index);
+			}			
 		}
 
 		return false;

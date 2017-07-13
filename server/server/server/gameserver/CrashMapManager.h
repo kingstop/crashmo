@@ -12,8 +12,9 @@ public:
 	CrashMapManager();
 	virtual ~CrashMapManager();
 public:
-	const message::CrashMapData* CreateCrashMap(const message::CrashMapData* map);
-	const message::CrashMapData* GetCrashMap(u64 map_index);
+	message::CrashMapData* CreateCrashMap(const message::CrashMapData* map);
+	message::CrashMapData* GetCrashMap(u64 map_index);
+	void AddCrashMap(message::CrashMapData& map);
 	bool DelCrashMap(u64 map_index);
 protected:
 	CRASHMAPS _maps;

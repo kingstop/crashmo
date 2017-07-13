@@ -52,7 +52,6 @@ void GameSession::parseWorldDatabaseSql(google::protobuf::Message* p, pb_flag_ty
 {
 	message::gs2dbWorldDatabaseSql* msg = (message::gs2dbWorldDatabaseSql*)p;
 	gDBQuestMgr.worldDatabaseSql(msg->sql().c_str());
-
 }
 
 void GameSession::parseReqSaveCharacterData(google::protobuf::Message* p, pb_flag_type flag)

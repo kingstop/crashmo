@@ -143,9 +143,9 @@ public class MainPanel : MonoBehaviour
 
             if(_current_page == page_type.page_type_self_incomplete || _current_page == page_type.page_type_self_complete)
             {
-                foreach (CrashMapData entry in global_instance.Instance._player.GetInfo().CompleteMap)
+                foreach (ulong map_index in global_instance.Instance._player.GetInfo().CompleteMap)
                 {
-                    if (entry.Data.map_index == _current_map_index)
+                    if (map_index == _current_map_index)
                     {
                         MapData = entry;
                         break;

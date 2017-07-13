@@ -78,7 +78,7 @@ void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
 	temp_data = map_temp->data().SerializeAsString();
 	int temp_number = map_temp->section();
 	std::string create_time = get_time(map_temp->create_time());
-	sprintf(sql, "(%d, '%s', '%s', '%s', '%s', %d, %d)",0, map_temp->creatername().c_str(),
+	sprintf(sql, "(%d, '%s', '%s', '%s', '%s', %d, %d)", 0, map_temp->creatername().c_str(),
 		map_temp->mapname().c_str(), 
 		base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size()).c_str(), 
 		create_time.c_str(), 
@@ -91,6 +91,7 @@ void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
 
 void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 {
+	/*
 	message::CrashPlayerInfo* playerInfo = msg->mutable_data();
 	account_type acc_temp = playerInfo->account();
 	char sql[4096];
@@ -135,14 +136,17 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		{
 			temp_sql_replace += ",";
 		}
-		const message::CrashMapData Data = playerInfo->completemap(i);
-		std::string create_time = get_time(Data.create_time());
-		temp_data = Data.data().SerializeAsString();
+
+		u64 map_index = playerInfo->completemap(i);
+		message::CrashMapData* DataMap = gCrashMapManager.GetCrashMap(map_index);
+		//const message::CrashMapData Data = playerInfo->completemap(i);
+		std::string create_time = get_time(DataMap->create_time());
+		temp_data = DataMap->data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
 
-		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp, Data.creatername().c_str(),
-			Data.mapname().c_str(), temp_data.c_str(),
-			create_time.c_str(), 1, Data.gold());
+		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", DataMap->data().map_index(), acc_temp, DataMap->creatername().c_str(),
+			DataMap->mapname().c_str(), temp_data.c_str(),
+			create_time.c_str(), 1, DataMap->gold());
 		temp_sql_replace += sql;
 	}
 
@@ -158,19 +162,21 @@ void DBQuestManager::saveCharacterInfo(message::ReqSaveCharacterData* msg)
 		{
 			temp_sql_replace += ",";
 		}
-		const message::CrashMapData Data = playerInfo->incompletemap(i);
-		std::string create_time = get_time(Data.create_time());
-		temp_data = Data.data().SerializeAsString();
+		u64 map_index = playerInfo->incompletemap(i);
+		message::CrashMapData* DataMap = gCrashMapManager.GetCrashMap(map_index);
+		//const message::CrashMapData Data = playerInfo->incompletemap(i);
+		std::string create_time = get_time(DataMap->create_time());
+		temp_data = DataMap->data().SerializeAsString();
 		temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
-		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", Data.data().map_index(), acc_temp,Data.creatername().c_str(),
-			Data.mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0, Data.gold());
+		sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', '%s', %d, %d )", DataMap->data().map_index(), acc_temp, DataMap->creatername().c_str(),
+			DataMap->mapname().c_str(), temp_data.c_str(), create_time.c_str(), 0, DataMap->gold());
 		temp_sql_replace += sql;
 	}
 	if (need_save)
 	{
 		gDBCharDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, temp_sql_replace.c_str(), &parms, NULL, _QUERY_SAVE_PLAYER_);
 	}
-	
+	*/
 
 
 }
@@ -286,14 +292,7 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 			{
 				DBRow row_map = sResult[i];
 				bool is_complete = (bool)row_map["is_complete"];
-				if (is_complete)
-				{
-					map_data = info->add_completemap();
-				}
-				else
-				{
-					map_data = info->add_incompletemap();
-				}
+
 				map_data->set_mapname(row_map["map_name"].c_str());
 				map_data->set_chapter(0);
 				map_data->set_section(0);
@@ -305,6 +304,14 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 				std::string data_temp = row_map["map_data"].c_str();
 				baseinfo->ParseFromString(base64_decode(data_temp));
 				baseinfo->set_map_index(row_map["index_map"]);
+				if (is_complete)
+				{
+					info->add_completemap(baseinfo->map_index());
+				}
+				else
+				{
+					info->add_incompletemap(baseinfo->map_index());
+				}
 			}
 		}
 		gDBGameManager.sendMessage(&msg, pkParm->tranid_, pkParm->gsid_);

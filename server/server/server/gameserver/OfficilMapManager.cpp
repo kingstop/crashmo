@@ -25,7 +25,7 @@ void OfficilMapManager::init(DBQuery* p)
 	if (p)
 	{
 		DBQuery& query = *p;
-		query << "select *,UNIX_TIMESTAMP(`create_time`) from `offical_map`;";
+		query << "select *,UNIX_TIMESTAMP(`create_time`) from `offical_map` where `section`!=0 and `chapter`!=0 and `is_complete`!=0;";
 		query.parse();
 		SDBResult sResult = query.store();
 		int count = sResult.size();
@@ -47,10 +47,16 @@ void OfficilMapManager::init(DBQuery* p)
 			OFFICILMAPLIST::iterator it = _officilmap.find(temp_map.chapter());
 			if (it == _officilmap.end())
 			{
-				std::map<int, message::CrashMapData> map_temp;				
+				std::map<int, u64> map_temp;				
 				_officilmap[temp_map.chapter()] = map_temp;
 			}
-			_officilmap[temp_map.chapter()][temp_map.section()] = temp_map;		
+			_officilmap[temp_map.chapter()][temp_map.section()] = temp_map.data().map_index();		
+			u64 current_map_index = temp_map.data().map_index();
+			if (gGameConfig.GetMaxMapIndex() < current_map_index)
+			{
+				gGameConfig.SetMaxMapIndex(current_map_index);
+			}
+			gCrashMapManager.AddCrashMap(temp_map);
 		}
 
 		query.reset();

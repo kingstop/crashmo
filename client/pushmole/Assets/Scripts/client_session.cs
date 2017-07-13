@@ -132,12 +132,12 @@ public class client_session
             {
                 case MapType.CompleteMap:
                     {
-                        player_info.CompleteMap.Add(msg.map);
+                        player_info.CompleteMap.Add(msg.map.Data.map_index);
                     }
                     break;
                 case MapType.ImcompleteMap:
                     {
-                        player_info.IncompleteMap.Add(msg.map);
+                        player_info.IncompleteMap.Add(msg.map.Data.map_index);
                     }
                     break;
                 case MapType.OfficeMap:
@@ -156,7 +156,8 @@ public class client_session
     private bool DelMap(System.IO.MemoryStream stream)
     {
         MsgDelMapACK msg = ProtoBuf.Serializer.Deserialize<MsgDelMapACK>(stream);
-        global_instance.Instance._player.delMap(msg.map_type, msg.map_name);           
+        
+        global_instance.Instance._player.delMap(msg.map_type, msg.map_index);           
         return true;
     }
 

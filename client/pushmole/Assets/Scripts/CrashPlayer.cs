@@ -68,17 +68,17 @@ public class CrashPlayer
         }
     }
 
-    public void delMap(MapType type, string name)
+    public void delMap(MapType type, ulong map_index)
     {
         switch(type)
         {
             case MapType.CompleteMap:
                 {
-                    foreach(CrashMapData entry in _info.CompleteMap)
+                    foreach(ulong entry_long in _info.CompleteMap)
                     {
-                        if(entry.MapName == name)
+                        if(map_index == entry_long)
                         {
-                            _info.CompleteMap.Remove(entry);
+                            _info.CompleteMap.Remove(map_index);
                             break;
                         }
                     }
@@ -87,11 +87,11 @@ public class CrashPlayer
                 break;
             case MapType.ImcompleteMap:
                 {
-                    foreach(CrashMapData entry in _info.IncompleteMap)
+                    foreach(ulong entry_long in _info.IncompleteMap)
                     {
-                        if (entry.MapName == name)
+                        if (entry_long == map_index)
                         {
-                            _info.CompleteMap.Remove(entry);
+                            _info.CompleteMap.Remove(entry_long);
                             break;
                         }
                     }
@@ -103,7 +103,7 @@ public class CrashPlayer
                     {
                         foreach(KeyValuePair<int, CrashMapData> key_entry in list_entry.Value)
                         {
-                            if(key_entry.Value.MapName == name)
+                            if(key_entry.Value.Data.map_index == map_index)
                             {
                                 list_entry.Value.Remove(key_entry.Key);
                                 break;
