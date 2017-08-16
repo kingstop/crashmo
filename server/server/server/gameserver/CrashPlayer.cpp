@@ -33,7 +33,6 @@ void CrashPlayer::LoadConfig()
 		message::intPair* pair_entry = resources->Add();
 		pair_entry->set_number_1(const_it->first);
 		pair_entry->set_number_2(const_it->second);
-
 	}
 	_info.set_gold(config->gold_);
 	_info.set_map_count(config->config_count_);
@@ -215,6 +214,7 @@ void CrashPlayer::PassOfficilMap(int chapter_id, int section_id, int use_step, i
 					}
 					else 
 					{
+
 						if (reward_config.resource_type() == message::ResourceType_gold)
 						{
 							int temp_gold = _info.gold() + reward_config.count();
