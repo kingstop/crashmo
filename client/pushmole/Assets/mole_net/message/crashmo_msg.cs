@@ -104,6 +104,54 @@ namespace message
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgLoadUserMapReq")]
+  public partial class MsgLoadUserMapReq : global::ProtoBuf.IExtensible
+  {
+    public MsgLoadUserMapReq() {}
+    
+    private readonly global::System.Collections.Generic.List<ulong> _map_indexes = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"map_indexes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> map_indexes
+    {
+      get { return _map_indexes; }
+    }
+  
+    private int _map_count;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"map_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int map_count
+    {
+      get { return _map_count; }
+      set { _map_count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgLoadUserMapACK")]
+  public partial class MsgLoadUserMapACK : global::ProtoBuf.IExtensible
+  {
+    public MsgLoadUserMapACK() {}
+    
+    private readonly global::System.Collections.Generic.List<message.CrashMapData> _maps = new global::System.Collections.Generic.List<message.CrashMapData>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"maps", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<message.CrashMapData> maps
+    {
+      get { return _maps; }
+    }
+  
+    private bool _end;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"end", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool end
+    {
+      get { return _end; }
+      set { _end = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgSaveMapReq")]
   public partial class MsgSaveMapReq : global::ProtoBuf.IExtensible
   {

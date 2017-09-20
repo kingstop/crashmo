@@ -140,35 +140,7 @@ public class MainPanel : MonoBehaviour
         CrashMapData MapData = null;
         if (_current_map_index != 0)
         {
-
-            if(_current_page == page_type.page_type_self_incomplete || _current_page == page_type.page_type_self_complete)
-            {
-                foreach (ulong map_index in global_instance.Instance._player.GetInfo().CompleteMap)
-                {
-                    if (map_index == _current_map_index)
-                    {
-                        MapData = entry;
-                        break;
-                    }
-                }
-
-                if (MapData == null)
-                {
-                    foreach (CrashMapData entry in global_instance.Instance._player.GetInfo().IncompleteMap)
-                    {
-                        if (entry.Data.map_index == _current_map_index)
-                        {
-                            MapData = entry;
-                            break;
-                        }
-                    }
-                }
-            }
-            else if(_current_page == page_type.page_type_official)
-            {
-                MapData = global_instance.Instance._officilMapManager.getOfficilMap(_chapter_id, (int)_current_map_index);
-            }
-            
+            MapData = global_instance.Instance._player.getUserMap(_current_map_index);
         }
         return MapData;
     }
@@ -221,8 +193,9 @@ public class MainPanel : MonoBehaviour
     {
         SelfButtonChange(true);
         CrashPlayerInfo Info = global_instance.Instance._player.GetInfo();
-        foreach (CrashMapData entry in Info.CompleteMap)
+        foreach (ulong id in Info.CompleteMap)
         {
+            CrashMapData entry =global_instance.Instance._player.getUserMap(id);
             addItem(entry);
         }
     }
@@ -231,8 +204,9 @@ public class MainPanel : MonoBehaviour
     {
         SelfButtonChange(true);
         CrashPlayerInfo Info = global_instance.Instance._player.GetInfo();
-        foreach (CrashMapData entry in Info.IncompleteMap)
+        foreach (ulong id in Info.IncompleteMap)
         {
+            CrashMapData entry = global_instance.Instance._player.getUserMap(id);
             addItem(entry);
         }
     }

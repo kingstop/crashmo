@@ -18,11 +18,13 @@ message gs2dbDelOfficileReq
 message gs2dbSaveOfficileMapReq
 {
 	required CrashMapData data = 1;
+	required uint64 account = 2;
 }
 
 message CharacterDataACK
 {
 	required CrashPlayerInfo data = 1;
+	repeated CrashMapData maps = 2;
 }
 
 message ReqSaveCharacterData

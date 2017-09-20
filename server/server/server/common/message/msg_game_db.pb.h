@@ -403,15 +403,28 @@ class gs2dbSaveOfficileMapReq : public ::google::protobuf::Message {
   ::message::CrashMapData* release_data();
   void set_allocated_data(::message::CrashMapData* data);
 
+  // required uint64 account = 2;
+  bool has_account() const;
+  void clear_account();
+  static const int kAccountFieldNumber = 2;
+  ::google::protobuf::uint64 account() const;
+  void set_account(::google::protobuf::uint64 value);
+
   // @@protoc_insertion_point(class_scope:message.gs2dbSaveOfficileMapReq)
  private:
   inline void set_has_data();
   inline void clear_has_data();
+  inline void set_has_account();
+  inline void clear_has_account();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::message::CrashMapData* data_;
+  ::google::protobuf::uint64 account_;
   friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
   friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
   friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
@@ -494,6 +507,18 @@ class CharacterDataACK : public ::google::protobuf::Message {
   ::message::CrashPlayerInfo* release_data();
   void set_allocated_data(::message::CrashPlayerInfo* data);
 
+  // repeated .message.CrashMapData maps = 2;
+  int maps_size() const;
+  void clear_maps();
+  static const int kMapsFieldNumber = 2;
+  const ::message::CrashMapData& maps(int index) const;
+  ::message::CrashMapData* mutable_maps(int index);
+  ::message::CrashMapData* add_maps();
+  const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+      maps() const;
+  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+      mutable_maps();
+
   // @@protoc_insertion_point(class_scope:message.CharacterDataACK)
  private:
   inline void set_has_data();
@@ -503,6 +528,7 @@ class CharacterDataACK : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::message::CrashPlayerInfo* data_;
+  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > maps_;
   friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
   friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
   friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
@@ -1136,6 +1162,30 @@ inline void gs2dbSaveOfficileMapReq::set_allocated_data(::message::CrashMapData*
   // @@protoc_insertion_point(field_set_allocated:message.gs2dbSaveOfficileMapReq.data)
 }
 
+// required uint64 account = 2;
+inline bool gs2dbSaveOfficileMapReq::has_account() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void gs2dbSaveOfficileMapReq::set_has_account() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void gs2dbSaveOfficileMapReq::clear_has_account() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void gs2dbSaveOfficileMapReq::clear_account() {
+  account_ = GOOGLE_ULONGLONG(0);
+  clear_has_account();
+}
+inline ::google::protobuf::uint64 gs2dbSaveOfficileMapReq::account() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbSaveOfficileMapReq.account)
+  return account_;
+}
+inline void gs2dbSaveOfficileMapReq::set_account(::google::protobuf::uint64 value) {
+  set_has_account();
+  account_ = value;
+  // @@protoc_insertion_point(field_set:message.gs2dbSaveOfficileMapReq.account)
+}
+
 // -------------------------------------------------------------------
 
 // CharacterDataACK
@@ -1181,6 +1231,36 @@ inline void CharacterDataACK::set_allocated_data(::message::CrashPlayerInfo* dat
     clear_has_data();
   }
   // @@protoc_insertion_point(field_set_allocated:message.CharacterDataACK.data)
+}
+
+// repeated .message.CrashMapData maps = 2;
+inline int CharacterDataACK::maps_size() const {
+  return maps_.size();
+}
+inline void CharacterDataACK::clear_maps() {
+  maps_.Clear();
+}
+inline const ::message::CrashMapData& CharacterDataACK::maps(int index) const {
+  // @@protoc_insertion_point(field_get:message.CharacterDataACK.maps)
+  return maps_.Get(index);
+}
+inline ::message::CrashMapData* CharacterDataACK::mutable_maps(int index) {
+  // @@protoc_insertion_point(field_mutable:message.CharacterDataACK.maps)
+  return maps_.Mutable(index);
+}
+inline ::message::CrashMapData* CharacterDataACK::add_maps() {
+  // @@protoc_insertion_point(field_add:message.CharacterDataACK.maps)
+  return maps_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+CharacterDataACK::maps() const {
+  // @@protoc_insertion_point(field_list:message.CharacterDataACK.maps)
+  return maps_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+CharacterDataACK::mutable_maps() {
+  // @@protoc_insertion_point(field_mutable_list:message.CharacterDataACK.maps)
+  return &maps_;
 }
 
 // -------------------------------------------------------------------

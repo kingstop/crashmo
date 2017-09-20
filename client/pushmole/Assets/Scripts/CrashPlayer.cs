@@ -24,23 +24,12 @@ public class CrashPlayer
     {
         return _info;
     }
-	/*
-    public void add_map(CrashMapData temp)
-    {
-        if(_officil_map.ContainsKey(temp.Section) == false)
-        {
-            Dictionary<int, CrashMapData> temp_dic = new Dictionary<int, CrashMapData>();
-            _officil_map[temp.Section] = temp_dic;
-        }
-        _officil_map[temp.Section][temp.number] = temp;        
-    }
-    */
 
     public void AddTask(TaskInfo info)
     {
         _info.current_task.Add(info);
     }
-
+/*
     public void del_map(string name)
     {
         bool find_temp = false;
@@ -67,6 +56,7 @@ public class CrashPlayer
 
         }
     }
+    */
 
     public void delMap(MapType type, ulong map_index)
     {
@@ -99,11 +89,11 @@ public class CrashPlayer
                 break;
             case MapType.OfficeMap:
                 {
-                    foreach(KeyValuePair<int, Dictionary<int, CrashMapData>> list_entry in _officil_map)
+                    foreach(KeyValuePair<int, Dictionary<int, ulong>> list_entry in _officil_map)
                     {
-                        foreach(KeyValuePair<int, CrashMapData> key_entry in list_entry.Value)
+                        foreach(KeyValuePair<int, ulong> key_entry in list_entry.Value)
                         {
-                            if(key_entry.Value.Data.map_index == map_index)
+                            if(key_entry.Value == map_index)
                             {
                                 list_entry.Value.Remove(key_entry.Key);
                                 break;
@@ -116,50 +106,37 @@ public class CrashPlayer
 
     }
 
-	/*
-    public List<CrashMapData> getPageMaps(int page)
-    {
-        List<CrashMapData> temp = new List<CrashMapData>();
-        if (_officil_map.ContainsKey(page) == true)
-        {
-            Dictionary<int, CrashMapData> dic = _officil_map[page];
-            foreach(KeyValuePair<int, CrashMapData> key_pair in dic)
-            {
-                temp.Add(key_pair.Value);
-            }
-        }
-        return temp;
-    }
-
-    public CrashMapData getOfficilMap(int page, int number)
-    {
-        CrashMapData temp = null;
-        if (_officil_map.ContainsKey(page) == true)
-        {
-            temp = _officil_map[page][number];
-        }
-        return temp;
-    }
-*/
 
 
     public List<message.intPair> get_resource()
     {
         return _info.resources;
     }
-	/*
-    public void addSectionName(int section, string section_name)
-    {
-        _officil_section_names[section] = section_name;
-    }
-    */
+
 
     public bool isadmin()
     {
         return _info.isadmin;
     }
 
-    protected Dictionary<int, Dictionary<int, CrashMapData>> _officil_map = new Dictionary<int, Dictionary<int, CrashMapData>>();
+    public void addUserMap(CrashMapData data)
+    {
+        _maps[data.Data.map_index] = data;
+    }
+
+    public CrashMapData getUserMap(UInt64 index)
+    {
+        CrashMapData map = null;
+        if(_maps.ContainsKey(index) == true)
+        {
+            map = _maps[index];
+        }
+        return map;
+    }
+
+
+    protected Dictionary<UInt64, CrashMapData> _maps = new Dictionary<ulong, CrashMapData>();
+    protected Dictionary<int, Dictionary<int, ulong>> _officil_map = new Dictionary<int, Dictionary<int, ulong>>();
 	protected Dictionary<int, string> _officil_section_names = new Dictionary<int, string>();
     protected  CrashPlayerInfo _info;
 }

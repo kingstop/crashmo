@@ -41,6 +41,7 @@ public:
 	void parsePassOfficilGame(google::protobuf::Message* p);
 	void parseAddGameBlog(google::protobuf::Message* p);
 	void parseReqPlayerPublishMap(google::protobuf::Message* p);
+	void parseLoadUserMapReq(google::protobuf::Message* p);
 	void parseReqPublishMapList(google::protobuf::Message* p);
 
 protected:

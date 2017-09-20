@@ -15,7 +15,8 @@ public:
 	void saveMapOfficilMap(const message::CrashMapData* map_data, CrashPlayer* p);
 	void modifySectionName(int section, const char* name, CrashPlayer* player);
 	const CHAPTERSNAMES& getSectionNames();
-
+protected:
+	void loadMap(DBQuery* p, const char* argu);
 protected:
 	void saveOfficilMap();
 	u64 generateMapIndex();

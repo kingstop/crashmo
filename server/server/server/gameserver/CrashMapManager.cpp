@@ -18,6 +18,7 @@ message::CrashMapData* CrashMapManager::CreateCrashMap(const message::CrashMapDa
 	message::CrashMapData* entry = new message::CrashMapData(*map);
 	entry->mutable_data()->set_map_index(new_map_index);
 	_maps[new_map_index] = entry;
+	_map_counts[new_map_index] = 1;
 	return entry;
 	
 }
@@ -34,23 +35,46 @@ message::CrashMapData* CrashMapManager::GetCrashMap(u64 map_index)
 }
 
 
-bool CrashMapManager::DelCrashMap(u64 map_index)
+void CrashMapManager::DelCrashMap(u64 map_index)
 {
-	bool ret = false;
-	message::CrashMapData* entry = NULL;
-	CRASHMAPS::iterator it = _maps.find(map_index);
-	if (it != _maps.end())
+	CRASHMAPCOUNT::iterator it_count = _map_counts.find(map_index);
+	int count = 0;
+	if (it_count != _map_counts.end())
 	{
-		entry = it->second;
-		delete entry;
-		_maps.erase(it);
-		ret = true;
+		count = it_count->second;
 	}
-	return ret;
+
+	count--;
+	if (count <= 0)
+	{
+		_map_counts.erase(map_index);
+		bool ret = false;
+		message::CrashMapData* entry = NULL;
+		CRASHMAPS::iterator it = _maps.find(map_index);
+		if (it != _maps.end())
+		{
+			entry = it->second;
+			delete entry;
+			_maps.erase(it);
+			ret = true;
+		}
+
+	}
+	
 }
 
-void CrashMapManager::AddCrashMap(message::CrashMapData& map)
+void CrashMapManager::AddCrashMap(const message::CrashMapData& map)
 {
 	message::CrashMapData* entry = new message::CrashMapData(map);
-	_maps[map.data().map_index()] = entry;
+	u64 map_index = map.data().map_index();
+	_maps[map_index] = entry;
+	CRASHMAPCOUNT::iterator it = _map_counts.find(map_index);
+	int count = 0;
+	if (it != _map_counts.end())
+	{
+		count = it->second;
+	}
+	count++;
+	_map_counts[map_index] = count;
+	
 }

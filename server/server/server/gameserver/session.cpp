@@ -40,6 +40,9 @@ void Session::registerPBCall()
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqPlayerPublishMap), &Session::parseReqPlayerPublishMap);
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqPublishMapList), &Session::parseReqPublishMapList);
 	registerCBFun(PROTOCO_NAME(message::MsgC2SReqAddMapBolg), &Session::parseAddGameBlog);
+	registerCBFun(PROTOCO_NAME(message::MsgLoadUserMapReq), &Session::parseLoadUserMapReq);
+
+	
 }
 
 void Session::parsePBMessage(google::protobuf::Message* p)
@@ -176,6 +179,35 @@ void Session::parsePassOfficilGame(google::protobuf::Message* p)
 	{
 		_player->PassOfficilMap(msg->chapter_id(), msg->section_id(), msg->use_step(), msg->use_time());
 	}
+}
+
+void Session::parseLoadUserMapReq(google::protobuf::Message* p)
+{
+	message::MsgLoadUserMapReq* msg = (message::MsgLoadUserMapReq*)p;
+	int indexes_size = msg->map_indexes_size();
+	message::MsgLoadUserMapACK msgACK;
+
+	msgACK.set_end(false);
+	int count = 0;
+	int load_count = 5;
+	if (msg->map_count() > 0)
+	{
+		load_count = msg->map_count();
+	}
+	for (size_t i = 0; i < indexes_size; i++, count ++)
+	{
+		u64 index = msg->map_indexes(i);
+		message::CrashMapData* map_entry = gCrashMapManager.GetCrashMap(index);
+		msgACK.add_maps()->CopyFrom(*map_entry);
+		if (count >= load_count)
+		{
+			sendPBMessage(&msgACK);
+			msgACK.clear_maps();
+			count = 0;
+		}
+	}
+	msgACK.set_end(true);
+	sendPBMessage(&msgACK);	
 }
 
 void Session::parseReqPlayerPublishMap(google::protobuf::Message* p)

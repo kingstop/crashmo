@@ -41,6 +41,8 @@ void protobuf_ShutdownFile_crashmo_2eproto();
 class MsgIntStringProto;
 class MsgServerErrorNotify;
 class CrashmoClientInit;
+class MsgLoadUserMapReq;
+class MsgLoadUserMapACK;
 class MsgSaveMapReq;
 class MsgDelMapReq;
 class MsgDelMapACK;
@@ -469,6 +471,210 @@ class CrashmoClientInit : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class MsgLoadUserMapReq : public ::google::protobuf::Message {
+ public:
+  MsgLoadUserMapReq();
+  virtual ~MsgLoadUserMapReq();
+
+  MsgLoadUserMapReq(const MsgLoadUserMapReq& from);
+
+  inline MsgLoadUserMapReq& operator=(const MsgLoadUserMapReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgLoadUserMapReq& default_instance();
+
+  void Swap(MsgLoadUserMapReq* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgLoadUserMapReq* New() const { return New(NULL); }
+
+  MsgLoadUserMapReq* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgLoadUserMapReq& from);
+  void MergeFrom(const MsgLoadUserMapReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgLoadUserMapReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated uint64 map_indexes = 1;
+  int map_indexes_size() const;
+  void clear_map_indexes();
+  static const int kMapIndexesFieldNumber = 1;
+  ::google::protobuf::uint64 map_indexes(int index) const;
+  void set_map_indexes(int index, ::google::protobuf::uint64 value);
+  void add_map_indexes(::google::protobuf::uint64 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+      map_indexes() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+      mutable_map_indexes();
+
+  // required int32 map_count = 2;
+  bool has_map_count() const;
+  void clear_map_count();
+  static const int kMapCountFieldNumber = 2;
+  ::google::protobuf::int32 map_count() const;
+  void set_map_count(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:message.MsgLoadUserMapReq)
+ private:
+  inline void set_has_map_count();
+  inline void clear_has_map_count();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > map_indexes_;
+  ::google::protobuf::int32 map_count_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgLoadUserMapReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MsgLoadUserMapACK : public ::google::protobuf::Message {
+ public:
+  MsgLoadUserMapACK();
+  virtual ~MsgLoadUserMapACK();
+
+  MsgLoadUserMapACK(const MsgLoadUserMapACK& from);
+
+  inline MsgLoadUserMapACK& operator=(const MsgLoadUserMapACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgLoadUserMapACK& default_instance();
+
+  void Swap(MsgLoadUserMapACK* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MsgLoadUserMapACK* New() const { return New(NULL); }
+
+  MsgLoadUserMapACK* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgLoadUserMapACK& from);
+  void MergeFrom(const MsgLoadUserMapACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MsgLoadUserMapACK* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .message.CrashMapData maps = 1;
+  int maps_size() const;
+  void clear_maps();
+  static const int kMapsFieldNumber = 1;
+  const ::message::CrashMapData& maps(int index) const;
+  ::message::CrashMapData* mutable_maps(int index);
+  ::message::CrashMapData* add_maps();
+  const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+      maps() const;
+  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+      mutable_maps();
+
+  // required bool end = 2;
+  bool has_end() const;
+  void clear_end();
+  static const int kEndFieldNumber = 2;
+  bool end() const;
+  void set_end(bool value);
+
+  // @@protoc_insertion_point(class_scope:message.MsgLoadUserMapACK)
+ private:
+  inline void set_has_end();
+  inline void clear_has_end();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData > maps_;
+  bool end_;
+  friend void  protobuf_AddDesc_crashmo_2eproto();
+  friend void protobuf_AssignDesc_crashmo_2eproto();
+  friend void protobuf_ShutdownFile_crashmo_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgLoadUserMapACK* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class MsgSaveMapReq : public ::google::protobuf::Message {
  public:
   MsgSaveMapReq();
@@ -838,40 +1044,31 @@ class MsgSaveMapACK : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required uint64 map_index = 1;
-  bool has_map_index() const;
-  void clear_map_index();
-  static const int kMapIndexFieldNumber = 1;
-  ::google::protobuf::uint64 map_index() const;
-  void set_map_index(::google::protobuf::uint64 value);
-
-  // required .message.MapType save_type = 2 [default = OfficeMap];
+  // required .message.MapType save_type = 1 [default = OfficeMap];
   bool has_save_type() const;
   void clear_save_type();
-  static const int kSaveTypeFieldNumber = 2;
+  static const int kSaveTypeFieldNumber = 1;
   ::message::MapType save_type() const;
   void set_save_type(::message::MapType value);
 
-  // required .message.CrashMapData map = 3;
+  // required .message.CrashMapData map = 2;
   bool has_map() const;
   void clear_map();
-  static const int kMapFieldNumber = 3;
+  static const int kMapFieldNumber = 2;
   const ::message::CrashMapData& map() const;
   ::message::CrashMapData* mutable_map();
   ::message::CrashMapData* release_map();
   void set_allocated_map(::message::CrashMapData* map);
 
-  // required .message.ServerError error = 4 [default = ServerError_NO];
+  // required .message.ServerError error = 3 [default = ServerError_NO];
   bool has_error() const;
   void clear_error();
-  static const int kErrorFieldNumber = 4;
+  static const int kErrorFieldNumber = 3;
   ::message::ServerError error() const;
   void set_error(::message::ServerError value);
 
   // @@protoc_insertion_point(class_scope:message.MsgSaveMapACK)
  private:
-  inline void set_has_map_index();
-  inline void clear_has_map_index();
   inline void set_has_save_type();
   inline void clear_has_save_type();
   inline void set_has_map();
@@ -885,7 +1082,6 @@ class MsgSaveMapACK : public ::google::protobuf::Message {
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::uint64 map_index_;
   ::message::CrashMapData* map_;
   int save_type_;
   int error_;
@@ -4401,6 +4597,122 @@ inline void CrashmoClientInit::set_map_count_max(::google::protobuf::int32 value
 
 // -------------------------------------------------------------------
 
+// MsgLoadUserMapReq
+
+// repeated uint64 map_indexes = 1;
+inline int MsgLoadUserMapReq::map_indexes_size() const {
+  return map_indexes_.size();
+}
+inline void MsgLoadUserMapReq::clear_map_indexes() {
+  map_indexes_.Clear();
+}
+inline ::google::protobuf::uint64 MsgLoadUserMapReq::map_indexes(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapReq.map_indexes)
+  return map_indexes_.Get(index);
+}
+inline void MsgLoadUserMapReq::set_map_indexes(int index, ::google::protobuf::uint64 value) {
+  map_indexes_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.MsgLoadUserMapReq.map_indexes)
+}
+inline void MsgLoadUserMapReq::add_map_indexes(::google::protobuf::uint64 value) {
+  map_indexes_.Add(value);
+  // @@protoc_insertion_point(field_add:message.MsgLoadUserMapReq.map_indexes)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+MsgLoadUserMapReq::map_indexes() const {
+  // @@protoc_insertion_point(field_list:message.MsgLoadUserMapReq.map_indexes)
+  return map_indexes_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+MsgLoadUserMapReq::mutable_map_indexes() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgLoadUserMapReq.map_indexes)
+  return &map_indexes_;
+}
+
+// required int32 map_count = 2;
+inline bool MsgLoadUserMapReq::has_map_count() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgLoadUserMapReq::set_has_map_count() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgLoadUserMapReq::clear_has_map_count() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgLoadUserMapReq::clear_map_count() {
+  map_count_ = 0;
+  clear_has_map_count();
+}
+inline ::google::protobuf::int32 MsgLoadUserMapReq::map_count() const {
+  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapReq.map_count)
+  return map_count_;
+}
+inline void MsgLoadUserMapReq::set_map_count(::google::protobuf::int32 value) {
+  set_has_map_count();
+  map_count_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgLoadUserMapReq.map_count)
+}
+
+// -------------------------------------------------------------------
+
+// MsgLoadUserMapACK
+
+// repeated .message.CrashMapData maps = 1;
+inline int MsgLoadUserMapACK::maps_size() const {
+  return maps_.size();
+}
+inline void MsgLoadUserMapACK::clear_maps() {
+  maps_.Clear();
+}
+inline const ::message::CrashMapData& MsgLoadUserMapACK::maps(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapACK.maps)
+  return maps_.Get(index);
+}
+inline ::message::CrashMapData* MsgLoadUserMapACK::mutable_maps(int index) {
+  // @@protoc_insertion_point(field_mutable:message.MsgLoadUserMapACK.maps)
+  return maps_.Mutable(index);
+}
+inline ::message::CrashMapData* MsgLoadUserMapACK::add_maps() {
+  // @@protoc_insertion_point(field_add:message.MsgLoadUserMapACK.maps)
+  return maps_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+MsgLoadUserMapACK::maps() const {
+  // @@protoc_insertion_point(field_list:message.MsgLoadUserMapACK.maps)
+  return maps_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+MsgLoadUserMapACK::mutable_maps() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgLoadUserMapACK.maps)
+  return &maps_;
+}
+
+// required bool end = 2;
+inline bool MsgLoadUserMapACK::has_end() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgLoadUserMapACK::set_has_end() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgLoadUserMapACK::clear_has_end() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgLoadUserMapACK::clear_end() {
+  end_ = false;
+  clear_has_end();
+}
+inline bool MsgLoadUserMapACK::end() const {
+  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapACK.end)
+  return end_;
+}
+inline void MsgLoadUserMapACK::set_end(bool value) {
+  set_has_end();
+  end_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgLoadUserMapACK.end)
+}
+
+// -------------------------------------------------------------------
+
 // MsgSaveMapReq
 
 // required .message.CrashMapData map = 1;
@@ -4581,39 +4893,15 @@ inline void MsgDelMapACK::set_error(::message::ServerError value) {
 
 // MsgSaveMapACK
 
-// required uint64 map_index = 1;
-inline bool MsgSaveMapACK::has_map_index() const {
+// required .message.MapType save_type = 1 [default = OfficeMap];
+inline bool MsgSaveMapACK::has_save_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgSaveMapACK::set_has_map_index() {
+inline void MsgSaveMapACK::set_has_save_type() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgSaveMapACK::clear_has_map_index() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgSaveMapACK::clear_map_index() {
-  map_index_ = GOOGLE_ULONGLONG(0);
-  clear_has_map_index();
-}
-inline ::google::protobuf::uint64 MsgSaveMapACK::map_index() const {
-  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.map_index)
-  return map_index_;
-}
-inline void MsgSaveMapACK::set_map_index(::google::protobuf::uint64 value) {
-  set_has_map_index();
-  map_index_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.map_index)
-}
-
-// required .message.MapType save_type = 2 [default = OfficeMap];
-inline bool MsgSaveMapACK::has_save_type() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgSaveMapACK::set_has_save_type() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgSaveMapACK::clear_has_save_type() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgSaveMapACK::clear_save_type() {
   save_type_ = 1;
@@ -4630,15 +4918,15 @@ inline void MsgSaveMapACK::set_save_type(::message::MapType value) {
   // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.save_type)
 }
 
-// required .message.CrashMapData map = 3;
+// required .message.CrashMapData map = 2;
 inline bool MsgSaveMapACK::has_map() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgSaveMapACK::set_has_map() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgSaveMapACK::clear_has_map() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgSaveMapACK::clear_map() {
   if (map_ != NULL) map_->::message::CrashMapData::Clear();
@@ -4673,15 +4961,15 @@ inline void MsgSaveMapACK::set_allocated_map(::message::CrashMapData* map) {
   // @@protoc_insertion_point(field_set_allocated:message.MsgSaveMapACK.map)
 }
 
-// required .message.ServerError error = 4 [default = ServerError_NO];
+// required .message.ServerError error = 3 [default = ServerError_NO];
 inline bool MsgSaveMapACK::has_error() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgSaveMapACK::set_has_error() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgSaveMapACK::clear_has_error() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgSaveMapACK::clear_error() {
   error_ = 0;

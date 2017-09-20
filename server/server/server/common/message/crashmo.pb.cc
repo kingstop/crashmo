@@ -29,6 +29,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CrashmoClientInit_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CrashmoClientInit_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgLoadUserMapReq_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgLoadUserMapReq_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MsgLoadUserMapACK_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgLoadUserMapACK_reflection_ = NULL;
 const ::google::protobuf::Descriptor* MsgSaveMapReq_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgSaveMapReq_reflection_ = NULL;
@@ -197,7 +203,39 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(CrashmoClientInit),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CrashmoClientInit, _internal_metadata_),
       -1);
-  MsgSaveMapReq_descriptor_ = file->message_type(3);
+  MsgLoadUserMapReq_descriptor_ = file->message_type(3);
+  static const int MsgLoadUserMapReq_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgLoadUserMapReq, map_indexes_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgLoadUserMapReq, map_count_),
+  };
+  MsgLoadUserMapReq_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgLoadUserMapReq_descriptor_,
+      MsgLoadUserMapReq::default_instance_,
+      MsgLoadUserMapReq_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgLoadUserMapReq, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgLoadUserMapReq),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgLoadUserMapReq, _internal_metadata_),
+      -1);
+  MsgLoadUserMapACK_descriptor_ = file->message_type(4);
+  static const int MsgLoadUserMapACK_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgLoadUserMapACK, maps_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgLoadUserMapACK, end_),
+  };
+  MsgLoadUserMapACK_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MsgLoadUserMapACK_descriptor_,
+      MsgLoadUserMapACK::default_instance_,
+      MsgLoadUserMapACK_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgLoadUserMapACK, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MsgLoadUserMapACK),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgLoadUserMapACK, _internal_metadata_),
+      -1);
+  MsgSaveMapReq_descriptor_ = file->message_type(5);
   static const int MsgSaveMapReq_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapReq, map_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapReq, save_type_),
@@ -213,7 +251,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgSaveMapReq),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapReq, _internal_metadata_),
       -1);
-  MsgDelMapReq_descriptor_ = file->message_type(4);
+  MsgDelMapReq_descriptor_ = file->message_type(6);
   static const int MsgDelMapReq_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapReq, map_index_),
   };
@@ -228,7 +266,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgDelMapReq),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapReq, _internal_metadata_),
       -1);
-  MsgDelMapACK_descriptor_ = file->message_type(5);
+  MsgDelMapACK_descriptor_ = file->message_type(7);
   static const int MsgDelMapACK_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapACK, map_index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapACK, map_type_),
@@ -245,9 +283,8 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgDelMapACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgDelMapACK, _internal_metadata_),
       -1);
-  MsgSaveMapACK_descriptor_ = file->message_type(6);
-  static const int MsgSaveMapACK_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, map_index_),
+  MsgSaveMapACK_descriptor_ = file->message_type(8);
+  static const int MsgSaveMapACK_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, save_type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, map_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, error_),
@@ -263,7 +300,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgSaveMapACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSaveMapACK, _internal_metadata_),
       -1);
-  MsgOfficilMapReq_descriptor_ = file->message_type(7);
+  MsgOfficilMapReq_descriptor_ = file->message_type(9);
   static const int MsgOfficilMapReq_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgOfficilMapReq, page_),
   };
@@ -278,7 +315,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgOfficilMapReq),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgOfficilMapReq, _internal_metadata_),
       -1);
-  MsgOfficilMapACK_descriptor_ = file->message_type(8);
+  MsgOfficilMapACK_descriptor_ = file->message_type(10);
   static const int MsgOfficilMapACK_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgOfficilMapACK, page_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgOfficilMapACK, maps_),
@@ -294,7 +331,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgOfficilMapACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgOfficilMapACK, _internal_metadata_),
       -1);
-  MsgModifySectionNameReq_descriptor_ = file->message_type(9);
+  MsgModifySectionNameReq_descriptor_ = file->message_type(11);
   static const int MsgModifySectionNameReq_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgModifySectionNameReq, section_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgModifySectionNameReq, section_name_),
@@ -310,7 +347,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgModifySectionNameReq),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgModifySectionNameReq, _internal_metadata_),
       -1);
-  MsgModifySectionNameACK_descriptor_ = file->message_type(10);
+  MsgModifySectionNameACK_descriptor_ = file->message_type(12);
   static const int MsgModifySectionNameACK_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgModifySectionNameACK, section_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgModifySectionNameACK, section_name_),
@@ -326,7 +363,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgModifySectionNameACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgModifySectionNameACK, _internal_metadata_),
       -1);
-  MsgSectionNameReq_descriptor_ = file->message_type(11);
+  MsgSectionNameReq_descriptor_ = file->message_type(13);
   static const int MsgSectionNameReq_offsets_[1] = {
   };
   MsgSectionNameReq_reflection_ =
@@ -340,7 +377,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgSectionNameReq),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSectionNameReq, _internal_metadata_),
       -1);
-  MsgSectionNameACK_descriptor_ = file->message_type(12);
+  MsgSectionNameACK_descriptor_ = file->message_type(14);
   static const int MsgSectionNameACK_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSectionNameACK, sections_),
   };
@@ -355,7 +392,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgSectionNameACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSectionNameACK, _internal_metadata_),
       -1);
-  MsgS2CNotifyPing_descriptor_ = file->message_type(13);
+  MsgS2CNotifyPing_descriptor_ = file->message_type(15);
   static const int MsgS2CNotifyPing_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNotifyPing, time_stamp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNotifyPing, ping_count_),
@@ -371,7 +408,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CNotifyPing),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNotifyPing, _internal_metadata_),
       -1);
-  MsgC2SOfficeStatusReq_descriptor_ = file->message_type(14);
+  MsgC2SOfficeStatusReq_descriptor_ = file->message_type(16);
   static const int MsgC2SOfficeStatusReq_offsets_[1] = {
   };
   MsgC2SOfficeStatusReq_reflection_ =
@@ -385,7 +422,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SOfficeStatusReq),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SOfficeStatusReq, _internal_metadata_),
       -1);
-  MsgChapterStatus_descriptor_ = file->message_type(15);
+  MsgChapterStatus_descriptor_ = file->message_type(17);
   static const int MsgChapterStatus_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgChapterStatus, chapter_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgChapterStatus, map_indexs_),
@@ -401,7 +438,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgChapterStatus),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgChapterStatus, _internal_metadata_),
       -1);
-  MsgS2COfficeStatusACK_descriptor_ = file->message_type(16);
+  MsgS2COfficeStatusACK_descriptor_ = file->message_type(18);
   static const int MsgS2COfficeStatusACK_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2COfficeStatusACK, chapter_status_),
   };
@@ -416,7 +453,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2COfficeStatusACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2COfficeStatusACK, _internal_metadata_),
       -1);
-  MsgC2SOfficeMapReq_descriptor_ = file->message_type(17);
+  MsgC2SOfficeMapReq_descriptor_ = file->message_type(19);
   static const int MsgC2SOfficeMapReq_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SOfficeMapReq, chapter_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SOfficeMapReq, section_id_),
@@ -434,7 +471,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SOfficeMapReq),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SOfficeMapReq, _internal_metadata_),
       -1);
-  MsgS2COfficeMapACK_descriptor_ = file->message_type(18);
+  MsgS2COfficeMapACK_descriptor_ = file->message_type(20);
   static const int MsgS2COfficeMapACK_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2COfficeMapACK, chapter_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2COfficeMapACK, maps_),
@@ -450,7 +487,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2COfficeMapACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2COfficeMapACK, _internal_metadata_),
       -1);
-  MsgC2SRankMapReq_descriptor_ = file->message_type(19);
+  MsgC2SRankMapReq_descriptor_ = file->message_type(21);
   static const int MsgC2SRankMapReq_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SRankMapReq, rank_begin_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SRankMapReq, time_stamp_),
@@ -467,7 +504,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SRankMapReq),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SRankMapReq, _internal_metadata_),
       -1);
-  MsgS2CRankMapACK_descriptor_ = file->message_type(20);
+  MsgS2CRankMapACK_descriptor_ = file->message_type(22);
   static const int MsgS2CRankMapACK_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CRankMapACK, maps_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CRankMapACK, end_rank_),
@@ -485,7 +522,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CRankMapACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CRankMapACK, _internal_metadata_),
       -1);
-  MsgS2CRankMapRefreshNotify_descriptor_ = file->message_type(21);
+  MsgS2CRankMapRefreshNotify_descriptor_ = file->message_type(23);
   static const int MsgS2CRankMapRefreshNotify_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CRankMapRefreshNotify, time_stamp_),
   };
@@ -500,7 +537,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CRankMapRefreshNotify),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CRankMapRefreshNotify, _internal_metadata_),
       -1);
-  MsgC2SReqLoadTaskConfigs_descriptor_ = file->message_type(22);
+  MsgC2SReqLoadTaskConfigs_descriptor_ = file->message_type(24);
   static const int MsgC2SReqLoadTaskConfigs_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqLoadTaskConfigs, begin_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqLoadTaskConfigs, load_count_),
@@ -516,7 +553,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SReqLoadTaskConfigs),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqLoadTaskConfigs, _internal_metadata_),
       -1);
-  MsgS2CLoadTaskConfigsACK_descriptor_ = file->message_type(23);
+  MsgS2CLoadTaskConfigsACK_descriptor_ = file->message_type(25);
   static const int MsgS2CLoadTaskConfigsACK_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CLoadTaskConfigsACK, task_configs_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CLoadTaskConfigsACK, total_task_count_),
@@ -532,7 +569,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CLoadTaskConfigsACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CLoadTaskConfigsACK, _internal_metadata_),
       -1);
-  MsgC2SReqModifyTaskInfo_descriptor_ = file->message_type(24);
+  MsgC2SReqModifyTaskInfo_descriptor_ = file->message_type(26);
   static const int MsgC2SReqModifyTaskInfo_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqModifyTaskInfo, info_),
   };
@@ -547,7 +584,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SReqModifyTaskInfo),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqModifyTaskInfo, _internal_metadata_),
       -1);
-  MsgS2CModifyTaskInfoACK_descriptor_ = file->message_type(25);
+  MsgS2CModifyTaskInfoACK_descriptor_ = file->message_type(27);
   static const int MsgS2CModifyTaskInfoACK_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CModifyTaskInfoACK, info_),
   };
@@ -562,7 +599,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CModifyTaskInfoACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CModifyTaskInfoACK, _internal_metadata_),
       -1);
-  MsgC2SReqAddMapBolg_descriptor_ = file->message_type(26);
+  MsgC2SReqAddMapBolg_descriptor_ = file->message_type(28);
   static const int MsgC2SReqAddMapBolg_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqAddMapBolg, info_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqAddMapBolg, type_),
@@ -581,7 +618,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SReqAddMapBolg),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqAddMapBolg, _internal_metadata_),
       -1);
-  MsgS2CMapBolgACK_descriptor_ = file->message_type(27);
+  MsgS2CMapBolgACK_descriptor_ = file->message_type(29);
   static const int MsgS2CMapBolgACK_offsets_[1] = {
   };
   MsgS2CMapBolgACK_reflection_ =
@@ -595,7 +632,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CMapBolgACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CMapBolgACK, _internal_metadata_),
       -1);
-  MsgC2SReqEnterOfficilMap_descriptor_ = file->message_type(28);
+  MsgC2SReqEnterOfficilMap_descriptor_ = file->message_type(30);
   static const int MsgC2SReqEnterOfficilMap_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqEnterOfficilMap, chapter_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqEnterOfficilMap, section_id_),
@@ -611,7 +648,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SReqEnterOfficilMap),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqEnterOfficilMap, _internal_metadata_),
       -1);
-  MsgS2CEnterOfficilMapACK_descriptor_ = file->message_type(29);
+  MsgS2CEnterOfficilMapACK_descriptor_ = file->message_type(31);
   static const int MsgS2CEnterOfficilMapACK_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CEnterOfficilMapACK, chapter_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CEnterOfficilMapACK, section_id_),
@@ -627,7 +664,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CEnterOfficilMapACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CEnterOfficilMapACK, _internal_metadata_),
       -1);
-  MsgC2SReqPassOfficilMap_descriptor_ = file->message_type(30);
+  MsgC2SReqPassOfficilMap_descriptor_ = file->message_type(32);
   static const int MsgC2SReqPassOfficilMap_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqPassOfficilMap, chapter_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqPassOfficilMap, section_id_),
@@ -645,7 +682,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SReqPassOfficilMap),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqPassOfficilMap, _internal_metadata_),
       -1);
-  MsgTaskReward_descriptor_ = file->message_type(31);
+  MsgTaskReward_descriptor_ = file->message_type(33);
   static const int MsgTaskReward_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgTaskReward, task_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgTaskReward, rewards_),
@@ -662,7 +699,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgTaskReward),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgTaskReward, _internal_metadata_),
       -1);
-  MsgS2CPassOfficilMapACK_descriptor_ = file->message_type(32);
+  MsgS2CPassOfficilMapACK_descriptor_ = file->message_type(34);
   static const int MsgS2CPassOfficilMapACK_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, chapter_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, section_id_),
@@ -684,7 +721,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CPassOfficilMapACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPassOfficilMapACK, _internal_metadata_),
       -1);
-  MsgS2CNewTaskNotify_descriptor_ = file->message_type(33);
+  MsgS2CNewTaskNotify_descriptor_ = file->message_type(35);
   static const int MsgS2CNewTaskNotify_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNewTaskNotify, info_),
   };
@@ -699,7 +736,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CNewTaskNotify),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CNewTaskNotify, _internal_metadata_),
       -1);
-  MsgC2SReqPlayerPublishMap_descriptor_ = file->message_type(34);
+  MsgC2SReqPlayerPublishMap_descriptor_ = file->message_type(36);
   static const int MsgC2SReqPlayerPublishMap_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqPlayerPublishMap, map_),
   };
@@ -714,7 +751,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SReqPlayerPublishMap),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqPlayerPublishMap, _internal_metadata_),
       -1);
-  MsgS2CPlayerPublishMapACK_descriptor_ = file->message_type(35);
+  MsgS2CPlayerPublishMapACK_descriptor_ = file->message_type(37);
   static const int MsgS2CPlayerPublishMapACK_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPlayerPublishMapACK, map_),
   };
@@ -729,7 +766,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgS2CPlayerPublishMapACK),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPlayerPublishMapACK, _internal_metadata_),
       -1);
-  MsgC2SReqPublishMapList_descriptor_ = file->message_type(36);
+  MsgC2SReqPublishMapList_descriptor_ = file->message_type(38);
   static const int MsgC2SReqPublishMapList_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqPublishMapList, begin_map_index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqPublishMapList, req_count_),
@@ -745,7 +782,7 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       sizeof(MsgC2SReqPublishMapList),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgC2SReqPublishMapList, _internal_metadata_),
       -1);
-  MsgS2CPublishMapListACK_descriptor_ = file->message_type(37);
+  MsgS2CPublishMapListACK_descriptor_ = file->message_type(39);
   static const int MsgS2CPublishMapListACK_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPublishMapListACK, end_map_index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPublishMapListACK, req_count_),
@@ -782,6 +819,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
       MsgServerErrorNotify_descriptor_, &MsgServerErrorNotify::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CrashmoClientInit_descriptor_, &CrashmoClientInit::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgLoadUserMapReq_descriptor_, &MsgLoadUserMapReq::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MsgLoadUserMapACK_descriptor_, &MsgLoadUserMapACK::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       MsgSaveMapReq_descriptor_, &MsgSaveMapReq::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -863,6 +904,10 @@ void protobuf_ShutdownFile_crashmo_2eproto() {
   delete MsgServerErrorNotify_reflection_;
   delete CrashmoClientInit::default_instance_;
   delete CrashmoClientInit_reflection_;
+  delete MsgLoadUserMapReq::default_instance_;
+  delete MsgLoadUserMapReq_reflection_;
+  delete MsgLoadUserMapACK::default_instance_;
+  delete MsgLoadUserMapACK_reflection_;
   delete MsgSaveMapReq::default_instance_;
   delete MsgSaveMapReq_reflection_;
   delete MsgDelMapReq::default_instance_;
@@ -953,94 +998,99 @@ void protobuf_AddDesc_crashmo_2eproto() {
     "StringProto\022.\n\024resources_config_max\030\003 \003("
     "\0132\020.message.intPair\022\034\n\024map_width_config_"
     "max\030\004 \002(\005\022\035\n\025map_height_config_max\030\005 \002(\005"
-    "\022\025\n\rmap_count_max\030\006 \002(\005\"c\n\rMsgSaveMapReq"
-    "\022\"\n\003map\030\001 \002(\0132\025.message.CrashMapData\022.\n\t"
-    "save_type\030\002 \002(\0162\020.message.MapType:\tOffic"
-    "eMap\"!\n\014MsgDelMapReq\022\021\n\tmap_index\030\001 \002(\004\""
-    "\205\001\n\014MsgDelMapACK\022\021\n\tmap_index\030\001 \002(\004\022-\n\010m"
-    "ap_type\030\002 \002(\0162\020.message.MapType:\tOfficeM"
-    "ap\0223\n\005error\030\003 \002(\0162\024.message.ServerError:"
-    "\016ServerError_NO\"\253\001\n\rMsgSaveMapACK\022\021\n\tmap"
-    "_index\030\001 \002(\004\022.\n\tsave_type\030\002 \002(\0162\020.messag"
-    "e.MapType:\tOfficeMap\022\"\n\003map\030\003 \002(\0132\025.mess"
-    "age.CrashMapData\0223\n\005error\030\004 \002(\0162\024.messag"
-    "e.ServerError:\016ServerError_NO\" \n\020MsgOffi"
-    "cilMapReq\022\014\n\004page\030\001 \002(\005\"E\n\020MsgOfficilMap"
-    "ACK\022\014\n\004page\030\001 \002(\005\022#\n\004maps\030\002 \003(\0132\025.messag"
-    "e.CrashMapData\"@\n\027MsgModifySectionNameRe"
-    "q\022\017\n\007section\030\001 \002(\005\022\024\n\014section_name\030\002 \002(\t"
-    "\"@\n\027MsgModifySectionNameACK\022\017\n\007section\030\001"
-    " \002(\005\022\024\n\014section_name\030\002 \002(\t\"\023\n\021MsgSection"
-    "NameReq\"A\n\021MsgSectionNameACK\022,\n\010sections"
-    "\030\001 \003(\0132\032.message.MsgIntStringProto\":\n\020Ms"
-    "gS2CNotifyPing\022\022\n\ntime_stamp\030\001 \002(\003\022\022\n\npi"
-    "ng_count\030\002 \002(\005\"\027\n\025MsgC2SOfficeStatusReq\""
-    ":\n\020MsgChapterStatus\022\022\n\nchapter_id\030\001 \002(\005\022"
-    "\022\n\nmap_indexs\030\002 \003(\004\"J\n\025MsgS2COfficeStatu"
-    "sACK\0221\n\016chapter_status\030\001 \003(\0132\031.message.M"
-    "sgChapterStatus\"c\n\022MsgC2SOfficeMapReq\022\022\n"
-    "\nchapter_id\030\001 \002(\005\022\022\n\nsection_id\030\002 \002(\005\022\021\n"
-    "\tmap_count\030\003 \002(\005\022\022\n\nmap_indexs\030\004 \003(\004\"M\n\022"
-    "MsgS2COfficeMapACK\022\022\n\nchapter_id\030\001 \002(\005\022#"
-    "\n\004maps\030\003 \003(\0132\025.message.CrashMapData\"M\n\020M"
-    "sgC2SRankMapReq\022\022\n\nrank_begin\030\001 \002(\005\022\022\n\nt"
-    "ime_stamp\030\002 \002(\003\022\021\n\tmap_count\030\003 \002(\005\"~\n\020Ms"
-    "gS2CRankMapACK\022,\n\004maps\030\001 \003(\0132\036.message.C"
-    "rashPlayerPublishMap\022\020\n\010end_rank\030\002 \002(\005\022\022"
-    "\n\ntime_stamp\030\003 \002(\003\022\026\n\016rank_map_count\030\004 \002"
-    "(\005\"0\n\032MsgS2CRankMapRefreshNotify\022\022\n\ntime"
-    "_stamp\030\001 \002(\003\"@\n\030MsgC2SReqLoadTaskConfigs"
-    "\022\020\n\010begin_id\030\001 \002(\005\022\022\n\nload_count\030\002 \002(\005\"c"
-    "\n\030MsgS2CLoadTaskConfigsACK\022-\n\014task_confi"
-    "gs\030\001 \003(\0132\027.message.TaskInfoConfig\022\030\n\020tot"
-    "al_task_count\030\002 \002(\005\"@\n\027MsgC2SReqModifyTa"
-    "skInfo\022%\n\004info\030\001 \002(\0132\027.message.TaskInfoC"
-    "onfig\"@\n\027MsgS2CModifyTaskInfoACK\022%\n\004info"
-    "\030\001 \002(\0132\027.message.TaskInfoConfig\"\244\001\n\023MsgC"
-    "2SReqAddMapBolg\022\'\n\004info\030\001 \002(\0132\031.message."
-    "RankMapBlogEntry\022)\n\004type\030\002 \002(\0162\020.message"
-    ".MapType:\tOfficeMap\022\021\n\tmap_index\030\003 \002(\003\022\022"
-    "\n\nchapter_id\030\004 \002(\005\022\022\n\nsection_id\030\005 \002(\005\"\022"
-    "\n\020MsgS2CMapBolgACK\"B\n\030MsgC2SReqEnterOffi"
-    "cilMap\022\022\n\nchapter_id\030\001 \002(\r\022\022\n\nsection_id"
-    "\030\002 \002(\r\"B\n\030MsgS2CEnterOfficilMapACK\022\022\n\nch"
-    "apter_id\030\001 \002(\r\022\022\n\nsection_id\030\002 \002(\r\"e\n\027Ms"
-    "gC2SReqPassOfficilMap\022\022\n\nchapter_id\030\001 \002("
-    "\r\022\022\n\nsection_id\030\002 \002(\r\022\020\n\010use_time\030\003 \002(\r\022"
-    "\020\n\010use_step\030\004 \002(\r\"_\n\rMsgTaskReward\022\017\n\007ta"
-    "sk_id\030\001 \002(\r\022*\n\007rewards\030\002 \003(\0132\031.message.T"
-    "askRewardConfig\022\021\n\ttask_name\030\003 \002(\t\"\241\002\n\027M"
-    "sgS2CPassOfficilMapACK\022\022\n\nchapter_id\030\001 \002"
-    "(\r\022\022\n\nsection_id\030\002 \002(\r\022\020\n\010add_gold\030\003 \002(\r"
-    "\022&\n\014add_resource\030\004 \003(\0132\020.message.intPair"
-    "\022\024\n\014current_gold\030\005 \002(\r\022*\n\020current_resour"
-    "ce\030\006 \003(\0132\020.message.intPair\022-\n\rcomplete_t"
-    "ask\030\007 \003(\0132\026.message.MsgTaskReward\0223\n\005err"
-    "or\030\010 \002(\0162\024.message.ServerError:\016ServerEr"
-    "ror_NO\"6\n\023MsgS2CNewTaskNotify\022\037\n\004info\030\001 "
-    "\002(\0132\021.message.TaskInfo\"\?\n\031MsgC2SReqPlaye"
-    "rPublishMap\022\"\n\003map\030\001 \002(\0132\025.message.Crash"
-    "MapData\"H\n\031MsgS2CPlayerPublishMapACK\022+\n\003"
-    "map\030\001 \002(\0132\036.message.CrashPlayerPublishMa"
-    "p\"E\n\027MsgC2SReqPublishMapList\022\027\n\017begin_ma"
-    "p_index\030\001 \002(\004\022\021\n\treq_count\030\002 \002(\005\"q\n\027MsgS"
-    "2CPublishMapListACK\022\025\n\rend_map_index\030\001 \002"
-    "(\004\022\021\n\treq_count\030\002 \002(\005\022,\n\004maps\030\003 \003(\0132\036.me"
-    "ssage.CrashPlayerPublishMap*\226\002\n\013ServerEr"
-    "ror\022\022\n\016ServerError_NO\020\000\022\026\n\022ServerError_U"
-    "nknow\020\001\022\034\n\030ServerError_HaveSameName\020\002\022&\n"
-    "\"ServerError_NotFoundMapNameWhenDel\020\003\0220\n"
-    ",ServerError_PassOfficilMapFailedTheMapI"
-    "sLock\020\004\0222\n.ServerError_PassOfficilMapFai"
-    "ledTheMapNotFound\020\005\022/\n+ServerError_Faile"
-    "dToPublishMapTheTimeIsInCD\020\006*<\n\007MapType\022"
-    "\r\n\tOfficeMap\020\001\022\021\n\rImcompleteMap\020\002\022\017\n\013Com"
-    "pleteMap\020\003", 3690);
+    "\022\025\n\rmap_count_max\030\006 \002(\005\";\n\021MsgLoadUserMa"
+    "pReq\022\023\n\013map_indexes\030\001 \003(\004\022\021\n\tmap_count\030\002"
+    " \002(\005\"E\n\021MsgLoadUserMapACK\022#\n\004maps\030\001 \003(\0132"
+    "\025.message.CrashMapData\022\013\n\003end\030\002 \002(\010\"c\n\rM"
+    "sgSaveMapReq\022\"\n\003map\030\001 \002(\0132\025.message.Cras"
+    "hMapData\022.\n\tsave_type\030\002 \002(\0162\020.message.Ma"
+    "pType:\tOfficeMap\"!\n\014MsgDelMapReq\022\021\n\tmap_"
+    "index\030\001 \002(\004\"\205\001\n\014MsgDelMapACK\022\021\n\tmap_inde"
+    "x\030\001 \002(\004\022-\n\010map_type\030\002 \002(\0162\020.message.MapT"
+    "ype:\tOfficeMap\0223\n\005error\030\003 \002(\0162\024.message."
+    "ServerError:\016ServerError_NO\"\230\001\n\rMsgSaveM"
+    "apACK\022.\n\tsave_type\030\001 \002(\0162\020.message.MapTy"
+    "pe:\tOfficeMap\022\"\n\003map\030\002 \002(\0132\025.message.Cra"
+    "shMapData\0223\n\005error\030\003 \002(\0162\024.message.Serve"
+    "rError:\016ServerError_NO\" \n\020MsgOfficilMapR"
+    "eq\022\014\n\004page\030\001 \002(\005\"E\n\020MsgOfficilMapACK\022\014\n\004"
+    "page\030\001 \002(\005\022#\n\004maps\030\002 \003(\0132\025.message.Crash"
+    "MapData\"@\n\027MsgModifySectionNameReq\022\017\n\007se"
+    "ction\030\001 \002(\005\022\024\n\014section_name\030\002 \002(\t\"@\n\027Msg"
+    "ModifySectionNameACK\022\017\n\007section\030\001 \002(\005\022\024\n"
+    "\014section_name\030\002 \002(\t\"\023\n\021MsgSectionNameReq"
+    "\"A\n\021MsgSectionNameACK\022,\n\010sections\030\001 \003(\0132"
+    "\032.message.MsgIntStringProto\":\n\020MsgS2CNot"
+    "ifyPing\022\022\n\ntime_stamp\030\001 \002(\003\022\022\n\nping_coun"
+    "t\030\002 \002(\005\"\027\n\025MsgC2SOfficeStatusReq\":\n\020MsgC"
+    "hapterStatus\022\022\n\nchapter_id\030\001 \002(\005\022\022\n\nmap_"
+    "indexs\030\002 \003(\004\"J\n\025MsgS2COfficeStatusACK\0221\n"
+    "\016chapter_status\030\001 \003(\0132\031.message.MsgChapt"
+    "erStatus\"c\n\022MsgC2SOfficeMapReq\022\022\n\nchapte"
+    "r_id\030\001 \002(\005\022\022\n\nsection_id\030\002 \002(\005\022\021\n\tmap_co"
+    "unt\030\003 \002(\005\022\022\n\nmap_indexs\030\004 \003(\004\"M\n\022MsgS2CO"
+    "fficeMapACK\022\022\n\nchapter_id\030\001 \002(\005\022#\n\004maps\030"
+    "\003 \003(\0132\025.message.CrashMapData\"M\n\020MsgC2SRa"
+    "nkMapReq\022\022\n\nrank_begin\030\001 \002(\005\022\022\n\ntime_sta"
+    "mp\030\002 \002(\003\022\021\n\tmap_count\030\003 \002(\005\"~\n\020MsgS2CRan"
+    "kMapACK\022,\n\004maps\030\001 \003(\0132\036.message.CrashPla"
+    "yerPublishMap\022\020\n\010end_rank\030\002 \002(\005\022\022\n\ntime_"
+    "stamp\030\003 \002(\003\022\026\n\016rank_map_count\030\004 \002(\005\"0\n\032M"
+    "sgS2CRankMapRefreshNotify\022\022\n\ntime_stamp\030"
+    "\001 \002(\003\"@\n\030MsgC2SReqLoadTaskConfigs\022\020\n\010beg"
+    "in_id\030\001 \002(\005\022\022\n\nload_count\030\002 \002(\005\"c\n\030MsgS2"
+    "CLoadTaskConfigsACK\022-\n\014task_configs\030\001 \003("
+    "\0132\027.message.TaskInfoConfig\022\030\n\020total_task"
+    "_count\030\002 \002(\005\"@\n\027MsgC2SReqModifyTaskInfo\022"
+    "%\n\004info\030\001 \002(\0132\027.message.TaskInfoConfig\"@"
+    "\n\027MsgS2CModifyTaskInfoACK\022%\n\004info\030\001 \002(\0132"
+    "\027.message.TaskInfoConfig\"\244\001\n\023MsgC2SReqAd"
+    "dMapBolg\022\'\n\004info\030\001 \002(\0132\031.message.RankMap"
+    "BlogEntry\022)\n\004type\030\002 \002(\0162\020.message.MapTyp"
+    "e:\tOfficeMap\022\021\n\tmap_index\030\003 \002(\003\022\022\n\nchapt"
+    "er_id\030\004 \002(\005\022\022\n\nsection_id\030\005 \002(\005\"\022\n\020MsgS2"
+    "CMapBolgACK\"B\n\030MsgC2SReqEnterOfficilMap\022"
+    "\022\n\nchapter_id\030\001 \002(\r\022\022\n\nsection_id\030\002 \002(\r\""
+    "B\n\030MsgS2CEnterOfficilMapACK\022\022\n\nchapter_i"
+    "d\030\001 \002(\r\022\022\n\nsection_id\030\002 \002(\r\"e\n\027MsgC2SReq"
+    "PassOfficilMap\022\022\n\nchapter_id\030\001 \002(\r\022\022\n\nse"
+    "ction_id\030\002 \002(\r\022\020\n\010use_time\030\003 \002(\r\022\020\n\010use_"
+    "step\030\004 \002(\r\"_\n\rMsgTaskReward\022\017\n\007task_id\030\001"
+    " \002(\r\022*\n\007rewards\030\002 \003(\0132\031.message.TaskRewa"
+    "rdConfig\022\021\n\ttask_name\030\003 \002(\t\"\241\002\n\027MsgS2CPa"
+    "ssOfficilMapACK\022\022\n\nchapter_id\030\001 \002(\r\022\022\n\ns"
+    "ection_id\030\002 \002(\r\022\020\n\010add_gold\030\003 \002(\r\022&\n\014add"
+    "_resource\030\004 \003(\0132\020.message.intPair\022\024\n\014cur"
+    "rent_gold\030\005 \002(\r\022*\n\020current_resource\030\006 \003("
+    "\0132\020.message.intPair\022-\n\rcomplete_task\030\007 \003"
+    "(\0132\026.message.MsgTaskReward\0223\n\005error\030\010 \002("
+    "\0162\024.message.ServerError:\016ServerError_NO\""
+    "6\n\023MsgS2CNewTaskNotify\022\037\n\004info\030\001 \002(\0132\021.m"
+    "essage.TaskInfo\"\?\n\031MsgC2SReqPlayerPublis"
+    "hMap\022\"\n\003map\030\001 \002(\0132\025.message.CrashMapData"
+    "\"H\n\031MsgS2CPlayerPublishMapACK\022+\n\003map\030\001 \002"
+    "(\0132\036.message.CrashPlayerPublishMap\"E\n\027Ms"
+    "gC2SReqPublishMapList\022\027\n\017begin_map_index"
+    "\030\001 \002(\004\022\021\n\treq_count\030\002 \002(\005\"q\n\027MsgS2CPubli"
+    "shMapListACK\022\025\n\rend_map_index\030\001 \002(\004\022\021\n\tr"
+    "eq_count\030\002 \002(\005\022,\n\004maps\030\003 \003(\0132\036.message.C"
+    "rashPlayerPublishMap*\226\002\n\013ServerError\022\022\n\016"
+    "ServerError_NO\020\000\022\026\n\022ServerError_Unknow\020\001"
+    "\022\034\n\030ServerError_HaveSameName\020\002\022&\n\"Server"
+    "Error_NotFoundMapNameWhenDel\020\003\0220\n,Server"
+    "Error_PassOfficilMapFailedTheMapIsLock\020\004"
+    "\0222\n.ServerError_PassOfficilMapFailedTheM"
+    "apNotFound\020\005\022/\n+ServerError_FailedToPubl"
+    "ishMapTheTimeIsInCD\020\006*<\n\007MapType\022\r\n\tOffi"
+    "ceMap\020\001\022\021\n\rImcompleteMap\020\002\022\017\n\013CompleteMa"
+    "p\020\003", 3803);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "crashmo.proto", &protobuf_RegisterTypes);
   MsgIntStringProto::default_instance_ = new MsgIntStringProto();
   MsgServerErrorNotify::default_instance_ = new MsgServerErrorNotify();
   CrashmoClientInit::default_instance_ = new CrashmoClientInit();
+  MsgLoadUserMapReq::default_instance_ = new MsgLoadUserMapReq();
+  MsgLoadUserMapACK::default_instance_ = new MsgLoadUserMapACK();
   MsgSaveMapReq::default_instance_ = new MsgSaveMapReq();
   MsgDelMapReq::default_instance_ = new MsgDelMapReq();
   MsgDelMapACK::default_instance_ = new MsgDelMapACK();
@@ -1079,6 +1129,8 @@ void protobuf_AddDesc_crashmo_2eproto() {
   MsgIntStringProto::default_instance_->InitAsDefaultInstance();
   MsgServerErrorNotify::default_instance_->InitAsDefaultInstance();
   CrashmoClientInit::default_instance_->InitAsDefaultInstance();
+  MsgLoadUserMapReq::default_instance_->InitAsDefaultInstance();
+  MsgLoadUserMapACK::default_instance_->InitAsDefaultInstance();
   MsgSaveMapReq::default_instance_->InitAsDefaultInstance();
   MsgDelMapReq::default_instance_->InitAsDefaultInstance();
   MsgDelMapACK::default_instance_->InitAsDefaultInstance();
@@ -2485,6 +2537,669 @@ CrashmoClientInit::mutable_resources_config_max() {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int MsgLoadUserMapReq::kMapIndexesFieldNumber;
+const int MsgLoadUserMapReq::kMapCountFieldNumber;
+#endif  // !_MSC_VER
+
+MsgLoadUserMapReq::MsgLoadUserMapReq()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgLoadUserMapReq)
+}
+
+void MsgLoadUserMapReq::InitAsDefaultInstance() {
+}
+
+MsgLoadUserMapReq::MsgLoadUserMapReq(const MsgLoadUserMapReq& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgLoadUserMapReq)
+}
+
+void MsgLoadUserMapReq::SharedCtor() {
+  _cached_size_ = 0;
+  map_count_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgLoadUserMapReq::~MsgLoadUserMapReq() {
+  // @@protoc_insertion_point(destructor:message.MsgLoadUserMapReq)
+  SharedDtor();
+}
+
+void MsgLoadUserMapReq::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void MsgLoadUserMapReq::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgLoadUserMapReq::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgLoadUserMapReq_descriptor_;
+}
+
+const MsgLoadUserMapReq& MsgLoadUserMapReq::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_crashmo_2eproto();
+  return *default_instance_;
+}
+
+MsgLoadUserMapReq* MsgLoadUserMapReq::default_instance_ = NULL;
+
+MsgLoadUserMapReq* MsgLoadUserMapReq::New(::google::protobuf::Arena* arena) const {
+  MsgLoadUserMapReq* n = new MsgLoadUserMapReq;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgLoadUserMapReq::Clear() {
+  map_count_ = 0;
+  map_indexes_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgLoadUserMapReq::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgLoadUserMapReq)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated uint64 map_indexes = 1;
+      case 1: {
+        if (tag == 8) {
+         parse_map_indexes:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 1, 8, input, this->mutable_map_indexes())));
+        } else if (tag == 10) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, this->mutable_map_indexes())));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(8)) goto parse_map_indexes;
+        if (input->ExpectTag(16)) goto parse_map_count;
+        break;
+      }
+
+      // required int32 map_count = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_map_count:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &map_count_)));
+          set_has_map_count();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgLoadUserMapReq)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgLoadUserMapReq)
+  return false;
+#undef DO_
+}
+
+void MsgLoadUserMapReq::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgLoadUserMapReq)
+  // repeated uint64 map_indexes = 1;
+  for (int i = 0; i < this->map_indexes_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(
+      1, this->map_indexes(i), output);
+  }
+
+  // required int32 map_count = 2;
+  if (has_map_count()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->map_count(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgLoadUserMapReq)
+}
+
+::google::protobuf::uint8* MsgLoadUserMapReq::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgLoadUserMapReq)
+  // repeated uint64 map_indexes = 1;
+  for (int i = 0; i < this->map_indexes_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt64ToArray(1, this->map_indexes(i), target);
+  }
+
+  // required int32 map_count = 2;
+  if (has_map_count()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->map_count(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgLoadUserMapReq)
+  return target;
+}
+
+int MsgLoadUserMapReq::ByteSize() const {
+  int total_size = 0;
+
+  // required int32 map_count = 2;
+  if (has_map_count()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->map_count());
+  }
+  // repeated uint64 map_indexes = 1;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->map_indexes_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt64Size(this->map_indexes(i));
+    }
+    total_size += 1 * this->map_indexes_size() + data_size;
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgLoadUserMapReq::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgLoadUserMapReq* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgLoadUserMapReq*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgLoadUserMapReq::MergeFrom(const MsgLoadUserMapReq& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  map_indexes_.MergeFrom(from.map_indexes_);
+  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (from.has_map_count()) {
+      set_map_count(from.map_count());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgLoadUserMapReq::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgLoadUserMapReq::CopyFrom(const MsgLoadUserMapReq& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgLoadUserMapReq::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000002) != 0x00000002) return false;
+
+  return true;
+}
+
+void MsgLoadUserMapReq::Swap(MsgLoadUserMapReq* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgLoadUserMapReq::InternalSwap(MsgLoadUserMapReq* other) {
+  map_indexes_.UnsafeArenaSwap(&other->map_indexes_);
+  std::swap(map_count_, other->map_count_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgLoadUserMapReq::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgLoadUserMapReq_descriptor_;
+  metadata.reflection = MsgLoadUserMapReq_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgLoadUserMapReq
+
+// repeated uint64 map_indexes = 1;
+ int MsgLoadUserMapReq::map_indexes_size() const {
+  return map_indexes_.size();
+}
+ void MsgLoadUserMapReq::clear_map_indexes() {
+  map_indexes_.Clear();
+}
+ ::google::protobuf::uint64 MsgLoadUserMapReq::map_indexes(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapReq.map_indexes)
+  return map_indexes_.Get(index);
+}
+ void MsgLoadUserMapReq::set_map_indexes(int index, ::google::protobuf::uint64 value) {
+  map_indexes_.Set(index, value);
+  // @@protoc_insertion_point(field_set:message.MsgLoadUserMapReq.map_indexes)
+}
+ void MsgLoadUserMapReq::add_map_indexes(::google::protobuf::uint64 value) {
+  map_indexes_.Add(value);
+  // @@protoc_insertion_point(field_add:message.MsgLoadUserMapReq.map_indexes)
+}
+ const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+MsgLoadUserMapReq::map_indexes() const {
+  // @@protoc_insertion_point(field_list:message.MsgLoadUserMapReq.map_indexes)
+  return map_indexes_;
+}
+ ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+MsgLoadUserMapReq::mutable_map_indexes() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgLoadUserMapReq.map_indexes)
+  return &map_indexes_;
+}
+
+// required int32 map_count = 2;
+ bool MsgLoadUserMapReq::has_map_count() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void MsgLoadUserMapReq::set_has_map_count() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void MsgLoadUserMapReq::clear_has_map_count() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void MsgLoadUserMapReq::clear_map_count() {
+  map_count_ = 0;
+  clear_has_map_count();
+}
+ ::google::protobuf::int32 MsgLoadUserMapReq::map_count() const {
+  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapReq.map_count)
+  return map_count_;
+}
+ void MsgLoadUserMapReq::set_map_count(::google::protobuf::int32 value) {
+  set_has_map_count();
+  map_count_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgLoadUserMapReq.map_count)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MsgLoadUserMapACK::kMapsFieldNumber;
+const int MsgLoadUserMapACK::kEndFieldNumber;
+#endif  // !_MSC_VER
+
+MsgLoadUserMapACK::MsgLoadUserMapACK()
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:message.MsgLoadUserMapACK)
+}
+
+void MsgLoadUserMapACK::InitAsDefaultInstance() {
+}
+
+MsgLoadUserMapACK::MsgLoadUserMapACK(const MsgLoadUserMapACK& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:message.MsgLoadUserMapACK)
+}
+
+void MsgLoadUserMapACK::SharedCtor() {
+  _cached_size_ = 0;
+  end_ = false;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgLoadUserMapACK::~MsgLoadUserMapACK() {
+  // @@protoc_insertion_point(destructor:message.MsgLoadUserMapACK)
+  SharedDtor();
+}
+
+void MsgLoadUserMapACK::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void MsgLoadUserMapACK::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgLoadUserMapACK::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgLoadUserMapACK_descriptor_;
+}
+
+const MsgLoadUserMapACK& MsgLoadUserMapACK::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_crashmo_2eproto();
+  return *default_instance_;
+}
+
+MsgLoadUserMapACK* MsgLoadUserMapACK::default_instance_ = NULL;
+
+MsgLoadUserMapACK* MsgLoadUserMapACK::New(::google::protobuf::Arena* arena) const {
+  MsgLoadUserMapACK* n = new MsgLoadUserMapACK;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MsgLoadUserMapACK::Clear() {
+  end_ = false;
+  maps_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MsgLoadUserMapACK::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:message.MsgLoadUserMapACK)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .message.CrashMapData maps = 1;
+      case 1: {
+        if (tag == 10) {
+         parse_maps:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_maps()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(10)) goto parse_maps;
+        if (input->ExpectTag(16)) goto parse_end;
+        break;
+      }
+
+      // required bool end = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_end:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &end_)));
+          set_has_end();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:message.MsgLoadUserMapACK)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:message.MsgLoadUserMapACK)
+  return false;
+#undef DO_
+}
+
+void MsgLoadUserMapACK::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:message.MsgLoadUserMapACK)
+  // repeated .message.CrashMapData maps = 1;
+  for (unsigned int i = 0, n = this->maps_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->maps(i), output);
+  }
+
+  // required bool end = 2;
+  if (has_end()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->end(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:message.MsgLoadUserMapACK)
+}
+
+::google::protobuf::uint8* MsgLoadUserMapACK::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:message.MsgLoadUserMapACK)
+  // repeated .message.CrashMapData maps = 1;
+  for (unsigned int i = 0, n = this->maps_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->maps(i), target);
+  }
+
+  // required bool end = 2;
+  if (has_end()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->end(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:message.MsgLoadUserMapACK)
+  return target;
+}
+
+int MsgLoadUserMapACK::ByteSize() const {
+  int total_size = 0;
+
+  // required bool end = 2;
+  if (has_end()) {
+    total_size += 1 + 1;
+  }
+  // repeated .message.CrashMapData maps = 1;
+  total_size += 1 * this->maps_size();
+  for (int i = 0; i < this->maps_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->maps(i));
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgLoadUserMapACK::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MsgLoadUserMapACK* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgLoadUserMapACK*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgLoadUserMapACK::MergeFrom(const MsgLoadUserMapACK& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  maps_.MergeFrom(from.maps_);
+  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (from.has_end()) {
+      set_end(from.end());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MsgLoadUserMapACK::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgLoadUserMapACK::CopyFrom(const MsgLoadUserMapACK& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgLoadUserMapACK::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000002) != 0x00000002) return false;
+
+  if (!::google::protobuf::internal::AllAreInitialized(this->maps())) return false;
+  return true;
+}
+
+void MsgLoadUserMapACK::Swap(MsgLoadUserMapACK* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgLoadUserMapACK::InternalSwap(MsgLoadUserMapACK* other) {
+  maps_.UnsafeArenaSwap(&other->maps_);
+  std::swap(end_, other->end_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MsgLoadUserMapACK::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgLoadUserMapACK_descriptor_;
+  metadata.reflection = MsgLoadUserMapACK_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MsgLoadUserMapACK
+
+// repeated .message.CrashMapData maps = 1;
+ int MsgLoadUserMapACK::maps_size() const {
+  return maps_.size();
+}
+ void MsgLoadUserMapACK::clear_maps() {
+  maps_.Clear();
+}
+ const ::message::CrashMapData& MsgLoadUserMapACK::maps(int index) const {
+  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapACK.maps)
+  return maps_.Get(index);
+}
+ ::message::CrashMapData* MsgLoadUserMapACK::mutable_maps(int index) {
+  // @@protoc_insertion_point(field_mutable:message.MsgLoadUserMapACK.maps)
+  return maps_.Mutable(index);
+}
+ ::message::CrashMapData* MsgLoadUserMapACK::add_maps() {
+  // @@protoc_insertion_point(field_add:message.MsgLoadUserMapACK.maps)
+  return maps_.Add();
+}
+ const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+MsgLoadUserMapACK::maps() const {
+  // @@protoc_insertion_point(field_list:message.MsgLoadUserMapACK.maps)
+  return maps_;
+}
+ ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+MsgLoadUserMapACK::mutable_maps() {
+  // @@protoc_insertion_point(field_mutable_list:message.MsgLoadUserMapACK.maps)
+  return &maps_;
+}
+
+// required bool end = 2;
+ bool MsgLoadUserMapACK::has_end() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+ void MsgLoadUserMapACK::set_has_end() {
+  _has_bits_[0] |= 0x00000002u;
+}
+ void MsgLoadUserMapACK::clear_has_end() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+ void MsgLoadUserMapACK::clear_end() {
+  end_ = false;
+  clear_has_end();
+}
+ bool MsgLoadUserMapACK::end() const {
+  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapACK.end)
+  return end_;
+}
+ void MsgLoadUserMapACK::set_end(bool value) {
+  set_has_end();
+  end_ = value;
+  // @@protoc_insertion_point(field_set:message.MsgLoadUserMapACK.end)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int MsgSaveMapReq::kMapFieldNumber;
 const int MsgSaveMapReq::kSaveTypeFieldNumber;
 #endif  // !_MSC_VER
@@ -3545,7 +4260,6 @@ void MsgDelMapACK::InternalSwap(MsgDelMapACK* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgSaveMapACK::kMapIndexFieldNumber;
 const int MsgSaveMapACK::kSaveTypeFieldNumber;
 const int MsgSaveMapACK::kMapFieldNumber;
 const int MsgSaveMapACK::kErrorFieldNumber;
@@ -3571,7 +4285,6 @@ MsgSaveMapACK::MsgSaveMapACK(const MsgSaveMapACK& from)
 
 void MsgSaveMapACK::SharedCtor() {
   _cached_size_ = 0;
-  map_index_ = GOOGLE_ULONGLONG(0);
   save_type_ = 1;
   map_ = NULL;
   error_ = 0;
@@ -3615,8 +4328,7 @@ MsgSaveMapACK* MsgSaveMapACK::New(::google::protobuf::Arena* arena) const {
 }
 
 void MsgSaveMapACK::Clear() {
-  if (_has_bits_[0 / 32] & 15) {
-    map_index_ = GOOGLE_ULONGLONG(0);
+  if (_has_bits_[0 / 32] & 7) {
     save_type_ = 1;
     if (has_map()) {
       if (map_ != NULL) map_->::message::CrashMapData::Clear();
@@ -3639,24 +4351,9 @@ bool MsgSaveMapACK::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required uint64 map_index = 1;
+      // required .message.MapType save_type = 1 [default = OfficeMap];
       case 1: {
         if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &map_index_)));
-          set_has_map_index();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_save_type;
-        break;
-      }
-
-      // required .message.MapType save_type = 2 [default = OfficeMap];
-      case 2: {
-        if (tag == 16) {
-         parse_save_type:
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -3664,31 +4361,31 @@ bool MsgSaveMapACK::MergePartialFromCodedStream(
           if (::message::MapType_IsValid(value)) {
             set_save_type(static_cast< ::message::MapType >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(2, value);
+            mutable_unknown_fields()->AddVarint(1, value);
           }
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_map;
+        if (input->ExpectTag(18)) goto parse_map;
         break;
       }
 
-      // required .message.CrashMapData map = 3;
-      case 3: {
-        if (tag == 26) {
+      // required .message.CrashMapData map = 2;
+      case 2: {
+        if (tag == 18) {
          parse_map:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_map()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(32)) goto parse_error;
+        if (input->ExpectTag(24)) goto parse_error;
         break;
       }
 
-      // required .message.ServerError error = 4 [default = ServerError_NO];
-      case 4: {
-        if (tag == 32) {
+      // required .message.ServerError error = 3 [default = ServerError_NO];
+      case 3: {
+        if (tag == 24) {
          parse_error:
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -3697,7 +4394,7 @@ bool MsgSaveMapACK::MergePartialFromCodedStream(
           if (::message::ServerError_IsValid(value)) {
             set_error(static_cast< ::message::ServerError >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(4, value);
+            mutable_unknown_fields()->AddVarint(3, value);
           }
         } else {
           goto handle_unusual;
@@ -3731,27 +4428,22 @@ failure:
 void MsgSaveMapACK::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:message.MsgSaveMapACK)
-  // required uint64 map_index = 1;
-  if (has_map_index()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->map_index(), output);
-  }
-
-  // required .message.MapType save_type = 2 [default = OfficeMap];
+  // required .message.MapType save_type = 1 [default = OfficeMap];
   if (has_save_type()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->save_type(), output);
+      1, this->save_type(), output);
   }
 
-  // required .message.CrashMapData map = 3;
+  // required .message.CrashMapData map = 2;
   if (has_map()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, *this->map_, output);
+      2, *this->map_, output);
   }
 
-  // required .message.ServerError error = 4 [default = ServerError_NO];
+  // required .message.ServerError error = 3 [default = ServerError_NO];
   if (has_error()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      4, this->error(), output);
+      3, this->error(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3764,28 +4456,23 @@ void MsgSaveMapACK::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgSaveMapACK::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:message.MsgSaveMapACK)
-  // required uint64 map_index = 1;
-  if (has_map_index()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->map_index(), target);
-  }
-
-  // required .message.MapType save_type = 2 [default = OfficeMap];
+  // required .message.MapType save_type = 1 [default = OfficeMap];
   if (has_save_type()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->save_type(), target);
+      1, this->save_type(), target);
   }
 
-  // required .message.CrashMapData map = 3;
+  // required .message.CrashMapData map = 2;
   if (has_map()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, *this->map_, target);
+        2, *this->map_, target);
   }
 
-  // required .message.ServerError error = 4 [default = ServerError_NO];
+  // required .message.ServerError error = 3 [default = ServerError_NO];
   if (has_error()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      4, this->error(), target);
+      3, this->error(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3799,28 +4486,21 @@ void MsgSaveMapACK::SerializeWithCachedSizes(
 int MsgSaveMapACK::RequiredFieldsByteSizeFallback() const {
   int total_size = 0;
 
-  if (has_map_index()) {
-    // required uint64 map_index = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->map_index());
-  }
-
   if (has_save_type()) {
-    // required .message.MapType save_type = 2 [default = OfficeMap];
+    // required .message.MapType save_type = 1 [default = OfficeMap];
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->save_type());
   }
 
   if (has_map()) {
-    // required .message.CrashMapData map = 3;
+    // required .message.CrashMapData map = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->map_);
   }
 
   if (has_error()) {
-    // required .message.ServerError error = 4 [default = ServerError_NO];
+    // required .message.ServerError error = 3 [default = ServerError_NO];
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->error());
   }
@@ -3830,22 +4510,17 @@ int MsgSaveMapACK::RequiredFieldsByteSizeFallback() const {
 int MsgSaveMapACK::ByteSize() const {
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
-    // required uint64 map_index = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->map_index());
-
-    // required .message.MapType save_type = 2 [default = OfficeMap];
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+    // required .message.MapType save_type = 1 [default = OfficeMap];
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->save_type());
 
-    // required .message.CrashMapData map = 3;
+    // required .message.CrashMapData map = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->map_);
 
-    // required .message.ServerError error = 4 [default = ServerError_NO];
+    // required .message.ServerError error = 3 [default = ServerError_NO];
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->error());
 
@@ -3878,9 +4553,6 @@ void MsgSaveMapACK::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgSaveMapACK::MergeFrom(const MsgSaveMapACK& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_map_index()) {
-      set_map_index(from.map_index());
-    }
     if (from.has_save_type()) {
       set_save_type(from.save_type());
     }
@@ -3909,7 +4581,7 @@ void MsgSaveMapACK::CopyFrom(const MsgSaveMapACK& from) {
 }
 
 bool MsgSaveMapACK::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
 
   if (has_map()) {
     if (!this->map_->IsInitialized()) return false;
@@ -3922,7 +4594,6 @@ void MsgSaveMapACK::Swap(MsgSaveMapACK* other) {
   InternalSwap(other);
 }
 void MsgSaveMapACK::InternalSwap(MsgSaveMapACK* other) {
-  std::swap(map_index_, other->map_index_);
   std::swap(save_type_, other->save_type_);
   std::swap(map_, other->map_);
   std::swap(error_, other->error_);
@@ -3942,39 +4613,15 @@ void MsgSaveMapACK::InternalSwap(MsgSaveMapACK* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgSaveMapACK
 
-// required uint64 map_index = 1;
- bool MsgSaveMapACK::has_map_index() const {
+// required .message.MapType save_type = 1 [default = OfficeMap];
+ bool MsgSaveMapACK::has_save_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
- void MsgSaveMapACK::set_has_map_index() {
+ void MsgSaveMapACK::set_has_save_type() {
   _has_bits_[0] |= 0x00000001u;
 }
- void MsgSaveMapACK::clear_has_map_index() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgSaveMapACK::clear_map_index() {
-  map_index_ = GOOGLE_ULONGLONG(0);
-  clear_has_map_index();
-}
- ::google::protobuf::uint64 MsgSaveMapACK::map_index() const {
-  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.map_index)
-  return map_index_;
-}
- void MsgSaveMapACK::set_map_index(::google::protobuf::uint64 value) {
-  set_has_map_index();
-  map_index_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.map_index)
-}
-
-// required .message.MapType save_type = 2 [default = OfficeMap];
- bool MsgSaveMapACK::has_save_type() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgSaveMapACK::set_has_save_type() {
-  _has_bits_[0] |= 0x00000002u;
-}
  void MsgSaveMapACK::clear_has_save_type() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
  void MsgSaveMapACK::clear_save_type() {
   save_type_ = 1;
@@ -3991,15 +4638,15 @@ void MsgSaveMapACK::InternalSwap(MsgSaveMapACK* other) {
   // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.save_type)
 }
 
-// required .message.CrashMapData map = 3;
+// required .message.CrashMapData map = 2;
  bool MsgSaveMapACK::has_map() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
  void MsgSaveMapACK::set_has_map() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
  void MsgSaveMapACK::clear_has_map() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
  void MsgSaveMapACK::clear_map() {
   if (map_ != NULL) map_->::message::CrashMapData::Clear();
@@ -4034,15 +4681,15 @@ void MsgSaveMapACK::InternalSwap(MsgSaveMapACK* other) {
   // @@protoc_insertion_point(field_set_allocated:message.MsgSaveMapACK.map)
 }
 
-// required .message.ServerError error = 4 [default = ServerError_NO];
+// required .message.ServerError error = 3 [default = ServerError_NO];
  bool MsgSaveMapACK::has_error() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
  void MsgSaveMapACK::set_has_error() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
  void MsgSaveMapACK::clear_has_error() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
  void MsgSaveMapACK::clear_error() {
   error_ = 0;

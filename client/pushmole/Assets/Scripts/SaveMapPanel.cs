@@ -134,57 +134,29 @@ public class SaveMapPanel : MonoBehaviour {
 		MapData temp_data = global_instance.Instance.GetMapData();
         message.CrashMapData mapdata = temp_data.get_info();
         message.CrashPlayerInfo msginfo = global_instance.Instance._player.GetInfo();
-        bool have_map_name = false;
-        foreach(message.CrashMapData entry in msginfo.CompleteMap)
-        {           
-            if(entry.MapName == getMapName())
-            {
-                have_map_name = true;
-                break;
-            }            
-        }
+        message.MsgSaveMapReq msg = new message.MsgSaveMapReq();
 
-        if(have_map_name == false)
+        switch (_enMapType)
         {
-            foreach (message.CrashMapData entry in msginfo.IncompleteMap)
-            {
-                if (entry.MapName == getMapName())
+            case SaveMapTitleType.Customer:
                 {
-                    have_map_name = true;
-                    break;
+                    msg.save_type = message.MapType.CompleteMap;
                 }
-            }
+                break;
+            case SaveMapTitleType.Admin:
+                {
+                    msg.save_type = message.MapType.OfficeMap;
+                    mapdata.Section = int.Parse(_section_text.text);
+                    mapdata.Chapter = int.Parse(_chapter_text.text);
+                }
+                break;
         }
 
-        if(have_map_name == true)
-        {
-            _txt_msg.text = "have same map name";
-        }
-        else
-        {
-            message.MsgSaveMapReq msg = new message.MsgSaveMapReq();
-            
-            switch (_enMapType)
-            {
-                case SaveMapTitleType.Customer:
-                    {
-                        msg.save_type = message.MapType.CompleteMap;
-                    }
-                    break;
-                case SaveMapTitleType.Admin:
-                    {
-                        msg.save_type = message.MapType.OfficeMap;
-                        mapdata.Section = int.Parse(_section_text.text); 
-						mapdata.Chapter = int.Parse(_chapter_text.text);
-                    }
-                    break;
-            }
-
-            msg.map = mapdata;
-            msg.map.MapName = getMapName();
-            global_instance.Instance._client_session.send(msg);
-            ButtonEnable(false);
-        }
+        msg.map = mapdata;
+        msg.map.MapName = getMapName();
+        global_instance.Instance._client_session.send(msg);
+        ButtonEnable(false);
+        
     }
 
 

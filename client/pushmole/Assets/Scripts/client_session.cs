@@ -28,6 +28,7 @@ public class client_session
 		_MessageFun.Add ("MsgS2CLoadTaskConfigsACK", parseLoadTaskConfigsACK);
         _MessageFun.Add("MsgS2CPassOfficilMapACK", parseMsgS2CPassOfficilMapACK);
         _MessageFun.Add("MsgS2CNewTaskNotify", parseMsgS2CNewTaskNotify);
+        _MessageFun.Add("MsgLoadUserMapACK", LoadUserMapACK);
 
 
     }
@@ -101,12 +102,43 @@ public class client_session
         }
         global_instance.Instance._officilMapManager.LoadSections();
         global_instance.Instance._officilMapManager.LoadFromLocal();
-        if (global_instance.Instance._player.isadmin())
+        message.MsgLoadUserMapReq msgLoadUserMapReq = new message.MsgLoadUserMapReq();
+        msgLoadUserMapReq.map_count = 10;
+        foreach (ulong map_index in msg.info.CompleteMap)
         {
-            global_instance.Instance._taskManager.LoadTask();
-        }        
+            msgLoadUserMapReq.map_indexes.Add(map_index);
+        }
+        foreach (ulong map_index in msg.info.IncompleteMap)
+        {
+            msgLoadUserMapReq.map_indexes.Add(map_index);
+        }
+
+        global_instance.Instance._net_client.send(msgLoadUserMapReq);
+
+
+        //if (global_instance.Instance._player.isadmin())
+        //{
+        //   global_instance.Instance._taskManager.LoadTask();
+        //}        
         //global_instance.Instance._ngui_edit_manager._login_obj.SetActive(false);
         //global_instance.Instance._ngui_edit_manager.show_main_panel();
+        return true;
+    }
+
+    public bool LoadUserMapACK(System.IO.MemoryStream stream)
+    {
+        MsgLoadUserMapACK msg = ProtoBuf.Serializer.Deserialize<MsgLoadUserMapACK>(stream);
+        foreach(CrashMapData entry in msg.maps)
+        {
+            global_instance.Instance._player.addUserMap(entry);
+        }
+        if(msg.end)
+        {
+            if (global_instance.Instance._player.isadmin())
+            {
+                global_instance.Instance._taskManager.LoadTask();
+            }
+        }
         return true;
     }
 

@@ -74,6 +74,17 @@ CrashPlayer* CrashPlayerManager::CreatePlayer(account_type acc, Session* session
 		player->SetInfo(info_temp);
 		_players.insert(CRASHPLAYERS::value_type(player->getAccount(), player));
 	}
+	int map_size = info->maps_size();
+	for (size_t i = 0; i < map_size; i++)
+	{
+		const message::CrashMapData& map_entry = info->maps(i);
+		u64 map_index = map_entry.data().map_index();
+		message::CrashMapData* DataMap = gCrashMapManager.GetCrashMap(map_index);
+		if (DataMap == NULL)
+		{
+			gCrashMapManager.AddCrashMap(map_entry);
+		}
+	}
 	return player;
 
 }
