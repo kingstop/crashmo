@@ -59,7 +59,7 @@ void OfficilMapManager::init(DBQuery* p)
 	if (p)
 	{
 		DBQuery& query = *p;
-		query << "select *,UNIX_TIMESTAMP(`create_time`) from `offical_map` where";
+		query << "select *,UNIX_TIMESTAMP(`create_time`) from `offical_map` ;";
 		query.parse();
 		SDBResult sResult = query.store();
 		int count = sResult.size();
