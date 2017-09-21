@@ -200,7 +200,7 @@ void RankMapManager::ReqPublishMapList(const message::MsgC2SReqPublishMapList* m
 void RankMapManager::PublishMap(const message::MsgC2SReqPlayerPublishMap* msg, CrashPlayer* p)
 {
 	int passed_time = gGameConfig.GetServerOpenPassedTime(g_server_time);
-	std::map<s32, std::vector<message::CrashPlayerPublishMap*>>::iterator it = _new_maps.find(passed_time);
+	std::map<s32, std::vector<message::CrashPlayerPublishMap*> >::iterator it = _new_maps.find(passed_time);
 
 	if (it == _new_maps.end())
 	{
