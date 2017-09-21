@@ -25,7 +25,10 @@ void OfficilMapManager::loadMap(DBQuery* p, const char* argu)
 {
 	std::string sql = "select *,UNIX_TIMESTAMP(`create_time`) from `player_map` where index_map in (";
 	sql = sql + argu + ");";
+	
 	DBQuery& query = *p;
+	query.reset();
+	query.clear();
 	query << sql;
 	query.parse();
 	SDBResult sResult = query.store();
@@ -51,6 +54,7 @@ void OfficilMapManager::loadMap(DBQuery* p, const char* argu)
 		gCrashMapManager.AddCrashMap(map_data);
 	}
 	query.reset();
+	query.clear();
 	sResult.clear();
 }
 
@@ -113,6 +117,7 @@ void OfficilMapManager::init(DBQuery* p)
 		{
 			loadMap(p, sql_argu.c_str());
 		}		
+		query.clear();
 		query.reset();
 		sResult.clear();
 		query << "select * from `offical_section_names`";
