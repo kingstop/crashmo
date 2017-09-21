@@ -25,7 +25,7 @@ struct RankMapTg
 
 class RankMapManager : public EventableObject
 {
-	typedef std::map<s32, std::vector<message::CrashPlayerPublishMap* >> NEW_PUBLISH_MAP;
+	typedef std::map<s32, std::vector<message::CrashPlayerPublishMap* > > NEW_PUBLISH_MAP;
 public:	
 	RankMapManager();
 	virtual ~RankMapManager();
