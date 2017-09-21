@@ -28,7 +28,7 @@ void OfficilMapManager::loadMap(DBQuery* p, const char* argu)
 	
 	DBQuery& query = *p;
 	query.reset();
-	query.clear();
+	//query.clear();
 	query << sql;
 	query.parse();
 	SDBResult sResult = query.store();
@@ -54,7 +54,7 @@ void OfficilMapManager::loadMap(DBQuery* p, const char* argu)
 		gCrashMapManager.AddCrashMap(map_data);
 	}
 	query.reset();
-	query.clear();
+	//query.clear();
 	sResult.clear();
 }
 
@@ -117,7 +117,7 @@ void OfficilMapManager::init(DBQuery* p)
 		{
 			loadMap(p, sql_argu.c_str());
 		}		
-		query.clear();
+		//query.clear();
 		query.reset();
 		sResult.clear();
 		query << "select * from `offical_section_names`";
