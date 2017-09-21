@@ -217,7 +217,7 @@ bool GameServer::initDataFromCharacterDB(DBQuery* p, const void* data)
 				gGameConfig.SetMaxMapIndex(max_map_index);
 			}			
 		}
-
+		gOfficilMapManager.LoadMaps(p);
 		return false;
 	}
 	return true;

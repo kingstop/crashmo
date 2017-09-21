@@ -58,6 +58,36 @@ void OfficilMapManager::loadMap(DBQuery* p, const char* argu)
 	sResult.clear();
 }
 
+
+void OfficilMapManager::LoadMaps(DBQuery* p)
+{
+	char sz_temp[512];
+	std::string sql_argu = "";
+	std::list<u64>::iterator it = _ids.begin();
+	int load_count = 10;
+	for (int i = 0; it != _ids.end(); ++it, i++)
+	{
+		if (sql_argu.empty() == false)
+		{
+			sql_argu += ",";
+		}
+		u64 index_entry = (*it);
+		sprintf(sz_temp, "%llu", index_entry);
+		sql_argu += sz_temp;
+		if (i >= load_count)
+		{
+			loadMap(p, sql_argu.c_str());
+			sql_argu.clear();
+			i = 0;
+		}
+	}
+
+	if (sql_argu.empty() == false)
+	{
+		loadMap(p, sql_argu.c_str());
+	}
+}
+
 void OfficilMapManager::init(DBQuery* p)
 {
 	if (p)
@@ -67,7 +97,7 @@ void OfficilMapManager::init(DBQuery* p)
 		query.parse();
 		SDBResult sResult = query.store();
 		int count = sResult.size();
-		std::list<u64> ids;
+		
 		for (int i = 0; i < count; i++)
 		{
 			DBRow row = sResult[i];
@@ -75,7 +105,7 @@ void OfficilMapManager::init(DBQuery* p)
 			int chapter_id = row["chapter"];
 			int section_id = row["section"];
 			u64 map_index = row["index_map"];
-			ids.push_back(map_index);
+			_ids.push_back(map_index);
 			OFFICILMAPLIST::iterator it = _officilmap.find(map_index);
 			if (it == _officilmap.end())
 			{
@@ -92,31 +122,7 @@ void OfficilMapManager::init(DBQuery* p)
 			
 			//gCrashMapManager.AddCrashMap(temp_map);
 		}
-		char sz_temp[512];
-		std::string sql_argu = "";
-		std::list<u64>::iterator it = ids.begin();
-		int load_count = 10;
-		for (int i = 0; it != ids.end(); ++it, i ++)
-		{
-			if (sql_argu.empty() == false)
-			{
-				sql_argu += ",";
-			}		
-			u64 index_entry = (*it);
-			sprintf(sz_temp, "%llu", index_entry);
-			sql_argu += sz_temp;
-			if (i >= load_count)
-			{
-				loadMap(p, sql_argu.c_str());
-				sql_argu.clear();
-				i = 0;
-			}
-		}
 
-		if (sql_argu.empty() == false)
-		{
-			loadMap(p, sql_argu.c_str());
-		}		
 		//query.clear();
 		query.reset();
 		sResult.clear();
