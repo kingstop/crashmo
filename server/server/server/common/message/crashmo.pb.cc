@@ -141,7 +141,6 @@ const ::google::protobuf::Descriptor* MsgS2CPublishMapListACK_descriptor_ = NULL
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgS2CPublishMapListACK_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* ServerError_descriptor_ = NULL;
-const ::google::protobuf::EnumDescriptor* MapType_descriptor_ = NULL;
 
 }  // namespace
 
@@ -800,7 +799,6 @@ void protobuf_AssignDesc_crashmo_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgS2CPublishMapListACK, _internal_metadata_),
       -1);
   ServerError_descriptor_ = file->enum_type(0);
-  MapType_descriptor_ = file->enum_type(1);
 }
 
 namespace {
@@ -1081,9 +1079,7 @@ void protobuf_AddDesc_crashmo_2eproto() {
     "Error_PassOfficilMapFailedTheMapIsLock\020\004"
     "\0222\n.ServerError_PassOfficilMapFailedTheM"
     "apNotFound\020\005\022/\n+ServerError_FailedToPubl"
-    "ishMapTheTimeIsInCD\020\006*<\n\007MapType\022\r\n\tOffi"
-    "ceMap\020\001\022\021\n\rImcompleteMap\020\002\022\017\n\013CompleteMa"
-    "p\020\003", 3803);
+    "ishMapTheTimeIsInCD\020\006", 3741);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "crashmo.proto", &protobuf_RegisterTypes);
   MsgIntStringProto::default_instance_ = new MsgIntStringProto();
@@ -1188,21 +1184,6 @@ bool ServerError_IsValid(int value) {
     case 4:
     case 5:
     case 6:
-      return true;
-    default:
-      return false;
-  }
-}
-
-const ::google::protobuf::EnumDescriptor* MapType_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return MapType_descriptor_;
-}
-bool MapType_IsValid(int value) {
-  switch(value) {
-    case 1:
-    case 2:
-    case 3:
       return true;
     default:
       return false;

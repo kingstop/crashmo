@@ -12,13 +12,36 @@ CrashMapManager::~CrashMapManager()
 }
 
 
-message::CrashMapData* CrashMapManager::CreateCrashMap(const message::CrashMapData* map)
+void CrashMapManager::ModifyMap(const message::CrashMapData* map, message::MapType type,u64 account)
+{
+	message::CrashMapData* entry = new message::CrashMapData(*map);
+	u64 map_index = entry->data().map_index();
+	if (map_index != 0)
+	{
+		_maps[map_index] = entry;
+	}
+	message::gs2dbSaveMapReq msg;
+	msg.set_account(account);
+	msg.set_type(type);
+	
+	msg.mutable_data()->CopyFrom(*map);
+	gGSDBClient.sendPBMessage(&msg, 0);	
+}
+
+message::CrashMapData* CrashMapManager::CreateCrashMap(const message::CrashMapData* map, message::MapType type,u64 account)
 {
 	u64 new_map_index = gGameConfig.GenerateMapIndex();
 	message::CrashMapData* entry = new message::CrashMapData(*map);
 	entry->mutable_data()->set_map_index(new_map_index);
 	_maps[new_map_index] = entry;
 	_map_counts[new_map_index] = 1;
+	message::gs2dbSaveMapReq msg;
+	msg.set_account(account);
+	msg.set_type(type);
+	msg.mutable_data()->CopyFrom(*map);
+	gGSDBClient.sendPBMessage(&msg, 0);
+
+
 	return entry;
 	
 }

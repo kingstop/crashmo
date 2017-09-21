@@ -103,26 +103,6 @@ inline bool ServerError_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<ServerError>(
     ServerError_descriptor(), name, value);
 }
-enum MapType {
-  OfficeMap = 1,
-  ImcompleteMap = 2,
-  CompleteMap = 3
-};
-bool MapType_IsValid(int value);
-const MapType MapType_MIN = OfficeMap;
-const MapType MapType_MAX = CompleteMap;
-const int MapType_ARRAYSIZE = MapType_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* MapType_descriptor();
-inline const ::std::string& MapType_Name(MapType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    MapType_descriptor(), value);
-}
-inline bool MapType_Parse(
-    const ::std::string& name, MapType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<MapType>(
-    MapType_descriptor(), name, value);
-}
 // ===================================================================
 
 class MsgIntStringProto : public ::google::protobuf::Message {
@@ -6965,11 +6945,6 @@ template <> struct is_proto_enum< ::message::ServerError> : ::google::protobuf::
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::message::ServerError>() {
   return ::message::ServerError_descriptor();
-}
-template <> struct is_proto_enum< ::message::MapType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::message::MapType>() {
-  return ::message::MapType_descriptor();
 }
 
 }  // namespace protobuf

@@ -65,27 +65,35 @@ void DBQuestManager::delOfficilMap(int chapter, int section)
 	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, sql, 0, NULL, _DELETE_OFFICIL_MAP_);
 }
 
-void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
+void DBQuestManager::saveMap(message::gs2dbSaveMapReq* msg)
 {
 	char sql[4096];
 	message::CrashMapData* map_temp = msg->mutable_data();
-	std::string str_sql;
-	sprintf(sql, "delete from offical_map where map_chapter=%d and map_section=%d;", map_temp->chapter(), map_temp->section());
-	std::string temp_sql_replace;
-	temp_sql_replace += sql;
 	u64 map_index = map_temp->data().map_index();
-	temp_sql_replace += "replace into offical_map(`account`, `chapter`, `section`, `index_map`) values";
+	u64 account = msg->account();
+	int temp_number = map_temp->section();
+	if (msg->type() == message::OfficeMap)
+	{
+
+		std::string str_sql;
+		sprintf(sql, "delete from offical_map where map_chapter=%d and map_section=%d;", map_temp->chapter(), map_temp->section());
+		std::string temp_sql_replace;
+		temp_sql_replace += sql;
+		u64 map_index = map_temp->data().map_index();
+		temp_sql_replace += "replace into offical_map(`account`, `chapter`, `section`, `index_map`) values";
+		
+		
+		sprintf(sql, "(%d, %d, %d, %llu)", 0,
+			map_temp->chapter(),
+			temp_number, map_index);
+		temp_sql_replace += sql;
+		gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, temp_sql_replace.c_str(), 0, NULL, _SAVE_OFFICIL_MAP_);
+		temp_sql_replace.clear();
+	}
 	std::string temp_data;
 	temp_data = map_temp->data().SerializeAsString();
 	temp_data = base64_encode((const unsigned char*)temp_data.c_str(), temp_data.size());
-	int temp_number = map_temp->section();
-	u64 account = msg->account();
-	sprintf(sql, "(%d, %d, %d, %llu)", 0, 
-		map_temp->chapter(), 
-		temp_number, map_index);
-	temp_sql_replace += sql;
-	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, temp_sql_replace.c_str(), 0, NULL, _SAVE_OFFICIL_MAP_);
-	temp_sql_replace.clear();
+
 	std::string create_time = get_time(map_temp->create_time());
 	std::string str_sql_replace_map = "replace into `player_map`(`index_map`, `account`, `map_name`, `map_data`, `create_time`, `is_complete`, `gold`) values";
 	sprintf(sql, "(%llu, %llu, '%s', '%s', '%s', %d, %d)", map_index, account, map_temp->mapname().c_str(), temp_data.c_str(), create_time.c_str(),
@@ -93,7 +101,7 @@ void DBQuestManager::saveOfficilMap(message::gs2dbSaveOfficileMapReq* msg)
 		temp_number);
 	str_sql_replace_map += sql;
 	CharacterDatabaseSql(str_sql_replace_map.c_str());	
-	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, temp_sql_replace.c_str(), 0, NULL, _SAVE_OFFICIL_MAP_);
+	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, str_sql_replace_map.c_str(), 0, NULL, _SAVE_OFFICIL_MAP_);
 
 }
 

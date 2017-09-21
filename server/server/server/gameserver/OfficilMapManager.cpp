@@ -272,7 +272,7 @@ void OfficilMapManager::saveMapOfficilMap(const message::CrashMapData* map_data,
 	{
 		gCrashMapManager.DelCrashMap(it_section->second);
 	}
-	const message::CrashMapData* entry = gCrashMapManager.CreateCrashMap(map_data);	
+	const message::CrashMapData* entry = gCrashMapManager.CreateCrashMap(map_data, message::OfficeMap);
 	_officilmap[map_data->chapter()][map_data->section()] = entry->data().map_index();
 
 	message::MsgSaveMapACK msgACK;

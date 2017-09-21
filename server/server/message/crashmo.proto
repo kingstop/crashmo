@@ -49,12 +49,6 @@ message MsgLoadUserMapACK
 	
 }
 
-enum MapType
-{
-	OfficeMap = 1;
-	ImcompleteMap = 2;
-	CompleteMap = 3;
-}
 
 message MsgSaveMapReq
 {

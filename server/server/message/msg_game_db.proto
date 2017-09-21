@@ -15,10 +15,11 @@ message gs2dbDelOfficileReq
 	required int32 number = 2;
 }
 
-message gs2dbSaveOfficileMapReq
+message gs2dbSaveMapReq
 {
 	required CrashMapData data = 1;
 	required uint64 account = 2;
+	required MapType type = 3;
 }
 
 message CharacterDataACK

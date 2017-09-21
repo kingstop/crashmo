@@ -373,7 +373,7 @@ void CrashPlayer::SaveCrashInfo()
 			complete_map_index += ",";
 		}
 		u64 map_index = _info.completemap(i);
-		sprintf(sz_index, "llu", map_index);
+		sprintf(sz_index, "%llu", map_index);
 		complete_map_index += sz_index;
 	}
 	std::string incomplete_map_index;
@@ -385,7 +385,7 @@ void CrashPlayer::SaveCrashInfo()
 			incomplete_map_index += ",";
 		}
 		u64 map_index = _info.incompletemap(i);
-		sprintf(sz_index, "llu", map_index);
+		sprintf(sz_index, "%llu", map_index);
 		incomplete_map_index += sz_index;
 	}
 
@@ -598,7 +598,7 @@ void CrashPlayer::SaveMap(message::MsgSaveMapReq* msg)
 	
 	msgACK.set_save_type(msg->save_type());
 	msgACK.set_error(message::ServerError_NO);
-	message::CrashMapData* temp = gCrashMapManager.CreateCrashMap(&msg->map());
+	message::CrashMapData* temp = gCrashMapManager.CreateCrashMap(&msg->map(), message::ImcompleteMap, _info.account());
 	u64 map_index = temp->data().map_index();
 	switch (msg->save_type())
 	{

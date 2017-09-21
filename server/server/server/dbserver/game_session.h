@@ -11,7 +11,7 @@ public:
 	void parseGameMsg(google::protobuf::Message* p, pb_flag_type flag);
 	void parseApplyCharacterDataReq(google::protobuf::Message* p, pb_flag_type flag);
 	void parseReqSaveCharacterData(google::protobuf::Message* p, pb_flag_type flag);
-	void parseSaveOfficilMapReq(google::protobuf::Message* p, pb_flag_type flag);
+	void saveMap(google::protobuf::Message* p, pb_flag_type flag);
 	void parseDelOfficilMapReq(google::protobuf::Message* p, pb_flag_type flag);
 	void parseSaveOfficilMapsReq(google::protobuf::Message* p, pb_flag_type flag);
 	void parseSaveSectionNamesReq(google::protobuf::Message* p, pb_flag_type flag);

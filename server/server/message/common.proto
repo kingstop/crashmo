@@ -1,5 +1,10 @@
 package message;
-
+enum MapType
+{
+	OfficeMap = 1;
+	ImcompleteMap = 2;
+	CompleteMap = 3;
+}
 message int32array
 {
 	repeated int32 data = 1;

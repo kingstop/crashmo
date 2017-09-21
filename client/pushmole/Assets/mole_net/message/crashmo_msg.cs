@@ -1046,18 +1046,4 @@ namespace message
       ServerError_FailedToPublishMapTheTimeIsInCD = 6
     }
   
-    [global::ProtoBuf.ProtoContract(Name=@"MapType")]
-    public enum MapType
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"OfficeMap", Value=1)]
-      OfficeMap = 1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ImcompleteMap", Value=2)]
-      ImcompleteMap = 2,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"CompleteMap", Value=3)]
-      CompleteMap = 3
-    }
-  
 }

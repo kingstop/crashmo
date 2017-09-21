@@ -49,6 +49,26 @@ class TaskConditionTypeConfig;
 class TaskRewardConfig;
 class TaskInfoConfig;
 
+enum MapType {
+  OfficeMap = 1,
+  ImcompleteMap = 2,
+  CompleteMap = 3
+};
+bool MapType_IsValid(int value);
+const MapType MapType_MIN = OfficeMap;
+const MapType MapType_MAX = CompleteMap;
+const int MapType_ARRAYSIZE = MapType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* MapType_descriptor();
+inline const ::std::string& MapType_Name(MapType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    MapType_descriptor(), value);
+}
+inline bool MapType_Parse(
+    const ::std::string& name, MapType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<MapType>(
+    MapType_descriptor(), name, value);
+}
 enum ConditionType {
   ConditionType_NULL = 0,
   ConditionType_PassOfficilGame = 1,
@@ -3504,6 +3524,11 @@ inline void TaskInfoConfig::set_required_complete_task_count(::google::protobuf:
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::message::MapType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::message::MapType>() {
+  return ::message::MapType_descriptor();
+}
 template <> struct is_proto_enum< ::message::ConditionType> : ::google::protobuf::internal::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::message::ConditionType>() {

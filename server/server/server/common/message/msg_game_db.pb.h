@@ -40,7 +40,7 @@ void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
 class ApplyCharacterDataReq;
 class NeedCreateCharacter;
 class gs2dbDelOfficileReq;
-class gs2dbSaveOfficileMapReq;
+class gs2dbSaveMapReq;
 class CharacterDataACK;
 class ReqSaveCharacterData;
 class ReqSaveOfficilMap;
@@ -330,14 +330,14 @@ class gs2dbDelOfficileReq : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class gs2dbSaveOfficileMapReq : public ::google::protobuf::Message {
+class gs2dbSaveMapReq : public ::google::protobuf::Message {
  public:
-  gs2dbSaveOfficileMapReq();
-  virtual ~gs2dbSaveOfficileMapReq();
+  gs2dbSaveMapReq();
+  virtual ~gs2dbSaveMapReq();
 
-  gs2dbSaveOfficileMapReq(const gs2dbSaveOfficileMapReq& from);
+  gs2dbSaveMapReq(const gs2dbSaveMapReq& from);
 
-  inline gs2dbSaveOfficileMapReq& operator=(const gs2dbSaveOfficileMapReq& from) {
+  inline gs2dbSaveMapReq& operator=(const gs2dbSaveMapReq& from) {
     CopyFrom(from);
     return *this;
   }
@@ -351,19 +351,19 @@ class gs2dbSaveOfficileMapReq : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const gs2dbSaveOfficileMapReq& default_instance();
+  static const gs2dbSaveMapReq& default_instance();
 
-  void Swap(gs2dbSaveOfficileMapReq* other);
+  void Swap(gs2dbSaveMapReq* other);
 
   // implements Message ----------------------------------------------
 
-  inline gs2dbSaveOfficileMapReq* New() const { return New(NULL); }
+  inline gs2dbSaveMapReq* New() const { return New(NULL); }
 
-  gs2dbSaveOfficileMapReq* New(::google::protobuf::Arena* arena) const;
+  gs2dbSaveMapReq* New(::google::protobuf::Arena* arena) const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const gs2dbSaveOfficileMapReq& from);
-  void MergeFrom(const gs2dbSaveOfficileMapReq& from);
+  void CopyFrom(const gs2dbSaveMapReq& from);
+  void MergeFrom(const gs2dbSaveMapReq& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -378,7 +378,7 @@ class gs2dbSaveOfficileMapReq : public ::google::protobuf::Message {
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(gs2dbSaveOfficileMapReq* other);
+  void InternalSwap(gs2dbSaveMapReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return _internal_metadata_.arena();
@@ -410,12 +410,21 @@ class gs2dbSaveOfficileMapReq : public ::google::protobuf::Message {
   ::google::protobuf::uint64 account() const;
   void set_account(::google::protobuf::uint64 value);
 
-  // @@protoc_insertion_point(class_scope:message.gs2dbSaveOfficileMapReq)
+  // required .message.MapType type = 3;
+  bool has_type() const;
+  void clear_type();
+  static const int kTypeFieldNumber = 3;
+  ::message::MapType type() const;
+  void set_type(::message::MapType value);
+
+  // @@protoc_insertion_point(class_scope:message.gs2dbSaveMapReq)
  private:
   inline void set_has_data();
   inline void clear_has_data();
   inline void set_has_account();
   inline void clear_has_account();
+  inline void set_has_type();
+  inline void clear_has_type();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -425,12 +434,13 @@ class gs2dbSaveOfficileMapReq : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::message::CrashMapData* data_;
   ::google::protobuf::uint64 account_;
+  int type_;
   friend void  protobuf_AddDesc_msg_5fgame_5fdb_2eproto();
   friend void protobuf_AssignDesc_msg_5fgame_5fdb_2eproto();
   friend void protobuf_ShutdownFile_msg_5fgame_5fdb_2eproto();
 
   void InitAsDefaultInstance();
-  static gs2dbSaveOfficileMapReq* default_instance_;
+  static gs2dbSaveMapReq* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1117,41 +1127,41 @@ inline void gs2dbDelOfficileReq::set_number(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
-// gs2dbSaveOfficileMapReq
+// gs2dbSaveMapReq
 
 // required .message.CrashMapData data = 1;
-inline bool gs2dbSaveOfficileMapReq::has_data() const {
+inline bool gs2dbSaveMapReq::has_data() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void gs2dbSaveOfficileMapReq::set_has_data() {
+inline void gs2dbSaveMapReq::set_has_data() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void gs2dbSaveOfficileMapReq::clear_has_data() {
+inline void gs2dbSaveMapReq::clear_has_data() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void gs2dbSaveOfficileMapReq::clear_data() {
+inline void gs2dbSaveMapReq::clear_data() {
   if (data_ != NULL) data_->::message::CrashMapData::Clear();
   clear_has_data();
 }
-inline const ::message::CrashMapData& gs2dbSaveOfficileMapReq::data() const {
-  // @@protoc_insertion_point(field_get:message.gs2dbSaveOfficileMapReq.data)
+inline const ::message::CrashMapData& gs2dbSaveMapReq::data() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbSaveMapReq.data)
   return data_ != NULL ? *data_ : *default_instance_->data_;
 }
-inline ::message::CrashMapData* gs2dbSaveOfficileMapReq::mutable_data() {
+inline ::message::CrashMapData* gs2dbSaveMapReq::mutable_data() {
   set_has_data();
   if (data_ == NULL) {
     data_ = new ::message::CrashMapData;
   }
-  // @@protoc_insertion_point(field_mutable:message.gs2dbSaveOfficileMapReq.data)
+  // @@protoc_insertion_point(field_mutable:message.gs2dbSaveMapReq.data)
   return data_;
 }
-inline ::message::CrashMapData* gs2dbSaveOfficileMapReq::release_data() {
+inline ::message::CrashMapData* gs2dbSaveMapReq::release_data() {
   clear_has_data();
   ::message::CrashMapData* temp = data_;
   data_ = NULL;
   return temp;
 }
-inline void gs2dbSaveOfficileMapReq::set_allocated_data(::message::CrashMapData* data) {
+inline void gs2dbSaveMapReq::set_allocated_data(::message::CrashMapData* data) {
   delete data_;
   data_ = data;
   if (data) {
@@ -1159,31 +1169,56 @@ inline void gs2dbSaveOfficileMapReq::set_allocated_data(::message::CrashMapData*
   } else {
     clear_has_data();
   }
-  // @@protoc_insertion_point(field_set_allocated:message.gs2dbSaveOfficileMapReq.data)
+  // @@protoc_insertion_point(field_set_allocated:message.gs2dbSaveMapReq.data)
 }
 
 // required uint64 account = 2;
-inline bool gs2dbSaveOfficileMapReq::has_account() const {
+inline bool gs2dbSaveMapReq::has_account() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void gs2dbSaveOfficileMapReq::set_has_account() {
+inline void gs2dbSaveMapReq::set_has_account() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void gs2dbSaveOfficileMapReq::clear_has_account() {
+inline void gs2dbSaveMapReq::clear_has_account() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void gs2dbSaveOfficileMapReq::clear_account() {
+inline void gs2dbSaveMapReq::clear_account() {
   account_ = GOOGLE_ULONGLONG(0);
   clear_has_account();
 }
-inline ::google::protobuf::uint64 gs2dbSaveOfficileMapReq::account() const {
-  // @@protoc_insertion_point(field_get:message.gs2dbSaveOfficileMapReq.account)
+inline ::google::protobuf::uint64 gs2dbSaveMapReq::account() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbSaveMapReq.account)
   return account_;
 }
-inline void gs2dbSaveOfficileMapReq::set_account(::google::protobuf::uint64 value) {
+inline void gs2dbSaveMapReq::set_account(::google::protobuf::uint64 value) {
   set_has_account();
   account_ = value;
-  // @@protoc_insertion_point(field_set:message.gs2dbSaveOfficileMapReq.account)
+  // @@protoc_insertion_point(field_set:message.gs2dbSaveMapReq.account)
+}
+
+// required .message.MapType type = 3;
+inline bool gs2dbSaveMapReq::has_type() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void gs2dbSaveMapReq::set_has_type() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void gs2dbSaveMapReq::clear_has_type() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void gs2dbSaveMapReq::clear_type() {
+  type_ = 1;
+  clear_has_type();
+}
+inline ::message::MapType gs2dbSaveMapReq::type() const {
+  // @@protoc_insertion_point(field_get:message.gs2dbSaveMapReq.type)
+  return static_cast< ::message::MapType >(type_);
+}
+inline void gs2dbSaveMapReq::set_type(::message::MapType value) {
+  assert(::message::MapType_IsValid(value));
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:message.gs2dbSaveMapReq.type)
 }
 
 // -------------------------------------------------------------------

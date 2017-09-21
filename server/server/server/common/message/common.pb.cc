@@ -53,6 +53,7 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* TaskInfoConfig_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   TaskInfoConfig_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* MapType_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* ConditionType_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* ResourceType_descriptor_ = NULL;
 
@@ -278,8 +279,9 @@ void protobuf_AssignDesc_common_2eproto() {
       sizeof(TaskInfoConfig),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TaskInfoConfig, _internal_metadata_),
       -1);
-  ConditionType_descriptor_ = file->enum_type(0);
-  ResourceType_descriptor_ = file->enum_type(1);
+  MapType_descriptor_ = file->enum_type(0);
+  ConditionType_descriptor_ = file->enum_type(1);
+  ResourceType_descriptor_ = file->enum_type(2);
 }
 
 namespace {
@@ -391,19 +393,21 @@ void protobuf_AddDesc_common_2eproto() {
     "peConfig\022*\n\007rewards\030\005 \003(\0132\031.message.Task"
     "RewardConfig\022 \n\030required_pass_chapter_id"
     "\030\006 \002(\005\022 \n\030required_pass_section_id\030\007 \002(\005"
-    "\022$\n\034required_complete_task_count\030\010 \002(\005*\277"
-    "\001\n\rConditionType\022\026\n\022ConditionType_NULL\020\000"
-    "\022!\n\035ConditionType_PassOfficilGame\020\001\022\035\n\031C"
-    "onditionType_LimitedTime\020\002\022\035\n\031ConditionT"
-    "ype_LimitedStep\020\003\022\036\n\032ConditionType_PassU"
-    "serGame\020\004\022\025\n\021ConditionType_Max\020\005*\212\002\n\014Res"
-    "ourceType\022\025\n\021ResourceType_NULL\020\000\022\022\n\016Reso"
-    "urceType_0\020\001\022\022\n\016ResourceType_1\020\002\022\022\n\016Reso"
-    "urceType_2\020\003\022\022\n\016ResourceType_3\020\004\022\022\n\016Reso"
-    "urceType_4\020\005\022\022\n\016ResourceType_5\020\006\022\022\n\016Reso"
-    "urceType_6\020\007\022\022\n\016ResourceType_7\020\010\022\025\n\021Reso"
-    "urceType_gold\020\t\022\026\n\022ResourceType_jewel\020\n\022"
-    "\024\n\020ResourceType_Max\020\013", 2141);
+    "\022$\n\034required_complete_task_count\030\010 \002(\005*<"
+    "\n\007MapType\022\r\n\tOfficeMap\020\001\022\021\n\rImcompleteMa"
+    "p\020\002\022\017\n\013CompleteMap\020\003*\277\001\n\rConditionType\022\026"
+    "\n\022ConditionType_NULL\020\000\022!\n\035ConditionType_"
+    "PassOfficilGame\020\001\022\035\n\031ConditionType_Limit"
+    "edTime\020\002\022\035\n\031ConditionType_LimitedStep\020\003\022"
+    "\036\n\032ConditionType_PassUserGame\020\004\022\025\n\021Condi"
+    "tionType_Max\020\005*\212\002\n\014ResourceType\022\025\n\021Resou"
+    "rceType_NULL\020\000\022\022\n\016ResourceType_0\020\001\022\022\n\016Re"
+    "sourceType_1\020\002\022\022\n\016ResourceType_2\020\003\022\022\n\016Re"
+    "sourceType_3\020\004\022\022\n\016ResourceType_4\020\005\022\022\n\016Re"
+    "sourceType_5\020\006\022\022\n\016ResourceType_6\020\007\022\022\n\016Re"
+    "sourceType_7\020\010\022\025\n\021ResourceType_gold\020\t\022\026\n"
+    "\022ResourceType_jewel\020\n\022\024\n\020ResourceType_Ma"
+    "x\020\013", 2203);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   int32array::default_instance_ = new int32array();
@@ -437,6 +441,21 @@ struct StaticDescriptorInitializer_common_2eproto {
     protobuf_AddDesc_common_2eproto();
   }
 } static_descriptor_initializer_common_2eproto_;
+const ::google::protobuf::EnumDescriptor* MapType_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MapType_descriptor_;
+}
+bool MapType_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
 const ::google::protobuf::EnumDescriptor* ConditionType_descriptor() {
   protobuf_AssignDescriptorsOnce();
   return ConditionType_descriptor_;
