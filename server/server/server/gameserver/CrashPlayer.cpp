@@ -389,11 +389,13 @@ void CrashPlayer::SaveCrashInfo()
 		incomplete_map_index += sz_index;
 	}
 
-	sprintf(sql, "replace into `character`(`account`, `pass_chapter`, `pass_section`,`name`, `isadmin`, `map_width`, `map_height`, `map_count`, `group_count`, `gold`,`jewel`, `task`, `complete_task_count`,`officil_game_record`, `incomplete_map_index`, `complete_map_index`, `last_accept_task_time`) values\
-	 (%llu, %d, %d, '%s', %d, %d, %d, %d, '%s', %d, %d, '%s', %d, '%s', '%s')",
+	sprintf(sql, "replace into `character`(`account`, `pass_chapter`, `pass_section`,`name`, `isadmin`, `map_width`,\
+	 `map_height`, `map_count`, `group_count`, `gold`,`jewel`, `task`, `complete_task_count`,`officil_game_record`, \
+	`incomplete_map_index`, `complete_map_index`, `last_accept_task_time`) values\
+	 (%llu, %d, %d, '%s', %d, %d, %d, %d,'%s', %d, %d, '%s', %d, '%s', '%s','%s,'%s')",
 		acc_temp, 0, 0, _info.name().c_str(), (int)_info.isadmin(),
 		_info.map_width(), _info.map_height(), _info.map_count(), resource_str.c_str(), _info.gold(),
-		_info.jewel(), current_task.c_str(), _info.complete_task_count(), officil_game_record.c_str(), complete_map_index.c_str(), incomplete_map_index.c_str(), last_accept_task_time.c_str());
+		_info.jewel(), current_task.c_str(), _info.complete_task_count(), officil_game_record.c_str(), incomplete_map_index.c_str(), complete_map_index.c_str(), last_accept_task_time.c_str());
 	msg.set_sql(sql);
 	sendPBMessage(&msg);
 	
