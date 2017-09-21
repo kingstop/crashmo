@@ -94,7 +94,7 @@ void OfficilMapManager::init(DBQuery* p)
 		int load_count = 10;
 		for (int i = 0; it != ids.end(); ++it, i ++)
 		{
-			if (i != 0)
+			if (sql_argu.empty() == false)
 			{
 				sql_argu += ",";
 			}		
