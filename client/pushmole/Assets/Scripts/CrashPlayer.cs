@@ -119,9 +119,29 @@ public class CrashPlayer
         return _info.isadmin;
     }
 
-    public void addUserMap(CrashMapData data)
+    public void addUserMap(CrashMapData data , MapType type)
     {
+        
         _maps[data.Data.map_index] = data;
+        switch (type)
+        {
+            case MapType.CompleteMap:
+                {
+                    _info.CompleteMap.Add(data.Data.map_index);
+                }
+                break;
+            case MapType.ImcompleteMap:
+                {
+                    _info.IncompleteMap.Add(data.Data.map_index);
+                }
+                break;
+            case MapType.OfficeMap:
+                {
+                    global_instance.Instance._officilMapManager.addMap(data);
+                }
+                break;
+        }
+        
     }
 
     public CrashMapData getUserMap(UInt64 index)

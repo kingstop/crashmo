@@ -109,19 +109,36 @@ namespace message
   {
     public MsgLoadUserMapReq() {}
     
-    private readonly global::System.Collections.Generic.List<ulong> _map_indexes = new global::System.Collections.Generic.List<ulong>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"map_indexes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<ulong> map_indexes
-    {
-      get { return _map_indexes; }
-    }
-  
     private int _map_count;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"map_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int map_count
     {
       get { return _map_count; }
       set { _map_count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MsgUserMap")]
+  public partial class MsgUserMap : global::ProtoBuf.IExtensible
+  {
+    public MsgUserMap() {}
+    
+    private message.CrashMapData _map;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"map", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public message.CrashMapData map
+    {
+      get { return _map; }
+      set { _map = value; }
+    }
+    private bool _complete;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"complete", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool complete
+    {
+      get { return _complete; }
+      set { _complete = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -133,9 +150,9 @@ namespace message
   {
     public MsgLoadUserMapACK() {}
     
-    private readonly global::System.Collections.Generic.List<message.CrashMapData> _maps = new global::System.Collections.Generic.List<message.CrashMapData>();
+    private readonly global::System.Collections.Generic.List<message.MsgUserMap> _maps = new global::System.Collections.Generic.List<message.MsgUserMap>();
     [global::ProtoBuf.ProtoMember(1, Name=@"maps", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<message.CrashMapData> maps
+    public global::System.Collections.Generic.List<message.MsgUserMap> maps
     {
       get { return _maps; }
     }

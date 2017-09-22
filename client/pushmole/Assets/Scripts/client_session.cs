@@ -104,15 +104,6 @@ public class client_session
         global_instance.Instance._officilMapManager.LoadFromLocal();
         message.MsgLoadUserMapReq msgLoadUserMapReq = new message.MsgLoadUserMapReq();
         msgLoadUserMapReq.map_count = 10;
-        foreach (ulong map_index in msg.info.CompleteMap)
-        {
-            msgLoadUserMapReq.map_indexes.Add(map_index);
-        }
-        foreach (ulong map_index in msg.info.IncompleteMap)
-        {
-            msgLoadUserMapReq.map_indexes.Add(map_index);
-        }
-
         global_instance.Instance._net_client.send(msgLoadUserMapReq);
 
 
@@ -128,9 +119,14 @@ public class client_session
     public bool LoadUserMapACK(System.IO.MemoryStream stream)
     {
         MsgLoadUserMapACK msg = ProtoBuf.Serializer.Deserialize<MsgLoadUserMapACK>(stream);
-        foreach(CrashMapData entry in msg.maps)
+        foreach(MsgUserMap entry in msg.maps)
         {
-            global_instance.Instance._player.addUserMap(entry);
+            MapType Type = MapType.ImcompleteMap;
+            if(entry.complete)
+            {
+                Type = MapType.CompleteMap;
+            }
+            global_instance.Instance._player.addUserMap(entry.map, Type);
         }
         if(msg.end)
         {
@@ -157,31 +153,9 @@ public class client_session
     private bool SaveMap(System.IO.MemoryStream stream)
     {
         MsgSaveMapACK msg = ProtoBuf.Serializer.Deserialize<MsgSaveMapACK>(stream);
-        if(msg.error == ServerError.ServerError_NO)
-        {
-            CrashPlayerInfo player_info = global_instance.Instance._player.GetInfo();
-            switch(msg.save_type)
-            {
-                case MapType.CompleteMap:
-                    {
-                        player_info.CompleteMap.Add(msg.map.Data.map_index);
-                    }
-                    break;
-                case MapType.ImcompleteMap:
-                    {
-                        player_info.IncompleteMap.Add(msg.map.Data.map_index);
-                    }
-                    break;
-                case MapType.OfficeMap:
-                    {
-					    global_instance.Instance._officilMapManager.addMap(msg.map);
-                    }
-                    break;
-            }
-            global_instance.Instance._player.SetInfo(player_info);
-            global_instance.Instance._ngui_edit_manager._SaveMapPanel.SaveMapOk();
-        }
-        
+
+        global_instance.Instance._player.addUserMap(msg.map, msg.save_type);
+        global_instance.Instance._ngui_edit_manager._SaveMapPanel.SaveMapOk();               
         return true;
     }
 

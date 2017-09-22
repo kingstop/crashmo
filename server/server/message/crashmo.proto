@@ -37,14 +37,20 @@ message CrashmoClientInit
 
 message MsgLoadUserMapReq
 {
-	repeated uint64 map_indexes = 1;
-	required int32 map_count = 2;
+	//repeated uint64 map_indexes = 1;
+	required int32 map_count = 1;
 }
 
 
+message MsgUserMap
+{
+	required CrashMapData map = 1;
+	required bool complete = 2;
+}
+
 message MsgLoadUserMapACK
 {
-	repeated CrashMapData maps = 1;
+	repeated MsgUserMap maps = 1;
 	required bool end = 2;
 	
 }

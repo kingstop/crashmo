@@ -184,7 +184,7 @@ void Session::parsePassOfficilGame(google::protobuf::Message* p)
 void Session::parseLoadUserMapReq(google::protobuf::Message* p)
 {
 	message::MsgLoadUserMapReq* msg = (message::MsgLoadUserMapReq*)p;
-	int indexes_size = msg->map_indexes_size();
+	
 	message::MsgLoadUserMapACK msgACK;
 
 	msgACK.set_end(false);
@@ -194,11 +194,16 @@ void Session::parseLoadUserMapReq(google::protobuf::Message* p)
 	{
 		load_count = msg->map_count();
 	}
-	for (size_t i = 0; i < indexes_size; i++, count ++)
+	int incomplete_map_size = _player->GetInfo().incompletemap_size();
+	for (size_t i = 0; i < incomplete_map_size; i++)
 	{
-		u64 index = msg->map_indexes(i);
+		u64 index  = _player->GetInfo().incompletemap(i);
 		message::CrashMapData* map_entry = gCrashMapManager.GetCrashMap(index);
-		msgACK.add_maps()->CopyFrom(*map_entry);
+		message::MsgUserMap* map_crash = msgACK.add_maps();
+		map_crash->mutable_map()->CopyFrom(*map_entry);
+		map_crash->set_complete(false);
+
+		
 		if (count >= load_count)
 		{
 			sendPBMessage(&msgACK);
@@ -206,6 +211,25 @@ void Session::parseLoadUserMapReq(google::protobuf::Message* p)
 			count = 0;
 		}
 	}
+
+
+	int complete_map_size = _player->GetInfo().completemap_size();
+	for (size_t i = 0; i < complete_map_size; i++)
+	{
+		u64 index = _player->GetInfo().completemap(i);
+		message::CrashMapData* map_entry = gCrashMapManager.GetCrashMap(index);
+		message::MsgUserMap* map_crash = msgACK.add_maps();
+		map_crash->mutable_map()->CopyFrom(*map_entry);
+		map_crash->set_complete(true);
+		if (count >= load_count)
+		{
+			sendPBMessage(&msgACK);
+			msgACK.clear_maps();
+			count = 0;
+		}
+	}
+
+
 	msgACK.set_end(true);
 	sendPBMessage(&msgACK);	
 }
