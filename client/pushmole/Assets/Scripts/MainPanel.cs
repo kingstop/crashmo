@@ -222,6 +222,10 @@ public class MainPanel : MonoBehaviour
 
     void addItem(CrashMapData entry, bool self = true)
     {
+        if(entry == null)
+        {
+            return;
+        }
         ChooseItemEntry temp = CreateItemEntry();
 
         System.DateTime time = new System.DateTime(1970, 1, 1).ToLocalTime().AddSeconds(entry.create_time);

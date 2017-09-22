@@ -47,7 +47,7 @@ public class ngui_edit_manager : MonoBehaviour {
 	public Image _map_image;
     public Camera _camera_map;
     public Camera _camera_map_big;
-    public bool _input_keyboard;
+    //public bool _input_keyboard;
     public Text _record_txt;
     public Text _account;
     public Text _password;
@@ -64,7 +64,7 @@ public class ngui_edit_manager : MonoBehaviour {
         _EditType = EditType.EditPlayer;
         global_instance.Instance._ngui_edit_manager = this;       
         global_instance.Instance._net_client = new u3dclient();
-        _input_keyboard = false;	
+        //_input_keyboard = false;	
     }
     public void SaveOfficilMap()
     {

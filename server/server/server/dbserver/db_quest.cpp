@@ -101,7 +101,7 @@ void DBQuestManager::saveMap(message::gs2dbSaveMapReq* msg)
 		temp_number);
 	str_sql_replace_map += sql;
 	CharacterDatabaseSql(str_sql_replace_map.c_str());	
-	gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, str_sql_replace_map.c_str(), 0, NULL, _SAVE_OFFICIL_MAP_);
+	//gWorldDatabase.addSQueryTask(this, &DBQuestManager::dbCallNothing, str_sql_replace_map.c_str(), 0, NULL, _SAVE_OFFICIL_MAP_);
 
 }
 

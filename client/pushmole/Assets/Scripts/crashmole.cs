@@ -910,7 +910,7 @@ public class crash_manager
     }
     public void move_lock_mole(dir_move dir)
     {
-        if(_need_play_animation == true)
+        if(_need_play_animation == false)
         {
             _use_count++;
             move_list(_lock_mole, dir);
