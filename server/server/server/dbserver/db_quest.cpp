@@ -204,7 +204,7 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 	DBQuery& query = *p;
 	DBQParms parms;
 	char sql[256];
-	sprintf(sql, "select * , UNIX_TIMESTAMP(`last_accept_task_time`) from `character` where `account` = %llu", pkParm->account_);
+	sprintf(sql, "select * , UNIX_TIMESTAMP(`last_accept_task_time`),UNIX_TIMESTAMP(`last_publish_map_time`) from `character` where `account` = %llu", pkParm->account_);
 	query << sql;
 	query.parse();
 	SDBResult sResult = query.store(parms);
@@ -223,6 +223,8 @@ void DBQuestManager::dbDoQueryCharacter(DBQuery* p, const void* d)
 		info->set_jewel(row["jewel"]);
 		info->set_complete_task_count(row["complate_task_count"]);		
 		info->set_last_accept_task_time(row["UNIX_TIMESTAMP(`last_accept_task_time`)"]);
+		info->set_last_publish_map_time(row["UNIX_TIMESTAMP(`last_publish_map_time`)"]);
+		//info->last_publish_map_time
 		std::vector<std::string> vcStr1;
 		std::vector<std::string> vcStr2;
 		std::string task = row["task"].c_str();
