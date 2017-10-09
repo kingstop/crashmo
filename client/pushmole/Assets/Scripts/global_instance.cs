@@ -10,8 +10,9 @@ public enum global_game_type
 
 public class global_instance
 {
-     private static global_instance instance;
-	 private Dictionary<int, Color> _group_color = new Dictionary<int,Color>();
+    private static global_instance instance;
+	private Dictionary<int, Color> _group_color = new Dictionary<int,Color>();
+    
      private global_instance() {
          _crash_manager = new crash_manager();
          _player = new CrashPlayer();

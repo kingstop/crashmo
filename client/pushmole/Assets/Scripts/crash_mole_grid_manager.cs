@@ -143,8 +143,9 @@ public class crash_mole_grid_manager : MonoBehaviour {
     
     void Awake()
     {
-        _source_crash_mole_obj = Resources.Load<GameObject>("prefab/mole_object");
-       // _source_map_mole_obj = Resources.Load<GameObject>("prefab/map");
+        _source_crash_mole_obj = Resources.Load<GameObject>("prefab/CrashmoGrid");
+        //_source_crash_mole_obj = Resources.Load<GameObject>("prefab/mole_object");
+        // _source_map_mole_obj = Resources.Load<GameObject>("prefab/map");
         global_instance.Instance._crash_mole_grid_manager = this;
     }
     public void update_game_type(game_type type)
@@ -206,7 +207,8 @@ public class crash_mole_grid_manager : MonoBehaviour {
 				GameObject obj_temp = Instantiate<GameObject>(_source_crash_mole_obj);
 				_objlist.Add(obj_temp);				
 				obj_temp.name = i.ToString() + "-" + j.ToString();
-				_crashmolegrids[i, j] = obj_temp.GetComponent<crashmolegrid>();
+                crashmolegrid grid = obj_temp.GetComponent<crashmolegrid>();
+                _crashmolegrids[i, j] = grid;
 				float x = (float)i;
 				float y = (float)j;                				
 				_crashmolegrids[i, j].set_position(x, y);
@@ -236,8 +238,10 @@ public class crash_mole_grid_manager : MonoBehaviour {
         {
             updateColorButtonText(i);
         }
-		Vector3 vec = new Vector3(2.84f, 6f, 7.12f);
-		Vector3 vec_rot = new Vector3(0, 0, 0);
+        //Vector3 vc_pos = new Vector3(10.07f, 13.5f, -28.2f);
+        //Camera.main.transform.position = vc_pos;
+        Vector3 vec = new Vector3(3.92f, 8.82f, -16.2f);
+        Vector3 vec_rot = new Vector3(0, 0, 0);
 		Camera.main.transform.eulerAngles = vec_rot;
 		Camera.main.transform.position = vec;
 		Camera.main.fieldOfView = 60;

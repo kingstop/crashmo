@@ -1165,7 +1165,8 @@ public class crash_manager
     }
     public crash_manager()
     {
-        _source_crash_mole_obj = Resources.Load<GameObject>("prefab/mole_object");
+        _source_crash_mole_obj = Resources.Load<GameObject>("prefab/CrashmoGrid");
+        //_source_crash_mole_obj = Resources.Load<GameObject>("prefab/mole_object");
         _source_flag_mole_obj = Resources.Load<GameObject>("prefab/flag");        
     }
     public void clear()

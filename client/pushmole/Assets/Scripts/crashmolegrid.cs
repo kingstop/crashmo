@@ -1,11 +1,25 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 public enum side_type
 {
     side_left,
     side_right,
     side_top,
-    side_bottom
+    side_bottom,
 }
+
+
+public enum side_qude_type
+{
+    side_qude_left,
+    side_qude_right,
+    side_qude_top,
+    side_qude_bottom,
+    side_qude_front,
+    side_qude_back
+}
+    
+
 
 public enum box_side_type
 {
@@ -27,12 +41,16 @@ public class crashmolegrid : MonoBehaviour
     public MeshRenderer current_mesh_render_;
     public int _group;
     public GameObject[] _side;
+    public GameObject[] _quads;
     private bool _mouse_down;
     private Texture _default_texture;
     private Texture _flag_texture;
     private Material _main_material;
     private bool _is_flag;
     private int[] _line_count = new  int[4];
+    private Dictionary<int, Texture> _group_Textures = new Dictionary<int, Texture>();
+    private List<Material> _Materials = new List<Material>();
+    
 
     public crashmolegrid()
     {
@@ -40,10 +58,28 @@ public class crashmolegrid : MonoBehaviour
     }
     void Awake()
     {
-        _main_material = current_mesh_render_.materials[0];
-        _default_texture = _main_material.mainTexture;
+        if(current_mesh_render_ != null)
+        {
+            _main_material = current_mesh_render_.materials[0];
+            _default_texture = _main_material.mainTexture;
+        }
+        
+        
         _flag_texture = LoadImage();
+        for(int i = 0; i <= 11; i ++ )
+        {
+            string path = "texture/group_" + i.ToString();
+            
+            Texture2D tex = Resources.Load<Texture2D>(path);
+            _group_Textures[i] = tex;
+            //Resources.Load<Texture2D>("texture/")
+        }
 
+        foreach( GameObject obj in _quads)
+        {
+            Material material = obj.GetComponent<MeshRenderer>().materials[0];
+            _Materials.Add(material);
+        }
     }
  
 	// Use this for initialization
@@ -65,11 +101,27 @@ public class crashmolegrid : MonoBehaviour
         {
             _line_count[i] = 0;
         }
+        //_quads
+        if(_quads.Length != 0)
+        {
+            foreach (GameObject obj in _quads)
+            {
+                obj.SetActive(false);
+            }
+
+            _quads[(int)side_qude_type.side_qude_front].SetActive(true);
+            _quads[(int)side_qude_type.side_qude_back].SetActive(true);
+
+        }
     }
 
     public void show_side(side_type dir)
     {
-        switch(dir)
+        if (_quads.Length != 0)
+        {
+            _quads[(int)dir].SetActive(true);
+        }
+        switch (dir)
         {
             case side_type.side_bottom:
                 {
@@ -120,32 +172,86 @@ public class crashmolegrid : MonoBehaviour
     public void set_color(Color color)
     {
         Color temp_color = new Color();
-        temp_color = _main_material.GetColor("_Color");
-        temp_color.r = color.r;
-        temp_color.b = color.b;
-        temp_color.g = color.g;
-        _main_material.SetColor("_Color", temp_color);
+        if(_main_material != null)
+        {
+            temp_color = _main_material.GetColor("_Color");
+            temp_color.r = color.r;
+            temp_color.b = color.b;
+            temp_color.g = color.g;
+            _main_material.SetColor("_Color", temp_color);
+        }
+
+        if(_Materials.Count != 0)
+        {
+            foreach(Material mat in _Materials)
+            {
+                temp_color = mat.GetColor("_Color");
+                temp_color.r = color.r;
+                temp_color.b = color.b;
+                temp_color.g = color.g;
+                mat.SetColor("_Color", temp_color);
+            }
+        }
+        
     }
 
     public void set_alpha(float temp)
     {
         Color temp_color = new Color();
-        temp_color = _main_material.GetColor("_Color");
-        temp_color.a = temp;
-        _main_material.SetColor("_Color", temp_color);
+        if(_main_material != null)
+        {
+            temp_color = _main_material.GetColor("_Color");
+            temp_color.a = temp;
+            _main_material.SetColor("_Color", temp_color);
+        }
+
+        foreach(Material mat in _Materials)
+        {
+            temp_color = mat.GetColor("_Color");
+            temp_color.a = temp;
+            mat.SetColor("_Color", temp_color);
+
+        }
     }
 
     public void set_is_flag(bool b)
     {
         _is_flag = b;
-        if(_is_flag)
+        if(_main_material != null)
         {
-            _main_material.mainTexture = _flag_texture;
+            if (_is_flag)
+            {
+                _main_material.mainTexture = _flag_texture;
+            }
+            else
+            {
+                _main_material.mainTexture = _default_texture;
+            }
         }
-        else
+        if(_Materials.Count != 0)
         {
-            _main_material.mainTexture = _default_texture;
+            Texture tex = null;
+            if(_group_Textures.ContainsKey(_group) == true)
+            {
+                tex = _group_Textures[_group];
+                if (tex)
+                {
+                    foreach (Material mat in _Materials)
+                    {
+                        if(_is_flag)
+                        {
+                            mat.mainTexture = _flag_texture;
+                        }
+                        else
+                        {
+                            mat.mainTexture = tex;
+                        }
+                    }
+
+                }
+            } 
         }
+
         if(_is_flag == true)
         {
             global_instance.Instance._ngui_edit_manager.set_flag_grid(this);
@@ -154,12 +260,37 @@ public class crashmolegrid : MonoBehaviour
     public void set_color(float r, float g, float b, float a)
     {
         Color temp = new Color(r, g, b, a);
-        current_mesh_render_.materials[0].color = temp;
+        if(current_mesh_render_ != null)
+        {
+            current_mesh_render_.materials[0].color = temp;
+        }
+
+        if (_Materials.Count != 0)
+        {
+            foreach(Material mat in _Materials)
+            {
+                mat.color = temp;
+            }
+        }
+
+
     }
 
     public Color get_color()
     {
-        return current_mesh_render_.materials[0].color;
+        Color temp = new Color();
+        if(current_mesh_render_ != null)
+        {
+            temp = current_mesh_render_.materials[0].color;
+        }
+        else
+        {
+            if(_Materials.Count != 0)
+            {
+                temp = _Materials[0].color;
+            }
+        }
+        return temp;
     }
 
     public int get_group()
@@ -168,16 +299,28 @@ public class crashmolegrid : MonoBehaviour
     }
     public void set_group(int i)
     {
+        _group = i;
+        if (_group_Textures.ContainsKey(i) == true)
+        {
+            Texture Tex = _group_Textures[i];
+
+            foreach(Material mat in _Materials)
+            {
+                mat.mainTexture = Tex;
+                //mat.SetTexture("_MainTex", Tex);
+            }
+        }
+       
         if (i != 10)
         {
-            set_color(global_instance.Instance.get_color_by_group(i));
+            //set_color(global_instance.Instance.get_color_by_group(i));
             set_is_flag(false);
         }
         else
         {
             set_is_flag(true);
         }
-        _group = i;
+        
     }
     public void set_position(float x, float y)
     {

@@ -24,7 +24,7 @@ public enum EditType
 }
 
 public class ngui_edit_manager : MonoBehaviour {
-
+    
     public Button[] _Buttons_sliced_game_type;
     public Button[] _Buttons_simple_game_type;
     public Color _current_color;
