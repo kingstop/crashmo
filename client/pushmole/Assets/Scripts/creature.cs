@@ -79,7 +79,7 @@ public class creature : MonoBehaviour
         }
 		if (_is_in_falldown == false) 
 		{
-			_jump_speed = 0.6f;
+			_jump_speed = 0.1f;
 		}
         
     }
@@ -427,7 +427,7 @@ public class creature : MonoBehaviour
         Vector3 vec = get_position();
         Vector3 temp_vec = new Vector3();
         temp_vec = vec;
-
+        //_jump_speed = 0.03f;
         if (global_instance.Instance._crash_manager._freezen_creature == false)
         {
             if (_jump_speed > 0)
@@ -436,7 +436,7 @@ public class creature : MonoBehaviour
                 _jump_speed = 0;
             }
 
-            _current_fall_speed += _fallspeed;
+            _current_fall_speed += -0.003f;
             vec.y += _current_fall_speed;
             if (global_instance.Instance._crash_manager.is_block_creature(vec.x, vec.y, vec.z) == false)
             {
