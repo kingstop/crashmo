@@ -79,7 +79,7 @@ public class creature : MonoBehaviour
         }
 		if (_is_in_falldown == false) 
 		{
-			_jump_speed = 0.1f;
+			_jump_speed = 0.09f;
 		}
         
     }
