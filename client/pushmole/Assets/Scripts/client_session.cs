@@ -41,9 +41,14 @@ public class client_session
 
     public bool parseMsgS2CNewTaskNotify(System.IO.MemoryStream stream)
     {
-        MsgS2CNewTaskNotify msg = ProtoBuf.Serializer.Deserialize<MsgS2CNewTaskNotify>(stream);
-        
-        
+        MsgS2CNewTaskNotify msg = ProtoBuf.Serializer.Deserialize<MsgS2CNewTaskNotify>(stream);                
+        return true;
+    }
+
+    public bool parseMsgS2CModifyTaskInfoACK(System.IO.MemoryStream stream)
+    {
+        MsgS2CModifyTaskInfoACK msg = ProtoBuf.Serializer.Deserialize<MsgS2CModifyTaskInfoACK>(stream);
+
         return true;
     }
     public bool parseMsgS2CPassOfficilMapACK(System.IO.MemoryStream stream)
@@ -65,7 +70,6 @@ public class client_session
         return true;
     }
 
-    
 
     public bool parseLoadTaskConfigsACK(System.IO.MemoryStream stream)
 	{

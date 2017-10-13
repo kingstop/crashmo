@@ -57,10 +57,7 @@ public class TaskEditPanel : MonoBehaviour {
 	void Update () {
 	
 	}
-    public void LoadTask()
-    {
 
-    }
     public void OnTaskItemClick(task_item_entry entry)
     {
         int click_id = 0;
@@ -138,6 +135,33 @@ public class TaskEditPanel : MonoBehaviour {
 		global_instance.Instance._ngui_edit_manager._main_panel.gameObject.SetActive (true);
 	}
 
+
+
+
+    public void OnAddTask(message.TaskInfoConfig info)
+    {
+        bool ret = false;
+        foreach (task_item_entry entry in _item_entrys)
+        {
+            if (entry.getID() == info.task_id)
+            {
+                entry.setItem(info.task_id, info.name);
+                ret = true;
+                break;
+            }
+        }
+        if (ret == false)
+        {
+            GameObject obj = GameObject.Instantiate<GameObject>(_source_item);
+            obj.transform.SetParent(obj_container_.transform);
+            task_item_entry item_entry = obj.GetComponent<task_item_entry>();
+            item_entry.setParent(this);
+            item_entry.setItem(info.task_id, info.name);
+            _item_entrys.Add(item_entry);
+        }
+        global_instance.Instance._taskManager._tasks[info.task_id] = info;
+    }
+
 	public void OnSaveClick()
 	{
 		message.TaskInfoConfig cur_info = GetInfo ();
@@ -145,27 +169,8 @@ public class TaskEditPanel : MonoBehaviour {
 		{
 			message.MsgC2SReqModifyTaskInfo msgReq = new message.MsgC2SReqModifyTaskInfo ();
 			msgReq.info = cur_info;
-			bool ret = false;
+			
 			global_instance.Instance._net_client.send (msgReq);
-			foreach (task_item_entry entry in _item_entrys) 
-			{
-				if (entry.getID () == cur_info.task_id) 
-				{
-					entry.setItem (cur_info.task_id, cur_info.name);
-					ret = true;
-					break;
-				}
-			}
-			if (ret == false) 
-			{
-				GameObject obj = GameObject.Instantiate<GameObject>(_source_item);
-				obj.transform.SetParent(obj_container_.transform);
-				task_item_entry item_entry = obj.GetComponent<task_item_entry>();
-				item_entry.setParent(this);
-				item_entry.setItem(cur_info.task_id, cur_info.name);
-				_item_entrys.Add(item_entry);
-			}
-			global_instance.Instance._taskManager._tasks [cur_info.task_id] = cur_info;
 		}			
 	}
 
