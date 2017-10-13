@@ -97,6 +97,25 @@ public class OfficilMapManager
             byte[] bytes = Stream2Bytes(mem);
             string temp_base64 = Convert.ToBase64String(bytes);
             global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, name_map + "map.txt", temp_base64);
+            /*
+            ArrayList temp_list = global_instance.Instance._file_helper.LoadFile(Application.persistentDataPath, name_map + "map.txt");
+            if (temp_list != null)
+            {
+                string body_str = "";
+                for (int i = 0; i < temp_list.Count; i++)
+                {
+                    body_str += (string)temp_list[i];
+                }
+                byte[] body = Convert.FromBase64String(body_str);
+                System.IO.MemoryStream mem1 = new System.IO.MemoryStream();
+                mem1.Write(body, 0, body.Length);
+                mem1.Position = 0;
+                message.CrashMapData CrashMap = ProtoBuf.Serializer.Deserialize<message.CrashMapData>(mem1);
+                int c = 0;
+                c++;
+            }
+            */
+
         }
         _new_map.Clear();
         global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, "MapName.txt", str_names);
@@ -112,7 +131,7 @@ public class OfficilMapManager
             Dictionary<int, message.CrashMapData> entry_chapter = entry_chapter_key_pair.Value;
             foreach (KeyValuePair<int, message.CrashMapData> entry_pair in entry_chapter)
             {
-                if(str_names != "")
+                if (str_names != "")
                 {
                     str_names += " ";
                 }
@@ -122,16 +141,17 @@ public class OfficilMapManager
                 name_map = chapter_id.ToString() + "-" + section.ToString();
                 str_names += name_map;
                 System.IO.MemoryStream mem = new System.IO.MemoryStream();
-              
+
                 ProtoBuf.Serializer.Serialize<global::ProtoBuf.IExtensible>(mem, map);
                 byte[] bytes = Stream2Bytes(mem);
                 UInt32 char_base64_out_length = (UInt32)bytes.Length * 2;
                 //char[] base64_out = new char[char_base64_out_length];
-                
+
                 string temp_base64 = Convert.ToBase64String(bytes);
                 global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, name_map + "map.txt", temp_base64);
-                //global_instance.Instance._file_helper.CreateModelFile(Application.persistentDataPath, name_map + ".assetbundle", bytes, bytes.Length);
             }
+                    //global_instance.Instance._file_helper.CreateModelFile(Application.persistentDataPath, name_map + ".assetbundle", bytes, bytes.Length);
+                
         }
         //DeleteFile(Application.persistentDataPath, "MapName.txt");
         global_instance.Instance._file_helper.CreateFile(Application.persistentDataPath, "MapName.txt", str_names);
