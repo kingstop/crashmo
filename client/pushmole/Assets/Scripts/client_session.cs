@@ -29,6 +29,7 @@ public class client_session
         _MessageFun.Add("MsgS2CPassOfficilMapACK", parseMsgS2CPassOfficilMapACK);
         _MessageFun.Add("MsgS2CNewTaskNotify", parseMsgS2CNewTaskNotify);
         _MessageFun.Add("MsgLoadUserMapACK", LoadUserMapACK);
+        _MessageFun.Add("MsgS2CModifyTaskInfoACK", parseMsgS2CModifyTaskInfoACK);
 
 
     }
@@ -48,7 +49,7 @@ public class client_session
     public bool parseMsgS2CModifyTaskInfoACK(System.IO.MemoryStream stream)
     {
         MsgS2CModifyTaskInfoACK msg = ProtoBuf.Serializer.Deserialize<MsgS2CModifyTaskInfoACK>(stream);
-
+        global_instance.Instance._ngui_edit_manager._task_edit_panel.OnAddTask(msg.info);
         return true;
     }
     public bool parseMsgS2CPassOfficilMapACK(System.IO.MemoryStream stream)
