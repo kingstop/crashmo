@@ -35,6 +35,7 @@ public class ngui_edit_manager : MonoBehaviour {
     public Button _create_ok_btn;
     //public bool[] _dir_btn_down = new bool[4];
     public GameObject _edit_scrollbar;
+    public GameObject _terrain;
 
     public crashmolegrid _flag_grid;
     public MainPanel _main_panel;
@@ -248,7 +249,7 @@ public class ngui_edit_manager : MonoBehaviour {
 
 		EditMap_.gameObject.SetActive (false);
 		_game_btns.gameObject.SetActive (false);
-        
+        _terrain.SetActive(false);
         _edit_type_obj_btns.SetActive(false);
         _game_end.gameObject.SetActive(false);
 		_sectionEditPanel.gameObject.SetActive (false);
@@ -306,8 +307,9 @@ public class ngui_edit_manager : MonoBehaviour {
 		{
 			set_edit_type_btns_active(true);
 		}
+        
 
-        if(global_instance.Instance._global_game_type == global_game_type.global_game_type_edit)
+        if (global_instance.Instance._global_game_type == global_game_type.global_game_type_edit)
         {
             switch (type)
             {
@@ -357,6 +359,7 @@ public class ngui_edit_manager : MonoBehaviour {
                     EditMap_.gameObject.SetActive(true);
 					set_edit_create_btns_active (true);
 					set_edit_draw_btns_active (false);
+                    _terrain.SetActive(false);
 
                 }
                 break;
@@ -365,6 +368,7 @@ public class ngui_edit_manager : MonoBehaviour {
                     EditMap_.gameObject.SetActive(true);
 					set_edit_create_btns_active (false);
 					set_edit_draw_btns_active (true);
+                    _terrain.SetActive(false);
 
                 }
                 break;
@@ -377,7 +381,7 @@ public class ngui_edit_manager : MonoBehaviour {
                     Camera.main.transform.position = vec;
                     Camera.main.fieldOfView = 34;
                     _game_btns.gameObject.SetActive(true);
-
+                    _terrain.SetActive(true);
                     global_instance.Instance._crash_manager.init();
                 }
                 break;

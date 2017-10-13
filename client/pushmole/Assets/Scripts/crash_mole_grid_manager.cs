@@ -240,7 +240,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
         }
         //Vector3 vc_pos = new Vector3(10.07f, 13.5f, -28.2f);
         //Camera.main.transform.position = vc_pos;
-        Vector3 vec = new Vector3(3.92f, 8.82f, -16.2f);
+        Vector3 vec = new Vector3(1.64f, 4.08f, -7.84f);
         Vector3 vec_rot = new Vector3(0, 0, 0);
 		Camera.main.transform.eulerAngles = vec_rot;
 		Camera.main.transform.position = vec;

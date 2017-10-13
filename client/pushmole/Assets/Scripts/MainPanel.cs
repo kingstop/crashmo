@@ -52,6 +52,19 @@ public class MainPanel : MonoBehaviour
 		_current_page = page_type.page_type_self_complete;
     }
 
+   
+    protected void OnRefresh()
+    {
+        foreach(ChooseItemEntry entry in _items)
+        {
+            entry.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+
+        foreach (ChooseItemEntry entry in _officil_items)
+        {
+            entry.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+    }
     
 	public int GetChapterID()
 	{
@@ -320,6 +333,7 @@ public class MainPanel : MonoBehaviour
                 }
                 break;
         }
+        OnRefresh();
     }
     void EnterPage(page_type page)
     {

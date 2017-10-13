@@ -107,7 +107,7 @@ public class client_session
 			global_instance.Instance._officilMapManager.addChapterName(key_pair.intger_temp, key_pair.string_temp);
         }
         global_instance.Instance._officilMapManager.LoadSections();
-        global_instance.Instance._officilMapManager.LoadFromLocal();
+        //global_instance.Instance._officilMapManager.LoadFromLocal();
         message.MsgLoadUserMapReq msgLoadUserMapReq = new message.MsgLoadUserMapReq();
         msgLoadUserMapReq.map_count = 10;
         global_instance.Instance._net_client.send(msgLoadUserMapReq);

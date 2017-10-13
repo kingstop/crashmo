@@ -263,6 +263,27 @@ public class crash_mole
             {
                 crash_obj temp_obj = (crash_obj)entry;
                 temp_obj._grid.hide_sides();
+                if (need_show_side(temp_x - 1, temp_z, temp_y) == true)
+                {
+                    temp_obj._grid.show_side(side_type.side_left);
+
+                }
+                if (need_show_side(temp_x + 1, temp_z, temp_y) == true)
+                {
+                    temp_obj._grid.show_side(side_type.side_right);
+                }
+
+                if (need_show_side(temp_x, temp_z, temp_y + 1) == true)
+                {
+                    temp_obj._grid.show_side(side_type.side_top);
+                }
+
+                if (need_show_side(temp_x, temp_z, temp_y - 1) == true)
+                {
+                    temp_obj._grid.show_side(side_type.side_bottom);
+                }
+
+                /*
                 if (is_self(temp_x - 1, temp_z, temp_y) == false)
                 {
                     temp_obj._grid.show_side(side_type.side_left);
@@ -282,6 +303,7 @@ public class crash_mole
                 {
                     temp_obj._grid.show_side(side_type.side_bottom);
                 }
+                */
             }
         }
     }
@@ -298,6 +320,33 @@ public class crash_mole
 			ret = false;
 		}
 		return ret;
+    }
+
+    protected bool need_show_side(int x, int z, int y)
+    {
+        bool ret = false;
+        if (x >= 0 && x <= (int)map_def.map_def_max_width && y >= 0 && y <= (int)map_def.map_def_max_height)
+        {
+            if (_crash_manager._crash_moles[x, z, y]._crash_mole == this)
+            {
+                if(_crash_manager._crash_objs[x, z, y]._crash_obj != null)
+                {
+                    if(_crash_manager._crash_objs[x, z, y]._crash_obj.get_obj_type() == crash_obj_type.flag)
+                    {
+                        ret = true;
+                    }
+                }                
+            }
+            else
+            {
+                ret = true;
+            }
+
+        }
+        else {
+            ret = true;
+        }
+        return ret;
     }
     public List<crash_base_obj> _crash_objs = new List<crash_base_obj>();
 
