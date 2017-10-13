@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 public enum enResult
@@ -8,7 +9,8 @@ public enum enResult
 }
 public class UIGameEnd : MonoBehaviour {
     public RewardEntry[] rewardEntrys_;
-    public TaskRewards taskRewards_;
+    public Text gold_;
+    //public TaskRewards taskRewards_;
 	public GameObject objEdit_;
 	public GameObject objGame_;
     protected List<message.MsgTaskReward> _task_rewards = new List<message.MsgTaskReward>();
@@ -59,6 +61,11 @@ public class UIGameEnd : MonoBehaviour {
         rewardEntrys_[_current_count].setCount(count);
         rewardEntrys_[_current_count].gameObject.SetActive(true);
         _current_count++;
+    }
+
+    public void SetGold(int count)
+    {
+        gold_.text = count.ToString();
     }
     public void setType(enResult en)
     {

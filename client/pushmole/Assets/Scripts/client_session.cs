@@ -54,8 +54,9 @@ public class client_session
         {
             global_instance.Instance._ngui_edit_manager._game_end.AddTaskRewards(entry);
         }
-        global_instance.Instance._ngui_edit_manager._game_end.taskRewards_.SetGold((int)msg.add_gold);
-        foreach(message.intPair entry in msg.add_resource)
+        //global_instance.Instance._ngui_edit_manager._game_end.taskRewards_.SetGold((int)msg.add_gold);
+        global_instance.Instance._ngui_edit_manager._game_end.SetGold((int)msg.add_gold);
+        foreach (message.intPair entry in msg.add_resource)
         {
             global_instance.Instance._ngui_edit_manager._game_end.AddRewardCount(entry.number_1, entry.number_2);
         }

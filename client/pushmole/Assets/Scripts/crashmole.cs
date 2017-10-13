@@ -1008,14 +1008,20 @@ public class crash_manager
     {
 		_creature.set_state (creature_state.idle);
 		_game_state = gameState.game_end;
-        
-        message.MsgC2SReqPassOfficilMap msg = new message.MsgC2SReqPassOfficilMap();
-        long cur_time = global_instance.Instance.getTime();
-        msg.use_step = (uint)_use_count;
-        msg.use_time = (uint) (cur_time - _begin_time);
-        msg.chapter_id = (uint)global_instance.Instance.GetMapData().chapter_;
-        msg.section_id = (uint)global_instance.Instance.GetMapData().section_;
-        global_instance.Instance._net_client.send(msg);        
+        if(global_instance.Instance._global_game_type == global_game_type.global_game_type_game)
+        {
+            message.MsgC2SReqPassOfficilMap msg = new message.MsgC2SReqPassOfficilMap();
+            long cur_time = global_instance.Instance.getTime();
+            msg.use_step = (uint)_use_count;
+            msg.use_time = (uint)(cur_time - _begin_time);
+            msg.chapter_id = (uint)global_instance.Instance.GetMapData().chapter_;
+            msg.section_id = (uint)global_instance.Instance.GetMapData().section_;
+            global_instance.Instance._net_client.send(msg);
+        }
+        else
+        {
+            global_instance.Instance._ngui_edit_manager.game_win();
+        }
     }
     public void update()
     {
