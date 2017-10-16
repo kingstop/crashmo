@@ -448,7 +448,9 @@ public class MainPanel : MonoBehaviour
                     addItem(entry_map, false);
                 }
                 _current_map_index = 0;
+                OnRefresh();
             }
+
         }
     }
 

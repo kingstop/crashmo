@@ -44,11 +44,11 @@ public class crashmolegrid : MonoBehaviour
     public GameObject[] _quads;
     private bool _mouse_down;
     private Texture _default_texture;
-    private Texture _flag_texture;
+    //private Texture _flag_texture;
     private Material _main_material;
     private bool _is_flag;
     private int[] _line_count = new  int[4];
-    private Dictionary<int, Texture> _group_Textures = new Dictionary<int, Texture>();
+    //private Dictionary<int, Texture> _group_Textures = new Dictionary<int, Texture>();
     private List<Material> _Materials = new List<Material>();
     
 
@@ -64,7 +64,7 @@ public class crashmolegrid : MonoBehaviour
             _default_texture = _main_material.mainTexture;
         }
         
-        
+        /*
         _flag_texture = LoadImage();
         for(int i = 0; i <= 11; i ++ )
         {
@@ -74,7 +74,7 @@ public class crashmolegrid : MonoBehaviour
             _group_Textures[i] = tex;
             //Resources.Load<Texture2D>("texture/")
         }
-
+        */
         foreach( GameObject obj in _quads)
         {
             Material material = obj.GetComponent<MeshRenderer>().materials[0];
@@ -221,7 +221,7 @@ public class crashmolegrid : MonoBehaviour
         {
             if (_is_flag)
             {
-                _main_material.mainTexture = _flag_texture;
+                _main_material.mainTexture = global_instance.Instance.GetFlagTexture();
             }
             else
             {
@@ -230,26 +230,22 @@ public class crashmolegrid : MonoBehaviour
         }
         if(_Materials.Count != 0)
         {
-            Texture tex = null;
-            if(_group_Textures.ContainsKey(_group) == true)
+            Texture tex = global_instance.Instance.GetGroupTexture(_group);
+            if (tex)
             {
-                tex = _group_Textures[_group];
-                if (tex)
+                foreach (Material mat in _Materials)
                 {
-                    foreach (Material mat in _Materials)
+                    if (_is_flag)
                     {
-                        if(_is_flag)
-                        {
-                            mat.mainTexture = _flag_texture;
-                        }
-                        else
-                        {
-                            mat.mainTexture = tex;
-                        }
+                        mat.mainTexture = global_instance.Instance.GetFlagTexture();
                     }
-
+                    else
+                    {
+                        mat.mainTexture = tex;
+                    }
                 }
-            } 
+
+            }
         }
 
         if(_is_flag == true)
@@ -300,15 +296,11 @@ public class crashmolegrid : MonoBehaviour
     public void set_group(int i)
     {
         _group = i;
-        if (_group_Textures.ContainsKey(i) == true)
+        Texture tex = global_instance.Instance.GetGroupTexture(_group);
+        foreach (Material mat in _Materials)
         {
-            Texture Tex = _group_Textures[i];
-
-            foreach(Material mat in _Materials)
-            {
-                mat.mainTexture = Tex;
-                //mat.SetTexture("_MainTex", Tex);
-            }
+            mat.mainTexture = tex;
+            //mat.SetTexture("_MainTex", Tex);
         }
        
         if (i != 10)

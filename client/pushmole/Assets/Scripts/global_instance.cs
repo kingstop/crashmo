@@ -12,8 +12,10 @@ public class global_instance
 {
     private static global_instance instance;
 	private Dictionary<int, Color> _group_color = new Dictionary<int,Color>();
-    
-     private global_instance() {
+    private Dictionary<int, Texture> _group_Textures = new Dictionary<int, Texture>();
+    private Texture _flag_texture;
+
+    private global_instance() {
          _crash_manager = new crash_manager();
          _player = new CrashPlayer();
          _client_session = new client_session();
@@ -30,10 +32,35 @@ public class global_instance
 		_group_color.Add(10, new Color((float)255 / 255, (float)255 / 255, (float)255 / 255));
 		_group_color.Add(11, new Color((float)255 / 255, (float)255 / 255, (float)255 / 255));
 
-     }
+        _flag_texture = Resources.Load<Texture2D>("image/target_pos");
+        for (int i = 0; i <= 11; i++)
+        {
+            string path = "texture/group_" + i.ToString();
+
+            Texture2D tex = Resources.Load<Texture2D>(path);
+            _group_Textures[i] = tex;
+            //Resources.Load<Texture2D>("texture/")
+        }
 
 
-	public Dictionary<int, Color> getGroupColors()
+    }
+
+    public Texture GetFlagTexture()
+    {
+        return _flag_texture;
+    }
+
+    public Texture GetGroupTexture(int group)
+    {
+        Texture t = null;
+        if(_group_Textures.ContainsKey(group))
+        {
+            t = _group_Textures[group];
+        }
+        return t;
+    }
+
+    public Dictionary<int, Color> getGroupColors()
 	{
 		return _group_color;
 	}
