@@ -1439,7 +1439,7 @@ public class crash_manager
     }
     public void create_map()
     {
-        create_enclosure();
+        //create_enclosure();
         MapData map_data = global_instance.Instance.GetMapData();
         if(map_data != null)
         {
