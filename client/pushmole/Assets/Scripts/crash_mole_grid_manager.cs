@@ -214,6 +214,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
 				_crashmolegrids[i, j].set_position(x, y);
 				_crashmolegrids[i, j].set_color(1, 1, 1, 1);
                 _crashmolegrids[i, j].set_group(11);
+                _crashmolegrids[i, j].show_edit();
                 if (mapinfo != null)
                 {                    
                     int group = mapinfo.groups_[i, j];

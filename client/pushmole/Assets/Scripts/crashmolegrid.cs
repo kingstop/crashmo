@@ -115,6 +115,17 @@ public class crashmolegrid : MonoBehaviour
         }
     }
 
+
+    public void show_edit()
+    {
+        hide_sides();
+        _quads[(int)side_qude_type.side_qude_front].SetActive(true);
+        _side[(int)box_side_type.box_side_left_front].SetActive(true);
+        _side[(int)box_side_type.box_side_right_front].SetActive(true);
+        _side[(int)box_side_type.box_side_top_front].SetActive(true);
+        _side[(int)box_side_type.box_side_bottom_front].SetActive(true);
+    }
+
     public void show_side(side_type dir)
     {
         if (_quads.Length != 0)
@@ -305,7 +316,7 @@ public class crashmolegrid : MonoBehaviour
        
         if (i != 10)
         {
-            //set_color(global_instance.Instance.get_color_by_group(i));
+            set_color(global_instance.Instance.get_color_by_group(i));
             set_is_flag(false);
         }
         else
