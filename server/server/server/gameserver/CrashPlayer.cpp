@@ -600,7 +600,8 @@ void CrashPlayer::SaveMap(message::MsgSaveMapReq* msg)
 	
 	msgACK.set_save_type(msg->save_type());
 	msgACK.set_error(message::ServerError_NO);
-	message::CrashMapData* temp = gCrashMapManager.CreateCrashMap(&msg->map(), message::ImcompleteMap, _info.account());
+	
+	message::CrashMapData* temp = gCrashMapManager.CreateCrashMap(&msg->map(), msg->save_type(), _info.account());
 	u64 map_index = temp->data().map_index();
 	switch (msg->save_type())
 	{
