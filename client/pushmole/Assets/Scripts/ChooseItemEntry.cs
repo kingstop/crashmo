@@ -36,7 +36,10 @@ public class ChooseItemEntry : MonoBehaviour {
     {
         global_instance.Instance._ngui_edit_manager._main_panel.ItemButtonClick(this);
     }
+    public void OnPublishClick()
+    {
 
+    }
     public void SetTexture(Texture t)
     {
         Material material_temp = new Material(_image.material);
@@ -59,5 +62,6 @@ public class ChooseItemEntry : MonoBehaviour {
     public Image _image;
     public Image _select_image;
     public Image _unselect_image;
+    public GameObject _public_button;
     public ulong _map_index;
 }
