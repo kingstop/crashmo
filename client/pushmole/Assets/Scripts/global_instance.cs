@@ -14,6 +14,7 @@ public class global_instance
 	private Dictionary<int, Color> _group_color = new Dictionary<int,Color>();
     private Dictionary<int, Texture> _group_Textures = new Dictionary<int, Texture>();
     private Texture _flag_texture;
+    private string _language_path;
 
     private global_instance() {
          _crash_manager = new crash_manager();
@@ -31,7 +32,7 @@ public class global_instance
 		_group_color.Add(9, new Color((float)0 / 255, (float)0 / 255, (float)0 / 255));
 		_group_color.Add(10, new Color((float)255 / 255, (float)255 / 255, (float)255 / 255));
 		_group_color.Add(11, new Color((float)255 / 255, (float)255 / 255, (float)255 / 255));
-
+        _language_path = "/chinese/";
         _flag_texture = Resources.Load<Texture2D>("image/target_pos");
         for (int i = 0; i <= 11; i++)
         {
@@ -41,10 +42,13 @@ public class global_instance
             _group_Textures[i] = tex;
             //Resources.Load<Texture2D>("texture/")
         }
-
-
     }
 
+
+    public string GetLanguagePath()
+    {
+        return _language_path;
+    }
     public Texture GetFlagTexture()
     {
         return _flag_texture;
