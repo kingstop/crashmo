@@ -15,7 +15,7 @@ public abstract  class UGUI_DynamicScrollBase : MonoBehaviour
 
     public RectTransform scrollRect;
 
-    public GridLayoutGroup grid;
+    public HorizontalLayoutGroup grid;
 
 	public Vector2 direction = new Vector2 (0, 1);
 
@@ -27,6 +27,8 @@ public abstract  class UGUI_DynamicScrollBase : MonoBehaviour
     public int cellWidth = 700;
     //裁剪区的高度
     private float m_height;
+
+    private float m_width;
     //裁剪区的宽度
     private int m_maxLine;
     //当前滑动的列表
@@ -78,13 +80,27 @@ public abstract  class UGUI_DynamicScrollBase : MonoBehaviour
     //初始化配置数据
     private void GetConfiguration()
     {
-        //物体默认位置
-        defaultVec = new Vector3(0, cellHeight, 0);
         //裁剪区域的高度
-		m_height = scrollRect.rect.height;
-        //裁剪区域中最多显示的cellItem数量
-        m_maxLine = Mathf.CeilToInt(m_height / cellHeight) + 1;
-        //初始化CellList
+        m_height = scrollRect.rect.height;
+        m_width = scrollRect.rect.width;
+        if (direction.y == 1)
+        {
+            //物体默认位置
+            defaultVec = new Vector3(0, cellHeight, 0);
+
+            //裁剪区域中最多显示的cellItem数量
+            m_maxLine = Mathf.CeilToInt(m_height / cellHeight) + 1;
+            //初始化CellList
+
+        }
+        else
+        {
+            //物体默认位置
+            defaultVec = new Vector3(cellWidth, 0, 0);
+            //裁剪区域中最多显示的cellItem数量
+            m_maxLine = Mathf.CeilToInt(m_width / cellWidth) + 1;
+            //初始化CellList
+        }
         m_cellList = new GameObject[m_maxLine];
         //创建Item，默认为不可显示状态
         CreateItem();
@@ -100,7 +116,15 @@ public abstract  class UGUI_DynamicScrollBase : MonoBehaviour
             go.gameObject.SetActive(false);
 			go.transform.parent = prefab.transform.parent;
             go.transform.localScale = Vector3.one;
-			go.transform.localPosition = new Vector3(cellWidth,cellHeight*-i, 0);
+            if (direction.y == 1)
+            {
+                go.transform.localPosition = new Vector3(cellWidth, cellHeight * -i, 0);
+            }
+            else
+            {
+                go.transform.localPosition = new Vector3(cellWidth * -i, cellHeight, 0);
+            }
+                
             m_cellList[i] = go;
             go.gameObject.SetActive(false);
         }
@@ -109,10 +133,28 @@ public abstract  class UGUI_DynamicScrollBase : MonoBehaviour
     private void Validate()
     {
 		Vector3 position = grid.GetComponent<RectTransform> ().anchoredPosition;
+        int startIndex = 0;
 
-        float _ver = Mathf.Max(position.y, 0);
+        if (direction.y == 1)
+        {
+            float _ver = Mathf.Max(position.y, 0);
 
-        int startIndex = Mathf.FloorToInt(_ver / cellHeight);
+            startIndex = Mathf.FloorToInt(_ver / cellHeight);
+            //go.transform.localPosition = new Vector3(cellWidth, cellHeight * -i, 0);
+        }
+        else
+        {
+            float _ver = Mathf.Max(position.x, 0);
+
+            startIndex = Mathf.FloorToInt(_ver / cellWidth);
+
+
+            //go.transform.localPosition = new Vector3(cellWidth * -i, cellHeight, 0);
+        }
+
+        //float _ver = Mathf.Max(position.y, 0);
+
+        //int startIndex = Mathf.FloorToInt(_ver / cellHeight);
 	
         int endIndex = Mathf.Min(DataListCount, startIndex + m_maxLine);
         GameObject cell;
@@ -146,7 +188,16 @@ public abstract  class UGUI_DynamicScrollBase : MonoBehaviour
     //根据新的数量来重新绘制
     private void AddItem(int count)
     {
-		grid.gameObject.GetComponent<RectTransform> ().sizeDelta = new Vector2(cellWidth, count * cellHeight);
+        if (direction.y == 1)
+        {
+            grid.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cellWidth, count * cellHeight);
+        }
+        else
+        {
+            grid.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(count * cellWidth, cellHeight);
+        }
+
+        
         Validate();
         
     }

@@ -30,10 +30,17 @@ public class UILoopItem : MonoBehaviour {
 		int x = (int)o;
 		if (lastIndex == x)
 			return;
-		lastIndex = x;
-		print ("Update " + x);
-		text.text = x+1+"";
-	}
 
+        ResetItem(x);
+
+
+    }
+
+    protected virtual void ResetItem( int index ) 
+    {
+        lastIndex = index;
+        print("Update " + index);
+        text.text = index + 1 + "";
+    }
 
 }
