@@ -248,3 +248,6 @@ client/pushmole/Assembly-CSharp-firstpass.csproj
 *.csproj
 *.csproj
 *.sln
+*.csproj
+*.ide
+*.ide
