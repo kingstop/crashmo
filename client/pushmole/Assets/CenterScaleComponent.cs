@@ -35,7 +35,7 @@ public class CenterScaleComponent : MonoBehaviour {
             float move_y = (_size.y * current_scale - _size.y) / 2;
             Vector3 vect_scale = new Vector3(current_scale, current_scale, 1);
             this.transform.localScale = vect_scale;
-            Vector3 new_pos = new Vector3(_pos.x + move_x, _pos.y + move_y, 1.0);
+            Vector3 new_pos = new Vector3(_pos.x + move_x, _pos.y + move_y, 1.0f);
             this.transform.localPosition = new_pos;
         }
         
