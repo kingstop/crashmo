@@ -9,7 +9,7 @@ void message_interface::messageInit( compress_strategy* cs )
 	message_interface::s_compress_interface = cs;
 }
 
-message_t* message_interface::createMessage(tcp_session* from, message_len len, bool base64)
+message_t* message_interface::createMessage(base_session* from, message_len len, bool base64)
 {
 	message_t* p = new message_t( len, from, base64);
 	return p;
@@ -19,7 +19,7 @@ void message_interface::releaseMessage( message_t* p)
 	delete p;
 }
 
-message_t* message_interface::uncompress(tcp_session* from, char* data, unsigned char* p_recv_key, char* buffptr, message_len& size)
+message_t* message_interface::uncompress(base_session* from, char* data, unsigned char* p_recv_key, char* buffptr, message_len& size)
 {
 	//»ñÈ¡BUFF
 	message_len& datalen = *(message_len*)data;
@@ -69,7 +69,7 @@ message_t* message_interface::uncompress(tcp_session* from, char* data, unsigned
 }
 
 
-message_t* message_interface::compress(tcp_session* from, const char* data, message_len len, char* buffptr, message_len& size, unsigned char* p_send_key, bool base64)
+message_t* message_interface::compress(base_session* from, const char* data, message_len len, char* buffptr, message_len& size, unsigned char* p_send_key, bool base64)
 {
 	if (len > MESSAGE_COMPRESS_LEN && message_interface::s_compress_interface != NULL)
 	{
@@ -84,7 +84,7 @@ message_t* message_interface::compress(tcp_session* from, const char* data, mess
 	return makeMessage(from, data, len, p_send_key, false, base64);
 }
 
-message_t* message_interface::makeMessage(tcp_session* from, const char* data, message_len len,unsigned char* p_send_key, bool _compress, bool base64)
+message_t* message_interface::makeMessage(base_session* from, const char* data, message_len len, unsigned char* p_send_key, bool _compress, bool base64)
 {
 	message_len lenMax = len + MESSAGE_HEAD_LEN  ;
 	message_t* p = createMessage(from, lenMax, base64);

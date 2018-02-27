@@ -45,7 +45,7 @@ private:
 
 tcp_session::tcp_session( boost::asio::io_service& is )
 : m_socket( NULL ), m_io_service( is ), m_isvalid( false ), m_iscompress( false ), m_thread_index( 0 ), m_isclosing( false ), m_recive_buffer_pos( 0 ),
-	m_remote_ip_ui( 0 ), m_not_sent_size( 0 ), m_send_crypt_key( 0 ), m_recv_crypt_key( 0 ), m_is_sending_data( false ), _base64(false)
+	m_remote_ip_ui( 0 ), m_not_sent_size( 0 ), m_is_sending_data( false ), _base64(false)
 {
 	memset(m_sending_data, 0, sizeof(m_sending_data));
 	memset(m_recv_buffer, 0, sizeof(m_recv_buffer));
@@ -471,3 +471,11 @@ void tcp_session::reset()
 	m_socket = new tcp::socket( m_io_service );
 }
 
+void tcp_session::_proc_message(const message_t& msg)
+{
+	if (is_valid() && is_connected())
+	{
+		proc_message(msg);
+	}
+		
+}

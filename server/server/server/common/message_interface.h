@@ -3,6 +3,7 @@
 #include "string.h"
 
 class tcp_session ;
+class base_session;
 typedef unsigned int	message_len;    //包长定义
 typedef unsigned short	message_mask;   //包标识定义
 typedef unsigned int	message_crc32;  //包验证码定义
@@ -28,7 +29,7 @@ enum MASK_TYPE
 
 struct message_t
 {
-	message_t( message_len l, tcp_session* ower, bool b64):from(ower),base64(b64)
+	message_t(message_len l, base_session* ower, bool b64) :from(ower), base64(b64)
 	{
 		len = l ;
 		data = new char[len ];
@@ -43,7 +44,7 @@ struct message_t
 	}
 	char* data;
 	message_len len;
-	tcp_session* from;
+	base_session* from;
 	bool base64;
 protected:
 	message_t()
@@ -67,10 +68,10 @@ struct message_interface
 	static compress_strategy* s_compress_interface;
 	static void messageInit( compress_strategy* cs);
 
-	static message_t* createMessage(tcp_session* from, message_len len, bool base64);
+	static message_t* createMessage(base_session* from, message_len len, bool base64);
 	static void releaseMessage( message_t* p);
-	static message_t* uncompress(tcp_session* from, char* data, unsigned char* p_recv_key, char* buffptr, message_len& size);
-	static message_t* compress(tcp_session* from, const char* data, message_len len, char* buffptr, message_len& size, unsigned char* p_send_key, bool base64);
-	static message_t* makeMessage(tcp_session* from, const char* data, message_len len,unsigned char* p_send_key, bool _compress, bool base64);
+	static message_t* uncompress(base_session* from, char* data, unsigned char* p_recv_key, char* buffptr, message_len& size);
+	static message_t* compress(base_session* from, const char* data, message_len len, char* buffptr, message_len& size, unsigned char* p_send_key, bool base64);
+	static message_t* makeMessage(base_session* from, const char* data, message_len len, unsigned char* p_send_key, bool _compress, bool base64);
 };
 #endif

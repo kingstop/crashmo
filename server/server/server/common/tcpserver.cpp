@@ -38,7 +38,7 @@ void net_global::init_net_service( int thread_count, int proc_interval, compress
 }
 
 
-message_t* net_global::get_message(message_len size, tcp_session* from, bool base64)
+message_t* net_global::get_message(message_len size, base_session* from, bool base64)
 {
 	return message_interface::createMessage(from, size, base64);
 }
@@ -365,10 +365,11 @@ void tcp_server::_real_run( bool is_wait )
 	while( !m_queue_recv_msg[proc_index].empty() )
 	{
 		message_t* msg = m_queue_recv_msg[proc_index].front();
-
+		msg->from->_proc_message(*msg);
+		/*
 		if( msg->from->is_valid() && msg->from->is_connected() )
 			msg->from->proc_message( *msg );
-
+		*/
 		net_global::free_message( msg );
 		m_queue_recv_msg[proc_index].pop();
 	}

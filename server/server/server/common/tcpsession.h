@@ -1,11 +1,12 @@
 #ifndef ASIO_TCPSESSION_HEAD
 #define ASIO_TCPSESSION_HEAD
-
+#include "basesession.h"
 #include "asiodef.h"
 
 class tcp_server;
 
-class tcp_session
+
+class tcp_session : public base_session
 {
 public:
 	tcp_session( boost::asio::io_service& is );
@@ -14,7 +15,7 @@ public:
 public:
 	virtual void on_accept( tcp_server* p );
 	virtual void on_close( const boost::system::error_code& error );
-	virtual void proc_message( const message_t& msg ) = 0;
+	virtual void _proc_message(const message_t& msg);
 	virtual void push_message( message_t* msg );
 	virtual void reset();
 	virtual void run();
@@ -77,8 +78,6 @@ protected:
 	char m_sending_data[MAX_MESSAGE_LEN];
 	volatile bool m_is_sending_data;
 	volatile long m_not_sent_size;
-	unsigned char m_send_crypt_key;
-	unsigned char m_recv_crypt_key;
 	bool _base64;
 
 };

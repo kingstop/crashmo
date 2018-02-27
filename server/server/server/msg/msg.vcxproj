@@ -10,8 +10,28 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="message\common.pb.cc" />
+    <ClCompile Include="message\crashmo.pb.cc" />
+    <ClCompile Include="message\login.pb.cc" />
+    <ClCompile Include="message\msgs2c.pb.cc" />
+    <ClCompile Include="message\msgs2s.pb.cc" />
+    <ClCompile Include="message\msg_game_db.pb.cc" />
+    <ClCompile Include="message\msg_gate_game.pb.cc" />
+    <ClCompile Include="message\msg_gate_login.pb.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="message\common.pb.h" />
+    <ClInclude Include="message\crashmo.pb.h" />
+    <ClInclude Include="message\login.pb.h" />
+    <ClInclude Include="message\msgs2c.pb.h" />
+    <ClInclude Include="message\msgs2s.pb.h" />
+    <ClInclude Include="message\msg_game_db.pb.h" />
+    <ClInclude Include="message\msg_gate_game.pb.h" />
+    <ClInclude Include="message\msg_gate_login.pb.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8BD46820-1C81-441A-9133-5378CF1BC37E}</ProjectGuid>
+    <ProjectGuid>{50781798-4276-4F54-8BB1-B99207EEF0A7}</ProjectGuid>
     <RootNamespace>common</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -53,7 +73,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>../../../../../../external/boost/boost_1_60_0/;../../../../../../external/protobuf/protobuf-3.0.0/src/;../../../../../../external/mysql/mysql-5.7.10-win32/include/;../../../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;../../../../../../external/enet/include/;../../../../../../external/log4cplus/log4cplus-1.2.0/include/;../../../../../../external/mysql++/mysql++-3.1.0/lib/;../common/;../../../../../../external/curl/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../../../../external/boost/boost_1_60_0/;../../../../../../external/protobuf/protobuf-3.0.0/src/;../../../../../../external/mysql/mysql-5.7.10-win32/include/;../../../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;../../../../../../external/log4cplus/log4cplus-1.2.0/include/;../../../../../../external/mysql++/mysql++-3.1.0/lib/;../common/;../../../../../../external/curl/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN32_WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalOptions>-Zm132 %(AdditionalOptions)</AdditionalOptions>
@@ -80,79 +100,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="asiodef.h" />
-    <ClInclude Include="base64_encode.h" />
-    <ClInclude Include="basesession.h" />
-    <ClInclude Include="call_back.h" />
-    <ClInclude Include="common_header.h" />
-    <ClInclude Include="common_helper.h" />
-    <ClInclude Include="common_template.h" />
-    <ClInclude Include="common_type.h" />
-    <ClInclude Include="crypt.h" />
-    <ClInclude Include="cur_http_client.h" />
-    <ClInclude Include="database.h" />
-    <ClInclude Include="event_call_back.h" />
-    <ClInclude Include="event_manager.h" />
-    <ClInclude Include="event_table_object.h" />
-    <ClInclude Include="exception.h" />
-    <ClInclude Include="http_client.h" />
-    <ClInclude Include="http_server.h" />
-    <ClInclude Include="json_help.h" />
-    <ClInclude Include="md5.h" />
-    <ClInclude Include="memory.h" />
-    <ClInclude Include="message\server_define.h" />
-    <ClInclude Include="message_interface.h" />
-    <ClInclude Include="MyLog.h" />
-    <ClInclude Include="server_define.h" />
-    <ClInclude Include="udpserver.h" />
-    <ClInclude Include="udpsession.h" />
-    <ClInclude Include="windump.h" />
-    <ClInclude Include="mt_buffer.h" />
-    <ClInclude Include="my_log.h" />
-    <ClInclude Include="net_type.h" />
-    <ClInclude Include="object_pool.h" />
-    <ClInclude Include="packet_interface.h" />
-    <ClInclude Include="protoc_common.h" />
-    <ClInclude Include="run_object.h" />
-    <ClInclude Include="server_frame.h" />
-    <ClInclude Include="task_thread_pool.h" />
-    <ClInclude Include="tcpclient.h" />
-    <ClInclude Include="tcpserver.h" />
-    <ClInclude Include="tcpsession.h" />
-    <ClInclude Include="thread_buffer.h" />
-    <ClInclude Include="utilities.h" />
-    <ClInclude Include="version.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="base64_encode.cpp" />
-    <ClCompile Include="basesession.cpp" />
-    <ClCompile Include="call_back.cpp" />
-    <ClCompile Include="crypt.cpp" />
-    <ClCompile Include="cur_http_client.cpp" />
-    <ClCompile Include="database.cpp" />
-    <ClCompile Include="event_table_object.cpp" />
-    <ClCompile Include="exception.cpp" />
-    <ClCompile Include="http_client.cpp" />
-    <ClCompile Include="http_server.cpp" />
-    <ClCompile Include="io_service_pool.cpp" />
-    <ClCompile Include="json_help.cpp" />
-    <ClCompile Include="md5.cpp" />
-    <ClCompile Include="message_interface.cpp" />
-    <ClCompile Include="MyLog.cpp" />
-    <ClCompile Include="udpserver.cpp" />
-    <ClCompile Include="udpsession.cpp" />
-    <ClCompile Include="windump.cpp" />
-    <ClCompile Include="my_log.cpp" />
-    <ClCompile Include="server_frame.cpp" />
-    <ClCompile Include="task_thread_pool.cpp" />
-    <ClCompile Include="tcpclient.cpp" />
-    <ClCompile Include="tcpserver.cpp" />
-    <ClCompile Include="tcpsession.cpp" />
-    <ClCompile Include="thread_buffer.cpp" />
-    <ClCompile Include="utilities.cpp" />
-    <ClCompile Include="version.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
