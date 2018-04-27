@@ -231,17 +231,19 @@ ServerVersion* ServerVersion::New(::google::protobuf::Arena* arena) const {
 }
 
 void ServerVersion::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<ServerVersion*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<ServerVersion*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(major_, appsvn_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -546,106 +548,6 @@ void ServerVersion::InternalSwap(ServerVersion* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// ServerVersion
-
-// required uint32 Major = 1;
- bool ServerVersion::has_major() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void ServerVersion::set_has_major() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void ServerVersion::clear_has_major() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void ServerVersion::clear_major() {
-  major_ = 0u;
-  clear_has_major();
-}
- ::google::protobuf::uint32 ServerVersion::major() const {
-  // @@protoc_insertion_point(field_get:message.ServerVersion.Major)
-  return major_;
-}
- void ServerVersion::set_major(::google::protobuf::uint32 value) {
-  set_has_major();
-  major_ = value;
-  // @@protoc_insertion_point(field_set:message.ServerVersion.Major)
-}
-
-// required uint32 Minor = 2;
- bool ServerVersion::has_minor() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void ServerVersion::set_has_minor() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void ServerVersion::clear_has_minor() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void ServerVersion::clear_minor() {
-  minor_ = 0u;
-  clear_has_minor();
-}
- ::google::protobuf::uint32 ServerVersion::minor() const {
-  // @@protoc_insertion_point(field_get:message.ServerVersion.Minor)
-  return minor_;
-}
- void ServerVersion::set_minor(::google::protobuf::uint32 value) {
-  set_has_minor();
-  minor_ = value;
-  // @@protoc_insertion_point(field_set:message.ServerVersion.Minor)
-}
-
-// required uint32 Build = 3;
- bool ServerVersion::has_build() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void ServerVersion::set_has_build() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void ServerVersion::clear_has_build() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void ServerVersion::clear_build() {
-  build_ = 0u;
-  clear_has_build();
-}
- ::google::protobuf::uint32 ServerVersion::build() const {
-  // @@protoc_insertion_point(field_get:message.ServerVersion.Build)
-  return build_;
-}
- void ServerVersion::set_build(::google::protobuf::uint32 value) {
-  set_has_build();
-  build_ = value;
-  // @@protoc_insertion_point(field_set:message.ServerVersion.Build)
-}
-
-// required uint32 AppSvn = 4;
- bool ServerVersion::has_appsvn() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void ServerVersion::set_has_appsvn() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void ServerVersion::clear_has_appsvn() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void ServerVersion::clear_appsvn() {
-  appsvn_ = 0u;
-  clear_has_appsvn();
-}
- ::google::protobuf::uint32 ServerVersion::appsvn() const {
-  // @@protoc_insertion_point(field_get:message.ServerVersion.AppSvn)
-  return appsvn_;
-}
- void ServerVersion::set_appsvn(::google::protobuf::uint32 value) {
-  set_has_appsvn();
-  appsvn_ = value;
-  // @@protoc_insertion_point(field_set:message.ServerVersion.AppSvn)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -946,77 +848,6 @@ void MsgServerRegister::InternalSwap(MsgServerRegister* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgServerRegister
-
-// required uint32 ServerId = 1;
- bool MsgServerRegister::has_serverid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgServerRegister::set_has_serverid() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgServerRegister::clear_has_serverid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgServerRegister::clear_serverid() {
-  serverid_ = 0u;
-  clear_has_serverid();
-}
- ::google::protobuf::uint32 MsgServerRegister::serverid() const {
-  // @@protoc_insertion_point(field_get:message.MsgServerRegister.ServerId)
-  return serverid_;
-}
- void MsgServerRegister::set_serverid(::google::protobuf::uint32 value) {
-  set_has_serverid();
-  serverid_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgServerRegister.ServerId)
-}
-
-// required .message.ServerVersion Version = 2;
- bool MsgServerRegister::has_version() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgServerRegister::set_has_version() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgServerRegister::clear_has_version() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgServerRegister::clear_version() {
-  if (version_ != NULL) version_->::message::ServerVersion::Clear();
-  clear_has_version();
-}
- const ::message::ServerVersion& MsgServerRegister::version() const {
-  // @@protoc_insertion_point(field_get:message.MsgServerRegister.Version)
-  return version_ != NULL ? *version_ : *default_instance_->version_;
-}
- ::message::ServerVersion* MsgServerRegister::mutable_version() {
-  set_has_version();
-  if (version_ == NULL) {
-    version_ = new ::message::ServerVersion;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgServerRegister.Version)
-  return version_;
-}
- ::message::ServerVersion* MsgServerRegister::release_version() {
-  clear_has_version();
-  ::message::ServerVersion* temp = version_;
-  version_ = NULL;
-  return temp;
-}
- void MsgServerRegister::set_allocated_version(::message::ServerVersion* version) {
-  delete version_;
-  version_ = version;
-  if (version) {
-    set_has_version();
-  } else {
-    clear_has_version();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgServerRegister.Version)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1248,34 +1079,6 @@ void MsgDB2GTChangeGS::InternalSwap(MsgDB2GTChangeGS* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgDB2GTChangeGS
-
-// required uint32 GameServerID = 1;
- bool MsgDB2GTChangeGS::has_gameserverid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgDB2GTChangeGS::set_has_gameserverid() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgDB2GTChangeGS::clear_has_gameserverid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgDB2GTChangeGS::clear_gameserverid() {
-  gameserverid_ = 0u;
-  clear_has_gameserverid();
-}
- ::google::protobuf::uint32 MsgDB2GTChangeGS::gameserverid() const {
-  // @@protoc_insertion_point(field_get:message.MsgDB2GTChangeGS.GameServerID)
-  return gameserverid_;
-}
- void MsgDB2GTChangeGS::set_gameserverid(::google::protobuf::uint32 value) {
-  set_has_gameserverid();
-  gameserverid_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgDB2GTChangeGS.GameServerID)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 

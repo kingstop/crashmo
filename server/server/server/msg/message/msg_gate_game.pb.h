@@ -109,13 +109,13 @@ class MsgGT2GSAddUser : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.GTLGData data = 1;
-  bool has_data() const;
-  void clear_data();
+  inline bool has_data() const;
+  inline void clear_data();
   static const int kDataFieldNumber = 1;
-  const ::message::GTLGData& data() const;
-  ::message::GTLGData* mutable_data();
-  ::message::GTLGData* release_data();
-  void set_allocated_data(::message::GTLGData* data);
+  inline const ::message::GTLGData& data() const;
+  inline ::message::GTLGData* mutable_data();
+  inline ::message::GTLGData* release_data();
+  inline void set_allocated_data(::message::GTLGData* data);
 
   // @@protoc_insertion_point(class_scope:message.MsgGT2GSAddUser)
  private:
@@ -200,11 +200,11 @@ class MsgGT2GSRemoveUser : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 trans = 1;
-  bool has_trans() const;
-  void clear_trans();
+  inline bool has_trans() const;
+  inline void clear_trans();
   static const int kTransFieldNumber = 1;
-  ::google::protobuf::uint32 trans() const;
-  void set_trans(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 trans() const;
+  inline void set_trans(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgGT2GSRemoveUser)
  private:
@@ -289,11 +289,11 @@ class MsgGT2GSOfflineUser : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 trans = 1;
-  bool has_trans() const;
-  void clear_trans();
+  inline bool has_trans() const;
+  inline void clear_trans();
   static const int kTransFieldNumber = 1;
-  ::google::protobuf::uint32 trans() const;
-  void set_trans(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 trans() const;
+  inline void set_trans(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgGT2GSOfflineUser)
  private:
@@ -378,11 +378,11 @@ class MsgGS2GTOnlines : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 onlines = 1;
-  bool has_onlines() const;
-  void clear_onlines();
+  inline bool has_onlines() const;
+  inline void clear_onlines();
   static const int kOnlinesFieldNumber = 1;
-  ::google::protobuf::uint32 onlines() const;
-  void set_onlines(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 onlines() const;
+  inline void set_onlines(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgGS2GTOnlines)
  private:
@@ -405,7 +405,6 @@ class MsgGS2GTOnlines : public ::google::protobuf::Message {
 
 // ===================================================================
 
-#if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgGT2GSAddUser
 
 // required .message.GTLGData data = 1;
@@ -535,11 +534,19 @@ inline void MsgGS2GTOnlines::set_onlines(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:message.MsgGS2GTOnlines.onlines)
 }
 
-#endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace message
+
+#ifndef SWIG
+namespace google {
+namespace protobuf {
+
+
+}  // namespace protobuf
+}  // namespace google
+#endif  // SWIG
 
 // @@protoc_insertion_point(global_scope)
 

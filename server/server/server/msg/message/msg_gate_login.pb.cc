@@ -304,17 +304,19 @@ GTLGData* GTLGData::New(::google::protobuf::Arena* arena) const {
 }
 
 void GTLGData::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<GTLGData*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<GTLGData*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(account_, transid_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -537,58 +539,6 @@ void GTLGData::InternalSwap(GTLGData* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// GTLGData
-
-// required uint32 account = 1;
- bool GTLGData::has_account() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void GTLGData::set_has_account() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void GTLGData::clear_has_account() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void GTLGData::clear_account() {
-  account_ = 0u;
-  clear_has_account();
-}
- ::google::protobuf::uint32 GTLGData::account() const {
-  // @@protoc_insertion_point(field_get:message.GTLGData.account)
-  return account_;
-}
- void GTLGData::set_account(::google::protobuf::uint32 value) {
-  set_has_account();
-  account_ = value;
-  // @@protoc_insertion_point(field_set:message.GTLGData.account)
-}
-
-// required uint32 transid = 2;
- bool GTLGData::has_transid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void GTLGData::set_has_transid() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void GTLGData::clear_has_transid() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void GTLGData::clear_transid() {
-  transid_ = 0u;
-  clear_has_transid();
-}
- ::google::protobuf::uint32 GTLGData::transid() const {
-  // @@protoc_insertion_point(field_get:message.GTLGData.transid)
-  return transid_;
-}
- void GTLGData::set_transid(::google::protobuf::uint32 value) {
-  set_has_transid();
-  transid_ = value;
-  // @@protoc_insertion_point(field_set:message.GTLGData.transid)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -828,53 +778,6 @@ void MsgLN2GTUserLogin::InternalSwap(MsgLN2GTUserLogin* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgLN2GTUserLogin
-
-// required .message.GTLGData data = 1;
- bool MsgLN2GTUserLogin::has_data() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgLN2GTUserLogin::set_has_data() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgLN2GTUserLogin::clear_has_data() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgLN2GTUserLogin::clear_data() {
-  if (data_ != NULL) data_->::message::GTLGData::Clear();
-  clear_has_data();
-}
- const ::message::GTLGData& MsgLN2GTUserLogin::data() const {
-  // @@protoc_insertion_point(field_get:message.MsgLN2GTUserLogin.data)
-  return data_ != NULL ? *data_ : *default_instance_->data_;
-}
- ::message::GTLGData* MsgLN2GTUserLogin::mutable_data() {
-  set_has_data();
-  if (data_ == NULL) {
-    data_ = new ::message::GTLGData;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgLN2GTUserLogin.data)
-  return data_;
-}
- ::message::GTLGData* MsgLN2GTUserLogin::release_data() {
-  clear_has_data();
-  ::message::GTLGData* temp = data_;
-  data_ = NULL;
-  return temp;
-}
- void MsgLN2GTUserLogin::set_allocated_data(::message::GTLGData* data) {
-  delete data_;
-  data_ = data;
-  if (data) {
-    set_has_data();
-  } else {
-    clear_has_data();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgLN2GTUserLogin.data)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1114,53 +1017,6 @@ void MsgLN2GTKickUser::InternalSwap(MsgLN2GTKickUser* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgLN2GTKickUser
-
-// required .message.GTLGData data = 1;
- bool MsgLN2GTKickUser::has_data() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgLN2GTKickUser::set_has_data() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgLN2GTKickUser::clear_has_data() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgLN2GTKickUser::clear_data() {
-  if (data_ != NULL) data_->::message::GTLGData::Clear();
-  clear_has_data();
-}
- const ::message::GTLGData& MsgLN2GTKickUser::data() const {
-  // @@protoc_insertion_point(field_get:message.MsgLN2GTKickUser.data)
-  return data_ != NULL ? *data_ : *default_instance_->data_;
-}
- ::message::GTLGData* MsgLN2GTKickUser::mutable_data() {
-  set_has_data();
-  if (data_ == NULL) {
-    data_ = new ::message::GTLGData;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgLN2GTKickUser.data)
-  return data_;
-}
- ::message::GTLGData* MsgLN2GTKickUser::release_data() {
-  clear_has_data();
-  ::message::GTLGData* temp = data_;
-  data_ = NULL;
-  return temp;
-}
- void MsgLN2GTKickUser::set_allocated_data(::message::GTLGData* data) {
-  delete data_;
-  data_ = data;
-  if (data) {
-    set_has_data();
-  } else {
-    clear_has_data();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgLN2GTKickUser.data)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1392,34 +1248,6 @@ void MsgGT2LNOnlines::InternalSwap(MsgGT2LNOnlines* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgGT2LNOnlines
-
-// required uint32 onlines = 1;
- bool MsgGT2LNOnlines::has_onlines() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgGT2LNOnlines::set_has_onlines() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgGT2LNOnlines::clear_has_onlines() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgGT2LNOnlines::clear_onlines() {
-  onlines_ = 0u;
-  clear_has_onlines();
-}
- ::google::protobuf::uint32 MsgGT2LNOnlines::onlines() const {
-  // @@protoc_insertion_point(field_get:message.MsgGT2LNOnlines.onlines)
-  return onlines_;
-}
- void MsgGT2LNOnlines::set_onlines(::google::protobuf::uint32 value) {
-  set_has_onlines();
-  onlines_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgGT2LNOnlines.onlines)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1651,34 +1479,6 @@ void MsgGT2LNPrepar::InternalSwap(MsgGT2LNPrepar* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgGT2LNPrepar
-
-// required uint32 account = 1;
- bool MsgGT2LNPrepar::has_account() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgGT2LNPrepar::set_has_account() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgGT2LNPrepar::clear_has_account() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgGT2LNPrepar::clear_account() {
-  account_ = 0u;
-  clear_has_account();
-}
- ::google::protobuf::uint32 MsgGT2LNPrepar::account() const {
-  // @@protoc_insertion_point(field_get:message.MsgGT2LNPrepar.account)
-  return account_;
-}
- void MsgGT2LNPrepar::set_account(::google::protobuf::uint32 value) {
-  set_has_account();
-  account_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgGT2LNPrepar.account)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -2081,160 +1881,6 @@ void MsgGTRegisterLG::InternalSwap(MsgGTRegisterLG* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgGTRegisterLG
-
-// required .message.MsgServerRegister GateInfo = 1;
- bool MsgGTRegisterLG::has_gateinfo() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgGTRegisterLG::set_has_gateinfo() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgGTRegisterLG::clear_has_gateinfo() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgGTRegisterLG::clear_gateinfo() {
-  if (gateinfo_ != NULL) gateinfo_->::message::MsgServerRegister::Clear();
-  clear_has_gateinfo();
-}
- const ::message::MsgServerRegister& MsgGTRegisterLG::gateinfo() const {
-  // @@protoc_insertion_point(field_get:message.MsgGTRegisterLG.GateInfo)
-  return gateinfo_ != NULL ? *gateinfo_ : *default_instance_->gateinfo_;
-}
- ::message::MsgServerRegister* MsgGTRegisterLG::mutable_gateinfo() {
-  set_has_gateinfo();
-  if (gateinfo_ == NULL) {
-    gateinfo_ = new ::message::MsgServerRegister;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgGTRegisterLG.GateInfo)
-  return gateinfo_;
-}
- ::message::MsgServerRegister* MsgGTRegisterLG::release_gateinfo() {
-  clear_has_gateinfo();
-  ::message::MsgServerRegister* temp = gateinfo_;
-  gateinfo_ = NULL;
-  return temp;
-}
- void MsgGTRegisterLG::set_allocated_gateinfo(::message::MsgServerRegister* gateinfo) {
-  delete gateinfo_;
-  gateinfo_ = gateinfo;
-  if (gateinfo) {
-    set_has_gateinfo();
-  } else {
-    clear_has_gateinfo();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgGTRegisterLG.GateInfo)
-}
-
-// required string ip = 2;
- bool MsgGTRegisterLG::has_ip() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgGTRegisterLG::set_has_ip() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgGTRegisterLG::clear_has_ip() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgGTRegisterLG::clear_ip() {
-  ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_ip();
-}
- const ::std::string& MsgGTRegisterLG::ip() const {
-  // @@protoc_insertion_point(field_get:message.MsgGTRegisterLG.ip)
-  return ip_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgGTRegisterLG::set_ip(const ::std::string& value) {
-  set_has_ip();
-  ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgGTRegisterLG.ip)
-}
- void MsgGTRegisterLG::set_ip(const char* value) {
-  set_has_ip();
-  ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgGTRegisterLG.ip)
-}
- void MsgGTRegisterLG::set_ip(const char* value, size_t size) {
-  set_has_ip();
-  ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgGTRegisterLG.ip)
-}
- ::std::string* MsgGTRegisterLG::mutable_ip() {
-  set_has_ip();
-  // @@protoc_insertion_point(field_mutable:message.MsgGTRegisterLG.ip)
-  return ip_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* MsgGTRegisterLG::release_ip() {
-  clear_has_ip();
-  return ip_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgGTRegisterLG::set_allocated_ip(::std::string* ip) {
-  if (ip != NULL) {
-    set_has_ip();
-  } else {
-    clear_has_ip();
-  }
-  ip_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgGTRegisterLG.ip)
-}
-
-// required uint32 port = 3;
- bool MsgGTRegisterLG::has_port() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void MsgGTRegisterLG::set_has_port() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void MsgGTRegisterLG::clear_has_port() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void MsgGTRegisterLG::clear_port() {
-  port_ = 0u;
-  clear_has_port();
-}
- ::google::protobuf::uint32 MsgGTRegisterLG::port() const {
-  // @@protoc_insertion_point(field_get:message.MsgGTRegisterLG.port)
-  return port_;
-}
- void MsgGTRegisterLG::set_port(::google::protobuf::uint32 value) {
-  set_has_port();
-  port_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgGTRegisterLG.port)
-}
-
-// repeated .message.GTLGData Accounts = 4;
- int MsgGTRegisterLG::accounts_size() const {
-  return accounts_.size();
-}
- void MsgGTRegisterLG::clear_accounts() {
-  accounts_.Clear();
-}
- const ::message::GTLGData& MsgGTRegisterLG::accounts(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgGTRegisterLG.Accounts)
-  return accounts_.Get(index);
-}
- ::message::GTLGData* MsgGTRegisterLG::mutable_accounts(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgGTRegisterLG.Accounts)
-  return accounts_.Mutable(index);
-}
- ::message::GTLGData* MsgGTRegisterLG::add_accounts() {
-  // @@protoc_insertion_point(field_add:message.MsgGTRegisterLG.Accounts)
-  return accounts_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::GTLGData >&
-MsgGTRegisterLG::accounts() const {
-  // @@protoc_insertion_point(field_list:message.MsgGTRegisterLG.Accounts)
-  return accounts_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::GTLGData >*
-MsgGTRegisterLG::mutable_accounts() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgGTRegisterLG.Accounts)
-  return &accounts_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 

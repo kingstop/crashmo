@@ -134,28 +134,28 @@ class LoginRequest : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // optional string name = 1;
-  bool has_name() const;
-  void clear_name();
+  inline bool has_name() const;
+  inline void clear_name();
   static const int kNameFieldNumber = 1;
-  const ::std::string& name() const;
-  void set_name(const ::std::string& value);
-  void set_name(const char* value);
-  void set_name(const char* value, size_t size);
-  ::std::string* mutable_name();
-  ::std::string* release_name();
-  void set_allocated_name(::std::string* name);
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
 
   // optional string pwd = 2;
-  bool has_pwd() const;
-  void clear_pwd();
+  inline bool has_pwd() const;
+  inline void clear_pwd();
   static const int kPwdFieldNumber = 2;
-  const ::std::string& pwd() const;
-  void set_pwd(const ::std::string& value);
-  void set_pwd(const char* value);
-  void set_pwd(const char* value, size_t size);
-  ::std::string* mutable_pwd();
-  ::std::string* release_pwd();
-  void set_allocated_pwd(::std::string* pwd);
+  inline const ::std::string& pwd() const;
+  inline void set_pwd(const ::std::string& value);
+  inline void set_pwd(const char* value);
+  inline void set_pwd(const char* value, size_t size);
+  inline ::std::string* mutable_pwd();
+  inline ::std::string* release_pwd();
+  inline void set_allocated_pwd(::std::string* pwd);
 
   // @@protoc_insertion_point(class_scope:message.LoginRequest)
  private:
@@ -243,28 +243,28 @@ class RegisterAccountRequest : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required string name = 1;
-  bool has_name() const;
-  void clear_name();
+  inline bool has_name() const;
+  inline void clear_name();
   static const int kNameFieldNumber = 1;
-  const ::std::string& name() const;
-  void set_name(const ::std::string& value);
-  void set_name(const char* value);
-  void set_name(const char* value, size_t size);
-  ::std::string* mutable_name();
-  ::std::string* release_name();
-  void set_allocated_name(::std::string* name);
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
 
   // required string pwd = 2;
-  bool has_pwd() const;
-  void clear_pwd();
+  inline bool has_pwd() const;
+  inline void clear_pwd();
   static const int kPwdFieldNumber = 2;
-  const ::std::string& pwd() const;
-  void set_pwd(const ::std::string& value);
-  void set_pwd(const char* value);
-  void set_pwd(const char* value, size_t size);
-  ::std::string* mutable_pwd();
-  ::std::string* release_pwd();
-  void set_allocated_pwd(::std::string* pwd);
+  inline const ::std::string& pwd() const;
+  inline void set_pwd(const ::std::string& value);
+  inline void set_pwd(const char* value);
+  inline void set_pwd(const char* value, size_t size);
+  inline ::std::string* mutable_pwd();
+  inline ::std::string* release_pwd();
+  inline void set_allocated_pwd(::std::string* pwd);
 
   // @@protoc_insertion_point(class_scope:message.RegisterAccountRequest)
  private:
@@ -434,44 +434,44 @@ class LoginResponse : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // optional string gate_ip = 1;
-  bool has_gate_ip() const;
-  void clear_gate_ip();
+  inline bool has_gate_ip() const;
+  inline void clear_gate_ip();
   static const int kGateIpFieldNumber = 1;
-  const ::std::string& gate_ip() const;
-  void set_gate_ip(const ::std::string& value);
-  void set_gate_ip(const char* value);
-  void set_gate_ip(const char* value, size_t size);
-  ::std::string* mutable_gate_ip();
-  ::std::string* release_gate_ip();
-  void set_allocated_gate_ip(::std::string* gate_ip);
+  inline const ::std::string& gate_ip() const;
+  inline void set_gate_ip(const ::std::string& value);
+  inline void set_gate_ip(const char* value);
+  inline void set_gate_ip(const char* value, size_t size);
+  inline ::std::string* mutable_gate_ip();
+  inline ::std::string* release_gate_ip();
+  inline void set_allocated_gate_ip(::std::string* gate_ip);
 
   // optional uint32 gate_port = 2;
-  bool has_gate_port() const;
-  void clear_gate_port();
+  inline bool has_gate_port() const;
+  inline void clear_gate_port();
   static const int kGatePortFieldNumber = 2;
-  ::google::protobuf::uint32 gate_port() const;
-  void set_gate_port(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 gate_port() const;
+  inline void set_gate_port(::google::protobuf::uint32 value);
 
   // optional uint32 user_account = 3;
-  bool has_user_account() const;
-  void clear_user_account();
+  inline bool has_user_account() const;
+  inline void clear_user_account();
   static const int kUserAccountFieldNumber = 3;
-  ::google::protobuf::uint32 user_account() const;
-  void set_user_account(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 user_account() const;
+  inline void set_user_account(::google::protobuf::uint32 value);
 
   // optional .message.enumLoginResult result = 4;
-  bool has_result() const;
-  void clear_result();
+  inline bool has_result() const;
+  inline void clear_result();
   static const int kResultFieldNumber = 4;
-  ::message::enumLoginResult result() const;
-  void set_result(::message::enumLoginResult value);
+  inline ::message::enumLoginResult result() const;
+  inline void set_result(::message::enumLoginResult value);
 
   // optional uint32 chartype = 5;
-  bool has_chartype() const;
-  void clear_chartype();
+  inline bool has_chartype() const;
+  inline void clear_chartype();
   static const int kChartypeFieldNumber = 5;
-  ::google::protobuf::uint32 chartype() const;
-  void set_chartype(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 chartype() const;
+  inline void set_chartype(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.LoginResponse)
  private:
@@ -568,11 +568,11 @@ class LoginGame : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 user_account = 1;
-  bool has_user_account() const;
-  void clear_user_account();
+  inline bool has_user_account() const;
+  inline void clear_user_account();
   static const int kUserAccountFieldNumber = 1;
-  ::google::protobuf::uint32 user_account() const;
-  void set_user_account(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 user_account() const;
+  inline void set_user_account(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.LoginGame)
  private:
@@ -657,18 +657,18 @@ class ClientExit : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // optional uint32 charid = 1;
-  bool has_charid() const;
-  void clear_charid();
+  inline bool has_charid() const;
+  inline void clear_charid();
   static const int kCharidFieldNumber = 1;
-  ::google::protobuf::uint32 charid() const;
-  void set_charid(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 charid() const;
+  inline void set_charid(::google::protobuf::uint32 value);
 
   // optional uint64 user_account = 2;
-  bool has_user_account() const;
-  void clear_user_account();
+  inline bool has_user_account() const;
+  inline void clear_user_account();
   static const int kUserAccountFieldNumber = 2;
-  ::google::protobuf::uint64 user_account() const;
-  void set_user_account(::google::protobuf::uint64 value);
+  inline ::google::protobuf::uint64 user_account() const;
+  inline void set_user_account(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:message.ClientExit)
  private:
@@ -694,7 +694,6 @@ class ClientExit : public ::google::protobuf::Message {
 
 // ===================================================================
 
-#if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // LoginRequest
 
 // optional string name = 1;
@@ -1151,7 +1150,6 @@ inline void ClientExit::set_user_account(::google::protobuf::uint64 value) {
   // @@protoc_insertion_point(field_set:message.ClientExit.user_account)
 }
 
-#endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 

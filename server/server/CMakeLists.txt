@@ -13,15 +13,18 @@ ENDIF()
 INCLUDE_DIRECTORIES( 
     ${PROJECT_SOURCE_DIR}/include 
     ${PROJECT_SOURCE_DIR}/include/linklist
-   ./../../../external/boost/boost_1_59_0/
-    ./../../../external/mysql++-3.2.2/lib/
-    ./../../../external/google/protobuf/src/
-    ./../../../external/json/include/
-    ./../../../external/log4cplus/log4cplus-1.2.0/include/
-    ./../../../external/mysql-5.7.10/build/include/
-    ./../../../external/mysql-5.7.10/include/
+    ./../../../../../external/boost/boost_1_59_0/
+    ./../../../../../external/mysql++-3.2.2/lib/
+    ./../../../../../external/google/protobuf/src/
+    ./../../../../../external/jsoncpp/include/
+    ./../../../../../external/log4cplus/include/
+    ./../../../../../external/mysql-5.7.10/build/include/
+    ./../../../../../external/mysql-5.7.10/include/
     ./server/common/
-    /usr/local/mysql/include/
+    ./common/
+    ./server/msg/
+    ./msg/
+    /home/mysql/include/
     /usr/include/mysql/
    /usr/include/ 
    /usr/local/include/
@@ -29,11 +32,12 @@ INCLUDE_DIRECTORIES(
 
 LINK_DIRECTORIES( 
     ${PROJECT_SOURCE_DIR}/lib 
-    ${PROJECT_SOURCE_DIR}/../../../external_lib/boost_1_60/
-    ${PROJECT_SOURCE_DIR}/../../../external_lib/google/  
-    ${PROJECT_SOURCE_DIR}/../../../external_lib/json/  
-    ${PROJECT_SOURCE_DIR}/../../../external_lib/log4cplus_1_2_0/  
-    ${PROJECT_SOURCE_DIR}/../../../external_lib/mysql/  
+    ${PROJECT_SOURCE_DIR}/../../../../../external_lib/boost/
+    ${PROJECT_SOURCE_DIR}/../../../../../external_lib/protobuf/  
+    ${PROJECT_SOURCE_DIR}/../../../../../external_lib/jsoncpp/  
+    ${PROJECT_SOURCE_DIR}/../../../../../external_lib/log4cplus/  
+    ${PROJECT_SOURCE_DIR}/../../../../../external_lib/mysql++/ 
+    /home/mysql/lib/ 
     /usr/local/lib 
     /usr/lib 
 ) 
@@ -44,6 +48,7 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../lib)
 
 add_definitions(-DDEBUG -pthread)
 add_definitions("-g")
+add_definitions("-std=c++11")
 add_definitions(-DLOG4CXX_STATIC)
 ADD_SUBDIRECTORY(server)
 

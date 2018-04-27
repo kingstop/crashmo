@@ -1535,87 +1535,6 @@ void MsgIntStringProto::InternalSwap(MsgIntStringProto* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgIntStringProto
-
-// required int32 intger_temp = 1;
- bool MsgIntStringProto::has_intger_temp() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgIntStringProto::set_has_intger_temp() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgIntStringProto::clear_has_intger_temp() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgIntStringProto::clear_intger_temp() {
-  intger_temp_ = 0;
-  clear_has_intger_temp();
-}
- ::google::protobuf::int32 MsgIntStringProto::intger_temp() const {
-  // @@protoc_insertion_point(field_get:message.MsgIntStringProto.intger_temp)
-  return intger_temp_;
-}
- void MsgIntStringProto::set_intger_temp(::google::protobuf::int32 value) {
-  set_has_intger_temp();
-  intger_temp_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgIntStringProto.intger_temp)
-}
-
-// required string string_temp = 2;
- bool MsgIntStringProto::has_string_temp() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgIntStringProto::set_has_string_temp() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgIntStringProto::clear_has_string_temp() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgIntStringProto::clear_string_temp() {
-  string_temp_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_string_temp();
-}
- const ::std::string& MsgIntStringProto::string_temp() const {
-  // @@protoc_insertion_point(field_get:message.MsgIntStringProto.string_temp)
-  return string_temp_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgIntStringProto::set_string_temp(const ::std::string& value) {
-  set_has_string_temp();
-  string_temp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgIntStringProto.string_temp)
-}
- void MsgIntStringProto::set_string_temp(const char* value) {
-  set_has_string_temp();
-  string_temp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgIntStringProto.string_temp)
-}
- void MsgIntStringProto::set_string_temp(const char* value, size_t size) {
-  set_has_string_temp();
-  string_temp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgIntStringProto.string_temp)
-}
- ::std::string* MsgIntStringProto::mutable_string_temp() {
-  set_has_string_temp();
-  // @@protoc_insertion_point(field_mutable:message.MsgIntStringProto.string_temp)
-  return string_temp_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* MsgIntStringProto::release_string_temp() {
-  clear_has_string_temp();
-  return string_temp_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgIntStringProto::set_allocated_string_temp(::std::string* string_temp) {
-  if (string_temp != NULL) {
-    set_has_string_temp();
-  } else {
-    clear_has_string_temp();
-  }
-  string_temp_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), string_temp);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgIntStringProto.string_temp)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1853,35 +1772,6 @@ void MsgServerErrorNotify::InternalSwap(MsgServerErrorNotify* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgServerErrorNotify
-
-// required .message.ServerError error = 1 [default = ServerError_NO];
- bool MsgServerErrorNotify::has_error() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgServerErrorNotify::set_has_error() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgServerErrorNotify::clear_has_error() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgServerErrorNotify::clear_error() {
-  error_ = 0;
-  clear_has_error();
-}
- ::message::ServerError MsgServerErrorNotify::error() const {
-  // @@protoc_insertion_point(field_get:message.MsgServerErrorNotify.error)
-  return static_cast< ::message::ServerError >(error_);
-}
- void MsgServerErrorNotify::set_error(::message::ServerError value) {
-  assert(::message::ServerError_IsValid(value));
-  set_has_error();
-  error_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgServerErrorNotify.error)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1958,13 +1848,15 @@ CrashmoClientInit* CrashmoClientInit::New(::google::protobuf::Arena* arena) cons
 }
 
 void CrashmoClientInit::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<CrashmoClientInit*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<CrashmoClientInit*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 57) {
     ZR_(map_width_config_max_, map_count_max_);
@@ -1973,7 +1865,7 @@ void CrashmoClientInit::Clear() {
     }
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   chapter_names_.Clear();
@@ -2360,185 +2252,6 @@ void CrashmoClientInit::InternalSwap(CrashmoClientInit* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// CrashmoClientInit
-
-// required .message.CrashPlayerInfo info = 1;
- bool CrashmoClientInit::has_info() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void CrashmoClientInit::set_has_info() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void CrashmoClientInit::clear_has_info() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void CrashmoClientInit::clear_info() {
-  if (info_ != NULL) info_->::message::CrashPlayerInfo::Clear();
-  clear_has_info();
-}
- const ::message::CrashPlayerInfo& CrashmoClientInit::info() const {
-  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.info)
-  return info_ != NULL ? *info_ : *default_instance_->info_;
-}
- ::message::CrashPlayerInfo* CrashmoClientInit::mutable_info() {
-  set_has_info();
-  if (info_ == NULL) {
-    info_ = new ::message::CrashPlayerInfo;
-  }
-  // @@protoc_insertion_point(field_mutable:message.CrashmoClientInit.info)
-  return info_;
-}
- ::message::CrashPlayerInfo* CrashmoClientInit::release_info() {
-  clear_has_info();
-  ::message::CrashPlayerInfo* temp = info_;
-  info_ = NULL;
-  return temp;
-}
- void CrashmoClientInit::set_allocated_info(::message::CrashPlayerInfo* info) {
-  delete info_;
-  info_ = info;
-  if (info) {
-    set_has_info();
-  } else {
-    clear_has_info();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.CrashmoClientInit.info)
-}
-
-// repeated .message.MsgIntStringProto chapter_names = 2;
- int CrashmoClientInit::chapter_names_size() const {
-  return chapter_names_.size();
-}
- void CrashmoClientInit::clear_chapter_names() {
-  chapter_names_.Clear();
-}
- const ::message::MsgIntStringProto& CrashmoClientInit::chapter_names(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.chapter_names)
-  return chapter_names_.Get(index);
-}
- ::message::MsgIntStringProto* CrashmoClientInit::mutable_chapter_names(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashmoClientInit.chapter_names)
-  return chapter_names_.Mutable(index);
-}
- ::message::MsgIntStringProto* CrashmoClientInit::add_chapter_names() {
-  // @@protoc_insertion_point(field_add:message.CrashmoClientInit.chapter_names)
-  return chapter_names_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
-CrashmoClientInit::chapter_names() const {
-  // @@protoc_insertion_point(field_list:message.CrashmoClientInit.chapter_names)
-  return chapter_names_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
-CrashmoClientInit::mutable_chapter_names() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashmoClientInit.chapter_names)
-  return &chapter_names_;
-}
-
-// repeated .message.intPair resources_config_max = 3;
- int CrashmoClientInit::resources_config_max_size() const {
-  return resources_config_max_.size();
-}
- void CrashmoClientInit::clear_resources_config_max() {
-  resources_config_max_.Clear();
-}
- const ::message::intPair& CrashmoClientInit::resources_config_max(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.resources_config_max)
-  return resources_config_max_.Get(index);
-}
- ::message::intPair* CrashmoClientInit::mutable_resources_config_max(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashmoClientInit.resources_config_max)
-  return resources_config_max_.Mutable(index);
-}
- ::message::intPair* CrashmoClientInit::add_resources_config_max() {
-  // @@protoc_insertion_point(field_add:message.CrashmoClientInit.resources_config_max)
-  return resources_config_max_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
-CrashmoClientInit::resources_config_max() const {
-  // @@protoc_insertion_point(field_list:message.CrashmoClientInit.resources_config_max)
-  return resources_config_max_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::intPair >*
-CrashmoClientInit::mutable_resources_config_max() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashmoClientInit.resources_config_max)
-  return &resources_config_max_;
-}
-
-// required int32 map_width_config_max = 4;
- bool CrashmoClientInit::has_map_width_config_max() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void CrashmoClientInit::set_has_map_width_config_max() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void CrashmoClientInit::clear_has_map_width_config_max() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void CrashmoClientInit::clear_map_width_config_max() {
-  map_width_config_max_ = 0;
-  clear_has_map_width_config_max();
-}
- ::google::protobuf::int32 CrashmoClientInit::map_width_config_max() const {
-  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.map_width_config_max)
-  return map_width_config_max_;
-}
- void CrashmoClientInit::set_map_width_config_max(::google::protobuf::int32 value) {
-  set_has_map_width_config_max();
-  map_width_config_max_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashmoClientInit.map_width_config_max)
-}
-
-// required int32 map_height_config_max = 5;
- bool CrashmoClientInit::has_map_height_config_max() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
- void CrashmoClientInit::set_has_map_height_config_max() {
-  _has_bits_[0] |= 0x00000010u;
-}
- void CrashmoClientInit::clear_has_map_height_config_max() {
-  _has_bits_[0] &= ~0x00000010u;
-}
- void CrashmoClientInit::clear_map_height_config_max() {
-  map_height_config_max_ = 0;
-  clear_has_map_height_config_max();
-}
- ::google::protobuf::int32 CrashmoClientInit::map_height_config_max() const {
-  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.map_height_config_max)
-  return map_height_config_max_;
-}
- void CrashmoClientInit::set_map_height_config_max(::google::protobuf::int32 value) {
-  set_has_map_height_config_max();
-  map_height_config_max_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashmoClientInit.map_height_config_max)
-}
-
-// required int32 map_count_max = 6;
- bool CrashmoClientInit::has_map_count_max() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
- void CrashmoClientInit::set_has_map_count_max() {
-  _has_bits_[0] |= 0x00000020u;
-}
- void CrashmoClientInit::clear_has_map_count_max() {
-  _has_bits_[0] &= ~0x00000020u;
-}
- void CrashmoClientInit::clear_map_count_max() {
-  map_count_max_ = 0;
-  clear_has_map_count_max();
-}
- ::google::protobuf::int32 CrashmoClientInit::map_count_max() const {
-  // @@protoc_insertion_point(field_get:message.CrashmoClientInit.map_count_max)
-  return map_count_max_;
-}
- void CrashmoClientInit::set_map_count_max(::google::protobuf::int32 value) {
-  set_has_map_count_max();
-  map_count_max_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashmoClientInit.map_count_max)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -2770,34 +2483,6 @@ void MsgLoadUserMapReq::InternalSwap(MsgLoadUserMapReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgLoadUserMapReq
-
-// required int32 map_count = 1;
- bool MsgLoadUserMapReq::has_map_count() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgLoadUserMapReq::set_has_map_count() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgLoadUserMapReq::clear_has_map_count() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgLoadUserMapReq::clear_map_count() {
-  map_count_ = 0;
-  clear_has_map_count();
-}
- ::google::protobuf::int32 MsgLoadUserMapReq::map_count() const {
-  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapReq.map_count)
-  return map_count_;
-}
- void MsgLoadUserMapReq::set_map_count(::google::protobuf::int32 value) {
-  set_has_map_count();
-  map_count_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgLoadUserMapReq.map_count)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -3094,77 +2779,6 @@ void MsgUserMap::InternalSwap(MsgUserMap* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgUserMap
-
-// required .message.CrashMapData map = 1;
- bool MsgUserMap::has_map() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgUserMap::set_has_map() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgUserMap::clear_has_map() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgUserMap::clear_map() {
-  if (map_ != NULL) map_->::message::CrashMapData::Clear();
-  clear_has_map();
-}
- const ::message::CrashMapData& MsgUserMap::map() const {
-  // @@protoc_insertion_point(field_get:message.MsgUserMap.map)
-  return map_ != NULL ? *map_ : *default_instance_->map_;
-}
- ::message::CrashMapData* MsgUserMap::mutable_map() {
-  set_has_map();
-  if (map_ == NULL) {
-    map_ = new ::message::CrashMapData;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgUserMap.map)
-  return map_;
-}
- ::message::CrashMapData* MsgUserMap::release_map() {
-  clear_has_map();
-  ::message::CrashMapData* temp = map_;
-  map_ = NULL;
-  return temp;
-}
- void MsgUserMap::set_allocated_map(::message::CrashMapData* map) {
-  delete map_;
-  map_ = map;
-  if (map) {
-    set_has_map();
-  } else {
-    clear_has_map();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgUserMap.map)
-}
-
-// required bool complete = 2;
- bool MsgUserMap::has_complete() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgUserMap::set_has_complete() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgUserMap::clear_has_complete() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgUserMap::clear_complete() {
-  complete_ = false;
-  clear_has_complete();
-}
- bool MsgUserMap::complete() const {
-  // @@protoc_insertion_point(field_get:message.MsgUserMap.complete)
-  return complete_;
-}
- void MsgUserMap::set_complete(bool value) {
-  set_has_complete();
-  complete_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgUserMap.complete)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -3435,64 +3049,6 @@ void MsgLoadUserMapACK::InternalSwap(MsgLoadUserMapACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgLoadUserMapACK
-
-// repeated .message.MsgUserMap maps = 1;
- int MsgLoadUserMapACK::maps_size() const {
-  return maps_.size();
-}
- void MsgLoadUserMapACK::clear_maps() {
-  maps_.Clear();
-}
- const ::message::MsgUserMap& MsgLoadUserMapACK::maps(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapACK.maps)
-  return maps_.Get(index);
-}
- ::message::MsgUserMap* MsgLoadUserMapACK::mutable_maps(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgLoadUserMapACK.maps)
-  return maps_.Mutable(index);
-}
- ::message::MsgUserMap* MsgLoadUserMapACK::add_maps() {
-  // @@protoc_insertion_point(field_add:message.MsgLoadUserMapACK.maps)
-  return maps_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::MsgUserMap >&
-MsgLoadUserMapACK::maps() const {
-  // @@protoc_insertion_point(field_list:message.MsgLoadUserMapACK.maps)
-  return maps_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::MsgUserMap >*
-MsgLoadUserMapACK::mutable_maps() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgLoadUserMapACK.maps)
-  return &maps_;
-}
-
-// required bool end = 2;
- bool MsgLoadUserMapACK::has_end() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgLoadUserMapACK::set_has_end() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgLoadUserMapACK::clear_has_end() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgLoadUserMapACK::clear_end() {
-  end_ = false;
-  clear_has_end();
-}
- bool MsgLoadUserMapACK::end() const {
-  // @@protoc_insertion_point(field_get:message.MsgLoadUserMapACK.end)
-  return end_;
-}
- void MsgLoadUserMapACK::set_end(bool value) {
-  set_has_end();
-  end_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgLoadUserMapACK.end)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -3798,78 +3354,6 @@ void MsgSaveMapReq::InternalSwap(MsgSaveMapReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgSaveMapReq
-
-// required .message.CrashMapData map = 1;
- bool MsgSaveMapReq::has_map() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgSaveMapReq::set_has_map() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgSaveMapReq::clear_has_map() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgSaveMapReq::clear_map() {
-  if (map_ != NULL) map_->::message::CrashMapData::Clear();
-  clear_has_map();
-}
- const ::message::CrashMapData& MsgSaveMapReq::map() const {
-  // @@protoc_insertion_point(field_get:message.MsgSaveMapReq.map)
-  return map_ != NULL ? *map_ : *default_instance_->map_;
-}
- ::message::CrashMapData* MsgSaveMapReq::mutable_map() {
-  set_has_map();
-  if (map_ == NULL) {
-    map_ = new ::message::CrashMapData;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgSaveMapReq.map)
-  return map_;
-}
- ::message::CrashMapData* MsgSaveMapReq::release_map() {
-  clear_has_map();
-  ::message::CrashMapData* temp = map_;
-  map_ = NULL;
-  return temp;
-}
- void MsgSaveMapReq::set_allocated_map(::message::CrashMapData* map) {
-  delete map_;
-  map_ = map;
-  if (map) {
-    set_has_map();
-  } else {
-    clear_has_map();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgSaveMapReq.map)
-}
-
-// required .message.MapType save_type = 2 [default = OfficeMap];
- bool MsgSaveMapReq::has_save_type() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgSaveMapReq::set_has_save_type() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgSaveMapReq::clear_has_save_type() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgSaveMapReq::clear_save_type() {
-  save_type_ = 1;
-  clear_has_save_type();
-}
- ::message::MapType MsgSaveMapReq::save_type() const {
-  // @@protoc_insertion_point(field_get:message.MsgSaveMapReq.save_type)
-  return static_cast< ::message::MapType >(save_type_);
-}
- void MsgSaveMapReq::set_save_type(::message::MapType value) {
-  assert(::message::MapType_IsValid(value));
-  set_has_save_type();
-  save_type_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgSaveMapReq.save_type)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -4101,34 +3585,6 @@ void MsgDelMapReq::InternalSwap(MsgDelMapReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgDelMapReq
-
-// required uint64 map_index = 1;
- bool MsgDelMapReq::has_map_index() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgDelMapReq::set_has_map_index() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgDelMapReq::clear_has_map_index() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgDelMapReq::clear_map_index() {
-  map_index_ = GOOGLE_ULONGLONG(0);
-  clear_has_map_index();
-}
- ::google::protobuf::uint64 MsgDelMapReq::map_index() const {
-  // @@protoc_insertion_point(field_get:message.MsgDelMapReq.map_index)
-  return map_index_;
-}
- void MsgDelMapReq::set_map_index(::google::protobuf::uint64 value) {
-  set_has_map_index();
-  map_index_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgDelMapReq.map_index)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -4475,84 +3931,6 @@ void MsgDelMapACK::InternalSwap(MsgDelMapACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgDelMapACK
-
-// required uint64 map_index = 1;
- bool MsgDelMapACK::has_map_index() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgDelMapACK::set_has_map_index() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgDelMapACK::clear_has_map_index() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgDelMapACK::clear_map_index() {
-  map_index_ = GOOGLE_ULONGLONG(0);
-  clear_has_map_index();
-}
- ::google::protobuf::uint64 MsgDelMapACK::map_index() const {
-  // @@protoc_insertion_point(field_get:message.MsgDelMapACK.map_index)
-  return map_index_;
-}
- void MsgDelMapACK::set_map_index(::google::protobuf::uint64 value) {
-  set_has_map_index();
-  map_index_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgDelMapACK.map_index)
-}
-
-// required .message.MapType map_type = 2 [default = OfficeMap];
- bool MsgDelMapACK::has_map_type() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgDelMapACK::set_has_map_type() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgDelMapACK::clear_has_map_type() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgDelMapACK::clear_map_type() {
-  map_type_ = 1;
-  clear_has_map_type();
-}
- ::message::MapType MsgDelMapACK::map_type() const {
-  // @@protoc_insertion_point(field_get:message.MsgDelMapACK.map_type)
-  return static_cast< ::message::MapType >(map_type_);
-}
- void MsgDelMapACK::set_map_type(::message::MapType value) {
-  assert(::message::MapType_IsValid(value));
-  set_has_map_type();
-  map_type_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgDelMapACK.map_type)
-}
-
-// required .message.ServerError error = 3 [default = ServerError_NO];
- bool MsgDelMapACK::has_error() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void MsgDelMapACK::set_has_error() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void MsgDelMapACK::clear_has_error() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void MsgDelMapACK::clear_error() {
-  error_ = 0;
-  clear_has_error();
-}
- ::message::ServerError MsgDelMapACK::error() const {
-  // @@protoc_insertion_point(field_get:message.MsgDelMapACK.error)
-  return static_cast< ::message::ServerError >(error_);
-}
- void MsgDelMapACK::set_error(::message::ServerError value) {
-  assert(::message::ServerError_IsValid(value));
-  set_has_error();
-  error_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgDelMapACK.error)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -4907,103 +4285,6 @@ void MsgSaveMapACK::InternalSwap(MsgSaveMapACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgSaveMapACK
-
-// required .message.MapType save_type = 1 [default = OfficeMap];
- bool MsgSaveMapACK::has_save_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgSaveMapACK::set_has_save_type() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgSaveMapACK::clear_has_save_type() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgSaveMapACK::clear_save_type() {
-  save_type_ = 1;
-  clear_has_save_type();
-}
- ::message::MapType MsgSaveMapACK::save_type() const {
-  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.save_type)
-  return static_cast< ::message::MapType >(save_type_);
-}
- void MsgSaveMapACK::set_save_type(::message::MapType value) {
-  assert(::message::MapType_IsValid(value));
-  set_has_save_type();
-  save_type_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.save_type)
-}
-
-// required .message.CrashMapData map = 2;
- bool MsgSaveMapACK::has_map() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgSaveMapACK::set_has_map() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgSaveMapACK::clear_has_map() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgSaveMapACK::clear_map() {
-  if (map_ != NULL) map_->::message::CrashMapData::Clear();
-  clear_has_map();
-}
- const ::message::CrashMapData& MsgSaveMapACK::map() const {
-  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.map)
-  return map_ != NULL ? *map_ : *default_instance_->map_;
-}
- ::message::CrashMapData* MsgSaveMapACK::mutable_map() {
-  set_has_map();
-  if (map_ == NULL) {
-    map_ = new ::message::CrashMapData;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgSaveMapACK.map)
-  return map_;
-}
- ::message::CrashMapData* MsgSaveMapACK::release_map() {
-  clear_has_map();
-  ::message::CrashMapData* temp = map_;
-  map_ = NULL;
-  return temp;
-}
- void MsgSaveMapACK::set_allocated_map(::message::CrashMapData* map) {
-  delete map_;
-  map_ = map;
-  if (map) {
-    set_has_map();
-  } else {
-    clear_has_map();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgSaveMapACK.map)
-}
-
-// required .message.ServerError error = 3 [default = ServerError_NO];
- bool MsgSaveMapACK::has_error() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void MsgSaveMapACK::set_has_error() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void MsgSaveMapACK::clear_has_error() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void MsgSaveMapACK::clear_error() {
-  error_ = 0;
-  clear_has_error();
-}
- ::message::ServerError MsgSaveMapACK::error() const {
-  // @@protoc_insertion_point(field_get:message.MsgSaveMapACK.error)
-  return static_cast< ::message::ServerError >(error_);
-}
- void MsgSaveMapACK::set_error(::message::ServerError value) {
-  assert(::message::ServerError_IsValid(value));
-  set_has_error();
-  error_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgSaveMapACK.error)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -5235,34 +4516,6 @@ void MsgOfficilMapReq::InternalSwap(MsgOfficilMapReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgOfficilMapReq
-
-// required int32 page = 1;
- bool MsgOfficilMapReq::has_page() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgOfficilMapReq::set_has_page() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgOfficilMapReq::clear_has_page() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgOfficilMapReq::clear_page() {
-  page_ = 0;
-  clear_has_page();
-}
- ::google::protobuf::int32 MsgOfficilMapReq::page() const {
-  // @@protoc_insertion_point(field_get:message.MsgOfficilMapReq.page)
-  return page_;
-}
- void MsgOfficilMapReq::set_page(::google::protobuf::int32 value) {
-  set_has_page();
-  page_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgOfficilMapReq.page)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -5534,64 +4787,6 @@ void MsgOfficilMapACK::InternalSwap(MsgOfficilMapACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgOfficilMapACK
-
-// required int32 page = 1;
- bool MsgOfficilMapACK::has_page() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgOfficilMapACK::set_has_page() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgOfficilMapACK::clear_has_page() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgOfficilMapACK::clear_page() {
-  page_ = 0;
-  clear_has_page();
-}
- ::google::protobuf::int32 MsgOfficilMapACK::page() const {
-  // @@protoc_insertion_point(field_get:message.MsgOfficilMapACK.page)
-  return page_;
-}
- void MsgOfficilMapACK::set_page(::google::protobuf::int32 value) {
-  set_has_page();
-  page_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgOfficilMapACK.page)
-}
-
-// repeated .message.CrashMapData maps = 2;
- int MsgOfficilMapACK::maps_size() const {
-  return maps_.size();
-}
- void MsgOfficilMapACK::clear_maps() {
-  maps_.Clear();
-}
- const ::message::CrashMapData& MsgOfficilMapACK::maps(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgOfficilMapACK.maps)
-  return maps_.Get(index);
-}
- ::message::CrashMapData* MsgOfficilMapACK::mutable_maps(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgOfficilMapACK.maps)
-  return maps_.Mutable(index);
-}
- ::message::CrashMapData* MsgOfficilMapACK::add_maps() {
-  // @@protoc_insertion_point(field_add:message.MsgOfficilMapACK.maps)
-  return maps_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
-MsgOfficilMapACK::maps() const {
-  // @@protoc_insertion_point(field_list:message.MsgOfficilMapACK.maps)
-  return maps_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
-MsgOfficilMapACK::mutable_maps() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgOfficilMapACK.maps)
-  return &maps_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -5902,87 +5097,6 @@ void MsgModifySectionNameReq::InternalSwap(MsgModifySectionNameReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgModifySectionNameReq
-
-// required int32 section = 1;
- bool MsgModifySectionNameReq::has_section() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgModifySectionNameReq::set_has_section() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgModifySectionNameReq::clear_has_section() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgModifySectionNameReq::clear_section() {
-  section_ = 0;
-  clear_has_section();
-}
- ::google::protobuf::int32 MsgModifySectionNameReq::section() const {
-  // @@protoc_insertion_point(field_get:message.MsgModifySectionNameReq.section)
-  return section_;
-}
- void MsgModifySectionNameReq::set_section(::google::protobuf::int32 value) {
-  set_has_section();
-  section_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgModifySectionNameReq.section)
-}
-
-// required string section_name = 2;
- bool MsgModifySectionNameReq::has_section_name() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgModifySectionNameReq::set_has_section_name() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgModifySectionNameReq::clear_has_section_name() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgModifySectionNameReq::clear_section_name() {
-  section_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_section_name();
-}
- const ::std::string& MsgModifySectionNameReq::section_name() const {
-  // @@protoc_insertion_point(field_get:message.MsgModifySectionNameReq.section_name)
-  return section_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgModifySectionNameReq::set_section_name(const ::std::string& value) {
-  set_has_section_name();
-  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgModifySectionNameReq.section_name)
-}
- void MsgModifySectionNameReq::set_section_name(const char* value) {
-  set_has_section_name();
-  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgModifySectionNameReq.section_name)
-}
- void MsgModifySectionNameReq::set_section_name(const char* value, size_t size) {
-  set_has_section_name();
-  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgModifySectionNameReq.section_name)
-}
- ::std::string* MsgModifySectionNameReq::mutable_section_name() {
-  set_has_section_name();
-  // @@protoc_insertion_point(field_mutable:message.MsgModifySectionNameReq.section_name)
-  return section_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* MsgModifySectionNameReq::release_section_name() {
-  clear_has_section_name();
-  return section_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgModifySectionNameReq::set_allocated_section_name(::std::string* section_name) {
-  if (section_name != NULL) {
-    set_has_section_name();
-  } else {
-    clear_has_section_name();
-  }
-  section_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), section_name);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgModifySectionNameReq.section_name)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -6293,87 +5407,6 @@ void MsgModifySectionNameACK::InternalSwap(MsgModifySectionNameACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgModifySectionNameACK
-
-// required int32 section = 1;
- bool MsgModifySectionNameACK::has_section() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgModifySectionNameACK::set_has_section() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgModifySectionNameACK::clear_has_section() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgModifySectionNameACK::clear_section() {
-  section_ = 0;
-  clear_has_section();
-}
- ::google::protobuf::int32 MsgModifySectionNameACK::section() const {
-  // @@protoc_insertion_point(field_get:message.MsgModifySectionNameACK.section)
-  return section_;
-}
- void MsgModifySectionNameACK::set_section(::google::protobuf::int32 value) {
-  set_has_section();
-  section_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgModifySectionNameACK.section)
-}
-
-// required string section_name = 2;
- bool MsgModifySectionNameACK::has_section_name() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgModifySectionNameACK::set_has_section_name() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgModifySectionNameACK::clear_has_section_name() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgModifySectionNameACK::clear_section_name() {
-  section_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_section_name();
-}
- const ::std::string& MsgModifySectionNameACK::section_name() const {
-  // @@protoc_insertion_point(field_get:message.MsgModifySectionNameACK.section_name)
-  return section_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgModifySectionNameACK::set_section_name(const ::std::string& value) {
-  set_has_section_name();
-  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgModifySectionNameACK.section_name)
-}
- void MsgModifySectionNameACK::set_section_name(const char* value) {
-  set_has_section_name();
-  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgModifySectionNameACK.section_name)
-}
- void MsgModifySectionNameACK::set_section_name(const char* value, size_t size) {
-  set_has_section_name();
-  section_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgModifySectionNameACK.section_name)
-}
- ::std::string* MsgModifySectionNameACK::mutable_section_name() {
-  set_has_section_name();
-  // @@protoc_insertion_point(field_mutable:message.MsgModifySectionNameACK.section_name)
-  return section_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* MsgModifySectionNameACK::release_section_name() {
-  clear_has_section_name();
-  return section_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgModifySectionNameACK::set_allocated_section_name(::std::string* section_name) {
-  if (section_name != NULL) {
-    set_has_section_name();
-  } else {
-    clear_has_section_name();
-  }
-  section_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), section_name);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgModifySectionNameACK.section_name)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -6559,10 +5592,6 @@ void MsgSectionNameReq::InternalSwap(MsgSectionNameReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgSectionNameReq
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -6794,40 +5823,6 @@ void MsgSectionNameACK::InternalSwap(MsgSectionNameACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgSectionNameACK
-
-// repeated .message.MsgIntStringProto sections = 1;
- int MsgSectionNameACK::sections_size() const {
-  return sections_.size();
-}
- void MsgSectionNameACK::clear_sections() {
-  sections_.Clear();
-}
- const ::message::MsgIntStringProto& MsgSectionNameACK::sections(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgSectionNameACK.sections)
-  return sections_.Get(index);
-}
- ::message::MsgIntStringProto* MsgSectionNameACK::mutable_sections(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgSectionNameACK.sections)
-  return sections_.Mutable(index);
-}
- ::message::MsgIntStringProto* MsgSectionNameACK::add_sections() {
-  // @@protoc_insertion_point(field_add:message.MsgSectionNameACK.sections)
-  return sections_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
-MsgSectionNameACK::sections() const {
-  // @@protoc_insertion_point(field_list:message.MsgSectionNameACK.sections)
-  return sections_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
-MsgSectionNameACK::mutable_sections() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgSectionNameACK.sections)
-  return &sections_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -6896,17 +5891,19 @@ MsgS2CNotifyPing* MsgS2CNotifyPing::New(::google::protobuf::Arena* arena) const 
 }
 
 void MsgS2CNotifyPing::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgS2CNotifyPing*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgS2CNotifyPing*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(time_stamp_, ping_count_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -7129,58 +6126,6 @@ void MsgS2CNotifyPing::InternalSwap(MsgS2CNotifyPing* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CNotifyPing
-
-// required int64 time_stamp = 1;
- bool MsgS2CNotifyPing::has_time_stamp() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgS2CNotifyPing::set_has_time_stamp() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgS2CNotifyPing::clear_has_time_stamp() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgS2CNotifyPing::clear_time_stamp() {
-  time_stamp_ = GOOGLE_LONGLONG(0);
-  clear_has_time_stamp();
-}
- ::google::protobuf::int64 MsgS2CNotifyPing::time_stamp() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CNotifyPing.time_stamp)
-  return time_stamp_;
-}
- void MsgS2CNotifyPing::set_time_stamp(::google::protobuf::int64 value) {
-  set_has_time_stamp();
-  time_stamp_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CNotifyPing.time_stamp)
-}
-
-// required int32 ping_count = 2;
- bool MsgS2CNotifyPing::has_ping_count() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgS2CNotifyPing::set_has_ping_count() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgS2CNotifyPing::clear_has_ping_count() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgS2CNotifyPing::clear_ping_count() {
-  ping_count_ = 0;
-  clear_has_ping_count();
-}
- ::google::protobuf::int32 MsgS2CNotifyPing::ping_count() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CNotifyPing.ping_count)
-  return ping_count_;
-}
- void MsgS2CNotifyPing::set_ping_count(::google::protobuf::int32 value) {
-  set_has_ping_count();
-  ping_count_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CNotifyPing.ping_count)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -7366,10 +6311,6 @@ void MsgC2SOfficeStatusReq::InternalSwap(MsgC2SOfficeStatusReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgC2SOfficeStatusReq
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -7646,64 +6587,6 @@ void MsgChapterStatus::InternalSwap(MsgChapterStatus* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgChapterStatus
-
-// required int32 chapter_id = 1;
- bool MsgChapterStatus::has_chapter_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgChapterStatus::set_has_chapter_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgChapterStatus::clear_has_chapter_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgChapterStatus::clear_chapter_id() {
-  chapter_id_ = 0;
-  clear_has_chapter_id();
-}
- ::google::protobuf::int32 MsgChapterStatus::chapter_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgChapterStatus.chapter_id)
-  return chapter_id_;
-}
- void MsgChapterStatus::set_chapter_id(::google::protobuf::int32 value) {
-  set_has_chapter_id();
-  chapter_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgChapterStatus.chapter_id)
-}
-
-// repeated uint64 map_indexs = 2;
- int MsgChapterStatus::map_indexs_size() const {
-  return map_indexs_.size();
-}
- void MsgChapterStatus::clear_map_indexs() {
-  map_indexs_.Clear();
-}
- ::google::protobuf::uint64 MsgChapterStatus::map_indexs(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgChapterStatus.map_indexs)
-  return map_indexs_.Get(index);
-}
- void MsgChapterStatus::set_map_indexs(int index, ::google::protobuf::uint64 value) {
-  map_indexs_.Set(index, value);
-  // @@protoc_insertion_point(field_set:message.MsgChapterStatus.map_indexs)
-}
- void MsgChapterStatus::add_map_indexs(::google::protobuf::uint64 value) {
-  map_indexs_.Add(value);
-  // @@protoc_insertion_point(field_add:message.MsgChapterStatus.map_indexs)
-}
- const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-MsgChapterStatus::map_indexs() const {
-  // @@protoc_insertion_point(field_list:message.MsgChapterStatus.map_indexs)
-  return map_indexs_;
-}
- ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-MsgChapterStatus::mutable_map_indexs() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgChapterStatus.map_indexs)
-  return &map_indexs_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -7935,40 +6818,6 @@ void MsgS2COfficeStatusACK::InternalSwap(MsgS2COfficeStatusACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2COfficeStatusACK
-
-// repeated .message.MsgChapterStatus chapter_status = 1;
- int MsgS2COfficeStatusACK::chapter_status_size() const {
-  return chapter_status_.size();
-}
- void MsgS2COfficeStatusACK::clear_chapter_status() {
-  chapter_status_.Clear();
-}
- const ::message::MsgChapterStatus& MsgS2COfficeStatusACK::chapter_status(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgS2COfficeStatusACK.chapter_status)
-  return chapter_status_.Get(index);
-}
- ::message::MsgChapterStatus* MsgS2COfficeStatusACK::mutable_chapter_status(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgS2COfficeStatusACK.chapter_status)
-  return chapter_status_.Mutable(index);
-}
- ::message::MsgChapterStatus* MsgS2COfficeStatusACK::add_chapter_status() {
-  // @@protoc_insertion_point(field_add:message.MsgS2COfficeStatusACK.chapter_status)
-  return chapter_status_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus >&
-MsgS2COfficeStatusACK::chapter_status() const {
-  // @@protoc_insertion_point(field_list:message.MsgS2COfficeStatusACK.chapter_status)
-  return chapter_status_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus >*
-MsgS2COfficeStatusACK::mutable_chapter_status() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgS2COfficeStatusACK.chapter_status)
-  return &chapter_status_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -8040,20 +6889,22 @@ MsgC2SOfficeMapReq* MsgC2SOfficeMapReq::New(::google::protobuf::Arena* arena) co
 }
 
 void MsgC2SOfficeMapReq::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgC2SOfficeMapReq*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgC2SOfficeMapReq*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 7) {
     ZR_(chapter_id_, section_id_);
     map_count_ = 0;
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   map_indexs_.Clear();
@@ -8361,112 +7212,6 @@ void MsgC2SOfficeMapReq::InternalSwap(MsgC2SOfficeMapReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgC2SOfficeMapReq
-
-// required int32 chapter_id = 1;
- bool MsgC2SOfficeMapReq::has_chapter_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgC2SOfficeMapReq::set_has_chapter_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgC2SOfficeMapReq::clear_has_chapter_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgC2SOfficeMapReq::clear_chapter_id() {
-  chapter_id_ = 0;
-  clear_has_chapter_id();
-}
- ::google::protobuf::int32 MsgC2SOfficeMapReq::chapter_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SOfficeMapReq.chapter_id)
-  return chapter_id_;
-}
- void MsgC2SOfficeMapReq::set_chapter_id(::google::protobuf::int32 value) {
-  set_has_chapter_id();
-  chapter_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SOfficeMapReq.chapter_id)
-}
-
-// required int32 section_id = 2;
- bool MsgC2SOfficeMapReq::has_section_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgC2SOfficeMapReq::set_has_section_id() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgC2SOfficeMapReq::clear_has_section_id() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgC2SOfficeMapReq::clear_section_id() {
-  section_id_ = 0;
-  clear_has_section_id();
-}
- ::google::protobuf::int32 MsgC2SOfficeMapReq::section_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SOfficeMapReq.section_id)
-  return section_id_;
-}
- void MsgC2SOfficeMapReq::set_section_id(::google::protobuf::int32 value) {
-  set_has_section_id();
-  section_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SOfficeMapReq.section_id)
-}
-
-// required int32 map_count = 3;
- bool MsgC2SOfficeMapReq::has_map_count() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void MsgC2SOfficeMapReq::set_has_map_count() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void MsgC2SOfficeMapReq::clear_has_map_count() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void MsgC2SOfficeMapReq::clear_map_count() {
-  map_count_ = 0;
-  clear_has_map_count();
-}
- ::google::protobuf::int32 MsgC2SOfficeMapReq::map_count() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SOfficeMapReq.map_count)
-  return map_count_;
-}
- void MsgC2SOfficeMapReq::set_map_count(::google::protobuf::int32 value) {
-  set_has_map_count();
-  map_count_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SOfficeMapReq.map_count)
-}
-
-// repeated uint64 map_indexs = 4;
- int MsgC2SOfficeMapReq::map_indexs_size() const {
-  return map_indexs_.size();
-}
- void MsgC2SOfficeMapReq::clear_map_indexs() {
-  map_indexs_.Clear();
-}
- ::google::protobuf::uint64 MsgC2SOfficeMapReq::map_indexs(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SOfficeMapReq.map_indexs)
-  return map_indexs_.Get(index);
-}
- void MsgC2SOfficeMapReq::set_map_indexs(int index, ::google::protobuf::uint64 value) {
-  map_indexs_.Set(index, value);
-  // @@protoc_insertion_point(field_set:message.MsgC2SOfficeMapReq.map_indexs)
-}
- void MsgC2SOfficeMapReq::add_map_indexs(::google::protobuf::uint64 value) {
-  map_indexs_.Add(value);
-  // @@protoc_insertion_point(field_add:message.MsgC2SOfficeMapReq.map_indexs)
-}
- const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-MsgC2SOfficeMapReq::map_indexs() const {
-  // @@protoc_insertion_point(field_list:message.MsgC2SOfficeMapReq.map_indexs)
-  return map_indexs_;
-}
- ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-MsgC2SOfficeMapReq::mutable_map_indexs() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgC2SOfficeMapReq.map_indexs)
-  return &map_indexs_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -8738,64 +7483,6 @@ void MsgS2COfficeMapACK::InternalSwap(MsgS2COfficeMapACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2COfficeMapACK
-
-// required int32 chapter_id = 1;
- bool MsgS2COfficeMapACK::has_chapter_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgS2COfficeMapACK::set_has_chapter_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgS2COfficeMapACK::clear_has_chapter_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgS2COfficeMapACK::clear_chapter_id() {
-  chapter_id_ = 0;
-  clear_has_chapter_id();
-}
- ::google::protobuf::int32 MsgS2COfficeMapACK::chapter_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2COfficeMapACK.chapter_id)
-  return chapter_id_;
-}
- void MsgS2COfficeMapACK::set_chapter_id(::google::protobuf::int32 value) {
-  set_has_chapter_id();
-  chapter_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2COfficeMapACK.chapter_id)
-}
-
-// repeated .message.CrashMapData maps = 3;
- int MsgS2COfficeMapACK::maps_size() const {
-  return maps_.size();
-}
- void MsgS2COfficeMapACK::clear_maps() {
-  maps_.Clear();
-}
- const ::message::CrashMapData& MsgS2COfficeMapACK::maps(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgS2COfficeMapACK.maps)
-  return maps_.Get(index);
-}
- ::message::CrashMapData* MsgS2COfficeMapACK::mutable_maps(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgS2COfficeMapACK.maps)
-  return maps_.Mutable(index);
-}
- ::message::CrashMapData* MsgS2COfficeMapACK::add_maps() {
-  // @@protoc_insertion_point(field_add:message.MsgS2COfficeMapACK.maps)
-  return maps_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
-MsgS2COfficeMapACK::maps() const {
-  // @@protoc_insertion_point(field_list:message.MsgS2COfficeMapACK.maps)
-  return maps_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
-MsgS2COfficeMapACK::mutable_maps() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgS2COfficeMapACK.maps)
-  return &maps_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -8866,17 +7553,19 @@ MsgC2SRankMapReq* MsgC2SRankMapReq::New(::google::protobuf::Arena* arena) const 
 }
 
 void MsgC2SRankMapReq::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgC2SRankMapReq*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgC2SRankMapReq*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(time_stamp_, map_count_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -9140,82 +7829,6 @@ void MsgC2SRankMapReq::InternalSwap(MsgC2SRankMapReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgC2SRankMapReq
-
-// required int32 rank_begin = 1;
- bool MsgC2SRankMapReq::has_rank_begin() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgC2SRankMapReq::set_has_rank_begin() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgC2SRankMapReq::clear_has_rank_begin() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgC2SRankMapReq::clear_rank_begin() {
-  rank_begin_ = 0;
-  clear_has_rank_begin();
-}
- ::google::protobuf::int32 MsgC2SRankMapReq::rank_begin() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SRankMapReq.rank_begin)
-  return rank_begin_;
-}
- void MsgC2SRankMapReq::set_rank_begin(::google::protobuf::int32 value) {
-  set_has_rank_begin();
-  rank_begin_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SRankMapReq.rank_begin)
-}
-
-// required int64 time_stamp = 2;
- bool MsgC2SRankMapReq::has_time_stamp() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgC2SRankMapReq::set_has_time_stamp() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgC2SRankMapReq::clear_has_time_stamp() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgC2SRankMapReq::clear_time_stamp() {
-  time_stamp_ = GOOGLE_LONGLONG(0);
-  clear_has_time_stamp();
-}
- ::google::protobuf::int64 MsgC2SRankMapReq::time_stamp() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SRankMapReq.time_stamp)
-  return time_stamp_;
-}
- void MsgC2SRankMapReq::set_time_stamp(::google::protobuf::int64 value) {
-  set_has_time_stamp();
-  time_stamp_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SRankMapReq.time_stamp)
-}
-
-// required int32 map_count = 3;
- bool MsgC2SRankMapReq::has_map_count() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void MsgC2SRankMapReq::set_has_map_count() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void MsgC2SRankMapReq::clear_has_map_count() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void MsgC2SRankMapReq::clear_map_count() {
-  map_count_ = 0;
-  clear_has_map_count();
-}
- ::google::protobuf::int32 MsgC2SRankMapReq::map_count() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SRankMapReq.map_count)
-  return map_count_;
-}
- void MsgC2SRankMapReq::set_map_count(::google::protobuf::int32 value) {
-  set_has_map_count();
-  map_count_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SRankMapReq.map_count)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -9287,17 +7900,19 @@ MsgS2CRankMapACK* MsgS2CRankMapACK::New(::google::protobuf::Arena* arena) const 
 }
 
 void MsgS2CRankMapACK::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgS2CRankMapACK*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgS2CRankMapACK*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(time_stamp_, rank_map_count_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   maps_.Clear();
@@ -9601,112 +8216,6 @@ void MsgS2CRankMapACK::InternalSwap(MsgS2CRankMapACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CRankMapACK
-
-// repeated .message.CrashPlayerPublishMap maps = 1;
- int MsgS2CRankMapACK::maps_size() const {
-  return maps_.size();
-}
- void MsgS2CRankMapACK::clear_maps() {
-  maps_.Clear();
-}
- const ::message::CrashPlayerPublishMap& MsgS2CRankMapACK::maps(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CRankMapACK.maps)
-  return maps_.Get(index);
-}
- ::message::CrashPlayerPublishMap* MsgS2CRankMapACK::mutable_maps(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgS2CRankMapACK.maps)
-  return maps_.Mutable(index);
-}
- ::message::CrashPlayerPublishMap* MsgS2CRankMapACK::add_maps() {
-  // @@protoc_insertion_point(field_add:message.MsgS2CRankMapACK.maps)
-  return maps_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >&
-MsgS2CRankMapACK::maps() const {
-  // @@protoc_insertion_point(field_list:message.MsgS2CRankMapACK.maps)
-  return maps_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >*
-MsgS2CRankMapACK::mutable_maps() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgS2CRankMapACK.maps)
-  return &maps_;
-}
-
-// required int32 end_rank = 2;
- bool MsgS2CRankMapACK::has_end_rank() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgS2CRankMapACK::set_has_end_rank() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgS2CRankMapACK::clear_has_end_rank() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgS2CRankMapACK::clear_end_rank() {
-  end_rank_ = 0;
-  clear_has_end_rank();
-}
- ::google::protobuf::int32 MsgS2CRankMapACK::end_rank() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CRankMapACK.end_rank)
-  return end_rank_;
-}
- void MsgS2CRankMapACK::set_end_rank(::google::protobuf::int32 value) {
-  set_has_end_rank();
-  end_rank_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CRankMapACK.end_rank)
-}
-
-// required int64 time_stamp = 3;
- bool MsgS2CRankMapACK::has_time_stamp() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void MsgS2CRankMapACK::set_has_time_stamp() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void MsgS2CRankMapACK::clear_has_time_stamp() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void MsgS2CRankMapACK::clear_time_stamp() {
-  time_stamp_ = GOOGLE_LONGLONG(0);
-  clear_has_time_stamp();
-}
- ::google::protobuf::int64 MsgS2CRankMapACK::time_stamp() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CRankMapACK.time_stamp)
-  return time_stamp_;
-}
- void MsgS2CRankMapACK::set_time_stamp(::google::protobuf::int64 value) {
-  set_has_time_stamp();
-  time_stamp_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CRankMapACK.time_stamp)
-}
-
-// required int32 rank_map_count = 4;
- bool MsgS2CRankMapACK::has_rank_map_count() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void MsgS2CRankMapACK::set_has_rank_map_count() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void MsgS2CRankMapACK::clear_has_rank_map_count() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void MsgS2CRankMapACK::clear_rank_map_count() {
-  rank_map_count_ = 0;
-  clear_has_rank_map_count();
-}
- ::google::protobuf::int32 MsgS2CRankMapACK::rank_map_count() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CRankMapACK.rank_map_count)
-  return rank_map_count_;
-}
- void MsgS2CRankMapACK::set_rank_map_count(::google::protobuf::int32 value) {
-  set_has_rank_map_count();
-  rank_map_count_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CRankMapACK.rank_map_count)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -9938,34 +8447,6 @@ void MsgS2CRankMapRefreshNotify::InternalSwap(MsgS2CRankMapRefreshNotify* other)
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CRankMapRefreshNotify
-
-// required int64 time_stamp = 1;
- bool MsgS2CRankMapRefreshNotify::has_time_stamp() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgS2CRankMapRefreshNotify::set_has_time_stamp() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgS2CRankMapRefreshNotify::clear_has_time_stamp() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgS2CRankMapRefreshNotify::clear_time_stamp() {
-  time_stamp_ = GOOGLE_LONGLONG(0);
-  clear_has_time_stamp();
-}
- ::google::protobuf::int64 MsgS2CRankMapRefreshNotify::time_stamp() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CRankMapRefreshNotify.time_stamp)
-  return time_stamp_;
-}
- void MsgS2CRankMapRefreshNotify::set_time_stamp(::google::protobuf::int64 value) {
-  set_has_time_stamp();
-  time_stamp_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CRankMapRefreshNotify.time_stamp)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -10034,17 +8515,19 @@ MsgC2SReqLoadTaskConfigs* MsgC2SReqLoadTaskConfigs::New(::google::protobuf::Aren
 }
 
 void MsgC2SReqLoadTaskConfigs::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgC2SReqLoadTaskConfigs*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgC2SReqLoadTaskConfigs*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(begin_id_, load_count_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -10267,58 +8750,6 @@ void MsgC2SReqLoadTaskConfigs::InternalSwap(MsgC2SReqLoadTaskConfigs* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgC2SReqLoadTaskConfigs
-
-// required int32 begin_id = 1;
- bool MsgC2SReqLoadTaskConfigs::has_begin_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgC2SReqLoadTaskConfigs::set_has_begin_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgC2SReqLoadTaskConfigs::clear_has_begin_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgC2SReqLoadTaskConfigs::clear_begin_id() {
-  begin_id_ = 0;
-  clear_has_begin_id();
-}
- ::google::protobuf::int32 MsgC2SReqLoadTaskConfigs::begin_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqLoadTaskConfigs.begin_id)
-  return begin_id_;
-}
- void MsgC2SReqLoadTaskConfigs::set_begin_id(::google::protobuf::int32 value) {
-  set_has_begin_id();
-  begin_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqLoadTaskConfigs.begin_id)
-}
-
-// required int32 load_count = 2;
- bool MsgC2SReqLoadTaskConfigs::has_load_count() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgC2SReqLoadTaskConfigs::set_has_load_count() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgC2SReqLoadTaskConfigs::clear_has_load_count() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgC2SReqLoadTaskConfigs::clear_load_count() {
-  load_count_ = 0;
-  clear_has_load_count();
-}
- ::google::protobuf::int32 MsgC2SReqLoadTaskConfigs::load_count() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqLoadTaskConfigs.load_count)
-  return load_count_;
-}
- void MsgC2SReqLoadTaskConfigs::set_load_count(::google::protobuf::int32 value) {
-  set_has_load_count();
-  load_count_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqLoadTaskConfigs.load_count)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -10591,64 +9022,6 @@ void MsgS2CLoadTaskConfigsACK::InternalSwap(MsgS2CLoadTaskConfigsACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CLoadTaskConfigsACK
-
-// repeated .message.TaskInfoConfig task_configs = 1;
- int MsgS2CLoadTaskConfigsACK::task_configs_size() const {
-  return task_configs_.size();
-}
- void MsgS2CLoadTaskConfigsACK::clear_task_configs() {
-  task_configs_.Clear();
-}
- const ::message::TaskInfoConfig& MsgS2CLoadTaskConfigsACK::task_configs(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CLoadTaskConfigsACK.task_configs)
-  return task_configs_.Get(index);
-}
- ::message::TaskInfoConfig* MsgS2CLoadTaskConfigsACK::mutable_task_configs(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgS2CLoadTaskConfigsACK.task_configs)
-  return task_configs_.Mutable(index);
-}
- ::message::TaskInfoConfig* MsgS2CLoadTaskConfigsACK::add_task_configs() {
-  // @@protoc_insertion_point(field_add:message.MsgS2CLoadTaskConfigsACK.task_configs)
-  return task_configs_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >&
-MsgS2CLoadTaskConfigsACK::task_configs() const {
-  // @@protoc_insertion_point(field_list:message.MsgS2CLoadTaskConfigsACK.task_configs)
-  return task_configs_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >*
-MsgS2CLoadTaskConfigsACK::mutable_task_configs() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgS2CLoadTaskConfigsACK.task_configs)
-  return &task_configs_;
-}
-
-// required int32 total_task_count = 2;
- bool MsgS2CLoadTaskConfigsACK::has_total_task_count() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgS2CLoadTaskConfigsACK::set_has_total_task_count() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgS2CLoadTaskConfigsACK::clear_has_total_task_count() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgS2CLoadTaskConfigsACK::clear_total_task_count() {
-  total_task_count_ = 0;
-  clear_has_total_task_count();
-}
- ::google::protobuf::int32 MsgS2CLoadTaskConfigsACK::total_task_count() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CLoadTaskConfigsACK.total_task_count)
-  return total_task_count_;
-}
- void MsgS2CLoadTaskConfigsACK::set_total_task_count(::google::protobuf::int32 value) {
-  set_has_total_task_count();
-  total_task_count_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CLoadTaskConfigsACK.total_task_count)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -10888,53 +9261,6 @@ void MsgC2SReqModifyTaskInfo::InternalSwap(MsgC2SReqModifyTaskInfo* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgC2SReqModifyTaskInfo
-
-// required .message.TaskInfoConfig info = 1;
- bool MsgC2SReqModifyTaskInfo::has_info() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgC2SReqModifyTaskInfo::set_has_info() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgC2SReqModifyTaskInfo::clear_has_info() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgC2SReqModifyTaskInfo::clear_info() {
-  if (info_ != NULL) info_->::message::TaskInfoConfig::Clear();
-  clear_has_info();
-}
- const ::message::TaskInfoConfig& MsgC2SReqModifyTaskInfo::info() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqModifyTaskInfo.info)
-  return info_ != NULL ? *info_ : *default_instance_->info_;
-}
- ::message::TaskInfoConfig* MsgC2SReqModifyTaskInfo::mutable_info() {
-  set_has_info();
-  if (info_ == NULL) {
-    info_ = new ::message::TaskInfoConfig;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgC2SReqModifyTaskInfo.info)
-  return info_;
-}
- ::message::TaskInfoConfig* MsgC2SReqModifyTaskInfo::release_info() {
-  clear_has_info();
-  ::message::TaskInfoConfig* temp = info_;
-  info_ = NULL;
-  return temp;
-}
- void MsgC2SReqModifyTaskInfo::set_allocated_info(::message::TaskInfoConfig* info) {
-  delete info_;
-  info_ = info;
-  if (info) {
-    set_has_info();
-  } else {
-    clear_has_info();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgC2SReqModifyTaskInfo.info)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -11174,53 +9500,6 @@ void MsgS2CModifyTaskInfoACK::InternalSwap(MsgS2CModifyTaskInfoACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CModifyTaskInfoACK
-
-// required .message.TaskInfoConfig info = 1;
- bool MsgS2CModifyTaskInfoACK::has_info() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgS2CModifyTaskInfoACK::set_has_info() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgS2CModifyTaskInfoACK::clear_has_info() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgS2CModifyTaskInfoACK::clear_info() {
-  if (info_ != NULL) info_->::message::TaskInfoConfig::Clear();
-  clear_has_info();
-}
- const ::message::TaskInfoConfig& MsgS2CModifyTaskInfoACK::info() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CModifyTaskInfoACK.info)
-  return info_ != NULL ? *info_ : *default_instance_->info_;
-}
- ::message::TaskInfoConfig* MsgS2CModifyTaskInfoACK::mutable_info() {
-  set_has_info();
-  if (info_ == NULL) {
-    info_ = new ::message::TaskInfoConfig;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgS2CModifyTaskInfoACK.info)
-  return info_;
-}
- ::message::TaskInfoConfig* MsgS2CModifyTaskInfoACK::release_info() {
-  clear_has_info();
-  ::message::TaskInfoConfig* temp = info_;
-  info_ = NULL;
-  return temp;
-}
- void MsgS2CModifyTaskInfoACK::set_allocated_info(::message::TaskInfoConfig* info) {
-  delete info_;
-  info_ = info;
-  if (info) {
-    set_has_info();
-  } else {
-    clear_has_info();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgS2CModifyTaskInfoACK.info)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -11297,13 +9576,15 @@ MsgC2SReqAddMapBolg* MsgC2SReqAddMapBolg::New(::google::protobuf::Arena* arena) 
 }
 
 void MsgC2SReqAddMapBolg::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgC2SReqAddMapBolg*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgC2SReqAddMapBolg*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 31) {
     ZR_(chapter_id_, section_id_);
@@ -11314,7 +9595,7 @@ void MsgC2SReqAddMapBolg::Clear() {
     map_index_ = GOOGLE_LONGLONG(0);
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -11669,150 +9950,6 @@ void MsgC2SReqAddMapBolg::InternalSwap(MsgC2SReqAddMapBolg* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgC2SReqAddMapBolg
-
-// required .message.RankMapBlogEntry info = 1;
- bool MsgC2SReqAddMapBolg::has_info() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgC2SReqAddMapBolg::set_has_info() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgC2SReqAddMapBolg::clear_has_info() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgC2SReqAddMapBolg::clear_info() {
-  if (info_ != NULL) info_->::message::RankMapBlogEntry::Clear();
-  clear_has_info();
-}
- const ::message::RankMapBlogEntry& MsgC2SReqAddMapBolg::info() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqAddMapBolg.info)
-  return info_ != NULL ? *info_ : *default_instance_->info_;
-}
- ::message::RankMapBlogEntry* MsgC2SReqAddMapBolg::mutable_info() {
-  set_has_info();
-  if (info_ == NULL) {
-    info_ = new ::message::RankMapBlogEntry;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgC2SReqAddMapBolg.info)
-  return info_;
-}
- ::message::RankMapBlogEntry* MsgC2SReqAddMapBolg::release_info() {
-  clear_has_info();
-  ::message::RankMapBlogEntry* temp = info_;
-  info_ = NULL;
-  return temp;
-}
- void MsgC2SReqAddMapBolg::set_allocated_info(::message::RankMapBlogEntry* info) {
-  delete info_;
-  info_ = info;
-  if (info) {
-    set_has_info();
-  } else {
-    clear_has_info();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgC2SReqAddMapBolg.info)
-}
-
-// required .message.MapType type = 2 [default = OfficeMap];
- bool MsgC2SReqAddMapBolg::has_type() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgC2SReqAddMapBolg::set_has_type() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgC2SReqAddMapBolg::clear_has_type() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgC2SReqAddMapBolg::clear_type() {
-  type_ = 1;
-  clear_has_type();
-}
- ::message::MapType MsgC2SReqAddMapBolg::type() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqAddMapBolg.type)
-  return static_cast< ::message::MapType >(type_);
-}
- void MsgC2SReqAddMapBolg::set_type(::message::MapType value) {
-  assert(::message::MapType_IsValid(value));
-  set_has_type();
-  type_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqAddMapBolg.type)
-}
-
-// required int64 map_index = 3;
- bool MsgC2SReqAddMapBolg::has_map_index() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void MsgC2SReqAddMapBolg::set_has_map_index() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void MsgC2SReqAddMapBolg::clear_has_map_index() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void MsgC2SReqAddMapBolg::clear_map_index() {
-  map_index_ = GOOGLE_LONGLONG(0);
-  clear_has_map_index();
-}
- ::google::protobuf::int64 MsgC2SReqAddMapBolg::map_index() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqAddMapBolg.map_index)
-  return map_index_;
-}
- void MsgC2SReqAddMapBolg::set_map_index(::google::protobuf::int64 value) {
-  set_has_map_index();
-  map_index_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqAddMapBolg.map_index)
-}
-
-// required int32 chapter_id = 4;
- bool MsgC2SReqAddMapBolg::has_chapter_id() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void MsgC2SReqAddMapBolg::set_has_chapter_id() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void MsgC2SReqAddMapBolg::clear_has_chapter_id() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void MsgC2SReqAddMapBolg::clear_chapter_id() {
-  chapter_id_ = 0;
-  clear_has_chapter_id();
-}
- ::google::protobuf::int32 MsgC2SReqAddMapBolg::chapter_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqAddMapBolg.chapter_id)
-  return chapter_id_;
-}
- void MsgC2SReqAddMapBolg::set_chapter_id(::google::protobuf::int32 value) {
-  set_has_chapter_id();
-  chapter_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqAddMapBolg.chapter_id)
-}
-
-// required int32 section_id = 5;
- bool MsgC2SReqAddMapBolg::has_section_id() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
- void MsgC2SReqAddMapBolg::set_has_section_id() {
-  _has_bits_[0] |= 0x00000010u;
-}
- void MsgC2SReqAddMapBolg::clear_has_section_id() {
-  _has_bits_[0] &= ~0x00000010u;
-}
- void MsgC2SReqAddMapBolg::clear_section_id() {
-  section_id_ = 0;
-  clear_has_section_id();
-}
- ::google::protobuf::int32 MsgC2SReqAddMapBolg::section_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqAddMapBolg.section_id)
-  return section_id_;
-}
- void MsgC2SReqAddMapBolg::set_section_id(::google::protobuf::int32 value) {
-  set_has_section_id();
-  section_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqAddMapBolg.section_id)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -11998,10 +10135,6 @@ void MsgS2CMapBolgACK::InternalSwap(MsgS2CMapBolgACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CMapBolgACK
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -12070,17 +10203,19 @@ MsgC2SReqEnterOfficilMap* MsgC2SReqEnterOfficilMap::New(::google::protobuf::Aren
 }
 
 void MsgC2SReqEnterOfficilMap::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgC2SReqEnterOfficilMap*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgC2SReqEnterOfficilMap*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(chapter_id_, section_id_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -12303,58 +10438,6 @@ void MsgC2SReqEnterOfficilMap::InternalSwap(MsgC2SReqEnterOfficilMap* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgC2SReqEnterOfficilMap
-
-// required uint32 chapter_id = 1;
- bool MsgC2SReqEnterOfficilMap::has_chapter_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgC2SReqEnterOfficilMap::set_has_chapter_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgC2SReqEnterOfficilMap::clear_has_chapter_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgC2SReqEnterOfficilMap::clear_chapter_id() {
-  chapter_id_ = 0u;
-  clear_has_chapter_id();
-}
- ::google::protobuf::uint32 MsgC2SReqEnterOfficilMap::chapter_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqEnterOfficilMap.chapter_id)
-  return chapter_id_;
-}
- void MsgC2SReqEnterOfficilMap::set_chapter_id(::google::protobuf::uint32 value) {
-  set_has_chapter_id();
-  chapter_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqEnterOfficilMap.chapter_id)
-}
-
-// required uint32 section_id = 2;
- bool MsgC2SReqEnterOfficilMap::has_section_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgC2SReqEnterOfficilMap::set_has_section_id() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgC2SReqEnterOfficilMap::clear_has_section_id() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgC2SReqEnterOfficilMap::clear_section_id() {
-  section_id_ = 0u;
-  clear_has_section_id();
-}
- ::google::protobuf::uint32 MsgC2SReqEnterOfficilMap::section_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqEnterOfficilMap.section_id)
-  return section_id_;
-}
- void MsgC2SReqEnterOfficilMap::set_section_id(::google::protobuf::uint32 value) {
-  set_has_section_id();
-  section_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqEnterOfficilMap.section_id)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -12423,17 +10506,19 @@ MsgS2CEnterOfficilMapACK* MsgS2CEnterOfficilMapACK::New(::google::protobuf::Aren
 }
 
 void MsgS2CEnterOfficilMapACK::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgS2CEnterOfficilMapACK*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgS2CEnterOfficilMapACK*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(chapter_id_, section_id_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -12656,58 +10741,6 @@ void MsgS2CEnterOfficilMapACK::InternalSwap(MsgS2CEnterOfficilMapACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CEnterOfficilMapACK
-
-// required uint32 chapter_id = 1;
- bool MsgS2CEnterOfficilMapACK::has_chapter_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgS2CEnterOfficilMapACK::set_has_chapter_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgS2CEnterOfficilMapACK::clear_has_chapter_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgS2CEnterOfficilMapACK::clear_chapter_id() {
-  chapter_id_ = 0u;
-  clear_has_chapter_id();
-}
- ::google::protobuf::uint32 MsgS2CEnterOfficilMapACK::chapter_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CEnterOfficilMapACK.chapter_id)
-  return chapter_id_;
-}
- void MsgS2CEnterOfficilMapACK::set_chapter_id(::google::protobuf::uint32 value) {
-  set_has_chapter_id();
-  chapter_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CEnterOfficilMapACK.chapter_id)
-}
-
-// required uint32 section_id = 2;
- bool MsgS2CEnterOfficilMapACK::has_section_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgS2CEnterOfficilMapACK::set_has_section_id() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgS2CEnterOfficilMapACK::clear_has_section_id() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgS2CEnterOfficilMapACK::clear_section_id() {
-  section_id_ = 0u;
-  clear_has_section_id();
-}
- ::google::protobuf::uint32 MsgS2CEnterOfficilMapACK::section_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CEnterOfficilMapACK.section_id)
-  return section_id_;
-}
- void MsgS2CEnterOfficilMapACK::set_section_id(::google::protobuf::uint32 value) {
-  set_has_section_id();
-  section_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CEnterOfficilMapACK.section_id)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -12780,17 +10813,19 @@ MsgC2SReqPassOfficilMap* MsgC2SReqPassOfficilMap::New(::google::protobuf::Arena*
 }
 
 void MsgC2SReqPassOfficilMap::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgC2SReqPassOfficilMap*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgC2SReqPassOfficilMap*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(chapter_id_, use_step_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -13095,106 +11130,6 @@ void MsgC2SReqPassOfficilMap::InternalSwap(MsgC2SReqPassOfficilMap* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgC2SReqPassOfficilMap
-
-// required uint32 chapter_id = 1;
- bool MsgC2SReqPassOfficilMap::has_chapter_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgC2SReqPassOfficilMap::set_has_chapter_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgC2SReqPassOfficilMap::clear_has_chapter_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgC2SReqPassOfficilMap::clear_chapter_id() {
-  chapter_id_ = 0u;
-  clear_has_chapter_id();
-}
- ::google::protobuf::uint32 MsgC2SReqPassOfficilMap::chapter_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqPassOfficilMap.chapter_id)
-  return chapter_id_;
-}
- void MsgC2SReqPassOfficilMap::set_chapter_id(::google::protobuf::uint32 value) {
-  set_has_chapter_id();
-  chapter_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqPassOfficilMap.chapter_id)
-}
-
-// required uint32 section_id = 2;
- bool MsgC2SReqPassOfficilMap::has_section_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgC2SReqPassOfficilMap::set_has_section_id() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgC2SReqPassOfficilMap::clear_has_section_id() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgC2SReqPassOfficilMap::clear_section_id() {
-  section_id_ = 0u;
-  clear_has_section_id();
-}
- ::google::protobuf::uint32 MsgC2SReqPassOfficilMap::section_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqPassOfficilMap.section_id)
-  return section_id_;
-}
- void MsgC2SReqPassOfficilMap::set_section_id(::google::protobuf::uint32 value) {
-  set_has_section_id();
-  section_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqPassOfficilMap.section_id)
-}
-
-// required uint32 use_time = 3;
- bool MsgC2SReqPassOfficilMap::has_use_time() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void MsgC2SReqPassOfficilMap::set_has_use_time() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void MsgC2SReqPassOfficilMap::clear_has_use_time() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void MsgC2SReqPassOfficilMap::clear_use_time() {
-  use_time_ = 0u;
-  clear_has_use_time();
-}
- ::google::protobuf::uint32 MsgC2SReqPassOfficilMap::use_time() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqPassOfficilMap.use_time)
-  return use_time_;
-}
- void MsgC2SReqPassOfficilMap::set_use_time(::google::protobuf::uint32 value) {
-  set_has_use_time();
-  use_time_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqPassOfficilMap.use_time)
-}
-
-// required uint32 use_step = 4;
- bool MsgC2SReqPassOfficilMap::has_use_step() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void MsgC2SReqPassOfficilMap::set_has_use_step() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void MsgC2SReqPassOfficilMap::clear_has_use_step() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void MsgC2SReqPassOfficilMap::clear_use_step() {
-  use_step_ = 0u;
-  clear_has_use_step();
-}
- ::google::protobuf::uint32 MsgC2SReqPassOfficilMap::use_step() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqPassOfficilMap.use_step)
-  return use_step_;
-}
- void MsgC2SReqPassOfficilMap::set_use_step(::google::protobuf::uint32 value) {
-  set_has_use_step();
-  use_step_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqPassOfficilMap.use_step)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -13545,117 +11480,6 @@ void MsgTaskReward::InternalSwap(MsgTaskReward* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgTaskReward
-
-// required uint32 task_id = 1;
- bool MsgTaskReward::has_task_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgTaskReward::set_has_task_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgTaskReward::clear_has_task_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgTaskReward::clear_task_id() {
-  task_id_ = 0u;
-  clear_has_task_id();
-}
- ::google::protobuf::uint32 MsgTaskReward::task_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgTaskReward.task_id)
-  return task_id_;
-}
- void MsgTaskReward::set_task_id(::google::protobuf::uint32 value) {
-  set_has_task_id();
-  task_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgTaskReward.task_id)
-}
-
-// repeated .message.TaskRewardConfig rewards = 2;
- int MsgTaskReward::rewards_size() const {
-  return rewards_.size();
-}
- void MsgTaskReward::clear_rewards() {
-  rewards_.Clear();
-}
- const ::message::TaskRewardConfig& MsgTaskReward::rewards(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgTaskReward.rewards)
-  return rewards_.Get(index);
-}
- ::message::TaskRewardConfig* MsgTaskReward::mutable_rewards(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgTaskReward.rewards)
-  return rewards_.Mutable(index);
-}
- ::message::TaskRewardConfig* MsgTaskReward::add_rewards() {
-  // @@protoc_insertion_point(field_add:message.MsgTaskReward.rewards)
-  return rewards_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >&
-MsgTaskReward::rewards() const {
-  // @@protoc_insertion_point(field_list:message.MsgTaskReward.rewards)
-  return rewards_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >*
-MsgTaskReward::mutable_rewards() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgTaskReward.rewards)
-  return &rewards_;
-}
-
-// required string task_name = 3;
- bool MsgTaskReward::has_task_name() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void MsgTaskReward::set_has_task_name() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void MsgTaskReward::clear_has_task_name() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void MsgTaskReward::clear_task_name() {
-  task_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_task_name();
-}
- const ::std::string& MsgTaskReward::task_name() const {
-  // @@protoc_insertion_point(field_get:message.MsgTaskReward.task_name)
-  return task_name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgTaskReward::set_task_name(const ::std::string& value) {
-  set_has_task_name();
-  task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.MsgTaskReward.task_name)
-}
- void MsgTaskReward::set_task_name(const char* value) {
-  set_has_task_name();
-  task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.MsgTaskReward.task_name)
-}
- void MsgTaskReward::set_task_name(const char* value, size_t size) {
-  set_has_task_name();
-  task_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.MsgTaskReward.task_name)
-}
- ::std::string* MsgTaskReward::mutable_task_name() {
-  set_has_task_name();
-  // @@protoc_insertion_point(field_mutable:message.MsgTaskReward.task_name)
-  return task_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* MsgTaskReward::release_task_name() {
-  clear_has_task_name();
-  return task_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void MsgTaskReward::set_allocated_task_name(::std::string* task_name) {
-  if (task_name != NULL) {
-    set_has_task_name();
-  } else {
-    clear_has_task_name();
-  }
-  task_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), task_name);
-  // @@protoc_insertion_point(field_set_allocated:message.MsgTaskReward.task_name)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -13733,13 +11557,15 @@ MsgS2CPassOfficilMapACK* MsgS2CPassOfficilMapACK::New(::google::protobuf::Arena*
 }
 
 void MsgS2CPassOfficilMapACK::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgS2CPassOfficilMapACK*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgS2CPassOfficilMapACK*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 151) {
     ZR_(chapter_id_, section_id_);
@@ -13747,7 +11573,7 @@ void MsgS2CPassOfficilMapACK::Clear() {
     error_ = 0;
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   add_resource_.Clear();
@@ -14215,221 +12041,6 @@ void MsgS2CPassOfficilMapACK::InternalSwap(MsgS2CPassOfficilMapACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CPassOfficilMapACK
-
-// required uint32 chapter_id = 1;
- bool MsgS2CPassOfficilMapACK::has_chapter_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgS2CPassOfficilMapACK::set_has_chapter_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgS2CPassOfficilMapACK::clear_has_chapter_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgS2CPassOfficilMapACK::clear_chapter_id() {
-  chapter_id_ = 0u;
-  clear_has_chapter_id();
-}
- ::google::protobuf::uint32 MsgS2CPassOfficilMapACK::chapter_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPassOfficilMapACK.chapter_id)
-  return chapter_id_;
-}
- void MsgS2CPassOfficilMapACK::set_chapter_id(::google::protobuf::uint32 value) {
-  set_has_chapter_id();
-  chapter_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CPassOfficilMapACK.chapter_id)
-}
-
-// required uint32 section_id = 2;
- bool MsgS2CPassOfficilMapACK::has_section_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgS2CPassOfficilMapACK::set_has_section_id() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgS2CPassOfficilMapACK::clear_has_section_id() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgS2CPassOfficilMapACK::clear_section_id() {
-  section_id_ = 0u;
-  clear_has_section_id();
-}
- ::google::protobuf::uint32 MsgS2CPassOfficilMapACK::section_id() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPassOfficilMapACK.section_id)
-  return section_id_;
-}
- void MsgS2CPassOfficilMapACK::set_section_id(::google::protobuf::uint32 value) {
-  set_has_section_id();
-  section_id_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CPassOfficilMapACK.section_id)
-}
-
-// required uint32 add_gold = 3;
- bool MsgS2CPassOfficilMapACK::has_add_gold() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void MsgS2CPassOfficilMapACK::set_has_add_gold() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void MsgS2CPassOfficilMapACK::clear_has_add_gold() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void MsgS2CPassOfficilMapACK::clear_add_gold() {
-  add_gold_ = 0u;
-  clear_has_add_gold();
-}
- ::google::protobuf::uint32 MsgS2CPassOfficilMapACK::add_gold() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPassOfficilMapACK.add_gold)
-  return add_gold_;
-}
- void MsgS2CPassOfficilMapACK::set_add_gold(::google::protobuf::uint32 value) {
-  set_has_add_gold();
-  add_gold_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CPassOfficilMapACK.add_gold)
-}
-
-// repeated .message.intPair add_resource = 4;
- int MsgS2CPassOfficilMapACK::add_resource_size() const {
-  return add_resource_.size();
-}
- void MsgS2CPassOfficilMapACK::clear_add_resource() {
-  add_resource_.Clear();
-}
- const ::message::intPair& MsgS2CPassOfficilMapACK::add_resource(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPassOfficilMapACK.add_resource)
-  return add_resource_.Get(index);
-}
- ::message::intPair* MsgS2CPassOfficilMapACK::mutable_add_resource(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgS2CPassOfficilMapACK.add_resource)
-  return add_resource_.Mutable(index);
-}
- ::message::intPair* MsgS2CPassOfficilMapACK::add_add_resource() {
-  // @@protoc_insertion_point(field_add:message.MsgS2CPassOfficilMapACK.add_resource)
-  return add_resource_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
-MsgS2CPassOfficilMapACK::add_resource() const {
-  // @@protoc_insertion_point(field_list:message.MsgS2CPassOfficilMapACK.add_resource)
-  return add_resource_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::intPair >*
-MsgS2CPassOfficilMapACK::mutable_add_resource() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgS2CPassOfficilMapACK.add_resource)
-  return &add_resource_;
-}
-
-// required uint32 current_gold = 5;
- bool MsgS2CPassOfficilMapACK::has_current_gold() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
- void MsgS2CPassOfficilMapACK::set_has_current_gold() {
-  _has_bits_[0] |= 0x00000010u;
-}
- void MsgS2CPassOfficilMapACK::clear_has_current_gold() {
-  _has_bits_[0] &= ~0x00000010u;
-}
- void MsgS2CPassOfficilMapACK::clear_current_gold() {
-  current_gold_ = 0u;
-  clear_has_current_gold();
-}
- ::google::protobuf::uint32 MsgS2CPassOfficilMapACK::current_gold() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPassOfficilMapACK.current_gold)
-  return current_gold_;
-}
- void MsgS2CPassOfficilMapACK::set_current_gold(::google::protobuf::uint32 value) {
-  set_has_current_gold();
-  current_gold_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CPassOfficilMapACK.current_gold)
-}
-
-// repeated .message.intPair current_resource = 6;
- int MsgS2CPassOfficilMapACK::current_resource_size() const {
-  return current_resource_.size();
-}
- void MsgS2CPassOfficilMapACK::clear_current_resource() {
-  current_resource_.Clear();
-}
- const ::message::intPair& MsgS2CPassOfficilMapACK::current_resource(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPassOfficilMapACK.current_resource)
-  return current_resource_.Get(index);
-}
- ::message::intPair* MsgS2CPassOfficilMapACK::mutable_current_resource(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgS2CPassOfficilMapACK.current_resource)
-  return current_resource_.Mutable(index);
-}
- ::message::intPair* MsgS2CPassOfficilMapACK::add_current_resource() {
-  // @@protoc_insertion_point(field_add:message.MsgS2CPassOfficilMapACK.current_resource)
-  return current_resource_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
-MsgS2CPassOfficilMapACK::current_resource() const {
-  // @@protoc_insertion_point(field_list:message.MsgS2CPassOfficilMapACK.current_resource)
-  return current_resource_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::intPair >*
-MsgS2CPassOfficilMapACK::mutable_current_resource() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgS2CPassOfficilMapACK.current_resource)
-  return &current_resource_;
-}
-
-// repeated .message.MsgTaskReward complete_task = 7;
- int MsgS2CPassOfficilMapACK::complete_task_size() const {
-  return complete_task_.size();
-}
- void MsgS2CPassOfficilMapACK::clear_complete_task() {
-  complete_task_.Clear();
-}
- const ::message::MsgTaskReward& MsgS2CPassOfficilMapACK::complete_task(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPassOfficilMapACK.complete_task)
-  return complete_task_.Get(index);
-}
- ::message::MsgTaskReward* MsgS2CPassOfficilMapACK::mutable_complete_task(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgS2CPassOfficilMapACK.complete_task)
-  return complete_task_.Mutable(index);
-}
- ::message::MsgTaskReward* MsgS2CPassOfficilMapACK::add_complete_task() {
-  // @@protoc_insertion_point(field_add:message.MsgS2CPassOfficilMapACK.complete_task)
-  return complete_task_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::MsgTaskReward >&
-MsgS2CPassOfficilMapACK::complete_task() const {
-  // @@protoc_insertion_point(field_list:message.MsgS2CPassOfficilMapACK.complete_task)
-  return complete_task_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::MsgTaskReward >*
-MsgS2CPassOfficilMapACK::mutable_complete_task() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgS2CPassOfficilMapACK.complete_task)
-  return &complete_task_;
-}
-
-// required .message.ServerError error = 8 [default = ServerError_NO];
- bool MsgS2CPassOfficilMapACK::has_error() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
- void MsgS2CPassOfficilMapACK::set_has_error() {
-  _has_bits_[0] |= 0x00000080u;
-}
- void MsgS2CPassOfficilMapACK::clear_has_error() {
-  _has_bits_[0] &= ~0x00000080u;
-}
- void MsgS2CPassOfficilMapACK::clear_error() {
-  error_ = 0;
-  clear_has_error();
-}
- ::message::ServerError MsgS2CPassOfficilMapACK::error() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPassOfficilMapACK.error)
-  return static_cast< ::message::ServerError >(error_);
-}
- void MsgS2CPassOfficilMapACK::set_error(::message::ServerError value) {
-  assert(::message::ServerError_IsValid(value));
-  set_has_error();
-  error_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CPassOfficilMapACK.error)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -14669,53 +12280,6 @@ void MsgS2CNewTaskNotify::InternalSwap(MsgS2CNewTaskNotify* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CNewTaskNotify
-
-// required .message.TaskInfo info = 1;
- bool MsgS2CNewTaskNotify::has_info() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgS2CNewTaskNotify::set_has_info() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgS2CNewTaskNotify::clear_has_info() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgS2CNewTaskNotify::clear_info() {
-  if (info_ != NULL) info_->::message::TaskInfo::Clear();
-  clear_has_info();
-}
- const ::message::TaskInfo& MsgS2CNewTaskNotify::info() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CNewTaskNotify.info)
-  return info_ != NULL ? *info_ : *default_instance_->info_;
-}
- ::message::TaskInfo* MsgS2CNewTaskNotify::mutable_info() {
-  set_has_info();
-  if (info_ == NULL) {
-    info_ = new ::message::TaskInfo;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgS2CNewTaskNotify.info)
-  return info_;
-}
- ::message::TaskInfo* MsgS2CNewTaskNotify::release_info() {
-  clear_has_info();
-  ::message::TaskInfo* temp = info_;
-  info_ = NULL;
-  return temp;
-}
- void MsgS2CNewTaskNotify::set_allocated_info(::message::TaskInfo* info) {
-  delete info_;
-  info_ = info;
-  if (info) {
-    set_has_info();
-  } else {
-    clear_has_info();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgS2CNewTaskNotify.info)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -14955,53 +12519,6 @@ void MsgC2SReqPlayerPublishMap::InternalSwap(MsgC2SReqPlayerPublishMap* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgC2SReqPlayerPublishMap
-
-// required .message.CrashMapData map = 1;
- bool MsgC2SReqPlayerPublishMap::has_map() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgC2SReqPlayerPublishMap::set_has_map() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgC2SReqPlayerPublishMap::clear_has_map() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgC2SReqPlayerPublishMap::clear_map() {
-  if (map_ != NULL) map_->::message::CrashMapData::Clear();
-  clear_has_map();
-}
- const ::message::CrashMapData& MsgC2SReqPlayerPublishMap::map() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqPlayerPublishMap.map)
-  return map_ != NULL ? *map_ : *default_instance_->map_;
-}
- ::message::CrashMapData* MsgC2SReqPlayerPublishMap::mutable_map() {
-  set_has_map();
-  if (map_ == NULL) {
-    map_ = new ::message::CrashMapData;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgC2SReqPlayerPublishMap.map)
-  return map_;
-}
- ::message::CrashMapData* MsgC2SReqPlayerPublishMap::release_map() {
-  clear_has_map();
-  ::message::CrashMapData* temp = map_;
-  map_ = NULL;
-  return temp;
-}
- void MsgC2SReqPlayerPublishMap::set_allocated_map(::message::CrashMapData* map) {
-  delete map_;
-  map_ = map;
-  if (map) {
-    set_has_map();
-  } else {
-    clear_has_map();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgC2SReqPlayerPublishMap.map)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -15241,53 +12758,6 @@ void MsgS2CPlayerPublishMapACK::InternalSwap(MsgS2CPlayerPublishMapACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CPlayerPublishMapACK
-
-// required .message.CrashPlayerPublishMap map = 1;
- bool MsgS2CPlayerPublishMapACK::has_map() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgS2CPlayerPublishMapACK::set_has_map() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgS2CPlayerPublishMapACK::clear_has_map() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgS2CPlayerPublishMapACK::clear_map() {
-  if (map_ != NULL) map_->::message::CrashPlayerPublishMap::Clear();
-  clear_has_map();
-}
- const ::message::CrashPlayerPublishMap& MsgS2CPlayerPublishMapACK::map() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPlayerPublishMapACK.map)
-  return map_ != NULL ? *map_ : *default_instance_->map_;
-}
- ::message::CrashPlayerPublishMap* MsgS2CPlayerPublishMapACK::mutable_map() {
-  set_has_map();
-  if (map_ == NULL) {
-    map_ = new ::message::CrashPlayerPublishMap;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgS2CPlayerPublishMapACK.map)
-  return map_;
-}
- ::message::CrashPlayerPublishMap* MsgS2CPlayerPublishMapACK::release_map() {
-  clear_has_map();
-  ::message::CrashPlayerPublishMap* temp = map_;
-  map_ = NULL;
-  return temp;
-}
- void MsgS2CPlayerPublishMapACK::set_allocated_map(::message::CrashPlayerPublishMap* map) {
-  delete map_;
-  map_ = map;
-  if (map) {
-    set_has_map();
-  } else {
-    clear_has_map();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgS2CPlayerPublishMapACK.map)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -15356,17 +12826,19 @@ MsgC2SReqPublishMapList* MsgC2SReqPublishMapList::New(::google::protobuf::Arena*
 }
 
 void MsgC2SReqPublishMapList::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<MsgC2SReqPublishMapList*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MsgC2SReqPublishMapList*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(begin_map_index_, req_count_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -15589,58 +13061,6 @@ void MsgC2SReqPublishMapList::InternalSwap(MsgC2SReqPublishMapList* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgC2SReqPublishMapList
-
-// required uint64 begin_map_index = 1;
- bool MsgC2SReqPublishMapList::has_begin_map_index() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgC2SReqPublishMapList::set_has_begin_map_index() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgC2SReqPublishMapList::clear_has_begin_map_index() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgC2SReqPublishMapList::clear_begin_map_index() {
-  begin_map_index_ = GOOGLE_ULONGLONG(0);
-  clear_has_begin_map_index();
-}
- ::google::protobuf::uint64 MsgC2SReqPublishMapList::begin_map_index() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqPublishMapList.begin_map_index)
-  return begin_map_index_;
-}
- void MsgC2SReqPublishMapList::set_begin_map_index(::google::protobuf::uint64 value) {
-  set_has_begin_map_index();
-  begin_map_index_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqPublishMapList.begin_map_index)
-}
-
-// required int32 req_count = 2;
- bool MsgC2SReqPublishMapList::has_req_count() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgC2SReqPublishMapList::set_has_req_count() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgC2SReqPublishMapList::clear_has_req_count() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgC2SReqPublishMapList::clear_req_count() {
-  req_count_ = 0;
-  clear_has_req_count();
-}
- ::google::protobuf::int32 MsgC2SReqPublishMapList::req_count() const {
-  // @@protoc_insertion_point(field_get:message.MsgC2SReqPublishMapList.req_count)
-  return req_count_;
-}
- void MsgC2SReqPublishMapList::set_req_count(::google::protobuf::int32 value) {
-  set_has_req_count();
-  req_count_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgC2SReqPublishMapList.req_count)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -15973,88 +13393,6 @@ void MsgS2CPublishMapListACK::InternalSwap(MsgS2CPublishMapListACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CPublishMapListACK
-
-// required uint64 end_map_index = 1;
- bool MsgS2CPublishMapListACK::has_end_map_index() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgS2CPublishMapListACK::set_has_end_map_index() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgS2CPublishMapListACK::clear_has_end_map_index() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgS2CPublishMapListACK::clear_end_map_index() {
-  end_map_index_ = GOOGLE_ULONGLONG(0);
-  clear_has_end_map_index();
-}
- ::google::protobuf::uint64 MsgS2CPublishMapListACK::end_map_index() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPublishMapListACK.end_map_index)
-  return end_map_index_;
-}
- void MsgS2CPublishMapListACK::set_end_map_index(::google::protobuf::uint64 value) {
-  set_has_end_map_index();
-  end_map_index_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CPublishMapListACK.end_map_index)
-}
-
-// required int32 req_count = 2;
- bool MsgS2CPublishMapListACK::has_req_count() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void MsgS2CPublishMapListACK::set_has_req_count() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void MsgS2CPublishMapListACK::clear_has_req_count() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void MsgS2CPublishMapListACK::clear_req_count() {
-  req_count_ = 0;
-  clear_has_req_count();
-}
- ::google::protobuf::int32 MsgS2CPublishMapListACK::req_count() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPublishMapListACK.req_count)
-  return req_count_;
-}
- void MsgS2CPublishMapListACK::set_req_count(::google::protobuf::int32 value) {
-  set_has_req_count();
-  req_count_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CPublishMapListACK.req_count)
-}
-
-// repeated .message.CrashPlayerPublishMap maps = 3;
- int MsgS2CPublishMapListACK::maps_size() const {
-  return maps_.size();
-}
- void MsgS2CPublishMapListACK::clear_maps() {
-  maps_.Clear();
-}
- const ::message::CrashPlayerPublishMap& MsgS2CPublishMapListACK::maps(int index) const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CPublishMapListACK.maps)
-  return maps_.Get(index);
-}
- ::message::CrashPlayerPublishMap* MsgS2CPublishMapListACK::mutable_maps(int index) {
-  // @@protoc_insertion_point(field_mutable:message.MsgS2CPublishMapListACK.maps)
-  return maps_.Mutable(index);
-}
- ::message::CrashPlayerPublishMap* MsgS2CPublishMapListACK::add_maps() {
-  // @@protoc_insertion_point(field_add:message.MsgS2CPublishMapListACK.maps)
-  return maps_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >&
-MsgS2CPublishMapListACK::maps() const {
-  // @@protoc_insertion_point(field_list:message.MsgS2CPublishMapListACK.maps)
-  return maps_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >*
-MsgS2CPublishMapListACK::mutable_maps() {
-  // @@protoc_insertion_point(field_mutable_list:message.MsgS2CPublishMapListACK.maps)
-  return &maps_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 

@@ -115,11 +115,11 @@ class ApplyCharacterDataReq : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint64 account = 1;
-  bool has_account() const;
-  void clear_account();
+  inline bool has_account() const;
+  inline void clear_account();
   static const int kAccountFieldNumber = 1;
-  ::google::protobuf::uint64 account() const;
-  void set_account(::google::protobuf::uint64 value);
+  inline ::google::protobuf::uint64 account() const;
+  inline void set_account(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:message.ApplyCharacterDataReq)
  private:
@@ -204,11 +204,11 @@ class NeedCreateCharacter : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint64 account = 1;
-  bool has_account() const;
-  void clear_account();
+  inline bool has_account() const;
+  inline void clear_account();
   static const int kAccountFieldNumber = 1;
-  ::google::protobuf::uint64 account() const;
-  void set_account(::google::protobuf::uint64 value);
+  inline ::google::protobuf::uint64 account() const;
+  inline void set_account(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:message.NeedCreateCharacter)
  private:
@@ -293,18 +293,18 @@ class gs2dbDelOfficileReq : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 section = 1;
-  bool has_section() const;
-  void clear_section();
+  inline bool has_section() const;
+  inline void clear_section();
   static const int kSectionFieldNumber = 1;
-  ::google::protobuf::int32 section() const;
-  void set_section(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 section() const;
+  inline void set_section(::google::protobuf::int32 value);
 
   // required int32 number = 2;
-  bool has_number() const;
-  void clear_number();
+  inline bool has_number() const;
+  inline void clear_number();
   static const int kNumberFieldNumber = 2;
-  ::google::protobuf::int32 number() const;
-  void set_number(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 number() const;
+  inline void set_number(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.gs2dbDelOfficileReq)
  private:
@@ -395,27 +395,27 @@ class gs2dbSaveMapReq : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.CrashMapData data = 1;
-  bool has_data() const;
-  void clear_data();
+  inline bool has_data() const;
+  inline void clear_data();
   static const int kDataFieldNumber = 1;
-  const ::message::CrashMapData& data() const;
-  ::message::CrashMapData* mutable_data();
-  ::message::CrashMapData* release_data();
-  void set_allocated_data(::message::CrashMapData* data);
+  inline const ::message::CrashMapData& data() const;
+  inline ::message::CrashMapData* mutable_data();
+  inline ::message::CrashMapData* release_data();
+  inline void set_allocated_data(::message::CrashMapData* data);
 
   // required uint64 account = 2;
-  bool has_account() const;
-  void clear_account();
+  inline bool has_account() const;
+  inline void clear_account();
   static const int kAccountFieldNumber = 2;
-  ::google::protobuf::uint64 account() const;
-  void set_account(::google::protobuf::uint64 value);
+  inline ::google::protobuf::uint64 account() const;
+  inline void set_account(::google::protobuf::uint64 value);
 
   // required .message.MapType type = 3;
-  bool has_type() const;
-  void clear_type();
+  inline bool has_type() const;
+  inline void clear_type();
   static const int kTypeFieldNumber = 3;
-  ::message::MapType type() const;
-  void set_type(::message::MapType value);
+  inline ::message::MapType type() const;
+  inline void set_type(::message::MapType value);
 
   // @@protoc_insertion_point(class_scope:message.gs2dbSaveMapReq)
  private:
@@ -509,24 +509,24 @@ class CharacterDataACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.CrashPlayerInfo data = 1;
-  bool has_data() const;
-  void clear_data();
+  inline bool has_data() const;
+  inline void clear_data();
   static const int kDataFieldNumber = 1;
-  const ::message::CrashPlayerInfo& data() const;
-  ::message::CrashPlayerInfo* mutable_data();
-  ::message::CrashPlayerInfo* release_data();
-  void set_allocated_data(::message::CrashPlayerInfo* data);
+  inline const ::message::CrashPlayerInfo& data() const;
+  inline ::message::CrashPlayerInfo* mutable_data();
+  inline ::message::CrashPlayerInfo* release_data();
+  inline void set_allocated_data(::message::CrashPlayerInfo* data);
 
   // repeated .message.CrashMapData maps = 2;
-  int maps_size() const;
-  void clear_maps();
+  inline int maps_size() const;
+  inline void clear_maps();
   static const int kMapsFieldNumber = 2;
-  const ::message::CrashMapData& maps(int index) const;
-  ::message::CrashMapData* mutable_maps(int index);
-  ::message::CrashMapData* add_maps();
-  const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+  inline const ::message::CrashMapData& maps(int index) const;
+  inline ::message::CrashMapData* mutable_maps(int index);
+  inline ::message::CrashMapData* add_maps();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
       maps() const;
-  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
       mutable_maps();
 
   // @@protoc_insertion_point(class_scope:message.CharacterDataACK)
@@ -613,13 +613,13 @@ class ReqSaveCharacterData : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.CrashPlayerInfo data = 1;
-  bool has_data() const;
-  void clear_data();
+  inline bool has_data() const;
+  inline void clear_data();
   static const int kDataFieldNumber = 1;
-  const ::message::CrashPlayerInfo& data() const;
-  ::message::CrashPlayerInfo* mutable_data();
-  ::message::CrashPlayerInfo* release_data();
-  void set_allocated_data(::message::CrashPlayerInfo* data);
+  inline const ::message::CrashPlayerInfo& data() const;
+  inline ::message::CrashPlayerInfo* mutable_data();
+  inline ::message::CrashPlayerInfo* release_data();
+  inline void set_allocated_data(::message::CrashPlayerInfo* data);
 
   // @@protoc_insertion_point(class_scope:message.ReqSaveCharacterData)
  private:
@@ -704,16 +704,16 @@ class ReqSaveOfficilMap : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required string sql = 1;
-  bool has_sql() const;
-  void clear_sql();
+  inline bool has_sql() const;
+  inline void clear_sql();
   static const int kSqlFieldNumber = 1;
-  const ::std::string& sql() const;
-  void set_sql(const ::std::string& value);
-  void set_sql(const char* value);
-  void set_sql(const char* value, size_t size);
-  ::std::string* mutable_sql();
-  ::std::string* release_sql();
-  void set_allocated_sql(::std::string* sql);
+  inline const ::std::string& sql() const;
+  inline void set_sql(const ::std::string& value);
+  inline void set_sql(const char* value);
+  inline void set_sql(const char* value, size_t size);
+  inline ::std::string* mutable_sql();
+  inline ::std::string* release_sql();
+  inline void set_allocated_sql(::std::string* sql);
 
   // @@protoc_insertion_point(class_scope:message.ReqSaveOfficilMap)
  private:
@@ -798,16 +798,16 @@ class ReqSaveOfficilSectionNames : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required string sql = 1;
-  bool has_sql() const;
-  void clear_sql();
+  inline bool has_sql() const;
+  inline void clear_sql();
   static const int kSqlFieldNumber = 1;
-  const ::std::string& sql() const;
-  void set_sql(const ::std::string& value);
-  void set_sql(const char* value);
-  void set_sql(const char* value, size_t size);
-  ::std::string* mutable_sql();
-  ::std::string* release_sql();
-  void set_allocated_sql(::std::string* sql);
+  inline const ::std::string& sql() const;
+  inline void set_sql(const ::std::string& value);
+  inline void set_sql(const char* value);
+  inline void set_sql(const char* value, size_t size);
+  inline ::std::string* mutable_sql();
+  inline ::std::string* release_sql();
+  inline void set_allocated_sql(::std::string* sql);
 
   // @@protoc_insertion_point(class_scope:message.ReqSaveOfficilSectionNames)
  private:
@@ -892,16 +892,16 @@ class ReqSaveCharacterDBSql : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required string sql = 1;
-  bool has_sql() const;
-  void clear_sql();
+  inline bool has_sql() const;
+  inline void clear_sql();
   static const int kSqlFieldNumber = 1;
-  const ::std::string& sql() const;
-  void set_sql(const ::std::string& value);
-  void set_sql(const char* value);
-  void set_sql(const char* value, size_t size);
-  ::std::string* mutable_sql();
-  ::std::string* release_sql();
-  void set_allocated_sql(::std::string* sql);
+  inline const ::std::string& sql() const;
+  inline void set_sql(const ::std::string& value);
+  inline void set_sql(const char* value);
+  inline void set_sql(const char* value, size_t size);
+  inline ::std::string* mutable_sql();
+  inline ::std::string* release_sql();
+  inline void set_allocated_sql(::std::string* sql);
 
   // @@protoc_insertion_point(class_scope:message.ReqSaveCharacterDBSql)
  private:
@@ -986,16 +986,16 @@ class gs2dbWorldDatabaseSql : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required string sql = 1;
-  bool has_sql() const;
-  void clear_sql();
+  inline bool has_sql() const;
+  inline void clear_sql();
   static const int kSqlFieldNumber = 1;
-  const ::std::string& sql() const;
-  void set_sql(const ::std::string& value);
-  void set_sql(const char* value);
-  void set_sql(const char* value, size_t size);
-  ::std::string* mutable_sql();
-  ::std::string* release_sql();
-  void set_allocated_sql(::std::string* sql);
+  inline const ::std::string& sql() const;
+  inline void set_sql(const ::std::string& value);
+  inline void set_sql(const char* value);
+  inline void set_sql(const char* value, size_t size);
+  inline ::std::string* mutable_sql();
+  inline ::std::string* release_sql();
+  inline void set_allocated_sql(::std::string* sql);
 
   // @@protoc_insertion_point(class_scope:message.gs2dbWorldDatabaseSql)
  private:
@@ -1018,7 +1018,6 @@ class gs2dbWorldDatabaseSql : public ::google::protobuf::Message {
 
 // ===================================================================
 
-#if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // ApplyCharacterDataReq
 
 // required uint64 account = 1;
@@ -1573,11 +1572,19 @@ inline void gs2dbWorldDatabaseSql::set_allocated_sql(::std::string* sql) {
   // @@protoc_insertion_point(field_set_allocated:message.gs2dbWorldDatabaseSql.sql)
 }
 
-#endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace message
+
+#ifndef SWIG
+namespace google {
+namespace protobuf {
+
+
+}  // namespace protobuf
+}  // namespace google
+#endif  // SWIG
 
 // @@protoc_insertion_point(global_scope)
 

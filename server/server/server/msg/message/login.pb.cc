@@ -570,116 +570,6 @@ void LoginRequest::InternalSwap(LoginRequest* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// LoginRequest
-
-// optional string name = 1;
- bool LoginRequest::has_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void LoginRequest::set_has_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void LoginRequest::clear_has_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void LoginRequest::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_name();
-}
- const ::std::string& LoginRequest::name() const {
-  // @@protoc_insertion_point(field_get:message.LoginRequest.name)
-  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void LoginRequest::set_name(const ::std::string& value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.LoginRequest.name)
-}
- void LoginRequest::set_name(const char* value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.LoginRequest.name)
-}
- void LoginRequest::set_name(const char* value, size_t size) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.LoginRequest.name)
-}
- ::std::string* LoginRequest::mutable_name() {
-  set_has_name();
-  // @@protoc_insertion_point(field_mutable:message.LoginRequest.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* LoginRequest::release_name() {
-  clear_has_name();
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void LoginRequest::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    set_has_name();
-  } else {
-    clear_has_name();
-  }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:message.LoginRequest.name)
-}
-
-// optional string pwd = 2;
- bool LoginRequest::has_pwd() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void LoginRequest::set_has_pwd() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void LoginRequest::clear_has_pwd() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void LoginRequest::clear_pwd() {
-  pwd_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_pwd();
-}
- const ::std::string& LoginRequest::pwd() const {
-  // @@protoc_insertion_point(field_get:message.LoginRequest.pwd)
-  return pwd_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void LoginRequest::set_pwd(const ::std::string& value) {
-  set_has_pwd();
-  pwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.LoginRequest.pwd)
-}
- void LoginRequest::set_pwd(const char* value) {
-  set_has_pwd();
-  pwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.LoginRequest.pwd)
-}
- void LoginRequest::set_pwd(const char* value, size_t size) {
-  set_has_pwd();
-  pwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.LoginRequest.pwd)
-}
- ::std::string* LoginRequest::mutable_pwd() {
-  set_has_pwd();
-  // @@protoc_insertion_point(field_mutable:message.LoginRequest.pwd)
-  return pwd_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* LoginRequest::release_pwd() {
-  clear_has_pwd();
-  return pwd_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void LoginRequest::set_allocated_pwd(::std::string* pwd) {
-  if (pwd != NULL) {
-    set_has_pwd();
-  } else {
-    clear_has_pwd();
-  }
-  pwd_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), pwd);
-  // @@protoc_insertion_point(field_set_allocated:message.LoginRequest.pwd)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1007,116 +897,6 @@ void RegisterAccountRequest::InternalSwap(RegisterAccountRequest* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// RegisterAccountRequest
-
-// required string name = 1;
- bool RegisterAccountRequest::has_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void RegisterAccountRequest::set_has_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void RegisterAccountRequest::clear_has_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void RegisterAccountRequest::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_name();
-}
- const ::std::string& RegisterAccountRequest::name() const {
-  // @@protoc_insertion_point(field_get:message.RegisterAccountRequest.name)
-  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void RegisterAccountRequest::set_name(const ::std::string& value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.RegisterAccountRequest.name)
-}
- void RegisterAccountRequest::set_name(const char* value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.RegisterAccountRequest.name)
-}
- void RegisterAccountRequest::set_name(const char* value, size_t size) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.RegisterAccountRequest.name)
-}
- ::std::string* RegisterAccountRequest::mutable_name() {
-  set_has_name();
-  // @@protoc_insertion_point(field_mutable:message.RegisterAccountRequest.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* RegisterAccountRequest::release_name() {
-  clear_has_name();
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void RegisterAccountRequest::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    set_has_name();
-  } else {
-    clear_has_name();
-  }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:message.RegisterAccountRequest.name)
-}
-
-// required string pwd = 2;
- bool RegisterAccountRequest::has_pwd() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void RegisterAccountRequest::set_has_pwd() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void RegisterAccountRequest::clear_has_pwd() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void RegisterAccountRequest::clear_pwd() {
-  pwd_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_pwd();
-}
- const ::std::string& RegisterAccountRequest::pwd() const {
-  // @@protoc_insertion_point(field_get:message.RegisterAccountRequest.pwd)
-  return pwd_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void RegisterAccountRequest::set_pwd(const ::std::string& value) {
-  set_has_pwd();
-  pwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.RegisterAccountRequest.pwd)
-}
- void RegisterAccountRequest::set_pwd(const char* value) {
-  set_has_pwd();
-  pwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.RegisterAccountRequest.pwd)
-}
- void RegisterAccountRequest::set_pwd(const char* value, size_t size) {
-  set_has_pwd();
-  pwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.RegisterAccountRequest.pwd)
-}
- ::std::string* RegisterAccountRequest::mutable_pwd() {
-  set_has_pwd();
-  // @@protoc_insertion_point(field_mutable:message.RegisterAccountRequest.pwd)
-  return pwd_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* RegisterAccountRequest::release_pwd() {
-  clear_has_pwd();
-  return pwd_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void RegisterAccountRequest::set_allocated_pwd(::std::string* pwd) {
-  if (pwd != NULL) {
-    set_has_pwd();
-  } else {
-    clear_has_pwd();
-  }
-  pwd_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), pwd);
-  // @@protoc_insertion_point(field_set_allocated:message.RegisterAccountRequest.pwd)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1302,10 +1082,6 @@ void RegisterAccountFaildACK::InternalSwap(RegisterAccountFaildACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// RegisterAccountFaildACK
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1382,13 +1158,15 @@ LoginResponse* LoginResponse::New(::google::protobuf::Arena* arena) const {
 }
 
 void LoginResponse::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<LoginResponse*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<LoginResponse*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 31) {
     ZR_(gate_port_, chartype_);
@@ -1397,7 +1175,7 @@ void LoginResponse::Clear() {
     }
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1730,160 +1508,6 @@ void LoginResponse::InternalSwap(LoginResponse* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// LoginResponse
-
-// optional string gate_ip = 1;
- bool LoginResponse::has_gate_ip() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void LoginResponse::set_has_gate_ip() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void LoginResponse::clear_has_gate_ip() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void LoginResponse::clear_gate_ip() {
-  gate_ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_gate_ip();
-}
- const ::std::string& LoginResponse::gate_ip() const {
-  // @@protoc_insertion_point(field_get:message.LoginResponse.gate_ip)
-  return gate_ip_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void LoginResponse::set_gate_ip(const ::std::string& value) {
-  set_has_gate_ip();
-  gate_ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.LoginResponse.gate_ip)
-}
- void LoginResponse::set_gate_ip(const char* value) {
-  set_has_gate_ip();
-  gate_ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.LoginResponse.gate_ip)
-}
- void LoginResponse::set_gate_ip(const char* value, size_t size) {
-  set_has_gate_ip();
-  gate_ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.LoginResponse.gate_ip)
-}
- ::std::string* LoginResponse::mutable_gate_ip() {
-  set_has_gate_ip();
-  // @@protoc_insertion_point(field_mutable:message.LoginResponse.gate_ip)
-  return gate_ip_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* LoginResponse::release_gate_ip() {
-  clear_has_gate_ip();
-  return gate_ip_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void LoginResponse::set_allocated_gate_ip(::std::string* gate_ip) {
-  if (gate_ip != NULL) {
-    set_has_gate_ip();
-  } else {
-    clear_has_gate_ip();
-  }
-  gate_ip_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), gate_ip);
-  // @@protoc_insertion_point(field_set_allocated:message.LoginResponse.gate_ip)
-}
-
-// optional uint32 gate_port = 2;
- bool LoginResponse::has_gate_port() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void LoginResponse::set_has_gate_port() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void LoginResponse::clear_has_gate_port() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void LoginResponse::clear_gate_port() {
-  gate_port_ = 0u;
-  clear_has_gate_port();
-}
- ::google::protobuf::uint32 LoginResponse::gate_port() const {
-  // @@protoc_insertion_point(field_get:message.LoginResponse.gate_port)
-  return gate_port_;
-}
- void LoginResponse::set_gate_port(::google::protobuf::uint32 value) {
-  set_has_gate_port();
-  gate_port_ = value;
-  // @@protoc_insertion_point(field_set:message.LoginResponse.gate_port)
-}
-
-// optional uint32 user_account = 3;
- bool LoginResponse::has_user_account() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void LoginResponse::set_has_user_account() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void LoginResponse::clear_has_user_account() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void LoginResponse::clear_user_account() {
-  user_account_ = 0u;
-  clear_has_user_account();
-}
- ::google::protobuf::uint32 LoginResponse::user_account() const {
-  // @@protoc_insertion_point(field_get:message.LoginResponse.user_account)
-  return user_account_;
-}
- void LoginResponse::set_user_account(::google::protobuf::uint32 value) {
-  set_has_user_account();
-  user_account_ = value;
-  // @@protoc_insertion_point(field_set:message.LoginResponse.user_account)
-}
-
-// optional .message.enumLoginResult result = 4;
- bool LoginResponse::has_result() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void LoginResponse::set_has_result() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void LoginResponse::clear_has_result() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void LoginResponse::clear_result() {
-  result_ = 0;
-  clear_has_result();
-}
- ::message::enumLoginResult LoginResponse::result() const {
-  // @@protoc_insertion_point(field_get:message.LoginResponse.result)
-  return static_cast< ::message::enumLoginResult >(result_);
-}
- void LoginResponse::set_result(::message::enumLoginResult value) {
-  assert(::message::enumLoginResult_IsValid(value));
-  set_has_result();
-  result_ = value;
-  // @@protoc_insertion_point(field_set:message.LoginResponse.result)
-}
-
-// optional uint32 chartype = 5;
- bool LoginResponse::has_chartype() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
- void LoginResponse::set_has_chartype() {
-  _has_bits_[0] |= 0x00000010u;
-}
- void LoginResponse::clear_has_chartype() {
-  _has_bits_[0] &= ~0x00000010u;
-}
- void LoginResponse::clear_chartype() {
-  chartype_ = 0u;
-  clear_has_chartype();
-}
- ::google::protobuf::uint32 LoginResponse::chartype() const {
-  // @@protoc_insertion_point(field_get:message.LoginResponse.chartype)
-  return chartype_;
-}
- void LoginResponse::set_chartype(::google::protobuf::uint32 value) {
-  set_has_chartype();
-  chartype_ = value;
-  // @@protoc_insertion_point(field_set:message.LoginResponse.chartype)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -2115,34 +1739,6 @@ void LoginGame::InternalSwap(LoginGame* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// LoginGame
-
-// required uint32 user_account = 1;
- bool LoginGame::has_user_account() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void LoginGame::set_has_user_account() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void LoginGame::clear_has_user_account() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void LoginGame::clear_user_account() {
-  user_account_ = 0u;
-  clear_has_user_account();
-}
- ::google::protobuf::uint32 LoginGame::user_account() const {
-  // @@protoc_insertion_point(field_get:message.LoginGame.user_account)
-  return user_account_;
-}
- void LoginGame::set_user_account(::google::protobuf::uint32 value) {
-  set_has_user_account();
-  user_account_ = value;
-  // @@protoc_insertion_point(field_set:message.LoginGame.user_account)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -2211,17 +1807,19 @@ ClientExit* ClientExit::New(::google::protobuf::Arena* arena) const {
 }
 
 void ClientExit::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<ClientExit*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<ClientExit*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(user_account_, charid_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -2426,58 +2024,6 @@ void ClientExit::InternalSwap(ClientExit* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// ClientExit
-
-// optional uint32 charid = 1;
- bool ClientExit::has_charid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void ClientExit::set_has_charid() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void ClientExit::clear_has_charid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void ClientExit::clear_charid() {
-  charid_ = 0u;
-  clear_has_charid();
-}
- ::google::protobuf::uint32 ClientExit::charid() const {
-  // @@protoc_insertion_point(field_get:message.ClientExit.charid)
-  return charid_;
-}
- void ClientExit::set_charid(::google::protobuf::uint32 value) {
-  set_has_charid();
-  charid_ = value;
-  // @@protoc_insertion_point(field_set:message.ClientExit.charid)
-}
-
-// optional uint64 user_account = 2;
- bool ClientExit::has_user_account() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void ClientExit::set_has_user_account() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void ClientExit::clear_has_user_account() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void ClientExit::clear_user_account() {
-  user_account_ = GOOGLE_ULONGLONG(0);
-  clear_has_user_account();
-}
- ::google::protobuf::uint64 ClientExit::user_account() const {
-  // @@protoc_insertion_point(field_get:message.ClientExit.user_account)
-  return user_account_;
-}
- void ClientExit::set_user_account(::google::protobuf::uint64 value) {
-  set_has_user_account();
-  user_account_ = value;
-  // @@protoc_insertion_point(field_set:message.ClientExit.user_account)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 

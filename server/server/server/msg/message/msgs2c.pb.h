@@ -126,11 +126,11 @@ class MsgS2CCreatePlayerError : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.enumCreateCharResult result = 1;
-  bool has_result() const;
-  void clear_result();
+  inline bool has_result() const;
+  inline void clear_result();
   static const int kResultFieldNumber = 1;
-  ::message::enumCreateCharResult result() const;
-  void set_result(::message::enumCreateCharResult value);
+  inline ::message::enumCreateCharResult result() const;
+  inline void set_result(::message::enumCreateCharResult value);
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CCreatePlayerError)
  private:
@@ -153,7 +153,6 @@ class MsgS2CCreatePlayerError : public ::google::protobuf::Message {
 
 // ===================================================================
 
-#if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgS2CCreatePlayerError
 
 // required .message.enumCreateCharResult result = 1;
@@ -181,7 +180,6 @@ inline void MsgS2CCreatePlayerError::set_result(::message::enumCreateCharResult 
   // @@protoc_insertion_point(field_set:message.MsgS2CCreatePlayerError.result)
 }
 
-#endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 

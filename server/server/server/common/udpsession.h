@@ -1,3 +1,4 @@
+/*
 #pragma once
 #include <iostream>
 #include <queue>
@@ -42,4 +43,4 @@ protected:
 	boost::mutex m_mutex;
 	volatile long m_not_sent_size;
 };
-
+*/

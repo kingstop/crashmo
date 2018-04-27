@@ -171,23 +171,23 @@ class MsgIntStringProto : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 intger_temp = 1;
-  bool has_intger_temp() const;
-  void clear_intger_temp();
+  inline bool has_intger_temp() const;
+  inline void clear_intger_temp();
   static const int kIntgerTempFieldNumber = 1;
-  ::google::protobuf::int32 intger_temp() const;
-  void set_intger_temp(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 intger_temp() const;
+  inline void set_intger_temp(::google::protobuf::int32 value);
 
   // required string string_temp = 2;
-  bool has_string_temp() const;
-  void clear_string_temp();
+  inline bool has_string_temp() const;
+  inline void clear_string_temp();
   static const int kStringTempFieldNumber = 2;
-  const ::std::string& string_temp() const;
-  void set_string_temp(const ::std::string& value);
-  void set_string_temp(const char* value);
-  void set_string_temp(const char* value, size_t size);
-  ::std::string* mutable_string_temp();
-  ::std::string* release_string_temp();
-  void set_allocated_string_temp(::std::string* string_temp);
+  inline const ::std::string& string_temp() const;
+  inline void set_string_temp(const ::std::string& value);
+  inline void set_string_temp(const char* value);
+  inline void set_string_temp(const char* value, size_t size);
+  inline ::std::string* mutable_string_temp();
+  inline ::std::string* release_string_temp();
+  inline void set_allocated_string_temp(::std::string* string_temp);
 
   // @@protoc_insertion_point(class_scope:message.MsgIntStringProto)
  private:
@@ -278,11 +278,11 @@ class MsgServerErrorNotify : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.ServerError error = 1 [default = ServerError_NO];
-  bool has_error() const;
-  void clear_error();
+  inline bool has_error() const;
+  inline void clear_error();
   static const int kErrorFieldNumber = 1;
-  ::message::ServerError error() const;
-  void set_error(::message::ServerError value);
+  inline ::message::ServerError error() const;
+  inline void set_error(::message::ServerError value);
 
   // @@protoc_insertion_point(class_scope:message.MsgServerErrorNotify)
  private:
@@ -367,58 +367,58 @@ class CrashmoClientInit : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.CrashPlayerInfo info = 1;
-  bool has_info() const;
-  void clear_info();
+  inline bool has_info() const;
+  inline void clear_info();
   static const int kInfoFieldNumber = 1;
-  const ::message::CrashPlayerInfo& info() const;
-  ::message::CrashPlayerInfo* mutable_info();
-  ::message::CrashPlayerInfo* release_info();
-  void set_allocated_info(::message::CrashPlayerInfo* info);
+  inline const ::message::CrashPlayerInfo& info() const;
+  inline ::message::CrashPlayerInfo* mutable_info();
+  inline ::message::CrashPlayerInfo* release_info();
+  inline void set_allocated_info(::message::CrashPlayerInfo* info);
 
   // repeated .message.MsgIntStringProto chapter_names = 2;
-  int chapter_names_size() const;
-  void clear_chapter_names();
+  inline int chapter_names_size() const;
+  inline void clear_chapter_names();
   static const int kChapterNamesFieldNumber = 2;
-  const ::message::MsgIntStringProto& chapter_names(int index) const;
-  ::message::MsgIntStringProto* mutable_chapter_names(int index);
-  ::message::MsgIntStringProto* add_chapter_names();
-  const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
+  inline const ::message::MsgIntStringProto& chapter_names(int index) const;
+  inline ::message::MsgIntStringProto* mutable_chapter_names(int index);
+  inline ::message::MsgIntStringProto* add_chapter_names();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
       chapter_names() const;
-  ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
       mutable_chapter_names();
 
   // repeated .message.intPair resources_config_max = 3;
-  int resources_config_max_size() const;
-  void clear_resources_config_max();
+  inline int resources_config_max_size() const;
+  inline void clear_resources_config_max();
   static const int kResourcesConfigMaxFieldNumber = 3;
-  const ::message::intPair& resources_config_max(int index) const;
-  ::message::intPair* mutable_resources_config_max(int index);
-  ::message::intPair* add_resources_config_max();
-  const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
+  inline const ::message::intPair& resources_config_max(int index) const;
+  inline ::message::intPair* mutable_resources_config_max(int index);
+  inline ::message::intPair* add_resources_config_max();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
       resources_config_max() const;
-  ::google::protobuf::RepeatedPtrField< ::message::intPair >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::intPair >*
       mutable_resources_config_max();
 
   // required int32 map_width_config_max = 4;
-  bool has_map_width_config_max() const;
-  void clear_map_width_config_max();
+  inline bool has_map_width_config_max() const;
+  inline void clear_map_width_config_max();
   static const int kMapWidthConfigMaxFieldNumber = 4;
-  ::google::protobuf::int32 map_width_config_max() const;
-  void set_map_width_config_max(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 map_width_config_max() const;
+  inline void set_map_width_config_max(::google::protobuf::int32 value);
 
   // required int32 map_height_config_max = 5;
-  bool has_map_height_config_max() const;
-  void clear_map_height_config_max();
+  inline bool has_map_height_config_max() const;
+  inline void clear_map_height_config_max();
   static const int kMapHeightConfigMaxFieldNumber = 5;
-  ::google::protobuf::int32 map_height_config_max() const;
-  void set_map_height_config_max(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 map_height_config_max() const;
+  inline void set_map_height_config_max(::google::protobuf::int32 value);
 
   // required int32 map_count_max = 6;
-  bool has_map_count_max() const;
-  void clear_map_count_max();
+  inline bool has_map_count_max() const;
+  inline void clear_map_count_max();
   static const int kMapCountMaxFieldNumber = 6;
-  ::google::protobuf::int32 map_count_max() const;
-  void set_map_count_max(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 map_count_max() const;
+  inline void set_map_count_max(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.CrashmoClientInit)
  private:
@@ -517,11 +517,11 @@ class MsgLoadUserMapReq : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 map_count = 1;
-  bool has_map_count() const;
-  void clear_map_count();
+  inline bool has_map_count() const;
+  inline void clear_map_count();
   static const int kMapCountFieldNumber = 1;
-  ::google::protobuf::int32 map_count() const;
-  void set_map_count(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 map_count() const;
+  inline void set_map_count(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgLoadUserMapReq)
  private:
@@ -606,20 +606,20 @@ class MsgUserMap : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.CrashMapData map = 1;
-  bool has_map() const;
-  void clear_map();
+  inline bool has_map() const;
+  inline void clear_map();
   static const int kMapFieldNumber = 1;
-  const ::message::CrashMapData& map() const;
-  ::message::CrashMapData* mutable_map();
-  ::message::CrashMapData* release_map();
-  void set_allocated_map(::message::CrashMapData* map);
+  inline const ::message::CrashMapData& map() const;
+  inline ::message::CrashMapData* mutable_map();
+  inline ::message::CrashMapData* release_map();
+  inline void set_allocated_map(::message::CrashMapData* map);
 
   // required bool complete = 2;
-  bool has_complete() const;
-  void clear_complete();
+  inline bool has_complete() const;
+  inline void clear_complete();
   static const int kCompleteFieldNumber = 2;
-  bool complete() const;
-  void set_complete(bool value);
+  inline bool complete() const;
+  inline void set_complete(bool value);
 
   // @@protoc_insertion_point(class_scope:message.MsgUserMap)
  private:
@@ -710,23 +710,23 @@ class MsgLoadUserMapACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // repeated .message.MsgUserMap maps = 1;
-  int maps_size() const;
-  void clear_maps();
+  inline int maps_size() const;
+  inline void clear_maps();
   static const int kMapsFieldNumber = 1;
-  const ::message::MsgUserMap& maps(int index) const;
-  ::message::MsgUserMap* mutable_maps(int index);
-  ::message::MsgUserMap* add_maps();
-  const ::google::protobuf::RepeatedPtrField< ::message::MsgUserMap >&
+  inline const ::message::MsgUserMap& maps(int index) const;
+  inline ::message::MsgUserMap* mutable_maps(int index);
+  inline ::message::MsgUserMap* add_maps();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::MsgUserMap >&
       maps() const;
-  ::google::protobuf::RepeatedPtrField< ::message::MsgUserMap >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::MsgUserMap >*
       mutable_maps();
 
   // required bool end = 2;
-  bool has_end() const;
-  void clear_end();
+  inline bool has_end() const;
+  inline void clear_end();
   static const int kEndFieldNumber = 2;
-  bool end() const;
-  void set_end(bool value);
+  inline bool end() const;
+  inline void set_end(bool value);
 
   // @@protoc_insertion_point(class_scope:message.MsgLoadUserMapACK)
  private:
@@ -812,20 +812,20 @@ class MsgSaveMapReq : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.CrashMapData map = 1;
-  bool has_map() const;
-  void clear_map();
+  inline bool has_map() const;
+  inline void clear_map();
   static const int kMapFieldNumber = 1;
-  const ::message::CrashMapData& map() const;
-  ::message::CrashMapData* mutable_map();
-  ::message::CrashMapData* release_map();
-  void set_allocated_map(::message::CrashMapData* map);
+  inline const ::message::CrashMapData& map() const;
+  inline ::message::CrashMapData* mutable_map();
+  inline ::message::CrashMapData* release_map();
+  inline void set_allocated_map(::message::CrashMapData* map);
 
   // required .message.MapType save_type = 2 [default = OfficeMap];
-  bool has_save_type() const;
-  void clear_save_type();
+  inline bool has_save_type() const;
+  inline void clear_save_type();
   static const int kSaveTypeFieldNumber = 2;
-  ::message::MapType save_type() const;
-  void set_save_type(::message::MapType value);
+  inline ::message::MapType save_type() const;
+  inline void set_save_type(::message::MapType value);
 
   // @@protoc_insertion_point(class_scope:message.MsgSaveMapReq)
  private:
@@ -916,11 +916,11 @@ class MsgDelMapReq : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint64 map_index = 1;
-  bool has_map_index() const;
-  void clear_map_index();
+  inline bool has_map_index() const;
+  inline void clear_map_index();
   static const int kMapIndexFieldNumber = 1;
-  ::google::protobuf::uint64 map_index() const;
-  void set_map_index(::google::protobuf::uint64 value);
+  inline ::google::protobuf::uint64 map_index() const;
+  inline void set_map_index(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgDelMapReq)
  private:
@@ -1005,25 +1005,25 @@ class MsgDelMapACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint64 map_index = 1;
-  bool has_map_index() const;
-  void clear_map_index();
+  inline bool has_map_index() const;
+  inline void clear_map_index();
   static const int kMapIndexFieldNumber = 1;
-  ::google::protobuf::uint64 map_index() const;
-  void set_map_index(::google::protobuf::uint64 value);
+  inline ::google::protobuf::uint64 map_index() const;
+  inline void set_map_index(::google::protobuf::uint64 value);
 
   // required .message.MapType map_type = 2 [default = OfficeMap];
-  bool has_map_type() const;
-  void clear_map_type();
+  inline bool has_map_type() const;
+  inline void clear_map_type();
   static const int kMapTypeFieldNumber = 2;
-  ::message::MapType map_type() const;
-  void set_map_type(::message::MapType value);
+  inline ::message::MapType map_type() const;
+  inline void set_map_type(::message::MapType value);
 
   // required .message.ServerError error = 3 [default = ServerError_NO];
-  bool has_error() const;
-  void clear_error();
+  inline bool has_error() const;
+  inline void clear_error();
   static const int kErrorFieldNumber = 3;
-  ::message::ServerError error() const;
-  void set_error(::message::ServerError value);
+  inline ::message::ServerError error() const;
+  inline void set_error(::message::ServerError value);
 
   // @@protoc_insertion_point(class_scope:message.MsgDelMapACK)
  private:
@@ -1117,27 +1117,27 @@ class MsgSaveMapACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.MapType save_type = 1 [default = OfficeMap];
-  bool has_save_type() const;
-  void clear_save_type();
+  inline bool has_save_type() const;
+  inline void clear_save_type();
   static const int kSaveTypeFieldNumber = 1;
-  ::message::MapType save_type() const;
-  void set_save_type(::message::MapType value);
+  inline ::message::MapType save_type() const;
+  inline void set_save_type(::message::MapType value);
 
   // required .message.CrashMapData map = 2;
-  bool has_map() const;
-  void clear_map();
+  inline bool has_map() const;
+  inline void clear_map();
   static const int kMapFieldNumber = 2;
-  const ::message::CrashMapData& map() const;
-  ::message::CrashMapData* mutable_map();
-  ::message::CrashMapData* release_map();
-  void set_allocated_map(::message::CrashMapData* map);
+  inline const ::message::CrashMapData& map() const;
+  inline ::message::CrashMapData* mutable_map();
+  inline ::message::CrashMapData* release_map();
+  inline void set_allocated_map(::message::CrashMapData* map);
 
   // required .message.ServerError error = 3 [default = ServerError_NO];
-  bool has_error() const;
-  void clear_error();
+  inline bool has_error() const;
+  inline void clear_error();
   static const int kErrorFieldNumber = 3;
-  ::message::ServerError error() const;
-  void set_error(::message::ServerError value);
+  inline ::message::ServerError error() const;
+  inline void set_error(::message::ServerError value);
 
   // @@protoc_insertion_point(class_scope:message.MsgSaveMapACK)
  private:
@@ -1231,11 +1231,11 @@ class MsgOfficilMapReq : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 page = 1;
-  bool has_page() const;
-  void clear_page();
+  inline bool has_page() const;
+  inline void clear_page();
   static const int kPageFieldNumber = 1;
-  ::google::protobuf::int32 page() const;
-  void set_page(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 page() const;
+  inline void set_page(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgOfficilMapReq)
  private:
@@ -1320,22 +1320,22 @@ class MsgOfficilMapACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 page = 1;
-  bool has_page() const;
-  void clear_page();
+  inline bool has_page() const;
+  inline void clear_page();
   static const int kPageFieldNumber = 1;
-  ::google::protobuf::int32 page() const;
-  void set_page(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 page() const;
+  inline void set_page(::google::protobuf::int32 value);
 
   // repeated .message.CrashMapData maps = 2;
-  int maps_size() const;
-  void clear_maps();
+  inline int maps_size() const;
+  inline void clear_maps();
   static const int kMapsFieldNumber = 2;
-  const ::message::CrashMapData& maps(int index) const;
-  ::message::CrashMapData* mutable_maps(int index);
-  ::message::CrashMapData* add_maps();
-  const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+  inline const ::message::CrashMapData& maps(int index) const;
+  inline ::message::CrashMapData* mutable_maps(int index);
+  inline ::message::CrashMapData* add_maps();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
       maps() const;
-  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
       mutable_maps();
 
   // @@protoc_insertion_point(class_scope:message.MsgOfficilMapACK)
@@ -1422,23 +1422,23 @@ class MsgModifySectionNameReq : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 section = 1;
-  bool has_section() const;
-  void clear_section();
+  inline bool has_section() const;
+  inline void clear_section();
   static const int kSectionFieldNumber = 1;
-  ::google::protobuf::int32 section() const;
-  void set_section(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 section() const;
+  inline void set_section(::google::protobuf::int32 value);
 
   // required string section_name = 2;
-  bool has_section_name() const;
-  void clear_section_name();
+  inline bool has_section_name() const;
+  inline void clear_section_name();
   static const int kSectionNameFieldNumber = 2;
-  const ::std::string& section_name() const;
-  void set_section_name(const ::std::string& value);
-  void set_section_name(const char* value);
-  void set_section_name(const char* value, size_t size);
-  ::std::string* mutable_section_name();
-  ::std::string* release_section_name();
-  void set_allocated_section_name(::std::string* section_name);
+  inline const ::std::string& section_name() const;
+  inline void set_section_name(const ::std::string& value);
+  inline void set_section_name(const char* value);
+  inline void set_section_name(const char* value, size_t size);
+  inline ::std::string* mutable_section_name();
+  inline ::std::string* release_section_name();
+  inline void set_allocated_section_name(::std::string* section_name);
 
   // @@protoc_insertion_point(class_scope:message.MsgModifySectionNameReq)
  private:
@@ -1529,23 +1529,23 @@ class MsgModifySectionNameACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 section = 1;
-  bool has_section() const;
-  void clear_section();
+  inline bool has_section() const;
+  inline void clear_section();
   static const int kSectionFieldNumber = 1;
-  ::google::protobuf::int32 section() const;
-  void set_section(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 section() const;
+  inline void set_section(::google::protobuf::int32 value);
 
   // required string section_name = 2;
-  bool has_section_name() const;
-  void clear_section_name();
+  inline bool has_section_name() const;
+  inline void clear_section_name();
   static const int kSectionNameFieldNumber = 2;
-  const ::std::string& section_name() const;
-  void set_section_name(const ::std::string& value);
-  void set_section_name(const char* value);
-  void set_section_name(const char* value, size_t size);
-  ::std::string* mutable_section_name();
-  ::std::string* release_section_name();
-  void set_allocated_section_name(::std::string* section_name);
+  inline const ::std::string& section_name() const;
+  inline void set_section_name(const ::std::string& value);
+  inline void set_section_name(const char* value);
+  inline void set_section_name(const char* value, size_t size);
+  inline ::std::string* mutable_section_name();
+  inline ::std::string* release_section_name();
+  inline void set_allocated_section_name(::std::string* section_name);
 
   // @@protoc_insertion_point(class_scope:message.MsgModifySectionNameACK)
  private:
@@ -1715,15 +1715,15 @@ class MsgSectionNameACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // repeated .message.MsgIntStringProto sections = 1;
-  int sections_size() const;
-  void clear_sections();
+  inline int sections_size() const;
+  inline void clear_sections();
   static const int kSectionsFieldNumber = 1;
-  const ::message::MsgIntStringProto& sections(int index) const;
-  ::message::MsgIntStringProto* mutable_sections(int index);
-  ::message::MsgIntStringProto* add_sections();
-  const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
+  inline const ::message::MsgIntStringProto& sections(int index) const;
+  inline ::message::MsgIntStringProto* mutable_sections(int index);
+  inline ::message::MsgIntStringProto* add_sections();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >&
       sections() const;
-  ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::MsgIntStringProto >*
       mutable_sections();
 
   // @@protoc_insertion_point(class_scope:message.MsgSectionNameACK)
@@ -1807,18 +1807,18 @@ class MsgS2CNotifyPing : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int64 time_stamp = 1;
-  bool has_time_stamp() const;
-  void clear_time_stamp();
+  inline bool has_time_stamp() const;
+  inline void clear_time_stamp();
   static const int kTimeStampFieldNumber = 1;
-  ::google::protobuf::int64 time_stamp() const;
-  void set_time_stamp(::google::protobuf::int64 value);
+  inline ::google::protobuf::int64 time_stamp() const;
+  inline void set_time_stamp(::google::protobuf::int64 value);
 
   // required int32 ping_count = 2;
-  bool has_ping_count() const;
-  void clear_ping_count();
+  inline bool has_ping_count() const;
+  inline void clear_ping_count();
   static const int kPingCountFieldNumber = 2;
-  ::google::protobuf::int32 ping_count() const;
-  void set_ping_count(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 ping_count() const;
+  inline void set_ping_count(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CNotifyPing)
  private:
@@ -1988,22 +1988,22 @@ class MsgChapterStatus : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 chapter_id = 1;
-  bool has_chapter_id() const;
-  void clear_chapter_id();
+  inline bool has_chapter_id() const;
+  inline void clear_chapter_id();
   static const int kChapterIdFieldNumber = 1;
-  ::google::protobuf::int32 chapter_id() const;
-  void set_chapter_id(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 chapter_id() const;
+  inline void set_chapter_id(::google::protobuf::int32 value);
 
   // repeated uint64 map_indexs = 2;
-  int map_indexs_size() const;
-  void clear_map_indexs();
+  inline int map_indexs_size() const;
+  inline void clear_map_indexs();
   static const int kMapIndexsFieldNumber = 2;
-  ::google::protobuf::uint64 map_indexs(int index) const;
-  void set_map_indexs(int index, ::google::protobuf::uint64 value);
-  void add_map_indexs(::google::protobuf::uint64 value);
-  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+  inline ::google::protobuf::uint64 map_indexs(int index) const;
+  inline void set_map_indexs(int index, ::google::protobuf::uint64 value);
+  inline void add_map_indexs(::google::protobuf::uint64 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
       map_indexs() const;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
       mutable_map_indexs();
 
   // @@protoc_insertion_point(class_scope:message.MsgChapterStatus)
@@ -2090,15 +2090,15 @@ class MsgS2COfficeStatusACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // repeated .message.MsgChapterStatus chapter_status = 1;
-  int chapter_status_size() const;
-  void clear_chapter_status();
+  inline int chapter_status_size() const;
+  inline void clear_chapter_status();
   static const int kChapterStatusFieldNumber = 1;
-  const ::message::MsgChapterStatus& chapter_status(int index) const;
-  ::message::MsgChapterStatus* mutable_chapter_status(int index);
-  ::message::MsgChapterStatus* add_chapter_status();
-  const ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus >&
+  inline const ::message::MsgChapterStatus& chapter_status(int index) const;
+  inline ::message::MsgChapterStatus* mutable_chapter_status(int index);
+  inline ::message::MsgChapterStatus* add_chapter_status();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus >&
       chapter_status() const;
-  ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::MsgChapterStatus >*
       mutable_chapter_status();
 
   // @@protoc_insertion_point(class_scope:message.MsgS2COfficeStatusACK)
@@ -2182,36 +2182,36 @@ class MsgC2SOfficeMapReq : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 chapter_id = 1;
-  bool has_chapter_id() const;
-  void clear_chapter_id();
+  inline bool has_chapter_id() const;
+  inline void clear_chapter_id();
   static const int kChapterIdFieldNumber = 1;
-  ::google::protobuf::int32 chapter_id() const;
-  void set_chapter_id(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 chapter_id() const;
+  inline void set_chapter_id(::google::protobuf::int32 value);
 
   // required int32 section_id = 2;
-  bool has_section_id() const;
-  void clear_section_id();
+  inline bool has_section_id() const;
+  inline void clear_section_id();
   static const int kSectionIdFieldNumber = 2;
-  ::google::protobuf::int32 section_id() const;
-  void set_section_id(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 section_id() const;
+  inline void set_section_id(::google::protobuf::int32 value);
 
   // required int32 map_count = 3;
-  bool has_map_count() const;
-  void clear_map_count();
+  inline bool has_map_count() const;
+  inline void clear_map_count();
   static const int kMapCountFieldNumber = 3;
-  ::google::protobuf::int32 map_count() const;
-  void set_map_count(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 map_count() const;
+  inline void set_map_count(::google::protobuf::int32 value);
 
   // repeated uint64 map_indexs = 4;
-  int map_indexs_size() const;
-  void clear_map_indexs();
+  inline int map_indexs_size() const;
+  inline void clear_map_indexs();
   static const int kMapIndexsFieldNumber = 4;
-  ::google::protobuf::uint64 map_indexs(int index) const;
-  void set_map_indexs(int index, ::google::protobuf::uint64 value);
-  void add_map_indexs(::google::protobuf::uint64 value);
-  const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+  inline ::google::protobuf::uint64 map_indexs(int index) const;
+  inline void set_map_indexs(int index, ::google::protobuf::uint64 value);
+  inline void add_map_indexs(::google::protobuf::uint64 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
       map_indexs() const;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
       mutable_map_indexs();
 
   // @@protoc_insertion_point(class_scope:message.MsgC2SOfficeMapReq)
@@ -2307,22 +2307,22 @@ class MsgS2COfficeMapACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 chapter_id = 1;
-  bool has_chapter_id() const;
-  void clear_chapter_id();
+  inline bool has_chapter_id() const;
+  inline void clear_chapter_id();
   static const int kChapterIdFieldNumber = 1;
-  ::google::protobuf::int32 chapter_id() const;
-  void set_chapter_id(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 chapter_id() const;
+  inline void set_chapter_id(::google::protobuf::int32 value);
 
   // repeated .message.CrashMapData maps = 3;
-  int maps_size() const;
-  void clear_maps();
+  inline int maps_size() const;
+  inline void clear_maps();
   static const int kMapsFieldNumber = 3;
-  const ::message::CrashMapData& maps(int index) const;
-  ::message::CrashMapData* mutable_maps(int index);
-  ::message::CrashMapData* add_maps();
-  const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
+  inline const ::message::CrashMapData& maps(int index) const;
+  inline ::message::CrashMapData* mutable_maps(int index);
+  inline ::message::CrashMapData* add_maps();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
       maps() const;
-  ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
       mutable_maps();
 
   // @@protoc_insertion_point(class_scope:message.MsgS2COfficeMapACK)
@@ -2409,25 +2409,25 @@ class MsgC2SRankMapReq : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 rank_begin = 1;
-  bool has_rank_begin() const;
-  void clear_rank_begin();
+  inline bool has_rank_begin() const;
+  inline void clear_rank_begin();
   static const int kRankBeginFieldNumber = 1;
-  ::google::protobuf::int32 rank_begin() const;
-  void set_rank_begin(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 rank_begin() const;
+  inline void set_rank_begin(::google::protobuf::int32 value);
 
   // required int64 time_stamp = 2;
-  bool has_time_stamp() const;
-  void clear_time_stamp();
+  inline bool has_time_stamp() const;
+  inline void clear_time_stamp();
   static const int kTimeStampFieldNumber = 2;
-  ::google::protobuf::int64 time_stamp() const;
-  void set_time_stamp(::google::protobuf::int64 value);
+  inline ::google::protobuf::int64 time_stamp() const;
+  inline void set_time_stamp(::google::protobuf::int64 value);
 
   // required int32 map_count = 3;
-  bool has_map_count() const;
-  void clear_map_count();
+  inline bool has_map_count() const;
+  inline void clear_map_count();
   static const int kMapCountFieldNumber = 3;
-  ::google::protobuf::int32 map_count() const;
-  void set_map_count(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 map_count() const;
+  inline void set_map_count(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgC2SRankMapReq)
  private:
@@ -2521,37 +2521,37 @@ class MsgS2CRankMapACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // repeated .message.CrashPlayerPublishMap maps = 1;
-  int maps_size() const;
-  void clear_maps();
+  inline int maps_size() const;
+  inline void clear_maps();
   static const int kMapsFieldNumber = 1;
-  const ::message::CrashPlayerPublishMap& maps(int index) const;
-  ::message::CrashPlayerPublishMap* mutable_maps(int index);
-  ::message::CrashPlayerPublishMap* add_maps();
-  const ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >&
+  inline const ::message::CrashPlayerPublishMap& maps(int index) const;
+  inline ::message::CrashPlayerPublishMap* mutable_maps(int index);
+  inline ::message::CrashPlayerPublishMap* add_maps();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >&
       maps() const;
-  ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >*
       mutable_maps();
 
   // required int32 end_rank = 2;
-  bool has_end_rank() const;
-  void clear_end_rank();
+  inline bool has_end_rank() const;
+  inline void clear_end_rank();
   static const int kEndRankFieldNumber = 2;
-  ::google::protobuf::int32 end_rank() const;
-  void set_end_rank(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 end_rank() const;
+  inline void set_end_rank(::google::protobuf::int32 value);
 
   // required int64 time_stamp = 3;
-  bool has_time_stamp() const;
-  void clear_time_stamp();
+  inline bool has_time_stamp() const;
+  inline void clear_time_stamp();
   static const int kTimeStampFieldNumber = 3;
-  ::google::protobuf::int64 time_stamp() const;
-  void set_time_stamp(::google::protobuf::int64 value);
+  inline ::google::protobuf::int64 time_stamp() const;
+  inline void set_time_stamp(::google::protobuf::int64 value);
 
   // required int32 rank_map_count = 4;
-  bool has_rank_map_count() const;
-  void clear_rank_map_count();
+  inline bool has_rank_map_count() const;
+  inline void clear_rank_map_count();
   static const int kRankMapCountFieldNumber = 4;
-  ::google::protobuf::int32 rank_map_count() const;
-  void set_rank_map_count(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 rank_map_count() const;
+  inline void set_rank_map_count(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CRankMapACK)
  private:
@@ -2646,11 +2646,11 @@ class MsgS2CRankMapRefreshNotify : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int64 time_stamp = 1;
-  bool has_time_stamp() const;
-  void clear_time_stamp();
+  inline bool has_time_stamp() const;
+  inline void clear_time_stamp();
   static const int kTimeStampFieldNumber = 1;
-  ::google::protobuf::int64 time_stamp() const;
-  void set_time_stamp(::google::protobuf::int64 value);
+  inline ::google::protobuf::int64 time_stamp() const;
+  inline void set_time_stamp(::google::protobuf::int64 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CRankMapRefreshNotify)
  private:
@@ -2735,18 +2735,18 @@ class MsgC2SReqLoadTaskConfigs : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required int32 begin_id = 1;
-  bool has_begin_id() const;
-  void clear_begin_id();
+  inline bool has_begin_id() const;
+  inline void clear_begin_id();
   static const int kBeginIdFieldNumber = 1;
-  ::google::protobuf::int32 begin_id() const;
-  void set_begin_id(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 begin_id() const;
+  inline void set_begin_id(::google::protobuf::int32 value);
 
   // required int32 load_count = 2;
-  bool has_load_count() const;
-  void clear_load_count();
+  inline bool has_load_count() const;
+  inline void clear_load_count();
   static const int kLoadCountFieldNumber = 2;
-  ::google::protobuf::int32 load_count() const;
-  void set_load_count(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 load_count() const;
+  inline void set_load_count(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgC2SReqLoadTaskConfigs)
  private:
@@ -2837,23 +2837,23 @@ class MsgS2CLoadTaskConfigsACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // repeated .message.TaskInfoConfig task_configs = 1;
-  int task_configs_size() const;
-  void clear_task_configs();
+  inline int task_configs_size() const;
+  inline void clear_task_configs();
   static const int kTaskConfigsFieldNumber = 1;
-  const ::message::TaskInfoConfig& task_configs(int index) const;
-  ::message::TaskInfoConfig* mutable_task_configs(int index);
-  ::message::TaskInfoConfig* add_task_configs();
-  const ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >&
+  inline const ::message::TaskInfoConfig& task_configs(int index) const;
+  inline ::message::TaskInfoConfig* mutable_task_configs(int index);
+  inline ::message::TaskInfoConfig* add_task_configs();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >&
       task_configs() const;
-  ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::TaskInfoConfig >*
       mutable_task_configs();
 
   // required int32 total_task_count = 2;
-  bool has_total_task_count() const;
-  void clear_total_task_count();
+  inline bool has_total_task_count() const;
+  inline void clear_total_task_count();
   static const int kTotalTaskCountFieldNumber = 2;
-  ::google::protobuf::int32 total_task_count() const;
-  void set_total_task_count(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 total_task_count() const;
+  inline void set_total_task_count(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CLoadTaskConfigsACK)
  private:
@@ -2939,13 +2939,13 @@ class MsgC2SReqModifyTaskInfo : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.TaskInfoConfig info = 1;
-  bool has_info() const;
-  void clear_info();
+  inline bool has_info() const;
+  inline void clear_info();
   static const int kInfoFieldNumber = 1;
-  const ::message::TaskInfoConfig& info() const;
-  ::message::TaskInfoConfig* mutable_info();
-  ::message::TaskInfoConfig* release_info();
-  void set_allocated_info(::message::TaskInfoConfig* info);
+  inline const ::message::TaskInfoConfig& info() const;
+  inline ::message::TaskInfoConfig* mutable_info();
+  inline ::message::TaskInfoConfig* release_info();
+  inline void set_allocated_info(::message::TaskInfoConfig* info);
 
   // @@protoc_insertion_point(class_scope:message.MsgC2SReqModifyTaskInfo)
  private:
@@ -3030,13 +3030,13 @@ class MsgS2CModifyTaskInfoACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.TaskInfoConfig info = 1;
-  bool has_info() const;
-  void clear_info();
+  inline bool has_info() const;
+  inline void clear_info();
   static const int kInfoFieldNumber = 1;
-  const ::message::TaskInfoConfig& info() const;
-  ::message::TaskInfoConfig* mutable_info();
-  ::message::TaskInfoConfig* release_info();
-  void set_allocated_info(::message::TaskInfoConfig* info);
+  inline const ::message::TaskInfoConfig& info() const;
+  inline ::message::TaskInfoConfig* mutable_info();
+  inline ::message::TaskInfoConfig* release_info();
+  inline void set_allocated_info(::message::TaskInfoConfig* info);
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CModifyTaskInfoACK)
  private:
@@ -3121,41 +3121,41 @@ class MsgC2SReqAddMapBolg : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.RankMapBlogEntry info = 1;
-  bool has_info() const;
-  void clear_info();
+  inline bool has_info() const;
+  inline void clear_info();
   static const int kInfoFieldNumber = 1;
-  const ::message::RankMapBlogEntry& info() const;
-  ::message::RankMapBlogEntry* mutable_info();
-  ::message::RankMapBlogEntry* release_info();
-  void set_allocated_info(::message::RankMapBlogEntry* info);
+  inline const ::message::RankMapBlogEntry& info() const;
+  inline ::message::RankMapBlogEntry* mutable_info();
+  inline ::message::RankMapBlogEntry* release_info();
+  inline void set_allocated_info(::message::RankMapBlogEntry* info);
 
   // required .message.MapType type = 2 [default = OfficeMap];
-  bool has_type() const;
-  void clear_type();
+  inline bool has_type() const;
+  inline void clear_type();
   static const int kTypeFieldNumber = 2;
-  ::message::MapType type() const;
-  void set_type(::message::MapType value);
+  inline ::message::MapType type() const;
+  inline void set_type(::message::MapType value);
 
   // required int64 map_index = 3;
-  bool has_map_index() const;
-  void clear_map_index();
+  inline bool has_map_index() const;
+  inline void clear_map_index();
   static const int kMapIndexFieldNumber = 3;
-  ::google::protobuf::int64 map_index() const;
-  void set_map_index(::google::protobuf::int64 value);
+  inline ::google::protobuf::int64 map_index() const;
+  inline void set_map_index(::google::protobuf::int64 value);
 
   // required int32 chapter_id = 4;
-  bool has_chapter_id() const;
-  void clear_chapter_id();
+  inline bool has_chapter_id() const;
+  inline void clear_chapter_id();
   static const int kChapterIdFieldNumber = 4;
-  ::google::protobuf::int32 chapter_id() const;
-  void set_chapter_id(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 chapter_id() const;
+  inline void set_chapter_id(::google::protobuf::int32 value);
 
   // required int32 section_id = 5;
-  bool has_section_id() const;
-  void clear_section_id();
+  inline bool has_section_id() const;
+  inline void clear_section_id();
   static const int kSectionIdFieldNumber = 5;
-  ::google::protobuf::int32 section_id() const;
-  void set_section_id(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 section_id() const;
+  inline void set_section_id(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgC2SReqAddMapBolg)
  private:
@@ -3334,18 +3334,18 @@ class MsgC2SReqEnterOfficilMap : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 chapter_id = 1;
-  bool has_chapter_id() const;
-  void clear_chapter_id();
+  inline bool has_chapter_id() const;
+  inline void clear_chapter_id();
   static const int kChapterIdFieldNumber = 1;
-  ::google::protobuf::uint32 chapter_id() const;
-  void set_chapter_id(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 chapter_id() const;
+  inline void set_chapter_id(::google::protobuf::uint32 value);
 
   // required uint32 section_id = 2;
-  bool has_section_id() const;
-  void clear_section_id();
+  inline bool has_section_id() const;
+  inline void clear_section_id();
   static const int kSectionIdFieldNumber = 2;
-  ::google::protobuf::uint32 section_id() const;
-  void set_section_id(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 section_id() const;
+  inline void set_section_id(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgC2SReqEnterOfficilMap)
  private:
@@ -3436,18 +3436,18 @@ class MsgS2CEnterOfficilMapACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 chapter_id = 1;
-  bool has_chapter_id() const;
-  void clear_chapter_id();
+  inline bool has_chapter_id() const;
+  inline void clear_chapter_id();
   static const int kChapterIdFieldNumber = 1;
-  ::google::protobuf::uint32 chapter_id() const;
-  void set_chapter_id(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 chapter_id() const;
+  inline void set_chapter_id(::google::protobuf::uint32 value);
 
   // required uint32 section_id = 2;
-  bool has_section_id() const;
-  void clear_section_id();
+  inline bool has_section_id() const;
+  inline void clear_section_id();
   static const int kSectionIdFieldNumber = 2;
-  ::google::protobuf::uint32 section_id() const;
-  void set_section_id(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 section_id() const;
+  inline void set_section_id(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CEnterOfficilMapACK)
  private:
@@ -3538,32 +3538,32 @@ class MsgC2SReqPassOfficilMap : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 chapter_id = 1;
-  bool has_chapter_id() const;
-  void clear_chapter_id();
+  inline bool has_chapter_id() const;
+  inline void clear_chapter_id();
   static const int kChapterIdFieldNumber = 1;
-  ::google::protobuf::uint32 chapter_id() const;
-  void set_chapter_id(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 chapter_id() const;
+  inline void set_chapter_id(::google::protobuf::uint32 value);
 
   // required uint32 section_id = 2;
-  bool has_section_id() const;
-  void clear_section_id();
+  inline bool has_section_id() const;
+  inline void clear_section_id();
   static const int kSectionIdFieldNumber = 2;
-  ::google::protobuf::uint32 section_id() const;
-  void set_section_id(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 section_id() const;
+  inline void set_section_id(::google::protobuf::uint32 value);
 
   // required uint32 use_time = 3;
-  bool has_use_time() const;
-  void clear_use_time();
+  inline bool has_use_time() const;
+  inline void clear_use_time();
   static const int kUseTimeFieldNumber = 3;
-  ::google::protobuf::uint32 use_time() const;
-  void set_use_time(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 use_time() const;
+  inline void set_use_time(::google::protobuf::uint32 value);
 
   // required uint32 use_step = 4;
-  bool has_use_step() const;
-  void clear_use_step();
+  inline bool has_use_step() const;
+  inline void clear_use_step();
   static const int kUseStepFieldNumber = 4;
-  ::google::protobuf::uint32 use_step() const;
-  void set_use_step(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 use_step() const;
+  inline void set_use_step(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgC2SReqPassOfficilMap)
  private:
@@ -3660,35 +3660,35 @@ class MsgTaskReward : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 task_id = 1;
-  bool has_task_id() const;
-  void clear_task_id();
+  inline bool has_task_id() const;
+  inline void clear_task_id();
   static const int kTaskIdFieldNumber = 1;
-  ::google::protobuf::uint32 task_id() const;
-  void set_task_id(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 task_id() const;
+  inline void set_task_id(::google::protobuf::uint32 value);
 
   // repeated .message.TaskRewardConfig rewards = 2;
-  int rewards_size() const;
-  void clear_rewards();
+  inline int rewards_size() const;
+  inline void clear_rewards();
   static const int kRewardsFieldNumber = 2;
-  const ::message::TaskRewardConfig& rewards(int index) const;
-  ::message::TaskRewardConfig* mutable_rewards(int index);
-  ::message::TaskRewardConfig* add_rewards();
-  const ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >&
+  inline const ::message::TaskRewardConfig& rewards(int index) const;
+  inline ::message::TaskRewardConfig* mutable_rewards(int index);
+  inline ::message::TaskRewardConfig* add_rewards();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >&
       rewards() const;
-  ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >*
       mutable_rewards();
 
   // required string task_name = 3;
-  bool has_task_name() const;
-  void clear_task_name();
+  inline bool has_task_name() const;
+  inline void clear_task_name();
   static const int kTaskNameFieldNumber = 3;
-  const ::std::string& task_name() const;
-  void set_task_name(const ::std::string& value);
-  void set_task_name(const char* value);
-  void set_task_name(const char* value, size_t size);
-  ::std::string* mutable_task_name();
-  ::std::string* release_task_name();
-  void set_allocated_task_name(::std::string* task_name);
+  inline const ::std::string& task_name() const;
+  inline void set_task_name(const ::std::string& value);
+  inline void set_task_name(const char* value);
+  inline void set_task_name(const char* value, size_t size);
+  inline ::std::string* mutable_task_name();
+  inline ::std::string* release_task_name();
+  inline void set_allocated_task_name(::std::string* task_name);
 
   // @@protoc_insertion_point(class_scope:message.MsgTaskReward)
  private:
@@ -3780,75 +3780,75 @@ class MsgS2CPassOfficilMapACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 chapter_id = 1;
-  bool has_chapter_id() const;
-  void clear_chapter_id();
+  inline bool has_chapter_id() const;
+  inline void clear_chapter_id();
   static const int kChapterIdFieldNumber = 1;
-  ::google::protobuf::uint32 chapter_id() const;
-  void set_chapter_id(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 chapter_id() const;
+  inline void set_chapter_id(::google::protobuf::uint32 value);
 
   // required uint32 section_id = 2;
-  bool has_section_id() const;
-  void clear_section_id();
+  inline bool has_section_id() const;
+  inline void clear_section_id();
   static const int kSectionIdFieldNumber = 2;
-  ::google::protobuf::uint32 section_id() const;
-  void set_section_id(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 section_id() const;
+  inline void set_section_id(::google::protobuf::uint32 value);
 
   // required uint32 add_gold = 3;
-  bool has_add_gold() const;
-  void clear_add_gold();
+  inline bool has_add_gold() const;
+  inline void clear_add_gold();
   static const int kAddGoldFieldNumber = 3;
-  ::google::protobuf::uint32 add_gold() const;
-  void set_add_gold(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 add_gold() const;
+  inline void set_add_gold(::google::protobuf::uint32 value);
 
   // repeated .message.intPair add_resource = 4;
-  int add_resource_size() const;
-  void clear_add_resource();
+  inline int add_resource_size() const;
+  inline void clear_add_resource();
   static const int kAddResourceFieldNumber = 4;
-  const ::message::intPair& add_resource(int index) const;
-  ::message::intPair* mutable_add_resource(int index);
-  ::message::intPair* add_add_resource();
-  const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
+  inline const ::message::intPair& add_resource(int index) const;
+  inline ::message::intPair* mutable_add_resource(int index);
+  inline ::message::intPair* add_add_resource();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
       add_resource() const;
-  ::google::protobuf::RepeatedPtrField< ::message::intPair >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::intPair >*
       mutable_add_resource();
 
   // required uint32 current_gold = 5;
-  bool has_current_gold() const;
-  void clear_current_gold();
+  inline bool has_current_gold() const;
+  inline void clear_current_gold();
   static const int kCurrentGoldFieldNumber = 5;
-  ::google::protobuf::uint32 current_gold() const;
-  void set_current_gold(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 current_gold() const;
+  inline void set_current_gold(::google::protobuf::uint32 value);
 
   // repeated .message.intPair current_resource = 6;
-  int current_resource_size() const;
-  void clear_current_resource();
+  inline int current_resource_size() const;
+  inline void clear_current_resource();
   static const int kCurrentResourceFieldNumber = 6;
-  const ::message::intPair& current_resource(int index) const;
-  ::message::intPair* mutable_current_resource(int index);
-  ::message::intPair* add_current_resource();
-  const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
+  inline const ::message::intPair& current_resource(int index) const;
+  inline ::message::intPair* mutable_current_resource(int index);
+  inline ::message::intPair* add_current_resource();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
       current_resource() const;
-  ::google::protobuf::RepeatedPtrField< ::message::intPair >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::intPair >*
       mutable_current_resource();
 
   // repeated .message.MsgTaskReward complete_task = 7;
-  int complete_task_size() const;
-  void clear_complete_task();
+  inline int complete_task_size() const;
+  inline void clear_complete_task();
   static const int kCompleteTaskFieldNumber = 7;
-  const ::message::MsgTaskReward& complete_task(int index) const;
-  ::message::MsgTaskReward* mutable_complete_task(int index);
-  ::message::MsgTaskReward* add_complete_task();
-  const ::google::protobuf::RepeatedPtrField< ::message::MsgTaskReward >&
+  inline const ::message::MsgTaskReward& complete_task(int index) const;
+  inline ::message::MsgTaskReward* mutable_complete_task(int index);
+  inline ::message::MsgTaskReward* add_complete_task();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::MsgTaskReward >&
       complete_task() const;
-  ::google::protobuf::RepeatedPtrField< ::message::MsgTaskReward >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::MsgTaskReward >*
       mutable_complete_task();
 
   // required .message.ServerError error = 8 [default = ServerError_NO];
-  bool has_error() const;
-  void clear_error();
+  inline bool has_error() const;
+  inline void clear_error();
   static const int kErrorFieldNumber = 8;
-  ::message::ServerError error() const;
-  void set_error(::message::ServerError value);
+  inline ::message::ServerError error() const;
+  inline void set_error(::message::ServerError value);
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CPassOfficilMapACK)
  private:
@@ -3951,13 +3951,13 @@ class MsgS2CNewTaskNotify : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.TaskInfo info = 1;
-  bool has_info() const;
-  void clear_info();
+  inline bool has_info() const;
+  inline void clear_info();
   static const int kInfoFieldNumber = 1;
-  const ::message::TaskInfo& info() const;
-  ::message::TaskInfo* mutable_info();
-  ::message::TaskInfo* release_info();
-  void set_allocated_info(::message::TaskInfo* info);
+  inline const ::message::TaskInfo& info() const;
+  inline ::message::TaskInfo* mutable_info();
+  inline ::message::TaskInfo* release_info();
+  inline void set_allocated_info(::message::TaskInfo* info);
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CNewTaskNotify)
  private:
@@ -4042,13 +4042,13 @@ class MsgC2SReqPlayerPublishMap : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.CrashMapData map = 1;
-  bool has_map() const;
-  void clear_map();
+  inline bool has_map() const;
+  inline void clear_map();
   static const int kMapFieldNumber = 1;
-  const ::message::CrashMapData& map() const;
-  ::message::CrashMapData* mutable_map();
-  ::message::CrashMapData* release_map();
-  void set_allocated_map(::message::CrashMapData* map);
+  inline const ::message::CrashMapData& map() const;
+  inline ::message::CrashMapData* mutable_map();
+  inline ::message::CrashMapData* release_map();
+  inline void set_allocated_map(::message::CrashMapData* map);
 
   // @@protoc_insertion_point(class_scope:message.MsgC2SReqPlayerPublishMap)
  private:
@@ -4133,13 +4133,13 @@ class MsgS2CPlayerPublishMapACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.CrashPlayerPublishMap map = 1;
-  bool has_map() const;
-  void clear_map();
+  inline bool has_map() const;
+  inline void clear_map();
   static const int kMapFieldNumber = 1;
-  const ::message::CrashPlayerPublishMap& map() const;
-  ::message::CrashPlayerPublishMap* mutable_map();
-  ::message::CrashPlayerPublishMap* release_map();
-  void set_allocated_map(::message::CrashPlayerPublishMap* map);
+  inline const ::message::CrashPlayerPublishMap& map() const;
+  inline ::message::CrashPlayerPublishMap* mutable_map();
+  inline ::message::CrashPlayerPublishMap* release_map();
+  inline void set_allocated_map(::message::CrashPlayerPublishMap* map);
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CPlayerPublishMapACK)
  private:
@@ -4224,18 +4224,18 @@ class MsgC2SReqPublishMapList : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint64 begin_map_index = 1;
-  bool has_begin_map_index() const;
-  void clear_begin_map_index();
+  inline bool has_begin_map_index() const;
+  inline void clear_begin_map_index();
   static const int kBeginMapIndexFieldNumber = 1;
-  ::google::protobuf::uint64 begin_map_index() const;
-  void set_begin_map_index(::google::protobuf::uint64 value);
+  inline ::google::protobuf::uint64 begin_map_index() const;
+  inline void set_begin_map_index(::google::protobuf::uint64 value);
 
   // required int32 req_count = 2;
-  bool has_req_count() const;
-  void clear_req_count();
+  inline bool has_req_count() const;
+  inline void clear_req_count();
   static const int kReqCountFieldNumber = 2;
-  ::google::protobuf::int32 req_count() const;
-  void set_req_count(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 req_count() const;
+  inline void set_req_count(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgC2SReqPublishMapList)
  private:
@@ -4326,29 +4326,29 @@ class MsgS2CPublishMapListACK : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint64 end_map_index = 1;
-  bool has_end_map_index() const;
-  void clear_end_map_index();
+  inline bool has_end_map_index() const;
+  inline void clear_end_map_index();
   static const int kEndMapIndexFieldNumber = 1;
-  ::google::protobuf::uint64 end_map_index() const;
-  void set_end_map_index(::google::protobuf::uint64 value);
+  inline ::google::protobuf::uint64 end_map_index() const;
+  inline void set_end_map_index(::google::protobuf::uint64 value);
 
   // required int32 req_count = 2;
-  bool has_req_count() const;
-  void clear_req_count();
+  inline bool has_req_count() const;
+  inline void clear_req_count();
   static const int kReqCountFieldNumber = 2;
-  ::google::protobuf::int32 req_count() const;
-  void set_req_count(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 req_count() const;
+  inline void set_req_count(::google::protobuf::int32 value);
 
   // repeated .message.CrashPlayerPublishMap maps = 3;
-  int maps_size() const;
-  void clear_maps();
+  inline int maps_size() const;
+  inline void clear_maps();
   static const int kMapsFieldNumber = 3;
-  const ::message::CrashPlayerPublishMap& maps(int index) const;
-  ::message::CrashPlayerPublishMap* mutable_maps(int index);
-  ::message::CrashPlayerPublishMap* add_maps();
-  const ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >&
+  inline const ::message::CrashPlayerPublishMap& maps(int index) const;
+  inline ::message::CrashPlayerPublishMap* mutable_maps(int index);
+  inline ::message::CrashPlayerPublishMap* add_maps();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >&
       maps() const;
-  ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::CrashPlayerPublishMap >*
       mutable_maps();
 
   // @@protoc_insertion_point(class_scope:message.MsgS2CPublishMapListACK)
@@ -4379,7 +4379,6 @@ class MsgS2CPublishMapListACK : public ::google::protobuf::Message {
 
 // ===================================================================
 
-#if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgIntStringProto
 
 // required int32 intger_temp = 1;
@@ -7064,7 +7063,6 @@ MsgS2CPublishMapListACK::mutable_maps() {
   return &maps_;
 }
 
-#endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 

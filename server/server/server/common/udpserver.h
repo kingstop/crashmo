@@ -1,4 +1,5 @@
 #pragma once
+/*
 #include <enet/enet.h>
 #include <list>
 #include <map>
@@ -26,4 +27,4 @@ protected:
 	unsigned long _connect_index;
 
 };
-
+*/

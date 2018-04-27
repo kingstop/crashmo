@@ -744,40 +744,6 @@ void int32array::InternalSwap(int32array* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// int32array
-
-// repeated int32 data = 1;
- int int32array::data_size() const {
-  return data_.size();
-}
- void int32array::clear_data() {
-  data_.Clear();
-}
- ::google::protobuf::int32 int32array::data(int index) const {
-  // @@protoc_insertion_point(field_get:message.int32array.data)
-  return data_.Get(index);
-}
- void int32array::set_data(int index, ::google::protobuf::int32 value) {
-  data_.Set(index, value);
-  // @@protoc_insertion_point(field_set:message.int32array.data)
-}
- void int32array::add_data(::google::protobuf::int32 value) {
-  data_.Add(value);
-  // @@protoc_insertion_point(field_add:message.int32array.data)
-}
- const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-int32array::data() const {
-  // @@protoc_insertion_point(field_list:message.int32array.data)
-  return data_;
-}
- ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-int32array::mutable_data() {
-  // @@protoc_insertion_point(field_mutable_list:message.int32array.data)
-  return &data_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -849,20 +815,22 @@ CrashmoMapBaseData* CrashmoMapBaseData::New(::google::protobuf::Arena* arena) co
 }
 
 void CrashmoMapBaseData::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<CrashmoMapBaseData*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<CrashmoMapBaseData*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 11) {
     ZR_(width_, height_);
     map_index_ = GOOGLE_ULONGLONG(0);
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   map_data_.Clear();
@@ -1164,112 +1132,6 @@ void CrashmoMapBaseData::InternalSwap(CrashmoMapBaseData* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// CrashmoMapBaseData
-
-// required int32 width = 1;
- bool CrashmoMapBaseData::has_width() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void CrashmoMapBaseData::set_has_width() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void CrashmoMapBaseData::clear_has_width() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void CrashmoMapBaseData::clear_width() {
-  width_ = 0;
-  clear_has_width();
-}
- ::google::protobuf::int32 CrashmoMapBaseData::width() const {
-  // @@protoc_insertion_point(field_get:message.CrashmoMapBaseData.width)
-  return width_;
-}
- void CrashmoMapBaseData::set_width(::google::protobuf::int32 value) {
-  set_has_width();
-  width_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashmoMapBaseData.width)
-}
-
-// required int32 height = 2;
- bool CrashmoMapBaseData::has_height() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void CrashmoMapBaseData::set_has_height() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void CrashmoMapBaseData::clear_has_height() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void CrashmoMapBaseData::clear_height() {
-  height_ = 0;
-  clear_has_height();
-}
- ::google::protobuf::int32 CrashmoMapBaseData::height() const {
-  // @@protoc_insertion_point(field_get:message.CrashmoMapBaseData.height)
-  return height_;
-}
- void CrashmoMapBaseData::set_height(::google::protobuf::int32 value) {
-  set_has_height();
-  height_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashmoMapBaseData.height)
-}
-
-// repeated .message.int32array map_data = 3;
- int CrashmoMapBaseData::map_data_size() const {
-  return map_data_.size();
-}
- void CrashmoMapBaseData::clear_map_data() {
-  map_data_.Clear();
-}
- const ::message::int32array& CrashmoMapBaseData::map_data(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashmoMapBaseData.map_data)
-  return map_data_.Get(index);
-}
- ::message::int32array* CrashmoMapBaseData::mutable_map_data(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashmoMapBaseData.map_data)
-  return map_data_.Mutable(index);
-}
- ::message::int32array* CrashmoMapBaseData::add_map_data() {
-  // @@protoc_insertion_point(field_add:message.CrashmoMapBaseData.map_data)
-  return map_data_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::int32array >&
-CrashmoMapBaseData::map_data() const {
-  // @@protoc_insertion_point(field_list:message.CrashmoMapBaseData.map_data)
-  return map_data_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::int32array >*
-CrashmoMapBaseData::mutable_map_data() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashmoMapBaseData.map_data)
-  return &map_data_;
-}
-
-// required uint64 map_index = 5;
- bool CrashmoMapBaseData::has_map_index() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void CrashmoMapBaseData::set_has_map_index() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void CrashmoMapBaseData::clear_has_map_index() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void CrashmoMapBaseData::clear_map_index() {
-  map_index_ = GOOGLE_ULONGLONG(0);
-  clear_has_map_index();
-}
- ::google::protobuf::uint64 CrashmoMapBaseData::map_index() const {
-  // @@protoc_insertion_point(field_get:message.CrashmoMapBaseData.map_index)
-  return map_index_;
-}
- void CrashmoMapBaseData::set_map_index(::google::protobuf::uint64 value) {
-  set_has_map_index();
-  map_index_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashmoMapBaseData.map_index)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1354,13 +1216,15 @@ CrashMapData* CrashMapData::New(::google::protobuf::Arena* arena) const {
 }
 
 void CrashMapData::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<CrashMapData*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<CrashMapData*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 127) {
     ZR_(section_, create_time_);
@@ -1376,7 +1240,7 @@ void CrashMapData::Clear() {
     gold_ = 0;
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   map_blog_.Clear();
@@ -1875,285 +1739,6 @@ void CrashMapData::InternalSwap(CrashMapData* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// CrashMapData
-
-// required .message.CrashmoMapBaseData Data = 1;
- bool CrashMapData::has_data() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void CrashMapData::set_has_data() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void CrashMapData::clear_has_data() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void CrashMapData::clear_data() {
-  if (data_ != NULL) data_->::message::CrashmoMapBaseData::Clear();
-  clear_has_data();
-}
- const ::message::CrashmoMapBaseData& CrashMapData::data() const {
-  // @@protoc_insertion_point(field_get:message.CrashMapData.Data)
-  return data_ != NULL ? *data_ : *default_instance_->data_;
-}
- ::message::CrashmoMapBaseData* CrashMapData::mutable_data() {
-  set_has_data();
-  if (data_ == NULL) {
-    data_ = new ::message::CrashmoMapBaseData;
-  }
-  // @@protoc_insertion_point(field_mutable:message.CrashMapData.Data)
-  return data_;
-}
- ::message::CrashmoMapBaseData* CrashMapData::release_data() {
-  clear_has_data();
-  ::message::CrashmoMapBaseData* temp = data_;
-  data_ = NULL;
-  return temp;
-}
- void CrashMapData::set_allocated_data(::message::CrashmoMapBaseData* data) {
-  delete data_;
-  data_ = data;
-  if (data) {
-    set_has_data();
-  } else {
-    clear_has_data();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.CrashMapData.Data)
-}
-
-// required string MapName = 2;
- bool CrashMapData::has_mapname() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void CrashMapData::set_has_mapname() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void CrashMapData::clear_has_mapname() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void CrashMapData::clear_mapname() {
-  mapname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_mapname();
-}
- const ::std::string& CrashMapData::mapname() const {
-  // @@protoc_insertion_point(field_get:message.CrashMapData.MapName)
-  return mapname_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void CrashMapData::set_mapname(const ::std::string& value) {
-  set_has_mapname();
-  mapname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.CrashMapData.MapName)
-}
- void CrashMapData::set_mapname(const char* value) {
-  set_has_mapname();
-  mapname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.CrashMapData.MapName)
-}
- void CrashMapData::set_mapname(const char* value, size_t size) {
-  set_has_mapname();
-  mapname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.CrashMapData.MapName)
-}
- ::std::string* CrashMapData::mutable_mapname() {
-  set_has_mapname();
-  // @@protoc_insertion_point(field_mutable:message.CrashMapData.MapName)
-  return mapname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* CrashMapData::release_mapname() {
-  clear_has_mapname();
-  return mapname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void CrashMapData::set_allocated_mapname(::std::string* mapname) {
-  if (mapname != NULL) {
-    set_has_mapname();
-  } else {
-    clear_has_mapname();
-  }
-  mapname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), mapname);
-  // @@protoc_insertion_point(field_set_allocated:message.CrashMapData.MapName)
-}
-
-// required string CreaterName = 3;
- bool CrashMapData::has_creatername() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void CrashMapData::set_has_creatername() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void CrashMapData::clear_has_creatername() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void CrashMapData::clear_creatername() {
-  creatername_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_creatername();
-}
- const ::std::string& CrashMapData::creatername() const {
-  // @@protoc_insertion_point(field_get:message.CrashMapData.CreaterName)
-  return creatername_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void CrashMapData::set_creatername(const ::std::string& value) {
-  set_has_creatername();
-  creatername_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.CrashMapData.CreaterName)
-}
- void CrashMapData::set_creatername(const char* value) {
-  set_has_creatername();
-  creatername_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.CrashMapData.CreaterName)
-}
- void CrashMapData::set_creatername(const char* value, size_t size) {
-  set_has_creatername();
-  creatername_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.CrashMapData.CreaterName)
-}
- ::std::string* CrashMapData::mutable_creatername() {
-  set_has_creatername();
-  // @@protoc_insertion_point(field_mutable:message.CrashMapData.CreaterName)
-  return creatername_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* CrashMapData::release_creatername() {
-  clear_has_creatername();
-  return creatername_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void CrashMapData::set_allocated_creatername(::std::string* creatername) {
-  if (creatername != NULL) {
-    set_has_creatername();
-  } else {
-    clear_has_creatername();
-  }
-  creatername_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), creatername);
-  // @@protoc_insertion_point(field_set_allocated:message.CrashMapData.CreaterName)
-}
-
-// required int32 Section = 4;
- bool CrashMapData::has_section() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void CrashMapData::set_has_section() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void CrashMapData::clear_has_section() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void CrashMapData::clear_section() {
-  section_ = 0;
-  clear_has_section();
-}
- ::google::protobuf::int32 CrashMapData::section() const {
-  // @@protoc_insertion_point(field_get:message.CrashMapData.Section)
-  return section_;
-}
- void CrashMapData::set_section(::google::protobuf::int32 value) {
-  set_has_section();
-  section_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashMapData.Section)
-}
-
-// required int32 Chapter = 5;
- bool CrashMapData::has_chapter() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
- void CrashMapData::set_has_chapter() {
-  _has_bits_[0] |= 0x00000010u;
-}
- void CrashMapData::clear_has_chapter() {
-  _has_bits_[0] &= ~0x00000010u;
-}
- void CrashMapData::clear_chapter() {
-  chapter_ = 0;
-  clear_has_chapter();
-}
- ::google::protobuf::int32 CrashMapData::chapter() const {
-  // @@protoc_insertion_point(field_get:message.CrashMapData.Chapter)
-  return chapter_;
-}
- void CrashMapData::set_chapter(::google::protobuf::int32 value) {
-  set_has_chapter();
-  chapter_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashMapData.Chapter)
-}
-
-// required uint64 create_time = 6;
- bool CrashMapData::has_create_time() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
- void CrashMapData::set_has_create_time() {
-  _has_bits_[0] |= 0x00000020u;
-}
- void CrashMapData::clear_has_create_time() {
-  _has_bits_[0] &= ~0x00000020u;
-}
- void CrashMapData::clear_create_time() {
-  create_time_ = GOOGLE_ULONGLONG(0);
-  clear_has_create_time();
-}
- ::google::protobuf::uint64 CrashMapData::create_time() const {
-  // @@protoc_insertion_point(field_get:message.CrashMapData.create_time)
-  return create_time_;
-}
- void CrashMapData::set_create_time(::google::protobuf::uint64 value) {
-  set_has_create_time();
-  create_time_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashMapData.create_time)
-}
-
-// required int32 gold = 7;
- bool CrashMapData::has_gold() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
- void CrashMapData::set_has_gold() {
-  _has_bits_[0] |= 0x00000040u;
-}
- void CrashMapData::clear_has_gold() {
-  _has_bits_[0] &= ~0x00000040u;
-}
- void CrashMapData::clear_gold() {
-  gold_ = 0;
-  clear_has_gold();
-}
- ::google::protobuf::int32 CrashMapData::gold() const {
-  // @@protoc_insertion_point(field_get:message.CrashMapData.gold)
-  return gold_;
-}
- void CrashMapData::set_gold(::google::protobuf::int32 value) {
-  set_has_gold();
-  gold_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashMapData.gold)
-}
-
-// repeated .message.RankMapBlogEntry map_blog = 8;
- int CrashMapData::map_blog_size() const {
-  return map_blog_.size();
-}
- void CrashMapData::clear_map_blog() {
-  map_blog_.Clear();
-}
- const ::message::RankMapBlogEntry& CrashMapData::map_blog(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashMapData.map_blog)
-  return map_blog_.Get(index);
-}
- ::message::RankMapBlogEntry* CrashMapData::mutable_map_blog(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashMapData.map_blog)
-  return map_blog_.Mutable(index);
-}
- ::message::RankMapBlogEntry* CrashMapData::add_map_blog() {
-  // @@protoc_insertion_point(field_add:message.CrashMapData.map_blog)
-  return map_blog_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >&
-CrashMapData::map_blog() const {
-  // @@protoc_insertion_point(field_list:message.CrashMapData.map_blog)
-  return map_blog_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::RankMapBlogEntry >*
-CrashMapData::mutable_map_blog() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashMapData.map_blog)
-  return &map_blog_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -2233,13 +1818,15 @@ TaskInfo* TaskInfo::New(::google::protobuf::Arena* arena) const {
 }
 
 void TaskInfo::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<TaskInfo*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<TaskInfo*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 63) {
     ZR_(task_id_, argu_3_);
@@ -2251,7 +1838,7 @@ void TaskInfo::Clear() {
     }
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -2666,212 +2253,6 @@ void TaskInfo::InternalSwap(TaskInfo* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TaskInfo
-
-// required int32 task_id = 1;
- bool TaskInfo::has_task_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void TaskInfo::set_has_task_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void TaskInfo::clear_has_task_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void TaskInfo::clear_task_id() {
-  task_id_ = 0;
-  clear_has_task_id();
-}
- ::google::protobuf::int32 TaskInfo::task_id() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfo.task_id)
-  return task_id_;
-}
- void TaskInfo::set_task_id(::google::protobuf::int32 value) {
-  set_has_task_id();
-  task_id_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskInfo.task_id)
-}
-
-// required int32 argu_1 = 2;
- bool TaskInfo::has_argu_1() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void TaskInfo::set_has_argu_1() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void TaskInfo::clear_has_argu_1() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void TaskInfo::clear_argu_1() {
-  argu_1_ = 0;
-  clear_has_argu_1();
-}
- ::google::protobuf::int32 TaskInfo::argu_1() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfo.argu_1)
-  return argu_1_;
-}
- void TaskInfo::set_argu_1(::google::protobuf::int32 value) {
-  set_has_argu_1();
-  argu_1_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskInfo.argu_1)
-}
-
-// required int32 argu_2 = 3;
- bool TaskInfo::has_argu_2() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void TaskInfo::set_has_argu_2() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void TaskInfo::clear_has_argu_2() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void TaskInfo::clear_argu_2() {
-  argu_2_ = 0;
-  clear_has_argu_2();
-}
- ::google::protobuf::int32 TaskInfo::argu_2() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfo.argu_2)
-  return argu_2_;
-}
- void TaskInfo::set_argu_2(::google::protobuf::int32 value) {
-  set_has_argu_2();
-  argu_2_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskInfo.argu_2)
-}
-
-// required int32 argu_3 = 4;
- bool TaskInfo::has_argu_3() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void TaskInfo::set_has_argu_3() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void TaskInfo::clear_has_argu_3() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void TaskInfo::clear_argu_3() {
-  argu_3_ = 0;
-  clear_has_argu_3();
-}
- ::google::protobuf::int32 TaskInfo::argu_3() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfo.argu_3)
-  return argu_3_;
-}
- void TaskInfo::set_argu_3(::google::protobuf::int32 value) {
-  set_has_argu_3();
-  argu_3_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskInfo.argu_3)
-}
-
-// required string describe = 5;
- bool TaskInfo::has_describe() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
- void TaskInfo::set_has_describe() {
-  _has_bits_[0] |= 0x00000010u;
-}
- void TaskInfo::clear_has_describe() {
-  _has_bits_[0] &= ~0x00000010u;
-}
- void TaskInfo::clear_describe() {
-  describe_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_describe();
-}
- const ::std::string& TaskInfo::describe() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfo.describe)
-  return describe_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void TaskInfo::set_describe(const ::std::string& value) {
-  set_has_describe();
-  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.TaskInfo.describe)
-}
- void TaskInfo::set_describe(const char* value) {
-  set_has_describe();
-  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.TaskInfo.describe)
-}
- void TaskInfo::set_describe(const char* value, size_t size) {
-  set_has_describe();
-  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.TaskInfo.describe)
-}
- ::std::string* TaskInfo::mutable_describe() {
-  set_has_describe();
-  // @@protoc_insertion_point(field_mutable:message.TaskInfo.describe)
-  return describe_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* TaskInfo::release_describe() {
-  clear_has_describe();
-  return describe_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void TaskInfo::set_allocated_describe(::std::string* describe) {
-  if (describe != NULL) {
-    set_has_describe();
-  } else {
-    clear_has_describe();
-  }
-  describe_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), describe);
-  // @@protoc_insertion_point(field_set_allocated:message.TaskInfo.describe)
-}
-
-// required string name = 6;
- bool TaskInfo::has_name() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
- void TaskInfo::set_has_name() {
-  _has_bits_[0] |= 0x00000020u;
-}
- void TaskInfo::clear_has_name() {
-  _has_bits_[0] &= ~0x00000020u;
-}
- void TaskInfo::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_name();
-}
- const ::std::string& TaskInfo::name() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfo.name)
-  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void TaskInfo::set_name(const ::std::string& value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.TaskInfo.name)
-}
- void TaskInfo::set_name(const char* value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.TaskInfo.name)
-}
- void TaskInfo::set_name(const char* value, size_t size) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.TaskInfo.name)
-}
- ::std::string* TaskInfo::mutable_name() {
-  set_has_name();
-  // @@protoc_insertion_point(field_mutable:message.TaskInfo.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* TaskInfo::release_name() {
-  clear_has_name();
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void TaskInfo::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    set_has_name();
-  } else {
-    clear_has_name();
-  }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:message.TaskInfo.name)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -3287,164 +2668,6 @@ void RankMapBlogEntry::InternalSwap(RankMapBlogEntry* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// RankMapBlogEntry
-
-// required uint64 acc = 1;
- bool RankMapBlogEntry::has_acc() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void RankMapBlogEntry::set_has_acc() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void RankMapBlogEntry::clear_has_acc() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void RankMapBlogEntry::clear_acc() {
-  acc_ = GOOGLE_ULONGLONG(0);
-  clear_has_acc();
-}
- ::google::protobuf::uint64 RankMapBlogEntry::acc() const {
-  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.acc)
-  return acc_;
-}
- void RankMapBlogEntry::set_acc(::google::protobuf::uint64 value) {
-  set_has_acc();
-  acc_ = value;
-  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.acc)
-}
-
-// required string name = 2;
- bool RankMapBlogEntry::has_name() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void RankMapBlogEntry::set_has_name() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void RankMapBlogEntry::clear_has_name() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void RankMapBlogEntry::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_name();
-}
- const ::std::string& RankMapBlogEntry::name() const {
-  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.name)
-  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void RankMapBlogEntry::set_name(const ::std::string& value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.name)
-}
- void RankMapBlogEntry::set_name(const char* value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.RankMapBlogEntry.name)
-}
- void RankMapBlogEntry::set_name(const char* value, size_t size) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.RankMapBlogEntry.name)
-}
- ::std::string* RankMapBlogEntry::mutable_name() {
-  set_has_name();
-  // @@protoc_insertion_point(field_mutable:message.RankMapBlogEntry.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* RankMapBlogEntry::release_name() {
-  clear_has_name();
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void RankMapBlogEntry::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    set_has_name();
-  } else {
-    clear_has_name();
-  }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:message.RankMapBlogEntry.name)
-}
-
-// required string sugges_ = 3;
- bool RankMapBlogEntry::has_sugges_() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void RankMapBlogEntry::set_has_sugges_() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void RankMapBlogEntry::clear_has_sugges_() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void RankMapBlogEntry::clear_sugges_() {
-  sugges__.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_sugges_();
-}
- const ::std::string& RankMapBlogEntry::sugges_() const {
-  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.sugges_)
-  return sugges__.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void RankMapBlogEntry::set_sugges_(const ::std::string& value) {
-  set_has_sugges_();
-  sugges__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.sugges_)
-}
- void RankMapBlogEntry::set_sugges_(const char* value) {
-  set_has_sugges_();
-  sugges__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.RankMapBlogEntry.sugges_)
-}
- void RankMapBlogEntry::set_sugges_(const char* value, size_t size) {
-  set_has_sugges_();
-  sugges__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.RankMapBlogEntry.sugges_)
-}
- ::std::string* RankMapBlogEntry::mutable_sugges_() {
-  set_has_sugges_();
-  // @@protoc_insertion_point(field_mutable:message.RankMapBlogEntry.sugges_)
-  return sugges__.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* RankMapBlogEntry::release_sugges_() {
-  clear_has_sugges_();
-  return sugges__.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void RankMapBlogEntry::set_allocated_sugges_(::std::string* sugges_) {
-  if (sugges_ != NULL) {
-    set_has_sugges_();
-  } else {
-    clear_has_sugges_();
-  }
-  sugges__.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sugges_);
-  // @@protoc_insertion_point(field_set_allocated:message.RankMapBlogEntry.sugges_)
-}
-
-// required int32 time = 4;
- bool RankMapBlogEntry::has_time() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void RankMapBlogEntry::set_has_time() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void RankMapBlogEntry::clear_has_time() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void RankMapBlogEntry::clear_time() {
-  time_ = 0;
-  clear_has_time();
-}
- ::google::protobuf::int32 RankMapBlogEntry::time() const {
-  // @@protoc_insertion_point(field_get:message.RankMapBlogEntry.time)
-  return time_;
-}
- void RankMapBlogEntry::set_time(::google::protobuf::int32 value) {
-  set_has_time();
-  time_ = value;
-  // @@protoc_insertion_point(field_set:message.RankMapBlogEntry.time)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -3521,13 +2744,15 @@ CrashPlayerPublishMap* CrashPlayerPublishMap::New(::google::protobuf::Arena* are
 }
 
 void CrashPlayerPublishMap::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<CrashPlayerPublishMap*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<CrashPlayerPublishMap*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 31) {
     ZR_(publish_time_, map_rank_);
@@ -3536,7 +2761,7 @@ void CrashPlayerPublishMap::Clear() {
     }
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -3886,149 +3111,6 @@ void CrashPlayerPublishMap::InternalSwap(CrashPlayerPublishMap* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// CrashPlayerPublishMap
-
-// required .message.CrashMapData crashmap = 1;
- bool CrashPlayerPublishMap::has_crashmap() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void CrashPlayerPublishMap::set_has_crashmap() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void CrashPlayerPublishMap::clear_has_crashmap() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void CrashPlayerPublishMap::clear_crashmap() {
-  if (crashmap_ != NULL) crashmap_->::message::CrashMapData::Clear();
-  clear_has_crashmap();
-}
- const ::message::CrashMapData& CrashPlayerPublishMap::crashmap() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.crashmap)
-  return crashmap_ != NULL ? *crashmap_ : *default_instance_->crashmap_;
-}
- ::message::CrashMapData* CrashPlayerPublishMap::mutable_crashmap() {
-  set_has_crashmap();
-  if (crashmap_ == NULL) {
-    crashmap_ = new ::message::CrashMapData;
-  }
-  // @@protoc_insertion_point(field_mutable:message.CrashPlayerPublishMap.crashmap)
-  return crashmap_;
-}
- ::message::CrashMapData* CrashPlayerPublishMap::release_crashmap() {
-  clear_has_crashmap();
-  ::message::CrashMapData* temp = crashmap_;
-  crashmap_ = NULL;
-  return temp;
-}
- void CrashPlayerPublishMap::set_allocated_crashmap(::message::CrashMapData* crashmap) {
-  delete crashmap_;
-  crashmap_ = crashmap;
-  if (crashmap) {
-    set_has_crashmap();
-  } else {
-    clear_has_crashmap();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.CrashPlayerPublishMap.crashmap)
-}
-
-// required uint64 publish_time = 2;
- bool CrashPlayerPublishMap::has_publish_time() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void CrashPlayerPublishMap::set_has_publish_time() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void CrashPlayerPublishMap::clear_has_publish_time() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void CrashPlayerPublishMap::clear_publish_time() {
-  publish_time_ = GOOGLE_ULONGLONG(0);
-  clear_has_publish_time();
-}
- ::google::protobuf::uint64 CrashPlayerPublishMap::publish_time() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.publish_time)
-  return publish_time_;
-}
- void CrashPlayerPublishMap::set_publish_time(::google::protobuf::uint64 value) {
-  set_has_publish_time();
-  publish_time_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.publish_time)
-}
-
-// required int32 challenge_times = 3;
- bool CrashPlayerPublishMap::has_challenge_times() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void CrashPlayerPublishMap::set_has_challenge_times() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void CrashPlayerPublishMap::clear_has_challenge_times() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void CrashPlayerPublishMap::clear_challenge_times() {
-  challenge_times_ = 0;
-  clear_has_challenge_times();
-}
- ::google::protobuf::int32 CrashPlayerPublishMap::challenge_times() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.challenge_times)
-  return challenge_times_;
-}
- void CrashPlayerPublishMap::set_challenge_times(::google::protobuf::int32 value) {
-  set_has_challenge_times();
-  challenge_times_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.challenge_times)
-}
-
-// required int32 failed_of_challenge_times = 4;
- bool CrashPlayerPublishMap::has_failed_of_challenge_times() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
- void CrashPlayerPublishMap::set_has_failed_of_challenge_times() {
-  _has_bits_[0] |= 0x00000008u;
-}
- void CrashPlayerPublishMap::clear_has_failed_of_challenge_times() {
-  _has_bits_[0] &= ~0x00000008u;
-}
- void CrashPlayerPublishMap::clear_failed_of_challenge_times() {
-  failed_of_challenge_times_ = 0;
-  clear_has_failed_of_challenge_times();
-}
- ::google::protobuf::int32 CrashPlayerPublishMap::failed_of_challenge_times() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.failed_of_challenge_times)
-  return failed_of_challenge_times_;
-}
- void CrashPlayerPublishMap::set_failed_of_challenge_times(::google::protobuf::int32 value) {
-  set_has_failed_of_challenge_times();
-  failed_of_challenge_times_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.failed_of_challenge_times)
-}
-
-// required int32 map_rank = 5;
- bool CrashPlayerPublishMap::has_map_rank() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
- void CrashPlayerPublishMap::set_has_map_rank() {
-  _has_bits_[0] |= 0x00000010u;
-}
- void CrashPlayerPublishMap::clear_has_map_rank() {
-  _has_bits_[0] &= ~0x00000010u;
-}
- void CrashPlayerPublishMap::clear_map_rank() {
-  map_rank_ = 0;
-  clear_has_map_rank();
-}
- ::google::protobuf::int32 CrashPlayerPublishMap::map_rank() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerPublishMap.map_rank)
-  return map_rank_;
-}
- void CrashPlayerPublishMap::set_map_rank(::google::protobuf::int32 value) {
-  set_has_map_rank();
-  map_rank_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerPublishMap.map_rank)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -4097,17 +3179,19 @@ intPair* intPair::New(::google::protobuf::Arena* arena) const {
 }
 
 void intPair::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<intPair*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<intPair*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(number_1_, number_2_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -4330,58 +3414,6 @@ void intPair::InternalSwap(intPair* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// intPair
-
-// required int32 number_1 = 1;
- bool intPair::has_number_1() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void intPair::set_has_number_1() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void intPair::clear_has_number_1() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void intPair::clear_number_1() {
-  number_1_ = 0;
-  clear_has_number_1();
-}
- ::google::protobuf::int32 intPair::number_1() const {
-  // @@protoc_insertion_point(field_get:message.intPair.number_1)
-  return number_1_;
-}
- void intPair::set_number_1(::google::protobuf::int32 value) {
-  set_has_number_1();
-  number_1_ = value;
-  // @@protoc_insertion_point(field_set:message.intPair.number_1)
-}
-
-// required int32 number_2 = 2;
- bool intPair::has_number_2() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void intPair::set_has_number_2() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void intPair::clear_has_number_2() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void intPair::clear_number_2() {
-  number_2_ = 0;
-  clear_has_number_2();
-}
- ::google::protobuf::int32 intPair::number_2() const {
-  // @@protoc_insertion_point(field_get:message.intPair.number_2)
-  return number_2_;
-}
- void intPair::set_number_2(::google::protobuf::int32 value) {
-  set_has_number_2();
-  number_2_ = value;
-  // @@protoc_insertion_point(field_set:message.intPair.number_2)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -4475,13 +3507,15 @@ CrashPlayerInfo* CrashPlayerInfo::New(::google::protobuf::Arena* arena) const {
 }
 
 void CrashPlayerInfo::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<CrashPlayerInfo*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<CrashPlayerInfo*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 165) {
     ZR_(isadmin_, map_width_);
@@ -4495,7 +3529,7 @@ void CrashPlayerInfo::Clear() {
     ZR_(gold_, jewel_);
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   passed_record_.Clear();
@@ -5304,453 +4338,6 @@ void CrashPlayerInfo::InternalSwap(CrashPlayerInfo* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// CrashPlayerInfo
-
-// required uint64 account = 1;
- bool CrashPlayerInfo::has_account() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void CrashPlayerInfo::set_has_account() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void CrashPlayerInfo::clear_has_account() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void CrashPlayerInfo::clear_account() {
-  account_ = GOOGLE_ULONGLONG(0);
-  clear_has_account();
-}
- ::google::protobuf::uint64 CrashPlayerInfo::account() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.account)
-  return account_;
-}
- void CrashPlayerInfo::set_account(::google::protobuf::uint64 value) {
-  set_has_account();
-  account_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.account)
-}
-
-// repeated .message.intPair passed_record = 2;
- int CrashPlayerInfo::passed_record_size() const {
-  return passed_record_.size();
-}
- void CrashPlayerInfo::clear_passed_record() {
-  passed_record_.Clear();
-}
- const ::message::intPair& CrashPlayerInfo::passed_record(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.passed_record)
-  return passed_record_.Get(index);
-}
- ::message::intPair* CrashPlayerInfo::mutable_passed_record(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.passed_record)
-  return passed_record_.Mutable(index);
-}
- ::message::intPair* CrashPlayerInfo::add_passed_record() {
-  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.passed_record)
-  return passed_record_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
-CrashPlayerInfo::passed_record() const {
-  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.passed_record)
-  return passed_record_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::intPair >*
-CrashPlayerInfo::mutable_passed_record() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.passed_record)
-  return &passed_record_;
-}
-
-// required string name = 3;
- bool CrashPlayerInfo::has_name() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void CrashPlayerInfo::set_has_name() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void CrashPlayerInfo::clear_has_name() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void CrashPlayerInfo::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_name();
-}
- const ::std::string& CrashPlayerInfo::name() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.name)
-  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void CrashPlayerInfo::set_name(const ::std::string& value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.name)
-}
- void CrashPlayerInfo::set_name(const char* value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.CrashPlayerInfo.name)
-}
- void CrashPlayerInfo::set_name(const char* value, size_t size) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.CrashPlayerInfo.name)
-}
- ::std::string* CrashPlayerInfo::mutable_name() {
-  set_has_name();
-  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* CrashPlayerInfo::release_name() {
-  clear_has_name();
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void CrashPlayerInfo::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    set_has_name();
-  } else {
-    clear_has_name();
-  }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:message.CrashPlayerInfo.name)
-}
-
-// repeated uint64 IncompleteMap = 4;
- int CrashPlayerInfo::incompletemap_size() const {
-  return incompletemap_.size();
-}
- void CrashPlayerInfo::clear_incompletemap() {
-  incompletemap_.Clear();
-}
- ::google::protobuf::uint64 CrashPlayerInfo::incompletemap(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.IncompleteMap)
-  return incompletemap_.Get(index);
-}
- void CrashPlayerInfo::set_incompletemap(int index, ::google::protobuf::uint64 value) {
-  incompletemap_.Set(index, value);
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.IncompleteMap)
-}
- void CrashPlayerInfo::add_incompletemap(::google::protobuf::uint64 value) {
-  incompletemap_.Add(value);
-  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.IncompleteMap)
-}
- const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-CrashPlayerInfo::incompletemap() const {
-  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.IncompleteMap)
-  return incompletemap_;
-}
- ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-CrashPlayerInfo::mutable_incompletemap() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.IncompleteMap)
-  return &incompletemap_;
-}
-
-// repeated uint64 CompleteMap = 5;
- int CrashPlayerInfo::completemap_size() const {
-  return completemap_.size();
-}
- void CrashPlayerInfo::clear_completemap() {
-  completemap_.Clear();
-}
- ::google::protobuf::uint64 CrashPlayerInfo::completemap(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.CompleteMap)
-  return completemap_.Get(index);
-}
- void CrashPlayerInfo::set_completemap(int index, ::google::protobuf::uint64 value) {
-  completemap_.Set(index, value);
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.CompleteMap)
-}
- void CrashPlayerInfo::add_completemap(::google::protobuf::uint64 value) {
-  completemap_.Add(value);
-  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.CompleteMap)
-}
- const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-CrashPlayerInfo::completemap() const {
-  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.CompleteMap)
-  return completemap_;
-}
- ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-CrashPlayerInfo::mutable_completemap() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.CompleteMap)
-  return &completemap_;
-}
-
-// required bool isadmin = 6;
- bool CrashPlayerInfo::has_isadmin() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
- void CrashPlayerInfo::set_has_isadmin() {
-  _has_bits_[0] |= 0x00000020u;
-}
- void CrashPlayerInfo::clear_has_isadmin() {
-  _has_bits_[0] &= ~0x00000020u;
-}
- void CrashPlayerInfo::clear_isadmin() {
-  isadmin_ = false;
-  clear_has_isadmin();
-}
- bool CrashPlayerInfo::isadmin() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.isadmin)
-  return isadmin_;
-}
- void CrashPlayerInfo::set_isadmin(bool value) {
-  set_has_isadmin();
-  isadmin_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.isadmin)
-}
-
-// repeated .message.intPair resources = 7;
- int CrashPlayerInfo::resources_size() const {
-  return resources_.size();
-}
- void CrashPlayerInfo::clear_resources() {
-  resources_.Clear();
-}
- const ::message::intPair& CrashPlayerInfo::resources(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.resources)
-  return resources_.Get(index);
-}
- ::message::intPair* CrashPlayerInfo::mutable_resources(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.resources)
-  return resources_.Mutable(index);
-}
- ::message::intPair* CrashPlayerInfo::add_resources() {
-  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.resources)
-  return resources_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::intPair >&
-CrashPlayerInfo::resources() const {
-  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.resources)
-  return resources_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::intPair >*
-CrashPlayerInfo::mutable_resources() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.resources)
-  return &resources_;
-}
-
-// required int32 map_width = 8;
- bool CrashPlayerInfo::has_map_width() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
- void CrashPlayerInfo::set_has_map_width() {
-  _has_bits_[0] |= 0x00000080u;
-}
- void CrashPlayerInfo::clear_has_map_width() {
-  _has_bits_[0] &= ~0x00000080u;
-}
- void CrashPlayerInfo::clear_map_width() {
-  map_width_ = 0;
-  clear_has_map_width();
-}
- ::google::protobuf::int32 CrashPlayerInfo::map_width() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.map_width)
-  return map_width_;
-}
- void CrashPlayerInfo::set_map_width(::google::protobuf::int32 value) {
-  set_has_map_width();
-  map_width_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_width)
-}
-
-// required int32 map_height = 9;
- bool CrashPlayerInfo::has_map_height() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
- void CrashPlayerInfo::set_has_map_height() {
-  _has_bits_[0] |= 0x00000100u;
-}
- void CrashPlayerInfo::clear_has_map_height() {
-  _has_bits_[0] &= ~0x00000100u;
-}
- void CrashPlayerInfo::clear_map_height() {
-  map_height_ = 0;
-  clear_has_map_height();
-}
- ::google::protobuf::int32 CrashPlayerInfo::map_height() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.map_height)
-  return map_height_;
-}
- void CrashPlayerInfo::set_map_height(::google::protobuf::int32 value) {
-  set_has_map_height();
-  map_height_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_height)
-}
-
-// required int32 map_count = 10;
- bool CrashPlayerInfo::has_map_count() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
-}
- void CrashPlayerInfo::set_has_map_count() {
-  _has_bits_[0] |= 0x00000200u;
-}
- void CrashPlayerInfo::clear_has_map_count() {
-  _has_bits_[0] &= ~0x00000200u;
-}
- void CrashPlayerInfo::clear_map_count() {
-  map_count_ = 0;
-  clear_has_map_count();
-}
- ::google::protobuf::int32 CrashPlayerInfo::map_count() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.map_count)
-  return map_count_;
-}
- void CrashPlayerInfo::set_map_count(::google::protobuf::int32 value) {
-  set_has_map_count();
-  map_count_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.map_count)
-}
-
-// required int32 gold = 11;
- bool CrashPlayerInfo::has_gold() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
-}
- void CrashPlayerInfo::set_has_gold() {
-  _has_bits_[0] |= 0x00000400u;
-}
- void CrashPlayerInfo::clear_has_gold() {
-  _has_bits_[0] &= ~0x00000400u;
-}
- void CrashPlayerInfo::clear_gold() {
-  gold_ = 0;
-  clear_has_gold();
-}
- ::google::protobuf::int32 CrashPlayerInfo::gold() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.gold)
-  return gold_;
-}
- void CrashPlayerInfo::set_gold(::google::protobuf::int32 value) {
-  set_has_gold();
-  gold_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.gold)
-}
-
-// repeated .message.TaskInfo current_task = 12;
- int CrashPlayerInfo::current_task_size() const {
-  return current_task_.size();
-}
- void CrashPlayerInfo::clear_current_task() {
-  current_task_.Clear();
-}
- const ::message::TaskInfo& CrashPlayerInfo::current_task(int index) const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.current_task)
-  return current_task_.Get(index);
-}
- ::message::TaskInfo* CrashPlayerInfo::mutable_current_task(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CrashPlayerInfo.current_task)
-  return current_task_.Mutable(index);
-}
- ::message::TaskInfo* CrashPlayerInfo::add_current_task() {
-  // @@protoc_insertion_point(field_add:message.CrashPlayerInfo.current_task)
-  return current_task_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::TaskInfo >&
-CrashPlayerInfo::current_task() const {
-  // @@protoc_insertion_point(field_list:message.CrashPlayerInfo.current_task)
-  return current_task_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::TaskInfo >*
-CrashPlayerInfo::mutable_current_task() {
-  // @@protoc_insertion_point(field_mutable_list:message.CrashPlayerInfo.current_task)
-  return &current_task_;
-}
-
-// required int32 complete_task_count = 13;
- bool CrashPlayerInfo::has_complete_task_count() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
-}
- void CrashPlayerInfo::set_has_complete_task_count() {
-  _has_bits_[0] |= 0x00001000u;
-}
- void CrashPlayerInfo::clear_has_complete_task_count() {
-  _has_bits_[0] &= ~0x00001000u;
-}
- void CrashPlayerInfo::clear_complete_task_count() {
-  complete_task_count_ = 0;
-  clear_has_complete_task_count();
-}
- ::google::protobuf::int32 CrashPlayerInfo::complete_task_count() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.complete_task_count)
-  return complete_task_count_;
-}
- void CrashPlayerInfo::set_complete_task_count(::google::protobuf::int32 value) {
-  set_has_complete_task_count();
-  complete_task_count_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.complete_task_count)
-}
-
-// required int32 jewel = 14;
- bool CrashPlayerInfo::has_jewel() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
-}
- void CrashPlayerInfo::set_has_jewel() {
-  _has_bits_[0] |= 0x00002000u;
-}
- void CrashPlayerInfo::clear_has_jewel() {
-  _has_bits_[0] &= ~0x00002000u;
-}
- void CrashPlayerInfo::clear_jewel() {
-  jewel_ = 0;
-  clear_has_jewel();
-}
- ::google::protobuf::int32 CrashPlayerInfo::jewel() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.jewel)
-  return jewel_;
-}
- void CrashPlayerInfo::set_jewel(::google::protobuf::int32 value) {
-  set_has_jewel();
-  jewel_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.jewel)
-}
-
-// required uint64 last_accept_task_time = 15;
- bool CrashPlayerInfo::has_last_accept_task_time() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
-}
- void CrashPlayerInfo::set_has_last_accept_task_time() {
-  _has_bits_[0] |= 0x00004000u;
-}
- void CrashPlayerInfo::clear_has_last_accept_task_time() {
-  _has_bits_[0] &= ~0x00004000u;
-}
- void CrashPlayerInfo::clear_last_accept_task_time() {
-  last_accept_task_time_ = GOOGLE_ULONGLONG(0);
-  clear_has_last_accept_task_time();
-}
- ::google::protobuf::uint64 CrashPlayerInfo::last_accept_task_time() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.last_accept_task_time)
-  return last_accept_task_time_;
-}
- void CrashPlayerInfo::set_last_accept_task_time(::google::protobuf::uint64 value) {
-  set_has_last_accept_task_time();
-  last_accept_task_time_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.last_accept_task_time)
-}
-
-// required uint64 last_publish_map_time = 16;
- bool CrashPlayerInfo::has_last_publish_map_time() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
-}
- void CrashPlayerInfo::set_has_last_publish_map_time() {
-  _has_bits_[0] |= 0x00008000u;
-}
- void CrashPlayerInfo::clear_has_last_publish_map_time() {
-  _has_bits_[0] &= ~0x00008000u;
-}
- void CrashPlayerInfo::clear_last_publish_map_time() {
-  last_publish_map_time_ = GOOGLE_ULONGLONG(0);
-  clear_has_last_publish_map_time();
-}
- ::google::protobuf::uint64 CrashPlayerInfo::last_publish_map_time() const {
-  // @@protoc_insertion_point(field_get:message.CrashPlayerInfo.last_publish_map_time)
-  return last_publish_map_time_;
-}
- void CrashPlayerInfo::set_last_publish_map_time(::google::protobuf::uint64 value) {
-  set_has_last_publish_map_time();
-  last_publish_map_time_ = value;
-  // @@protoc_insertion_point(field_set:message.CrashPlayerInfo.last_publish_map_time)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -5821,17 +4408,19 @@ TaskConditionTypeConfig* TaskConditionTypeConfig::New(::google::protobuf::Arena*
 }
 
 void TaskConditionTypeConfig::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<TaskConditionTypeConfig*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<TaskConditionTypeConfig*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(condition_, argu_2_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -6100,83 +4689,6 @@ void TaskConditionTypeConfig::InternalSwap(TaskConditionTypeConfig* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TaskConditionTypeConfig
-
-// required .message.ConditionType condition = 1 [default = ConditionType_NULL];
- bool TaskConditionTypeConfig::has_condition() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void TaskConditionTypeConfig::set_has_condition() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void TaskConditionTypeConfig::clear_has_condition() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void TaskConditionTypeConfig::clear_condition() {
-  condition_ = 0;
-  clear_has_condition();
-}
- ::message::ConditionType TaskConditionTypeConfig::condition() const {
-  // @@protoc_insertion_point(field_get:message.TaskConditionTypeConfig.condition)
-  return static_cast< ::message::ConditionType >(condition_);
-}
- void TaskConditionTypeConfig::set_condition(::message::ConditionType value) {
-  assert(::message::ConditionType_IsValid(value));
-  set_has_condition();
-  condition_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskConditionTypeConfig.condition)
-}
-
-// required int32 argu_1 = 2;
- bool TaskConditionTypeConfig::has_argu_1() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void TaskConditionTypeConfig::set_has_argu_1() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void TaskConditionTypeConfig::clear_has_argu_1() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void TaskConditionTypeConfig::clear_argu_1() {
-  argu_1_ = 0;
-  clear_has_argu_1();
-}
- ::google::protobuf::int32 TaskConditionTypeConfig::argu_1() const {
-  // @@protoc_insertion_point(field_get:message.TaskConditionTypeConfig.argu_1)
-  return argu_1_;
-}
- void TaskConditionTypeConfig::set_argu_1(::google::protobuf::int32 value) {
-  set_has_argu_1();
-  argu_1_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskConditionTypeConfig.argu_1)
-}
-
-// required int32 argu_2 = 3;
- bool TaskConditionTypeConfig::has_argu_2() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void TaskConditionTypeConfig::set_has_argu_2() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void TaskConditionTypeConfig::clear_has_argu_2() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void TaskConditionTypeConfig::clear_argu_2() {
-  argu_2_ = 0;
-  clear_has_argu_2();
-}
- ::google::protobuf::int32 TaskConditionTypeConfig::argu_2() const {
-  // @@protoc_insertion_point(field_get:message.TaskConditionTypeConfig.argu_2)
-  return argu_2_;
-}
- void TaskConditionTypeConfig::set_argu_2(::google::protobuf::int32 value) {
-  set_has_argu_2();
-  argu_2_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskConditionTypeConfig.argu_2)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -6245,17 +4757,19 @@ TaskRewardConfig* TaskRewardConfig::New(::google::protobuf::Arena* arena) const 
 }
 
 void TaskRewardConfig::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<TaskRewardConfig*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<TaskRewardConfig*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(resource_type_, count_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -6483,59 +4997,6 @@ void TaskRewardConfig::InternalSwap(TaskRewardConfig* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TaskRewardConfig
-
-// required .message.ResourceType resource_type = 1 [default = ResourceType_NULL];
- bool TaskRewardConfig::has_resource_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void TaskRewardConfig::set_has_resource_type() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void TaskRewardConfig::clear_has_resource_type() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void TaskRewardConfig::clear_resource_type() {
-  resource_type_ = 0;
-  clear_has_resource_type();
-}
- ::message::ResourceType TaskRewardConfig::resource_type() const {
-  // @@protoc_insertion_point(field_get:message.TaskRewardConfig.resource_type)
-  return static_cast< ::message::ResourceType >(resource_type_);
-}
- void TaskRewardConfig::set_resource_type(::message::ResourceType value) {
-  assert(::message::ResourceType_IsValid(value));
-  set_has_resource_type();
-  resource_type_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskRewardConfig.resource_type)
-}
-
-// required int32 count = 2;
- bool TaskRewardConfig::has_count() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void TaskRewardConfig::set_has_count() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void TaskRewardConfig::clear_has_count() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void TaskRewardConfig::clear_count() {
-  count_ = 0;
-  clear_has_count();
-}
- ::google::protobuf::int32 TaskRewardConfig::count() const {
-  // @@protoc_insertion_point(field_get:message.TaskRewardConfig.count)
-  return count_;
-}
- void TaskRewardConfig::set_count(::google::protobuf::int32 value) {
-  set_has_count();
-  count_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskRewardConfig.count)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -6617,13 +5078,15 @@ TaskInfoConfig* TaskInfoConfig::New(::google::protobuf::Arena* arena) const {
 }
 
 void TaskInfoConfig::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<TaskInfoConfig*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<TaskInfoConfig*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   if (_has_bits_[0 / 32] & 231) {
     ZR_(task_id_, required_pass_chapter_id_);
@@ -6636,7 +5099,7 @@ void TaskInfoConfig::Clear() {
     }
   }
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   conditions_.Clear();
@@ -7129,272 +5592,6 @@ void TaskInfoConfig::InternalSwap(TaskInfoConfig* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TaskInfoConfig
-
-// required int32 task_id = 1;
- bool TaskInfoConfig::has_task_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void TaskInfoConfig::set_has_task_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void TaskInfoConfig::clear_has_task_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void TaskInfoConfig::clear_task_id() {
-  task_id_ = 0;
-  clear_has_task_id();
-}
- ::google::protobuf::int32 TaskInfoConfig::task_id() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.task_id)
-  return task_id_;
-}
- void TaskInfoConfig::set_task_id(::google::protobuf::int32 value) {
-  set_has_task_id();
-  task_id_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.task_id)
-}
-
-// required string name = 2;
- bool TaskInfoConfig::has_name() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void TaskInfoConfig::set_has_name() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void TaskInfoConfig::clear_has_name() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void TaskInfoConfig::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_name();
-}
- const ::std::string& TaskInfoConfig::name() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.name)
-  return name_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void TaskInfoConfig::set_name(const ::std::string& value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.name)
-}
- void TaskInfoConfig::set_name(const char* value) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.TaskInfoConfig.name)
-}
- void TaskInfoConfig::set_name(const char* value, size_t size) {
-  set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.TaskInfoConfig.name)
-}
- ::std::string* TaskInfoConfig::mutable_name() {
-  set_has_name();
-  // @@protoc_insertion_point(field_mutable:message.TaskInfoConfig.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* TaskInfoConfig::release_name() {
-  clear_has_name();
-  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void TaskInfoConfig::set_allocated_name(::std::string* name) {
-  if (name != NULL) {
-    set_has_name();
-  } else {
-    clear_has_name();
-  }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:message.TaskInfoConfig.name)
-}
-
-// required string describe = 3;
- bool TaskInfoConfig::has_describe() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void TaskInfoConfig::set_has_describe() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void TaskInfoConfig::clear_has_describe() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void TaskInfoConfig::clear_describe() {
-  describe_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_describe();
-}
- const ::std::string& TaskInfoConfig::describe() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.describe)
-  return describe_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void TaskInfoConfig::set_describe(const ::std::string& value) {
-  set_has_describe();
-  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.describe)
-}
- void TaskInfoConfig::set_describe(const char* value) {
-  set_has_describe();
-  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.TaskInfoConfig.describe)
-}
- void TaskInfoConfig::set_describe(const char* value, size_t size) {
-  set_has_describe();
-  describe_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.TaskInfoConfig.describe)
-}
- ::std::string* TaskInfoConfig::mutable_describe() {
-  set_has_describe();
-  // @@protoc_insertion_point(field_mutable:message.TaskInfoConfig.describe)
-  return describe_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* TaskInfoConfig::release_describe() {
-  clear_has_describe();
-  return describe_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void TaskInfoConfig::set_allocated_describe(::std::string* describe) {
-  if (describe != NULL) {
-    set_has_describe();
-  } else {
-    clear_has_describe();
-  }
-  describe_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), describe);
-  // @@protoc_insertion_point(field_set_allocated:message.TaskInfoConfig.describe)
-}
-
-// repeated .message.TaskConditionTypeConfig conditions = 4;
- int TaskInfoConfig::conditions_size() const {
-  return conditions_.size();
-}
- void TaskInfoConfig::clear_conditions() {
-  conditions_.Clear();
-}
- const ::message::TaskConditionTypeConfig& TaskInfoConfig::conditions(int index) const {
-  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.conditions)
-  return conditions_.Get(index);
-}
- ::message::TaskConditionTypeConfig* TaskInfoConfig::mutable_conditions(int index) {
-  // @@protoc_insertion_point(field_mutable:message.TaskInfoConfig.conditions)
-  return conditions_.Mutable(index);
-}
- ::message::TaskConditionTypeConfig* TaskInfoConfig::add_conditions() {
-  // @@protoc_insertion_point(field_add:message.TaskInfoConfig.conditions)
-  return conditions_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::TaskConditionTypeConfig >&
-TaskInfoConfig::conditions() const {
-  // @@protoc_insertion_point(field_list:message.TaskInfoConfig.conditions)
-  return conditions_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::TaskConditionTypeConfig >*
-TaskInfoConfig::mutable_conditions() {
-  // @@protoc_insertion_point(field_mutable_list:message.TaskInfoConfig.conditions)
-  return &conditions_;
-}
-
-// repeated .message.TaskRewardConfig rewards = 5;
- int TaskInfoConfig::rewards_size() const {
-  return rewards_.size();
-}
- void TaskInfoConfig::clear_rewards() {
-  rewards_.Clear();
-}
- const ::message::TaskRewardConfig& TaskInfoConfig::rewards(int index) const {
-  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.rewards)
-  return rewards_.Get(index);
-}
- ::message::TaskRewardConfig* TaskInfoConfig::mutable_rewards(int index) {
-  // @@protoc_insertion_point(field_mutable:message.TaskInfoConfig.rewards)
-  return rewards_.Mutable(index);
-}
- ::message::TaskRewardConfig* TaskInfoConfig::add_rewards() {
-  // @@protoc_insertion_point(field_add:message.TaskInfoConfig.rewards)
-  return rewards_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >&
-TaskInfoConfig::rewards() const {
-  // @@protoc_insertion_point(field_list:message.TaskInfoConfig.rewards)
-  return rewards_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::TaskRewardConfig >*
-TaskInfoConfig::mutable_rewards() {
-  // @@protoc_insertion_point(field_mutable_list:message.TaskInfoConfig.rewards)
-  return &rewards_;
-}
-
-// required int32 required_pass_chapter_id = 6;
- bool TaskInfoConfig::has_required_pass_chapter_id() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
- void TaskInfoConfig::set_has_required_pass_chapter_id() {
-  _has_bits_[0] |= 0x00000020u;
-}
- void TaskInfoConfig::clear_has_required_pass_chapter_id() {
-  _has_bits_[0] &= ~0x00000020u;
-}
- void TaskInfoConfig::clear_required_pass_chapter_id() {
-  required_pass_chapter_id_ = 0;
-  clear_has_required_pass_chapter_id();
-}
- ::google::protobuf::int32 TaskInfoConfig::required_pass_chapter_id() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.required_pass_chapter_id)
-  return required_pass_chapter_id_;
-}
- void TaskInfoConfig::set_required_pass_chapter_id(::google::protobuf::int32 value) {
-  set_has_required_pass_chapter_id();
-  required_pass_chapter_id_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.required_pass_chapter_id)
-}
-
-// required int32 required_pass_section_id = 7;
- bool TaskInfoConfig::has_required_pass_section_id() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
- void TaskInfoConfig::set_has_required_pass_section_id() {
-  _has_bits_[0] |= 0x00000040u;
-}
- void TaskInfoConfig::clear_has_required_pass_section_id() {
-  _has_bits_[0] &= ~0x00000040u;
-}
- void TaskInfoConfig::clear_required_pass_section_id() {
-  required_pass_section_id_ = 0;
-  clear_has_required_pass_section_id();
-}
- ::google::protobuf::int32 TaskInfoConfig::required_pass_section_id() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.required_pass_section_id)
-  return required_pass_section_id_;
-}
- void TaskInfoConfig::set_required_pass_section_id(::google::protobuf::int32 value) {
-  set_has_required_pass_section_id();
-  required_pass_section_id_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.required_pass_section_id)
-}
-
-// required int32 required_complete_task_count = 8;
- bool TaskInfoConfig::has_required_complete_task_count() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
- void TaskInfoConfig::set_has_required_complete_task_count() {
-  _has_bits_[0] |= 0x00000080u;
-}
- void TaskInfoConfig::clear_has_required_complete_task_count() {
-  _has_bits_[0] &= ~0x00000080u;
-}
- void TaskInfoConfig::clear_required_complete_task_count() {
-  required_complete_task_count_ = 0;
-  clear_has_required_complete_task_count();
-}
- ::google::protobuf::int32 TaskInfoConfig::required_complete_task_count() const {
-  // @@protoc_insertion_point(field_get:message.TaskInfoConfig.required_complete_task_count)
-  return required_complete_task_count_;
-}
- void TaskInfoConfig::set_required_complete_task_count(::google::protobuf::int32 value) {
-  set_has_required_complete_task_count();
-  required_complete_task_count_ = value;
-  // @@protoc_insertion_point(field_set:message.TaskInfoConfig.required_complete_task_count)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 

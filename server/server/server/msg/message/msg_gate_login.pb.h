@@ -111,18 +111,18 @@ class GTLGData : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 account = 1;
-  bool has_account() const;
-  void clear_account();
+  inline bool has_account() const;
+  inline void clear_account();
   static const int kAccountFieldNumber = 1;
-  ::google::protobuf::uint32 account() const;
-  void set_account(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 account() const;
+  inline void set_account(::google::protobuf::uint32 value);
 
   // required uint32 transid = 2;
-  bool has_transid() const;
-  void clear_transid();
+  inline bool has_transid() const;
+  inline void clear_transid();
   static const int kTransidFieldNumber = 2;
-  ::google::protobuf::uint32 transid() const;
-  void set_transid(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 transid() const;
+  inline void set_transid(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.GTLGData)
  private:
@@ -213,13 +213,13 @@ class MsgLN2GTUserLogin : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.GTLGData data = 1;
-  bool has_data() const;
-  void clear_data();
+  inline bool has_data() const;
+  inline void clear_data();
   static const int kDataFieldNumber = 1;
-  const ::message::GTLGData& data() const;
-  ::message::GTLGData* mutable_data();
-  ::message::GTLGData* release_data();
-  void set_allocated_data(::message::GTLGData* data);
+  inline const ::message::GTLGData& data() const;
+  inline ::message::GTLGData* mutable_data();
+  inline ::message::GTLGData* release_data();
+  inline void set_allocated_data(::message::GTLGData* data);
 
   // @@protoc_insertion_point(class_scope:message.MsgLN2GTUserLogin)
  private:
@@ -304,13 +304,13 @@ class MsgLN2GTKickUser : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.GTLGData data = 1;
-  bool has_data() const;
-  void clear_data();
+  inline bool has_data() const;
+  inline void clear_data();
   static const int kDataFieldNumber = 1;
-  const ::message::GTLGData& data() const;
-  ::message::GTLGData* mutable_data();
-  ::message::GTLGData* release_data();
-  void set_allocated_data(::message::GTLGData* data);
+  inline const ::message::GTLGData& data() const;
+  inline ::message::GTLGData* mutable_data();
+  inline ::message::GTLGData* release_data();
+  inline void set_allocated_data(::message::GTLGData* data);
 
   // @@protoc_insertion_point(class_scope:message.MsgLN2GTKickUser)
  private:
@@ -395,11 +395,11 @@ class MsgGT2LNOnlines : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 onlines = 1;
-  bool has_onlines() const;
-  void clear_onlines();
+  inline bool has_onlines() const;
+  inline void clear_onlines();
   static const int kOnlinesFieldNumber = 1;
-  ::google::protobuf::uint32 onlines() const;
-  void set_onlines(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 onlines() const;
+  inline void set_onlines(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgGT2LNOnlines)
  private:
@@ -484,11 +484,11 @@ class MsgGT2LNPrepar : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 account = 1;
-  bool has_account() const;
-  void clear_account();
+  inline bool has_account() const;
+  inline void clear_account();
   static const int kAccountFieldNumber = 1;
-  ::google::protobuf::uint32 account() const;
-  void set_account(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 account() const;
+  inline void set_account(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgGT2LNPrepar)
  private:
@@ -573,43 +573,43 @@ class MsgGTRegisterLG : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required .message.MsgServerRegister GateInfo = 1;
-  bool has_gateinfo() const;
-  void clear_gateinfo();
+  inline bool has_gateinfo() const;
+  inline void clear_gateinfo();
   static const int kGateInfoFieldNumber = 1;
-  const ::message::MsgServerRegister& gateinfo() const;
-  ::message::MsgServerRegister* mutable_gateinfo();
-  ::message::MsgServerRegister* release_gateinfo();
-  void set_allocated_gateinfo(::message::MsgServerRegister* gateinfo);
+  inline const ::message::MsgServerRegister& gateinfo() const;
+  inline ::message::MsgServerRegister* mutable_gateinfo();
+  inline ::message::MsgServerRegister* release_gateinfo();
+  inline void set_allocated_gateinfo(::message::MsgServerRegister* gateinfo);
 
   // required string ip = 2;
-  bool has_ip() const;
-  void clear_ip();
+  inline bool has_ip() const;
+  inline void clear_ip();
   static const int kIpFieldNumber = 2;
-  const ::std::string& ip() const;
-  void set_ip(const ::std::string& value);
-  void set_ip(const char* value);
-  void set_ip(const char* value, size_t size);
-  ::std::string* mutable_ip();
-  ::std::string* release_ip();
-  void set_allocated_ip(::std::string* ip);
+  inline const ::std::string& ip() const;
+  inline void set_ip(const ::std::string& value);
+  inline void set_ip(const char* value);
+  inline void set_ip(const char* value, size_t size);
+  inline ::std::string* mutable_ip();
+  inline ::std::string* release_ip();
+  inline void set_allocated_ip(::std::string* ip);
 
   // required uint32 port = 3;
-  bool has_port() const;
-  void clear_port();
+  inline bool has_port() const;
+  inline void clear_port();
   static const int kPortFieldNumber = 3;
-  ::google::protobuf::uint32 port() const;
-  void set_port(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 port() const;
+  inline void set_port(::google::protobuf::uint32 value);
 
   // repeated .message.GTLGData Accounts = 4;
-  int accounts_size() const;
-  void clear_accounts();
+  inline int accounts_size() const;
+  inline void clear_accounts();
   static const int kAccountsFieldNumber = 4;
-  const ::message::GTLGData& accounts(int index) const;
-  ::message::GTLGData* mutable_accounts(int index);
-  ::message::GTLGData* add_accounts();
-  const ::google::protobuf::RepeatedPtrField< ::message::GTLGData >&
+  inline const ::message::GTLGData& accounts(int index) const;
+  inline ::message::GTLGData* mutable_accounts(int index);
+  inline ::message::GTLGData* add_accounts();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::GTLGData >&
       accounts() const;
-  ::google::protobuf::RepeatedPtrField< ::message::GTLGData >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::GTLGData >*
       mutable_accounts();
 
   // @@protoc_insertion_point(class_scope:message.MsgGTRegisterLG)
@@ -643,7 +643,6 @@ class MsgGTRegisterLG : public ::google::protobuf::Message {
 
 // ===================================================================
 
-#if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // GTLGData
 
 // required uint32 account = 1;
@@ -998,11 +997,19 @@ MsgGTRegisterLG::mutable_accounts() {
   return &accounts_;
 }
 
-#endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace message
+
+#ifndef SWIG
+namespace google {
+namespace protobuf {
+
+
+}  // namespace protobuf
+}  // namespace google
+#endif  // SWIG
 
 // @@protoc_insertion_point(global_scope)
 

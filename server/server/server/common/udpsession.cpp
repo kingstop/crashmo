@@ -1,3 +1,4 @@
+/*
 #include "udpsession.h"
 #include "asiodef.h"
 static char static_compress_buffer[RECEIVEBUFFLENGTH];
@@ -173,17 +174,10 @@ bool udp_session::_uncompress_message(char* data)
 	message_t* msg = message_interface::uncompress(this, data, &m_recv_crypt_key, static_compress_buffer, size);
 	if (NULL == msg)
 	{
-		/*
-
-		if (m_father)
-		{
-			m_father->add_ban_ip(this->get_remote_address_ui(), 120, net_global::BAN_REASON_WRONG_CHECK_SUM);
-		}
-		this->close();
-		*/
 		return false;
 	}
 
-	//push_message(msg);
 	return true;
 }
+
+*/

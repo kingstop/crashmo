@@ -360,35 +360,6 @@ void MsgS2CCreatePlayerError::InternalSwap(MsgS2CCreatePlayerError* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgS2CCreatePlayerError
-
-// required .message.enumCreateCharResult result = 1;
- bool MsgS2CCreatePlayerError::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgS2CCreatePlayerError::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgS2CCreatePlayerError::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgS2CCreatePlayerError::clear_result() {
-  result_ = 0;
-  clear_has_result();
-}
- ::message::enumCreateCharResult MsgS2CCreatePlayerError::result() const {
-  // @@protoc_insertion_point(field_get:message.MsgS2CCreatePlayerError.result)
-  return static_cast< ::message::enumCreateCharResult >(result_);
-}
- void MsgS2CCreatePlayerError::set_result(::message::enumCreateCharResult value) {
-  assert(::message::enumCreateCharResult_IsValid(value));
-  set_has_result();
-  result_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgS2CCreatePlayerError.result)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 

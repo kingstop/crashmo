@@ -107,32 +107,32 @@ class ServerVersion : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 Major = 1;
-  bool has_major() const;
-  void clear_major();
+  inline bool has_major() const;
+  inline void clear_major();
   static const int kMajorFieldNumber = 1;
-  ::google::protobuf::uint32 major() const;
-  void set_major(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 major() const;
+  inline void set_major(::google::protobuf::uint32 value);
 
   // required uint32 Minor = 2;
-  bool has_minor() const;
-  void clear_minor();
+  inline bool has_minor() const;
+  inline void clear_minor();
   static const int kMinorFieldNumber = 2;
-  ::google::protobuf::uint32 minor() const;
-  void set_minor(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 minor() const;
+  inline void set_minor(::google::protobuf::uint32 value);
 
   // required uint32 Build = 3;
-  bool has_build() const;
-  void clear_build();
+  inline bool has_build() const;
+  inline void clear_build();
   static const int kBuildFieldNumber = 3;
-  ::google::protobuf::uint32 build() const;
-  void set_build(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 build() const;
+  inline void set_build(::google::protobuf::uint32 value);
 
   // required uint32 AppSvn = 4;
-  bool has_appsvn() const;
-  void clear_appsvn();
+  inline bool has_appsvn() const;
+  inline void clear_appsvn();
   static const int kAppSvnFieldNumber = 4;
-  ::google::protobuf::uint32 appsvn() const;
-  void set_appsvn(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 appsvn() const;
+  inline void set_appsvn(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.ServerVersion)
  private:
@@ -229,20 +229,20 @@ class MsgServerRegister : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 ServerId = 1;
-  bool has_serverid() const;
-  void clear_serverid();
+  inline bool has_serverid() const;
+  inline void clear_serverid();
   static const int kServerIdFieldNumber = 1;
-  ::google::protobuf::uint32 serverid() const;
-  void set_serverid(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 serverid() const;
+  inline void set_serverid(::google::protobuf::uint32 value);
 
   // required .message.ServerVersion Version = 2;
-  bool has_version() const;
-  void clear_version();
+  inline bool has_version() const;
+  inline void clear_version();
   static const int kVersionFieldNumber = 2;
-  const ::message::ServerVersion& version() const;
-  ::message::ServerVersion* mutable_version();
-  ::message::ServerVersion* release_version();
-  void set_allocated_version(::message::ServerVersion* version);
+  inline const ::message::ServerVersion& version() const;
+  inline ::message::ServerVersion* mutable_version();
+  inline ::message::ServerVersion* release_version();
+  inline void set_allocated_version(::message::ServerVersion* version);
 
   // @@protoc_insertion_point(class_scope:message.MsgServerRegister)
  private:
@@ -333,11 +333,11 @@ class MsgDB2GTChangeGS : public ::google::protobuf::Message {
   // accessors -------------------------------------------------------
 
   // required uint32 GameServerID = 1;
-  bool has_gameserverid() const;
-  void clear_gameserverid();
+  inline bool has_gameserverid() const;
+  inline void clear_gameserverid();
   static const int kGameServerIDFieldNumber = 1;
-  ::google::protobuf::uint32 gameserverid() const;
-  void set_gameserverid(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 gameserverid() const;
+  inline void set_gameserverid(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:message.MsgDB2GTChangeGS)
  private:
@@ -360,7 +360,6 @@ class MsgDB2GTChangeGS : public ::google::protobuf::Message {
 
 // ===================================================================
 
-#if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // ServerVersion
 
 // required uint32 Major = 1;
@@ -558,11 +557,19 @@ inline void MsgDB2GTChangeGS::set_gameserverid(::google::protobuf::uint32 value)
   // @@protoc_insertion_point(field_set:message.MsgDB2GTChangeGS.GameServerID)
 }
 
-#endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace message
+
+#ifndef SWIG
+namespace google {
+namespace protobuf {
+
+
+}  // namespace protobuf
+}  // namespace google
+#endif  // SWIG
 
 // @@protoc_insertion_point(global_scope)
 

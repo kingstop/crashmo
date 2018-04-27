@@ -419,53 +419,6 @@ void MsgGT2GSAddUser::InternalSwap(MsgGT2GSAddUser* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgGT2GSAddUser
-
-// required .message.GTLGData data = 1;
- bool MsgGT2GSAddUser::has_data() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgGT2GSAddUser::set_has_data() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgGT2GSAddUser::clear_has_data() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgGT2GSAddUser::clear_data() {
-  if (data_ != NULL) data_->::message::GTLGData::Clear();
-  clear_has_data();
-}
- const ::message::GTLGData& MsgGT2GSAddUser::data() const {
-  // @@protoc_insertion_point(field_get:message.MsgGT2GSAddUser.data)
-  return data_ != NULL ? *data_ : *default_instance_->data_;
-}
- ::message::GTLGData* MsgGT2GSAddUser::mutable_data() {
-  set_has_data();
-  if (data_ == NULL) {
-    data_ = new ::message::GTLGData;
-  }
-  // @@protoc_insertion_point(field_mutable:message.MsgGT2GSAddUser.data)
-  return data_;
-}
- ::message::GTLGData* MsgGT2GSAddUser::release_data() {
-  clear_has_data();
-  ::message::GTLGData* temp = data_;
-  data_ = NULL;
-  return temp;
-}
- void MsgGT2GSAddUser::set_allocated_data(::message::GTLGData* data) {
-  delete data_;
-  data_ = data;
-  if (data) {
-    set_has_data();
-  } else {
-    clear_has_data();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.MsgGT2GSAddUser.data)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -697,34 +650,6 @@ void MsgGT2GSRemoveUser::InternalSwap(MsgGT2GSRemoveUser* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgGT2GSRemoveUser
-
-// required uint32 trans = 1;
- bool MsgGT2GSRemoveUser::has_trans() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgGT2GSRemoveUser::set_has_trans() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgGT2GSRemoveUser::clear_has_trans() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgGT2GSRemoveUser::clear_trans() {
-  trans_ = 0u;
-  clear_has_trans();
-}
- ::google::protobuf::uint32 MsgGT2GSRemoveUser::trans() const {
-  // @@protoc_insertion_point(field_get:message.MsgGT2GSRemoveUser.trans)
-  return trans_;
-}
- void MsgGT2GSRemoveUser::set_trans(::google::protobuf::uint32 value) {
-  set_has_trans();
-  trans_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgGT2GSRemoveUser.trans)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -956,34 +881,6 @@ void MsgGT2GSOfflineUser::InternalSwap(MsgGT2GSOfflineUser* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgGT2GSOfflineUser
-
-// required uint32 trans = 1;
- bool MsgGT2GSOfflineUser::has_trans() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgGT2GSOfflineUser::set_has_trans() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgGT2GSOfflineUser::clear_has_trans() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgGT2GSOfflineUser::clear_trans() {
-  trans_ = 0u;
-  clear_has_trans();
-}
- ::google::protobuf::uint32 MsgGT2GSOfflineUser::trans() const {
-  // @@protoc_insertion_point(field_get:message.MsgGT2GSOfflineUser.trans)
-  return trans_;
-}
- void MsgGT2GSOfflineUser::set_trans(::google::protobuf::uint32 value) {
-  set_has_trans();
-  trans_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgGT2GSOfflineUser.trans)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1215,34 +1112,6 @@ void MsgGS2GTOnlines::InternalSwap(MsgGS2GTOnlines* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// MsgGS2GTOnlines
-
-// required uint32 onlines = 1;
- bool MsgGS2GTOnlines::has_onlines() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void MsgGS2GTOnlines::set_has_onlines() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void MsgGS2GTOnlines::clear_has_onlines() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void MsgGS2GTOnlines::clear_onlines() {
-  onlines_ = 0u;
-  clear_has_onlines();
-}
- ::google::protobuf::uint32 MsgGS2GTOnlines::onlines() const {
-  // @@protoc_insertion_point(field_get:message.MsgGS2GTOnlines.onlines)
-  return onlines_;
-}
- void MsgGS2GTOnlines::set_onlines(::google::protobuf::uint32 value) {
-  set_has_onlines();
-  onlines_ = value;
-  // @@protoc_insertion_point(field_set:message.MsgGS2GTOnlines.onlines)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 

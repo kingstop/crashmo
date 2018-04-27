@@ -1,3 +1,5 @@
+/*
+
 #include "udpserver.h"
 #include <iostream>
 
@@ -24,14 +26,6 @@ udp_server::~udp_server()
 }
 bool udp_server::Init(u32 host, s32 port)
 {
-	_address.host = host;
-	_address.port = port;
-	_server = enet_host_create(&_address /* the address to bind the server host to */,
-		32      /* allow up to 32 clients and/or outgoing connections */,
-		2      /* allow up to 2 channels to be used, 0 and 1 */,
-		0      /* assume any amount of incoming bandwidth */,
-		0      /* assume any amount of outgoing bandwidth */);
-
 	if (_server == NULL)
 	{
 		DeinitEnet();
@@ -76,3 +70,4 @@ void udp_server::Run()
 	}
 
 }
+*/

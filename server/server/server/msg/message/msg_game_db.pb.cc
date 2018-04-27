@@ -568,34 +568,6 @@ void ApplyCharacterDataReq::InternalSwap(ApplyCharacterDataReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// ApplyCharacterDataReq
-
-// required uint64 account = 1;
- bool ApplyCharacterDataReq::has_account() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void ApplyCharacterDataReq::set_has_account() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void ApplyCharacterDataReq::clear_has_account() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void ApplyCharacterDataReq::clear_account() {
-  account_ = GOOGLE_ULONGLONG(0);
-  clear_has_account();
-}
- ::google::protobuf::uint64 ApplyCharacterDataReq::account() const {
-  // @@protoc_insertion_point(field_get:message.ApplyCharacterDataReq.account)
-  return account_;
-}
- void ApplyCharacterDataReq::set_account(::google::protobuf::uint64 value) {
-  set_has_account();
-  account_ = value;
-  // @@protoc_insertion_point(field_set:message.ApplyCharacterDataReq.account)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -827,34 +799,6 @@ void NeedCreateCharacter::InternalSwap(NeedCreateCharacter* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// NeedCreateCharacter
-
-// required uint64 account = 1;
- bool NeedCreateCharacter::has_account() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void NeedCreateCharacter::set_has_account() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void NeedCreateCharacter::clear_has_account() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void NeedCreateCharacter::clear_account() {
-  account_ = GOOGLE_ULONGLONG(0);
-  clear_has_account();
-}
- ::google::protobuf::uint64 NeedCreateCharacter::account() const {
-  // @@protoc_insertion_point(field_get:message.NeedCreateCharacter.account)
-  return account_;
-}
- void NeedCreateCharacter::set_account(::google::protobuf::uint64 value) {
-  set_has_account();
-  account_ = value;
-  // @@protoc_insertion_point(field_set:message.NeedCreateCharacter.account)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -923,17 +867,19 @@ gs2dbDelOfficileReq* gs2dbDelOfficileReq::New(::google::protobuf::Arena* arena) 
 }
 
 void gs2dbDelOfficileReq::Clear() {
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<gs2dbDelOfficileReq*>(16)->f)
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<gs2dbDelOfficileReq*>(16)->f) - \
+   reinterpret_cast<char*>(16))
 
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
 
   ZR_(section_, number_);
 
-#undef ZR_HELPER_
+#undef OFFSET_OF_FIELD_
 #undef ZR_
 
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1156,58 +1102,6 @@ void gs2dbDelOfficileReq::InternalSwap(gs2dbDelOfficileReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// gs2dbDelOfficileReq
-
-// required int32 section = 1;
- bool gs2dbDelOfficileReq::has_section() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void gs2dbDelOfficileReq::set_has_section() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void gs2dbDelOfficileReq::clear_has_section() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void gs2dbDelOfficileReq::clear_section() {
-  section_ = 0;
-  clear_has_section();
-}
- ::google::protobuf::int32 gs2dbDelOfficileReq::section() const {
-  // @@protoc_insertion_point(field_get:message.gs2dbDelOfficileReq.section)
-  return section_;
-}
- void gs2dbDelOfficileReq::set_section(::google::protobuf::int32 value) {
-  set_has_section();
-  section_ = value;
-  // @@protoc_insertion_point(field_set:message.gs2dbDelOfficileReq.section)
-}
-
-// required int32 number = 2;
- bool gs2dbDelOfficileReq::has_number() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void gs2dbDelOfficileReq::set_has_number() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void gs2dbDelOfficileReq::clear_has_number() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void gs2dbDelOfficileReq::clear_number() {
-  number_ = 0;
-  clear_has_number();
-}
- ::google::protobuf::int32 gs2dbDelOfficileReq::number() const {
-  // @@protoc_insertion_point(field_get:message.gs2dbDelOfficileReq.number)
-  return number_;
-}
- void gs2dbDelOfficileReq::set_number(::google::protobuf::int32 value) {
-  set_has_number();
-  number_ = value;
-  // @@protoc_insertion_point(field_set:message.gs2dbDelOfficileReq.number)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1557,102 +1451,6 @@ void gs2dbSaveMapReq::InternalSwap(gs2dbSaveMapReq* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// gs2dbSaveMapReq
-
-// required .message.CrashMapData data = 1;
- bool gs2dbSaveMapReq::has_data() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void gs2dbSaveMapReq::set_has_data() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void gs2dbSaveMapReq::clear_has_data() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void gs2dbSaveMapReq::clear_data() {
-  if (data_ != NULL) data_->::message::CrashMapData::Clear();
-  clear_has_data();
-}
- const ::message::CrashMapData& gs2dbSaveMapReq::data() const {
-  // @@protoc_insertion_point(field_get:message.gs2dbSaveMapReq.data)
-  return data_ != NULL ? *data_ : *default_instance_->data_;
-}
- ::message::CrashMapData* gs2dbSaveMapReq::mutable_data() {
-  set_has_data();
-  if (data_ == NULL) {
-    data_ = new ::message::CrashMapData;
-  }
-  // @@protoc_insertion_point(field_mutable:message.gs2dbSaveMapReq.data)
-  return data_;
-}
- ::message::CrashMapData* gs2dbSaveMapReq::release_data() {
-  clear_has_data();
-  ::message::CrashMapData* temp = data_;
-  data_ = NULL;
-  return temp;
-}
- void gs2dbSaveMapReq::set_allocated_data(::message::CrashMapData* data) {
-  delete data_;
-  data_ = data;
-  if (data) {
-    set_has_data();
-  } else {
-    clear_has_data();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.gs2dbSaveMapReq.data)
-}
-
-// required uint64 account = 2;
- bool gs2dbSaveMapReq::has_account() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
- void gs2dbSaveMapReq::set_has_account() {
-  _has_bits_[0] |= 0x00000002u;
-}
- void gs2dbSaveMapReq::clear_has_account() {
-  _has_bits_[0] &= ~0x00000002u;
-}
- void gs2dbSaveMapReq::clear_account() {
-  account_ = GOOGLE_ULONGLONG(0);
-  clear_has_account();
-}
- ::google::protobuf::uint64 gs2dbSaveMapReq::account() const {
-  // @@protoc_insertion_point(field_get:message.gs2dbSaveMapReq.account)
-  return account_;
-}
- void gs2dbSaveMapReq::set_account(::google::protobuf::uint64 value) {
-  set_has_account();
-  account_ = value;
-  // @@protoc_insertion_point(field_set:message.gs2dbSaveMapReq.account)
-}
-
-// required .message.MapType type = 3;
- bool gs2dbSaveMapReq::has_type() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
- void gs2dbSaveMapReq::set_has_type() {
-  _has_bits_[0] |= 0x00000004u;
-}
- void gs2dbSaveMapReq::clear_has_type() {
-  _has_bits_[0] &= ~0x00000004u;
-}
- void gs2dbSaveMapReq::clear_type() {
-  type_ = 1;
-  clear_has_type();
-}
- ::message::MapType gs2dbSaveMapReq::type() const {
-  // @@protoc_insertion_point(field_get:message.gs2dbSaveMapReq.type)
-  return static_cast< ::message::MapType >(type_);
-}
- void gs2dbSaveMapReq::set_type(::message::MapType value) {
-  assert(::message::MapType_IsValid(value));
-  set_has_type();
-  type_ = value;
-  // @@protoc_insertion_point(field_set:message.gs2dbSaveMapReq.type)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -1932,83 +1730,6 @@ void CharacterDataACK::InternalSwap(CharacterDataACK* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// CharacterDataACK
-
-// required .message.CrashPlayerInfo data = 1;
- bool CharacterDataACK::has_data() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void CharacterDataACK::set_has_data() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void CharacterDataACK::clear_has_data() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void CharacterDataACK::clear_data() {
-  if (data_ != NULL) data_->::message::CrashPlayerInfo::Clear();
-  clear_has_data();
-}
- const ::message::CrashPlayerInfo& CharacterDataACK::data() const {
-  // @@protoc_insertion_point(field_get:message.CharacterDataACK.data)
-  return data_ != NULL ? *data_ : *default_instance_->data_;
-}
- ::message::CrashPlayerInfo* CharacterDataACK::mutable_data() {
-  set_has_data();
-  if (data_ == NULL) {
-    data_ = new ::message::CrashPlayerInfo;
-  }
-  // @@protoc_insertion_point(field_mutable:message.CharacterDataACK.data)
-  return data_;
-}
- ::message::CrashPlayerInfo* CharacterDataACK::release_data() {
-  clear_has_data();
-  ::message::CrashPlayerInfo* temp = data_;
-  data_ = NULL;
-  return temp;
-}
- void CharacterDataACK::set_allocated_data(::message::CrashPlayerInfo* data) {
-  delete data_;
-  data_ = data;
-  if (data) {
-    set_has_data();
-  } else {
-    clear_has_data();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.CharacterDataACK.data)
-}
-
-// repeated .message.CrashMapData maps = 2;
- int CharacterDataACK::maps_size() const {
-  return maps_.size();
-}
- void CharacterDataACK::clear_maps() {
-  maps_.Clear();
-}
- const ::message::CrashMapData& CharacterDataACK::maps(int index) const {
-  // @@protoc_insertion_point(field_get:message.CharacterDataACK.maps)
-  return maps_.Get(index);
-}
- ::message::CrashMapData* CharacterDataACK::mutable_maps(int index) {
-  // @@protoc_insertion_point(field_mutable:message.CharacterDataACK.maps)
-  return maps_.Mutable(index);
-}
- ::message::CrashMapData* CharacterDataACK::add_maps() {
-  // @@protoc_insertion_point(field_add:message.CharacterDataACK.maps)
-  return maps_.Add();
-}
- const ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >&
-CharacterDataACK::maps() const {
-  // @@protoc_insertion_point(field_list:message.CharacterDataACK.maps)
-  return maps_;
-}
- ::google::protobuf::RepeatedPtrField< ::message::CrashMapData >*
-CharacterDataACK::mutable_maps() {
-  // @@protoc_insertion_point(field_mutable_list:message.CharacterDataACK.maps)
-  return &maps_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -2248,53 +1969,6 @@ void ReqSaveCharacterData::InternalSwap(ReqSaveCharacterData* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// ReqSaveCharacterData
-
-// required .message.CrashPlayerInfo data = 1;
- bool ReqSaveCharacterData::has_data() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void ReqSaveCharacterData::set_has_data() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void ReqSaveCharacterData::clear_has_data() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void ReqSaveCharacterData::clear_data() {
-  if (data_ != NULL) data_->::message::CrashPlayerInfo::Clear();
-  clear_has_data();
-}
- const ::message::CrashPlayerInfo& ReqSaveCharacterData::data() const {
-  // @@protoc_insertion_point(field_get:message.ReqSaveCharacterData.data)
-  return data_ != NULL ? *data_ : *default_instance_->data_;
-}
- ::message::CrashPlayerInfo* ReqSaveCharacterData::mutable_data() {
-  set_has_data();
-  if (data_ == NULL) {
-    data_ = new ::message::CrashPlayerInfo;
-  }
-  // @@protoc_insertion_point(field_mutable:message.ReqSaveCharacterData.data)
-  return data_;
-}
- ::message::CrashPlayerInfo* ReqSaveCharacterData::release_data() {
-  clear_has_data();
-  ::message::CrashPlayerInfo* temp = data_;
-  data_ = NULL;
-  return temp;
-}
- void ReqSaveCharacterData::set_allocated_data(::message::CrashPlayerInfo* data) {
-  delete data_;
-  data_ = data;
-  if (data) {
-    set_has_data();
-  } else {
-    clear_has_data();
-  }
-  // @@protoc_insertion_point(field_set_allocated:message.ReqSaveCharacterData.data)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -2544,63 +2218,6 @@ void ReqSaveOfficilMap::InternalSwap(ReqSaveOfficilMap* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// ReqSaveOfficilMap
-
-// required string sql = 1;
- bool ReqSaveOfficilMap::has_sql() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void ReqSaveOfficilMap::set_has_sql() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void ReqSaveOfficilMap::clear_has_sql() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void ReqSaveOfficilMap::clear_sql() {
-  sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_sql();
-}
- const ::std::string& ReqSaveOfficilMap::sql() const {
-  // @@protoc_insertion_point(field_get:message.ReqSaveOfficilMap.sql)
-  return sql_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void ReqSaveOfficilMap::set_sql(const ::std::string& value) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.ReqSaveOfficilMap.sql)
-}
- void ReqSaveOfficilMap::set_sql(const char* value) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.ReqSaveOfficilMap.sql)
-}
- void ReqSaveOfficilMap::set_sql(const char* value, size_t size) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.ReqSaveOfficilMap.sql)
-}
- ::std::string* ReqSaveOfficilMap::mutable_sql() {
-  set_has_sql();
-  // @@protoc_insertion_point(field_mutable:message.ReqSaveOfficilMap.sql)
-  return sql_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* ReqSaveOfficilMap::release_sql() {
-  clear_has_sql();
-  return sql_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void ReqSaveOfficilMap::set_allocated_sql(::std::string* sql) {
-  if (sql != NULL) {
-    set_has_sql();
-  } else {
-    clear_has_sql();
-  }
-  sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
-  // @@protoc_insertion_point(field_set_allocated:message.ReqSaveOfficilMap.sql)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -2850,63 +2467,6 @@ void ReqSaveOfficilSectionNames::InternalSwap(ReqSaveOfficilSectionNames* other)
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// ReqSaveOfficilSectionNames
-
-// required string sql = 1;
- bool ReqSaveOfficilSectionNames::has_sql() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void ReqSaveOfficilSectionNames::set_has_sql() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void ReqSaveOfficilSectionNames::clear_has_sql() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void ReqSaveOfficilSectionNames::clear_sql() {
-  sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_sql();
-}
- const ::std::string& ReqSaveOfficilSectionNames::sql() const {
-  // @@protoc_insertion_point(field_get:message.ReqSaveOfficilSectionNames.sql)
-  return sql_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void ReqSaveOfficilSectionNames::set_sql(const ::std::string& value) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.ReqSaveOfficilSectionNames.sql)
-}
- void ReqSaveOfficilSectionNames::set_sql(const char* value) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.ReqSaveOfficilSectionNames.sql)
-}
- void ReqSaveOfficilSectionNames::set_sql(const char* value, size_t size) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.ReqSaveOfficilSectionNames.sql)
-}
- ::std::string* ReqSaveOfficilSectionNames::mutable_sql() {
-  set_has_sql();
-  // @@protoc_insertion_point(field_mutable:message.ReqSaveOfficilSectionNames.sql)
-  return sql_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* ReqSaveOfficilSectionNames::release_sql() {
-  clear_has_sql();
-  return sql_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void ReqSaveOfficilSectionNames::set_allocated_sql(::std::string* sql) {
-  if (sql != NULL) {
-    set_has_sql();
-  } else {
-    clear_has_sql();
-  }
-  sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
-  // @@protoc_insertion_point(field_set_allocated:message.ReqSaveOfficilSectionNames.sql)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -3156,63 +2716,6 @@ void ReqSaveCharacterDBSql::InternalSwap(ReqSaveCharacterDBSql* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// ReqSaveCharacterDBSql
-
-// required string sql = 1;
- bool ReqSaveCharacterDBSql::has_sql() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void ReqSaveCharacterDBSql::set_has_sql() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void ReqSaveCharacterDBSql::clear_has_sql() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void ReqSaveCharacterDBSql::clear_sql() {
-  sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_sql();
-}
- const ::std::string& ReqSaveCharacterDBSql::sql() const {
-  // @@protoc_insertion_point(field_get:message.ReqSaveCharacterDBSql.sql)
-  return sql_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void ReqSaveCharacterDBSql::set_sql(const ::std::string& value) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.ReqSaveCharacterDBSql.sql)
-}
- void ReqSaveCharacterDBSql::set_sql(const char* value) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.ReqSaveCharacterDBSql.sql)
-}
- void ReqSaveCharacterDBSql::set_sql(const char* value, size_t size) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.ReqSaveCharacterDBSql.sql)
-}
- ::std::string* ReqSaveCharacterDBSql::mutable_sql() {
-  set_has_sql();
-  // @@protoc_insertion_point(field_mutable:message.ReqSaveCharacterDBSql.sql)
-  return sql_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* ReqSaveCharacterDBSql::release_sql() {
-  clear_has_sql();
-  return sql_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void ReqSaveCharacterDBSql::set_allocated_sql(::std::string* sql) {
-  if (sql != NULL) {
-    set_has_sql();
-  } else {
-    clear_has_sql();
-  }
-  sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
-  // @@protoc_insertion_point(field_set_allocated:message.ReqSaveCharacterDBSql.sql)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -3462,63 +2965,6 @@ void gs2dbWorldDatabaseSql::InternalSwap(gs2dbWorldDatabaseSql* other) {
   return metadata;
 }
 
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// gs2dbWorldDatabaseSql
-
-// required string sql = 1;
- bool gs2dbWorldDatabaseSql::has_sql() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
- void gs2dbWorldDatabaseSql::set_has_sql() {
-  _has_bits_[0] |= 0x00000001u;
-}
- void gs2dbWorldDatabaseSql::clear_has_sql() {
-  _has_bits_[0] &= ~0x00000001u;
-}
- void gs2dbWorldDatabaseSql::clear_sql() {
-  sql_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_sql();
-}
- const ::std::string& gs2dbWorldDatabaseSql::sql() const {
-  // @@protoc_insertion_point(field_get:message.gs2dbWorldDatabaseSql.sql)
-  return sql_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void gs2dbWorldDatabaseSql::set_sql(const ::std::string& value) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:message.gs2dbWorldDatabaseSql.sql)
-}
- void gs2dbWorldDatabaseSql::set_sql(const char* value) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:message.gs2dbWorldDatabaseSql.sql)
-}
- void gs2dbWorldDatabaseSql::set_sql(const char* value, size_t size) {
-  set_has_sql();
-  sql_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:message.gs2dbWorldDatabaseSql.sql)
-}
- ::std::string* gs2dbWorldDatabaseSql::mutable_sql() {
-  set_has_sql();
-  // @@protoc_insertion_point(field_mutable:message.gs2dbWorldDatabaseSql.sql)
-  return sql_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- ::std::string* gs2dbWorldDatabaseSql::release_sql() {
-  clear_has_sql();
-  return sql_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
- void gs2dbWorldDatabaseSql::set_allocated_sql(::std::string* sql) {
-  if (sql != NULL) {
-    set_has_sql();
-  } else {
-    clear_has_sql();
-  }
-  sql_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sql);
-  // @@protoc_insertion_point(field_set_allocated:message.gs2dbWorldDatabaseSql.sql)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // @@protoc_insertion_point(namespace_scope)
 
