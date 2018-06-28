@@ -23,9 +23,12 @@ public class CenterScaleComponent : MonoBehaviour {
             Vector2 offset = _Content.GetOffset();
             float dis = offset.x * offset.x + offset.y * offset.y;
             dis = Mathf.Sqrt(dis);
-            int temp_x = (int)offset.x;
-            float x = offset.x - temp_x;
-            if(x > 0.5)
+            //int temp_x = (int)offset.x;
+            
+
+			Debug.LogWarning ("offset x[" + offset.x + "]");
+			/*
+            if(x > 0.33)
             {
                 x = 1.0f - x;
             }
@@ -37,6 +40,7 @@ public class CenterScaleComponent : MonoBehaviour {
             this.transform.localScale = vect_scale;
             Vector3 new_pos = new Vector3(_pos.x + move_x, _pos.y + move_y, 1.0f);
             this.transform.localPosition = new_pos;
+            */
         }
         
     }

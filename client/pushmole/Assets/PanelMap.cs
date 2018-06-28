@@ -15,7 +15,7 @@ public class PanelMap : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 1; i++)
         {
             GameObject obj = Instantiate(prefab);
             obj.transform.SetParent(wrap.transform);
