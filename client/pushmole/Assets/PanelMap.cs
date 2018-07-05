@@ -15,7 +15,7 @@ public class PanelMap : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 10; i++)
         {
             GameObject obj = Instantiate(prefab);
             obj.transform.SetParent(wrap.transform);
@@ -35,14 +35,13 @@ public class PanelMap : MonoBehaviour {
             }
             else
             {
-                int c = 0;
-                c++;
             }
 
         };
 
         wrap.CenterChange = (RectTransform item, RectTransform item_old) =>
         {
+			Debug.Log("CenterChange");
             if(item != null)
             {
                 CenterScaleComponent scale = item.GetComponent<CenterScaleComponent>();
@@ -50,6 +49,7 @@ public class PanelMap : MonoBehaviour {
                 {
                     scale = item.gameObject.AddComponent<CenterScaleComponent>();
                     scale.SetContent(wrap);
+					scale.setCenter(true);
                 }
                 scale.enabled = true;
             }
@@ -60,6 +60,7 @@ public class PanelMap : MonoBehaviour {
                 if (old_scale != null)
                 {
                     //old_scale.gameObject.SetActive(false);
+					old_scale.setCenter(false);
                     old_scale.enabled = false;
                 }
             }

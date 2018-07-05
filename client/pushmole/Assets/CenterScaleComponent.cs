@@ -7,6 +7,7 @@ public class CenterScaleComponent : MonoBehaviour {
     private Vector2 _interval;
     private Vector2 _size;
     private Vector3 _pos;
+	private bool _center = false;
     void Awake()
     {
         _pos = this.transform.localPosition;
@@ -20,19 +21,29 @@ public class CenterScaleComponent : MonoBehaviour {
 	void Update () {
         if(_Content != null)
         {
-            Vector2 offset = _Content.GetOffset();
-            float dis = offset.x * offset.x + offset.y * offset.y;
-            dis = Mathf.Sqrt(dis);
-			float offset_scale = Mathf.Abs (offset.x - 0.4f) * 0.8f;
-			float use_scale = (1.0f - offset_scale);
-			if (use_scale < 0.6f) 
+			if (_center == true) 
 			{
-				use_scale = 0.6f;
+				Vector2 offset = _Content.GetOffset();
+				float dis = offset.x * offset.x + offset.y * offset.y;
+				dis = Mathf.Sqrt(dis);
+				Debug.Log ("distance [" + dis+" ]");
+				Debug.Log ("grid size ["+ _Content.GetGridSize() +"] ");
+				float offset_scale = Mathf.Abs (offset.x - 0.4f) * 0.8f;
+				float use_scale = (1.0f - offset_scale);
+				if (use_scale < 0.6f) 
+				{
+					use_scale = 0.6f;
+				}
+				this.transform.localScale = new Vector3(use_scale, use_scale, 1);
+
 			}
-			this.transform.localScale = new Vector3(use_scale, use_scale, 1);
         }
         
     }
+	public void setCenter(bool center)
+	{
+		_center = center;
+	}
 
     void OnDisable()
     {
@@ -45,7 +56,5 @@ public class CenterScaleComponent : MonoBehaviour {
         _Content = _content;
         _size = _content.GetGridSize();
         _interval = _content.GetInterval();
-
-
     }
 }
