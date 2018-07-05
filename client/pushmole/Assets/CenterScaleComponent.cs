@@ -26,16 +26,19 @@ public class CenterScaleComponent : MonoBehaviour {
 				Vector2 offset = _Content.GetOffset();
 				float dis = offset.x * offset.x + offset.y * offset.y;
 				dis = Mathf.Sqrt(dis);
-				Debug.Log ("distance [" + dis+" ]");
-				Debug.Log ("grid size ["+ _Content.GetGridSize() +"] ");
-				float offset_scale = Mathf.Abs (offset.x - 0.4f) * 0.8f;
+				int offset_x = (int)(offset.x);
+				float offset_entry = offset.x - offset_x;
+				//Debug.Log("offset_entry [" +offset_entry+ "] _size ["+_size+"]");
+				float offset_scale = Mathf.Abs (offset_entry - 0.4f);
 				float use_scale = (1.0f - offset_scale);
 				if (use_scale < 0.6f) 
 				{
 					use_scale = 0.6f;
 				}
-				this.transform.localScale = new Vector3(use_scale, use_scale, 1);
-
+				float move_x = (_size.x - offset_scale * _size.x) / 2;
+				float move_y = (_size.y - offset_scale * _size.y) / 2;
+				this.transform.localScale = new Vector3(offset_scale, offset_scale, 1);
+				this.transform.localPosition = new Vector3 (_pos.x - move_x, _pos.y - move_y, 1);
 			}
         }
         

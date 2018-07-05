@@ -49,6 +49,14 @@ public:
 		m_listcb[m_current_queue].push( create_call_back( boost::bind( f, i ) ) );
 	}
 
+	template<class _Fun, class _Inst, class ...Args>
+	void add_cb(_Fun f, _Inst i, Args... a)
+	{
+		boost::mutex::scoped_lock lock(m_mutex);
+		m_listcb[m_current_queue].push(create_call_back(boost::bind(f, i, a...)));
+	}
+
+	/*
 	template<class _Fun, class _Inst, class _Arg1>
 	void add_cb( _Fun f, _Inst i, _Arg1 a1 )
 	{
@@ -90,6 +98,7 @@ public:
 		boost::mutex::scoped_lock lock( m_mutex );
 		m_listcb[m_current_queue].push( create_call_back( boost::bind( f, i, a1, a2, a3, a4, a5, a6 ) ) );
 	}
+	*/
 };
 
 

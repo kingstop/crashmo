@@ -321,7 +321,7 @@ struct CallbackP10 : public CallbackBase
 		g7 = g;
 		h8 = h;
 		i9 = i;
-		j10 = 10;
+		j10 = j;
 	}
 
 	virtual void execute()
