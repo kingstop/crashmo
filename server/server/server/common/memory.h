@@ -15,15 +15,7 @@
 #define MEFREE( CLASS, POINTE) Memory::releaseObject<CLASS>(POINTE)
 #define MENEW( CLASS) Memory::createObject<CLASS>()
 #define MEMORY_LOG_INFO(CLASS) Memory::flushObjectMemory<CLASS>()
-/*
-template<class _Fun, class ...Args>
-void add_cb(_Fun f, Args&& ...a)
-{
 
-boost::mutex::scoped_lock lock(m_mutex);
-m_listcb[m_current_queue].push(create_call_back(boost::bind(f, std::forward<Args>(a)...)));
-}
-*/
 
 class Memory
 {
