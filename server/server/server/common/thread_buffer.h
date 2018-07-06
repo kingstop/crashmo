@@ -2,13 +2,11 @@
 #define __thread_buffer_h__
 #include "common_header.h"
 #include "utilities.h"
-#ifdef _WIN32
-#include <Windows.h>
-#else
-#include "pthread.h"
-#endif
+#include <thread>
+
 #include "boost/thread/mutex.hpp"
 #include "exception.h"
+#include <thread>
 
 struct thread_packet_buffer
 {
@@ -24,7 +22,7 @@ struct thread_packet_buffer
         _buffer_default_length = 262144,
     };
 
-    thread_packet_buffer(unsigned int id) :_thread_id(id)
+    thread_packet_buffer(std::thread::id id) :_thread_id(id)
     {
         for (unsigned int  i = 0; i < _packet_buffer_max_; ++i)
         {
@@ -73,7 +71,7 @@ struct thread_packet_buffer
         }
     }
 
-    const unsigned int _thread_id;
+	std::thread::id _thread_id;
     char* _buffer_array[_packet_buffer_max_];
     unsigned int _buffer_length[_packet_buffer_max_];
 };
@@ -87,17 +85,15 @@ struct thread_buffer_manager
 
     static void releaseThreadBuffer()
     {
-#ifdef _WIN32
-        unsigned int thread_id = (unsigned int )GetCurrentThreadId();
-#else
-        unsigned int thread_id = pthread_self();
-#endif
+		 
+		std::thread::id thread_id = std::this_thread::get_id();
+
         boost::mutex::scoped_lock lock(_thread_mutex);
         std::vector<thread_packet_buffer*>::iterator it = thread_buffer_vector.begin();
         for (it; it != thread_buffer_vector.end(); ++it)
         {
             thread_packet_buffer* p = *it;
-            if (thread_id = p->_thread_id)
+            if (thread_id == p->_thread_id)
             {
                 thread_buffer_vector.erase(it);
                 delete p;
@@ -131,17 +127,14 @@ struct thread_buffer_manager
 private:
     static char* getThreadBuffer(unsigned int ntype, unsigned int& maxlen)
     {
-#ifdef _WIN32
-        unsigned int thread_id = (unsigned int )GetCurrentThreadId();
-#else
-        unsigned int thread_id = pthread_self();
-#endif
+		std::thread::id thread_id = std::this_thread::get_id();
+
         thread_packet_buffer* p = NULL;
         std::vector<thread_packet_buffer*>::iterator it = thread_buffer_vector.begin();
         for (it; it != thread_buffer_vector.end(); ++it)
         {
             thread_packet_buffer* pit = *it;
-            if (thread_id = pit->_thread_id)
+            if (thread_id == pit->_thread_id)
             {
                p = pit;
                break;
@@ -242,15 +235,12 @@ struct thread_recv_buffer
 		if (_base64)
 		{						
 			_buff_len = Base64Decode(data, _buff_len, (unsigned char*)_buff);
-			//_buff_len = base64_decode(data, (unsigned char*)_buff);
 		}
 		else
 		{
 			memcpy(_buff, data, len);
-		}
-     	
+		}     	
      	_buff_pos = 0;		
-     	//memcpy(_buff, data, len);
     }
 
 

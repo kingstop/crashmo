@@ -41,19 +41,20 @@ public:
 	call_back_mgr();
 	void poll();
 	void clear();
-
+	/*
 	template<class _Fun, class _Inst>
 	void add_cb( _Fun f, _Inst i )
 	{
 		boost::mutex::scoped_lock lock( m_mutex );
 		m_listcb[m_current_queue].push( create_call_back( boost::bind( f, i ) ) );
 	}
-
-	template<class _Fun, class _Inst, class ...Args>
-	void add_cb(_Fun f, _Inst i, Args... a)
+	*/
+	template<class _Fun, class ...Args>
+	void add_cb(_Fun f, Args&& ...a)
 	{
+		
 		boost::mutex::scoped_lock lock(m_mutex);
-		m_listcb[m_current_queue].push(create_call_back(boost::bind(f, i, a...)));
+		m_listcb[m_current_queue].push(create_call_back(boost::bind(f, std::forward<Args>(a)...)));
 	}
 
 	/*

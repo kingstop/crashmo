@@ -15,13 +15,22 @@
 #define MEFREE( CLASS, POINTE) Memory::releaseObject<CLASS>(POINTE)
 #define MENEW( CLASS) Memory::createObject<CLASS>()
 #define MEMORY_LOG_INFO(CLASS) Memory::flushObjectMemory<CLASS>()
+/*
+template<class _Fun, class ...Args>
+void add_cb(_Fun f, Args&& ...a)
+{
+
+boost::mutex::scoped_lock lock(m_mutex);
+m_listcb[m_current_queue].push(create_call_back(boost::bind(f, std::forward<Args>(a)...)));
+}
+*/
 
 class Memory
 {
 public:
-	template< class Class >
-	static Class* createObject();
-
+	template <class Class, class ...Args>
+	static Class* createObject(Args&& ...a);
+	/*
 	template< class Class, typename P0 >
 	static Class* createObject(P0 a0);
 
@@ -42,7 +51,7 @@ public:
 
     template< class Class, typename P0 , typename P1, typename P2, typename P3, typename P4, typename P5, typename P6>
     static Class* createObject( P0 a0, P1 a1, P2 a2, P3 a3, P4 a4, P5 a5, P6 a6);
-
+	*/
 	template< class Class>
 	static void releaseObject( Class* pkPointer);
 
@@ -52,8 +61,8 @@ public:
 	template< class Class>
 	static void flushObjectMemory();
 };
-template< class Class >
-Class* Memory::createObject()
+template <class Class, class ...Args>
+Class* Memory::createObject(Args&& ...a)
 {
 	ENTER_FUN
 	ObjectPool<Class>* pkPool = getObjectPool<Class>();
@@ -62,15 +71,15 @@ Class* Memory::createObject()
 		Class* pkPointer = pkPool->newObject();
 		if (NULL == pkPointer)
 		{ return NULL;}
-		return new(pkPointer) Class();
+		return new(pkPointer) Class(std::forward<Args>(a)...);
 	}else
 	{	
 		THROW_EXCEPTION(MemoryException(GET_POOL_CLASS_NAME(Class)));
 	}
 	LEAVE_FUN
-	return ::new Class();
+	return ::new Class(std::forward<Args>(a)...);
 }
-
+/*
 template< class Class, typename P0 >
 Class* Memory::createObject( P0 a0)
 {
@@ -202,7 +211,7 @@ Class* Memory::createObject( P0 a0, P1 a1, P2 a2, P3 a3, P4 a4, P5 a5, P6 a6)
     LEAVE_FUN
     return ::new Class(a0,a1,a2,a3,a4,a5, a6);
 }
-
+*/
 template< class Class>
 void Memory::releaseObject( Class* pkPointer)
 {
