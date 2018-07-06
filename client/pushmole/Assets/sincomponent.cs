@@ -15,7 +15,7 @@ public class sincomponent : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         _move_dis = 40;
-        _pos_y = this.transform.localPosition.y;
+        _pos_y = this.transform.localPosition.y; 
         _pos_x = this.transform.localPosition.x;
     }
 	

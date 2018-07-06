@@ -30,11 +30,15 @@ public class CenterScaleComponent : MonoBehaviour {
 				float offset_entry = offset.x - offset_x;
 				//Debug.Log("offset_entry [" +offset_entry+ "] _size ["+_size+"]");
 				float offset_scale = Mathf.Abs (offset_entry - 0.4f);
-				float use_scale = (1.0f - offset_scale);
-				if (use_scale < 0.6f) 
+
+				offset_scale =  1.6f/(offset_scale + 1.0f) ;
+
+				/*
+				if (offset_scale < 0.4f) 
 				{
-					use_scale = 0.6f;
+					offset_scale = 0.4f;
 				}
+				*/
 				float move_x = (_size.x - offset_scale * _size.x) / 2;
 				float move_y = (_size.y - offset_scale * _size.y) / 2;
 				this.transform.localScale = new Vector3(offset_scale, offset_scale, 1);
