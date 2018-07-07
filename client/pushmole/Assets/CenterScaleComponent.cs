@@ -32,10 +32,14 @@ public class CenterScaleComponent : MonoBehaviour {
 				offset_scale =  1.6f/(offset_scale + 1.0f) ;
 				float move_x = (_size.x - offset_scale * _size.x) / 2;
 				float move_y = (_size.y - offset_scale * _size.y) / 2;
+				if (offset_scale > 1.3f) 
+				{
+					offset_scale = 1.3f;
+				}
 				this.transform.localScale = new Vector3(offset_scale, offset_scale, 1);
 				this.transform.localPosition = new Vector3 (_pos.x - move_x, _pos.y - move_y, 1);
 				//Vector3 vc_pos = this.transform.TransformPoint (this.transform.localPosition);
-				Debug.Log ("vc_pos [ " + offset.x + "," + offset.y + "]");
+				Debug.Log ("vc_pos [ " + offset.x + "," + offset.y + "] scale [" + offset_scale +"]");
 			}
         }
         

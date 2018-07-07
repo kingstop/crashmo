@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CenterScaleComponent.cs">
     <Files>
-      <File FileName="Assets\CenterScaleComponent.cs" Line="36" Column="7" />
+      <File FileName="Assets\CenterScaleComponent.cs" Line="35" Column="28" />
       <File FileName="Assets\Scripts\MainPanel.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\client_session.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\crashmole.cs" Line="1" Column="1" />
@@ -14,7 +14,7 @@
       <File FileName="Assets\mole_net\SocketServer.cs" Line="1" Column="1" />
       <File FileName="Assets\mole_net\U3dSocketClient.cs" Line="1" Column="1" />
       <File FileName="Assets\mole_net\SocketClient.cs" Line="1" Column="1" />
-      <File FileName="Assets\sincomponent.cs" Line="28" Column="22" />
+      <File FileName="Assets\sincomponent.cs" Line="1" Column="1" />
       <File FileName="Assets\mole_net\proto-net\ProtoReader.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
