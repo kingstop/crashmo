@@ -47,11 +47,11 @@ public class PanelMap : MonoBehaviour {
                 CenterScaleComponent scale = item.GetComponent<CenterScaleComponent>();
                 if(scale == null)
                 {
-                    scale = item.gameObject.AddComponent<CenterScaleComponent>();
-                    scale.SetContent(wrap);
-					scale.setCenter(true);
+                    scale = item.gameObject.AddComponent<CenterScaleComponent>();                
                 }
                 scale.enabled = true;
+				scale.SetContent(wrap);
+				scale.setCenter(true);
             }
 
             if(item_old != null)
