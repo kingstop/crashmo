@@ -46,6 +46,8 @@ public:
     // ExeNameToReboot    完成Dump后，用于重启Crash掉的程序的文件名（目前只针对BugReporter.exe）
     MiniDumper(LPCSTR DumpFileNamePrefix, LPCSTR AppVersion, LPCSTR DumpDesc, LPCSTR CmdLine, LPCSTR ExeNameToReboot = NULL);
 
+	//void onCrash();
+
 	~MiniDumper();
 private:
 	bool SetUnhandleExpt();
