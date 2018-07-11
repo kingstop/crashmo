@@ -105,6 +105,100 @@ MiniDumper::~MiniDumper()
 		m_szDumpDesc = 0;
 	}
 }
+
+// 未使用的变量宏
+#define unused(a) (void)(a)
+inline std::string getExeName() {
+	const static int SIZE = 512;
+	char path[SIZE] = { 0 };
+#ifdef WIN32    
+	::GetModuleFileName(NULL, path, sizeof(path));
+#else
+	int result = readlink("/proc/self/exe", path, sizeof(path));
+	if (result < 0 || (result >= SIZE - 1)) {
+		return "";
+	}
+	path[result] = '\0';
+#endif // WIN32
+	return path;
+}
+
+
+static void onCrash(int sig) {
+	unused(sig);
+#       ifndef WIN32
+
+	static const int MAX_STACK_FRAMES = 32; ///< 最大栈深度
+	void* stackFrames[MAX_STACK_FRAMES] = { 0 };
+	signal(sig, SIG_DFL); // 不再处理当前信号
+						  // 获取崩溃栈
+	size_t size = backtrace(stackFrames, MAX_STACK_FRAMES);
+	if (!size) {
+		// 获取崩溃栈失败
+		exit(1);
+		return;
+	}
+	// 获取栈符号信息
+	char** symbols = (char**)backtrace_symbols(stackFrames, size);
+	if (!symbols) {
+		// 获取符号表失败
+		exit(1);
+		return;
+	}
+	FILE*              fp = 0;
+	
+	std::string fileName = getExeName() + "_crash.txt";
+	fp = fopen(fileName.c_str(), "a+");
+	if (fp) {
+		fprintf(fp, "<crash>\n");
+	}
+
+	// 获取栈地址对应的源代码信息，跳过最后两层栈
+	for (size_t i = 2; i < size; i++) {
+		std::string symbol(symbols[i]);
+		char        line[1024] = { 0 };
+		size_t      begin = symbol.find_first_of("[");
+		size_t      end = symbol.find_last_of("]");
+		// 取得地址
+		std::string address = symbol.substr(begin + 1, end - begin - 1);
+		std::stringstream ss;
+		std::string binary = getExeName();
+		ss << "addr2line -i -e " << binary << " " << address;
+		// 取得地址对应的源代码信息
+		FILE* pfp = popen(ss.str().c_str(), "r");
+		while (fgets(line, sizeof(line) - 1, pfp)) {
+			// 去掉换行
+			if (line[strlen(line) - 1] == '\n') {
+				line[strlen(line) - 1] = 0;
+			}
+			if (std::string("??:0") == line) {
+				// 跳过没有找到调试符号的栈
+				continue;
+			}
+			if (fp) {
+				fprintf(fp, "%s\n", line);
+			}
+		}
+		// 关闭子进程输出
+		if (pfp) {
+			pclose(pfp);
+		}
+	}
+	if (fp) {
+		fprintf(fp, "</crash>\n");
+	}
+
+	if (fp) {
+		fclose(fp);
+	}
+	// 释放符号表
+	if (symbols) {
+		free(symbols);
+	}
+	exit(1); // 退出
+#       endif  // WIN32
+}
+
 MiniDumper::MiniDumper( LPCSTR DumpFileNamePrefix, LPCSTR AppVersion, LPCSTR DumpDesc )
 {
     // if this // ToLog fires then you have two instances of MiniDumper
