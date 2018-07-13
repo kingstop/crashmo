@@ -21,7 +21,7 @@ class Memory
 {
 public:
 	template <class Class, class ...Args>
-	static Class* createObject(Args&& ...a);
+	static Class* createObject(Args ...a);
 	/*
 	template< class Class, typename P0 >
 	static Class* createObject(P0 a0);
@@ -54,7 +54,7 @@ public:
 	static void flushObjectMemory();
 };
 template <class Class, class ...Args>
-Class* Memory::createObject(Args&& ...a)
+Class* Memory::createObject(Args ...a)
 {
 	ENTER_FUN
 	ObjectPool<Class>* pkPool = getObjectPool<Class>();

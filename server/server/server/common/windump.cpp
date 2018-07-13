@@ -123,7 +123,6 @@ inline std::string getExeName() {
 	return path;
 }
 
-
 static void onCrash(int sig) {
 	unused(sig);
 #       ifndef WIN32
