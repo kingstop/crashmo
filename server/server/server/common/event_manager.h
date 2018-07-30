@@ -83,16 +83,6 @@ public:
 		obj->eventAddEvent(event);
 	}
 
-	template <class Class, class ...Args>
-	void addEvent(Class *obj, void (Class::*method)(), u32 type, u32 time, s32 repeats, u32 flags, Args... a)
-	{
-
-		TimedEvent * event = new TimedEvent(obj, new CallbackP0<Class>(obj, method, a...), type, time, repeats, flags);
-		obj->eventAddEvent(event);
-	}
-		/*
-
-
 	template <class Class, typename P1>
 		void addEvent(Class *obj, void (Class::*method)(P1), P1 p1, u32 type, u32 time, s32 repeats, u32 flags)
 	{
@@ -172,7 +162,7 @@ public:
 		TimedEvent * event = new TimedEvent(obj, new CallbackP10<Class, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(obj, method, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10), type, time, repeats, flags);
 		obj->eventAddEvent(event);
 	}
-	*/
+
 	template <class Class> void removeEvents(Class *obj) { obj->Event_RemoveEvents(-1); }
 	template <class Class> void removeEvents(Class *obj, s32 type)
 	{
