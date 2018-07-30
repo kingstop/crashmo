@@ -251,3 +251,4 @@ client/pushmole/Assembly-CSharp-firstpass.csproj
 *.csproj
 *.ide
 *.ide
+server/server/project-crash.VC.db
