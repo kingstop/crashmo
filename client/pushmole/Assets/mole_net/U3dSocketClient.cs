@@ -83,12 +83,7 @@ public class u3dclient
     public void connect()
     {
         socket_client = CreateClient();
-        //socket_client.Connect("192.168.0.106", 30004);// 内网IP
-        socket_client.Connect("47.106.116.251", 4111);// 外网IP 114.55.116.251 Port 30004
-        //socket_client.Connect("114.55.116.251", 41005);// 外网IP 114.55.116.251 Port 41005
-        //socket_client.Connect("114.55.116.251", 50004);// 外网IP 114.55.116.251 Port 50004
-        //socket_client.Connect("127.0.0.1", 41005);// 外网IP 114.55.116.251 Port 41005
-
+		socket_client.Connect("47.104.216.125", 4111);// 外网IP 114.55.116.251 Port 30004
     }
 
     public void on_connect(SocketBase socket)
