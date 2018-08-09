@@ -38,6 +38,30 @@ public class MainMenuPanel : MonoBehaviour {
             _ButtonPos.Add(vec);
         }
     }
+
+	public void OnOfficilMapBtnClick ()
+	{
+		
+	}
+
+	public void OnCreateMapBtnClick()
+	{
+		
+	}
+
+	public void OnRankMapBtnClick()
+	{
+
+	}
+
+	public void OnNewMapBtnClick()
+	{
+		
+	}
+
+	public void OnMyMapBtnClick()
+	{
+	}
 	// Use this for initialization
 	void Start () {
 		

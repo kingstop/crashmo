@@ -7,12 +7,41 @@ public class PanelMap : MonoBehaviour {
     public Grid grid;
     public WrapContent wrap;
     public GameObject prefab;
-    List<RectTransform> allItem = new List<RectTransform>();
-
+    List<RectTransform> _allItem = new List<RectTransform>();
+	protected page_type _current_page;
     void Awake()
     {
 
     }
+
+	public void setMapType(page_type type)
+	{
+		_current_page = type;
+	}
+
+	public void clearAllItem()
+	{
+		_allItem.Clear ();
+	}
+
+	public void init()
+	{
+		switch (_current_page) 
+		{
+		case page_type.page_type_official:
+			break;
+
+		case page_type.page_type_rank:
+			break;
+
+		case page_type.page_type_self_complete:
+			break;
+
+		case page_type.page_type_self_incomplete:
+			break;
+		}
+	}
+
     // Use this for initialization
     void Start () {
         for (int i = 0; i < 10; i++)
@@ -22,16 +51,16 @@ public class PanelMap : MonoBehaviour {
             obj.transform.localScale = Vector3.one;
             obj.name = i.ToString();
             obj.transform.Find("Text").GetComponent<Text>().text = i.ToString();
-            allItem.Add((RectTransform)obj.transform);
+			_allItem.Add((RectTransform)obj.transform);
         }
         grid.SetDirty();
         wrap.OnValueChange = (RectTransform item, int index, int realIndex) =>
         {
 
-            int count = allItem.Count;
+			int count = _allItem.Count;
             if (index < count)
             {
-                allItem[index].Find("Text").GetComponent<Text>().text = realIndex.ToString();
+				_allItem[index].Find("Text").GetComponent<Text>().text = realIndex.ToString();
             }
             else
             {

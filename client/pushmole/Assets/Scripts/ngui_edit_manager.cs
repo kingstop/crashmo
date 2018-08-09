@@ -58,6 +58,8 @@ public class ngui_edit_manager : MonoBehaviour {
     public UISectionGiftGold _ui_section_gold;
 	public TaskEditPanel _task_edit_panel;
 	public UIEditMap EditMap_;
+	public MainMenuPanel _main_menu_panel;
+	public PanelMap _map_panel;
     protected EditType _EditType;
 
     void Awake()
@@ -102,7 +104,8 @@ public class ngui_edit_manager : MonoBehaviour {
     }
     public void show_main_panel()
     {
-        _main_panel.gameObject.SetActive(true);
+		_main_menu_panel.gameObject.SetActive (true);
+       // _main_panel.gameObject.SetActive(true);
     }
 
     public void set_login_btns_active(bool b)
@@ -241,7 +244,8 @@ public class ngui_edit_manager : MonoBehaviour {
     {
 		HideAllUI();
         ClearGameObj();
-        _main_panel.gameObject.SetActive(true);
+		show_main_panel ();
+        //_main_panel.gameObject.SetActive(true);
     }
 
     public void HideAllUI()
