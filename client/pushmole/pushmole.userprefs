@@ -1,35 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ChooseItemEntry.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PanelChapter.cs">
     <Files>
       <File FileName="Assets\Scripts\crash_mole_grid_manager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ngui_edit_manager.cs" Line="74" Column="34" />
-      <File FileName="Assets\Scripts\OfficilMapManager.cs" Line="9" Column="31" />
-      <File FileName="Assets\Scripts\global_instance.cs" Line="134" Column="45" />
-      <File FileName="Assets\Scripts\client_session.cs" Line="152" Column="28" />
-      <File FileName="Assets\Scripts\MainPanel.cs" Line="190" Column="26" />
-      <File FileName="Assets\Scripts\ChooseItemEntry.cs" Line="41" Column="3" />
+      <File FileName="Assets\Scripts\ngui_edit_manager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\OfficilMapManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\global_instance.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\client_session.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainPanel.cs" Line="302" Column="47" />
+      <File FileName="Assets\Scripts\ChooseItemEntry.cs" Line="4" Column="29" />
       <File FileName="Assets\Scripts\MapButton.cs" Line="16" Column="9" />
+      <File FileName="Assets\PanelMap.cs" Line="11" Column="36" />
+      <File FileName="Assets\PanelChapter.cs" Line="23" Column="3" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="pushmole" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="ChooseItemEntry.cs" selected="True" />
-              </Node>
-            </Node>
-            <Node name="Assembly-CSharp-firstpass" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State name="__root__">
-          <Node name="pushmole" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
