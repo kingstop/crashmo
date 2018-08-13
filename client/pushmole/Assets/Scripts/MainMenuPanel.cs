@@ -61,6 +61,10 @@ public class MainMenuPanel : MonoBehaviour {
 
 	public void OnMyMapBtnClick()
 	{
+		global_instance.Instance._ngui_edit_manager.HidMainMenuPanel ();
+		global_instance.Instance._ngui_edit_manager._map_panel.setPage (page_type.page_type_self_complete);
+		global_instance.Instance._ngui_edit_manager.ShowMapPanel();
+
 	}
 	// Use this for initialization
 	void Start () {

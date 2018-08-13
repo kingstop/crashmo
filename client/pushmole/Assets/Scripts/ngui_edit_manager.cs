@@ -62,6 +62,28 @@ public class ngui_edit_manager : MonoBehaviour {
 	public PanelMap _map_panel;
     protected EditType _EditType;
 
+
+	public void HidMainMenuPanel()
+	{
+		_main_menu_panel.gameObject.SetActive (false);
+	}
+
+	public void ShowMainMenuPanel()
+	{
+		_main_menu_panel.gameObject.SetActive (true);
+	}
+
+
+	public void HidMapPanel()
+	{
+		_map_panel.gameObject.SetActive (false);
+	}
+
+	public void ShowMapPanel()
+	{
+		_map_panel.gameObject.SetActive (true);
+	}
+
     void Awake()
     {
         _EditType = EditType.EditPlayer;

@@ -120,6 +120,7 @@ public class global_instance
 	}
 
 
+
     public Color _current_color;
     public int _current_group;
     public crash_manager _crash_manager;
