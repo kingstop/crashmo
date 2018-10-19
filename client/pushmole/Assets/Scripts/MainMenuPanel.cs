@@ -46,7 +46,7 @@ public class MainMenuPanel : MonoBehaviour {
 
 	public void OnCreateMapBtnClick()
 	{
-		
+		global_instance.Instance._ngui_edit_manager.update_game_type(game_type.create);
 	}
 
 	public void OnRankMapBtnClick()
