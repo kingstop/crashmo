@@ -60,8 +60,15 @@ public class ngui_edit_manager : MonoBehaviour {
 	public UIEditMap EditMap_;
 	public MainMenuPanel _main_menu_panel;
 	public PanelMap _map_panel;
+	public PanelChapter _chapter_panel;
     protected EditType _EditType;
 
+
+	public void ShowChapterPanel()
+	{
+		HidMainMenuPanel ();
+		_chapter_panel.gameObject.SetActive (true);
+	}
 
 	public void HidMainMenuPanel()
 	{
@@ -386,6 +393,7 @@ public class ngui_edit_manager : MonoBehaviour {
 					set_edit_create_btns_active (true);
 					set_edit_draw_btns_active (false);
                     _terrain.SetActive(false);
+					HidMainMenuPanel ();
 
                 }
                 break;

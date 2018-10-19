@@ -1,39 +1,45 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ChooseItemEntry.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PanelChapter.cs">
     <Files>
-      <File FileName="Assets\Scripts\crash_mole_grid_manager.cs" Line="59" Column="41" />
-      <File FileName="Assets\Scripts\ngui_edit_manager.cs" Line="66" Column="30" />
+      <File FileName="Assets\Scripts\crash_mole_grid_manager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ngui_edit_manager.cs" Line="448" Column="3" />
       <File FileName="Assets\Scripts\OfficilMapManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\global_instance.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\client_session.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MainPanel.cs" Line="444" Column="33" />
-      <File FileName="Assets\Scripts\ChooseItemEntry.cs" Line="31" Column="46" />
-      <File FileName="Assets\Scripts\MapButton.cs" Line="21" Column="9" />
+      <File FileName="Assets\Scripts\MainPanel.cs" Line="323" Column="74" />
+      <File FileName="Assets\Scripts\ChooseItemEntry.cs" Line="4" Column="29" />
+      <File FileName="Assets\Scripts\MapButton.cs" Line="1" Column="1" />
       <File FileName="Assets\mole_net\message\common_msg.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MainMenuPanel.cs" Line="51" Column="2" />
+      <File FileName="Assets\Scripts\MainMenuPanel.cs" Line="1" Column="1" />
       <File FileName="Assets\mole_net\U3dSocketClient.cs" Line="1" Column="1" />
-      <File FileName="Assets\mole_net\proto-net\ProtoReader.cs" Line="539" Column="9" />
+      <File FileName="Assets\mole_net\proto-net\ProtoReader.cs" Line="1" Column="1" />
       <File FileName="Assets\ScriptViewNew\WrapContent.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\button_event_handler.cs" Line="14" Column="3" />
+      <File FileName="Assets\Scripts\button_event_handler.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PanelMap.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainPanelTitleButtonItem.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UIEditMap.cs" Line="160" Column="3" />
+      <File FileName="Assets\Scripts\UIEditMap.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ChapterButton.cs" Line="8" Column="15" />
+      <File FileName="Assets\Scripts\InfinityGridLayoutGroup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CenterScaleComponent.cs" Line="28" Column="60" />
+      <File FileName="Assets\Scripts\PanelChapter.cs" Line="48" Column="41" />
+      <File FileName="Assets\Scripts\UIGameEnd.cs" Line="24" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="pushmole" expanded="True">
             <Node name="Assembly-CSharp" expanded="True">
+              <Node name="mole_net" expanded="True">
+                <Node name="proto-net" expanded="True" />
+              </Node>
               <Node name="Scripts" expanded="True">
-                <Node name="ChooseItemEntry.cs" selected="True" />
+                <Node name="PanelChapter.cs" selected="True" />
               </Node>
             </Node>
+            <Node name="Assembly-CSharp-firstpass" expanded="True" />
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
         <State name="__root__">
@@ -59,6 +65,8 @@
       <Breakpoint file="C:\Users\kings\Documents\GitHub\crashmo\client\pushmole\Assets\PanelMap.cs" line="61" column="1" />
       <Breakpoint file="C:\Users\kings\Documents\GitHub\crashmo\client\pushmole\Assets\PanelMap.cs" line="132" column="1" />
       <Breakpoint file="D:\mywork\gitgame\crashmo\client\pushmole\Assets\PanelMap.cs" line="132" column="1" />
+      <Breakpoint file="D:\mywork\gitgame\crashmo\client\pushmole\Assets\Scripts\PanelChapter.cs" line="46" column="1" />
+      <Breakpoint file="D:\mywork\gitgame\crashmo\client\pushmole\Assets\Scripts\ngui_edit_manager.cs" line="69" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

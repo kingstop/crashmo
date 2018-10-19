@@ -41,7 +41,8 @@ public class MainMenuPanel : MonoBehaviour {
 
 	public void OnOfficilMapBtnClick ()
 	{
-		
+		global_instance.Instance._ngui_edit_manager.ShowChapterPanel ();
+	
 	}
 
 	public void OnCreateMapBtnClick()

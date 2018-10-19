@@ -26,6 +26,23 @@ public class PanelChapter : MonoBehaviour {
 		
     // Use this for initialization
     void Start () {
+
+		Dictionary<int, string> officil_section_names = global_instance.Instance._officilMapManager.getChapterNames();
+		foreach (KeyValuePair<int, string> key_temp in officil_section_names)
+		{
+			GameObject obj = Instantiate(prefab);
+
+			ChapterButton btn = obj.GetComponent<ChapterButton> ();
+			btn._txt_1= key_temp.Key.ToString();
+			btn._txt_2 = key_temp.Value;
+			btn._map_index = (ulong)key_temp.Key;
+			obj.transform.SetParent(this.transform);
+			obj.gameObject.SetActive(true);
+			obj.transform.localScale = Vector3.one;
+			_allItem.Add((RectTransform)obj.transform);
+			//_officil_items.Add(temp);
+		}
+		/*
         for (int i = 0; i < 10; i++)
         {
             GameObject obj = Instantiate(prefab);
@@ -34,7 +51,9 @@ public class PanelChapter : MonoBehaviour {
             obj.name = i.ToString();
             obj.transform.Find("Text").GetComponent<Text>().text = i.ToString();
 			_allItem.Add((RectTransform)obj.transform);
+			obj.SetActive (true);
         }
+        */
         grid.SetDirty();
         wrap.OnValueChange = (RectTransform item, int index, int realIndex) =>
         {
