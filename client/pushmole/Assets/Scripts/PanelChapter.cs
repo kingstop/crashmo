@@ -7,8 +7,10 @@ public class PanelChapter : MonoBehaviour {
     public Grid grid;
     public WrapContent wrap;
     public GameObject prefab;
+	public GameObject _container;
     List<RectTransform> _allItem = new List<RectTransform>();
 	protected page_type _current_page;
+
     void Awake()
     {
 
@@ -36,7 +38,7 @@ public class PanelChapter : MonoBehaviour {
 			btn._txt_1= key_temp.Key.ToString();
 			btn._txt_2 = key_temp.Value;
 			btn._map_index = (ulong)key_temp.Key;
-			obj.transform.SetParent(this.transform);
+			obj.transform.SetParent(_container.transform);
 			obj.gameObject.SetActive(true);
 			obj.transform.localScale = Vector3.one;
 			_allItem.Add((RectTransform)obj.transform);
