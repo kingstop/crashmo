@@ -9,6 +9,7 @@ public class CenterScaleComponent : MonoBehaviour {
     private Vector3 _pos;
 	private bool _center = false;
 	private bool _scale_modify = false;
+	private GameObject _obj;
     void Awake()
     {
         _pos = this.transform.localPosition;
@@ -23,8 +24,11 @@ public class CenterScaleComponent : MonoBehaviour {
         if(_Content != null)
         {
 			if (_center == true) {				
+				//this.transform.gameObject
+				Vector3 cur_pos = Camera.main.WorldToScreenPoint(this.transform.position);
+				Debug.LogWarning ("center pos [ " + cur_pos.x + "," + cur_pos.y + "," + cur_pos.z + " ]");
 				Vector2 offset = _Content.GetOffset ();
-				if (offset.x > 8.95f && offset.x < 18.95f) {
+				//if (offset.x > 8.95f && offset.x < 18.95f) {
 					float dis = offset.x * offset.x + offset.y * offset.y;
 					dis = Mathf.Sqrt (dis);
 					int offset_x = (int)(offset.x);
@@ -42,7 +46,7 @@ public class CenterScaleComponent : MonoBehaviour {
 					if (_scale_modify == false) {
 						_scale_modify = true;
 					}
-				}
+				//}
 			}
 			else 
 			{
@@ -81,4 +85,10 @@ public class CenterScaleComponent : MonoBehaviour {
         _size = _content.GetGridSize();
         _interval = _content.GetInterval();
     }
+
+	public void SetGameObj(GameObject obj)
+	{
+		_obj = obj;
+	}
+
 }

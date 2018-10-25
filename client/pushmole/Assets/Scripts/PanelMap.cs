@@ -118,7 +118,7 @@ public class PanelMap : MonoBehaviour {
 			break;
 
 		case page_type.page_type_self_complete:
-			EnterSelfComplete ();
+			EnterSelfIncomplete();//EnterSelfComplete ();
 			break;
 
 		case page_type.page_type_self_incomplete:
@@ -131,53 +131,54 @@ public class PanelMap : MonoBehaviour {
     void Start () {
 		init ();
         grid.SetDirty();
-        wrap.OnValueChange = (RectTransform item, int index, int realIndex) =>
-        {
+	
+		wrap.OnValueChange = (RectTransform item, int index, int realIndex) =>
+		{
 
 			int count = _allItem.Count;
-            if (index < count)
-            {
+			if (index < count)
+			{
 				_allItem[index].Find("Text").GetComponent<Text>().text = realIndex.ToString();
-            }
-            else
-            {
-            }
+			}
+			else
+			{
+			}
 
-        };
+		};
 
-        wrap.CenterChange = (RectTransform item, RectTransform item_old) =>
-        {
+		wrap.CenterChange = (RectTransform item, RectTransform item_old) =>
+		{
 			Debug.Log("CenterChange");
-            if(item != null)
-            {
-                CenterScaleComponent scale = item.GetComponent<CenterScaleComponent>();
-                if(scale == null)
-                {
-                    scale = item.gameObject.AddComponent<CenterScaleComponent>();                
-                }
-                scale.enabled = true;
+			if(item != null)
+			{
+				CenterScaleComponent scale = item.GetComponent<CenterScaleComponent>();
+				if(scale == null)
+				{
+					scale = item.gameObject.AddComponent<CenterScaleComponent>();                
+				}
+				scale.enabled = true;
 				scale.SetContent(wrap);
 				scale.setCenter(true);
-            }
+			}
 
-            if(item_old != null)
-            {
-                CenterScaleComponent old_scale = item_old.GetComponent<CenterScaleComponent>();
-                if (old_scale != null)
-                {
-                    //old_scale.gameObject.SetActive(false);
+			if(item_old != null)
+			{
+				CenterScaleComponent old_scale = item_old.GetComponent<CenterScaleComponent>();
+				if (old_scale != null)
+				{
+					//old_scale.gameObject.SetActive(false);
 					old_scale.setCenter(false);
-                    old_scale.enabled = false;
-                }
-            }
-        };
-        
+					old_scale.enabled = false;
+				}
+			}
+		};
 
+	
 
-       wrap.SetDirty();
-        Vector2 ve = new Vector2(960, 1000);
-        wrap.CenterItem();
-        wrap.AutoCenter(ve);
+		wrap.SetDirty();
+		Vector2 ve = new Vector2(960, 1000);
+		wrap.CenterItem();
+		wrap.AutoCenter(ve);
     }
 	
 	// Update is called once per frame

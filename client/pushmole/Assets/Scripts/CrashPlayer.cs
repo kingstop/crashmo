@@ -29,34 +29,7 @@ public class CrashPlayer
     {
         _info.current_task.Add(info);
     }
-/*
-    public void del_map(string name)
-    {
-        bool find_temp = false;
-        foreach(KeyValuePair<int, Dictionary<int, CrashMapData>> entrypair in _officil_map)
-        {
-            foreach(KeyValuePair<int, CrashMapData> pair_temp in entrypair.Value)
-            {
-                CrashMapData entry = pair_temp.Value;
-                if(entry.MapName == name)
-                {
-                    entrypair.Value.Remove(pair_temp.Key);
-                    find_temp = true;
-                    break;
-                }                
-            }
-            if(find_temp == true)
-            {
-                if(entrypair.Value.Count == 0)
-                {
-                    _officil_map.Remove(entrypair.Key);
-                    break;
-                }
-            }
 
-        }
-    }
-    */
 
     public void delMap(MapType type, ulong map_index)
     {
@@ -121,6 +94,7 @@ public class CrashPlayer
 
     public void addUserMap(CrashMapData data , MapType type)
     {
+		
         
         _maps[data.Data.map_index] = data;
         switch (type)
