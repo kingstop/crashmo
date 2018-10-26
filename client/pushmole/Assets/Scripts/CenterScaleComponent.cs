@@ -28,7 +28,7 @@ public class CenterScaleComponent : MonoBehaviour {
 				Vector3 cur_pos = Camera.main.WorldToScreenPoint(this.transform.position);
 				Debug.LogWarning ("center pos [ " + cur_pos.x + "," + cur_pos.y + "," + cur_pos.z + " ]");
 				Vector2 offset = _Content.GetOffset ();
-				//if (offset.x > 8.95f && offset.x < 18.95f) {
+				if (cur_pos.x >- 3400f && cur_pos.x < -1714f) {
 					float dis = offset.x * offset.x + offset.y * offset.y;
 					dis = Mathf.Sqrt (dis);
 					int offset_x = (int)(offset.x);
@@ -46,7 +46,7 @@ public class CenterScaleComponent : MonoBehaviour {
 					if (_scale_modify == false) {
 						_scale_modify = true;
 					}
-				//}
+				}
 			}
 			else 
 			{
