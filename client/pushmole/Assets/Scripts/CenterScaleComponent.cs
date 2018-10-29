@@ -9,7 +9,7 @@ public class CenterScaleComponent : MonoBehaviour {
     private Vector3 _pos;
 	private bool _center = false;
 	private bool _scale_modify = false;
-	private GameObject _obj;
+	private float _scale;
     void Awake()
     {
         _pos = this.transform.localPosition;
@@ -35,6 +35,7 @@ public class CenterScaleComponent : MonoBehaviour {
 					float offset_entry = offset.x - offset_x;
 					float offset_scale = Mathf.Abs (offset_entry - 0.4f);
 					offset_scale = 1.6f / (offset_scale + 1.0f);
+					_scale = offset_scale;
 
 					if (offset_scale > 1.3f) {
 						offset_scale = 1.3f;
@@ -60,11 +61,18 @@ public class CenterScaleComponent : MonoBehaviour {
         }        
     }
 
+	public float getScale()
+	{
+		return _scale;
+	}
+
+
 	public void Reset()
 	{
 		Vector3 vect_scale = new Vector3(1, 1, 1);
 		this.transform.localScale = vect_scale;
 		this.transform.localPosition = _pos;
+		_scale = 1.0f;
 	}
 
 	public void setCenter(bool center)

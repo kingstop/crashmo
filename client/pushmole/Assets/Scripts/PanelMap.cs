@@ -11,6 +11,7 @@ public class PanelMap : MonoBehaviour {
     List<RectTransform> _allItem = new List<RectTransform>();
 	protected page_type _current_page;
 	protected int _charpter_id;
+	protected float _center_scale;
 	void setChapterID(int charpter_id)
 	{
 		_charpter_id = charpter_id;
@@ -53,7 +54,7 @@ public class PanelMap : MonoBehaviour {
 
     void Awake()
     {
-
+		_center_scale = 1.0f;
     }
 
 	public void setPage(page_type page)
@@ -135,6 +136,17 @@ public class PanelMap : MonoBehaviour {
 		wrap.OnValueChange = (RectTransform item, int index, int realIndex) =>
 		{
 
+			CenterScaleComponent entry = item.GetComponent<CenterScaleComponent>();
+			if(entry)
+			{
+				_center_scale = entry.getScale();
+			}
+			else
+			{
+				_center_scale = 1.0f;
+			}
+
+			/*
 			int count = _allItem.Count;
 			if (index < count)
 			{
@@ -143,6 +155,7 @@ public class PanelMap : MonoBehaviour {
 			else
 			{
 			}
+			*/
 
 		};
 
