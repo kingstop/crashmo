@@ -47,7 +47,10 @@ public class PanelMap : MonoBehaviour {
 		foreach (ulong id in Info.IncompleteMap)
 		{
 			CrashMapData entry = global_instance.Instance._player.getUserMap(id);
-			addItem(entry);
+			if (entry != null) 
+			{
+				addItem(entry);	
+			}
 		}
 	}
 

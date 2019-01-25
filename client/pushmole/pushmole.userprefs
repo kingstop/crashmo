@@ -16,17 +16,32 @@
       <File FileName="Assets\mole_net\proto-net\ProtoReader.cs" Line="539" Column="9" />
       <File FileName="Assets\ScriptViewNew\WrapContent.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\button_event_handler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PanelMap.cs" Line="146" Column="26" />
+      <File FileName="Assets\Scripts\PanelMap.cs" Line="53" Column="5" />
       <File FileName="Assets\Scripts\MainPanelTitleButtonItem.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\UIEditMap.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ChapterButton.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\InfinityGridLayoutGroup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CenterScaleComponent.cs" Line="70" Column="21" />
+      <File FileName="Assets\Scripts\CenterScaleComponent.cs" Line="99" Column="5" />
       <File FileName="Assets\Scripts\PanelChapter.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\UIGameEnd.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ColorBoard.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\sincomponent.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CrashPlayer.cs" Line="121" Column="5" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="pushmole" expanded="True">
+            <Node name="Assembly-CSharp-firstpass" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="pushmole" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -46,9 +61,7 @@
       <Breakpoint file="C:\Users\kings\Documents\GitHub\crashmo\client\pushmole\Assets\PanelMap.cs" line="132" column="1" />
       <Breakpoint file="D:\mywork\gitgame\crashmo\client\pushmole\Assets\PanelMap.cs" line="132" column="1" />
       <Breakpoint file="D:\mywork\gitgame\crashmo\client\pushmole\Assets\Scripts\PanelChapter.cs" line="59" column="1" />
-      <Breakpoint file="D:\mywork\gitgame\crashmo\client\pushmole\Assets\Scripts\PanelMap.cs" line="112" column="1" />
-      <Breakpoint file="D:\mywork\gitgame\crashmo\client\pushmole\Assets\Scripts\PanelMap.cs" line="67" column="1" />
-      <Breakpoint file="D:\mywork\gitgame\crashmo\client\pushmole\Assets\Scripts\PanelMap.cs" line="49" column="1" />
+      <Breakpoint file="D:\mywork\gitgame\crashmo\client\pushmole\Assets\Scripts\PanelMap.cs" line="115" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

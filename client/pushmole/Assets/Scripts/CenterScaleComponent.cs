@@ -96,7 +96,7 @@ public class CenterScaleComponent : MonoBehaviour {
 
 	public void SetGameObj(GameObject obj)
 	{
-		_obj = obj;
+		//_obj = obj;
 	}
 
 }
