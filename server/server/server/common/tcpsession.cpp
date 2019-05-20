@@ -4,6 +4,8 @@
 #include "task_thread_pool.h"
 #include "io_service_pool.h"
 #include "message_interface.h"
+class base_server;
+class  tcp_session;
 
 struct compress_send_task : public task
 {

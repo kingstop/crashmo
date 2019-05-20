@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -13,21 +13,21 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8BD46820-1C81-441A-9133-5378CF1BC37E}</ProjectGuid>
     <RootNamespace>common</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -53,7 +53,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>../../../../../../external/boost/boost_1_60_0/;../../../../../../external/protobuf/protobuf-3.0.0/src/;../../../../../../external/mysql/mysql-5.7.10-win32/include/;../../../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;../../../../../../external/enet/include/;../../../../../../external/log4cplus/log4cplus-1.2.0/include/;../../../../../../external/mysql++/mysql++-3.1.0/lib/;../common/;../../../../../../external/curl/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\work_github\boost_1_70_0;../../../../../../external/boost/boost_1_60_0/;../../../../../../external/protobuf/protobuf-3.0.0/src/;../../../../../../external/mysql/mysql-5.7.10-win32/include/;../../../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;../../../../../../external/enet/include/;../../../../../../external/log4cplus/log4cplus-1.2.0/include/;../../../../../../external/mysql++/mysql++-3.1.0/lib/;../common/;../../../../../../external/curl/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN32_WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalOptions>-Zm132 %(AdditionalOptions)</AdditionalOptions>
@@ -84,6 +84,7 @@
     <ClInclude Include="asiodef.h" />
     <ClInclude Include="base64_encode.h" />
     <ClInclude Include="basesession.h" />
+    <ClInclude Include="base_server.h" />
     <ClInclude Include="call_back.h" />
     <ClInclude Include="common_header.h" />
     <ClInclude Include="common_helper.h" />
@@ -127,6 +128,7 @@
   <ItemGroup>
     <ClCompile Include="base64_encode.cpp" />
     <ClCompile Include="basesession.cpp" />
+    <ClCompile Include="base_server.cpp" />
     <ClCompile Include="call_back.cpp" />
     <ClCompile Include="crypt.cpp" />
     <ClCompile Include="cur_http_client.cpp" />
