@@ -254,3 +254,5 @@ client/pushmole/Assembly-CSharp-firstpass.csproj
 server/server/project-crash.VC.db
 server/server/.vs/project-crash/v15/Solution.VC.db
 server/server/.vs/project-crash/v15/Browse.VC.db
+server/server/.vs/project-crash/v15/Solution.VC.db-wal
+server/server/.vs/project-crash/v15/Solution.VC.db-shm
