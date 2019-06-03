@@ -53,7 +53,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>G:\work_github\boost_1_70_0;../../../../../../external/boost/boost_1_60_0/;../../../../../../external/protobuf/protobuf-3.0.0/src/;../../../../../../external/mysql/mysql-5.7.10-win32/include/;../../../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;../../../../../../external/enet/include/;../../../../../../external/log4cplus/log4cplus-1.2.0/include/;../../../../../../external/mysql++/mysql++-3.1.0/lib/;../common/;../../../../../../external/curl/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../../../../external/boost/boost_1_60_0/;$(SolutionDir)../../../../external/protobuf/protobuf-3.0.0/src/;$(SolutionDir)../../../../external/mysql/mysql-5.7.10-win32/include/;$(SolutionDir)../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;$(SolutionDir)../../../../external/enet/include/;$(SolutionDir)../../../../external/log4cplus/log4cplus-1.2.0/include/;$(SolutionDir)../../../../external/mysql++/mysql++-3.1.0/lib/;$(SolutionDir)/server/common/;$(SolutionDir)../../../../external/curl-7.64.1/include/;$(SolutionDir)../../../../external/enet-1.3.13/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN32_WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalOptions>-Zm132 %(AdditionalOptions)</AdditionalOptions>
@@ -86,6 +86,7 @@
     <ClInclude Include="basesession.h" />
     <ClInclude Include="base_server.h" />
     <ClInclude Include="call_back.h" />
+    <ClInclude Include="client_base.h" />
     <ClInclude Include="common_header.h" />
     <ClInclude Include="common_helper.h" />
     <ClInclude Include="common_template.h" />
@@ -108,6 +109,8 @@
     <ClInclude Include="server_define.h" />
     <ClInclude Include="udpserver.h" />
     <ClInclude Include="udpsession.h" />
+    <ClInclude Include="udp_client.h" />
+    <ClInclude Include="udp_server.h" />
     <ClInclude Include="windump.h" />
     <ClInclude Include="mt_buffer.h" />
     <ClInclude Include="my_log.h" />
@@ -130,6 +133,7 @@
     <ClCompile Include="basesession.cpp" />
     <ClCompile Include="base_server.cpp" />
     <ClCompile Include="call_back.cpp" />
+    <ClCompile Include="client_base.cpp" />
     <ClCompile Include="crypt.cpp" />
     <ClCompile Include="cur_http_client.cpp" />
     <ClCompile Include="database.cpp" />
@@ -144,6 +148,8 @@
     <ClCompile Include="MyLog.cpp" />
     <ClCompile Include="udpserver.cpp" />
     <ClCompile Include="udpsession.cpp" />
+    <ClCompile Include="udp_client.cpp" />
+    <ClCompile Include="udp_server.cpp" />
     <ClCompile Include="windump.cpp" />
     <ClCompile Include="my_log.cpp" />
     <ClCompile Include="server_frame.cpp" />

@@ -1,25 +1,93 @@
-/*
+
 #include "udpsession.h"
 #include "asiodef.h"
-static char static_compress_buffer[RECEIVEBUFFLENGTH];
-udp_session::udp_session(u32 connect_id, u32 connect_index,
-	u32 remote_host, u16 remote_port, const char* ip) :
-	_recive_buffer_pos(0), m_not_sent_size(0)
+#include "base_server.h"
+#include "enet/enet.h"
+udp_session::udp_session(): _connect_id(0), _connect_index(0), _port(0)
 {
-	memset(_recive_buff, 0, sizeof(_recive_buff));
-	_connect_id = connect_id;
-	_connect_index = connect_index;
-	_host = remote_host;
-	_port = remote_port;
-	_ip = ip;
-
-
+	
 }
 
 udp_session::~udp_session()
 {
 }
 
+
+void udp_session::on_connect(ENetPeer* peer, u32 connect_index,
+	u32 remote_host, u16 remote_port, const char* ip)
+{
+	_peer = peer;
+	_connect_id = _peer->connectID;
+	_connect_index = connect_index;
+	m_remote_ip_ui = remote_host;
+	_port = remote_port;
+	m_remote_ip_str = ip;
+}
+
+void udp_session::receive(const char* receive_data, std::size_t length)
+{
+	_read_some(receive_data, length);	
+}
+
+bool udp_session::_uncompress_message(char* data)
+{
+	message_len size = MAX_MESSAGE_LEN;
+	message_t* msg = message_interface::uncompress(this, data, &m_recv_crypt_key, _uncompress_buffer, size);
+	if (NULL == msg)
+	{
+		if (m_father)
+		{
+			m_father->add_ban_ip(this->get_remote_address_ui(), 120, net_global::BAN_REASON_WRONG_CHECK_SUM);
+		}
+		this->close();
+		return false;
+	}
+	push_message(msg);
+	return true;
+}
+
+void udp_session::_send_message(message_t* msg)
+{
+	_try_send_message(msg);
+}
+
+void udp_session::_write_message()
+{
+	std::size_t len = 0;
+	
+	if (base_session::_write_message(len))
+	{
+		unsigned int head_len = strlen("packet") + 1;
+		ENetPacket * packet = enet_packet_create("packet",
+
+			head_len,
+
+			ENET_PACKET_FLAG_RELIABLE);
+
+		/* Extend the packet so and append the string "foo", so it now */
+
+		/* contains "packetfoo\0" */
+
+		enet_packet_resize(packet, head_len + len);
+		memcpy(&packet->data[strlen("packet")], m_sending_data, len);
+
+		
+
+		/* Send the packet to the peer over channel id 0. */
+
+		/* One could also broadcast the packet by */
+
+		/* enet_host_broadcast (host, 0, packet); */
+
+		enet_peer_send(_peer, 0, packet);
+		//enet_host_service()
+		//enet_host_flush(host);
+	}
+	
+}
+
+
+/*
 bool udp_session::is_connected()
 {
 	return true;

@@ -12,7 +12,8 @@ public:
 	base_server(int id);
 	virtual ~base_server();
 public:
-	bool create(unsigned short port, unsigned int poolcount, int thread_count);
+	virtual bool create(unsigned short port, unsigned int poolcount, int thread_count);
+	virtual bool handle_accept(base_session* p);
 	void handle_accept(base_session* p, const boost::system::error_code& error);
 	inline int get_id() const { return m_id; }
 	void free_session(base_session* p);

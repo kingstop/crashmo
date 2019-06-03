@@ -1,6 +1,7 @@
 #pragma once
 #include "message_interface.h"
 #include "asiodef.h"
+#include "common_type.h"
 class base_server;
 
 
@@ -22,8 +23,15 @@ protected:
 	virtual message_t* _compress_message(const void* data, message_len len, int t_idx, bool base64);
 	virtual message_t* _make_message(const void* data, message_len len, bool base64);
 	virtual void send_message(const void* data, const unsigned int len, bool base64);
-	virtual void _send_message(message_t* msg);
-	
+	virtual bool _try_send_message(message_t* msg);
+	virtual void handle_read_some(std::size_t bytes_transferred);
+	virtual std::string get_remote_address_string() const;
+	virtual bool _uncompress_message(char* data) = 0;
+	void close_and_ban();
+	virtual void push_message(message_t* msg);
+	virtual bool _read_some(const char* buff, std::size_t bytes_transferred);
+	virtual bool _write_message(std::size_t& len);
+
 public:
 	boost::mutex m_proc_mutex;
 	std::map<unsigned int, unsigned int> m_idleip;

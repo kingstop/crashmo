@@ -50,9 +50,9 @@ bool base_server::create(unsigned short port, unsigned int poolcount, int thread
 	return true;
 }
 
-void base_server::handle_accept(base_session* p, const boost::system::error_code& error)
+bool base_server::handle_accept(base_session* p)
 {
-	
+	bool ret = true;
 	{
 		boost::mutex::scoped_lock lock(m_proc_mutex);
 		--m_accepting_count;
@@ -61,6 +61,15 @@ void base_server::handle_accept(base_session* p, const boost::system::error_code
 	{
 		p->handle_close();
 		free_session(p);
+		ret = false;		
+	}
+	return ret;
+}
+
+void base_server::handle_accept(base_session* p, const boost::system::error_code& error)
+{	
+	if (handle_accept(p) == false)
+	{
 		return;
 	}
 

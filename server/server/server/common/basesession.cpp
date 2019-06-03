@@ -19,7 +19,7 @@ struct compress_send_task : public task
 	virtual void end()
 	{
 		if (session->is_valid() && session->is_connected())
-			session->_send_message(result);
+			session->_try_send_message(result);
 	}
 
 	~compress_send_task()
@@ -76,12 +76,162 @@ void base_session::send_message(const void* data, const unsigned int len, bool b
 			m_father->push_task(t);
 		}
 		else
-			_send_message(_make_message(data, len, base64));
+			_try_send_message(_make_message(data, len, base64));
 	}
 	else
 	{
-		_send_message(_compress_message(data, len, -1, base64));
+		_try_send_message(_compress_message(data, len, -1, base64));
 	}
+}
+
+std::string base_session::get_remote_address_string() const
+{
+	if (m_remote_ip_str.length())
+		return m_remote_ip_str;
+	return "";
+}
+
+
+void base_session::close_and_ban()
+{
+	if (m_father)
+		m_father->add_ban_ip(this->get_remote_address_ui(), 5, net_global::BAN_REASON_HACK_PACKET);
+	this->close();
+	net_global::write_close_log("IP:[%s] recv hack packet. ban for 5 seconds", this->get_remote_address_string().c_str());
+}
+
+
+void base_session::push_message(message_t* msg)
+{
+	if (m_father)
+		m_father->push_message(msg);
+}
+
+
+bool base_session::_write_message(std::size_t& len)
+{
+	boost::mutex::scoped_lock lock(m_mutex);
+	//m_not_sent_size -= sent_size;
+
+	if (!is_connected())
+		return false;
+
+	// optimize for sending-data frequently
+	if (m_is_sending_data)
+		return false;
+
+	if (m_queue_send_msg.empty())
+		return false;
+
+	len = 0;
+	while (!m_queue_send_msg.empty())
+	{
+		message_t* msg = m_queue_send_msg.front();
+		if (len + msg->len <= MAX_MESSAGE_LEN)
+		{
+			memcpy(m_sending_data + len, msg->data, msg->len);
+			len += msg->len;
+			m_queue_send_msg.pop();
+			net_global::free_message(msg);
+		}
+		else
+			break;
+	}
+	m_not_sent_size -= len;
+	return true;
+}
+
+bool base_session::_read_some(const char* buff, std::size_t bytes_transferred)
+{	
+	if (is_valid() == false)
+	{
+		return false;
+	}
+	memcpy(m_recv_buffer + m_recive_buffer_pos, buff, bytes_transferred);
+	m_recive_buffer_pos += bytes_transferred;
+	std::size_t now_pos = 0;
+	if (m_recive_buffer_pos >= MESSAGE_HEAD_LEN)
+	{
+		message_len len = *(message_len *)m_recv_buffer;
+		if (len < MESSAGE_HEAD_LEN || len > MAX_MESSAGE_LEN)
+		{
+			close_and_ban();
+			return false;
+		}
+		while (m_recive_buffer_pos - now_pos >= len)
+		{
+			if (!_uncompress_message(m_recv_buffer + now_pos))
+			{
+				close_and_ban();
+				return false;
+			}
+			now_pos += len;
+			if (m_recive_buffer_pos - now_pos >= MESSAGE_HEAD_LEN)
+			{
+				len = *(message_len*)(m_recv_buffer + now_pos);
+
+				if (len < MESSAGE_HEAD_LEN || len > MAX_MESSAGE_LEN)
+				{
+					close_and_ban();
+					return false;
+				}
+			}
+			else
+				break;
+		}
+		if (now_pos > 0 && m_recive_buffer_pos > now_pos)
+			memmove(m_recv_buffer, m_recv_buffer + now_pos, m_recive_buffer_pos - now_pos);
+		m_recive_buffer_pos -= now_pos;
+	}
+	return true;
+}
+
+void base_session::handle_read_some(std::size_t bytes_transferred)
+{
+	if (is_valid() == false)
+	{
+		return;
+	}
+	_read_some(buffer_, bytes_transferred);
+	/*
+	std::size_t now_pos = 0;
+	memcpy(m_recv_buffer + m_recive_buffer_pos, buffer_, bytes_transferred);
+	m_recive_buffer_pos += bytes_transferred;
+
+	if (m_recive_buffer_pos >= MESSAGE_HEAD_LEN)
+	{
+		message_len len = *(message_len *)m_recv_buffer;
+		if (len < MESSAGE_HEAD_LEN || len > MAX_MESSAGE_LEN)
+		{
+			close_and_ban();
+			return;
+		}
+		while (m_recive_buffer_pos - now_pos >= len)
+		{
+			if (!_uncompress_message(m_recv_buffer + now_pos))
+			{
+				close_and_ban();
+				return;
+			}
+			now_pos += len;
+			if (m_recive_buffer_pos - now_pos >= MESSAGE_HEAD_LEN)
+			{
+				len = *(message_len*)(m_recv_buffer + now_pos);
+
+				if (len < MESSAGE_HEAD_LEN || len > MAX_MESSAGE_LEN)
+				{
+					close_and_ban();
+					return;
+				}
+			}
+			else
+				break;
+		}
+		if (now_pos > 0 && m_recive_buffer_pos > now_pos)
+			memmove(m_recv_buffer, m_recv_buffer + now_pos, m_recive_buffer_pos - now_pos);
+		m_recive_buffer_pos -= now_pos;
+	}
+	*/
 }
 
 message_t* base_session::_compress_message(const void* data, message_len len, int t_idx, bool base64)
@@ -130,10 +280,10 @@ void base_session::close()
 
 }
 
-void base_session::_send_message(message_t* msg)
+bool base_session::_try_send_message(message_t* msg)
 {
 	if (!is_connected())
-		return;
+		return false;
 
 	{
 		boost::mutex::scoped_lock lock(m_mutex);
@@ -144,11 +294,11 @@ void base_session::_send_message(message_t* msg)
 			if (m_not_sent_size >= QUEUE_MESSAGE_LIMIT_SIZE)
 			{
 				close();
-				//net_global::write_close_log( "IP:[%s] close, message queue is full", this->get_remote_address_string().c_str() );
-				return;
+				net_global::write_close_log( "IP:[%s] close, message queue is full", this->get_remote_address_string().c_str() );
+				return false;
 			}
 		}
 	}
-
+	return true;
 	//m_io_service.post(boost::bind(&tcp_session::_write_message, this, 0));
 }

@@ -29,7 +29,7 @@ public:
 	inline tcp_server* get_father() const { return m_father; }
 	inline int get_thread_index() const { return m_thread_index; }
 	inline boost::asio::io_service& get_io_service() { return m_io_service; }
-	std::string get_remote_address_string() const;
+	virtual std::string get_remote_address_string() const;
 	unsigned int get_remote_address_ui() const;
 	unsigned short get_remote_port() const;
 	bool get_base64() { return _base64; }

@@ -54,7 +54,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../../../../../external/boost/boost_1_60_0/;../../../../../../external/protobuf/protobuf-3.0.0/src/;../../../../../../external/mysql/mysql-5.7.10-win32/include/;../../../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;../../../../../../external/log4cplus/log4cplus-1.2.0/include/;../../../../../../external/mysql++/mysql++-3.1.0/lib/;../common/;../msg/;../msg/message/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../../../../external/boost/boost_1_60_0/;$(SolutionDir)../../../../external/protobuf/protobuf-3.0.0/src/;$(SolutionDir)../../../../external/mysql/mysql-5.7.10-win32/include/;$(SolutionDir)../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;$(SolutionDir)../../../../external/enet/include/;$(SolutionDir)../../../../external/log4cplus/log4cplus-1.2.0/include/;$(SolutionDir)../../../../external/mysql++/mysql++-3.1.0/lib/;$(SolutionDir)/server/common/;$(SolutionDir)../../../../external/curl-7.64.1/include/;$(SolutionDir)/server/msg/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN32_WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <DisableSpecificWarnings>4996;4819</DisableSpecificWarnings>
