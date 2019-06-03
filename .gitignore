@@ -256,3 +256,6 @@ server/server/.vs/project-crash/v15/Solution.VC.db
 server/server/.vs/project-crash/v15/Browse.VC.db
 server/server/.vs/project-crash/v15/Solution.VC.db-wal
 server/server/.vs/project-crash/v15/Solution.VC.db-shm
+server/server/project-udp-client/.vs/project-udp-client/v15/Browse.VC.db
+server/server/.vs/project-udp-test/v15/Browse.VC.db
+*.db

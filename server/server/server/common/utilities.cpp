@@ -141,16 +141,33 @@ boost::uint32_t interlocked_decrement( volatile boost::uint32_t* target )
 
 
 
-void interlocked_write( volatile boost::uint32_t* target, boost::uint32_t value )
+void interlocked_write(volatile boost::uint32_t* target, boost::uint32_t value)
 {
 
 #if (BOOST_VERSION >= 104800)
 
-	boost::interprocess::ipcdetail::atomic_write32( target, value );
+	boost::interprocess::ipcdetail::atomic_write32(target, value);
 
 #else
 
-	boost::interprocess::detail::atomic_write32( target, value );
+	boost::interprocess::detail::atomic_write32(target, value);
+
+#endif
+
+}
+//
+//
+//
+boost::uint32_t interlocked_read(volatile boost::uint32_t* target)
+{
+
+#if (BOOST_VERSION >= 104800)
+
+	return boost::interprocess::ipcdetail::atomic_read32(target);
+
+#else
+
+	return boost::interprocess::detail::atomic_read32(target);
 
 #endif
 
@@ -158,33 +175,16 @@ void interlocked_write( volatile boost::uint32_t* target, boost::uint32_t value 
 
 
 
-boost::uint32_t interlocked_read( volatile boost::uint32_t* target )
+boost::uint32_t interlocked_compare_exchange(volatile boost::uint32_t* target, boost::uint32_t value, boost::uint32_t comp)
 {
 
 #if (BOOST_VERSION >= 104800)
 
-	return boost::interprocess::ipcdetail::atomic_read32( target );
+	return boost::interprocess::ipcdetail::atomic_cas32(target, value, comp);
 
 #else
 
-	return boost::interprocess::detail::atomic_read32( target );
-
-#endif
-
-}
-
-
-
-boost::uint32_t interlocked_compare_exchange( volatile boost::uint32_t* target, boost::uint32_t value, boost::uint32_t comp )
-{
-
-#if (BOOST_VERSION >= 104800)
-
-	return boost::interprocess::ipcdetail::atomic_cas32( target, value, comp );
-
-#else
-
-	return boost::interprocess::detail::atomic_cas32( target, value, comp );
+	return boost::interprocess::detail::atomic_cas32(target, value, comp);
 
 #endif
 
@@ -197,7 +197,7 @@ boost::uint32_t interlocked_compare_exchange( volatile boost::uint32_t* target, 
 void cpu_wait()
 {
 
-	usleep( 1 );
+	usleep(1);
 
 }
 
@@ -206,7 +206,7 @@ void cpu_wait()
 void cpu_wait()
 {
 
-	Sleep( 1 );
+	Sleep(1);
 
 }
 
@@ -218,105 +218,105 @@ static const char* character_original_table = "abcdefghijklmnopqrstuvwxyzABCDEFG
 
 static const char* character_encrypt_table =
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"iqbYtXWrlp65RcS0ga3nyUZovHjzE1efBDI9TCL27NK4VwGdmMhskPuJxQFA8O"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"PUpGbXWA6Nnm4KYu9t1T5zhcVqQiDjdEHLJ0OvZxwgsoBkIrl823yMaCeFR7Sf"
+"PUpGbXWA6Nnm4KYu9t1T5zhcVqQiDjdEHLJ0OvZxwgsoBkIrl823yMaCeFR7Sf"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"8y7u3tJDYRxedKmH0WVbL9qlpGUrv2CTjQocInAZihXOB4SawN6P1fM5FgzkEs"
 
-	"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"
+"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"
 
-	"c4ABsWNdYEF9lODpgfzQxkPo3mUHeia0XrtvnJ7MTqj5G8uS6bVwCI2yZLK1hR"
+"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"
 
-	"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"
+"Dz1rL3UgKxkvq7Qp289XbNVTcHlfWdYIBsRjnG6CEiSFoJtA5yaeZuPhO0m4Mw"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"YmoAFP3Dw0ZRcM724xJ9gzp8GjiHlXOkKEtNfqnUSr6bLsQ5u1ICBTVyhvdeaW"
 
-	"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"
+"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"
 
-	"uCITPp0DnbQrUlgRhS47X3dB1KcEeGMHyWANfiV2OmYv6txLFwkz8qa5osjZ9J"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"n3u0aSHWAeXTtvl2YfKr7BhzwF15qUQ4GIM8PbNJsRigdjZyOD6x9EmVcLpkCo"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"AqMXFevwOZygIYRNiD70khdc6JLUB5tCxb9EPr4Glzo1Q8f2s3uKTaVWnSHmpj"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"DvHxq0oS4w5lb9paudR3YktPCFGOKzBgr1TMcf8VhWLAsy2iZjU6enJX7mNIEQ"
 
-	"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"
+"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"
 
-	"DzFbu0de6LAJ5vMBNRYQT7awjfCrKqiyZH8omIE9UPlShn4OWpcG2st1XxgV3k"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"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"
+"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"
 
-	"OwgVpx290UmcsRyl8LHj3b4PqChGY6vKnST5iNfJADB7tdauXzQIrZokeWFM1E";
+"OwgVpx290UmcsRyl8LHj3b4PqChGY6vKnST5iNfJADB7tdauXzQIrZokeWFM1E";
 
 
 
@@ -330,9 +330,9 @@ struct encrypt_table
 
 	{
 
-		for( int i = 0; i < TABLE_COUNT; ++i )
+		for (int i = 0; i < TABLE_COUNT; ++i)
 
-			memcpy( &tables[i].data, &character_encrypt_table[i * TABLE_SIZE], TABLE_SIZE );
+			memcpy(&tables[i].data, &character_encrypt_table[i * TABLE_SIZE], TABLE_SIZE);
 
 	}
 
@@ -340,13 +340,13 @@ struct encrypt_table
 
 		char data[TABLE_SIZE];
 
-		const char encrypt_get( char a ) const
+		const char encrypt_get(char a) const
 
 		{
 
-			const char* p = std::find( &character_original_table[0], &character_original_table[TABLE_SIZE], a );
+			const char* p = std::find(&character_original_table[0], &character_original_table[TABLE_SIZE], a);
 
-			if( p == &character_original_table[TABLE_SIZE] )
+			if (p == &character_original_table[TABLE_SIZE])
 
 				return 0;
 
@@ -356,13 +356,13 @@ struct encrypt_table
 
 		}
 
-		const char decrypt_get( char a ) const
+		const char decrypt_get(char a) const
 
 		{
 
-			const char* p = std::find( &data[0], &data[TABLE_SIZE], a );
+			const char* p = std::find(&data[0], &data[TABLE_SIZE], a);
 
-			if( p == &data[TABLE_SIZE] )
+			if (p == &data[TABLE_SIZE])
 
 				return 0;
 
@@ -387,10 +387,10 @@ unsigned int generate_table_key()
 
 
 
-void encrypt_string( const std::string& in, std::string& out, unsigned int table )
+void encrypt_string(const std::string& in, std::string& out, unsigned int table)
 {
 
-	if( table >= encrypt_table::TABLE_COUNT )
+	if (table >= encrypt_table::TABLE_COUNT)
 	{
 		return;
 	}
@@ -399,11 +399,11 @@ void encrypt_string( const std::string& in, std::string& out, unsigned int table
 	out.clear();
 	const char* p = in.c_str();
 	const encrypt_table::tb& t = s_et.tables[table];
-	for( size_t i = 0; i < size; ++i )
+	for (size_t i = 0; i < size; ++i)
 	{
-		char c = t.encrypt_get( p[i] );
+		char c = t.encrypt_get(p[i]);
 
-		if( !c )
+		if (!c)
 		{
 
 			out.clear();
@@ -416,10 +416,10 @@ void encrypt_string( const std::string& in, std::string& out, unsigned int table
 
 
 
-void decrypt_string( const std::string& in, std::string& out, unsigned int table )
+void decrypt_string(const std::string& in, std::string& out, unsigned int table)
 {
 
-	if( table >= encrypt_table::TABLE_COUNT )
+	if (table >= encrypt_table::TABLE_COUNT)
 	{
 		return;
 	}
@@ -428,10 +428,10 @@ void decrypt_string( const std::string& in, std::string& out, unsigned int table
 	out.clear();
 	const char* p = in.c_str();
 	const encrypt_table::tb& t = s_et.tables[table];
-	for( size_t i = 0; i < size; ++i )
+	for (size_t i = 0; i < size; ++i)
 	{
-		char c = t.decrypt_get( p[i] );
-		if( !c )
+		char c = t.decrypt_get(p[i]);
+		if (!c)
 		{
 			out.clear();
 			break;
@@ -825,11 +825,7 @@ int SplitStringA(const std::string& strIn, const std::string& strDelimiter, std:
 
 bool isIntger(std::string str)
 {
-	std::stringstream sin(str);
-	int number;
-	if (!(sin >> number))
-		return false;
-	return true;
+	return std::all_of(str.begin(), str.end(), ::isdigit);
 }
 
 bool is_valid_string( const std::string& str )
@@ -1005,38 +1001,7 @@ char* urldecode(char* encd, char* decd)
 
 	return decd;
 }
-/*
-bool base64_encode(std::string &input, std::string &output)
-{
-	typedef boost::archive::iterators::base64_from_binary<boost::archive::iterators::transform_width<std::string::const_iterator, 6, 8> >Base64EncodeIterator;
-	std::stringstream result;
-	copy(Base64EncodeIterator(input.begin()), Base64EncodeIterator(input.end()), std::ostream_iterator<char>(result));
-	size_t equal_count = (3 - input.length() % 3) % 3;
-	for (size_t i = 0; i < equal_count; i++)
-	{
-		result.put('=');
-	}
-	output = result.str();
-	return output.empty() == false;
-}
 
-bool Base64_decode(const std::string& input, std::string& output)
-{
-	typedef boost::archive::iterators::transform_width<boost::archive::iterators::binary_from_base64<std::string::const_iterator>, 8, 6> Base64DecodeIterator;
-	std::stringstream result;
-	try
-	{
-		copy(Base64DecodeIterator(input.begin()), Base64DecodeIterator(input.end()), std::ostream_iterator<char>(result));
-	}
-	catch (...)
-	{
-		return false;
-	}
-	output = result.str();
-	return output.empty() == false;
-}
-
-*/
 
 static inline bool is_base64(unsigned char c) {
 	return (isalnum(c) || (c == '+') || (c == '/'));
@@ -1129,89 +1094,6 @@ int base64_decode(const char * base64, unsigned char * bindata)
 }
 
 
-
-
-//std::string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_len) {
-//	std::string ret;
-//	int i = 0;
-//	int j = 0;
-//	unsigned char char_array_3[3];
-//	unsigned char char_array_4[4];
-//
-//	while (in_len--) {
-//		char_array_3[i++] = *(bytes_to_encode++);
-//		if (i == 3) {
-//			char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
-//			char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
-//			char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
-//			char_array_4[3] = char_array_3[2] & 0x3f;
-//
-//			for (i = 0; (i < 4); i++)
-//				ret += base64_chars[char_array_4[i]];
-//			i = 0;
-//		}
-//	}
-//
-//	if (i)
-//	{
-//		for (j = i; j < 3; j++)
-//			char_array_3[j] = '\0';
-//
-//		char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
-//		char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
-//		char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
-//		char_array_4[3] = char_array_3[2] & 0x3f;
-//
-//		for (j = 0; (j < i + 1); j++)
-//			ret += base64_chars[char_array_4[j]];
-//
-//		while ((i++ < 3))
-//			ret += '=';
-//
-//	}
-//
-//	return ret;
-//
-//}
-//
-//std::string base64_decode(std::string const& encoded_string) {
-//	int in_len = encoded_string.size();
-//	int i = 0;
-//	int j = 0;
-//	int in_ = 0;
-//	unsigned char char_array_4[4], char_array_3[3];
-//	std::string ret;
-//
-//	while (in_len-- && (encoded_string[in_] != '=') && is_base64(encoded_string[in_])) {
-//		char_array_4[i++] = encoded_string[in_]; in_++;
-//		if (i == 4) {
-//			for (i = 0; i < 4; i++)
-//				char_array_4[i] = base64_chars.find(char_array_4[i]);
-//
-//			char_array_3[0] = (char_array_4[0] << 2) + ((char_array_4[1] & 0x30) >> 4);
-//			char_array_3[1] = ((char_array_4[1] & 0xf) << 4) + ((char_array_4[2] & 0x3c) >> 2);
-//			char_array_3[2] = ((char_array_4[2] & 0x3) << 6) + char_array_4[3];
-//
-//			for (i = 0; (i < 3); i++)
-//				ret += char_array_3[i];
-//			i = 0;
-//		}
-//	}
-//
-//	if (i) {
-//		for (j = i; j < 4; j++)
-//			char_array_4[j] = 0;
-//		for (j = 0; j < 4; j++)
-//			char_array_4[j] = base64_chars.find(char_array_4[j]);
-//		char_array_3[0] = (char_array_4[0] << 2) + ((char_array_4[1] & 0x30) >> 4);
-//		char_array_3[1] = ((char_array_4[1] & 0xf) << 4) + ((char_array_4[2] & 0x3c) >> 2);
-//		char_array_3[2] = ((char_array_4[2] & 0x3) << 6) + char_array_4[3];
-//		for (j = 0; (j < i - 1); j++) ret += char_array_3[j];
-//	}
-//
-//	return ret;
-//}
-//base64±àÂë 
 int Base64Encode(unsigned char *out, const unsigned char *in, int inlen)
 {
 	const char base64digits[] =
