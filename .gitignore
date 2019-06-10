@@ -260,3 +260,5 @@ server/server/.vs/project-udp-test/v15/Browse.VC.db
 *.db
 server/server/.vs/project-udp-test/v16/Solution.VC.db-shm
 server/server/.vs/project-udp-test/v16/Solution.VC.db-wal
+*.db-wal
+*.db-shm
