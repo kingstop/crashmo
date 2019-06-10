@@ -1,32 +1,26 @@
-﻿// project-udp-client.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+﻿// udp_server.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 
-#include "pch.h"
 #include <iostream>
-#include "asiodef.h"
-#include "test_udp_client.h"
+#include "test_udp_server.h"
 
 int main()
 {
-
-	net_global::udp_net_init();
-	test_udp_client::initPBModule();
-	test_udp_client client;
-	client.connect("127.0.0.1", 777);
+	test_udp_server udp_server(1);
+	udp_server.create(777, 5, 2);
 	while (true)
 	{
-		client.run_no_wait();
+		udp_server.run_no_wait();
 	}
 	
-	return 0;
 
-    //std::cout << "Hello World!\n"; 
+    //std::cout << "Hello World!\n";
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
 
-// 入门提示: 
+// 入门使用技巧: 
 //   1. 使用解决方案资源管理器窗口添加/管理文件
 //   2. 使用团队资源管理器窗口连接到源代码管理
 //   3. 使用输出窗口查看生成输出和其他消息

@@ -68,7 +68,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\contrib\include\log4cxx;..\contrib\include\json_include;..\contrib\include\mysql++;..\contrib\include\mysql\include;..\contrib\include\protoc;$(BOOST_INCLUDE);..\..\..\..\..\..\..\code\boost\boost_1_58_0;..\..\..\..\..\..\..\code\mysql++-3.0.3\lib;C:\Program Files (x86)\MySQL\MySQL Server 5.6\include;..\..\..\..\..\..\..\code\protobuf\protobuf\src;..\..\..\..\..\..\..\code\log4cplus\include;..\..\..\..\..\..\..\code\mysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../../../../external/boost/boost_1_60_0/;$(SolutionDir)../../../../external/protobuf/protobuf-3.0.0/src/;$(SolutionDir)../../../../external/mysql/mysql-5.7.10-win32/include/;$(SolutionDir)../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;$(SolutionDir)../../../../external/enet/include/;$(SolutionDir)../../../../external/log4cplus/log4cplus-1.2.0/include/;$(SolutionDir)../../../../external/mysql++/mysql++-3.1.0/lib/;$(SolutionDir)/server/common/;$(SolutionDir)../../../../external/curl-7.64.1/include/;$(SolutionDir)../../../../external/enet-1.3.13/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN32_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

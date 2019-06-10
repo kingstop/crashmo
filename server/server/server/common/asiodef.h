@@ -18,6 +18,8 @@ struct net_global
 {
 	// external
 	static boost::asio::io_service* get_io_service();
+	static bool udp_net_init();
+	static bool udp_net_deinit();
 	static void init_net_service( int thread_count, int proc_interval, compress_strategy* cs_imp, bool need_max_speed, int msg_pool_size );
 	static void free_net_service();
 	static void stop_net_service();

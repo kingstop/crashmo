@@ -5,12 +5,14 @@
 #include <stdarg.h>
 #include "io_service_pool.h"
 #include "message_interface.h"
+#include <enet\enet.h>
 
 
 static volatile boost::uint32_t s_asio_thread_count = 0;
 static io_service_pool* s_io_service_pool = NULL;
 static bool net_service_stoped = false;
 static unsigned int s_io_once_listen_session_count = 40;
+static bool init_udp_service = false;
 
 void net_global::update_net_service()
 {
@@ -27,7 +29,28 @@ boost::asio::io_service* net_global::get_io_service()
 }
 
 
+bool net_global::udp_net_deinit()
+{
 
+	enet_deinitialize();
+	return true;
+}
+
+bool net_global::udp_net_init()
+{
+	if (init_udp_service)
+	{
+		return true;
+	}
+
+	if (enet_initialize() != 0)
+	{
+		fprintf(stderr, "An error occurred while initializing ENet.\n");
+		return false;
+	}		
+	init_udp_service = true;
+	return true;
+}
 void net_global::init_net_service( int thread_count, int proc_interval, compress_strategy* cs_imp, bool need_max_speed, int msg_pool_size )
 {
 	message_interface::messageInit(cs_imp);

@@ -41,7 +41,7 @@ public:
 
 public:
 	virtual void stop();
-	virtual tcp_session* create_session() = 0;
+	virtual base_session* create_session() = 0;
 	void _real_run(bool is_wait);
 public:
 	boost::mutex m_proc_mutex;

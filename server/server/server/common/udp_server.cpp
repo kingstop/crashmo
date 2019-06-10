@@ -3,7 +3,7 @@
 
 
 
-udp_server::udp_server(int id):base_server(id), _connect_count(0)
+udp_server::udp_server(int id):base_server(id), _connect_count(0), _server(nullptr),_address()
 {
 }
 
