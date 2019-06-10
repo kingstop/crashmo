@@ -92,7 +92,7 @@ void udp_client::connect(const char* address, unsigned short port)
 	enet_address_set_host(&_address, address);
 	_address.port = port;
 	/* Initiate the connection, allocating the two channels 0 and 1. */
-	_peer = enet_host_connect(_client, &_address, 2, 0);
+	_peer = enet_host_connect(_client, &_address, 3, 0);
 	if (_peer == NULL)
 	{
 		fprintf(stderr,

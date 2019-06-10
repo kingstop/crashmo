@@ -74,11 +74,12 @@ void udp_server::run()
 
 
 
-	while (enet_host_service(_server, &event, 5000) >= 0)
+	while (enet_host_service(_server, &event, 1000) >= 0)
 	{
-		if (event.type == ENET_EVENT_TYPE_CONNECT) //有客户机连接成功
+		switch (event.type)
 		{
-
+		case ENET_EVENT_TYPE_CONNECT:
+		{
 			ENetAddress remote = event.peer->address; //远程地址
 			char ip[256];
 			static unsigned connect_index = generateID();
@@ -110,7 +111,9 @@ void udp_server::run()
 
 			m_sessions.pop_front();
 		}
-		else if (event.type == ENET_EVENT_TYPE_RECEIVE) //收到数据
+		break;
+
+		case ENET_EVENT_TYPE_RECEIVE:
 		{
 			std::cout << "收到序号" << event.peer->data << "的数据,从" << event.channelID << "通道发送" << std::endl;
 			std::cout << "数据大小:" << event.packet->dataLength << std::endl;
@@ -124,7 +127,8 @@ void udp_server::run()
 			enet_packet_destroy(event.packet);    //注意释放空间
 			std::cout << std::endl;
 		}
-		else if (event.type == ENET_EVENT_TYPE_DISCONNECT) //失去连接
+		break;
+		case ENET_EVENT_TYPE_DISCONNECT:
 		{
 			std::cout << "序号" << event.peer->data << "远程已经关闭连接" << std::endl;
 			auto it_ = _connected_sessions.find((u32)event.peer->data);
@@ -134,7 +138,9 @@ void udp_server::run()
 				p_udp->close();
 			}
 		}
-
+		default:
+			break;
+		}
 	}
 	auto it_ = _connected_sessions.begin();
 	for (; it_ != _connected_sessions.end(); ++ it_)
