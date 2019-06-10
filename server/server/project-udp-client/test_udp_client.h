@@ -3,7 +3,7 @@
 #include "protoc_common.h"
 
 class test_udp_client :
-	public udp_client
+	public udp_client, public ProtocMsgBase<udp_client>
 {
 public:
 	test_udp_client();
