@@ -13,6 +13,8 @@ public:
 	virtual ~udp_server();
 	u32 generateID();
 	virtual bool create(unsigned short port, unsigned int poolcount, int thread_count);
+	virtual void _real_run(bool is_wait);
+private:
 	void run();
 protected:
 	ENetAddress _address;

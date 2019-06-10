@@ -20,6 +20,12 @@ u32 udp_server::generateID()
 	return _connect_count;
 }
 
+void udp_server::_real_run(bool is_wait)
+{
+	base_server::_real_run(is_wait);
+	run();
+}
+
 bool udp_server::create(unsigned short port, unsigned int poolcount, int thread_count)
 {
 	base_server::create(port, poolcount, thread_count);

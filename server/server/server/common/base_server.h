@@ -42,7 +42,7 @@ public:
 public:
 	virtual void stop();
 	virtual base_session* create_session() = 0;
-	void _real_run(bool is_wait);
+	virtual void _real_run(bool is_wait);
 public:
 	boost::mutex m_proc_mutex;
 	std::map<unsigned int, unsigned int> m_idleip;
