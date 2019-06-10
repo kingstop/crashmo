@@ -75,7 +75,7 @@
       <DisableSpecificWarnings>4819;4996</DisableSpecificWarnings>
       <AdditionalIncludeDirectories>$(SolutionDir)../../../../external/boost/boost_1_60_0/;$(SolutionDir)../../../../external/protobuf/protobuf-3.0.0/src/;$(SolutionDir)../../../../external/mysql/mysql-5.7.10-win32/include/;$(SolutionDir)../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;$(SolutionDir)../../../../external/enet/include/;$(SolutionDir)../../../../external/log4cplus/log4cplus-1.2.0/include/;$(SolutionDir)../../../../external/mysql++/mysql++-3.1.0/lib/;$(SolutionDir)/server/common/;$(SolutionDir)../../../../external/curl-7.64.1/include/;$(SolutionDir)/server/msg/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN32_WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions>-Zm132 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>

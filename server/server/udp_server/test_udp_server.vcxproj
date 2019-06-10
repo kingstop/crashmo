@@ -106,14 +106,14 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)../../../../external/boost/boost_1_60_0/;$(SolutionDir)../../../../external/protobuf/protobuf-3.0.0/src/;$(SolutionDir)../../../../external/mysql/mysql-5.7.10-win32/include/;$(SolutionDir)../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;$(SolutionDir)../../../../external/enet/include/;$(SolutionDir)../../../../external/log4cplus/log4cplus-1.2.0/include/;$(SolutionDir)../../../../external/mysql++/mysql++-3.1.0/lib/;$(SolutionDir)server/common/;$(SolutionDir)../../../../external/curl-7.64.1/include/;$(SolutionDir)../../../../external/enet-1.3.13/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../../../../external/boost/boost_1_60_0/;$(SolutionDir)../../../../external/protobuf/protobuf-3.0.0/src/;$(SolutionDir)../../../../external/mysql/mysql-5.7.10-win32/include/;$(SolutionDir)../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;$(SolutionDir)../../../../external/enet/include/;$(SolutionDir)../../../../external/log4cplus/log4cplus-1.2.0/include/;$(SolutionDir)../../../../external/mysql++/mysql++-3.1.0/lib/;$(SolutionDir)server/common/;$(SolutionDir)../../../../external/curl-7.64.1/include/;$(SolutionDir)../../../../external/enet-1.3.13/include/;$(SolutionDir)/server/msg/message;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)..\bin\common\;$(SolutionDir)../../../../external/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>common_d.lib;libboost_system-vc140-mt-sgd-1_60.lib;enet.lib;libprotobuf_d.lib;log4cplusSD.lib;mysqlpp_d.lib;json_d.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>common_d.lib;libboost_system-vc140-mt-sgd-1_60.lib;enet.lib;libprotobuf_d.lib;log4cplusSD.lib;mysqlpp_d.lib;json_d.lib;winmm.lib;msg_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -125,14 +125,14 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)../../../../external/boost/boost_1_60_0/;$(SolutionDir)../../../../external/protobuf/protobuf-3.0.0/src/;$(SolutionDir)../../../../external/mysql/mysql-5.7.10-win32/include/;$(SolutionDir)../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;$(SolutionDir)../../../../external/enet/include/;$(SolutionDir)../../../../external/log4cplus/log4cplus-1.2.0/include/;$(SolutionDir)../../../../external/mysql++/mysql++-3.1.0/lib/;$(SolutionDir)server/common/;$(SolutionDir)../../../../external/curl-7.64.1/include/;$(SolutionDir)../../../../external/enet-1.3.13/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../../../../external/boost/boost_1_60_0/;$(SolutionDir)../../../../external/protobuf/protobuf-3.0.0/src/;$(SolutionDir)../../../../external/mysql/mysql-5.7.10-win32/include/;$(SolutionDir)../../../../external/jsoncpp/jsoncpp-src-0.5.0/include/;$(SolutionDir)../../../../external/enet/include/;$(SolutionDir)../../../../external/log4cplus/log4cplus-1.2.0/include/;$(SolutionDir)../../../../external/mysql++/mysql++-3.1.0/lib/;$(SolutionDir)server/common/;$(SolutionDir)../../../../external/curl-7.64.1/include/;$(SolutionDir)../../../../external/enet-1.3.13/include/;$(SolutionDir)/server/msg/message;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)..\bin\common\;$(SolutionDir)../../../../external/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>common_d.lib;libboost_system-vc140-mt-sgd-1_60.lib;enet.lib;libprotobuf_d.lib;log4cplusSD.lib;mysqlpp_d.lib;json_d.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>common_d.lib;libboost_system-vc140-mt-sgd-1_60.lib;enet.lib;libprotobuf_d.lib;log4cplusSD.lib;mysqlpp_d.lib;json_d.lib;winmm.lib;msg_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
