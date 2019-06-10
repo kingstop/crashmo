@@ -188,12 +188,12 @@ void base_server::remove_ban_ip(unsigned int addr)
 
 void base_server::run()
 {
-	//_real_run(true);
+	_real_run(true);
 }
 
 void base_server::run_no_wait()
 {
-	//_real_run(false);
+	_real_run(false);
 }
 
 void base_server::stop()
