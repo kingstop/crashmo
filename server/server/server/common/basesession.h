@@ -19,6 +19,9 @@ public:
 	void handle_close();
 	inline int get_thread_index() const { return m_thread_index; }
 	virtual void close();
+
+	void set_base64(bool b) { _base64 = b; };
+	bool get_base64() { return _base64; }
 protected:
 	virtual message_t* _compress_message(const void* data, message_len len, int t_idx, bool base64);
 	virtual message_t* _make_message(const void* data, message_len len, bool base64);

@@ -3,7 +3,7 @@
 #include "asiodef.h"
 #include "base_server.h"
 #include "enet/enet.h"
-udp_session::udp_session(): _connect_id(0), _connect_index(0), _port(0)
+udp_session::udp_session(): _connect_id(0), _connect_index(0), _port(0), _peer(nullptr)
 {
 	
 }
@@ -22,6 +22,7 @@ void udp_session::on_connect(ENetPeer* peer, u32 connect_index,
 	m_remote_ip_ui = remote_host;
 	_port = remote_port;
 	m_remote_ip_str = ip;
+
 }
 
 void udp_session::receive(const char* receive_data, std::size_t length)
@@ -51,16 +52,34 @@ void udp_session::_send_message(message_t* msg)
 	_try_send_message(msg);
 }
 
+void udp_session::_write_completed()
+{
+
+}
+
 void udp_session::_write_message()
 {
+
+	//下面开始发数据
+	//ENetPacket* packet = enet_packet_create(NULL, 78, ENET_PACKET_FLAG_RELIABLE); //创建包
+	//strcpy((char*)packet->data, "hi,哈哈");
+	//enet_peer_send(_peer, 1, packet);
+
+	//ENetPacket* packet1 = enet_packet_create(NULL, 86, ENET_PACKET_FLAG_RELIABLE); //创建包
+	//strcpy((char*)packet1->data, "你好啊，呵呵");
+	//enet_peer_send(_peer, 2, packet1);
+	//_write_completed();
+	//enet_host_flush(client); //必须使用这个函数或是enet_host_service来使数据发出去
+
+
 	std::size_t len = 0;
 	
 	if (base_session::_write_message(len))
 	{
 		unsigned int head_len = strlen("packet") + 1;
-		ENetPacket * packet = enet_packet_create("packet",
+		ENetPacket * packet = enet_packet_create(m_sending_data,
 
-			head_len,
+			len,
 
 			ENET_PACKET_FLAG_RELIABLE);
 
@@ -68,8 +87,8 @@ void udp_session::_write_message()
 
 		/* contains "packetfoo\0" */
 
-		enet_packet_resize(packet, head_len + len);
-		memcpy(&packet->data[strlen("packet")], m_sending_data, len);
+		//enet_packet_resize(packet, head_len + len);
+		//memcpy(&packet->data[strlen("packet")], m_sending_data, len);
 
 		
 
@@ -79,7 +98,8 @@ void udp_session::_write_message()
 
 		/* enet_host_broadcast (host, 0, packet); */
 
-		enet_peer_send(_peer, 0, packet);
+		enet_peer_send(_peer, 1, packet);
+		_write_completed();
 		//enet_host_service()
 		//enet_host_flush(host);
 	}

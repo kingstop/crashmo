@@ -14,6 +14,9 @@ public:
 	u32 generateID();
 	virtual bool create(unsigned short port, unsigned int poolcount, int thread_count);
 	virtual void _real_run(bool is_wait);
+	virtual bool handle_accept(base_session* p);
+protected:
+	virtual void _write_completed();
 private:
 	void run();
 protected:

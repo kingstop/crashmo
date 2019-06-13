@@ -1,6 +1,7 @@
 #pragma once
 
 #include "asiodef.h"
+#include "boost/atomic/atomic.hpp"
 
 struct task;
 class task_thread_pool;
@@ -53,7 +54,8 @@ protected:
 	std::set<base_session*> m_accepting_sessions;
 	int m_id;
 	unsigned int m_poolcount;
-	unsigned int m_accepting_count;
+	boost::atomic<unsigned int> m_accepting_count;
+	//unsigned int m_accepting_count;
 	volatile boost::uint32_t m_connection_count;
 	std::queue<message_t*> m_queue_recv_msg[2];
 	int m_current_recv_queue;

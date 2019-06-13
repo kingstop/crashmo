@@ -20,7 +20,7 @@ public:
 	virtual void reset();
 	virtual void run();
 	void set_base64(bool b);
-
+	bool get_base64() { return _base64; }
 public:
 	bool is_valid();
 	void set_valid( bool b );
@@ -32,7 +32,7 @@ public:
 	virtual std::string get_remote_address_string() const;
 	unsigned int get_remote_address_ui() const;
 	unsigned short get_remote_port() const;
-	bool get_base64() { return _base64; }
+	
 
 
 	void send_message( const void* data, const unsigned int len, bool base64);

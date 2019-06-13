@@ -54,8 +54,8 @@ bool base_server::handle_accept(base_session* p)
 {
 	bool ret = true;
 	{
-		boost::mutex::scoped_lock lock(m_proc_mutex);
-		--m_accepting_count;
+		//boost::mutex::scoped_lock lock(m_proc_mutex);
+		//--m_accepting_count;
 	}
 	if (is_ban_ip(p->get_remote_address_ui()))
 	{
@@ -223,6 +223,7 @@ void base_server::stop()
 void base_server::_real_run(bool is_wait)
 {
 	m_unix_time = (unsigned int)time(NULL);
+	/*
 
 	{
 		boost::mutex::scoped_lock lock(m_proc_mutex);
@@ -239,6 +240,7 @@ void base_server::_real_run(bool is_wait)
 			++m_accepting_count;
 		}
 	}
+	*/
 	m_cb_mgr.poll();
 
 	int proc_index = 0;

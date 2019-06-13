@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string.h>
 #include "enet/enet.h"
+/*
 using namespace std;
 
 int main()
@@ -34,12 +35,12 @@ int main()
 	//连接到服务器
 	ENetAddress svraddr;
 	enet_address_set_host(&svraddr, "127.0.0.1");
-	svraddr.port = 1234;
+	svraddr.port = 777;
 
 	ENetPeer* server = enet_host_connect(client, &svraddr, 3, 0); //client连接到svraddr对象，共分配三个通道
 	if (server == NULL)
 	{
-		cout << "连接服务器失败" << endl;
+		//cout << "连接服务器失败" << endl;
 		return -1;
 	}
 
@@ -48,12 +49,13 @@ int main()
 	if (enet_host_service(client, &event, 5000) > 0 &&
 		event.type == ENET_EVENT_TYPE_CONNECT)
 	{
-		cout << "连接服务器成功" << endl;
+		//cout << "连接服务器成功" << endl;
+
 	}
 	else
 	{
 		enet_peer_reset(server);
-		cout << "连接服务器失败" << endl;
+		//cout << "连接服务器失败" << endl;
 		return -1;
 	}
 
@@ -107,32 +109,38 @@ int main()
 
 
 }
-
+*/
 //
 
-/*
+
 
 #include <iostream>
 #include "asiodef.h"
 #include "test_udp_client.h"
+#include "login.pb.h"
+
 
 int main()
 {
 
 	net_global::udp_net_init();
-	test_udp_client::initPBModule();
+	
 	test_udp_client client;
-	client.connect("127.0.0.1", 1234);
+	test_udp_client::initPBModule();
+	client.connect("127.0.0.1", 777);
+	message::LoginRequest msg;
+	client.sendPBMessage(&msg, 0);
 	while (true)
 	{
 		client.run_no_wait();
+		
 	}
 	
 	return 0;
 
     //std::cout << "Hello World!\n"; 
 }
-*/
+
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
 

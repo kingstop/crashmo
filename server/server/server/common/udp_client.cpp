@@ -29,6 +29,14 @@ void udp_client::reconnect_check()
 
 }
 
+void udp_client::_write_completed()
+{
+	if (_client)
+	{
+		enet_host_flush(_client);
+	}	
+}
+
 void udp_client::try_create_client()
 {
 	if (_client == nullptr)
@@ -66,6 +74,13 @@ udp_client::~udp_client()
 	
 }
 
+void udp_client::on_connect(ENetPeer* peer, u32 connect_index,
+	u32 remote_host, u16 remote_port, const char* ip)
+{
+	udp_session::on_connect(peer, connect_index, remote_host, remote_port, ip);
+	m_isconnected = true;
+	set_valid(true);
+}
 
 
 void udp_client::push_message(message_t* msg)
@@ -75,11 +90,13 @@ void udp_client::push_message(message_t* msg)
 
 void udp_client::run()
 {
-
+	client_base::run(true);
+	_write_message();
 }
 void udp_client::run_no_wait()
 {
-
+	client_base::run(false);
+	_write_message();
 }
 
 void udp_client::connect(const char* address, unsigned short port)

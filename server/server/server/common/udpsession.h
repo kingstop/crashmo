@@ -7,15 +7,17 @@ class udp_session : public base_session
 public:
 	udp_session();
 	virtual ~udp_session();
-	void on_connect(ENetPeer* peer, u32 connect_index,
+	virtual void on_connect(ENetPeer* peer, u32 connect_index,
 		u32 remote_host, u16 remote_port, const char* ip);
 	inline u32 get_connect_id() { return _connect_id; }
 	inline u32 get_connect_index() { return _connect_index; }
 	void receive(const char* receive_data, std::size_t length);
+	inline void set_father(base_server* father) { m_father = father; }
 	
 public:
 
 	void _write_message();
+	virtual void _write_completed();
 
 protected:
 	virtual bool _uncompress_message(char* data);

@@ -2,7 +2,7 @@
 #include "test_udp_client.h"
 
 
-test_udp_client::test_udp_client()
+test_udp_client::test_udp_client():ProtocMsgBase(this)
 {
 }
 

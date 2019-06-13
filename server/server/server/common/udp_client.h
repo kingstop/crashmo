@@ -8,11 +8,14 @@ public:
 	udp_client();
 	virtual ~udp_client();
 	inline void set_reconnect(bool b) { m_isreconnect = b; }
+	virtual void on_connect(ENetPeer* peer, u32 connect_index,
+		u32 remote_host, u16 remote_port, const char* ip);
 	void connect(const char* address, unsigned short port);
 	virtual void run();
 	virtual void run_no_wait();
 protected:
 	void try_create_client();
+	virtual void _write_completed();
 	void reconnect_check();
 	void reconnect();
 protected:
