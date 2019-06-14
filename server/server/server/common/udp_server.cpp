@@ -57,10 +57,10 @@ void udp_server::_real_run(bool is_wait)
 		{
 			ENetAddress remote = event.peer->address; //远程地址
 			char ip[256];
-			static unsigned connect_index = generateID();
+			unsigned connect_index = generateID();
 			enet_address_get_host_ip(&remote, ip, 256);
 			std::cout << "ip:" << ip << " 已经连接,序号:" << connect_index << std::endl;
-			event.peer->data = (void*)connect_index;
+			//event.peer->data = (void*)connect_index;
 			u32 connect_id = event.peer->connectID;
 			boost::mutex::scoped_lock lock(m_proc_mutex);
 			base_session* p = m_sessions.front();
@@ -74,8 +74,9 @@ void udp_server::_real_run(bool is_wait)
 				}
 				if (handle_accept(p))
 				{
-					_connected_sessions[pudp->get_connect_index()] = pudp;
 					pudp->on_connect(event.peer, connect_index, remote.host, remote.port, ip);
+					_connected_sessions[pudp->get_connect_index()] = pudp;
+					event.peer->data = const_cast<u32*>(pudp->get_connect_index_data());
 				}
 				else
 				{
@@ -92,7 +93,7 @@ void udp_server::_real_run(bool is_wait)
 			std::cout << "收到序号" << event.peer->data << "的数据,从" << event.channelID << "通道发送" << std::endl;
 			std::cout << "数据大小:" << event.packet->dataLength << std::endl;
 			std::cout << "数据:" << (char*)event.packet->data << std::endl;
-			auto it_ = _connected_sessions.find((u32)event.peer->data);
+			auto it_ = _connected_sessions.find(*(u32*)event.peer->data);
 			if (it_ != _connected_sessions.end())
 			{
 				udp_session* p_udp = it_->second;

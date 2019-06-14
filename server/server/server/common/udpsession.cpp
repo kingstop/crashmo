@@ -5,7 +5,7 @@
 #include "enet/enet.h"
 udp_session::udp_session(): _connect_id(0), _connect_index(0), _port(0), _peer(nullptr)
 {
-	
+	memset(_uncompress_buffer, 0, sizeof(_uncompress_buffer));
 }
 
 udp_session::~udp_session()
@@ -22,6 +22,8 @@ void udp_session::on_connect(ENetPeer* peer, u32 connect_index,
 	m_remote_ip_ui = remote_host;
 	_port = remote_port;
 	m_remote_ip_str = ip;
+	set_valid(true);
+	m_isconnected = true;
 
 }
 

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "test_udp_server.h"
+#include "test_udp_session.h"
 
 /*
 #include <iostream>
@@ -72,6 +73,7 @@ int main()
 int main()
 {
 	net_global::udp_net_init();
+	test_udp_session::registerPBCall();
 	test_udp_server udp_server(1);
 	udp_server.create(777, 5, 2);
 	while (true)

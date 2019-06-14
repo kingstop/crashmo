@@ -129,6 +129,8 @@ int main()
 	test_udp_client::initPBModule();
 	client.connect("127.0.0.1", 777);
 	message::LoginRequest msg;
+	msg.set_name("12345");
+	msg.set_pwd("54321");
 	client.sendPBMessage(&msg, 0);
 	while (true)
 	{

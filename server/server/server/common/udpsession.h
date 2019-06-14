@@ -13,6 +13,7 @@ public:
 	inline u32 get_connect_index() { return _connect_index; }
 	void receive(const char* receive_data, std::size_t length);
 	inline void set_father(base_server* father) { m_father = father; }
+	inline const u32* get_connect_index_data() { return &_connect_index; }
 	
 public:
 
