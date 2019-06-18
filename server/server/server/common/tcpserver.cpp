@@ -31,7 +31,7 @@ boost::asio::io_service* net_global::get_io_service()
 
 bool net_global::udp_net_deinit()
 {
-
+	init_udp_service = false;
 	enet_deinitialize();
 	return true;
 }

@@ -122,22 +122,71 @@ int main()
 #include <boost/bind.hpp>  
 #include <boost/thread/thread_pool.hpp> 
 
+class my_task_thread
+{
+public:
+	my_task_thread(int index):m_index(index), m_exit(false), _client(nullptr)
+	{
+		_client = new test_udp_client();
+		_client->connect("127.0.0.1", 777);
+		message::LoginRequest msg;
+		msg.set_name(std::to_string(m_index));
+		msg.set_pwd(std::to_string(m_index));
+		_client->sendPBMessage(&msg, 0);
+
+		m_thread = new boost::thread(boost::bind(&my_task_thread::run, this));
+
+		
+	}
+	~my_task_thread()
+	{
+		m_exit = true;
+		m_thread->join();
+		delete m_thread;
+		delete _client;
+	}
+
+public:	
+	void run()
+	{
+		_client->run_no_wait();
+	}
+private:
+
+	boost::thread* m_thread;
+	boost::mutex m_mutex;
+	volatile bool m_exit;
+	int m_index;
+	test_udp_client* _client;
+};
+
+
 int main()
 {
-
+	
 	net_global::udp_net_init();
-	boost::threadpool
-	test_udp_client client;
 	test_udp_client::initPBModule();
+	/*
+	std::vector<my_task_thread*> vc;
+	for (size_t i = 0; i < 5; i++)
+	{
+		vc.push_back(new my_task_thread(i));
+
+	}
+	*/
+
+	test_udp_client client;
+	
 	client.connect("127.0.0.1", 777);
 	message::LoginRequest msg;
 	msg.set_name("12345");
 	msg.set_pwd("54321");
 	client.sendPBMessage(&msg, 0);
+
 	while (true)
 	{
-		client.run_no_wait();
 		
+		client.run_no_wait();
 	}
 	
 	return 0;

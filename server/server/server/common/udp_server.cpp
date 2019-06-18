@@ -48,7 +48,7 @@ void udp_server::on_enet_connected(ENetEvent& event)
 	char ip[256];
 	unsigned connect_index = generateID();
 	enet_address_get_host_ip(&remote, ip, 256);
-	std::cout << "ip:" << ip << " 已经连接,序号:" << connect_index << std::endl;
+	
 	//event.peer->data = (void*)connect_index;
 	u32 connect_id = event.peer->connectID;
 	boost::mutex::scoped_lock lock(m_proc_mutex);
@@ -72,7 +72,7 @@ void udp_server::on_enet_connected(ENetEvent& event)
 			pudp->close();
 		}
 	}
-
+	std::cout << "ip[" << ip << "] 已经连接,序号[" << connect_index <<"] 目前连接数["<< _connected_sessions.size() <<"]" <<std::endl;
 	m_sessions.pop_front();
 }
 void udp_server::on_enet_receive(ENetEvent& event)
@@ -97,7 +97,9 @@ void udp_server::on_enet_disconnect(ENetEvent& event)
 	{
 		udp_session* p_udp = it_->second;
 		p_udp->close();
+		_connected_sessions.erase(it_);
 	}
+	std::cout << "目前连接数[" << _connected_sessions.size() << "]" << std::endl;
 }
 ENetHost* udp_server::get_host() 
 {

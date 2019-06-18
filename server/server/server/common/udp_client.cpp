@@ -65,7 +65,7 @@ void udp_client::try_create_client()
 	{
 		_client = enet_host_create(NULL /* create a client host */,
 
-			1 /* only allow 1 outgoing connection */,
+			100 /* only allow 1 outgoing connection */,
 
 			2 /* allow up 2 channels to be used, 0 and 1 */,
 
@@ -195,31 +195,37 @@ void udp_client::connect(const char* address, unsigned short port)
 	_connect_port = port;
 	_connect_address = address;
 	try_create_client();
-	
-	ENetEvent event;
-	enet_address_set_host(&_address, address);
-	_address.port = port;
-	/* Initiate the connection, allocating the two channels 0 and 1. */
-	_peer = enet_host_connect(_client, &_address, 3, 0);
-	if (_peer == NULL)
+	for (size_t i = 0; i < 3; i++)
 	{
-		fprintf(stderr,
-			"No available peers for initiating an ENet connection.\n");
-		exit(EXIT_FAILURE);
+		ENetEvent event;
+		enet_address_set_host(&_address, address);
+		_address.port = port;
+		/* Initiate the connection, allocating the two channels 0 and 1. */
+		_peer = enet_host_connect(_client, &_address, 3, 0);
+		if (_peer == NULL)
+		{
+			fprintf(stderr,
+				"No available peers for initiating an ENet connection.\n");
+			exit(EXIT_FAILURE);
+		}
+		/* Wait up to 5 seconds for the connection attempt to succeed. */
+		if (enet_host_service(_client, &event, 5000) > 0 &&
+			event.type == ENET_EVENT_TYPE_CONNECT)
+		{
+			//puts("Connection to some.server.net:1234 succeeded.");
+			on_connect(_peer, 0, _address.host, _address.host, address);
+		}
+
+		else
+		{
+			/* Either the 5 seconds are up or a disconnect event was */
+			/* received. Reset the peer in the event the 5 seconds   */
+			/* had run out without any significant event.            */
+			enet_peer_reset(_peer);
+			//puts("Connection to some.server.net:1234 failed.");
+		}
+
 	}
-	/* Wait up to 5 seconds for the connection attempt to succeed. */
-	if (enet_host_service(_client, &event, 5000) > 0 &&
-		event.type == ENET_EVENT_TYPE_CONNECT)
-	{
-		//puts("Connection to some.server.net:1234 succeeded.");
-		on_connect(_peer, 0, _address.host, _address.host, address);
-	}
-	else
-	{
-		/* Either the 5 seconds are up or a disconnect event was */
-		/* received. Reset the peer in the event the 5 seconds   */
-		/* had run out without any significant event.            */
-		enet_peer_reset(_peer);
-		//puts("Connection to some.server.net:1234 failed.");
-	}
+
+
 }
