@@ -42,9 +42,86 @@ bool udp_server::handle_accept(base_session* p)
 	return false;
 }
 
+void udp_server::on_enet_connected(ENetEvent& event)
+{
+	ENetAddress remote = event.peer->address; //远程地址
+	char ip[256];
+	unsigned connect_index = generateID();
+	enet_address_get_host_ip(&remote, ip, 256);
+	std::cout << "ip:" << ip << " 已经连接,序号:" << connect_index << std::endl;
+	//event.peer->data = (void*)connect_index;
+	u32 connect_id = event.peer->connectID;
+	boost::mutex::scoped_lock lock(m_proc_mutex);
+	base_session* p = m_sessions.front();
+	udp_session* pudp = dynamic_cast<udp_session*>(p);
+	if (pudp)
+	{
+		auto it_ = _connected_sessions.find(pudp->get_connect_index());
+		if (it_ != _connected_sessions.end())
+		{
+			it_->second->close();
+		}
+		if (handle_accept(p))
+		{
+			pudp->on_connect(event.peer, connect_index, remote.host, remote.port, ip);
+			_connected_sessions[pudp->get_connect_index()] = pudp;
+			event.peer->data = const_cast<u32*>(pudp->get_connect_index_data());
+		}
+		else
+		{
+			pudp->close();
+		}
+	}
+
+	m_sessions.pop_front();
+}
+void udp_server::on_enet_receive(ENetEvent& event)
+{
+	std::cout << "收到序号" << event.peer->data << "的数据,从" << event.channelID << "通道发送" << std::endl;
+	std::cout << "数据大小:" << event.packet->dataLength << std::endl;
+	std::cout << "数据:" << (char*)event.packet->data << std::endl;
+	auto it_ = _connected_sessions.find(*(u32*)event.peer->data);
+	if (it_ != _connected_sessions.end())
+	{
+		udp_session* p_udp = it_->second;
+		p_udp->receive((char*)event.packet->data, event.packet->dataLength);
+	}
+	//enet_packet_destroy(event.packet);    //注意释放空间
+	std::cout << std::endl;
+}
+void udp_server::on_enet_disconnect(ENetEvent& event)
+{
+	std::cout << "序号" << event.peer->data << "远程已经关闭连接" << std::endl;
+	auto it_ = _connected_sessions.find((u32)event.peer->data);
+	if (it_ != _connected_sessions.end())
+	{
+		udp_session* p_udp = it_->second;
+		p_udp->close();
+	}
+}
+ENetHost* udp_server::get_host() 
+{
+	return _server;
+}
+
+void udp_server::extra_process(bool is_wait)
+{
+	base_server::_real_run(is_wait);
+	auto it_ = _connected_sessions.begin();
+	for (; it_ != _connected_sessions.end(); ++it_)
+	{
+		udp_session* p_udp = it_->second;
+		p_udp->_write_message();
+	}
+
+}
+
+
 void udp_server::_real_run(bool is_wait)
 {
 	//下面开始收数据等
+	enet_run(is_wait);
+	/*
 	ENetEvent event;
 
 
@@ -126,6 +203,7 @@ void udp_server::_real_run(bool is_wait)
 
 		base_server::_real_run(is_wait);
 	}
+	*/
 }
 
 bool udp_server::create(unsigned short port, unsigned int poolcount, int thread_count)

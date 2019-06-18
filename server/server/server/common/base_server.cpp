@@ -8,9 +8,8 @@
 static unsigned int s_io_once_listen_session_count = 40;
 
 
-base_server::base_server(int id) : m_id(id), m_poolcount(0), m_thread_buffer(NULL), m_thread_count(0), m_cur_thread_index(0),
-m_ttti_mode(false), m_accepting_count(0), m_limit_mode(false), m_connection_count(0), m_fp_connection_log(NULL), m_security(true),
-m_current_recv_queue(0)
+base_server::base_server(int id) : m_id(id), m_poolcount(0), m_thread_buffer(NULL), m_thread_count(0), m_cur_thread_index(0),_port(0),
+m_ttti_mode(false), m_accepting_count(0), m_limit_mode(false), m_connection_count(0), m_fp_connection_log(NULL), m_security(true), msg_component(true)
 {
 	m_ttp = new task_thread_pool;
 	m_unix_time = (unsigned int)time(NULL);
@@ -93,11 +92,13 @@ void base_server::free_session(base_session* p)
 	m_sessions.push_back(p);
 }
 
+/*
 void base_server::push_message(message_t* msg)
 {
 	boost::mutex::scoped_lock lock(m_msg_mutex);
 	m_queue_recv_msg[m_current_recv_queue].push(msg);
 }
+*/
 
 void base_server::push_task(task* p)
 {
@@ -242,29 +243,31 @@ void base_server::_real_run(bool is_wait)
 	}
 	*/
 	m_cb_mgr.poll();
+	msg_component::run(is_wait);
+	/**/
 
-	int proc_index = 0;
-	m_msg_mutex.lock();
-	if (m_queue_recv_msg[m_current_recv_queue].empty())
-	{
-		m_msg_mutex.unlock();
-		if (is_wait)
-			cpu_wait();
-		return;
-	}
-	proc_index = m_current_recv_queue;
-	m_current_recv_queue = !m_current_recv_queue;
-	m_msg_mutex.unlock();
+	//int proc_index = 0;
+	//m_msg_mutex.lock();
+	//if (m_queue_recv_msg[m_current_recv_queue].empty())
+	//{
+	//	m_msg_mutex.unlock();
+	//	if (is_wait)
+	//		cpu_wait();
+	//	return;
+	//}
+	//proc_index = m_current_recv_queue;
+	//m_current_recv_queue = !m_current_recv_queue;
+	//m_msg_mutex.unlock();
 
-	while (!m_queue_recv_msg[proc_index].empty())
-	{
-		message_t* msg = m_queue_recv_msg[proc_index].front();
-		msg->from->_proc_message(*msg);
-		/*
-		if( msg->from->is_valid() && msg->from->is_connected() )
-			msg->from->proc_message( *msg );
-		*/
-		net_global::free_message(msg);
-		m_queue_recv_msg[proc_index].pop();
-	}
+	//while (!m_queue_recv_msg[proc_index].empty())
+	//{
+	//	message_t* msg = m_queue_recv_msg[proc_index].front();
+	//	msg->from->_proc_message(*msg);
+	//	/*
+	//	if( msg->from->is_valid() && msg->from->is_connected() )
+	//		msg->from->proc_message( *msg );
+	//	*/
+	//	net_global::free_message(msg);
+	//	m_queue_recv_msg[proc_index].pop();
+	//}
 }

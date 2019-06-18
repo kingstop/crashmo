@@ -18,7 +18,8 @@ void test_udp_session::proc_message(const message_t& msg)
 
 void test_udp_session::parseLogin(google::protobuf::Message* p, pb_flag_type flag)
 {
-	message::LoginRequest* msg = dynamic_cast<message::LoginRequest*> (p);
+	message::LoginRequest* msg = dynamic_cast<message::LoginRequest*> (p);	
+	sendPBMessage(msg);
 }
 //这里负责注册消息
 void test_udp_session::registerPBCall()

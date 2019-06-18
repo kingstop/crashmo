@@ -119,12 +119,14 @@ int main()
 #include "test_udp_client.h"
 #include "login.pb.h"
 
+#include <boost/bind.hpp>  
+#include <boost/thread/thread_pool.hpp> 
 
 int main()
 {
 
 	net_global::udp_net_init();
-	
+	boost::threadpool
 	test_udp_client client;
 	test_udp_client::initPBModule();
 	client.connect("127.0.0.1", 777);

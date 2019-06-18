@@ -1,8 +1,10 @@
 #pragma once
 #include "udpsession.h"
-#include "client_base.h"
+#include "msg_component.h"
+#include "enet_component.h"
+//#include "client_base.h"
 class udp_client :
-	public udp_session , public client_base
+	public udp_session , public msg_component , public enet_component
 {
 public:
 	udp_client();
@@ -15,9 +17,14 @@ public:
 	virtual void run_no_wait();
 protected:
 	void try_create_client();
-	virtual void _write_completed();
 	void reconnect_check();
 	void reconnect();
+
+	virtual void on_enet_connected(ENetEvent& event);
+	virtual void on_enet_receive(ENetEvent& event);
+	virtual void on_enet_disconnect(ENetEvent& event);
+	virtual ENetHost* get_host();
+	virtual void extra_process(bool is_wait);
 protected:
 	virtual void push_message(message_t* msg);
 public:
@@ -28,5 +35,7 @@ public:
 	ENetHost * _client;
 	unsigned short _connect_port;
 	std::string _connect_address;
+	volatile unsigned int m_last_reconnect_time;
+	volatile bool m_isconnecting;
 };
 

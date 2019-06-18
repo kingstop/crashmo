@@ -94,6 +94,7 @@
     <ClInclude Include="crypt.h" />
     <ClInclude Include="cur_http_client.h" />
     <ClInclude Include="database.h" />
+    <ClInclude Include="enet_component.h" />
     <ClInclude Include="event_call_back.h" />
     <ClInclude Include="event_manager.h" />
     <ClInclude Include="event_table_object.h" />
@@ -105,6 +106,7 @@
     <ClInclude Include="memory.h" />
     <ClInclude Include="message\server_define.h" />
     <ClInclude Include="message_interface.h" />
+    <ClInclude Include="msg_component.h" />
     <ClInclude Include="MyLog.h" />
     <ClInclude Include="server_define.h" />
     <ClInclude Include="udpserver.h" />
@@ -137,6 +139,7 @@
     <ClCompile Include="crypt.cpp" />
     <ClCompile Include="cur_http_client.cpp" />
     <ClCompile Include="database.cpp" />
+    <ClCompile Include="enet_component.cpp" />
     <ClCompile Include="event_table_object.cpp" />
     <ClCompile Include="exception.cpp" />
     <ClCompile Include="http_client.cpp" />
@@ -145,6 +148,7 @@
     <ClCompile Include="json_help.cpp" />
     <ClCompile Include="md5.cpp" />
     <ClCompile Include="message_interface.cpp" />
+    <ClCompile Include="msg_component.cpp" />
     <ClCompile Include="MyLog.cpp" />
     <ClCompile Include="udpserver.cpp" />
     <ClCompile Include="udpsession.cpp" />

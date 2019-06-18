@@ -18,11 +18,11 @@ public:
 public:
 
 	void _write_message();
-	virtual void _write_completed();
 
 protected:
 	virtual bool _uncompress_message(char* data);
 	virtual void _send_message(message_t* msg);
+	virtual ENetHost* get_host();
 protected:
 	std::string _ip;
 	u32 _connect_id;

@@ -2,12 +2,13 @@
 
 #include "asiodef.h"
 #include "boost/atomic/atomic.hpp"
+#include "msg_component.h"
 
 struct task;
 class task_thread_pool;
 class base_session;
 
-class base_server
+class base_server : public msg_component
 {
 public:
 	base_server(int id);
@@ -18,7 +19,7 @@ public:
 	void handle_accept(base_session* p, const boost::system::error_code& error);
 	inline int get_id() const { return m_id; }
 	void free_session(base_session* p);
-	void push_message(message_t* msg);
+	//void push_message(message_t* msg);
 
 	virtual void run();
 	virtual void run_no_wait();
@@ -57,8 +58,6 @@ protected:
 	boost::atomic<unsigned int> m_accepting_count;
 	//unsigned int m_accepting_count;
 	volatile boost::uint32_t m_connection_count;
-	std::queue<message_t*> m_queue_recv_msg[2];
-	int m_current_recv_queue;
 	task_thread_pool* m_ttp;
 
 	enum { THREAD_BUFFER_SIZE = MAX_MESSAGE_LEN + 32 };
@@ -66,7 +65,9 @@ protected:
 	int m_thread_count;
 	int m_cur_thread_index;
 	bool m_ttti_mode;
-	boost::mutex m_msg_mutex;
+	//std::queue<message_t*> m_queue_recv_msg[2];
+	//int m_current_recv_queue;
+	//boost::mutex m_msg_mutex;
 	boost::mutex m_ban_mutex;
 	call_back_mgr m_cb_mgr;
 

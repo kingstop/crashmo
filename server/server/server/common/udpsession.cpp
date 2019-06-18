@@ -3,6 +3,8 @@
 #include "asiodef.h"
 #include "base_server.h"
 #include "enet/enet.h"
+#include "udp_server.h"
+
 udp_session::udp_session(): _connect_id(0), _connect_index(0), _port(0), _peer(nullptr)
 {
 	memset(_uncompress_buffer, 0, sizeof(_uncompress_buffer));
@@ -54,9 +56,15 @@ void udp_session::_send_message(message_t* msg)
 	_try_send_message(msg);
 }
 
-void udp_session::_write_completed()
+ENetHost* udp_session::get_host()
 {
-
+	ENetHost* host = nullptr;
+	if (m_father)
+	{
+		udp_server* pserver = dynamic_cast<udp_server*>(m_father);
+		host = pserver->get_host();
+	}
+	return host;
 }
 
 void udp_session::_write_message()
@@ -101,12 +109,14 @@ void udp_session::_write_message()
 		/* enet_host_broadcast (host, 0, packet); */
 
 		enet_peer_send(_peer, 1, packet);
-		_write_completed();
+
+		enet_host_flush(get_host());
+		//_write_completed();
 		//enet_host_service()
 		//enet_host_flush(host);
 	}
 	
-}
+} 
 
 
 /*

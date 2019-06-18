@@ -2,12 +2,40 @@
 
 
 
-udp_client::udp_client()
+udp_client::udp_client():msg_component(false), m_isreconnect(false),
+m_reconnect_time(0), m_isinitconncted(false),m_last_reconnect_time(0),_client(nullptr), m_isconnecting(false), _connect_port(0)
 {
-	
 
+
+	 
+}
+
+void udp_client::on_enet_connected(ENetEvent& event)
+{
 
 }
+
+void udp_client::on_enet_receive(ENetEvent& event)
+{
+	receive((char*)event.packet->data, event.packet->dataLength);	
+}
+
+void udp_client::on_enet_disconnect(ENetEvent& event)
+{
+
+}
+
+void udp_client::extra_process(bool is_wait)
+{
+	msg_component::run(false);
+	_write_message();
+}
+
+ENetHost* udp_client::get_host()
+{
+	return _client;
+}
+
 
 void udp_client::reconnect()
 {
@@ -29,13 +57,7 @@ void udp_client::reconnect_check()
 
 }
 
-void udp_client::_write_completed()
-{
-	if (_client)
-	{
-		enet_host_flush(_client);
-	}	
-}
+
 
 void udp_client::try_create_client()
 {
@@ -85,18 +107,87 @@ void udp_client::on_connect(ENetPeer* peer, u32 connect_index,
 
 void udp_client::push_message(message_t* msg)
 {
-	client_base::push_message(msg);
+	msg_component::push_message(msg);
 }
 
 void udp_client::run()
 {
-	client_base::run(true);
-	_write_message();
+	enet_run(true);
+	//msg_component::run(true);
+	//_write_message();
 }
 void udp_client::run_no_wait()
 {
-	client_base::run(false);
-	_write_message();
+
+	enet_run(false);
+
+	////下面开始收数据等
+	//ENetEvent event;
+	//while (enet_host_service(_client, &event, 1000) >= 0)
+	//{
+	//	switch (event.type)
+	//	{
+	//	case ENET_EVENT_TYPE_CONNECT:
+	//	{
+	//		int i = 0;
+	//		i++;
+	//		/*
+	//		ENetAddress remote = event.peer->address; //远程地址
+	//		char ip[256];
+	//		static unsigned connect_index = generateID();
+	//		enet_address_get_host_ip(&remote, ip, 256);
+	//		std::cout << "ip:" << ip << " 已经连接,序号:" << connect_index << std::endl;
+	//		event.peer->data = (void*)connect_index;
+	//		u32 connect_id = event.peer->connectID;
+	//		boost::mutex::scoped_lock lock(m_proc_mutex);
+	//		base_session* p = m_sessions.front();
+	//		udp_session* pudp = dynamic_cast<udp_session*>(p);
+	//		if (pudp)
+	//		{
+	//			pudp->on_connect(event.peer, connect_index, remote.host, remote.port, ip);
+	//			if (handle_accept(p))
+	//			{
+	//				auto it_ = _connected_sessions.find(pudp->get_connect_index());
+	//				if (it_ != _connected_sessions.end())
+	//				{
+	//					it_->second->close();
+
+	//				}
+	//				_connected_sessions[pudp->get_connect_index()] = pudp;
+	//			}
+	//			else
+	//			{
+	//				pudp->close();
+	//			}
+	//		}
+
+	//		m_sessions.pop_front();
+	//		*/
+	//	}
+	//	break;
+
+	//	case ENET_EVENT_TYPE_RECEIVE:
+	//	{
+	//		std::cout << "收到序号" << event.peer->data << "的数据,从" << event.channelID << "通道发送" << std::endl;
+	//		std::cout << "数据大小:" << event.packet->dataLength << std::endl;
+	//		std::cout << "数据:" << (char*)event.packet->data << std::endl;
+	//		receive((char*)event.packet->data, event.packet->dataLength);
+	//		enet_packet_destroy(event.packet);    //注意释放空间
+	//		std::cout << std::endl;
+	//	}
+	//	break;
+	//	case ENET_EVENT_TYPE_DISCONNECT:
+	//	{
+	//		std::cout << "序号" << event.peer->data << "远程已经关闭连接" << std::endl;
+	//	}
+	//	default:
+	//		break;
+	//	}
+
+	//	msg_component::run(false);
+	//	_write_message();
+	//}
+
 }
 
 void udp_client::connect(const char* address, unsigned short port)
