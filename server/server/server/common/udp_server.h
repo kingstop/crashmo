@@ -28,7 +28,6 @@ private:
 	void run();
 protected:
 	ENetAddress _address;
-	ENetHost * _server;
 	u32  _connect_count;
 	std::unordered_map<u32, udp_session*> _connected_sessions;
 

@@ -3,14 +3,14 @@
 
 
 
-udp_server::udp_server(int id):base_server(id), _connect_count(0), _server(nullptr),_address()
+udp_server::udp_server(int id):base_server(id), _connect_count(0),_address()
 {
 }
 
 
 udp_server::~udp_server()
 {
-	enet_host_destroy(_server);
+	enet_host_destroy(get_host());
 }
 
 
@@ -22,9 +22,9 @@ u32 udp_server::generateID()
 
 void udp_server::_write_completed()
 {
-	if (_server)
+	if (get_host())
 	{
-		enet_host_flush(_server);
+		enet_host_flush(get_host());
 	}
 }
 
@@ -103,7 +103,7 @@ void udp_server::on_enet_disconnect(ENetEvent& event)
 }
 ENetHost* udp_server::get_host() 
 {
-	return _server;
+	return net_global::get_enet_host();
 }
 
 void udp_server::extra_process(bool is_wait)
@@ -224,27 +224,7 @@ bool udp_server::create(unsigned short port, unsigned int poolcount, int thread_
 	/* Bind the server to port 1234. */
 
 	_address.port = _port;
-	_server = enet_host_create(&_address /* the address to bind the server host to */,
-
-		32 /* allow up to 32 clients and/or outgoing connections */,
-
-		2 /* allow up to 2 channels to be used, 0 and 1 */,
-
-		0 /* assume any amount of incoming bandwidth */,
-
-		0 /* assume any amount of outgoing bandwidth */);
-
-	if (_server == NULL)
-
-	{
-
-		fprintf(stderr,
-
-			"An error occurred while trying to create an ENet server host.\n");
-
-		exit(EXIT_FAILURE);
-		return false;
-	}
+	net_global::udp_net_init(&_address, poolcount, 2);
 	return true;
 }
 
@@ -256,7 +236,7 @@ void udp_server::run()
 
 
 
-	while (enet_host_service(_server, &event, 1000) >= 0)
+	while (enet_host_service(get_host(), &event, 1000) >= 0)
 	{
 		switch (event.type)
 		{

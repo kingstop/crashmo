@@ -16,7 +16,6 @@ public:
 	virtual void run();
 	virtual void run_no_wait();
 protected:
-	void try_create_client();
 	void reconnect_check();
 	void reconnect();
 
@@ -32,7 +31,7 @@ public:
 	unsigned int m_reconnect_time;
 	volatile bool m_isinitconncted;
 	ENetAddress _address;	
-	ENetHost * _client;
+
 	unsigned short _connect_port;
 	std::string _connect_address;
 	volatile unsigned int m_last_reconnect_time;

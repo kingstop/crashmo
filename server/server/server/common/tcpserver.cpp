@@ -5,7 +5,7 @@
 #include <stdarg.h>
 #include "io_service_pool.h"
 #include "message_interface.h"
-#include <enet\enet.h>
+
 
 
 static volatile boost::uint32_t s_asio_thread_count = 0;
@@ -13,7 +13,7 @@ static io_service_pool* s_io_service_pool = NULL;
 static bool net_service_stoped = false;
 static unsigned int s_io_once_listen_session_count = 40;
 static bool init_udp_service = false;
-
+ENetHost* enet_host = nullptr;
 void net_global::update_net_service()
 {
 	if( s_io_service_pool )
@@ -36,7 +36,11 @@ bool net_global::udp_net_deinit()
 	return true;
 }
 
-bool net_global::udp_net_init()
+ENetHost* net_global::get_enet_host()
+{
+	return enet_host;
+}
+bool net_global::udp_net_init(const ENetAddress* adress, int connect_count, int channels, int up, int  down)
 {
 	if (init_udp_service)
 	{
@@ -48,7 +52,18 @@ bool net_global::udp_net_init()
 		fprintf(stderr, "An error occurred while initializing ENet.\n");
 		return false;
 	}		
+	enet_host = enet_host_create(adress /* create a client host */,
+
+		connect_count /* only allow 1 outgoing connection */,
+
+		channels /* allow up 2 channels to be used, 0 and 1 */,
+
+		down / 8 /* 56K modem with 56 Kbps downstream bandwidth */,
+
+		up / 8 /* 56K modem with 14 Kbps upstream bandwidth */);
+
 	init_udp_service = true;
+
 	return true;
 }
 void net_global::init_net_service( int thread_count, int proc_interval, compress_strategy* cs_imp, bool need_max_speed, int msg_pool_size )

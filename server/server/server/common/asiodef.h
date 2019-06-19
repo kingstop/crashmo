@@ -4,7 +4,7 @@
 #include "mt_buffer.h"
 #include "call_back.h"
 #include "message_interface.h"
-
+#include <enet\enet.h>
 using boost::asio::ip::tcp;
 
 class tcp_session;
@@ -18,7 +18,8 @@ struct net_global
 {
 	// external
 	static boost::asio::io_service* get_io_service();
-	static bool udp_net_init();
+	static bool udp_net_init(const ENetAddress* adress, int connect_count, int channels, int up = 14400, int  down = 57600);
+	static ENetHost* get_enet_host();
 	static bool udp_net_deinit();
 	static void init_net_service( int thread_count, int proc_interval, compress_strategy* cs_imp, bool need_max_speed, int msg_pool_size );
 	static void free_net_service();
@@ -28,6 +29,7 @@ struct net_global
 	static long get_asio_thread_alive_count();
 	static void write_close_log( const char* txt, ... );
 	static void update_net_service();
+	
 
 	enum ban_reason_t
 	{
