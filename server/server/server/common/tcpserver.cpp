@@ -107,6 +107,21 @@ boost::asio::io_service* net_global::get_io_service()
 
 bool net_global::udp_net_deinit()
 {
+	if (g_enent_comment)
+	{
+		g_enent_comment->set_exit(true);
+	}
+
+	if (g_enet_thread)
+	{
+		g_enet_thread->join();
+	}
+
+	if (g_udp_client_manager)
+	{
+		delete g_udp_client_manager;
+		g_udp_client_manager = nullptr;
+	}
 	init_udp_service = false;
 	enet_deinitialize();
 	return true;
