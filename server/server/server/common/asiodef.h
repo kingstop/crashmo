@@ -33,7 +33,7 @@ struct net_global
 	static void write_close_log( const char* txt, ... );
 	static void update_net_service();
 	static void update_udp_service();
-	static void update_udp_event_service();
+
 	static void start_enet_thread(enet_component* component);
 	static void udp_init_client_manager(int client_count);
 	static void start_client_thread();

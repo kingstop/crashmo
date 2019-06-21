@@ -41,13 +41,12 @@ void udp_client::reconnect_check()
 
 udp_client::~udp_client()
 {
-
-	
+	_client_manager->remove_client(this);
 }
 
 void udp_client::on_connect()
 {
-	on_connect(_peer, 0, _address.host, _address.host, _connect_address.c_str());
+	
 }
 
 void udp_client::extra_process(bool is_wait)
@@ -57,17 +56,22 @@ void udp_client::extra_process(bool is_wait)
 
 }
 
-void udp_client::on_connect(ENetPeer* peer, u32 connect_index,
-	u32 remote_host, u16 remote_port, const char* ip)
+void udp_client::handle_connect()
 {
-	udp_session::on_connect(peer, connect_index, remote_host, remote_port, ip);
+	handle_connect(_peer, 0, _address.host, _address.host, _connect_address.c_str());
+}
+
+void udp_client::handle_connect(ENetPeer* peer, u32 connect_index,
+	u32 remote_host, u16 remote_port, const char* ip)
+{	
 	m_isconnected = true;
 	set_valid(true);
+	udp_session::handle_connect(peer, connect_index, remote_host, remote_port, ip);
 }
 
 call_back_mgr* udp_client::_get_cb_mgr()
 {
-	return &m_cb_mgr;
+	return _client_manager->get_cb_mgr();
 }
 
 
@@ -88,7 +92,7 @@ void udp_client::connect(const char* address, unsigned short port)
 	_connect_port = port;
 	_connect_address = address;
 	//net_global::udp_net_init(nullptr, 2, 2);
-	ENetEvent event;
+	//ENetEvent event;
 	enet_address_set_host(&_address, address);
 	_address.port = port;
 	/* Initiate the connection, allocating the two channels 0 and 1. */

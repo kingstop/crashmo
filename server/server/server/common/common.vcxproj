@@ -87,7 +87,6 @@
     <ClInclude Include="base_server.h" />
     <ClInclude Include="call_back.h" />
     <ClInclude Include="client_base.h" />
-    <ClInclude Include="client_enet_component.h" />
     <ClInclude Include="common_header.h" />
     <ClInclude Include="common_helper.h" />
     <ClInclude Include="common_template.h" />
@@ -138,7 +137,6 @@
     <ClCompile Include="base_server.cpp" />
     <ClCompile Include="call_back.cpp" />
     <ClCompile Include="client_base.cpp" />
-    <ClCompile Include="client_enet_component.cpp" />
     <ClCompile Include="crypt.cpp" />
     <ClCompile Include="cur_http_client.cpp" />
     <ClCompile Include="database.cpp" />

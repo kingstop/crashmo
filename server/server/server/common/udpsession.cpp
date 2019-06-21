@@ -22,12 +22,26 @@ void udp_session::close()
 	}
 	
 }
-void udp_session::handle_close()
+
+void udp_session::on_close()
+{
+
+}
+void udp_session::on_connect()
 {
 
 }
 
-void udp_session::on_connect(ENetPeer* peer, u32 connect_index,
+void udp_session::handle_close()
+{
+	auto _call_back = _get_cb_mgr();
+	if (_call_back)
+	{
+		_call_back->add_cb(&udp_session::on_close, this);
+	}
+}
+
+void udp_session::handle_connect(ENetPeer* peer, u32 connect_index,
 	u32 remote_host, u16 remote_port, const char* ip)
 {
 	_peer = peer;
@@ -38,7 +52,11 @@ void udp_session::on_connect(ENetPeer* peer, u32 connect_index,
 	m_remote_ip_str = ip;
 	set_valid(true);
 	m_isconnected = true;
-
+	auto _call_back = _get_cb_mgr();
+	if (_call_back)
+	{
+		_call_back->add_cb(&udp_session::on_connect, this);
+	}
 }
 
 void udp_session::receive(const char* receive_data, std::size_t length)

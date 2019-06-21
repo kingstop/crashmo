@@ -54,35 +54,7 @@ void net_global::update_net_service()
 }
 
 
-void net_global::update_udp_event_service()
-{
-	ENetEvent event;
-	while (enet_host_service(enet_host, &event, 1000) >= 0)
-	{
-		switch (event.type)
-		{
-		case ENET_EVENT_TYPE_CONNECT:
-		{
-			//g_enent_comment->on_enet_connected(event);
-		}
-		break;
 
-		case ENET_EVENT_TYPE_RECEIVE:
-		{
-			//g_enent_comment->on_enet_receive(event);
-			enet_packet_destroy(event.packet);    //×¢ÒâÊÍ·Å¿Õ¼ä
-
-		}
-		break;
-		case ENET_EVENT_TYPE_DISCONNECT:
-		{
-			//g_enent_comment->on_enet_disconnect(event);
-		}
-		default:
-			break;
-		}
-	}
-}
 void net_global::update_udp_service()
 {
 	while (g_enent_comment->is_exit() == false)

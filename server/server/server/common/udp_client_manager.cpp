@@ -76,7 +76,7 @@ void udp_client_manager::on_enet_connected(ENetEvent& event)
 		_connect_clients.erase(it);
 		_clients.erase(client);
 		_connected_clients[client->get_peer()] = client;
-		client->on_connect();
+		client->handle_connect();
 	}
 }
 
@@ -96,6 +96,7 @@ void udp_client_manager::on_enet_disconnect(ENetEvent& event)
 	if (it != _connected_clients.end())
 	{
 		udp_client* client = it->second;
+		client->handle_close();
 		_connected_clients.erase(it);
 		_connect_clients.erase(client->get_peer());
 		if (_clients.count(client) == 0)

@@ -13,15 +13,17 @@ public:
 	virtual ~udp_client();
 	inline void set_reconnect(bool b) { m_isreconnect = b; }
 	virtual void on_connect();
-	virtual void on_connect(ENetPeer* peer, u32 connect_index,
-		u32 remote_host, u16 remote_port, const char* ip);
+
 	void connect(const char* address, unsigned short port);
 	ENetPeer* get_peer();
 	virtual void extra_process(bool is_wait);
+	void handle_connect();
 protected:
 	void reconnect_check();
 	void reconnect();
 	virtual ENetHost* get_host();
+	virtual void handle_connect(ENetPeer* peer, u32 connect_index,
+		u32 remote_host, u16 remote_port, const char* ip);
 	
 protected:
 	virtual void push_message(message_t* msg);
@@ -36,7 +38,7 @@ protected:
 	std::string _connect_address;
 	volatile unsigned int m_last_reconnect_time;
 	volatile bool m_isconnecting;
-	call_back_mgr m_cb_mgr;
+	
 	udp_client_manager* _client_manager;
 };
 

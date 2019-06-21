@@ -7,8 +7,8 @@ class udp_session : public base_session
 public:
 	udp_session();
 	virtual ~udp_session();
-	virtual void on_connect(ENetPeer* peer, u32 connect_index,
-		u32 remote_host, u16 remote_port, const char* ip);
+	virtual void on_connect();
+
 	inline u32 get_connect_id() { return _connect_id; }
 	inline u32 get_connect_index() { return _connect_index; }
 	void receive(const char* receive_data, std::size_t length);
@@ -16,13 +16,17 @@ public:
 	inline const u32* get_connect_index_data() { return &_connect_index; }
 	virtual void close();
 	virtual void handle_close();
+	void on_close();
 public:
 	void _write_message();
+	virtual void handle_connect(ENetPeer* peer, u32 connect_index,
+		u32 remote_host, u16 remote_port, const char* ip);
 protected:
 	virtual bool _uncompress_message(char* data);
 	virtual void _send_message(message_t* msg);
 	virtual ENetHost* get_host();
 	virtual call_back_mgr* _get_cb_mgr();
+
 protected:
 	std::string _ip;
 	u32 _connect_id;
