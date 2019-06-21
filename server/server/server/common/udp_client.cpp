@@ -51,6 +51,7 @@ void udp_client::on_connect()
 
 void udp_client::extra_process(bool is_wait)
 {
+	reconnect_check();
 	_write_message();
 	msg_component::run(is_wait);
 
@@ -65,6 +66,8 @@ void udp_client::handle_connect(ENetPeer* peer, u32 connect_index,
 	u32 remote_host, u16 remote_port, const char* ip)
 {	
 	m_isconnected = true;
+	m_isconnecting = false;
+	m_isinitconncted = true;
 	set_valid(true);
 	udp_session::handle_connect(peer, connect_index, remote_host, remote_port, ip);
 }
@@ -108,6 +111,7 @@ void udp_client::connect(const char* address, unsigned short port)
 	{
 		_client_manager->on_try_connect(this);
 	}
+	m_isconnecting = true;
 	
 	///* Wait up to 5 seconds for the connection attempt to succeed. */
 	//if (enet_host_service(get_host(), &event, 5000) > 0 &&

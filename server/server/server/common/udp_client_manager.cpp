@@ -116,6 +116,12 @@ void udp_client_manager::extra_process(bool is_wait)
 	{
 		entity.second->extra_process(false);
 	}
+
+	for (auto client : _clients)
+	{
+		client->extra_process(false);
+	}
+
 	if (is_wait)
 	{
 		cpu_wait();
