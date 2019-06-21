@@ -60,25 +60,25 @@ protected:
 	void _on_close( const boost::system::error_code& error );
 
 	boost::asio::io_service& m_io_service;
-	volatile bool m_isconnected;
+	//volatile bool m_isconnected;
 	tcp_server* m_father;
 	tcp::socket* m_socket;
-	std::queue<message_t*> m_queue_send_msg;
-	char m_recv_buffer[MAX_MESSAGE_LEN*2];
-	char buffer_[MAX_MESSAGE_LEN];
-	std::size_t m_recive_buffer_pos;
-	bool m_iscompress;
+	//std::queue<message_t*> m_queue_send_msg;
+	//char m_recv_buffer[MAX_MESSAGE_LEN*2];
+	//char buffer_[MAX_MESSAGE_LEN];
+	//std::size_t m_recive_buffer_pos;
+	//bool m_iscompress;
 	
-	volatile boost::uint32_t m_isvalid;
-	bool m_isclosing;
-	int m_thread_index;
-	std::string m_remote_ip_str;
-	unsigned int m_remote_ip_ui;
-	boost::mutex m_mutex;
-	char m_sending_data[MAX_MESSAGE_LEN];
-	volatile bool m_is_sending_data;
-	volatile long m_not_sent_size;
-	bool _base64;
+	//volatile boost::uint32_t m_isvalid;
+	//bool m_isclosing;
+	//int m_thread_index;
+	//std::string m_remote_ip_str;
+	//unsigned int m_remote_ip_ui;
+	//boost::mutex m_mutex;
+	//char m_sending_data[MAX_MESSAGE_LEN];
+	//volatile bool m_is_sending_data;
+	//volatile long m_not_sent_size;
+	//bool _base64;
 
 };
 

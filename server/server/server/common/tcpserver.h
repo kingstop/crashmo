@@ -3,13 +3,13 @@
 
 
 #include "asiodef.h"
-
+#include "base_server.h"
 class tcp_session;
 
 struct task;
 class task_thread_pool;
 
-class tcp_server
+class tcp_server : public base_server
 {
 public:
 	tcp_server( int id );
@@ -53,32 +53,65 @@ public:
 protected:
 	void _real_run( bool is_wait );
 	tcp::acceptor* m_acceptor;
-	std::list<tcp_session*> m_sessions;
-	std::set<tcp_session*> m_accepting_sessions;
-	int m_id;
-	unsigned int m_poolcount;
-	unsigned int m_accepting_count;
-	volatile boost::uint32_t m_connection_count;
-	std::queue<message_t*> m_queue_recv_msg[2];
-	int m_current_recv_queue;
-	task_thread_pool* m_ttp;
+	//std::list<tcp_session*> m_sessions;
+	//std::set<tcp_session*> m_accepting_sessions;
+	//int m_id;
+	//unsigned int m_poolcount;
+	//unsigned int m_accepting_count;
+	//volatile boost::uint32_t m_connection_count;
 
-	enum { THREAD_BUFFER_SIZE = MAX_MESSAGE_LEN + 32 };
-	char* m_thread_buffer;
-	int m_thread_count;
-	int m_cur_thread_index;
-	bool m_ttti_mode;
-	boost::mutex m_msg_mutex;
-	boost::mutex m_ban_mutex;
-	call_back_mgr m_cb_mgr;
+	//task_thread_pool* m_ttp;
 
-	bool m_limit_mode;
-	volatile unsigned int m_unix_time;
-	std::map<unsigned int, std::pair<unsigned int, net_global::ban_reason_t> > m_banip;
-	unsigned int m_last_log_connection_time;
-	FILE* m_fp_connection_log;
-	unsigned int m_last_clean_idle_ip_time;
-	bool m_security;
+	//enum { THREAD_BUFFER_SIZE = MAX_MESSAGE_LEN + 32 };
+	//char* m_thread_buffer;
+	//int m_thread_count;
+	//int m_cur_thread_index;
+	//bool m_ttti_mode;
+	//boost::mutex m_msg_mutex;
+	////boost::mutex m_ban_mutex;
+	//call_back_mgr m_cb_mgr;
+
+	//bool m_limit_mode;
+	//volatile unsigned int m_unix_time;
+	//std::map<unsigned int, std::pair<unsigned int, net_global::ban_reason_t> > m_banip;
+	//unsigned int m_last_log_connection_time;
+	//FILE* m_fp_connection_log;
+	//unsigned int m_last_clean_idle_ip_time;
+	//bool m_security;
+
+
+
+	//std::list<base_session*> m_sessions;
+	//std::set<base_session*> m_accepting_sessions;
+	//int m_id;
+	//unsigned int m_poolcount;
+	//boost::atomic<unsigned int> m_accepting_count;
+
+	//volatile boost::uint32_t m_connection_count;
+	//task_thread_pool* m_ttp;
+
+	//enum { THREAD_BUFFER_SIZE = MAX_MESSAGE_LEN + 32 };
+	//char* m_thread_buffer;
+	//int m_thread_count;
+	//int m_cur_thread_index;
+	//bool m_ttti_mode;
+
+	//boost::mutex m_ban_mutex;
+	//call_back_mgr m_cb_mgr;
+
+	//bool m_limit_mode;
+	//volatile unsigned int m_unix_time;
+	//std::map<unsigned int, std::pair<unsigned int, net_global::ban_reason_t> > m_banip;
+	//unsigned int m_last_log_connection_time;
+	//FILE* m_fp_connection_log;
+	//unsigned int m_last_clean_idle_ip_time;
+	//bool m_security;
+	//uint32_t _port;
+
+
+
+
+
 };
 
 #endif

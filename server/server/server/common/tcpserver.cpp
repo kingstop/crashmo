@@ -220,10 +220,10 @@ void net_global::write_close_log( const char* txt, ... )
 #endif
 }
 
-tcp_server::tcp_server( int id )
-	: m_id( id ), m_acceptor( NULL ), m_poolcount( 0 ), m_thread_buffer( NULL ), m_thread_count( 0 ), m_cur_thread_index( 0 ),
+tcp_server::tcp_server( int id ):base_server(id)
+	/*: m_id( id ), m_acceptor( NULL ), m_poolcount( 0 ), m_thread_buffer( NULL ), m_thread_count( 0 ), m_cur_thread_index( 0 ),
 	m_ttti_mode( false ), m_accepting_count( 0 ), m_limit_mode( false ), m_connection_count( 0 ), m_fp_connection_log( NULL ), m_security( true ),
-	m_current_recv_queue( 0 )
+	m_current_recv_queue( 0 )*/
 {
 
 	m_ttp = new task_thread_pool;
