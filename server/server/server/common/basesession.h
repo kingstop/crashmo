@@ -16,10 +16,10 @@ public:
 	inline bool is_connected() const { return m_isconnected; }
 	void reset();
 	unsigned int get_remote_address_ui() const;
-	void handle_close();
+	
 	inline int get_thread_index() const { return m_thread_index; }
 	virtual void close();
-
+	virtual void handle_close();
 	void set_base64(bool b) { _base64 = b; };
 	bool get_base64() { return _base64; }
 protected:
@@ -34,7 +34,7 @@ protected:
 	virtual void push_message(message_t* msg);
 	virtual bool _read_some(const char* buff, std::size_t bytes_transferred);
 	virtual bool _write_message(std::size_t& len);
-
+	virtual call_back_mgr* _get_cb_mgr() = 0;
 public:
 	boost::mutex m_proc_mutex;
 	std::map<unsigned int, unsigned int> m_idleip;

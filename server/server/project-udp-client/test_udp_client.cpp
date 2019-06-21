@@ -11,14 +11,26 @@ test_udp_client::test_udp_client(): ProtocMsgBase<test_udp_client>(this)
 test_udp_client::~test_udp_client()
 {
 }
+
+void test_udp_client::on_connect()
+{
+	udp_client::on_connect();
+	message::LoginRequest msg;
+	msg.set_name("12345");
+	msg.set_pwd("54321");
+	sendPBMessage(&msg, 0);
+}
+
 void test_udp_client::_proc_message(const message_t& msg)
 {
 	proc_message(msg);
 }
+
 void test_udp_client::proc_message(const message_t& msg)
 {
 	parsePBMessage(msg.data, msg.len, msg.base64);
 }
+
 void test_udp_client::parseGameMsg(google::protobuf::Message* p, pb_flag_type flag)
 {
 

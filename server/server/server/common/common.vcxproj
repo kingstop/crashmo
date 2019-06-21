@@ -87,6 +87,7 @@
     <ClInclude Include="base_server.h" />
     <ClInclude Include="call_back.h" />
     <ClInclude Include="client_base.h" />
+    <ClInclude Include="client_enet_component.h" />
     <ClInclude Include="common_header.h" />
     <ClInclude Include="common_helper.h" />
     <ClInclude Include="common_template.h" />
@@ -112,6 +113,7 @@
     <ClInclude Include="udpserver.h" />
     <ClInclude Include="udpsession.h" />
     <ClInclude Include="udp_client.h" />
+    <ClInclude Include="udp_client_manager.h" />
     <ClInclude Include="udp_server.h" />
     <ClInclude Include="windump.h" />
     <ClInclude Include="mt_buffer.h" />
@@ -136,6 +138,7 @@
     <ClCompile Include="base_server.cpp" />
     <ClCompile Include="call_back.cpp" />
     <ClCompile Include="client_base.cpp" />
+    <ClCompile Include="client_enet_component.cpp" />
     <ClCompile Include="crypt.cpp" />
     <ClCompile Include="cur_http_client.cpp" />
     <ClCompile Include="database.cpp" />
@@ -153,6 +156,7 @@
     <ClCompile Include="udpserver.cpp" />
     <ClCompile Include="udpsession.cpp" />
     <ClCompile Include="udp_client.cpp" />
+    <ClCompile Include="udp_client_manager.cpp" />
     <ClCompile Include="udp_server.cpp" />
     <ClCompile Include="windump.cpp" />
     <ClCompile Include="my_log.cpp" />

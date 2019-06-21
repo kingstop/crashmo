@@ -14,6 +14,18 @@ udp_session::~udp_session()
 {
 }
 
+void udp_session::close()
+{
+	if (_peer)
+	{
+		enet_peer_disconnect(_peer, 0);
+	}
+	
+}
+void udp_session::handle_close()
+{
+
+}
 
 void udp_session::on_connect(ENetPeer* peer, u32 connect_index,
 	u32 remote_host, u16 remote_port, const char* ip)
@@ -54,6 +66,14 @@ bool udp_session::_uncompress_message(char* data)
 void udp_session::_send_message(message_t* msg)
 {
 	_try_send_message(msg);
+}
+call_back_mgr* udp_session::_get_cb_mgr()
+{
+	if (m_father)
+	{
+		return m_father->get_cb_mgr();
+	}
+	return nullptr;
 }
 
 ENetHost* udp_session::get_host()
@@ -108,7 +128,7 @@ void udp_session::_write_message()
 
 		/* enet_host_broadcast (host, 0, packet); */
 
-		enet_peer_send(_peer, 1, packet);
+		int ret = enet_peer_send(_peer, 1, packet);
 
 		enet_host_flush(get_host());
 		//_write_completed();

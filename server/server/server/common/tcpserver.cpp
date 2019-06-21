@@ -5,7 +5,8 @@
 #include <stdarg.h>
 #include "io_service_pool.h"
 #include "message_interface.h"
-
+#include "enet_component.h"
+#include "udp_client_manager.h"
 
 
 static volatile boost::uint32_t s_asio_thread_count = 0;
@@ -14,6 +15,38 @@ static bool net_service_stoped = false;
 static unsigned int s_io_once_listen_session_count = 40;
 static bool init_udp_service = false;
 ENetHost* enet_host = nullptr;
+enet_component* g_enent_comment = nullptr;
+bool enet_update_start = false;
+udp_client_manager* g_udp_client_manager = nullptr;
+boost::thread* g_enet_thread = nullptr;
+
+void net_global::start_client_thread()
+{
+	start_enet_thread(g_udp_client_manager);
+}
+void net_global::udp_init_client_manager(int client_count)
+{
+	g_udp_client_manager = new udp_client_manager();
+	g_udp_client_manager->init(client_count);
+	
+}
+udp_client_manager* net_global::get_udp_client_manager()
+{
+	return g_udp_client_manager;
+}
+
+void net_global::start_enet_thread(enet_component* component)
+{
+	if (enet_update_start == false)
+	{
+		g_enent_comment = component;
+		g_enet_thread = new boost::thread(&update_udp_service);
+		//boost::thread thrd(&update_udp_service);	
+		//thrd.yield();
+		//thrd.join();
+		enet_update_start = true;
+	}
+}
 void net_global::update_net_service()
 {
 	if( s_io_service_pool )
@@ -21,6 +54,77 @@ void net_global::update_net_service()
 }
 
 
+void net_global::update_udp_event_service()
+{
+	ENetEvent event;
+	while (enet_host_service(enet_host, &event, 1000) >= 0)
+	{
+		switch (event.type)
+		{
+		case ENET_EVENT_TYPE_CONNECT:
+		{
+			//g_enent_comment->on_enet_connected(event);
+		}
+		break;
+
+		case ENET_EVENT_TYPE_RECEIVE:
+		{
+			//g_enent_comment->on_enet_receive(event);
+			enet_packet_destroy(event.packet);    //注意释放空间
+
+		}
+		break;
+		case ENET_EVENT_TYPE_DISCONNECT:
+		{
+			//g_enent_comment->on_enet_disconnect(event);
+		}
+		default:
+			break;
+		}
+	}
+}
+void net_global::update_udp_service()
+{
+	while (g_enent_comment->is_exit() == false)
+	{
+		ENetEvent event;
+		while (enet_host_service(enet_host, &event, 1000) >= 0 && g_enent_comment->is_exit() == false)
+		{
+			switch (event.type)
+			{
+			case ENET_EVENT_TYPE_CONNECT:
+			{
+				g_enent_comment->on_enet_connected(event);
+			}
+			break;
+
+			case ENET_EVENT_TYPE_RECEIVE:
+			{
+				g_enent_comment->on_enet_receive(event);
+				//ENetPacket* packet1 = enet_packet_create((char*)event.packet->data, event.packet->dataLength, ENET_PACKET_FLAG_RELIABLE);
+				//strcpy((char*)packet1->data, "你好啊，呵呵");
+				//enet_peer_send(event.peer, 1, packet1);
+				//enet_host_flush(enet_host); //必须使用这个函数或是enet_host_service来使数据发出去
+				enet_packet_destroy(event.packet);    //注意释放空间
+				
+			}
+			break;
+			case ENET_EVENT_TYPE_DISCONNECT:
+			{
+				g_enent_comment->on_enet_disconnect(event);
+			}
+			default:
+				break;
+			}
+
+			g_enent_comment->extra_process(g_enent_comment->is_cpu_wait());
+		}
+
+	}
+	int up_loop = 0;
+	up_loop = 1;
+	
+}
 
 
 boost::asio::io_service* net_global::get_io_service()

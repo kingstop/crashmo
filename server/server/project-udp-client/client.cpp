@@ -3,10 +3,10 @@
 
 #include "pch.h"
 
-//#include <iostream>
-//#include <string.h>
-//#include "enet/enet.h"
-//
+#include <iostream>
+#include <string.h>
+#include "enet/enet.h"
+
 //using namespace std;
 //
 //int main()
@@ -43,12 +43,12 @@
 //		//cout << "连接服务器失败" << endl;
 //		return -1;
 //	}
-//	ENetPeer* server1 = enet_host_connect(client, &svraddr, 3, 2); //client连接到svraddr对象，共分配三个通道
-//	if (server1 == NULL)
-//	{
-//		//cout << "连接服务器失败" << endl;
-//		return -1;
-//	}
+//	//ENetPeer* server1 = enet_host_connect(client, &svraddr, 3, 2); //client连接到svraddr对象，共分配三个通道
+//	//if (server1 == NULL)
+//	//{
+//	//	//cout << "连接服务器失败" << endl;
+//	//	return -1;
+//	//}
 //
 //	ENetEvent event;
 //	//连接成功后必须调用enet_host_service来最终确认
@@ -79,14 +79,20 @@
 //
 //
 //	//关闭连接
-//	enet_peer_disconnect(server, 0);
+//	//enet_peer_disconnect(server, 0);
 //	//等待关闭成功
 //	while (enet_host_service(client, &event, 5000) > 0)
 //	{
 //		switch (event.type)
 //		{
 //		case ENET_EVENT_TYPE_RECEIVE:
+//		{
 //			enet_packet_destroy(event.packet);
+//			ENetPacket* packet3 = enet_packet_create(NULL, 86, ENET_PACKET_FLAG_RELIABLE); //创建包
+//			strcpy((char*)packet3->data, "你好啊，呵呵");
+//			enet_peer_send(event.peer, 2, packet1);
+//			enet_host_flush(client); //必须使用这个函数或是enet_host_service来使数据发出去
+//		}
 //			break;
 //
 //		case ENET_EVENT_TYPE_DISCONNECT:
@@ -128,43 +134,6 @@
 #include <boost/bind.hpp>  
 #include <boost/thread/thread_pool.hpp> 
 
-class my_task_thread
-{
-public:
-	my_task_thread(int index):m_index(index), m_exit(false), _client(nullptr)
-	{
-		_client = new test_udp_client();
-		_client->connect("127.0.0.1", 777);
-		message::LoginRequest msg;
-		msg.set_name(std::to_string(m_index));
-		msg.set_pwd(std::to_string(m_index));
-		_client->sendPBMessage(&msg, 0);
-
-		m_thread = new boost::thread(boost::bind(&my_task_thread::run, this));
-
-		
-	}
-	~my_task_thread()
-	{
-		m_exit = true;
-		m_thread->join();
-		delete m_thread;
-		delete _client;
-	}
-
-public:	
-	void run()
-	{
-		_client->run_no_wait();
-	}
-private:
-
-	boost::thread* m_thread;
-	boost::mutex m_mutex;
-	volatile bool m_exit;
-	int m_index;
-	test_udp_client* _client;
-};
 
 
 int main()
@@ -172,6 +141,7 @@ int main()
 	
 	
 	test_udp_client::initPBModule();
+	net_global::udp_init_client_manager(2);
 	//net_global::udp_net_init(nullptr, 1, 2, 57600, 14400);
 	/*
 	std::vector<my_task_thread*> vc;
@@ -181,36 +151,27 @@ int main()
 
 	}
 	*/
-	message::LoginRequest msg;
-	msg.set_name("12345");
-	msg.set_pwd("54321");
+	
+
+	net_global::start_client_thread();
 
 	test_udp_client client;	
 	client.connect("127.0.0.1", 777);
-	client.sendPBMessage(&msg, 0);
+	//net_global::update_udp_event_service();
+	
+	
+
+	//client.sendPBMessage(&msg, 0);
 
 	test_udp_client client1;
 	client1.connect("127.0.0.1", 777);
-	client1.sendPBMessage(&msg, 0);
+	//client1.sendPBMessage(&msg, 0);
 
 	while (true)
 	{
-		
-		client.run_no_wait();
+
 	}
-	
 	return 0;
 
     //std::cout << "Hello World!\n"; 
 }
-
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
-
-// 入门提示: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件

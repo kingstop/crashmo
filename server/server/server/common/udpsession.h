@@ -14,15 +14,15 @@ public:
 	void receive(const char* receive_data, std::size_t length);
 	inline void set_father(base_server* father) { m_father = father; }
 	inline const u32* get_connect_index_data() { return &_connect_index; }
-	
+	virtual void close();
+	virtual void handle_close();
 public:
-
 	void _write_message();
-
 protected:
 	virtual bool _uncompress_message(char* data);
 	virtual void _send_message(message_t* msg);
 	virtual ENetHost* get_host();
+	virtual call_back_mgr* _get_cb_mgr();
 protected:
 	std::string _ip;
 	u32 _connect_id;

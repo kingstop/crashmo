@@ -72,7 +72,7 @@ void udp_server::on_enet_connected(ENetEvent& event)
 			pudp->close();
 		}
 	}
-	std::cout << "ip[" << ip << "] 已经连接,序号[" << connect_index <<"] 目前连接数["<< _connected_sessions.size() <<"]" <<std::endl;
+	//std::cout << "ip[" << ip << "] 已经连接,序号[" << connect_index <<"] 目前连接数["<< _connected_sessions.size() <<"]" <<std::endl;
 	m_sessions.pop_front();
 }
 void udp_server::on_enet_receive(ENetEvent& event)
@@ -224,7 +224,19 @@ bool udp_server::create(unsigned short port, unsigned int poolcount, int thread_
 	/* Bind the server to port 1234. */
 
 	_address.port = _port;
+	m_poolcount = poolcount;
+
+	if (m_poolcount == 0)
+	{
+		m_poolcount = 20;
+	}
+
+	for (unsigned int i = 0; i < m_poolcount; ++i)
+	{
+		free_session(create_session());
+	}
 	net_global::udp_net_init(&_address, poolcount, 2);
+	net_global::start_enet_thread(this);
 	return true;
 }
 
@@ -233,9 +245,6 @@ void udp_server::run()
 {
 	//下面开始收数据等
 	ENetEvent event;
-
-
-
 	while (enet_host_service(get_host(), &event, 1000) >= 0)
 	{
 		switch (event.type)
@@ -250,28 +259,31 @@ void udp_server::run()
 			event.peer->data = (void*)connect_index;
 			u32 connect_id = event.peer->connectID;
 			boost::mutex::scoped_lock lock(m_proc_mutex);
-			base_session* p = m_sessions.front();
-			udp_session* pudp = dynamic_cast<udp_session*>(p);
-			if (pudp)
+			if (m_sessions.empty() == false)
 			{
-				pudp->on_connect(event.peer, connect_index, remote.host, remote.port, ip);
-				if (handle_accept(p))
+				base_session* p = m_sessions.front();
+				udp_session* pudp = dynamic_cast<udp_session*>(p);
+				if (pudp)
 				{
-					auto it_ = _connected_sessions.find(pudp->get_connect_index());
-					if (it_ != _connected_sessions.end())
+					pudp->on_connect(event.peer, connect_index, remote.host, remote.port, ip);
+					if (handle_accept(p))
 					{
-						it_->second->close();
+						auto it_ = _connected_sessions.find(pudp->get_connect_index());
+						if (it_ != _connected_sessions.end())
+						{
+							it_->second->close();
 
+						}
+						_connected_sessions[pudp->get_connect_index()] = pudp;
 					}
-					_connected_sessions[pudp->get_connect_index()] = pudp;
+					else
+					{
+						pudp->close();
+					}
 				}
-				else
-				{
-					pudp->close();
-				}
+				m_sessions.pop_front();
 			}
 
-			m_sessions.pop_front();
 		}
 		break;
 
@@ -303,11 +315,12 @@ void udp_server::run()
 		default:
 			break;
 		}
+		auto it_ = _connected_sessions.begin();
+		for (; it_ != _connected_sessions.end(); ++it_)
+		{
+			udp_session* p_udp = it_->second;
+			p_udp->_write_message();
+		}
 	}
-	auto it_ = _connected_sessions.begin();
-	for (; it_ != _connected_sessions.end(); ++ it_)
-	{
-		udp_session* p_udp = it_->second;
-		p_udp->_write_message();
-	}
+
 }
