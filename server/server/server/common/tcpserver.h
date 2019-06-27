@@ -16,39 +16,39 @@ public:
 	virtual ~tcp_server();
 
 public:
-	bool create( unsigned short port, unsigned int poolcount, int thread_count );
+	virtual bool create( unsigned short port, unsigned int poolcount, int thread_count );
 	void handle_accept( tcp_session* p, const boost::system::error_code& error );
-	inline int get_id() const { return m_id; }
-	void free_session( tcp_session* p );
-	void push_message( message_t* msg );
+	//inline int get_id() const { return m_id; }
+	//void free_session( tcp_session* p );
+	//void push_message( message_t* msg );
 
-	virtual void run();
-	virtual void run_no_wait();
-	void push_task( task* p );
-	char* get_thread_buffer( int index );
-	int generate_thread_index();
-	bool is_ban_ip( unsigned int addr );
-	void add_ban_ip( unsigned int addr, unsigned int sec, net_global::ban_reason_t br );
-	void add_ban_ip( const std::string& addr, unsigned int sec, net_global::ban_reason_t br );
-	void remove_ban_ip( unsigned int addr );
+	//virtual void run();
+	//virtual void run_no_wait();
+	//void push_task( task* p );
+	//char* get_thread_buffer( int index );
+	//int generate_thread_index();
+	//bool is_ban_ip( unsigned int addr );
+	//void add_ban_ip( unsigned int addr, unsigned int sec, net_global::ban_reason_t br );
+	//void add_ban_ip( const std::string& addr, unsigned int sec, net_global::ban_reason_t br );
+	//void remove_ban_ip( unsigned int addr );
 
-	inline int get_task_thread_count() const { return m_thread_count; }
-	inline bool is_thread_task_transfer_id_mode() const { return m_ttti_mode; }
-	inline void set_thread_task_transfer_id_mode() { m_ttti_mode = true; }
-	inline call_back_mgr* get_cb_mgr() { return &m_cb_mgr; }
-	inline void set_limit_mode( bool b ) { m_limit_mode = b; }
-	inline bool is_limit_mode() const { return m_limit_mode; }
-	inline unsigned int get_unix_time() const { return m_unix_time; }
-	inline void set_security( bool b ) { m_security = b; }
-	inline bool is_security() const { return m_security; }
+	//inline int get_task_thread_count() const { return m_thread_count; }
+	//inline bool is_thread_task_transfer_id_mode() const { return m_ttti_mode; }
+	//inline void set_thread_task_transfer_id_mode() { m_ttti_mode = true; }
+	//inline call_back_mgr* get_cb_mgr() { return &m_cb_mgr; }
+	//inline void set_limit_mode( bool b ) { m_limit_mode = b; }
+	//inline bool is_limit_mode() const { return m_limit_mode; }
+	//inline unsigned int get_unix_time() const { return m_unix_time; }
+	//inline void set_security( bool b ) { m_security = b; }
+	//inline bool is_security() const { return m_security; }
 
 public:
 	virtual void stop();
-	virtual tcp_session* create_session() = 0;
-
+	//virtual tcp_session* create_session() = 0;
+	
 public:
-	boost::mutex m_proc_mutex;
-	std::map<unsigned int, unsigned int> m_idleip;
+	//boost::mutex m_proc_mutex;
+	//std::map<unsigned int, unsigned int> m_idleip;
 
 protected:
 	void _real_run( bool is_wait );

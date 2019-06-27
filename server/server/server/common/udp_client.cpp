@@ -22,6 +22,15 @@ void udp_client::reconnect()
 	connect(_connect_address.c_str(), _connect_port);
 }
 
+char* udp_client::get_uncompress_buffer()
+{
+	if (_client_manager)
+	{
+		return _client_manager->get_uncompress_buffer();
+
+	}
+	return nullptr;
+}
 
 void udp_client::reconnect_check()
 {
@@ -109,9 +118,10 @@ void udp_client::connect(const char* address, unsigned short port)
 	}
 	else
 	{
+		m_isconnecting = true;
 		_client_manager->on_try_connect(this);
 	}
-	m_isconnecting = true;
+	
 	
 	///* Wait up to 5 seconds for the connection attempt to succeed. */
 	//if (enet_host_service(get_host(), &event, 5000) > 0 &&

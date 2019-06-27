@@ -223,51 +223,8 @@ void base_server::stop()
 
 void base_server::_real_run(bool is_wait)
 {
-	m_unix_time = (unsigned int)time(NULL);
-	/*
-
-	{
-		boost::mutex::scoped_lock lock(m_proc_mutex);
-		while (m_accepting_count < s_io_once_listen_session_count)
-		{
-			if (m_sessions.size() == 0)
-				break;
-			base_session* p = m_sessions.front();
-			p->set_valid(true);
-			//ÐÂµÄÁ´½Ó
-
-			//m_acceptor->async_accept(p->socket(), boost::bind(&tcp_server::handle_accept, this, p, boost::asio::placeholders::error));
-			m_sessions.pop_front();
-			++m_accepting_count;
-		}
-	}
-	*/
+	//m_unix_time = (unsigned int)time(NULL);
 	m_cb_mgr.poll();
 	msg_component::run(is_wait);
-	/**/
 
-	//int proc_index = 0;
-	//m_msg_mutex.lock();
-	//if (m_queue_recv_msg[m_current_recv_queue].empty())
-	//{
-	//	m_msg_mutex.unlock();
-	//	if (is_wait)
-	//		cpu_wait();
-	//	return;
-	//}
-	//proc_index = m_current_recv_queue;
-	//m_current_recv_queue = !m_current_recv_queue;
-	//m_msg_mutex.unlock();
-
-	//while (!m_queue_recv_msg[proc_index].empty())
-	//{
-	//	message_t* msg = m_queue_recv_msg[proc_index].front();
-	//	msg->from->_proc_message(*msg);
-	//	/*
-	//	if( msg->from->is_valid() && msg->from->is_connected() )
-	//		msg->from->proc_message( *msg );
-	//	*/
-	//	net_global::free_message(msg);
-	//	m_queue_recv_msg[proc_index].pop();
-	//}
 }

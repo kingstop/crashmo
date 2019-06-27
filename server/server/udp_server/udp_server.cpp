@@ -82,7 +82,7 @@ int main()
 	
 	test_udp_session::registerPBCall();
 	test_udp_server udp_server(1);
-	udp_server.create(777, 5, 2);
+	udp_server.create(777, 500, 2);
 	int c = 0;
 	while (true)
 	{

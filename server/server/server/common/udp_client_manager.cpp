@@ -57,7 +57,11 @@ void udp_client_manager::remove_client(udp_client* client)
 }
 void udp_client_manager::on_try_connect(udp_client* client)
 {
-	remove_client(client);
+	if (client->get_peer())
+	{
+		//_connected_clients.erase(client->get_peer());
+		_connect_clients.erase(client->get_peer());
+	}
 	_connect_clients[client->get_peer()] = client;
 }
 
@@ -67,6 +71,11 @@ void udp_client_manager::init(int client_count)
 	net_global::udp_net_init(nullptr, client_count, 2);
 }
 
+void udp_client_manager::update()
+{
+	m_cb_mgr.poll();
+}
+
 void udp_client_manager::on_enet_connected(ENetEvent& event)
 {
 	auto it = _connect_clients.find(event.peer);
@@ -74,7 +83,7 @@ void udp_client_manager::on_enet_connected(ENetEvent& event)
 	{
 		udp_client* client = it->second;
 		_connect_clients.erase(it);
-		_clients.erase(client);
+		//_clients.erase(client);
 		_connected_clients[client->get_peer()] = client;
 		client->handle_connect();
 	}
@@ -99,23 +108,29 @@ void udp_client_manager::on_enet_disconnect(ENetEvent& event)
 		client->handle_close();
 		_connected_clients.erase(it);
 		_connect_clients.erase(client->get_peer());
-		if (_clients.count(client) == 0)
+/*		if (_clients.count(client) == 0)
 		{
 			_clients.insert(client);
-		}		
+		}	*/	
 	}
 }
+
+char* udp_client_manager::get_uncompress_buffer()
+{
+	return _uncompress_buffer;
+}
+
 void udp_client_manager::extra_process(bool is_wait)
 {
-	for (auto entity : _connected_clients)
-	{
-		entity.second->extra_process(false);
-	}
+	//for (auto entity : _connected_clients)
+	//{
+	//	entity.second->extra_process(false);
+	//}
 
-	for (auto entity : _connect_clients)
-	{
-		entity.second->extra_process(false);
-	}
+	//for (auto entity : _connect_clients)
+	//{
+	//	entity.second->extra_process(false);
+	//}
 
 	for (auto client : _clients)
 	{

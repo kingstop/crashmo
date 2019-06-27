@@ -16,7 +16,8 @@ public:
 	inline const u32* get_connect_index_data() { return &_connect_index; }
 	virtual void close();
 	virtual void handle_close();
-	void on_close();
+	virtual void on_close();
+	virtual void reset();
 public:
 	void _write_message();
 	virtual void handle_connect(ENetPeer* peer, u32 connect_index,
@@ -26,14 +27,14 @@ protected:
 	virtual void _send_message(message_t* msg);
 	virtual ENetHost* get_host();
 	virtual call_back_mgr* _get_cb_mgr();
-
+	virtual char* get_uncompress_buffer();
 protected:
 	std::string _ip;
 	u32 _connect_id;
 	u32 _connect_index;
 	u16 _port;
 	ENetPeer * _peer;
-	char _uncompress_buffer[MAX_MESSAGE_LEN];
+	//char _uncompress_buffer[MAX_MESSAGE_LEN];
 };
 
 

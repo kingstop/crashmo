@@ -14,7 +14,7 @@ public:
 	virtual void _proc_message(const message_t& msg) = 0;
 	virtual void proc_message(const message_t& msg) = 0;
 	inline bool is_connected() const { return m_isconnected; }
-	void reset();
+	virtual void reset();
 	unsigned int get_remote_address_ui() const;
 	
 	inline int get_thread_index() const { return m_thread_index; }

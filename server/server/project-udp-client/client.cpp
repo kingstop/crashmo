@@ -134,14 +134,35 @@
 #include <boost/bind.hpp>  
 #include <boost/thread/thread_pool.hpp> 
 
+class test_client_manager {
+public:
+	test_client_manager(int count):_count(count) {
 
+	}
+	~test_client_manager() {
+	}
+	void create()
+	{
+		for (size_t i = 0; i < _count; i++)
+		{
+			test_udp_client* client = new test_udp_client();
+			client->connect("127.0.0.1", 777);
+		}
+	}
+protected:
+	int _count;
+	std::map<int, test_udp_client*> _clients;
+
+};
 
 int main()
 {
 	
 	
 	test_udp_client::initPBModule();
-	net_global::udp_init_client_manager(2);
+	net_global::udp_init_client_manager(100);
+	test_client_manager manager(1);
+	manager.create();
 	//net_global::udp_net_init(nullptr, 1, 2, 57600, 14400);
 	/*
 	std::vector<my_task_thread*> vc;
@@ -155,21 +176,21 @@ int main()
 
 	net_global::start_client_thread();
 
-	test_udp_client client;	
-	client.connect("127.0.0.1", 777);
+	//test_udp_client client;	
+	//client.connect("127.0.0.1", 777);
 	//net_global::update_udp_event_service();
 	
 	
 
 	//client.sendPBMessage(&msg, 0);
 
-	test_udp_client client1;
-	client1.connect("127.0.0.1", 777);
+	//test_udp_client client1;
+	//client1.connect("127.0.0.1", 777);
 	//client1.sendPBMessage(&msg, 0);
 
 	while (true)
 	{
-
+		net_global::update_net_service();
 	}
 	return 0;
 

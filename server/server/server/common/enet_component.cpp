@@ -1,7 +1,7 @@
 #include "enet_component.h"
 #include "enet/enet.h"
 
-enet_component::enet_component():_exit(false)
+enet_component::enet_component():_exit(false),_cpu_wait(false)
 {
 
 }

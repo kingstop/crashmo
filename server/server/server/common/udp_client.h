@@ -24,7 +24,7 @@ protected:
 	virtual ENetHost* get_host();
 	virtual void handle_connect(ENetPeer* peer, u32 connect_index,
 		u32 remote_host, u16 remote_port, const char* ip);
-	
+ 	virtual char* get_uncompress_buffer();
 protected:
 	virtual void push_message(message_t* msg);
 	virtual call_back_mgr* _get_cb_mgr();

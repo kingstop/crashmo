@@ -7,7 +7,7 @@
 
 udp_session::udp_session(): _connect_id(0), _connect_index(0), _port(0), _peer(nullptr)
 {
-	memset(_uncompress_buffer, 0, sizeof(_uncompress_buffer));
+	//memset(_uncompress_buffer, 0, sizeof(_uncompress_buffer));
 }
 
 udp_session::~udp_session()
@@ -21,6 +21,12 @@ void udp_session::close()
 		enet_peer_disconnect(_peer, 0);
 	}
 	
+}
+
+void udp_session::reset()
+{
+	base_session::reset();
+
 }
 
 void udp_session::on_close()
@@ -39,6 +45,8 @@ void udp_session::handle_close()
 	{
 		_call_back->add_cb(&udp_session::on_close, this);
 	}
+
+	m_isconnected = false;
 }
 
 void udp_session::handle_connect(ENetPeer* peer, u32 connect_index,
@@ -64,10 +72,23 @@ void udp_session::receive(const char* receive_data, std::size_t length)
 	_read_some(receive_data, length);	
 }
 
+char* udp_session::get_uncompress_buffer() 
+{
+	if (m_father)
+	{
+		udp_server* server = dynamic_cast<udp_server*>(m_father);
+		if (server)
+		{
+			return server->get_uncompress_buffer();
+		}
+	}
+	return nullptr;
+}
+
 bool udp_session::_uncompress_message(char* data)
 {
 	message_len size = MAX_MESSAGE_LEN;
-	message_t* msg = message_interface::uncompress(this, data, &m_recv_crypt_key, _uncompress_buffer, size);
+	message_t* msg = message_interface::uncompress(this, data, &m_recv_crypt_key, get_uncompress_buffer(), size);
 	if (NULL == msg)
 	{
 		if (m_father)
