@@ -14,10 +14,12 @@ public:
 	void receive(const char* receive_data, std::size_t length);
 	inline void set_father(base_server* father) { m_father = father; }
 	inline const u32* get_connect_index_data() { return &_connect_index; }
+	inline ENetPeer* get_peer() {  return _peer; }
 	virtual void close();
 	virtual void handle_close();
 	virtual void on_close();
 	virtual void reset();
+
 public:
 	void _write_message();
 	virtual void handle_connect(ENetPeer* peer, u32 connect_index,

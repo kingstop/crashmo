@@ -161,7 +161,7 @@ int main()
 	
 	test_udp_client::initPBModule();
 	net_global::udp_init_client_manager(100);
-	test_client_manager manager(1);
+	test_client_manager manager(99);
 	manager.create();
 	//net_global::udp_net_init(nullptr, 1, 2, 57600, 14400);
 	/*

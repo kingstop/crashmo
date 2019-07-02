@@ -40,7 +40,12 @@ void udp_client::reconnect_check()
 		{
 			unsigned int now = (unsigned int)time(NULL);
 			if (now - m_last_reconnect_time > m_reconnect_time)
+			{
+				m_last_reconnect_time = now;
 				reconnect();
+
+			}
+				
 		}
 	}
 

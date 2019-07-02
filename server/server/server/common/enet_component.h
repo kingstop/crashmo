@@ -6,9 +6,9 @@ class enet_component
 public:
 	enet_component();
 	virtual ~enet_component();
-	virtual void enet_run(bool is_wait);
-	virtual void run_nowait();
-	virtual void run();
+	//virtual void enet_run(bool is_wait);
+	//virtual void run_nowait();
+	//virtual void run();
 	void set_exit(bool exit);
 	bool is_exit();
 	virtual void on_enet_connected(ENetEvent& event) = 0;

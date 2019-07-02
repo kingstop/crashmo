@@ -14,7 +14,6 @@ public:
 	virtual ~udp_server();
 	u32 generateID();
 	virtual bool create(unsigned short port, unsigned int poolcount, int thread_count);
-	virtual void _real_run(bool is_wait);	
 	virtual ENetHost* get_host();
 	char* get_uncompress_buffer();
 protected:
@@ -24,12 +23,10 @@ protected:
 	virtual void on_enet_receive(ENetEvent& event);
 	virtual void on_enet_disconnect(ENetEvent& event);	
 	virtual void extra_process(bool is_wait);
-private:
-	void run();
 protected:
 	ENetAddress _address;
 	u32  _connect_count;
-	std::unordered_map<u32, udp_session*> _connected_sessions;
+	std::unordered_map<ENetPeer* , udp_session*> _connected_sessions;
 	char _uncompress_buffer[MAX_MESSAGE_LEN];
 };
 
