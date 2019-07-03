@@ -161,6 +161,7 @@ protected:
 
 int main()
 {
+	std::stringstream stream;
 	boost::posix_time::ptime now = boost::posix_time::microsec_clock::universal_time();
 	
 	now.time_of_day().total_microseconds();

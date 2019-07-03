@@ -62,12 +62,18 @@ void AccountManager::removeAccount(u32 nAccountId)
 {
 	Memory::releaseObject<Account>(m_Accts.eraseData(nAccountId));
 }
+#include <sstream>
+
 u32 AccountManager::makeTransId(std::string& str)
 {
-    std::stringstream stream ;
-    stream << str;
-    stream << time(NULL);
-	return ssl::sslCrc32(stream.str().c_str(), stream.str().length());
+	char sz[2014];
+	sprintf_s(sz, sizeof(sz), "%s%l", str.c_str(), time(NULL));
+	return ssl::sslCrc32(sz, strlen(sz));
+   // std::stringstream stream(0) ;
+    //stream << str;
+    //stream << time(NULL);
+	//return ssl::sslCrc32(stream.str().c_str(), stream.str().length());
+	//return 0;
 }
 
 void AccountManager::CreateNewAccount(const void* data, bool sucess)
