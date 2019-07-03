@@ -64,8 +64,9 @@ void net_global::update_udp_service()
 	while (g_enent_comment->is_exit() == false)
 	{
 		ENetEvent event;
-		while (enet_host_service(enet_host, &event, 1000) >= 0 && g_enent_comment->is_exit() == false)
+		while (enet_host_service(enet_host, &event, 200) >= 0 && g_enent_comment->is_exit() == false)
 		{
+			//std::cout << "Hello World!\n" << std::endl;
 			switch (event.type)
 			{
 			case ENET_EVENT_TYPE_CONNECT:

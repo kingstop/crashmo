@@ -134,6 +134,10 @@
 #include <boost/bind.hpp>  
 #include <boost/thread/thread_pool.hpp> 
 
+#include <boost/date_time/posix_time/posix_time.hpp>
+//3 using namespace std;
+//4 using namespace boost::posix_time;
+
 class test_client_manager {
 public:
 	test_client_manager(int count):_count(count) {
@@ -157,40 +161,35 @@ protected:
 
 int main()
 {
+	boost::posix_time::ptime now = boost::posix_time::microsec_clock::universal_time();
 	
+	now.time_of_day().total_microseconds();
 	
 	test_udp_client::initPBModule();
 	net_global::udp_init_client_manager(100);
 	test_client_manager manager(99);
 	manager.create();
-	//net_global::udp_net_init(nullptr, 1, 2, 57600, 14400);
-	/*
-	std::vector<my_task_thread*> vc;
-	for (size_t i = 0; i < 5; i++)
-	{
-		vc.push_back(new my_task_thread(i));
-
-	}
-	*/
-	
-
 	net_global::start_client_thread();
 
-	//test_udp_client client;	
-	//client.connect("127.0.0.1", 777);
-	//net_global::update_udp_event_service();
-	
-	
-
-	//client.sendPBMessage(&msg, 0);
-
-	//test_udp_client client1;
-	//client1.connect("127.0.0.1", 777);
-	//client1.sendPBMessage(&msg, 0);
-
+	s64 max_time = 0;
+	s64 count = 0;
+	s64 max_duration_time = 0;
+	s64 per_time = 0;
 	while (true)
 	{
+		
+		s64 start = now.time_of_day().total_microseconds();
 		net_global::update_net_service();
+		s64 end = now.time_of_day().total_microseconds();
+		s64 duration_time = end - start;
+		if (max_duration_time < duration_time)
+		{
+			max_duration_time = duration_time;
+		}
+		max_time += (end - start);
+		count++;
+		per_time = max_time / count;
+		std::cout << "Hello World!\n" << std::endl;
 	}
 	return 0;
 

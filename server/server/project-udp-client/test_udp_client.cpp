@@ -6,7 +6,7 @@
 test_udp_client::test_udp_client(): ProtocMsgBase<test_udp_client>(this)
 {
 	_send_count = 0;
-	_send_max_count = 10 + rand() % 5;
+	_send_max_count = 10 + rand() % 500;
 }
 
 
