@@ -20,7 +20,8 @@ void my_tcp_client::parseGameMsg(google::protobuf::Message* p, pb_flag_type flag
 
 void my_tcp_client::parseLoginGame(google::protobuf::Message* p, pb_flag_type flag)
 {
-
+	message::LoginRequest* msg = dynamic_cast<message::LoginRequest*>(p);
+	sendPBMessage(msg);
 }
 
 void my_tcp_client::on_connect()
@@ -43,5 +44,6 @@ void my_tcp_client::on_connect_failed(boost::system::error_code error)
 
 void my_tcp_client::proc_message(const message_t& msg)
 {
+	parsePBMessage(msg.data, msg.len, msg.base64);
 	//tcp_client::proc_message(msg);
 }

@@ -4,12 +4,14 @@
 #include <iostream>
 #include "asiodef.h"
 #include "my_tcp_server.h"
+#include "my_tcp_session.h"
 
 
 int main()
 {
     //std::cout << "Hello World!\n";
 	my_tcp_server server;
+	my_tcp_session::initPBModule();
 	net_global::init_net_service(3, 3, NULL, false, 100);
 	server.create(777, 100, 4);
 	while (true)

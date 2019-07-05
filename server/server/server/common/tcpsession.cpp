@@ -452,7 +452,6 @@ void tcp_session::handle_read_some( const boost::system::error_code& error, std:
 	//else
 	//	_on_close( error );
 }
-
 void tcp_session::handle_write( const boost::system::error_code& error, std::size_t size, int block_idx )
 {
 	if( !is_valid() )
