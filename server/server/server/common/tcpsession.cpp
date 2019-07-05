@@ -297,11 +297,6 @@ message_t* tcp_session::_compress_message( const void* data, message_len len, in
 	return message_interface::compress(this, (const char*)data, len, buffptr, size ,&m_send_crypt_key, base64);
 }
 
-//message_t* tcp_session::_make_message( const void* data, message_len len, bool base64)
-//{
-//	return message_interface::makeMessage(this, (const char*)data, len, &m_send_crypt_key, false, base64);
-//}
-
 
 void tcp_session::_clear_send_msg()
 {
@@ -353,36 +348,6 @@ bool tcp_session::_write_message(std::size_t& len)
 		ret = true;
 	}
 	return ret;
-	
-	//boost::mutex::scoped_lock lock( m_mutex );
-	//m_not_sent_size -= sent_size;
-
-	//if( !is_connected() )
-	//	return;
-
-	//// optimize for sending-data frequently
-	//if( m_is_sending_data )
-	//	return;
-
-	//if( m_queue_send_msg.empty() )
-	//	return;
-
-	//int len = 0;
-	//while( !m_queue_send_msg.empty() )
-	//{
-	//	message_t* msg = m_queue_send_msg.front();
-	//	if( len + msg->len <= MAX_MESSAGE_LEN )
-	//	{
-	//		memcpy( m_sending_data + len, msg->data, msg->len );
-	//		len += msg->len;
-	//		m_queue_send_msg.pop();
-	//		net_global::free_message( msg );
-	//	}
-	//	else
-	//		break;
-	//}
-	//base_session::_write_message(sent_size);
-
 }
 
 void tcp_session::handle_read_some( const boost::system::error_code& error, std::size_t bytes_transferred )
@@ -402,55 +367,6 @@ void tcp_session::handle_read_some( const boost::system::error_code& error, std:
 			_on_close(error);
 		}
 	}
-	//if( !is_valid() )
-	//	return;
-
-	//if( !error )
-	//{
-	//	std::size_t now_pos = 0;
-	//	memcpy( m_recv_buffer + m_recive_buffer_pos, buffer_, bytes_transferred );
-	//	m_recive_buffer_pos += bytes_transferred;
-
-	//	if( m_recive_buffer_pos >= MESSAGE_HEAD_LEN )
-	//	{
-	//		message_len len = *(message_len *)m_recv_buffer;
-	//		if( len < MESSAGE_HEAD_LEN || len > MAX_MESSAGE_LEN )
-	//		{
-	//			close_and_ban();
-	//			return;
-	//		}
-	//		while( m_recive_buffer_pos - now_pos >= len )
-	//		{
-	//			if( !_uncompress_message( m_recv_buffer + now_pos ) )
-	//			{
-	//				_on_close( error );
-	//				return;
-	//			}
-	//			now_pos += len;
-	//			if( m_recive_buffer_pos - now_pos >= MESSAGE_HEAD_LEN )
-	//			{
-	//				len = *(message_len*)( m_recv_buffer + now_pos );
-
-	//				if( len < MESSAGE_HEAD_LEN || len > MAX_MESSAGE_LEN )
-	//				{
-	//					close_and_ban();
-	//					return;
-	//				}
-	//			}
-	//			else
-	//				break;
-	//		}
-	//		if( now_pos > 0 && m_recive_buffer_pos > now_pos )
-	//			memmove( m_recv_buffer, m_recv_buffer + now_pos, m_recive_buffer_pos - now_pos );
-	//		m_recive_buffer_pos -= now_pos;
-	//	}
-	//	m_socket->async_read_some(boost::asio::buffer(buffer_, sizeof(buffer_)),
-	//		boost::bind(&tcp_session::handle_read_some, this,
-	//		boost::asio::placeholders::error,
-	//		boost::asio::placeholders::bytes_transferred));
-	//}
-	//else
-	//	_on_close( error );
 }
 void tcp_session::handle_write( const boost::system::error_code& error, std::size_t size, int block_idx )
 {
@@ -478,27 +394,10 @@ void tcp_session::on_close( const boost::system::error_code& error )
 	}
 }
 
-//void tcp_session::push_message( message_t* msg )
-//{
-//	if( m_father )
-//		m_father->push_message( msg );
-//}
+
 
 void tcp_session::reset()
 {
-	//m_recive_buffer_pos = 0;
-	//m_isconnected = false;
-	//m_father = NULL;
-	//m_isvalid = false;
-	//m_thread_index = 0;
-	//m_is_sending_data = false;
-	//m_isclosing = false;
-	//m_remote_ip_str.clear();
-	//m_remote_ip_ui = 0;
-
-	//m_not_sent_size = 0;
-	//m_send_crypt_key = 0;
-	//m_recv_crypt_key = 0;
 	base_session::reset();
 	_clear_send_msg();
 	if( m_socket )

@@ -19,8 +19,6 @@ public:
 	void handle_accept(base_session* p, const boost::system::error_code& error);
 	inline int get_id() const { return m_id; }
 	void free_session(base_session* p);
-	//void push_message(message_t* msg);
-
 	virtual void run();
 	virtual void run_no_wait();
 	void push_task(task* p);
@@ -50,13 +48,11 @@ public:
 	std::map<unsigned int, unsigned int> m_idleip;
 
 protected:
-	//tcp::acceptor* m_acceptor;
 	std::list<base_session*> m_sessions;
 	std::set<base_session*> m_accepting_sessions;
 	int m_id;
 	unsigned int m_poolcount;
 	boost::atomic<unsigned int> m_accepting_count;
-	//unsigned int m_accepting_count;
 	volatile boost::uint32_t m_connection_count;
 	task_thread_pool* m_ttp;
 
@@ -65,9 +61,6 @@ protected:
 	int m_thread_count;
 	int m_cur_thread_index;
 	bool m_ttti_mode;
-	//std::queue<message_t*> m_queue_recv_msg[2];
-	//int m_current_recv_queue;
-	//boost::mutex m_msg_mutex;
 	boost::mutex m_ban_mutex;
 	call_back_mgr m_cb_mgr;
 

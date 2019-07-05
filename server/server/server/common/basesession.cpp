@@ -155,45 +155,6 @@ void base_session::handle_read_some(std::size_t bytes_transferred)
 		return;
 	}
 	_read_some(buffer_, bytes_transferred);
-	/*
-	std::size_t now_pos = 0;
-	memcpy(m_recv_buffer + m_recive_buffer_pos, buffer_, bytes_transferred);
-	m_recive_buffer_pos += bytes_transferred;
-
-	if (m_recive_buffer_pos >= MESSAGE_HEAD_LEN)
-	{
-		message_len len = *(message_len *)m_recv_buffer;
-		if (len < MESSAGE_HEAD_LEN || len > MAX_MESSAGE_LEN)
-		{
-			close_and_ban();
-			return;
-		}
-		while (m_recive_buffer_pos - now_pos >= len)
-		{
-			if (!_uncompress_message(m_recv_buffer + now_pos))
-			{
-				close_and_ban();
-				return;
-			}
-			now_pos += len;
-			if (m_recive_buffer_pos - now_pos >= MESSAGE_HEAD_LEN)
-			{
-				len = *(message_len*)(m_recv_buffer + now_pos);
-
-				if (len < MESSAGE_HEAD_LEN || len > MAX_MESSAGE_LEN)
-				{
-					close_and_ban();
-					return;
-				}
-			}
-			else
-				break;
-		}
-		if (now_pos > 0 && m_recive_buffer_pos > now_pos)
-			memmove(m_recv_buffer, m_recv_buffer + now_pos, m_recive_buffer_pos - now_pos);
-		m_recive_buffer_pos -= now_pos;
-	}
-	*/
 }
 
 message_t* base_session::_compress_message(const void* data, message_len len, int t_idx, bool base64)
@@ -228,9 +189,6 @@ void base_session::reset()
 	m_remote_ip_ui = 0;
 
 	m_not_sent_size = 0;
-	//m_send_crypt_key = 0;
-	//m_recv_crypt_key = 0;
-	//_clear_send_msg();
 }
 
 
@@ -276,5 +234,4 @@ bool base_session::_try_send_message(message_t* msg)
 		}
 	}
 	return true;
-	//m_io_service.post(boost::bind(&tcp_session::_write_message, this, 0));
 }

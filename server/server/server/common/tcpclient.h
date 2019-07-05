@@ -45,10 +45,6 @@ private:
 	tcp::endpoint m_endpoint;
 	volatile unsigned int m_last_reconnect_time;
 	volatile bool m_isconnecting;
-	//std::queue<message_t*> m_queue_recv_msg[2];
-	//int m_current_recv_queue;
-	//void _clear_recv_msg();
-	//boost::mutex m_msg_mutex;
 
 	boost::condition m_conn_cond;
 	boost::mutex m_conn_mutex;

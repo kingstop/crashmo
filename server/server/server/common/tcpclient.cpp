@@ -97,10 +97,6 @@ void tcp_client::handle_connect( const boost::system::error_code& error )
 		boost::mutex::scoped_lock lock( m_conn_mutex );
 		m_conn_cond.notify_one();
 
-// 		boost::asio::async_read( *m_socket,
-// 			boost::asio::buffer( m_recv_buffer, 1 ),
-// 			boost::bind( &tcp_client::handle_read_crypt_key, this,
-// 			boost::asio::placeholders::error ) );
 	}
 	else
 	{
@@ -119,8 +115,6 @@ void tcp_client::handle_read_crypt_key( const boost::system::error_code& error )
 
 	if( !error )
 	{
-		//m_send_crypt_key = (unsigned char)m_recv_buffer[0];
-		//m_recv_crypt_key = m_send_crypt_key;
 		m_cb_mgr.add_cb( &tcp_client::on_connect, this );
 	}
 	else
@@ -185,11 +179,6 @@ void tcp_client::run_no_wait()
 	run(false);
 }
 
-//void tcp_client::push_message( message_t* msg )
-//{
-//	boost::mutex::scoped_lock lock( m_msg_mutex );
-//	m_queue_recv_msg[m_current_recv_queue].push( msg );
-//}
 
 call_back_mgr* tcp_client::_get_cb_mgr()
 {

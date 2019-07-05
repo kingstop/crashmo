@@ -1,14 +1,6 @@
 #ifndef __server__define_h__
 #define __server__define_h__
-//#include "player_define.pb.h"
-//#include "booth.pb.h"
-#include "common.pb.h"
-#include "login.pb.h"
-#include "msgs2c.pb.h"
-#include "msgs2s.pb.h"
-#include "msg_gate_login.pb.h"
-#include "msg_gate_game.pb.h"
-//#include "msg_game_db.pb.h"
+#include "common_type.h"
 
 
 

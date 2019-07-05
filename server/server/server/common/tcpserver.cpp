@@ -41,9 +41,6 @@ void net_global::start_enet_thread(enet_component* component)
 	{
 		g_enent_comment = component;
 		g_enet_thread = new boost::thread(&update_udp_service);
-		//boost::thread thrd(&update_udp_service);	
-		//thrd.yield();
-		//thrd.join();
 		enet_update_start = true;
 	}
 }
@@ -66,7 +63,6 @@ void net_global::update_udp_service()
 		ENetEvent event;
 		while (enet_host_service(enet_host, &event, 200) >= 0 && g_enent_comment->is_exit() == false)
 		{
-			//std::cout << "Hello World!\n" << std::endl;
 			switch (event.type)
 			{
 			case ENET_EVENT_TYPE_CONNECT:
@@ -78,12 +74,7 @@ void net_global::update_udp_service()
 			case ENET_EVENT_TYPE_RECEIVE:
 			{
 				g_enent_comment->on_enet_receive(event);
-				//ENetPacket* packet1 = enet_packet_create((char*)event.packet->data, event.packet->dataLength, ENET_PACKET_FLAG_RELIABLE);
-				//strcpy((char*)packet1->data, "你好啊，呵呵");
-				//enet_peer_send(event.peer, 1, packet1);
-				//enet_host_flush(enet_host); //必须使用这个函数或是enet_host_service来使数据发出去
-				enet_packet_destroy(event.packet);    //注意释放空间
-				
+				enet_packet_destroy(event.packet);    //注意释放空间				
 			}
 			break;
 			case ENET_EVENT_TYPE_DISCONNECT:
@@ -221,17 +212,8 @@ void net_global::write_close_log( const char* txt, ... )
 #endif
 }
 
-tcp_server::tcp_server( int id ):base_server(id)
-	/*: m_id( id ), m_acceptor( NULL ), m_poolcount( 0 ), m_thread_buffer( NULL ), m_thread_count( 0 ), m_cur_thread_index( 0 ),
-	m_ttti_mode( false ), m_accepting_count( 0 ), m_limit_mode( false ), m_connection_count( 0 ), m_fp_connection_log( NULL ), m_security( true ),
-	m_current_recv_queue( 0 )*/
+tcp_server::tcp_server( int id ):base_server(id),m_acceptor(nullptr)
 {
-
-	m_ttp = new task_thread_pool;
-	m_unix_time = (unsigned int)time( NULL );
-	
-	m_last_log_connection_time = m_unix_time;
-	m_last_clean_idle_ip_time = m_unix_time;
 }
 
 tcp_server::~tcp_server()
@@ -272,42 +254,18 @@ bool tcp_server::create( unsigned short port, unsigned int poolcount, int thread
 		return false;
 	}
 	base_server::create(port, poolcount, thread_count);
-
-	//m_ttp->startup( thread_count );
-	//if( m_thread_buffer )
-	//	delete[] m_thread_buffer;
-	//m_thread_buffer = new char[THREAD_BUFFER_SIZE * thread_count];
-	//m_thread_count = thread_count;
-
-	//m_poolcount = poolcount;
-
-	//if( m_poolcount == 0 )
-	//{	m_poolcount = 20; }
-
-	//for( unsigned int i = 0; i < m_poolcount; ++i )
-	//{
-	//	free_session( create_session() );
-	//}
-
 	return true;
 }
 
 void tcp_server::handle_accept( tcp_session* p, const boost::system::error_code& error )
 {
-	{
-		boost::mutex::scoped_lock lock( m_proc_mutex );
-		--m_accepting_count;
-	}
-	if( is_ban_ip( p->get_remote_address_ui() ) )
-	{
-		p->handle_close();
-		free_session( p );
-		return;
-	}
-
+	--m_accepting_count;
 	if( !error )
 	{
-		p->get_io_service().post( boost::bind( &tcp_session::handle_accept, p, this ) );
+		if (base_server::handle_accept(p))
+		{
+			p->get_io_service().post(boost::bind(&tcp_session::handle_accept, p, this));
+		}		
 	}
 	else
 	{
@@ -316,116 +274,6 @@ void tcp_server::handle_accept( tcp_session* p, const boost::system::error_code&
 	}
 }
 
-//void tcp_server::free_session( tcp_session* p )
-//{
-//	boost::mutex::scoped_lock lock( m_proc_mutex );
-//	p->reset();
-//	p->set_valid( false );
-//	m_sessions.push_back( p );
-//}
-
-//void tcp_server::push_message( message_t* msg )
-//{
-//	boost::mutex::scoped_lock lock( m_msg_mutex );
-//	m_queue_recv_msg[m_current_recv_queue].push( msg );
-//}
-
-//void tcp_server::push_task( task* p )
-//{
-//	m_ttp->push_task( p );
-//}
-//
-//char* tcp_server::get_thread_buffer( int index )
-//{
-//	return m_thread_buffer + index * THREAD_BUFFER_SIZE;
-//}
-//
-//int tcp_server::generate_thread_index()
-//{
-//	boost::mutex::scoped_lock lock( m_proc_mutex );
-//	int i = m_cur_thread_index;
-//	if( ++m_cur_thread_index >= m_thread_count )
-//		m_cur_thread_index = 0;
-//
-//	if( i >= m_thread_count )
-//		return 0;
-//	else
-//		return i;
-//}
-//
-//bool tcp_server::is_ban_ip( unsigned int addr )
-//{
-//	boost::mutex::scoped_lock lock( m_ban_mutex );
-//	std::map<unsigned int, std::pair<unsigned int, net_global::ban_reason_t> >::iterator it = m_banip.find( addr );
-//	if( it != m_banip.end() )
-//	{
-//		if( it->second.first < m_unix_time )
-//		{
-//			m_banip.erase( it );
-//			return false;
-//		}
-//		else
-//			return true;
-//	}
-//	else
-//		return false;
-//}
-//
-//void tcp_server::add_ban_ip( unsigned int addr, unsigned int sec, net_global::ban_reason_t br )
-//{
-//	char fn[64] = { 0 };
-//	sprintf( fn, "connection%d.log", m_id );
-//	m_fp_connection_log = fopen( fn, "a" );
-//	if( m_fp_connection_log )
-//	{
-//		time_t tnow = m_unix_time;
-//		tm* ptm = localtime( &tnow );
-//		in_addr ad;
-//		ad.s_addr = addr;
-//		char* ip = inet_ntoa( ad );
-//
-//		fprintf( m_fp_connection_log, "%04d-%02d-%02d %02d:%02d:%02d|Banned IP:[%s], reason:%d\n",
-//			ptm->tm_year+1900, ptm->tm_mon + 1, ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec,
-//			ip, br );
-//
-//		fclose( m_fp_connection_log );
-//	}
-//
-//	boost::mutex::scoped_lock lock( m_ban_mutex );
-//	std::map<unsigned int, std::pair<unsigned int, net_global::ban_reason_t> >::iterator it =  m_banip.find( addr );
-//	if( it != m_banip.end() )
-//	{
-//		if( it->second.first < sec )
-//		{
-//			it->second.first = sec;
-//			it->second.second = br;
-//		}
-//	}
-//	else
-//		m_banip[addr] = std::make_pair( m_unix_time + sec, br );
-//}
-
-//void tcp_server::add_ban_ip( const std::string& addr, unsigned int sec, net_global::ban_reason_t br )
-//{
-//	unsigned int iaddr = boost::asio::ip::address_v4::from_string( addr ).to_ulong();
-//	add_ban_ip( iaddr, sec, br );
-//}
-//
-//void tcp_server::remove_ban_ip( unsigned int addr )
-//{
-//	boost::mutex::scoped_lock lock( m_ban_mutex );
-//	m_banip.erase( addr );
-//}
-
-//void tcp_server::run()
-//{
-//	_real_run( true );
-//}
-//
-//void tcp_server::run_no_wait()
-//{
-//	_real_run( false );
-//}
 
 void tcp_server::stop()
 {
@@ -435,33 +283,6 @@ void tcp_server::stop()
 		m_acceptor = NULL;
 	}
 	base_server::stop();
-
-	//m_sessions.clear();
-	//if (m_acceptor != NULL)
-	//{
-	//	m_acceptor->close();
-	//}
-	//
-	//if (m_ttp != NULL)
-	//{
-	//	m_ttp->shutdown();
-	//}
-	//
-
-	//	
-
-	//if (m_ttp)
-	//{
-	//	delete m_ttp;
-	//	m_ttp = NULL;
-	//}
-	//
-	//if( m_thread_buffer )
-	//{
-	//	delete[] m_thread_buffer;
-	//	m_thread_buffer = NULL;
-	//}
-	//	
 }
 
 void tcp_server::_real_run( bool is_wait )
@@ -485,30 +306,4 @@ void tcp_server::_real_run( bool is_wait )
 		}
 	}
 	base_server::_real_run(is_wait);
-	//m_cb_mgr.poll();
-	
-	//int proc_index = 0;
-	//m_msg_mutex.lock();
-	//if( m_queue_recv_msg[m_current_recv_queue].empty() ) 
-	//{
-	//	m_msg_mutex.unlock();
-	//	if( is_wait )
-	//		cpu_wait();
-	//	return;
-	//}
-	//proc_index = m_current_recv_queue;
-	//m_current_recv_queue = !m_current_recv_queue;
-	//m_msg_mutex.unlock();
-
-	//while( !m_queue_recv_msg[proc_index].empty() )
-	//{
-	//	message_t* msg = m_queue_recv_msg[proc_index].front();
-	//	msg->from->_proc_message(*msg);
-	//	/*
-	//	if( msg->from->is_valid() && msg->from->is_connected() )
-	//		msg->from->proc_message( *msg );
-	//	*/
-	//	net_global::free_message( msg );
-	//	m_queue_recv_msg[proc_index].pop();
-	//}
 }

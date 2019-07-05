@@ -58,7 +58,7 @@ void task_thread::push( task* p )
 	m_tasks[m_current_queue].push( p );
 }
 
-task_thread_pool::task_thread_pool() : m_threads( NULL )
+task_thread_pool::task_thread_pool() : m_threads( NULL ), m_thread_count(0)
 {
 
 }

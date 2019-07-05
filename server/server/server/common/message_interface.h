@@ -47,14 +47,7 @@ struct message_t
 	base_session* from;
 	bool base64;
 protected:
-	message_t()
-	{
 
-	}
-	message_t( const message_t&)
-	{
-
-	}
 };
 
 struct compress_strategy

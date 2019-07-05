@@ -29,18 +29,3 @@ void HttpServer::accept_handler(ClientPtr client, const boost::system::error_cod
 	start();
 }
 
-/*
-#include <iostream>
-#include "Server.h"
-
-int main(int argc, const char * argv[])
-{
-boost::asio::io_service service;
-Server server(service,2000);
-
-server.start();
-service.run();
-
-return 0;
-}
-*/

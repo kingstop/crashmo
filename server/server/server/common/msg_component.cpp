@@ -6,6 +6,12 @@ msg_component::msg_component(bool is_server):m_current_recv_queue(0), _is_server
 {
 
 }
+
+msg_component::~msg_component()
+{
+	_clear_recv_msg();
+}
+
 void msg_component::_clear_recv_msg()
 {
 	boost::mutex::scoped_lock lock(m_msg_mutex);

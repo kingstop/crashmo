@@ -47,8 +47,6 @@ protected:
 	friend struct optimized_compress_send_task;
 	unsigned char m_send_crypt_key;
 	unsigned char m_recv_crypt_key;
-
-	//boost::asio::io_service& m_io_service;
 	volatile bool m_isconnected;
 	base_server* m_father;
 	std::queue<message_t*> m_queue_send_msg;

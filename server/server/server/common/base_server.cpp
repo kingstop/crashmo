@@ -22,6 +22,15 @@ m_ttti_mode(false), m_accepting_count(0), m_limit_mode(false), m_connection_coun
 
 base_server::~base_server()
 {
+	if (m_ttp)
+	{
+		delete m_ttp;
+	}
+
+	if (m_thread_buffer)
+	{
+		delete[] m_thread_buffer;
+	}
 }
 
 bool base_server::create(unsigned short port, unsigned int poolcount, int thread_count)
@@ -52,10 +61,6 @@ bool base_server::create(unsigned short port, unsigned int poolcount, int thread
 bool base_server::handle_accept(base_session* p)
 {
 	bool ret = true;
-	{
-		//boost::mutex::scoped_lock lock(m_proc_mutex);
-		//--m_accepting_count;
-	}
 	if (is_ban_ip(p->get_remote_address_ui()))
 	{
 		p->handle_close();
@@ -91,14 +96,6 @@ void base_server::free_session(base_session* p)
 	p->set_valid(false);
 	m_sessions.push_back(p);
 }
-
-/*
-void base_server::push_message(message_t* msg)
-{
-	boost::mutex::scoped_lock lock(m_msg_mutex);
-	m_queue_recv_msg[m_current_recv_queue].push(msg);
-}
-*/
 
 void base_server::push_task(task* p)
 {
@@ -205,10 +202,6 @@ void base_server::stop()
 	if (m_ttp != NULL)
 	{
 		m_ttp->shutdown();
-	}
-
-	if (m_ttp)
-	{
 		delete m_ttp;
 		m_ttp = NULL;
 	}

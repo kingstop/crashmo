@@ -1,5 +1,6 @@
 #ifndef __thread_buffer_h__
 #define __thread_buffer_h__
+#include "exception.h"
 #include "common_header.h"
 #include "utilities.h"
 #include <thread>
