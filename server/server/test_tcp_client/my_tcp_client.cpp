@@ -27,14 +27,14 @@ void my_tcp_client::parseLoginGame(google::protobuf::Message* p, pb_flag_type fl
 void my_tcp_client::on_connect()
 {
 	tcp_client::on_connect();
-	message::LoginRequest msg;
+	message::LoginRequest msg; 
 	sendPBMessage(&msg, 0);
 }
 
 void my_tcp_client::initPBModule()
 {
-	ProtocMsgBase<my_tcp_client>::registerSDFun(&my_tcp_client::send_message, &my_tcp_client::parseLoginGame);
-	ProtocMsgBase<my_tcp_client>::registerCBFun(PROTOCO_NAME(message::LoginRequest), &my_tcp_client::parseGameMsg);
+	ProtocMsgBase<my_tcp_client>::registerSDFun(&my_tcp_client::send_message, &my_tcp_client::parseGameMsg);
+	ProtocMsgBase<my_tcp_client>::registerCBFun(PROTOCO_NAME(message::LoginRequest), &my_tcp_client::parseLoginGame);
 }
 
 void my_tcp_client::on_connect_failed(boost::system::error_code error)

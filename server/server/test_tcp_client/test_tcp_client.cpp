@@ -12,6 +12,7 @@ int main()
 	client.connect("127.0.0.1", 777);
 	while (true)
 	{
+		net_global::update_net_service();
 		client.run_no_wait();
 	}
 }

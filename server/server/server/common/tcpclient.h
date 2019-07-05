@@ -28,7 +28,7 @@ public:
 	void reconnect();
 	virtual void run();
 	virtual void run_no_wait();
-	//virtual void push_message( message_t* msg );
+	virtual void push_message( message_t* msg );
 	
 private:
 	virtual void on_accept(tcp_server* p);

@@ -62,6 +62,11 @@ bool tcp_client::wait_connect( unsigned long address, unsigned short port )
 	return is_connected();
 }
 
+void tcp_client::push_message(message_t* msg)
+{
+	msg_component::push_message(msg);
+}
+
 bool tcp_client::wait_connect( const char* address, unsigned short port )
 {
 	connect( address, port );
@@ -159,7 +164,11 @@ void tcp_client::try_reconnect()
 	{
 		unsigned int now = (unsigned int)time(NULL);
 		if (now - m_last_reconnect_time > m_reconnect_time)
+		{
 			reconnect();
+			m_last_reconnect_time = now;
+		}
+			
 	}
 }
 
