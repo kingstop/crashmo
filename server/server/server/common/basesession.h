@@ -71,10 +71,17 @@ protected:
 
 struct compress_send_task : public task
 {
-	compress_send_task(const void* src, unsigned short l, base_session* s, int ti, bool base64) : len(l), session(s), thread_index(ti), _base64(base64)
+	compress_send_task(const void* src, unsigned short l, base_session* s, int ti, bool base64) : len(l), session(s),
+		thread_index(ti), _base64(base64), result(nullptr), data(nullptr)
 	{
-		data = (char*)malloc(len);
-		memcpy(data, src, len);
+		if (len)
+		{
+			data = (char*)malloc(len);
+			if (data)
+			{
+				memcpy(data, src, len);
+			}			
+		}
 	}
 	virtual void execute()
 	{

@@ -2,7 +2,9 @@
 
 
 tcp_client::tcp_client( boost::asio::io_service& is )
-	: tcp_session( is ), m_last_reconnect_time( 0 ), m_isreconnect( false ), m_reconnect_time( 5 ), m_isconnecting( false ), m_isinitconncted( false ), m_current_recv_queue( 0 )
+	: tcp_session( is ), m_last_reconnect_time( 0 ), m_isreconnect( false ),
+	m_reconnect_time( 5 ), m_isconnecting( false ), m_isinitconncted( false ),
+	msg_component(false)
 {
 	reset();
 	m_isvalid = true;
@@ -10,7 +12,7 @@ tcp_client::tcp_client( boost::asio::io_service& is )
 
 tcp_client::~tcp_client()
 {
-	_clear_recv_msg();
+	//_clear_recv_msg();
 }
 
 void tcp_client::_connect( std::string address, unsigned short port )
@@ -124,6 +126,8 @@ void tcp_client::handle_read_crypt_key( const boost::system::error_code& error )
 }
 
 
+
+
 void tcp_client::on_accept( tcp_server* p )
 {
 	//assert( 0 );
@@ -145,92 +149,41 @@ void tcp_client::reconnect()
 
 void tcp_client::run()
 {
+	run(true);
+}
+
+void tcp_client::try_reconnect()
+{
+	//boost::mutex::scoped_lock lock(m_mutex);
+	if (!m_isconnected && m_isreconnect && !m_isconnecting && m_isinitconncted)
+	{
+		unsigned int now = (unsigned int)time(NULL);
+		if (now - m_last_reconnect_time > m_reconnect_time)
+			reconnect();
+	}
+}
+
+void tcp_client::run(bool wait_cpu)
+{
 	tcp_session::run();
-	{
-		boost::mutex::scoped_lock lock( m_mutex );
-		if( !m_isconnected && m_isreconnect && !m_isconnecting && m_isinitconncted )
-		{
-			unsigned int now = (unsigned int)time( NULL );
-			if( now - m_last_reconnect_time > m_reconnect_time )
-				reconnect();
-		}
-	}
-
+	try_reconnect();
 	m_cb_mgr.poll();
-	int proc_index = 0;
-
-	m_msg_mutex.lock();
-	if( m_queue_recv_msg[m_current_recv_queue].empty() )
-	{
-		m_msg_mutex.unlock();
-		cpu_wait();
-		return;
-	}
-	proc_index = m_current_recv_queue;
-	m_current_recv_queue = !m_current_recv_queue;
-	m_msg_mutex.unlock();
-
-	while( !m_queue_recv_msg[proc_index].empty() )
-	{
-		message_t* msg = m_queue_recv_msg[proc_index].front();
-		proc_message( *msg );
-		net_global::free_message( msg );
-		m_queue_recv_msg[proc_index].pop();
-	}
+	msg_component::run(wait_cpu);
 }
 
 void tcp_client::run_no_wait()
 {
-	tcp_session::run();
-	{
-		boost::mutex::scoped_lock lock( m_mutex );
-		if( !m_isconnected && m_isreconnect && !m_isconnecting && m_isinitconncted )
-		{
-			unsigned int now = (unsigned int)time( NULL );
-			if( now - m_last_reconnect_time > m_reconnect_time )
-				reconnect();
-		}
-	}
-
-	m_cb_mgr.poll();
-	int proc_index = 0;
-	{
-		boost::mutex::scoped_lock lock( m_msg_mutex );
-		if( m_queue_recv_msg[m_current_recv_queue].empty() )
-			return;
-		
-		proc_index = m_current_recv_queue;
-		m_current_recv_queue = !m_current_recv_queue;
-	}
-	while( !m_queue_recv_msg[proc_index].empty() )
-	{
-		message_t* msg = m_queue_recv_msg[proc_index].front();
-		proc_message( *msg );
-		net_global::free_message( msg );
-		m_queue_recv_msg[proc_index].pop();
-	}
+	run(false);
 }
 
-void tcp_client::push_message( message_t* msg )
-{
-	boost::mutex::scoped_lock lock( m_msg_mutex );
-	m_queue_recv_msg[m_current_recv_queue].push( msg );
-}
+//void tcp_client::push_message( message_t* msg )
+//{
+//	boost::mutex::scoped_lock lock( m_msg_mutex );
+//	m_queue_recv_msg[m_current_recv_queue].push( msg );
+//}
 
 call_back_mgr* tcp_client::_get_cb_mgr()
 {
 	return &m_cb_mgr;
 }
 
-void tcp_client::_clear_recv_msg()
-{
-	boost::mutex::scoped_lock lock( m_msg_mutex );
-	for( int i = 0; i < 2; ++i )
-	{
-		while( !m_queue_recv_msg[i].empty() )
-		{
-			net_global::free_message( m_queue_recv_msg[i].front() );
-			m_queue_recv_msg[i].pop();
-		}
-	}
-}

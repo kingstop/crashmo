@@ -3,9 +3,10 @@
 
 #include "asiodef.h"
 #include "tcpsession.h"
+#include "msg_component.h"
 
 
-class tcp_client : public tcp_session
+class tcp_client : public tcp_session , public msg_component
 {
 public:
 	tcp_client( boost::asio::io_service& is );
@@ -27,24 +28,27 @@ public:
 	void reconnect();
 	virtual void run();
 	virtual void run_no_wait();
-	virtual void push_message( message_t* msg );
-
+	//virtual void push_message( message_t* msg );
+	
+private:
+	virtual void on_accept(tcp_server* p);
+	void try_reconnect();
+	virtual void run(bool wait_cpu);
 protected:
 	volatile bool m_isreconnect;
 	unsigned int m_reconnect_time;
 	volatile bool m_isinitconncted;
-
 	virtual call_back_mgr* _get_cb_mgr();
 
 private:
-	virtual void on_accept( tcp_server* p );
+	
 	tcp::endpoint m_endpoint;
 	volatile unsigned int m_last_reconnect_time;
 	volatile bool m_isconnecting;
-	std::queue<message_t*> m_queue_recv_msg[2];
-	int m_current_recv_queue;
-	void _clear_recv_msg();
-	boost::mutex m_msg_mutex;
+	//std::queue<message_t*> m_queue_recv_msg[2];
+	//int m_current_recv_queue;
+	//void _clear_recv_msg();
+	//boost::mutex m_msg_mutex;
 
 	boost::condition m_conn_cond;
 	boost::mutex m_conn_mutex;
