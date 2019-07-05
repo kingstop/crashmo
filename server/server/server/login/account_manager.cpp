@@ -78,9 +78,9 @@ u32 AccountManager::makeTransId(std::string& str)
 
 void AccountManager::CreateNewAccount(const void* data, bool sucess)
 {	
-	const CheckAcct* pkData = static_cast<const CheckAcct*>(data);
-	if (!pkData)
+	const CheckAcct* pkData = static_cast<const CheckAcct*>(data);	if (!pkData)
 	{ 
+
 		return;
 	}
 

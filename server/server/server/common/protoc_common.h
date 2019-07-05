@@ -131,10 +131,6 @@ public:
     typedef void(T::*pb_send_fun)(const void*, const unsigned int, bool);
     typedef void(T::*pb_callback_fun)(google::protobuf::Message*, pb_flag_type);
    
-    ProtocMsgBase():_proto_user_ptr(NULL)
-    {
-
-    }
     ProtocMsgBase( T* o):_proto_user_ptr(o)
     {
 

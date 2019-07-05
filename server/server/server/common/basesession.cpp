@@ -2,44 +2,6 @@
 #include "asiodef.h"
 #include "base_server.h"
 #include "task_thread_pool.h"
-class base_session;
-struct compress_send_task : public task
-{
-	compress_send_task(const void* src, unsigned short l, base_session* s, int ti, bool base64) : len(l), session(s), thread_index(ti), _base64(base64)
-	{
-		data = (char*)malloc(len);
-		memcpy(data, src, len);
-	}
-	virtual void execute()
-	{
-		if (session->is_valid())
-			result = session->_compress_message(data, len, get_thread_index(), _base64);
-	}
-
-	virtual void end()
-	{
-		if (session->is_valid() && session->is_connected())
-			session->_try_send_message(result);
-	}
-
-	~compress_send_task()
-	{
-		free(data);
-	}
-
-	virtual int get_thread_index()
-	{
-		return thread_index;
-	}
-
-private:
-	char* data;
-	unsigned short len;
-	message_t* result;
-	base_session* session;
-	int thread_index;
-	bool _base64;
-};
 
 
 base_session::base_session() :m_send_crypt_key(0), m_recv_crypt_key(0)
@@ -112,7 +74,7 @@ bool base_session::_write_message(std::size_t& len)
 {
 	boost::mutex::scoped_lock lock(m_mutex);
 	//m_not_sent_size -= sent_size;
-
+	len = 0;
 	if (!is_connected())
 		return false;
 
@@ -123,7 +85,7 @@ bool base_session::_write_message(std::size_t& len)
 	if (m_queue_send_msg.empty())
 		return false;
 
-	len = 0;
+	
 	while (!m_queue_send_msg.empty())
 	{
 		message_t* msg = m_queue_send_msg.front();
@@ -255,7 +217,20 @@ unsigned int base_session::get_remote_address_ui() const
 
 void base_session::reset()
 {
+	m_recive_buffer_pos = 0;
+	m_isconnected = false;
+	m_father = NULL;
+	m_isvalid = false;
+	m_thread_index = 0;
+	m_is_sending_data = false;
+	m_isclosing = false;
+	m_remote_ip_str.clear();
+	m_remote_ip_ui = 0;
 
+	m_not_sent_size = 0;
+	//m_send_crypt_key = 0;
+	//m_recv_crypt_key = 0;
+	//_clear_send_msg();
 }
 
 
@@ -272,7 +247,8 @@ void base_session::set_valid(bool b)
 
 void base_session::handle_close()
 {
-
+	m_isconnected = false;
+	m_thread_index = 0;
 }
 
 void base_session::close()

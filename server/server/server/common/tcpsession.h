@@ -16,17 +16,17 @@ public:
 	virtual void on_accept( tcp_server* p );
 	virtual void on_close( const boost::system::error_code& error );
 	virtual void _proc_message(const message_t& msg);
-	virtual void push_message( message_t* msg );
+	//virtual void push_message( message_t* msg );
 	virtual void reset();
 	virtual void run();
-	void set_base64(bool b);
-	bool get_base64() { return _base64; }
+	//void set_base64(bool b);
+	//bool get_base64() { return _base64; }
 public:
-	bool is_valid();
-	void set_valid( bool b );
-	inline bool is_connected() const { return m_isconnected; }
+	//bool is_valid();
+	//void set_valid( bool b );
+	//inline bool is_connected() const { return m_isconnected; }
 	inline tcp::socket& socket() { return *m_socket; }
-	inline tcp_server* get_father() const { return m_father; }
+	//inline tcp_server* get_father() const { return m_father; }
 	inline int get_thread_index() const { return m_thread_index; }
 	inline boost::asio::io_service& get_io_service() { return m_io_service; }
 	virtual std::string get_remote_address_string() const;
@@ -35,33 +35,34 @@ public:
 	
 
 
-	void send_message( const void* data, const unsigned int len, bool base64);
-	void close();
-	void close_and_ban();
+	//void send_message( const void* data, const unsigned int len, bool base64);
+	virtual void close();
+	//void close_and_ban();
 public:
 	void handle_read_some( const boost::system::error_code& error, std::size_t bytes_transferred );
-	void handle_write( const boost::system::error_code& error, int size, int block_idx );
+	void handle_write( const boost::system::error_code& error, std::size_t size, int block_idx );
 	void handle_accept( tcp_server* p );
-	void handle_close();
+	virtual void handle_close();
 
-	void _write_message( int sent_size );
+	virtual bool _write_message(std::size_t& len);
 
 protected:
 	virtual call_back_mgr* _get_cb_mgr();
 	friend struct compress_send_task;
 	friend struct optimized_compress_send_task;
-	void _send_message( message_t* msg );
+	//void _send_message( message_t* msg );
+	virtual bool _try_send_message(message_t* msg);
 	void begin_read_message();
 	bool _uncompress_message( char* data );
 	message_t* _compress_message( const void* data, message_len len, int t_idx, bool base64);
-	message_t* _make_message( const void* data, message_len len, bool base64 );
+	//message_t* _make_message( const void* data, message_len len, bool base64 );
 	void _clear_recv_msg();
 	void _clear_send_msg();
 	void _on_close( const boost::system::error_code& error );
 
 	boost::asio::io_service& m_io_service;
 	//volatile bool m_isconnected;
-	tcp_server* m_father;
+	//tcp_server* m_father;
 	tcp::socket* m_socket;
 	//std::queue<message_t*> m_queue_send_msg;
 	//char m_recv_buffer[MAX_MESSAGE_LEN*2];

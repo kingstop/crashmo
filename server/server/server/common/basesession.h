@@ -2,7 +2,9 @@
 #include "message_interface.h"
 #include "asiodef.h"
 #include "common_type.h"
+#include "task_thread_pool.h"
 class base_server;
+
 
 
 class base_session
@@ -67,3 +69,40 @@ protected:
 	bool _base64;
 };
 
+struct compress_send_task : public task
+{
+	compress_send_task(const void* src, unsigned short l, base_session* s, int ti, bool base64) : len(l), session(s), thread_index(ti), _base64(base64)
+	{
+		data = (char*)malloc(len);
+		memcpy(data, src, len);
+	}
+	virtual void execute()
+	{
+		if (session->is_valid())
+			result = session->_compress_message(data, len, get_thread_index(), _base64);
+	}
+
+	virtual void end()
+	{
+		if (session->is_valid() && session->is_connected())
+			session->_try_send_message(result);
+	}
+
+	~compress_send_task()
+	{
+		free(data);
+	}
+
+	virtual int get_thread_index()
+	{
+		return thread_index;
+	}
+
+private:
+	char* data;
+	unsigned short len;
+	message_t* result;
+	base_session* session;
+	int thread_index;
+	bool _base64;
+};
