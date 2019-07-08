@@ -66,9 +66,8 @@ void AccountManager::removeAccount(u32 nAccountId)
 
 u32 AccountManager::makeTransId(std::string& str)
 {
-	char sz[2014];
-	sprintf_s(sz, sizeof(sz), "%s%l", str.c_str(), time(NULL));
-	return ssl::sslCrc32(sz, strlen(sz));
+    std::string cur_str = str + std::to_string(time( NULL));
+	return ssl::sslCrc32(cur_str.c_str( ), cur_str.size());
    // std::stringstream stream(0) ;
     //stream << str;
     //stream << time(NULL);

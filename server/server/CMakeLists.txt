@@ -10,16 +10,21 @@ ELSE()
  MESSAGE("not found")
 ENDIF()
 
+MESSAGE(${PROJECT_SOURCE_DIR})
+MESSAGE(${PROJECT_SOURCE_DIR}/../../../../../external/enet-1.3.13/include/)
+
 INCLUDE_DIRECTORIES( 
     ${PROJECT_SOURCE_DIR}/include 
     ${PROJECT_SOURCE_DIR}/include/linklist
-    ./../../../../../external/boost/boost_1_59_0/
-    ./../../../../../external/mysql++-3.2.2/lib/
-    ./../../../../../external/google/protobuf/src/
-    ./../../../../../external/jsoncpp/include/
-    ./../../../../../external/log4cplus/include/
-    ./../../../../../external/mysql-5.7.10/build/include/
-    ./../../../../../external/mysql-5.7.10/include/
+    ${PROJECT_SOURCE_DIR}/../../../../../external/boost/boost_1_59_0/
+    ${PROJECT_SOURCE_DIR}/../../../../../external/mysql++-3.2.2/lib/
+    ${PROJECT_SOURCE_DIR}/../../../../../external/google/protobuf/src/
+    ${PROJECT_SOURCE_DIR}/../../../../../external/jsoncpp/include/
+    ${PROJECT_SOURCE_DIR}/../../../../../external/log4cplus/include/
+    ${PROJECT_SOURCE_DIR}/../../../../../external/mysql-5.7.10/build/include/
+    ${PROJECT_SOURCE_DIR}/../../../../../external/mysql-5.7.10/include/ 
+    ${PROJECT_SOURCE_DIR}/../../../../../external/enet/include/
+    /root/work/external/enet/include/
     ./server/common/
     ./common/
     ./server/msg/
@@ -37,6 +42,7 @@ LINK_DIRECTORIES(
     ${PROJECT_SOURCE_DIR}/../../../../../external_lib/jsoncpp/  
     ${PROJECT_SOURCE_DIR}/../../../../../external_lib/log4cplus/  
     ${PROJECT_SOURCE_DIR}/../../../../../external_lib/mysql++/ 
+    ${PROJECT_SOURCE_DIR}/../../../../../external_lib/enet/ 
     /home/mysql/lib/ 
     /usr/local/lib 
     /usr/lib 

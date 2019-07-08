@@ -4,7 +4,7 @@
 #include "mt_buffer.h"
 #include "call_back.h"
 #include "message_interface.h"
-#include <enet\enet.h>
+#include "enet/enet.h"
 using boost::asio::ip::tcp;
 class udp_client_manager;
 
