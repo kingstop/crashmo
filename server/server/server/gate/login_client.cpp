@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "message/msg_gate_login.pb.h"
-GateLoginClient::GateLoginClient():tcp_client( *net_global::get_io_service() )
+GateLoginClient::GateLoginClient():tcp_client( *net_global::get_io_service() ), ProtocMsgBase<GateLoginClient>(this)
 {
 	_proto_user_ptr = this;
 	m_isreconnect = true;

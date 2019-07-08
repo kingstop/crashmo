@@ -52,7 +52,7 @@ void UserLoginSession::parseRegister(google::protobuf::Message* p, pb_flag_type 
 }
 
 
-UserLoginSession::UserLoginSession(void) : tcp_session( *net_global::get_io_service() )
+UserLoginSession::UserLoginSession(void) : tcp_session( *net_global::get_io_service() ), ProtocMsgBase<UserLoginSession>(this)
 {
 	m_accid = 0;
 	_proto_user_ptr = this;

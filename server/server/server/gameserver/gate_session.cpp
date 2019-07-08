@@ -6,14 +6,9 @@
 
 
 
-GateSession::GateSession(): tcp_session( *net_global::get_io_service() )
-
+GateSession::GateSession(): tcp_session( *net_global::get_io_service() ), ProtocMsgBase<GateSession>(this)
 {
-
-	_proto_user_ptr = this;
-
     m_gate_id = INVALID_GAME_ID;
-
 }
 
 GateSession::~GateSession()

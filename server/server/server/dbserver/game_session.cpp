@@ -2,9 +2,8 @@
 #include "game_session.h"
 #include "message/msg_game_db.pb.h"
 
-GameSession::GameSession(): tcp_session( *net_global::get_io_service() )
+GameSession::GameSession(): tcp_session( *net_global::get_io_service() ), ProtocMsgBase<GameSession>(this)
 {
-	_proto_user_ptr = this;
     m_game_id = INVALID_GAME_ID;
 }
 

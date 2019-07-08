@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "user_session.h"
-GateGameClient::GateGameClient():tcp_client( *net_global::get_io_service() )
+GateGameClient::GateGameClient():tcp_client( *net_global::get_io_service() ), ProtocMsgBase<GateGameClient>(this)
 {
     m_isreconnect = true;
     _proto_user_ptr = this;

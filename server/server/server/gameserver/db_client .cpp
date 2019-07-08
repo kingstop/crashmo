@@ -1,9 +1,8 @@
 #include "stdafx.h"
 #include "message/msg_gate_login.pb.h"
 #include "session.h"
-GameDBClient::GameDBClient():tcp_client( *net_global::get_io_service() )
-{
-	_proto_user_ptr = this;
+GameDBClient::GameDBClient():tcp_client( *net_global::get_io_service() ), ProtocMsgBase<GameDBClient>(this)
+{	
 	m_isreconnect = true;
 }
 

@@ -83,7 +83,7 @@ void UserSession::parseLoginGame(google::protobuf::Message* p, pb_flag_type flag
 	}
 	
 }
-UserSession::UserSession(void) : tcp_session( *net_global::get_io_service() )
+UserSession::UserSession(void) : tcp_session( *net_global::get_io_service() ), ProtocMsgBase<UserSession>(this)
 {
 	m_tranid = INVALID_TRANS_ID;
     m_state = _disable_;

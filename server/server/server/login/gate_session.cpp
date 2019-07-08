@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "gate_session.h"
 
-GateSession::GateSession(): tcp_session( *net_global::get_io_service() )
+GateSession::GateSession(): tcp_session( *net_global::get_io_service() ), ProtocMsgBase<GateSession>(this)
 {
 	_proto_user_ptr = this;
 }
