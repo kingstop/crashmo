@@ -196,11 +196,11 @@ public class GameBtnsCtrl : MonoBehaviour {
 
     public void OnGUI()
     {
-        if(Event.current.type == EventType.mouseDown)
+        if(Event.current.type == EventType.MouseDown)
         {
             OnMouseDown();
         }
-        else if(Event.current.type == EventType.mouseUp)
+        else if(Event.current.type == EventType.MouseUp)
         {
             OnMouseUp();
         }
