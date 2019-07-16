@@ -19,19 +19,23 @@ public class UIEditMap : MonoBehaviour {
 	void Awake()
 	{
 		_source_frade = Resources.Load<GameObject>("prefab/point_out_txt");
-		int color_index = 0;
-		Dictionary<int, Color> colors = global_instance.Instance.getGroupColors ();
-		foreach(KeyValuePair<int, Color> entry_pair in colors)
-		{
-			ColorBoard_.SetButtonGroupColor(color_index,entry_pair.Key, entry_pair.Value);
-			ColorBoard_.SetCount(color_index, 0);
-			color_index++;
-		}
-		ColorBoard_.SetText(10, "目标");
-		ColorBoard_.SetText(11, "删除");
+        ResetDrawBtns();
 
-	}
+    }
 
+    public void ResetDrawBtns()
+    {
+        int color_index = 0;
+        Dictionary<int, Color> colors = global_instance.Instance.getGroupColors();
+        foreach (KeyValuePair<int, Color> entry_pair in colors)
+        {
+            ColorBoard_.SetButtonGroupColor(color_index, entry_pair.Key, entry_pair.Value);
+            ColorBoard_.SetCount(color_index, 0);
+            color_index++;
+        }
+        ColorBoard_.SetText(10, "目标");
+        ColorBoard_.SetText(11, "删除");
+    }
 	public void ShowCreateBtns(bool b)
 	{
 		if (b) 
@@ -153,7 +157,8 @@ public class UIEditMap : MonoBehaviour {
 	public void OnBackClick()
 	{
 		global_instance.Instance._ngui_edit_manager.BackToMainPanel ();
-	}
+        ResetDrawBtns();
+    }
 
 	public void OnCreateClick()
 	{

@@ -7,6 +7,15 @@ test_udp_session::test_udp_session():ProtocMsgBase<test_udp_session>(this)
 
 }
 
+void test_udp_session::on_connect()
+{
+	udp_session::on_connect();
+	message::LoginRequest msg;
+	msg.set_name("54321");
+	msg.set_pwd("12345");
+	sendPBMessage(&msg);
+}
+
 void test_udp_session::_proc_message(const message_t& msg)
 {
 	proc_message(msg);
