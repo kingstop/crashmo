@@ -273,3 +273,5 @@ client/pushmole/.vs/pushmole/v16/Server/sqlite3/storage.ide-shm
 client/pushmole/.vs/pushmole/v15/Server/sqlite3/storage.ide-wal
 client/pushmole/.vs/pushmole/v15/Server/sqlite3/storage.ide-shm
 client/pushmole/.vs/pushmole/v15/Server/sqlite3/storage.ide
+*.ide-wal
+*.ide-wal

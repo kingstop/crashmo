@@ -44,9 +44,9 @@ public class CenterScaleComponent : MonoBehaviour {
                 float diff_x = 0f;
                 diff_x = Mathf.Abs(cur_pos.x - temp_x - 69.8f);
                 float offset_scale = 1.6f / ((diff_x + 100.0f)/100f);
-                if(offset_scale >= 1.2)
+                if(offset_scale >= 1.3)
                 {
-                    offset_scale = 1.2f;
+                    offset_scale = 1.3f;
                 }
                 if(offset_scale <= 1.0f)
                 {

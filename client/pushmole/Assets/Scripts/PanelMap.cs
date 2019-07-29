@@ -148,18 +148,6 @@ public class PanelMap : MonoBehaviour {
 			{
 				_center_scale = 1.0f;
 			}
-
-			/*
-			int count = _allItem.Count;
-			if (index < count)
-			{
-				_allItem[index].Find("Text").GetComponent<Text>().text = realIndex.ToString();
-			}
-			else
-			{
-			}
-			*/
-
 		};
 
 		wrap.CenterChange = (RectTransform item, RectTransform item_old) =>
