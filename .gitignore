@@ -5,6 +5,7 @@
 client/pushmole/Library
 client/pushmole/obj
 *.opendb
+client/pushmole/.vs
 
 
 
@@ -262,3 +263,13 @@ server/server/.vs/project-udp-test/v16/Solution.VC.db-shm
 server/server/.vs/project-udp-test/v16/Solution.VC.db-wal
 *.db-wal
 *.db-shm
+client/pushmole/.vs/pushmole/v16/Server/sqlite3/storage.ide-wal
+client/pushmole/.vs/pushmole/v16/Server/sqlite3/storage.ide-shm
+client/pushmole/.vs/pushmole/v15/Server/sqlite3/storage.ide-wal
+client/pushmole/.vs/pushmole/v15/Server/sqlite3/storage.ide-shm
+client/pushmole/.vs/pushmole/v15/Server/sqlite3/storage.ide
+client/pushmole/.vs/pushmole/v16/Server/sqlite3/storage.ide-wal
+client/pushmole/.vs/pushmole/v16/Server/sqlite3/storage.ide-shm
+client/pushmole/.vs/pushmole/v15/Server/sqlite3/storage.ide-wal
+client/pushmole/.vs/pushmole/v15/Server/sqlite3/storage.ide-shm
+client/pushmole/.vs/pushmole/v15/Server/sqlite3/storage.ide
