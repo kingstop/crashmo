@@ -41,7 +41,7 @@ public class ngui_edit_manager : MonoBehaviour {
     public MainPanel _main_panel;
     public SaveMapPanel _SaveMapPanel;
     public SectionEditPanel _sectionEditPanel;
-    public GameObject _login_obj;
+    public LoginPanel _login_panel;
 	public GameBtnsCtrl _game_btns;
     //public GameObject _game_obj_btns;
 	public GameObject _edit_type_obj_btns;
@@ -139,7 +139,7 @@ public class ngui_edit_manager : MonoBehaviour {
 
     public void set_login_btns_active(bool b)
     {
-        _login_obj.SetActive(b);
+        _login_panel.gameObject.SetActive(b);
     }
 
     public void set_edit_btns_active(bool b)
@@ -173,21 +173,6 @@ public class ngui_edit_manager : MonoBehaviour {
     public void Log(string str)
     {
         Debug.Log(str);
-    }
-
-
-
-    public void on_login_btn_click()
-    {
-        string account = _account.text;
-        string password = _account.text;
-        global_instance.Instance._client_session.login(account, password);
-    }
-
-    public void on_register_btn_click()
-    {
-        string account = _account.text;
-        string password = _account.text;
     }
 
 
@@ -240,8 +225,8 @@ public class ngui_edit_manager : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {        
-        _login_obj.SetActive(true);
+	void Start () {
+        set_login_btns_active(true);
 	}
 
 

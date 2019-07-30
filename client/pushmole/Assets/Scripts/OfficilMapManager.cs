@@ -397,7 +397,7 @@ public class OfficilMapManager
         UpdateLocalMap();
         if (global_instance.Instance._in_login)
         {
-            global_instance.Instance._ngui_edit_manager._login_obj.SetActive(false);
+            global_instance.Instance._ngui_edit_manager.set_login_btns_active(false);
             global_instance.Instance._ngui_edit_manager.show_main_panel();
         }
         global_instance.Instance._in_login = false;
