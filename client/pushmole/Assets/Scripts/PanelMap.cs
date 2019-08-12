@@ -44,15 +44,18 @@ public class PanelMap : MonoBehaviour {
 		clearAllItem ();
 		//SelfButtonChange(true);
 		CrashPlayerInfo Info = global_instance.Instance._player.GetInfo();
-		foreach (ulong id in Info.IncompleteMap)
-		{
-			CrashMapData entry = global_instance.Instance._player.getUserMap(id);
-			if (entry != null) 
-			{
-				addItem(entry);	
-			}
-		}
-	}
+        if(Info != null)
+        {
+            foreach (ulong id in Info.IncompleteMap)
+            {
+                CrashMapData entry = global_instance.Instance._player.getUserMap(id);
+                if (entry != null)
+                {
+                    addItem(entry);
+                }
+            }
+        }
+    }
 
 
     void Awake()
