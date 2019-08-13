@@ -5,6 +5,11 @@ using UnityEngine.UI;
 using message;
 
 public class PanelMap : MonoBehaviour {
+    public RawImage ImageTitle_;
+    public RawImage ImageName_;
+    public RawImage ImageTime_;
+    public RawImage ImageCreater_;
+
     public Grid grid;
     public WrapContent wrap;
     public GameObject prefab;
@@ -60,7 +65,16 @@ public class PanelMap : MonoBehaviour {
 
     void Awake()
     {
-		_center_scale = 1.0f;
+        string path_language = global_instance.Instance.GetLanguagePath();
+        _center_scale = 1.0f;
+        string texture_path = "ui_texture" + path_language + "mymap";
+        ImageTitle_.texture = Resources.Load<Texture2D>(texture_path);
+        texture_path = "ui_texture" + path_language + "name";
+        ImageName_.texture = Resources.Load<Texture2D>(texture_path);
+        texture_path = "ui_texture" + path_language + "time";
+        ImageTime_.texture = Resources.Load<Texture2D>(texture_path);
+        texture_path = "ui_texture" + path_language + "creater";
+        ImageCreater_.texture = Resources.Load<Texture2D>(texture_path);
     }
 
 	public void setPage(page_type page)
