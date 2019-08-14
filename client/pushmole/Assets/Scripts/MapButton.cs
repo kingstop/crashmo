@@ -33,5 +33,10 @@ public class MapButton : MonoBehaviour {
 		_map_index = index;
 	}
 
+    public ulong getMapIndex()
+    {
+        return _map_index;
+    }
+
 	public Image _image;
 }

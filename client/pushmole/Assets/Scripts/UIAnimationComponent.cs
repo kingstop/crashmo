@@ -2,18 +2,75 @@
 using System.Collections;
 using System.Collections.Generic;
 
+class WobbleObj
+{
+    private float _wobble;
+    private GameObject _obj;
+    private float _base_range;
+    private float _random_range;
+    private bool _left_able;
+    private float _wobble_speed;
+    private float _wobble_random_speed;
+    private float _cur_speed;
+    private float _cur_wobble;
+    private float _shrink_wobble;
+    private float _random_shrink_wobble;
+    private float _last_woble;
+    private float _target_woble;
+
+    public void Create(GameObject obj, float base_range, float random_range, bool left_able,
+        float wobble_speed, float wobble_random_speed, float shrink_wobble, float random_shrink_wobble)
+    {
+        _obj = obj;
+        _wobble = obj.transform.rotation.z;
+        _base_range = base_range;
+        _random_range = random_range;
+        _left_able = left_able;
+        _wobble_speed = wobble_speed;
+        _wobble_random_speed = wobble_random_speed;
+        _shrink_wobble = shrink_wobble;
+        _random_shrink_wobble = random_shrink_wobble;
+    }
+
+    void Init()
+    {
+        float woble = _base_range + Random.Range(0, _random_range);
+        if(_left_able)
+        {
+            int temp = Random.Range(0, 1);
+            if(temp != 0)
+            {
+                woble = -woble;
+            }            
+        }
+        _last_woble = woble;
+    }
+
+    void AriveTarget()
+    {
+        
+    }
+}
+
 public class UIAnimationComponent : MonoBehaviour {
     public GameObject[] UpObjs_;
     public GameObject[] LeftObjs_;
+    public GameObject[] RightObjs_;
     public GameObject[] ScaleXObjs_;
     public GameObject[] ScaleYObjs_;
-    protected float _speed;
-    protected float _scale_speed;
+    protected float _speed = 30.0f;
+    protected float _scale_speed = 0.3f;
     protected Dictionary<GameObject, Vector3> _UpDicObjVec3 = new Dictionary<GameObject, Vector3>();
     protected Dictionary<GameObject, Vector3> _LeftDicObjVec3 = new Dictionary<GameObject, Vector3>();
+    protected Dictionary<GameObject, Vector3> _RightDicObjVec3 = new Dictionary<GameObject, Vector3>();
+
+    
     protected bool _move_ready;
     protected bool _scale_ready;
+    public delegate void OK_CALL_BACK();
+    private OK_CALL_BACK OK_function_ = null;
     // Use this for initialization
+
     void Start () {
 		
 	}
@@ -26,6 +83,15 @@ public class UIAnimationComponent : MonoBehaviour {
     void OnScaleReady()
     {
         _scale_ready = true;
+        if(OK_function_ != null)
+        {
+            OK_function_();
+        }
+    }
+
+    public void setOK(OK_CALL_BACK ok)
+    {
+        OK_function_ = ok;
     }
 	// Update is called once per frame
 	void Update () {
@@ -66,7 +132,26 @@ public class UIAnimationComponent : MonoBehaviour {
                 vec.x = temp_x;
                 obj.transform.localPosition = vec;
             }
-            if(already)
+
+            foreach (KeyValuePair<GameObject, Vector3> pair_entry in _RightDicObjVec3)
+            {
+                GameObject obj = pair_entry.Key;
+                Vector3 vec_pos = pair_entry.Value;
+                Vector3 vec = obj.transform.localPosition;
+                float temp_x = vec.x - _speed;
+                if (temp_x < vec_pos.x)
+                {
+                    temp_x = vec_pos.x;
+                }
+                else
+                {
+                    already = false;
+                }
+                vec.x = temp_x;
+                obj.transform.localPosition = vec;
+            }
+
+            if (already)
             {
                 OnMoveReady();
             }
@@ -130,6 +215,12 @@ public class UIAnimationComponent : MonoBehaviour {
             _LeftDicObjVec3[obj] = obj.transform.localPosition;
         }
 
+        foreach (GameObject obj in RightObjs_)
+        {
+            _RightDicObjVec3[obj] = obj.transform.localPosition;
+        }
+
+
 
     }
 
@@ -161,6 +252,14 @@ public class UIAnimationComponent : MonoBehaviour {
             GameObject obj = pair_entry.Key;
             Vector3 vec = obj.transform.localPosition;
             vec.x = -1200;
+            obj.transform.localPosition = vec;
+        }
+
+        foreach (KeyValuePair<GameObject, Vector3> pair_entry in _RightDicObjVec3)
+        {
+            GameObject obj = pair_entry.Key;
+            Vector3 vec = obj.transform.localPosition;
+            vec.x = UnityEngine.Screen.width + 1200;
             obj.transform.localPosition = vec;
         }
         _move_ready = false;

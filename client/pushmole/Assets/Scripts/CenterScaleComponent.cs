@@ -11,6 +11,12 @@ public class CenterScaleComponent : MonoBehaviour {
 	private bool _scale_modify = false;
 	private float _scale;
     private Image _child_image;
+    public delegate void STOP_CALL_BACK( GameObject obj);
+    private STOP_CALL_BACK _stop_function = null;
+    private STOP_CALL_BACK _stop_cancel_function = null;
+    bool _stop = false;
+    float _old_scale;
+    Vector3 _old_position;
     void Awake()
     {
         //_pos = this.transform.localPosition;
@@ -52,22 +58,33 @@ public class CenterScaleComponent : MonoBehaviour {
                 {
                     offset_scale = 1.0f;
                 }
+      
+                if(offset_scale == 1.3f&& Mathf.Abs(_old_scale - offset_scale) <= 0.01f && cur_pos == _old_position)
+                {
+                    if(!_stop)
+                    {
+                        _stop = true;
+                        if (_stop_function != null)
+                        {
+                            _stop_function(this.gameObject);
+                        }
 
-
-                //cur_p
-                //Vector2 offset = _Content.GetOffset();
-                //float dis = offset.x * offset.x + offset.y * offset.y;
-                //dis = Mathf.Sqrt(dis);
-                //int offset_x = (int)(offset.x);
-                //float offset_entry = offset.x - offset_x;
-                //float offset_scale = Mathf.Abs(offset_entry - 0.4f);
-                //offset_scale = 1.6f / (offset_scale + 1.0f);
-                //_scale = offset_scale;
-
-                //if (offset_scale > 1.3f)
-                //{
-                //    offset_scale = 1.3f;
-                //}
+                    }
+                }
+                else
+                {
+                    if(_stop)
+                    {
+                        if(_stop_cancel_function != null)
+                        {
+                            _stop_cancel_function(this.gameObject);
+                        }
+                        _stop = false;
+                    }
+                }
+                _old_scale = offset_scale;
+                _old_position = cur_pos;
+      
                 float move_x = (_size.x - offset_scale * _size.x) / 2;
                 float move_y = (_size.y - offset_scale * _size.y) / 2;
                 _child_image.transform.localScale = new Vector3(offset_scale, offset_scale, 1);
@@ -94,8 +111,17 @@ public class CenterScaleComponent : MonoBehaviour {
 		return _scale;
 	}
 
+    public void setStopFunction(STOP_CALL_BACK function)
+    {
+        _stop_function = function;
+    }
 
-	public void Reset()
+    public void setCancelStopFunction(STOP_CALL_BACK function)
+    {
+        _stop_cancel_function = function;
+    }
+
+    public void Reset()
 	{
 		
         if(_child_image)
@@ -105,7 +131,10 @@ public class CenterScaleComponent : MonoBehaviour {
             _child_image.transform.localPosition = _pos;
         }
         _scale = 1.0f;
-	}
+        _stop = false;
+        _old_scale = 1.0f;
+        _old_position = this.transform.position;
+    }
 
 	public void setCenter(bool center)
 	{

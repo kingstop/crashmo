@@ -5,11 +5,9 @@ using UnityEngine.UI;
 using message;
 
 public class PanelMap : MonoBehaviour {
-    public RawImage ImageTitle_;
-    public RawImage ImageName_;
-    public RawImage ImageTime_;
-    public RawImage ImageCreater_;
-
+    public UIAnimationText AniTextName_;
+    public UIAnimationText AniTextCreater_;
+    public UIAnimationText AniTextTime_;
     public Grid grid;
     public WrapContent wrap;
     public GameObject prefab;
@@ -21,7 +19,14 @@ public class PanelMap : MonoBehaviour {
 	{
 		_charpter_id = charpter_id;
 	}
-		
+	
+    void setDetailActive(bool b)
+    {
+        AniTextName_.gameObject.SetActive(b);
+        AniTextCreater_.gameObject.SetActive(b);
+        AniTextTime_.gameObject.SetActive(b);
+    }
+
 	void EnterOfficilMap()
 	{
 		clearAllItem ();          
@@ -37,12 +42,54 @@ public class PanelMap : MonoBehaviour {
 		clearAllItem ();
 		//SelfButtonChange(true);
 		CrashPlayerInfo Info = global_instance.Instance._player.GetInfo();
-		foreach (ulong id in Info.CompleteMap)
-		{
-			CrashMapData entry =global_instance.Instance._player.getUserMap(id);
-			addItem(entry);
-		}
-	}
+        if(Info != null)
+        {
+            foreach (ulong id in Info.CompleteMap)
+            {
+                CrashMapData entry = global_instance.Instance._player.getUserMap(id);
+                addItem(entry);
+            }
+        }
+    }
+
+    void setMapName(string name)
+    {
+        AniTextName_.text_.text = name;
+    }
+
+    void setMapCreateTime(string time)
+    {
+        AniTextTime_.text_.text = time;
+    }
+
+    void setMapCreaterName(string name)
+    {
+        AniTextCreater_.text_.text = name;
+    }
+
+    public void onCenterStop(GameObject obj)
+    {
+        
+        MapButton btn = obj.GetComponent<MapButton>();
+        if(btn != null)
+        {
+            CrashMapData mapdate = getMapDate(btn.getMapIndex());
+            if (mapdate != null)
+            {
+                setMapName(mapdate.MapName);
+                setMapCreaterName(mapdate.CreaterName);
+                System.DateTime time = new System.DateTime(1970, 1, 1).ToLocalTime().AddSeconds(mapdate.create_time);
+                setMapCreateTime(time.ToString());
+                setDetailActive(true);
+            }
+        }
+        
+    }
+
+    public void onCenterCancelStop(GameObject obj)
+    {
+        setDetailActive(false);
+    }
 
 	void EnterSelfIncomplete()
 	{
@@ -62,19 +109,26 @@ public class PanelMap : MonoBehaviour {
         }
     }
 
+    CrashMapData getMapDate(ulong index)
+    {
+        CrashMapData entry = null;
+        if (_current_page == page_type.page_type_self_complete 
+            || _current_page == page_type.page_type_self_incomplete)
+        {
+            entry = global_instance.Instance._player.getUserMap(index);
+        }
+        else if(_current_page == page_type.page_type_official)
+        {
+            entry = global_instance.Instance._officilMapManager.getOfficilMap(_charpter_id, (int)index);
+        }
+        return entry;
+    }
+
 
     void Awake()
     {
         string path_language = global_instance.Instance.GetLanguagePath();
         _center_scale = 1.0f;
-        string texture_path = "ui_texture" + path_language + "mymap";
-        ImageTitle_.texture = Resources.Load<Texture2D>(texture_path);
-        texture_path = "ui_texture" + path_language + "name";
-        ImageName_.texture = Resources.Load<Texture2D>(texture_path);
-        texture_path = "ui_texture" + path_language + "time";
-        ImageTime_.texture = Resources.Load<Texture2D>(texture_path);
-        texture_path = "ui_texture" + path_language + "creater";
-        ImageCreater_.texture = Resources.Load<Texture2D>(texture_path);
     }
 
 	public void setPage(page_type page)
@@ -146,7 +200,8 @@ public class PanelMap : MonoBehaviour {
 			EnterSelfIncomplete();
 			break;
 		}
-	}
+        setDetailActive(false);
+    }
 
     // Use this for initialization
     void Start () {
@@ -180,7 +235,9 @@ public class PanelMap : MonoBehaviour {
 				scale.enabled = true;
 				scale.SetContent(wrap);
 				scale.setCenter(true);
-			}
+                scale.setCancelStopFunction(onCenterCancelStop);
+                scale.setStopFunction(onCenterStop);
+            }
 
 			if(item_old != null)
 			{
