@@ -259,6 +259,7 @@ public class ngui_edit_manager : MonoBehaviour {
 		HideAllUI();
         ClearGameObj();
 		show_main_panel ();
+        HidMapPanel();
         //_main_panel.gameObject.SetActive(true);
     }
 
@@ -368,7 +369,8 @@ public class ngui_edit_manager : MonoBehaviour {
         _game_end.gameObject.SetActive(false);
          gamestate_btn(type);
 		EditMap_.ClearFradeText();
-		_sectionEditPanel.gameObject.SetActive (false);
+        HidMapPanel();
+        _sectionEditPanel.gameObject.SetActive (false);
 
         switch (type)
         {

@@ -70,9 +70,9 @@ public class global_instance
 	}
 
 	public Color get_color_by_group(int group)
-	{
-		return _group_color [group];
-	}
+	{        
+        return _group_color [group];
+    }
      public static global_instance Instance 
      { 
           get  

@@ -11,10 +11,49 @@ public class PanelMap : MonoBehaviour {
     public Grid grid;
     public WrapContent wrap;
     public GameObject prefab;
+    public Button edit_btn_;
+    public Button publish_btn_;
     List<RectTransform> _allItem = new List<RectTransform>();
 	protected page_type _current_page;
 	protected int _charpter_id;
 	protected float _center_scale;
+    protected ulong _map_index;
+    protected bool _show_detail;
+
+    public void onMapBtnClick(ulong map_index)
+    {
+        if(_map_index == map_index)
+        {
+            CrashMapData info = getMapDate(_map_index);
+            if(info != null)
+            {
+                MapData data = new MapData();
+                data.set_info(info);
+                global_instance.Instance.SetMapData(data);
+                global_instance.Instance._ngui_edit_manager.update_game_type(game_type.game);
+            }
+            
+        }
+    }
+
+    public void onEditClick()
+    {
+
+    }
+
+    public void onPublishClick()
+    {
+
+    }
+
+    public void onBackClick()
+    {
+        global_instance.Instance._ngui_edit_manager.HidMapPanel();
+        global_instance.Instance._ngui_edit_manager.show_main_panel();
+        
+    }
+
+
 	void setChapterID(int charpter_id)
 	{
 		_charpter_id = charpter_id;
@@ -22,6 +61,7 @@ public class PanelMap : MonoBehaviour {
 	
     void setDetailActive(bool b)
     {
+        _show_detail = b;
         AniTextName_.gameObject.SetActive(b);
         AniTextCreater_.gameObject.SetActive(b);
         AniTextTime_.gameObject.SetActive(b);
@@ -68,11 +108,11 @@ public class PanelMap : MonoBehaviour {
     }
 
     public void onCenterStop(GameObject obj)
-    {
-        
+    {        
         MapButton btn = obj.GetComponent<MapButton>();
         if(btn != null)
         {
+            btn.setCallBack(onMapBtnClick);
             CrashMapData mapdate = getMapDate(btn.getMapIndex());
             if (mapdate != null)
             {
@@ -81,9 +121,9 @@ public class PanelMap : MonoBehaviour {
                 System.DateTime time = new System.DateTime(1970, 1, 1).ToLocalTime().AddSeconds(mapdate.create_time);
                 setMapCreateTime(time.ToString());
                 setDetailActive(true);
+                _map_index = btn.getMapIndex();
             }
-        }
-        
+        }        
     }
 
     public void onCenterCancelStop(GameObject obj)
@@ -138,6 +178,11 @@ public class PanelMap : MonoBehaviour {
 
 	public void addItem(CrashMapData entry, bool self = true)
 	{
+        if(entry == null)
+        {
+            return; 
+        }
+
 		System.DateTime time = new System.DateTime(1970, 1, 1).ToLocalTime().AddSeconds(entry.create_time);
 		//temp._txt_3.text = time.ToString();
 
@@ -193,7 +238,7 @@ public class PanelMap : MonoBehaviour {
 			break;
 
 		case page_type.page_type_self_complete:
-			EnterSelfIncomplete();//EnterSelfComplete ();
+			EnterSelfComplete ();
 			break;
 
 		case page_type.page_type_self_incomplete:

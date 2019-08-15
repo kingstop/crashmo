@@ -363,10 +363,10 @@ public class crashmolegrid : MonoBehaviour
         if(_mouse_down&& global_instance.Instance._can_set_group == true)
         {
 			int x = (int)Input.mousePosition.x;
-			if (x < 322) 
-			{
-				return;
-			}
+			//if (x < 322) 
+			//{
+			//	return;
+			//}
 
             if(global_instance.Instance._crash_mole_grid_manager != null)
             {

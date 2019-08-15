@@ -2,7 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-class WobbleObj
+public enum WobbleObjState
+{
+    init,
+    update,
+    stop
+}
+
+public class WobbleObj
 {
     private float _wobble;
     private GameObject _obj;
@@ -17,12 +24,13 @@ class WobbleObj
     private float _random_shrink_wobble;
     private float _last_woble;
     private float _target_woble;
+    private WobbleObjState _state;
 
     public void Create(GameObject obj, float base_range, float random_range, bool left_able,
         float wobble_speed, float wobble_random_speed, float shrink_wobble, float random_shrink_wobble)
     {
         _obj = obj;
-        _wobble = obj.transform.rotation.z;
+        _wobble = obj.transform.localEulerAngles.z;
         _base_range = base_range;
         _random_range = random_range;
         _left_able = left_able;
@@ -30,9 +38,16 @@ class WobbleObj
         _wobble_random_speed = wobble_random_speed;
         _shrink_wobble = shrink_wobble;
         _random_shrink_wobble = random_shrink_wobble;
+        _state = WobbleObjState.init;
+        
     }
 
-    void Init()
+    public WobbleObjState getState()
+    {
+        return _state;
+    }
+
+    public void Init()
     {
         float woble = _base_range + Random.Range(0, _random_range);
         if(_left_able)
@@ -43,12 +58,96 @@ class WobbleObj
                 woble = -woble;
             }            
         }
-        _last_woble = woble;
+        _cur_speed = _wobble_speed + Random.Range(0, _wobble_random_speed);
+        float temp_woble = woble + _wobble;
+        _target_woble = temp_woble;
+        _last_woble = temp_woble;
+        setWoble(temp_woble);
+        AriveTarget();
+        _state = WobbleObjState.update;
+    }
+
+    void Stop()
+    {
+        setWoble(_wobble);
+        _state = WobbleObjState.stop;
     }
 
     void AriveTarget()
     {
+        if(Mathf.Abs(_last_woble - _wobble) < 1f)
+        {
+            Stop();
+        }
+        else
+        {
+            float woble = Mathf.Abs(_last_woble) - _shrink_wobble - Random.Range(0, _random_shrink_wobble);   
+            
+            _last_woble = _target_woble;
+            if (woble <= 0)
+            {
+                _target_woble = _wobble;
+            }
+            else
+            {
+                if (_last_woble > _wobble)
+                {
+                    _target_woble = _wobble - woble;
+                }
+                else
+                {
+                    _target_woble = _wobble + woble;
+                }
+            }
+        }                      
+    }
+
+    void setWoble(float woble)
+    {
+        Vector3 vec = _obj.transform.localEulerAngles;
+        vec.z = woble;
+        _obj.transform.localEulerAngles = vec;        　　      
+    }
+
+    public void update()
+    {
+        if(_state == WobbleObjState.update)
+        {
+            Vector3 vec = _obj.transform.localEulerAngles;
+            float woble = vec.z;
+
+            if(woble > 180)
+            {
+                woble = woble - 360;
+            }
+            if (woble > _target_woble)
+            {
+                woble -= _cur_speed;
+                if (woble < _target_woble)
+                {
+                    AriveTarget();
+                }
+                else
+                {
+                    setWoble(woble);
+                }
+            }
+            else
+            {
+                woble += _cur_speed;
+                if (woble > _target_woble)
+                {
+                    AriveTarget();
+                }
+                else
+                {
+                    setWoble(woble);
+                }
+            }
+        }
         
+       // vec.z += _cur_speed;
+        //_obj.transform.rotation.SetEulerAngles(vec);// (vec.x, vec.y, vec.z);        
     }
 }
 
@@ -58,15 +157,17 @@ public class UIAnimationComponent : MonoBehaviour {
     public GameObject[] RightObjs_;
     public GameObject[] ScaleXObjs_;
     public GameObject[] ScaleYObjs_;
+    public GameObject[] WobleObjs_;
     protected float _speed = 30.0f;
     protected float _scale_speed = 0.3f;
     protected Dictionary<GameObject, Vector3> _UpDicObjVec3 = new Dictionary<GameObject, Vector3>();
     protected Dictionary<GameObject, Vector3> _LeftDicObjVec3 = new Dictionary<GameObject, Vector3>();
     protected Dictionary<GameObject, Vector3> _RightDicObjVec3 = new Dictionary<GameObject, Vector3>();
-
+    protected List<WobbleObj> _WobleObjs = new List<WobbleObj>();
     
     protected bool _move_ready;
     protected bool _scale_ready;
+    protected bool _woble_ready;
     public delegate void OK_CALL_BACK();
     private OK_CALL_BACK OK_function_ = null;
     // Use this for initialization
@@ -87,6 +188,11 @@ public class UIAnimationComponent : MonoBehaviour {
         {
             OK_function_();
         }
+    }
+
+    void OnWobleReady()
+    {
+        _woble_ready = true;
     }
 
     public void setOK(OK_CALL_BACK ok)
@@ -197,7 +303,24 @@ public class UIAnimationComponent : MonoBehaviour {
                 OnScaleReady();
             }
         }
+        if(_scale_ready&&_woble_ready == false)
+        {
+            bool woble_already = true;
+            foreach (WobbleObj obj in _WobleObjs)
+            {
+                obj.update();
 
+                if(obj.getState() != WobbleObjState.stop)
+                {
+                    woble_already = false;
+                }                
+            }
+
+            if(woble_already)
+            {
+                OnWobleReady();
+            }            
+        }
     }
 
     void Awake()
@@ -221,7 +344,13 @@ public class UIAnimationComponent : MonoBehaviour {
         }
 
 
+        foreach(GameObject obj in WobleObjs_)
+        {
+            WobbleObj temp = new WobbleObj();
+            temp.Create(obj, 40, 10, true,  10f, 0f, 4, 1);
+            _WobleObjs.Add(temp);
 
+        }
     }
 
 
@@ -262,7 +391,13 @@ public class UIAnimationComponent : MonoBehaviour {
             vec.x = UnityEngine.Screen.width + 1200;
             obj.transform.localPosition = vec;
         }
+
+        foreach(WobbleObj obj in _WobleObjs)
+        {
+            obj.Init();
+        }
         _move_ready = false;
         _scale_ready = false;
+        _woble_ready = false;
     }
 }

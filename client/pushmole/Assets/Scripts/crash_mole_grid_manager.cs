@@ -29,7 +29,9 @@ public class MapData
         int grid = 10;
         if(groups_ != null)
         {
-            tex = new Texture2D(width_ * grid, height_ * grid);            
+            tex = new Texture2D(width_ * grid, height_ * grid);
+
+            Color co_default = new Color(127f/255f,127f / 255f, 127f / 255f, 127f / 255f);                    
             for (int j = 0; j < height_; j++)
             {                
                 for (int i = 0; i < width_; i++)
@@ -41,8 +43,16 @@ public class MapData
                     {
                         for (int temp_y = begin_y; temp_y < begin_y + grid; temp_y++)
                         {
-                            Color co = global_instance.Instance.get_color_by_group(group);
-                            tex.SetPixel(temp_x, temp_y, co);
+                            if(group == 11 || group == 10)
+                            {
+                                tex.SetPixel(temp_x, temp_y, co_default);
+                            }
+                            else
+                            {
+                                Color co = global_instance.Instance.get_color_by_group(group);
+                                tex.SetPixel(temp_x, temp_y, co);
+                            }
+
                         }
                     }                  
                 }

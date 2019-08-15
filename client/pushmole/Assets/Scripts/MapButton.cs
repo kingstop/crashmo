@@ -3,10 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MapButton : MonoBehaviour {
-	private string _text_1;
+    public delegate void CALL_BACK(ulong index);
+    private string _text_1;
 	private string _text_2;
 	private ulong _map_index;
-	public void SetTexture(Texture t)
+    private CALL_BACK _click_call_back;
+    public void SetTexture(Texture t)
 	{
 		Material material_temp = new Material(_image.material);
 
@@ -17,6 +19,19 @@ public class MapButton : MonoBehaviour {
 		}
 		_image.transform.SetParent (this.transform);
 	}
+
+    public void setCallBack(CALL_BACK back)
+    {
+        _click_call_back = back;
+    }
+
+    public void onBtnClick()
+    {
+        if(_click_call_back != null)
+        {
+            _click_call_back(_map_index);
+        }
+    }
 
 	public void setText1(string s)
 	{
