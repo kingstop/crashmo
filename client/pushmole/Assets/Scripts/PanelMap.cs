@@ -19,6 +19,7 @@ public class PanelMap : MonoBehaviour {
 	protected float _center_scale;
     protected ulong _map_index;
     protected bool _show_detail;
+    protected float _wave_x;
 
     public void onMapBtnClick(ulong map_index)
     {
@@ -34,6 +35,11 @@ public class PanelMap : MonoBehaviour {
             }
             
         }
+    }
+
+    public float getExtraWave()
+    {
+        return _wave_x;
     }
 
     public void onEditClick()
@@ -164,6 +170,10 @@ public class PanelMap : MonoBehaviour {
         return entry;
     }
 
+    private void Update()
+    {
+       // _wave_x += 0.01f;
+    }
 
     void Awake()
     {
@@ -196,7 +206,8 @@ public class PanelMap : MonoBehaviour {
 			obj.name = entry.MapName;
 			//obj.transform.Find("Text").GetComponent<Text>().text = i.ToString();
 			MapButton entry_map = obj.GetComponent<MapButton>();
-			if (entry_map != null) 
+            entry_map.setExtraXCallBack(getExtraWave);
+            if (entry_map != null) 
 			{
 				entry_map.SetTexture (temp_.CreateTexture());
 				if (self)
@@ -252,8 +263,9 @@ public class PanelMap : MonoBehaviour {
     void Start () {
 		init ();
         grid.SetDirty();
-	
-		wrap.OnValueChange = (RectTransform item, int index, int realIndex) =>
+        _wave_x = 0;
+
+        wrap.OnValueChange = (RectTransform item, int index, int realIndex) =>
 		{
 
 			CenterScaleComponent entry = item.GetComponent<CenterScaleComponent>();
@@ -304,8 +316,4 @@ public class PanelMap : MonoBehaviour {
 		wrap.AutoCenter(ve);
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
