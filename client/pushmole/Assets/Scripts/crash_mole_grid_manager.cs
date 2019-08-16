@@ -26,6 +26,8 @@ public class MapData
 
     public void create(int width, int height)
     {
+        width_ = width;
+        height_ = height;
         groups_ = new int[width, height];
         for(int i = 0; i < width; i ++)
         {
