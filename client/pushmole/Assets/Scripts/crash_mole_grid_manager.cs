@@ -21,45 +21,103 @@ public class MapData
     public int section_;
     public ulong map_index_;
     public int gold_;
+    public int grid_size_ = 10;
     protected Dictionary<int, int> _resorces = new Dictionary<int, int>();
-    
-    public Texture2D CreateTexture()
+
+    public void create(int width, int height)
+    {
+        groups_ = new int[width, height];
+        for(int i = 0; i < width; i ++)
+        {
+            for(int j = 0;  j < height; j ++)
+            {
+                groups_[i, j] = 11;
+            }
+        }
+    }
+
+    public Texture2D CreateEmptyTexture()
     {
         Texture2D tex = null;
-        int grid = 10;
+        int grid = grid_size_;
+        tex = new Texture2D(width_ * grid, height_ * grid);
+        Color co = global_instance.Instance.get_color_by_group(11);
+        for (int j = 0; j < height_; j++)
+        {
+            for (int i = 0; i < width_; i++)
+            {
+                tex.SetPixel(i, j, co);
+            }
+        }
+        return tex;
+    }
+
+    public void DrawGridTexture(Texture2D tex, int i, int j, int group,bool IsMapButton = true)
+    {
+        Color co_default = new Color(127f / 255f, 127f / 255f, 127f / 255f, 127f / 255f);
+        int begin_x = i * grid_size_;
+        int begin_y = j * grid_size_;
+        for (int temp_x = begin_x; temp_x < begin_x + grid_size_; temp_x++)
+        {
+            for (int temp_y = begin_y; temp_y < begin_y + grid_size_; temp_y++)
+            {
+                if ((group == 11 || group == 10) && IsMapButton)
+                {
+                    tex.SetPixel(temp_x, temp_y, co_default);
+                }
+                else
+                {
+                    Color co = global_instance.Instance.get_color_by_group(group);
+                    tex.SetPixel(temp_x, temp_y, co);
+                }
+
+            }
+        }
+        tex.Apply();
+    }
+
+    public void DrawTexture(Texture2D tex, bool IsMapButton = true)
+    {
+        //tex.width = grid_size_ * width_;
+        //tex.height = grid_size_ * height_;
+        Color co_default = new Color(127f / 255f, 127f / 255f, 127f / 255f, 127f / 255f);
+        for (int j = 0; j < height_; j++)
+        {
+            for (int i = 0; i < width_; i++)
+            {
+                int group = groups_[i, j];
+                int begin_x = i * grid_size_;
+                int begin_y = j * grid_size_;
+                for (int temp_x = begin_x; temp_x < begin_x + grid_size_; temp_x++)
+                {
+                    for (int temp_y = begin_y; temp_y < begin_y + grid_size_; temp_y++)
+                    {
+                        if ((group == 11 || group == 10) && IsMapButton)
+                        {
+                            tex.SetPixel(temp_x, temp_y, co_default);
+                        }
+                        else
+                        {
+                            Color co = global_instance.Instance.get_color_by_group(group);
+                            tex.SetPixel(temp_x, temp_y, co);
+                        }
+
+                    }
+                }
+            }
+        }
+        tex.Apply();
+    }
+
+    public Texture2D CreateTexture(bool IsMapButton = true)
+    {
+        Texture2D tex = null;
+        int grid = grid_size_;
         if(groups_ != null)
         {
             tex = new Texture2D(width_ * grid, height_ * grid);
-
-            Color co_default = new Color(127f/255f,127f / 255f, 127f / 255f, 127f / 255f);                    
-            for (int j = 0; j < height_; j++)
-            {                
-                for (int i = 0; i < width_; i++)
-                {
-                    int group =groups_[i, j];
-                    int begin_x = i * grid;
-                    int begin_y = j * grid;
-                    for (int temp_x = begin_x; temp_x < begin_x + grid; temp_x++)
-                    {
-                        for (int temp_y = begin_y; temp_y < begin_y + grid; temp_y++)
-                        {
-                            if(group == 11 || group == 10)
-                            {
-                                tex.SetPixel(temp_x, temp_y, co_default);
-                            }
-                            else
-                            {
-                                Color co = global_instance.Instance.get_color_by_group(group);
-                                tex.SetPixel(temp_x, temp_y, co);
-                            }
-
-                        }
-                    }                  
-                }
-            }
-
-        }
-        tex.Apply();
+            DrawTexture(tex, IsMapButton);           
+        }        
         return tex;       
     }
 
@@ -200,62 +258,84 @@ public class crash_mole_grid_manager : MonoBehaviour {
     }
 
 
-    public void create_edit_crash_mole_grid()
+    public void create_edit_image()
     {
-        clear_edit_crash_mole_grid();
         MapData mapinfo = global_instance.Instance.GetMapData();
         if(mapinfo != null)
         {
-            _max_width = mapinfo.width_;
-            _max_height = mapinfo.height_;
+             _max_width = mapinfo.width_;
+             _max_height = mapinfo.height_;
         }
-        _crashmolegrids = new crashmolegrid[_max_width, _max_height];
-		for (int i = 0; i < _max_width; i++)
-		{
-			for (int j = 0; j < _max_height; j++)
-			{				
-				GameObject obj_temp = Instantiate<GameObject>(_source_crash_mole_obj);
-				_objlist.Add(obj_temp);				
-				obj_temp.name = i.ToString() + "-" + j.ToString();
-                crashmolegrid grid = obj_temp.GetComponent<crashmolegrid>();
-                _crashmolegrids[i, j] = grid;
-				float x = (float)i;
-				float y = (float)j;                				
-				_crashmolegrids[i, j].set_position(x, y);
-				_crashmolegrids[i, j].set_color(1, 1, 1, 1);
-                _crashmolegrids[i, j].set_group(11);
-                _crashmolegrids[i, j].show_edit();
-                if (mapinfo != null)
-                {                    
-                    int group = mapinfo.groups_[i, j];
-                    if (_resorces.ContainsKey(group) == false)
-                    {
-                        _resorces.Add(group, 0);
-                    }
-                    if (group != 11)
-                    {
-                        _resorces[group] += 1;
-                        _crashmolegrids[i, j].set_group(group);
-                    }
-                }
-			}
-		}
-        List<message.intPair> hero_resources = global_instance.Instance._player.get_resource();
-        foreach(message.intPair entry in hero_resources)
+    }
+
+    public void create_edit_crash_mole_grid()
+    {
+        MapData mapinfo = global_instance.Instance.GetMapData();
+        if(mapinfo == null)
         {
-            _resources_max[entry.number_1] = entry.number_2;
+            mapinfo = new MapData();
+            mapinfo.create(_max_width, _max_height);            
         }
-        for(int i = 0; i < 10; i ++)
+        else
         {
-            updateColorButtonText(i);
+
         }
-        //Vector3 vc_pos = new Vector3(10.07f, 13.5f, -28.2f);
-        //Camera.main.transform.position = vc_pos;
-        Vector3 vec = new Vector3(1.64f, 4.08f, -7.84f);
-        Vector3 vec_rot = new Vector3(0, 0, 0);
-		Camera.main.transform.eulerAngles = vec_rot;
-		Camera.main.transform.position = vec;
-		Camera.main.fieldOfView = 60;
+        global_instance.Instance._ngui_edit_manager.EditMap_.setMapInfo(mapinfo);
+
+        //      clear_edit_crash_mole_grid();
+        //      MapData mapinfo = global_instance.Instance.GetMapData();
+        //      if(mapinfo != null)
+        //      {
+        //          _max_width = mapinfo.width_;
+        //          _max_height = mapinfo.height_;
+        //      }
+        //      _crashmolegrids = new crashmolegrid[_max_width, _max_height];
+        //for (int i = 0; i < _max_width; i++)
+        //{
+        //	for (int j = 0; j < _max_height; j++)
+        //	{				
+        //		GameObject obj_temp = Instantiate<GameObject>(_source_crash_mole_obj);
+        //		_objlist.Add(obj_temp);				
+        //		obj_temp.name = i.ToString() + "-" + j.ToString();
+        //              crashmolegrid grid = obj_temp.GetComponent<crashmolegrid>();
+        //              _crashmolegrids[i, j] = grid;
+        //		float x = (float)i;
+        //		float y = (float)j;                				
+        //		_crashmolegrids[i, j].set_position(x, y);
+        //		_crashmolegrids[i, j].set_color(1, 1, 1, 1);
+        //              _crashmolegrids[i, j].set_group(11);
+        //              _crashmolegrids[i, j].show_edit();
+        //              if (mapinfo != null)
+        //              {                    
+        //                  int group = mapinfo.groups_[i, j];
+        //                  if (_resorces.ContainsKey(group) == false)
+        //                  {
+        //                      _resorces.Add(group, 0);
+        //                  }
+        //                  if (group != 11)
+        //                  {
+        //                      _resorces[group] += 1;
+        //                      _crashmolegrids[i, j].set_group(group);
+        //                  }
+        //              }
+        //	}
+        //}
+        //      List<message.intPair> hero_resources = global_instance.Instance._player.get_resource();
+        //      foreach(message.intPair entry in hero_resources)
+        //      {
+        //          _resources_max[entry.number_1] = entry.number_2;
+        //      }
+        //      for(int i = 0; i < 10; i ++)
+        //      {
+        //          updateColorButtonText(i);
+        //      }
+        //      //Vector3 vc_pos = new Vector3(10.07f, 13.5f, -28.2f);
+        //      //Camera.main.transform.position = vc_pos;
+        //      Vector3 vec = new Vector3(1.64f, 4.08f, -7.84f);
+        //      Vector3 vec_rot = new Vector3(0, 0, 0);
+        //Camera.main.transform.eulerAngles = vec_rot;
+        //Camera.main.transform.position = vec;
+        //Camera.main.fieldOfView = 60;
     }
 
     public int getResourceMaxCount(int group)
