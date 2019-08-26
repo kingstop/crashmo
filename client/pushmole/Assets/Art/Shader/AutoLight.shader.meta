@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 6ed22985550b84bb885f52b05fc15781
+timeCreated: 1458650697
+licenseType: Pro
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _Diffuse: {fileID: 2800000, guid: 0aacb3cf6eb4bc74da5f487a9a313be0, type: 3}
+  userData: 
+  assetBundleName: autolight
+  assetBundleVariant: 

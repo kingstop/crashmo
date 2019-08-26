@@ -1,0 +1,5 @@
+﻿//////////////////////			安卓镜像
+
+//				http://mirrors.neusoft.edu.cn/android/repository/
+
+/////////////////////
