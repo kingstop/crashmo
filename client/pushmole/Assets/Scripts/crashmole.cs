@@ -624,12 +624,15 @@ public class crash_manager
     public CrashMoveHistory _History = new CrashMoveHistory();
     public CrashMoRecord _record = new CrashMoRecord();
     public int _current_frame_count;
-    gameState _game_state = gameState.game_prepare;
-    //public bool _game_begin = false;
+    gameState _game_state = gameState.game_prepare;    
     protected Queue<KeyValuePair<int, bool>> _catch_click_list = new Queue<KeyValuePair<int, bool>>();
+    public TileMap _tile_map;
     public void init()
     {
         clear();
+        _tile_map = new TileMap();
+
+        _tile_map.Create(GameObject.Find("tiles"), new Vector3(0, 0, 0), 1.0f);
         _max_x = (int)crash_define.max_x;
         _max_z = (int)crash_define.max_z;
         _max_y = (int)crash_define.max_y; 
@@ -1265,6 +1268,7 @@ public class crash_manager
        _History.reset();
         _current_frame_count = 0;
         _move_count = 0;
+        _tile_map = null;
     }
     public void update_move_animation()
     {

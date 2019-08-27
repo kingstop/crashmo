@@ -403,6 +403,7 @@ public class ngui_edit_manager : MonoBehaviour {
                     Camera.main.fieldOfView = 34;
                     _game_btns.gameObject.SetActive(true);
                     _terrain.SetActive(true);
+                    
                     global_instance.Instance._crash_manager.init();
                 }
                 break;
