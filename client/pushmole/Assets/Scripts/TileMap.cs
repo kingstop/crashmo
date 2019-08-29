@@ -14,17 +14,17 @@ public class TileMap
     Vector3 mEnd;
     GameObject mTileObj;
 
-    List<KeyValuePair<int, int>> mTileObjs;    
+    List<KeyValuePair<int, int>> mTileObjs = new List<KeyValuePair<int, int>>();    
     public void Create(GameObject TileObj, Vector3 origin, float tileLength )
     {
         int maxX = 0;
         int maxZ = 0;
-
+        mTileObjs.Clear();
         mTileObj = TileObj;
         foreach (Transform value in mTileObj.transform)
         {
-            int x = (int)value.position.x;
-            int z = (int)value.position.z;
+            int x = (int)value.localPosition.x;
+            int z = (int)value.localPosition.z;
             if(maxX < x)
             {
                 maxX = x;
@@ -34,13 +34,17 @@ public class TileMap
             {
                 maxZ = z;
             }
-            KeyValuePair<int, int> entity = new KeyValuePair<int, int>(z, x);
+            KeyValuePair<int, int> entity = new KeyValuePair<int, int>(x, z);
             mTileObjs.Add(entity);
         }
 
         InitMap(maxX, maxZ, tileLength, origin, false);
         foreach(KeyValuePair<int, int> entity in mTileObjs)
         {
+            if(entity.Key == 10 && entity.Value == 2)
+            {
+                int n = 0;
+            }
             SetWalkable(entity.Key, entity.Value, true);
         }
         SetTileWalkable(GameObject.FindObjectsOfType<TileComponent>());
@@ -150,6 +154,22 @@ public class TileMap
             return null;
         }
         return mTiles[row, column];
+    }
+
+    public bool IsWalkAble(float x, float y, float z)
+    {
+        Vector3 pos = new Vector3(x, y, z);
+        return IsWalkAble(pos);
+    }
+
+    public bool IsWalkAble(Vector3 position)
+    {
+        Tile tile = GetTile(position, 1);
+        if(tile != null)
+        {
+            return tile.mIsWalkable;
+        }
+        return false;
     }
 
     public Tile GetTile(Vector3 position, int objectSize)

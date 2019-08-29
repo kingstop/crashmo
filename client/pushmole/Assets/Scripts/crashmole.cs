@@ -368,7 +368,7 @@ public class crash_mole_addr
 
 enum crash_define{
     max_x = 50,
-    max_z = 18,
+    max_z = 50,
     max_y = 80
 
 }
@@ -632,7 +632,7 @@ public class crash_manager
         clear();
         _tile_map = new TileMap();
 
-        _tile_map.Create(GameObject.Find("tiles"), new Vector3(0, 0, 0), 1.0f);
+        _tile_map.Create(GameObject.Find("Tiles"), new Vector3(11.0f, 0, 0), 1.0f);
         _max_x = (int)crash_define.max_x;
         _max_z = (int)crash_define.max_z;
         _max_y = (int)crash_define.max_y; 
@@ -1155,6 +1155,38 @@ public class crash_manager
 
         return false;
     }
+
+    bool checkMapTileBlock(float tempx, float tempy, float tempz, float block_width)
+    {
+        if(_tile_map != null)
+        {
+            if(_tile_map.IsWalkAble(tempx, tempy, tempz) == false)
+            {
+                return true;
+            }
+
+            if (_tile_map.IsWalkAble(tempx - block_width, tempy, tempz - block_width) == false)
+            {
+                return true;
+            }
+
+            if (_tile_map.IsWalkAble(tempx + block_width, tempy, tempz - block_width) == false)
+            {
+                return true;
+            }
+
+            if (_tile_map.IsWalkAble(tempx + block_width, tempy, tempz + block_width) == false)
+            {
+                return true;
+            }
+
+            if (_tile_map.IsWalkAble(tempx + block_width, tempy, tempz - block_width) == false)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     bool check_block(float tempx, float tempy, float tempz, float block_width)
     {
         if (is_block(tempx + block_width, tempy, tempz))
@@ -1213,6 +1245,13 @@ public class crash_manager
         {
             return true;
         }
+
+        if(checkMapTileBlock(tempx, tempy, tempz, 0.2f))
+        {
+            return true;
+        }
+        
+
         return false;
 
     }
