@@ -7,7 +7,8 @@ public enum crash_obj_type
     normal,
     player,
     flag,
-    target
+    target,
+    staticgrid
 }
 public enum game_type
 {
@@ -100,7 +101,7 @@ public class crash_base_obj
 
     public virtual void set_position(float x, float y, float z)
     {
-
+ 
     }
 
     public crash_obj_type get_obj_type()
@@ -180,8 +181,19 @@ public class crash_obj : crash_base_obj
         _grid.set_position(x, y, z);
     }
     public crashmolegrid _grid;
- 
+}
 
+public class crash_static_obj : crash_base_obj
+{
+    public crash_static_obj() : base()
+    {
+        _type = crash_obj_type.staticgrid;
+    }
+
+    public crash_static_obj(int x, int y, int z) : base(x, y, z)
+    {
+        _type = crash_obj_type.staticgrid;
+    }
 }
 
 
@@ -654,6 +666,13 @@ public class crash_manager
             }
         }
         next_update();
+        TileComponent[] tile_component = GameObject.FindObjectsOfType<TileComponent>();
+        foreach(TileComponent co in tile_component)
+        {
+            crash_pos pos = new crash_pos();
+            pos = transform_to_map(co.gameObject.transform.position);
+        }
+        //SetTileWalkable(GameObject.FindObjectsOfType<TileComponent>());
     }
 
     public gameState getGameState()
@@ -1607,6 +1626,12 @@ public class crash_manager
         obj._pos._x = x;
         obj._pos._y = y;
         obj._pos._z = 9;
+        return obj;
+    }
+
+    public crash_static_obj create_static_obj(int x, int y, int z)
+    {
+        crash_static_obj obj = new crash_static_obj(x, y, z);
         return obj;
     }
 

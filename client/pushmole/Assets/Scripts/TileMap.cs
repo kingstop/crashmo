@@ -47,7 +47,7 @@ public class TileMap
             }
             SetWalkable(entity.Key, entity.Value, true);
         }
-        SetTileWalkable(GameObject.FindObjectsOfType<TileComponent>());
+        //SetTileWalkable(GameObject.FindObjectsOfType<TileComponent>());
     }
 
     public TileMap()
@@ -170,7 +170,7 @@ public class TileMap
             return tile.mIsWalkable;
         }
         return false;
-    }
+    }    
 
     public Tile GetTile(Vector3 position, int objectSize)
     {
