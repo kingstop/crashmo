@@ -282,62 +282,7 @@ public class crash_mole_grid_manager : MonoBehaviour {
         {
 
         }
-        global_instance.Instance._ngui_edit_manager.EditMap_.setMapInfo(mapinfo);
-
-        //      clear_edit_crash_mole_grid();
-        //      MapData mapinfo = global_instance.Instance.GetMapData();
-        //      if(mapinfo != null)
-        //      {
-        //          _max_width = mapinfo.width_;
-        //          _max_height = mapinfo.height_;
-        //      }
-        //      _crashmolegrids = new crashmolegrid[_max_width, _max_height];
-        //for (int i = 0; i < _max_width; i++)
-        //{
-        //	for (int j = 0; j < _max_height; j++)
-        //	{				
-        //		GameObject obj_temp = Instantiate<GameObject>(_source_crash_mole_obj);
-        //		_objlist.Add(obj_temp);				
-        //		obj_temp.name = i.ToString() + "-" + j.ToString();
-        //              crashmolegrid grid = obj_temp.GetComponent<crashmolegrid>();
-        //              _crashmolegrids[i, j] = grid;
-        //		float x = (float)i;
-        //		float y = (float)j;                				
-        //		_crashmolegrids[i, j].set_position(x, y);
-        //		_crashmolegrids[i, j].set_color(1, 1, 1, 1);
-        //              _crashmolegrids[i, j].set_group(11);
-        //              _crashmolegrids[i, j].show_edit();
-        //              if (mapinfo != null)
-        //              {                    
-        //                  int group = mapinfo.groups_[i, j];
-        //                  if (_resorces.ContainsKey(group) == false)
-        //                  {
-        //                      _resorces.Add(group, 0);
-        //                  }
-        //                  if (group != 11)
-        //                  {
-        //                      _resorces[group] += 1;
-        //                      _crashmolegrids[i, j].set_group(group);
-        //                  }
-        //              }
-        //	}
-        //}
-        //      List<message.intPair> hero_resources = global_instance.Instance._player.get_resource();
-        //      foreach(message.intPair entry in hero_resources)
-        //      {
-        //          _resources_max[entry.number_1] = entry.number_2;
-        //      }
-        //      for(int i = 0; i < 10; i ++)
-        //      {
-        //          updateColorButtonText(i);
-        //      }
-        //      //Vector3 vc_pos = new Vector3(10.07f, 13.5f, -28.2f);
-        //      //Camera.main.transform.position = vc_pos;
-        //      Vector3 vec = new Vector3(1.64f, 4.08f, -7.84f);
-        //      Vector3 vec_rot = new Vector3(0, 0, 0);
-        //Camera.main.transform.eulerAngles = vec_rot;
-        //Camera.main.transform.position = vec;
-        //Camera.main.fieldOfView = 60;
+        global_instance.Instance._ngui_edit_manager.EditMap_.setMapInfo(mapinfo); 
     }
 
     public int getResourceMaxCount(int group)

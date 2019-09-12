@@ -28,13 +28,15 @@ public class GameBtnsCtrl : MonoBehaviour {
 
 	protected bool game_catch_action()
 	{
-		if (global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game
-			&& global_instance.Instance._crash_manager._record._open_record == false)
-		{
-			return true;
-		}
-
-		return false;
+        if(global_instance.Instance._crash_mole_grid_manager != null)
+        {
+            if (global_instance.Instance._crash_mole_grid_manager.get_game_type() == game_type.game
+                && global_instance.Instance._crash_manager._record._open_record == false)
+            {
+                return true;
+            }
+        }
+        return false;
 	}
 
 	public void click_jump()

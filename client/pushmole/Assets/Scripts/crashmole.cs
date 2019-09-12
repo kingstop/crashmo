@@ -194,6 +194,11 @@ public class crash_static_obj : crash_base_obj
     {
         _type = crash_obj_type.staticgrid;
     }
+    public override void set_position(float x, float y, float z)
+    {
+        _grid.set_position(x, y, z);
+    }
+    public crashmolegrid _grid;
 }
 
 
@@ -360,6 +365,21 @@ public class crash_mole
         }
         return ret;
     }
+
+    public bool IsStatic()
+    {
+        bool Staic = false;
+        foreach(crash_base_obj entry in _crash_objs)
+        {
+            if(entry.get_obj_type() == crash_obj_type.staticgrid)
+            {
+                Staic = true;
+                break;
+            }            
+        }
+        return Staic;
+    }
+
     public List<crash_base_obj> _crash_objs = new List<crash_base_obj>();
 
     public crash_manager _crash_manager;
@@ -611,6 +631,7 @@ public class crash_manager
     public List<crash_mole> _crash_moles_list = new List<crash_mole>();
     public List<crash_mole> _move_mole_list = new List<crash_mole>();
     public List<crash_mole> _can_not_move_list = new List<crash_mole>();
+    public List<crash_mole> _static_move_list = new List<crash_mole>();
     public List<crashmolegrid> _alpha_grids = new List<crashmolegrid>();
     public float _grid_distance;
     public float _current_move_distance;
@@ -670,7 +691,22 @@ public class crash_manager
         foreach(TileComponent co in tile_component)
         {
             crash_pos pos = new crash_pos();
-            pos = transform_to_map(co.gameObject.transform.position);
+            pos = transform_to_map(co.gameObject.transform.position.x, co.gameObject.transform.position.y + 1.0f, co.gameObject.transform.position.z);
+            GameObject obj_temp = Object.Instantiate<GameObject>(_source_crash_mole_obj);
+            crash_mole mole = new crash_mole();
+            mole._crash_manager = this;
+
+            _Game_objs.Add(obj_temp);
+            crash_static_obj obj = new crash_static_obj(pos._x, pos._y, pos._z);
+            float x_temp = pos._x * _grid_distance;
+            float z_temp = pos._z * _grid_distance;
+            float y_temp = pos._y * _grid_distance;
+            obj._grid = obj_temp.GetComponent<crashmolegrid>();
+            obj._grid.set_group(11);
+            obj._grid.set_position(x_temp, y_temp, z_temp);
+            mole.add_crash_obj(obj);
+            obj._grid.name = "static_grid";
+            add_crash_mole(mole);
         }
         //SetTileWalkable(GameObject.FindObjectsOfType<TileComponent>());
     }
@@ -1136,7 +1172,16 @@ public class crash_manager
         return grid;
     }
 
-	public crash_pos transform_to_map(Vector3 vec)
+
+    public crash_pos transform_to_map(float x, float y, float z)
+    {
+        crash_pos entry_pos = new crash_pos();
+        entry_pos._x = transform_to_map(x);
+        entry_pos._y = transform_to_map(y);
+        entry_pos._z = transform_to_map(z);
+        return entry_pos;
+    }
+    public crash_pos transform_to_map(Vector3 vec)
 	{
 		crash_pos entry_pos = new crash_pos ();
 		entry_pos._x = transform_to_map (vec.x);
@@ -1675,11 +1720,19 @@ public class crash_manager
     }
     bool is_in_can_not_move_list(crash_mole entry)
     {
-        foreach(crash_mole temp in _can_not_move_list)
+        if(entry != null)
         {
-            if(temp == entry)
+            if (entry.IsStatic())
             {
                 return true;
+            }
+
+            foreach (crash_mole temp in _can_not_move_list)
+            {
+                if (temp == entry)
+                {
+                    return true;
+                }
             }
         }
         return false;

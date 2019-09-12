@@ -38,13 +38,9 @@ public class TileMap
             mTileObjs.Add(entity);
         }
 
-        InitMap(maxX, maxZ, tileLength, origin, false);
+        InitMap(maxX + 1, maxZ + 1, tileLength, origin, false);
         foreach(KeyValuePair<int, int> entity in mTileObjs)
         {
-            if(entity.Key == 10 && entity.Value == 2)
-            {
-                int n = 0;
-            }
             SetWalkable(entity.Key, entity.Value, true);
         }
         //SetTileWalkable(GameObject.FindObjectsOfType<TileComponent>());
