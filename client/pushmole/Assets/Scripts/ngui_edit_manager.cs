@@ -45,9 +45,10 @@ public class ngui_edit_manager : MonoBehaviour {
 	public GameBtnsCtrl _game_btns;
     //public GameObject _game_obj_btns;
 	public GameObject _edit_type_obj_btns;
-	public Image _map_image;
+	public Image _map_image;    
     public Camera _camera_map;
     public Camera _camera_map_big;
+    public Camera _camera_main;
     //public bool _input_keyboard;
     public Text _record_txt;
     public Text _account;
@@ -96,7 +97,34 @@ public class ngui_edit_manager : MonoBehaviour {
         _EditType = EditType.EditPlayer;
         global_instance.Instance._ngui_edit_manager = this;       
         global_instance.Instance._net_client = new u3dclient();
+        setSkyBoxMaterial(_camera_map, "TCSB_01_SH");
+        setSkyBoxMaterial(_camera_map_big, "TCSB_01_SH");
+        setSkyBoxMaterial(_camera_main, "TCSB_01_SH");
         //_input_keyboard = false;	
+    }
+
+    private void setSkyBoxMaterial(Camera camera, string strName)
+    {
+        if(camera != null)
+        {
+            Skybox skyBox = camera.GetComponent<Skybox>();
+            if (skyBox != null)
+            {
+                string path = "skybox/" + strName;
+                skyBox.material = Resources.Load<Material>(path);
+            }
+        }
+    }
+
+    public void LoadSkyBox(string strName)
+    {
+        Skybox box_map = _camera_map.GetComponent<Skybox>();
+        if(box_map != null)
+        {
+            //box_map.material 
+        }
+        _camera_map_big.GetComponent<Skybox>();
+        _camera_main.GetComponent<Skybox>();
     }
     public void SaveOfficilMap()
     {

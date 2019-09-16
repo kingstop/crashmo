@@ -275,10 +275,10 @@ public class GameBtnsCtrl : MonoBehaviour {
     {
         _obj_map_big.SetActive(big);
         _obj_map_small.SetActive(!big);
-        //global_instance.Instance._ngui_edit_manager._camera_map.gameObject.SetActive(!big);
-        //global_instance.Instance._ngui_edit_manager._camera_map_big.gameObject.SetActive(big);
-        global_instance.Instance._ngui_edit_manager._camera_map.gameObject.SetActive(false);
-        global_instance.Instance._ngui_edit_manager._camera_map_big.gameObject.SetActive(false);
+        global_instance.Instance._ngui_edit_manager._camera_map.gameObject.SetActive(!big);
+        global_instance.Instance._ngui_edit_manager._camera_map_big.gameObject.SetActive(big);
+        //global_instance.Instance._ngui_edit_manager._camera_map.gameObject.SetActive(false);
+        //global_instance.Instance._ngui_edit_manager._camera_map_big.gameObject.SetActive(false);
 
     }
 
