@@ -232,6 +232,50 @@ public class GameBtnsCtrl : MonoBehaviour {
             
         }
     }
+
+    public void OnJoystickMove(Vector2 vec)
+    {
+        int length = _dir_button_down.Length;
+        for (int i = 0; i < length; i++)
+        {
+            _dir_button_down[i] = false;
+        }
+
+        if (Mathf.Abs(vec.x) > Mathf.Abs(vec.y))
+        {
+            if(vec.x > 0)
+            {
+                _dir_button_down[(int)dir_move.right] = true;
+            }
+            else
+            {
+                _dir_button_down[(int)dir_move.left] = true;
+            }
+        }    
+        else
+        {
+            if(vec.y > 0)
+            {
+                _dir_button_down[(int)dir_move.back] = true;
+            }
+            else
+            {
+                _dir_button_down[(int)dir_move.front] = true;
+            }
+        }
+        global_instance.Instance._crash_manager.update_dir_btn();
+    }
+
+    public void OnJoystickMoveEnd()
+    {
+        int length = _dir_button_down.Length;
+        for (int i = 0; i < length; i++)
+        {
+            _dir_button_down[i] = false;
+        }
+        global_instance.Instance._crash_manager.update_dir_btn();
+    }
+
     public long getTimeStamp()
     {
         long cur_time =(System.DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
