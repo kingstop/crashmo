@@ -282,6 +282,7 @@ public class ngui_edit_manager : MonoBehaviour {
 	}
 
 
+
     public void BackToMainPanel()
     {
 		HideAllUI();
@@ -443,24 +444,24 @@ public class ngui_edit_manager : MonoBehaviour {
         
     }
 
-    public void check_game_type_click(Button obj)
-    {
-        int length = _Buttons_sliced_game_type.Length;
-        for (int i = 0; i < length; i++)
-        {
-            if (_Buttons_sliced_game_type[i] == obj)
-            {
-                game_type type = (game_type)i;
-                if(type == game_type.game)
-                {
-                    global_instance.Instance.SetMapData(global_instance.Instance._crash_mole_grid_manager.save_crash_mole_grid());                    
-                }
-                update_game_type(type);
-                break;
-            }
+    //public void check_game_type_click(Button obj)
+    //{
+    //    int length = _Buttons_sliced_game_type.Length;
+    //    for (int i = 0; i < length; i++)
+    //    {
+    //        if (_Buttons_sliced_game_type[i] == obj)
+    //        {
+    //            game_type type = (game_type)i;
+    //            if(type == game_type.game)
+    //            {
+    //                //global_instance.Instance.SetMapData(global_instance.Instance._crash_mole_grid_manager.save_crash_mole_grid());                    
+    //            }
+    //            update_game_type(type);
+    //            break;
+    //        }
             
-        }
-    }
+    //    }
+    //}
 		
 
     public void on_buttion_click(GameObject obj)

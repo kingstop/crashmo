@@ -17,6 +17,6 @@ public class game_type_click : MonoBehaviour {
     public void on_game_type_click(Button obj)
     {
         ngui_edit_manager entry = this.GetComponentInParent<ngui_edit_manager>();
-        entry.check_game_type_click(obj);
+       // entry.check_game_type_click(obj);
     }
 }

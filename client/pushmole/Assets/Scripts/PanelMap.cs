@@ -44,7 +44,19 @@ public class PanelMap : MonoBehaviour {
 
     public void onEditClick()
     {
-
+        CrashMapData info = getMapDate(_map_index);
+        if (info != null)
+        {
+            MapData temp = new MapData();
+            temp.set_info(info);
+            global_instance.Instance.SetMapData(temp);
+            global_instance.Instance._crash_mole_grid_manager.set_max_height(temp.height_);
+            global_instance.Instance._crash_mole_grid_manager.set_max_width(temp.width_);
+            global_instance.Instance._ngui_edit_manager._main_panel.gameObject.SetActive(false);
+            global_instance.Instance._global_game_type = global_game_type.global_game_type_edit;
+            global_instance.Instance._ngui_edit_manager.update_game_type(game_type.edit);
+            this.gameObject.SetActive(false);
+        }
     }
 
     public void onPublishClick()

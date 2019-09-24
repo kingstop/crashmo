@@ -242,14 +242,14 @@ public class UIEditMap : MonoBehaviour {
 
 	public void OnSaveButtonClick()
 	{
-		global_instance.Instance.SetMapData(global_instance.Instance._crash_mole_grid_manager.save_crash_mole_grid ());
+		global_instance.Instance.SetMapData(_mapinfo);
 
 		global_instance.Instance._ngui_edit_manager.on_save_btn_click ();
 	}
 
 	public void OnPrepareSaveClick()
 	{
-        global_instance.Instance.SetMapData(global_instance.Instance._crash_mole_grid_manager.save_crash_mole_grid());
+        global_instance.Instance.SetMapData(_mapinfo);
         global_instance.Instance._ngui_edit_manager.update_game_type (game_type.game);
 	}
 

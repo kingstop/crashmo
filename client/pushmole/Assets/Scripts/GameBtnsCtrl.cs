@@ -86,9 +86,6 @@ public class GameBtnsCtrl : MonoBehaviour {
 				{
 					temp_ = i;
 				}
-				else
-				{
-				}
 			}
 			global_instance.Instance._crash_manager.catch_click(temp_);
 		} 

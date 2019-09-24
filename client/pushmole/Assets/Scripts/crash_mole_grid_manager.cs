@@ -75,6 +75,8 @@ public class MapData
 
             }
         }
+        groups_[i, j] = group;
+
         tex.Apply();
     }
 
@@ -340,34 +342,34 @@ public class crash_mole_grid_manager : MonoBehaviour {
         }
         return current_resource_count;
     }
-	public MapData save_crash_mole_grid()
-	{
-        MapData data = new MapData();
-        data.create_name_ = "";
-        data.width_ = _max_width;        
-		data.height_ = _max_height;
-       // GameObject map_target = GameObject.Instantiate<GameObject>(_source_map_mole_obj);
-        data.groups_ = new int[data.width_, data.height_];
-        for (int j = 0; j < data.height_; j ++) 
-		{
-			//message.int32array tem_array = new message.int32array();
-			for(int i = 0; i < data.width_; i ++)
-			{
-				int group = _crashmolegrids[i, j].get_group();
-                data.groups_[i, j] = group;
-            }			
-		}
-        data.create_time_= (ulong)System.DateTime.Now.Subtract(System.DateTime.Parse("1970-1-1")).TotalSeconds + 4 * 60 * 60;
-        data.map_index_ = data.create_time_;
-        data.create_name_ = "unknow";
-        data.map_name_ = "unknow";
-        if (global_instance.Instance.GetMapData() != null)
-        {
-            data.create_name_ = global_instance.Instance.GetMapData().create_name_;
-            data.map_name_ = global_instance.Instance.GetMapData().map_name_;
-        }
-        return data;
-	}
+	//public MapData save_crash_mole_grid()
+	//{
+ //       MapData data = new MapData();
+ //       data.create_name_ = "";
+ //       data.width_ = _max_width;        
+	//	data.height_ = _max_height;
+ //      // GameObject map_target = GameObject.Instantiate<GameObject>(_source_map_mole_obj);
+ //       data.groups_ = new int[data.width_, data.height_];
+ //       for (int j = 0; j < data.height_; j ++) 
+	//	{
+	//		//message.int32array tem_array = new message.int32array();
+	//		for(int i = 0; i < data.width_; i ++)
+	//		{
+	//			int group = _crashmolegrids[i, j].get_group();
+ //               data.groups_[i, j] = group;
+ //           }			
+	//	}
+ //       data.create_time_= (ulong)System.DateTime.Now.Subtract(System.DateTime.Parse("1970-1-1")).TotalSeconds + 4 * 60 * 60;
+ //       data.map_index_ = data.create_time_;
+ //       data.create_name_ = "unknow";
+ //       data.map_name_ = "unknow";
+ //       if (global_instance.Instance.GetMapData() != null)
+ //       {
+ //           data.create_name_ = global_instance.Instance.GetMapData().create_name_;
+ //           data.map_name_ = global_instance.Instance.GetMapData().map_name_;
+ //       }
+ //       return data;
+	//}
 
 	// Use this for initialization
 	void Start () {        
