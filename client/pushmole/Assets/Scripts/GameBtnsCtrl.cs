@@ -15,10 +15,16 @@ public class GameBtnsCtrl : MonoBehaviour {
     public long _drag_begin_time;
     public float _drag_offset_x;
     public Vector3 _last_mouse_down_pos;
-
+    public bool _joystick_touching = false;
+    public ETCJoystick _joystick;
+    public float _joystick_max_x  = 300;
+    public float _joystick_max_y =  200;
     // Use this for initialization
     void Start () {
+        _joystick_max_x = 300;
+        _joystick_max_y = 200;
         ButtonState(false);
+
     }
 	
 	// Update is called once per frame
@@ -119,6 +125,7 @@ public class GameBtnsCtrl : MonoBehaviour {
 
 	}
 	private bool _jump_click = false;
+    
 	public void UpdateKeyboard()
 	{
 		if(game_catch_action() && _input_keyboard == true)
@@ -235,45 +242,68 @@ public class GameBtnsCtrl : MonoBehaviour {
 
     public void OnJoystickMove(Vector2 vec)
     {
+        if(_joystick_touching)
+        {
+            int length = _dir_button_down.Length;
+            for (int i = 0; i < length; i++)
+            {
+                _dir_button_down[i] = false;
+            }
+
+            if (Mathf.Abs(vec.x) > Mathf.Abs(vec.y))
+            {
+                if (vec.x > 0)
+                {
+                    _dir_button_down[(int)dir_move.right] = true;
+                }
+                else
+                {
+                    _dir_button_down[(int)dir_move.left] = true;
+                }
+            }
+            else
+            {
+                if (vec.y > 0)
+                {
+                    _dir_button_down[(int)dir_move.back] = true;
+                }
+                else
+                {
+                    _dir_button_down[(int)dir_move.front] = true;
+                }
+            }
+            global_instance.Instance._crash_manager.update_dir_btn();
+        }
+
+
+    }
+
+    public void OnTouchStart()
+    {
+        _joystick_touching = true;
+    }
+
+    public void OnTouchEnd()
+    {
+        _joystick_touching = false;
         int length = _dir_button_down.Length;
         for (int i = 0; i < length; i++)
         {
             _dir_button_down[i] = false;
-        }
-
-        if (Mathf.Abs(vec.x) > Mathf.Abs(vec.y))
-        {
-            if(vec.x > 0)
-            {
-                _dir_button_down[(int)dir_move.right] = true;
-            }
-            else
-            {
-                _dir_button_down[(int)dir_move.left] = true;
-            }
-        }    
-        else
-        {
-            if(vec.y > 0)
-            {
-                _dir_button_down[(int)dir_move.back] = true;
-            }
-            else
-            {
-                _dir_button_down[(int)dir_move.front] = true;
-            }
         }
         global_instance.Instance._crash_manager.update_dir_btn();
     }
 
     public void OnJoystickMoveEnd()
     {
-        int length = _dir_button_down.Length;
-        for (int i = 0; i < length; i++)
-        {
-            _dir_button_down[i] = false;
-        }
-        global_instance.Instance._crash_manager.update_dir_btn();
+        _joystick.gameObject.SetActive(false);
+        //int length = _dir_button_down.Length;
+        //for (int i = 0; i < length; i++)
+        //{
+        //    _dir_button_down[i] = false;
+        //}
+        //global_instance.Instance._crash_manager.update_dir_btn();
+        //_joystick.gameObject.SetActive(false);
     }
 
     public long getTimeStamp()
@@ -283,32 +313,39 @@ public class GameBtnsCtrl : MonoBehaviour {
     }
     public void OnMouseDown()
     {
+        if(Input.mousePosition.x <= _joystick_max_x && Input.mousePosition.y <= _joystick_max_y)
+        {
+            _joystick.gameObject.SetActive(true);
+            _joystick.gameObject.transform.position = Input.mousePosition;
+        }    
         //_last_mouse_down_time = getTimeStamp();
         //_last_mouse_down_pos = Input.mousePosition;
         //Debug.Log("mouse down position[" + _last_mouse_down_pos + "] time [ " + _last_mouse_down_time + "]");
     }
     public void OnMouseUp()
     {
-        if(Input.touches.Length == 0)
+       // _joystick.gameObject.SetActive(false);
+        
+        if (Input.touches.Length == 0)
         {
-            long time_cur = getTimeStamp();
-            long offset_time = time_cur - _drag_begin_time;
-            if (offset_time < 3)
-            {
-                if (_drag_offset_x > 100)
-                {
-                    global_instance.Instance._crash_manager.move_camera_left();
-                }
-                else if (_drag_offset_x < -100)
-                {
-                    global_instance.Instance._crash_manager.move_camera_right();
-                }
-            }
-            _last_mouse_drag_time = 0;
-            _drag_begin_time = 0;
+            //long time_cur = getTimeStamp();
+            //long offset_time = time_cur - _drag_begin_time;
+            //if (offset_time < 3)
+            //{
+            //    if (_drag_offset_x > 100)
+            //    {
+            //        global_instance.Instance._crash_manager.move_camera_left();
+            //    }
+            //    else if (_drag_offset_x < -100)
+            //    {
+            //        global_instance.Instance._crash_manager.move_camera_right();
+            //    }
+            //}
+            //_last_mouse_drag_time = 0;
+            //_drag_begin_time = 0;
         }
 
-        //Debug.Log("mouse up position[" + _last_mouse_down_pos + "] time [ " + _last_mouse_down_time + "]");
+        Debug.Log("mouse up position[" + Input.mousePosition + "] time [ " + _last_mouse_down_time + "]");
     }
     public void OnBigMapClick()
 	{
@@ -317,12 +354,14 @@ public class GameBtnsCtrl : MonoBehaviour {
 
     public void ButtonState(bool big)
     {
+        _joystick_touching = false;
         _obj_map_big.SetActive(big);
         _obj_map_small.SetActive(!big);
         global_instance.Instance._ngui_edit_manager._camera_map.gameObject.SetActive(!big);
         global_instance.Instance._ngui_edit_manager._camera_map_big.gameObject.SetActive(big);
         //global_instance.Instance._ngui_edit_manager._camera_map.gameObject.SetActive(false);
         //global_instance.Instance._ngui_edit_manager._camera_map_big.gameObject.SetActive(false);
+        _joystick.gameObject.SetActive(false);
 
     }
 
